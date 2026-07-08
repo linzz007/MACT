@@ -1,0 +1,39 @@
+# Python/runtime artifacts
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local environments
+.venv/
+venv/
+env/
+.env
+.env.*
+!.env.example
+
+# Experiment outputs and logs
+outputs/
+runs/
+results/
+*.log
+
+# Large local datasets/checkpoints. Keep datasets_examples/ tracked.
+datasets/
+datasets_ready/
+data/
+models/
+checkpoints/
+*.safetensors
+*.bin
+*.pt
+*.pth
+
+# OS/editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
