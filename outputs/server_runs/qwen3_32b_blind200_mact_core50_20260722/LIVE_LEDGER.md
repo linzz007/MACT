@@ -1,6 +1,6 @@
 # Qwen3-32B Blind200 MACT Core50 Live Ledger
 
-Last updated: 2026-07-22 10:09:29 CST
+Last updated: 2026-07-22 10:13:28 CST
 
 ## Goal
 
@@ -97,15 +97,41 @@ The copied IDs exactly match the first 5 IDs in each blind200 input. `--resume` 
 | 2026-07-22 09:44:09 | 5 | 5 | 5 | started core50 continuation |
 | 2026-07-22 10:00:28 | 16 | 5 | 5 | WTQ running, all new rows so far `ok` |
 | 2026-07-22 10:09:29 | 20 | 5 | 5 | WTQ checkpoint; critical error scan empty |
+| 2026-07-22 10:13:28 | 22 | 5 | 5 | WTQ sample `nu-4299` failed with context length BadRequest |
 
 ## Current Checks
 
 | check | current status |
 |---|---|
-| row completeness | partial: WTQ 20/50, TabFact 5/50, CRT 5/50 |
-| wrapper failures | none observed in live stdout |
-| critical log scan | no `Traceback`, context length, connection refused, APIConnectionError, or ERROR found so far |
+| row completeness | partial: WTQ 22/50, TabFact 5/50, CRT 5/50 |
+| wrapper failures | WTQ 1 row: `nu-4299` |
+| critical log scan | context length BadRequest found on WTQ `nu-4299` |
 | known diagnostic | MACT internal `Halted: 1` currently appears on WTQ 2 rows and CRT 1 row; output rows are still preserved |
+
+## Issues Found During Core50
+
+### WTQ `nu-4299`: context length failure
+
+Observed at 2026-07-22 10:13:28 CST.
+
+```text
+openai.BadRequestError: Error code: 400
+You passed 6145 input tokens and requested 2048 output tokens.
+The model's context length is only 8192 tokens, resulting in a maximum input length of 6144 tokens.
+```
+
+Wrapper behavior:
+
+```text
+[mact-one] wtq 22/50 failed
+JSONL row preserved with exec_error=True and empty pred_answer
+```
+
+Current interpretation:
+
+- This is not a vLLM outage; it is a prompt-budget boundary error under `VLLM_MAX_MODEL_LEN=8192` and MACT `--max-tokens 2048`.
+- The row should be counted as MACT failed/missing in the paired table.
+- If failures become frequent, rerun policy should be discussed before changing `--max-tokens`, because changing the budget mid-run would make the baseline less comparable.
 
 ## Sync Policy
 

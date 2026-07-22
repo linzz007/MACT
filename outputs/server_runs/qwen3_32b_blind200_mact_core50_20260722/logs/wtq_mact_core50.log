@@ -779,3 +779,122 @@ Finished Trial 1, Correct: 0, Incorrect: 1, Halted: 0
   warnings.warn(
 /home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
   warn_deprecated(
+==============current step===========
+Thought 1: To find the average age, I need to sum all the contestants' ages and divide by the number of contestants. First, retrieve all ages from the table.
+Action 1: Retrieve[retrieve all ages from the table]
+Observation 1: | Age |
+| 16.0 |
+| 18.0 |
+| 21.0 |
+| 23.0 |
+| 16.0 |
+| 21.0 |
+| 20.0 |
+| 17.0 |
+| 17.0 |
+| 20.0 |
+| 24.0 |
+| 21.0 |
+| 20.0 |
+| 16.0 |
+| 17.0 |
+| 16.0 |
+
+==============current step===========
+Thought 1: To find the average age, I need to sum all the contestants' ages and divide by the number of contestants. First, retrieve all ages from the table.
+Action 1: Retrieve[retrieve all ages from the table]
+Observation 1: | Age |
+| 16.0 |
+| 18.0 |
+| 21.0 |
+| 23.0 |
+| 16.0 |
+| 21.0 |
+| 20.0 |
+| 17.0 |
+| 17.0 |
+| 20.0 |
+| 24.0 |
+| 21.0 |
+| 20.0 |
+| 16.0 |
+| 17.0 |
+| 16.0 |
+Thought 2: Now that I have all the ages, I need to calculate the sum of these ages and then divide by the number of contestants to find the average.  
+Action 2: Calculate[sum the ages and divide by the number of contestants]  
+Observation 2: 303 / 16 = 18.9375  
+
+==============current step===========
+Thought 1: To find the average age, I need to sum all the contestants' ages and divide by the number of contestants. First, retrieve all ages from the table.
+Action 1: Retrieve[retrieve all ages from the table]
+Observation 1: | Age |
+| 16.0 |
+| 18.0 |
+| 21.0 |
+| 23.0 |
+| 16.0 |
+| 21.0 |
+| 20.0 |
+| 17.0 |
+| 17.0 |
+| 20.0 |
+| 24.0 |
+| 21.0 |
+| 20.0 |
+| 16.0 |
+| 17.0 |
+| 16.0 |
+Thought 2: Now that I have all the ages, I need to calculate the sum of these ages and then divide by the number of contestants to find the average.  
+Action 2: Calculate[sum the ages and divide by the number of contestants]  
+Observation 2: 303 / 16 = 18.9375  
+Thought 3: The average age is calculated by dividing the total sum of ages (303) by the number of contestants (16), resulting in 18.9375.  
+Action 3: Finish[18.9375]
+
+Finished Trial 1, Correct: 0, Incorrect: 1, Halted: 0
+
+=== sample 20 id=nu-4062 start ===
+=== sample 20 returncode=0 end ===
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain/__init__.py:29: UserWarning: Importing Wikipedia from langchain root module is no longer supported. Please use langchain.docstore.Wikipedia instead.
+  warnings.warn(
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
+  warn_deprecated(
+Traceback (most recent call last):
+  File "/home/ubuntu/lzz/MACT/code/tqa.py", line 197, in main
+    finished_agent = write_to_file(
+                     ^^^^^^^^^^^^^^
+  File "/home/ubuntu/lzz/MACT/code/tqa.py", line 38, in write_to_file
+    agent.run(given_plan)
+  File "/home/ubuntu/lzz/MACT/code/agents.py", line 893, in run
+    self.step()
+  File "/home/ubuntu/lzz/MACT/code/agents.py", line 939, in step
+    sampled = self.prompt_agent(mode="both")
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/lzz/MACT/code/agents.py", line 1088, in prompt_agent
+    return self._generate_candidates(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/lzz/MACT/code/agents.py", line 331, in _generate_candidates
+    return self.api_backend.generate(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/lzz/MACT/code/model_backends.py", line 145, in generate
+    response = self.client.chat.completions.create(**request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/openai/_utils/_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/openai/resources/chat/completions/completions.py", line 1204, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/openai/_base_client.py", line 1297, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/openai/_base_client.py", line 1070, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.BadRequestError: Error code: 400 - {'error': {'message': "You passed 6145 input tokens and requested 2048 output tokens. However, the model's context length is only 8192 tokens, resulting in a maximum input length of 6144 tokens. Please reduce the length of the input prompt. (parameter=input_tokens, value=6145)", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}
+
+
+=== sample 21 id=nu-4299 start ===
+=== sample 21 returncode=0 end ===
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain/__init__.py:29: UserWarning: Importing Wikipedia from langchain root module is no longer supported. Please use langchain.docstore.Wikipedia instead.
+  warnings.warn(
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
+  warn_deprecated(
