@@ -1,0 +1,42 @@
+{
+  "result_schema": "mact",
+  "num_samples": 50,
+  "num_with_gold": 50,
+  "exact_match": 0.8,
+  "primary_accuracy": 0.82,
+  "accuracy_metric": "wtq_denotation_accuracy",
+  "num_failed_exec": 1,
+  "num_missing_answer": 1,
+  "num_em_mismatch": 9,
+  "num_multi_view_replan": 0,
+  "num_cross_path_mismatch": 0,
+  "route_distribution": {},
+  "difficulty_distribution": {},
+  "risk_distribution": {
+    "unknown": 50
+  },
+  "risk_strata": {
+    "unknown": {
+      "count": 50,
+      "num_with_gold": 50,
+      "correct": 41,
+      "accuracy": 0.82,
+      "avg_total_tokens": 10579.62,
+      "failure_count": 1
+    }
+  },
+  "simple_lookup_success_rate": 0.0,
+  "multi_view_pass_rate": 0.0,
+  "alternative_exec_success_rate": 0.0,
+  "avg_llm_calls": 3.44,
+  "avg_total_tokens": 10579.62,
+  "avg_prompt_tokens": 7327.38,
+  "avg_completion_tokens": 3252.24,
+  "token_measurement": "api_usage",
+  "avg_compression_ratio": 1.0,
+  "avg_token_compression_ratio_est": 0.0,
+  "avg_elapsed_seconds": 121.88946129410061,
+  "avg_total_tokens_est": 9759.612244897959,
+  "avg_prompt_tokens_est": 6638.65306122449,
+  "avg_completion_tokens_est": 3120.9591836734694
+}

@@ -1,6 +1,6 @@
 # Qwen3-32B Blind200 MACT Core50 Live Ledger
 
-Last updated: 2026-07-22 10:57:34 CST
+Last updated: 2026-07-22 11:20:42 CST
 
 ## Goal
 
@@ -100,15 +100,52 @@ The copied IDs exactly match the first 5 IDs in each blind200 input. `--resume` 
 | 2026-07-22 10:13:28 | 22 | 5 | 5 | WTQ sample `nu-4299` failed with context length BadRequest |
 | 2026-07-22 10:33:19 | 30 | 5 | 5 | WTQ checkpoint; failed/missing remains 1 row |
 | 2026-07-22 10:57:34 | 40 | 5 | 5 | WTQ checkpoint; failed/missing remains 1 row |
+| 2026-07-22 11:17:07 | 50 | 5 | 5 | WTQ completed; TabFact started |
+| 2026-07-22 11:20:42 | 50 | 5 | 5 | WTQ eval and paired files written |
 
 ## Current Checks
 
 | check | current status |
 |---|---|
-| row completeness | partial: WTQ 40/50, TabFact 5/50, CRT 5/50 |
+| row completeness | partial: WTQ 50/50, TabFact 5/50, CRT 5/50 |
 | wrapper failures | WTQ 1 row: `nu-4299` |
 | critical log scan | context length BadRequest found on WTQ `nu-4299` |
 | known diagnostic | MACT internal `Halted: 1` currently appears on WTQ 4 rows and CRT 1 row; output rows are still preserved |
+
+## WTQ Core50 Result
+
+Generated files:
+
+```text
+wtq_mact_core50.jsonl
+wtq_mact_core50_eval.json
+wtq_mact_core50_errors.jsonl
+wtq_mact_core50_paired.json
+logs/wtq_mact_core50.log
+```
+
+WTQ summary:
+
+| metric | myAgent | MACT |
+|---|---:|---:|
+| rows | 50 | 50 |
+| correct | 34 | 41 |
+| accuracy | 0.6800 | 0.8200 |
+| avg tokens | 5,775.70 | 10,579.62 |
+| failed exec | 0 | 1 |
+| missing answer | 0 | 1 |
+
+WTQ paired disagreement:
+
+| both correct | myAgent only | MACT only | neither |
+|---:|---:|---:|---:|
+| 32 | 2 | 9 | 7 |
+
+Interpretation:
+
+- On this blind50 WTQ subset, myAgent is much cheaper but less accurate than MACT.
+- This does not invalidate the earlier frozen150 strict paired result; it means blind50/100 paired evidence is necessary before making expert-facing claims.
+- The MACT context failure on `nu-4299` is counted as MACT failed/missing, but MACT still leads WTQ on this subset.
 
 ## Issues Found During Core50
 

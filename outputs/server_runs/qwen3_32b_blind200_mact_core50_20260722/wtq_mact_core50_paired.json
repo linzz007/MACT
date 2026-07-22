@@ -1,0 +1,522 @@
+{
+  "dataset": "wtq",
+  "rows": 50,
+  "matched_rows": 50,
+  "missing_agent_ids": [],
+  "mact": {
+    "result_schema": "mact",
+    "num_samples": 50,
+    "num_with_gold": 50,
+    "exact_match": 0.8,
+    "primary_accuracy": 0.82,
+    "accuracy_metric": "wtq_denotation_accuracy",
+    "num_failed_exec": 1,
+    "num_missing_answer": 1,
+    "num_em_mismatch": 9,
+    "num_multi_view_replan": 0,
+    "num_cross_path_mismatch": 0,
+    "route_distribution": {},
+    "difficulty_distribution": {},
+    "risk_distribution": {
+      "unknown": 50
+    },
+    "risk_strata": {
+      "unknown": {
+        "count": 50,
+        "num_with_gold": 50,
+        "correct": 41,
+        "accuracy": 0.82,
+        "avg_total_tokens": 10579.62,
+        "failure_count": 1
+      }
+    },
+    "simple_lookup_success_rate": 0.0,
+    "multi_view_pass_rate": 0.0,
+    "alternative_exec_success_rate": 0.0,
+    "avg_llm_calls": 3.44,
+    "avg_total_tokens": 10579.62,
+    "avg_prompt_tokens": 7327.38,
+    "avg_completion_tokens": 3252.24,
+    "token_measurement": "api_usage",
+    "avg_compression_ratio": 1.0,
+    "avg_token_compression_ratio_est": 0.0,
+    "avg_elapsed_seconds": 121.88946129410061,
+    "avg_total_tokens_est": 9759.612244897959,
+    "avg_prompt_tokens_est": 6638.65306122449,
+    "avg_completion_tokens_est": 3120.9591836734694
+  },
+  "myagent_matched": {
+    "result_schema": "myagent",
+    "num_samples": 50,
+    "num_with_gold": 50,
+    "exact_match": 0.64,
+    "primary_accuracy": 0.68,
+    "accuracy_metric": "wtq_denotation_accuracy",
+    "num_failed_exec": 0,
+    "num_missing_answer": 0,
+    "num_em_mismatch": 16,
+    "num_multi_view_replan": 0,
+    "num_cross_path_mismatch": 0,
+    "route_distribution": {
+      "COMPLEX": 47,
+      "SIMPLE": 3
+    },
+    "difficulty_distribution": {
+      "medium": 43,
+      "easy": 7
+    },
+    "risk_distribution": {
+      "high": 45,
+      "medium": 2,
+      "light": 3
+    },
+    "risk_strata": {
+      "high": {
+        "count": 45,
+        "num_with_gold": 45,
+        "correct": 30,
+        "accuracy": 0.6666666666666666,
+        "avg_total_tokens": 6194.422222222222,
+        "failure_count": 0
+      },
+      "light": {
+        "count": 3,
+        "num_with_gold": 3,
+        "correct": 2,
+        "accuracy": 0.6666666666666666,
+        "avg_total_tokens": 2076.3333333333335,
+        "failure_count": 0
+      },
+      "medium": {
+        "count": 2,
+        "num_with_gold": 2,
+        "correct": 2,
+        "accuracy": 1.0,
+        "avg_total_tokens": 1903.5,
+        "failure_count": 0
+      }
+    },
+    "simple_lookup_success_rate": 0.0,
+    "multi_view_pass_rate": 0.0,
+    "alternative_exec_success_rate": 0.0,
+    "avg_llm_calls": 4.64,
+    "avg_total_tokens": 5775.7,
+    "avg_prompt_tokens": 5446.84,
+    "avg_completion_tokens": 328.86,
+    "token_measurement": "api_usage",
+    "avg_compression_ratio": 0.3877905479444609,
+    "avg_token_compression_ratio_est": 0.38280526700764456,
+    "avg_elapsed_seconds": 13.868594701020047,
+    "avg_total_tokens_est": 5433.88,
+    "avg_prompt_tokens_est": 5108.34,
+    "avg_completion_tokens_est": 325.54
+  },
+  "paired_disagreement": {
+    "both_correct": 32,
+    "myagent_only": 2,
+    "mact_only": 9,
+    "neither": 7
+  },
+  "row_level": [
+    {
+      "id": "nu-2923",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "Tony Arima",
+      "myagent_prediction": "Tony Arima"
+    },
+    {
+      "id": "nu-58",
+      "mact_correct": false,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "esther shahamorov with 5th place",
+      "myagent_prediction": "Esther Shahamorov"
+    },
+    {
+      "id": "nu-1874",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "6",
+      "myagent_prediction": 6
+    },
+    {
+      "id": "nu-4342",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "43.12",
+      "myagent_prediction": 43.12
+    },
+    {
+      "id": "nu-2772",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "2008",
+      "myagent_prediction": 2008.0
+    },
+    {
+      "id": "nu-3720",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "2",
+      "myagent_prediction": 2
+    },
+    {
+      "id": "nu-342",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "State of Origin series",
+      "myagent_prediction": "State of Origin series"
+    },
+    {
+      "id": "nu-1434",
+      "mact_correct": true,
+      "myagent_correct": false,
+      "mact_exec_error": false,
+      "mact_prediction": "3",
+      "myagent_prediction": "\\I Like It\\\"\""
+    },
+    {
+      "id": "nu-3442",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "1",
+      "myagent_prediction": 1
+    },
+    {
+      "id": "nu-2873",
+      "mact_correct": true,
+      "myagent_correct": false,
+      "mact_exec_error": false,
+      "mact_prediction": "Mike Imrie",
+      "myagent_prediction": 7.0
+    },
+    {
+      "id": "nu-192",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "Doug Shierson Racing",
+      "myagent_prediction": "Doug Shierson Racing"
+    },
+    {
+      "id": "nu-4268",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "Coral Springs, Florida",
+      "myagent_prediction": "coral springs, florida"
+    },
+    {
+      "id": "nu-1952",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "13",
+      "myagent_prediction": 13
+    },
+    {
+      "id": "nu-3470",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "2007",
+      "myagent_prediction": "2007"
+    },
+    {
+      "id": "nu-2178",
+      "mact_correct": false,
+      "myagent_correct": false,
+      "mact_exec_error": false,
+      "mact_prediction": "Jeanette W. Hyde",
+      "myagent_prediction": "Frank V. Ortiz, Jr."
+    },
+    {
+      "id": "nu-195",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "Soviet Union",
+      "myagent_prediction": "Soviet Union"
+    },
+    {
+      "id": "nu-965",
+      "mact_correct": false,
+      "myagent_correct": false,
+      "mact_exec_error": false,
+      "mact_prediction": "15.",
+      "myagent_prediction": 16
+    },
+    {
+      "id": "nu-2453",
+      "mact_correct": true,
+      "myagent_correct": false,
+      "mact_exec_error": false,
+      "mact_prediction": "Mahler",
+      "myagent_prediction": "Not found"
+    },
+    {
+      "id": "nu-709",
+      "mact_correct": true,
+      "myagent_correct": false,
+      "mact_exec_error": false,
+      "mact_prediction": "11",
+      "myagent_prediction": 12
+    },
+    {
+      "id": "nu-1373",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "Hong Kong (HKG)",
+      "myagent_prediction": "Hong Kong (HKG)"
+    },
+    {
+      "id": "nu-4062",
+      "mact_correct": false,
+      "myagent_correct": false,
+      "mact_exec_error": false,
+      "mact_prediction": "18.9375",
+      "myagent_prediction": 18.94
+    },
+    {
+      "id": "nu-4299",
+      "mact_correct": false,
+      "myagent_correct": false,
+      "mact_exec_error": true,
+      "mact_prediction": "",
+      "myagent_prediction": "Not found"
+    },
+    {
+      "id": "nu-1836",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "No",
+      "myagent_prediction": "no"
+    },
+    {
+      "id": "nu-3934",
+      "mact_correct": true,
+      "myagent_correct": false,
+      "mact_exec_error": false,
+      "mact_prediction": "1987",
+      "myagent_prediction": 1986.0
+    },
+    {
+      "id": "nu-226",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "Palais Royal!",
+      "myagent_prediction": "Palais Royal!"
+    },
+    {
+      "id": "nu-3191",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "31 minutes",
+      "myagent_prediction": "31 minutes"
+    },
+    {
+      "id": "nu-2779",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "10",
+      "myagent_prediction": 10.0
+    },
+    {
+      "id": "nu-2525",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "3",
+      "myagent_prediction": 3
+    },
+    {
+      "id": "nu-1505",
+      "mact_correct": true,
+      "myagent_correct": false,
+      "mact_exec_error": false,
+      "mact_prediction": "74.",
+      "myagent_prediction": 34
+    },
+    {
+      "id": "nu-1177",
+      "mact_correct": false,
+      "myagent_correct": false,
+      "mact_exec_error": false,
+      "mact_prediction": "\"The Harvest\"",
+      "myagent_prediction": "Lady In The Jaguar"
+    },
+    {
+      "id": "nu-2213",
+      "mact_correct": true,
+      "myagent_correct": false,
+      "mact_exec_error": false,
+      "mact_prediction": "4",
+      "myagent_prediction": 8.0
+    },
+    {
+      "id": "nu-1214",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "Karl Lagerfeld for Chanel",
+      "myagent_prediction": "Karl Lagerfeld for Chanel"
+    },
+    {
+      "id": "nu-2036",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "68",
+      "myagent_prediction": 68
+    },
+    {
+      "id": "nu-3143",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "No",
+      "myagent_prediction": false
+    },
+    {
+      "id": "nu-2878",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "PE-1",
+      "myagent_prediction": "PE-1"
+    },
+    {
+      "id": "nu-1069",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "December",
+      "myagent_prediction": "december"
+    },
+    {
+      "id": "nu-1411",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "2",
+      "myagent_prediction": 2
+    },
+    {
+      "id": "nu-4168",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "Chile F2",
+      "myagent_prediction": "Chile F2"
+    },
+    {
+      "id": "nu-613",
+      "mact_correct": false,
+      "myagent_correct": false,
+      "mact_exec_error": false,
+      "mact_prediction": "Telenovela, Serie, Short Film, Feature Film, Capsulas",
+      "myagent_prediction": "Telenovela, Serie, Short Film, Feature Film"
+    },
+    {
+      "id": "nu-2404",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "rome",
+      "myagent_prediction": "Rome"
+    },
+    {
+      "id": "nu-1826",
+      "mact_correct": true,
+      "myagent_correct": false,
+      "mact_exec_error": false,
+      "mact_prediction": "7",
+      "myagent_prediction": 4
+    },
+    {
+      "id": "nu-2897",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "21.00",
+      "myagent_prediction": 21.0
+    },
+    {
+      "id": "nu-3462",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "2",
+      "myagent_prediction": 2
+    },
+    {
+      "id": "nu-2240",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "Going Up!",
+      "myagent_prediction": "Going Up!"
+    },
+    {
+      "id": "nu-1263",
+      "mact_correct": false,
+      "myagent_correct": false,
+      "mact_exec_error": false,
+      "mact_prediction": "the Supporting Actor is the winner, and the Nominees column lists all the other nominees. So for 1997, the winner is Samuel L. Jackson, and the Nominees column lists Blair Underwood, Charles S. Dutton, Delroy Lindo, Forest Whitaker. That's four other nominees, making a total of 5 nominees for that year. \n\nSo for each year, the total number of nominees is 1 (the winner) plus the number of names listed in the Nominees column. However, in some years, the Nominees column is empty, meaning the winner was the only nominee. \n\nSo to calculate the total number of nominees across all years, we need to go through each year, count the number of nominees (1 if Nominees is empty, else 1 + number of names in Nominees column), and sum them all. \n\nBut the question is phrased as \"how many nominees are there each year for the naacp image award?\" which is a bit ambiguous. If it's asking for the number of nominees in each year, the answer would vary each year. But the answer format requires a single number. However, looking at the examples, the user might be asking for the total number of nominees across all years. \n\nAlternatively, maybe the question is asking for the number of nominees per year, but the answer is that it varies. However, the answer format requires a specific number. \n\nWait, perhaps the user is asking for the number of nominees in each year, but the answer is that each year has a certain",
+      "myagent_prediction": "The table does not provide a consistent number of nominees per year for the NAACP Image Award."
+    },
+    {
+      "id": "nu-2611",
+      "mact_correct": true,
+      "myagent_correct": false,
+      "mact_exec_error": false,
+      "mact_prediction": "Nieuport serial number 3958",
+      "myagent_prediction": "sopwith triplane s/n n5460"
+    },
+    {
+      "id": "nu-408",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "Team Bigazzi SRL",
+      "myagent_prediction": "Team Bigazzi SRL"
+    },
+    {
+      "id": "nu-1756",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "6",
+      "myagent_prediction": 6
+    },
+    {
+      "id": "nu-3422",
+      "mact_correct": false,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "more than 15",
+      "myagent_prediction": "more"
+    },
+    {
+      "id": "nu-1224",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "Canada",
+      "myagent_prediction": "Canada"
+    }
+  ]
+}
