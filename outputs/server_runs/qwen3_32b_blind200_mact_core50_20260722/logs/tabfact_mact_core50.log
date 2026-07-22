@@ -602,3 +602,265 @@ Finished Trial 1, Correct: 1, Incorrect: 0, Halted: 0
   warnings.warn(
 /home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
   warn_deprecated(
+==============current step===========
+Thought 1: I need to verify if the Cyprus Theatre Organisation and Attis Theatre are in the same country. Retrieve their respective country entries from the table.  
+Action 1: Retrieve[Retrieve the country of Cyprus Theatre Organisation and Attis Theatre.]  
+Observation 1: | company | country |
+| cyprus theatre organisation | cyprus |
+| attis theatre | greece |
+
+==============current step===========
+Thought 1: I need to verify if the Cyprus Theatre Organisation and Attis Theatre are in the same country. Retrieve their respective country entries from the table.  
+Action 1: Retrieve[Retrieve the country of Cyprus Theatre Organisation and Attis Theatre.]  
+Observation 1: | company | country |
+| cyprus theatre organisation | cyprus |
+| attis theatre | greece |
+Thought 2: The Cyprus Theatre Organisation is in Cyprus, and the Attis Theatre is in Greece. Since Cyprus and Greece are different countries, the claim is false.  
+Action 2: Finish[False]
+
+Finished Trial 1, Correct: 1, Incorrect: 0, Halted: 0
+
+=== sample 21 id=tabfact-test-5647 start ===
+=== sample 21 returncode=0 end ===
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain/__init__.py:29: UserWarning: Importing Wikipedia from langchain root module is no longer supported. Please use langchain.docstore.Wikipedia instead.
+  warnings.warn(
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
+  warn_deprecated(
+==============current step===========
+Thought 1: The context mentions "1972 be the year when rowan barrett be bear." This likely refers to Rowan Barrett's birth year. I need to verify if the table confirms that Rowan Barrett was born in 1972.  
+Action 1: Retrieve[Retrieve the "year born (age)" cell for the player "rowan barrett".]  
+Observation 1: November 24 , 1972 (age41)  
+
+==============current step===========
+Thought 1: The context mentions "1972 be the year when rowan barrett be bear." This likely refers to Rowan Barrett's birth year. I need to verify if the table confirms that Rowan Barrett was born in 1972.  
+Action 1: Retrieve[Retrieve the "year born (age)" cell for the player "rowan barrett".]  
+Observation 1: November 24 , 1972 (age41)  
+Thought 2: The retrieved data shows Rowan Barrett's birth year is 1972, matching the context's claim. The "age41" in parentheses also aligns with the age calculation (assuming the current year is 2013). The claim is therefore true.  
+Action 2: Finish[True]
+
+Finished Trial 1, Correct: 1, Incorrect: 0, Halted: 0
+
+=== sample 22 id=tabfact-test-10342 start ===
+=== sample 22 returncode=0 end ===
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain/__init__.py:29: UserWarning: Importing Wikipedia from langchain root module is no longer supported. Please use langchain.docstore.Wikipedia instead.
+  warnings.warn(
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
+  warn_deprecated(
+==============current step===========
+Thought 1: I need to verify if Rob Zamuner and Louie DeBrusk were drafted into different NHL teams. To do this, I will retrieve their respective NHL teams from the table.
+Action 1: Retrieve[Retrieve the NHL team for Rob Zamuner and Louie DeBrusk.]
+Observation 1: | player | nhl team |
+| rob zamuner | new york rangers |
+| louie debrusk | new york rangers |
+
+==============current step===========
+Thought 1: I need to verify if Rob Zamuner and Louie DeBrusk were drafted into different NHL teams. To do this, I will retrieve their respective NHL teams from the table.
+Action 1: Retrieve[Retrieve the NHL team for Rob Zamuner and Louie DeBrusk.]
+Observation 1: | player | nhl team |
+| rob zamuner | new york rangers |
+| louie debrusk | new york rangers |
+Thought 2: Both Rob Zamuner and Louie DeBrusk are listed as being drafted by the New York Rangers. Since they were drafted into the same NHL team, the claim that they were drafted into different teams is false.
+Action 2: Finish[False]
+
+Finished Trial 1, Correct: 1, Incorrect: 0, Halted: 0
+
+=== sample 23 id=tabfact-test-4015 start ===
+=== sample 23 returncode=0 end ===
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain/__init__.py:29: UserWarning: Importing Wikipedia from langchain root module is no longer supported. Please use langchain.docstore.Wikipedia instead.
+  warnings.warn(
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
+  warn_deprecated(
+==============current step===========
+Thought 1: I need to verify if the context statement matches the table entry for September 24, 2006, at the Guadalajara tournament.  
+Action 1: Retrieve[Retrieve the row where date is 24 September 2006 and tournament is Guadalajara.]  
+Observation 1: | outcome | date | tournament | surface | opponent in the final | score |  
+| winner | 24 september 2006 | guadalajara | clay | estefania craciún | 6 - 3 , 6 - 4 |  
+
+==============current step===========
+Thought 1: I need to verify if the context statement matches the table entry for September 24, 2006, at the Guadalajara tournament.  
+Action 1: Retrieve[Retrieve the row where date is 24 September 2006 and tournament is Guadalajara.]  
+Observation 1: | outcome | date | tournament | surface | opponent in the final | score |  
+| winner | 24 september 2006 | guadalajara | clay | estefania craciún | 6 - 3 , 6 - 4 |  
+Thought 2: The retrieved row matches the context statement exactly: the outcome is "winner", the date is 24 September 2006, the tournament is Guadalajara, and the score is 6-3, 6-4.  
+Action 2: Finish[True]
+
+Finished Trial 1, Correct: 1, Incorrect: 0, Halted: 0
+
+=== sample 24 id=tabfact-test-9879 start ===
+=== sample 24 returncode=0 end ===
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain/__init__.py:29: UserWarning: Importing Wikipedia from langchain root module is no longer supported. Please use langchain.docstore.Wikipedia instead.
+  warnings.warn(
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
+  warn_deprecated(
+==============current step===========
+Thought 1: The context describes a game on May 13 where Vancouver is the home team, the score is 3-5, the decision is McLean, and the series is at 2-3. I need to verify if the table matches this description.  
+Action 1: Retrieve[Retrieve the row where date is May 13.]  
+Observation 1: | date | visitor | score | home | decision | attendance | series |
+| may 13 | vancouver | 3 - 5 | los angeles | mclean | 16005.0 | 2 - 4 |
+
+==============current step===========
+Thought 1: The context describes a game on May 13 where Vancouver is the home team, the score is 3-5, the decision is McLean, and the series is at 2-3. I need to verify if the table matches this description.  
+Action 1: Retrieve[Retrieve the row where date is May 13.]  
+Observation 1: | date | visitor | score | home | decision | attendance | series |
+| may 13 | vancouver | 3 - 5 | los angeles | mclean | 16005.0 | 2 - 4 |
+Thought 2: The retrieved row shows that on May 13, the home team is **Los Angeles**, not Vancouver as stated in the context. Additionally, the series is listed as **2-4** in the table, but the context claims it should be **2-3**. These discrepancies indicate the context does not align with the table data.  
+Action 2: Finish[False]
+
+Finished Trial 1, Correct: 1, Incorrect: 0, Halted: 0
+
+=== sample 25 id=tabfact-test-3333 start ===
+=== sample 25 returncode=0 end ===
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain/__init__.py:29: UserWarning: Importing Wikipedia from langchain root module is no longer supported. Please use langchain.docstore.Wikipedia instead.
+  warnings.warn(
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
+  warn_deprecated(
+==============current step===========
+Thought 1: I need to verify if Liselotte Neumann's wins in June 1996 and March 1998 were decided by a playoff. The table lists tournaments with their margins of victory. I should retrieve the rows for June 1996 and March 1998 to check the margin of victory.  
+Action 1: Retrieve[Retrieve the rows where date is "6 jun 1996" and "22 mar 1998".]  
+Observation 1: | date | tournament | winning score | margin of victory | runner (s) - up |
+| 6 jun 1996 | edina realty lpga classic | - 9 (67 + 73 + 67 = 207) | playoff | brandie burton , carin koch , suzanne strudwick |
+| 22 mar 1998 | standard register ping | - 13 (69 + 67 + 69 + 74 = 279) | playoff | rosie jones |
+
+==============current step===========
+Thought 1: I need to verify if Liselotte Neumann's wins in June 1996 and March 1998 were decided by a playoff. The table lists tournaments with their margins of victory. I should retrieve the rows for June 1996 and March 1998 to check the margin of victory.  
+Action 1: Retrieve[Retrieve the rows where date is "6 jun 1996" and "22 mar 1998".]  
+Observation 1: | date | tournament | winning score | margin of victory | runner (s) - up |
+| 6 jun 1996 | edina realty lpga classic | - 9 (67 + 73 + 67 = 207) | playoff | brandie burton , carin koch , suzanne strudwick |
+| 22 mar 1998 | standard register ping | - 13 (69 + 67 + 69 + 74 = 279) | playoff | rosie jones |
+Thought 2: Both retrieved rows show that the margin of victory was a "playoff" for the tournaments in June 1996 (Edina Realty LPGA Classic) and March 1998 (Standard Register Ping). This confirms that Liselotte Neumann's wins in these two tournaments were indeed decided by a playoff.  
+Action 2: Finish[True]
+
+Finished Trial 1, Correct: 1, Incorrect: 0, Halted: 0
+
+=== sample 26 id=tabfact-test-1040 start ===
+=== sample 26 returncode=0 end ===
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain/__init__.py:29: UserWarning: Importing Wikipedia from langchain root module is no longer supported. Please use langchain.docstore.Wikipedia instead.
+  warnings.warn(
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
+  warn_deprecated(
+==============current step===========
+Thought 1: The context claims England played Pakistan 2 times in the nightwatchman scenario. I need to verify this by checking the table for entries where "team" is Pakistan and "versus" is England, or vice versa.  
+Action 1: Retrieve[Retrieve all rows where team is Pakistan and versus is England, or team is England and versus is Pakistan.]  
+Observation 1: | player | team | score | versus | year |
+| nasim - ul - ghani | pakistan | 101.0 | england | 1962.0 |
+
+==============current step===========
+Thought 1: The context claims England played Pakistan 2 times in the nightwatchman scenario. I need to verify this by checking the table for entries where "team" is Pakistan and "versus" is England, or vice versa.  
+Action 1: Retrieve[Retrieve all rows where team is Pakistan and versus is England, or team is England and versus is Pakistan.]  
+Observation 1: | player | team | score | versus | year |
+| nasim - ul - ghani | pakistan | 101.0 | england | 1962.0 |
+Thought 2: The retrieved data shows only one instance where Pakistan played against England (Nasim-ul-Ghani's 101 in 1962). The context claims there were 2 such matches, but the table provides no additional entries for England vs Pakistan. Therefore, the claim is false.  
+Action 2: Finish[False]
+
+Finished Trial 1, Correct: 1, Incorrect: 0, Halted: 0
+
+=== sample 27 id=tabfact-test-3884 start ===
+=== sample 27 returncode=0 end ===
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain/__init__.py:29: UserWarning: Importing Wikipedia from langchain root module is no longer supported. Please use langchain.docstore.Wikipedia instead.
+  warnings.warn(
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
+  warn_deprecated(
+==============current step===========
+Thought 1: I need to verify the claim that when net profit/loss (SEK) exceeds 4,935,000,000 and basic EPS (SEK) exceeds 1.06, the average employees/year must exceed 4. First, I will retrieve all rows where both net profit/loss > 4,935,000,000 and basic EPS > 1.06.  
+Action 1: Retrieve[Retrieve rows where net profit/loss (SEK) > 4,935,000,000 and basic eps (SEK) > 1.06.]  
+Observation 1: | year ended | passengers flown | employees (average / year) | net profit / loss (sek) | basic eps (sek) |  
+| 2006 | 38609000 | 26554 | 4936000000 | 28.10 |  
+
+==============current step===========
+Thought 1: I need to verify the claim that when net profit/loss (SEK) exceeds 4,935,000,000 and basic EPS (SEK) exceeds 1.06, the average employees/year must exceed 4. First, I will retrieve all rows where both net profit/loss > 4,935,000,000 and basic EPS > 1.06.  
+Action 1: Retrieve[Retrieve rows where net profit/loss (SEK) > 4,935,000,000 and basic eps (SEK) > 1.06.]  
+Observation 1: | year ended | passengers flown | employees (average / year) | net profit / loss (sek) | basic eps (sek) |  
+| 2006 | 38609000 | 26554 | 4936000000 | 28.10 |  
+Thought 2: The only row meeting the criteria is 2006. The average employees for 2006 are 26,554, which is significantly larger than 4. The claim is trivially true since all employee counts in the table are far above 4, but the condition is satisfied.  
+Action 2: Finish[True]
+
+Finished Trial 1, Correct: 1, Incorrect: 0, Halted: 0
+
+=== sample 28 id=tabfact-test-10634 start ===
+=== sample 28 returncode=0 end ===
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain/__init__.py:29: UserWarning: Importing Wikipedia from langchain root module is no longer supported. Please use langchain.docstore.Wikipedia instead.
+  warnings.warn(
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
+  warn_deprecated(
+==============current step===========
+Thought 1: I need to find Branko Schmidt's first and most recent submissions in the table. 
+Action 1: Retrieve[Retrieve all rows where director(s) is Branko Schmidt.]
+Observation 1: | year (ceremony) | film title used in nomination | original title | director (s) | result |
+| 1994 (67th) | vukovar : the way home | vukovar se vraća kući | branko schmidt | not nominated |
+| 2001 (74th) | queen of the night | kraljica noći | branko schmidt | not nominated |
+| 2012 (85th) | cannibal vegetarian | ljudožder vegetarijanac | branko schmidt | not nominated |
+
+==============current step===========
+Thought 1: I need to find Branko Schmidt's first and most recent submissions in the table. 
+Action 1: Retrieve[Retrieve all rows where director(s) is Branko Schmidt.]
+Observation 1: | year (ceremony) | film title used in nomination | original title | director (s) | result |
+| 1994 (67th) | vukovar : the way home | vukovar se vraća kući | branko schmidt | not nominated |
+| 2001 (74th) | queen of the night | kraljica noći | branko schmidt | not nominated |
+| 2012 (85th) | cannibal vegetarian | ljudožder vegetarijanac | branko schmidt | not nominated |
+Thought 2: The first submission by Branko Schmidt is in 1994 (Vukovar: The Way Home) and the most recent is in 2012 (Cannibal Vegetarian). The difference between 2012 and 1994 is 18 years, not 7 years. Therefore, the claim is false.
+Action 2: Finish[False]
+
+Finished Trial 1, Correct: 1, Incorrect: 0, Halted: 0
+
+=== sample 29 id=tabfact-test-3515 start ===
+=== sample 29 returncode=0 end ===
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain/__init__.py:29: UserWarning: Importing Wikipedia from langchain root module is no longer supported. Please use langchain.docstore.Wikipedia instead.
+  warnings.warn(
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
+  warn_deprecated(
+==============current step===========
+Thought 1: To verify the claim that NGC 1705 has the smallest redshift, I need to retrieve all redshift values from the table and compare them.  
+Action 1: Retrieve[Retrieve all redshift (km/s) values from the table.]  
+Observation 1: | redshift (km / s ) |
+| 1184 ± 6 |
+| 1100 ± 24 |
+| 1014 ± 9 |
+| 1228 ± 6 |
+| 1331 ± 3 |
+| 1133 ± 10 |
+| 1304 ± 4 |
+| 1176 ± 7 |
+| 1050 ± 25 |
+| 790 ± 5 |
+| 1284 ± 14 |
+| 1080 ± 11 |
+| 1220 ± 15 |
+| 1504 ± 2 |
+| 1063 ± 21 |
+| 1175 ± 7 |
+| 633 ± 6 |
+| 1510 ± 8 |
+
+==============current step===========
+Thought 1: To verify the claim that NGC 1705 has the smallest redshift, I need to retrieve all redshift values from the table and compare them.  
+Action 1: Retrieve[Retrieve all redshift (km/s) values from the table.]  
+Observation 1: | redshift (km / s ) |
+| 1184 ± 6 |
+| 1100 ± 24 |
+| 1014 ± 9 |
+| 1228 ± 6 |
+| 1331 ± 3 |
+| 1133 ± 10 |
+| 1304 ± 4 |
+| 1176 ± 7 |
+| 1050 ± 25 |
+| 790 ± 5 |
+| 1284 ± 14 |
+| 1080 ± 11 |
+| 1220 ± 15 |
+| 1504 ± 2 |
+| 1063 ± 21 |
+| 1175 ± 7 |
+| 633 ± 6 |
+| 1510 ± 8 |
+Thought 2: Now I need to identify the smallest redshift value in the retrieved list. Scanning through the values: 633, 790, 1014, 1050, 1063, 1080, 1100, 1133, 1175, 1176, 1184, 1220, 1228, 1284, 1304, 1331, 1504, 1510. The smallest value is 633 km/s (for NGC 1705), which matches the context's claim.  
+Action 2: Finish[True]
+
+Finished Trial 1, Correct: 1, Incorrect: 0, Halted: 0
+
+=== sample 30 id=tabfact-test-218 start ===
+=== sample 30 returncode=0 end ===
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain/__init__.py:29: UserWarning: Importing Wikipedia from langchain root module is no longer supported. Please use langchain.docstore.Wikipedia instead.
+  warnings.warn(
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
+  warn_deprecated(
