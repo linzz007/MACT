@@ -1,6 +1,6 @@
 # Qwen3-32B Blind200 MACT Core100 Live Ledger
 
-Last updated: 2026-07-22 14:48:55 CST
+Last updated: 2026-07-22 19:32:47 CST
 
 ## Goal
 
@@ -13,7 +13,7 @@ Current stage: `S4 paired expansion`, blind200 first 100 samples per dataset, MA
 | repo | path | branch | current baseline |
 |---|---|---|---|
 | MyAgent | `/home/ubuntu/lzz/MyAgent` | `codex/selective-risk-collaboration` | `adf915f Record Qwen3 blind core50 paired results` |
-| MACT | `/home/ubuntu/lzz/MACT` | `main` | `d630184 Record Qwen3 blind core50 final results` |
+| MACT | `/home/ubuntu/lzz/MACT` | `main` | `7e7b5ae Record Qwen3 blind core100 seed` |
 
 ## Canonical Run Directory
 
@@ -106,14 +106,15 @@ python scripts/server/run_mact_one_by_one.py
 | time CST | WTQ rows | TabFact rows | CRT rows | note |
 |---|---:|---:|---:|---|
 | 2026-07-22 14:48:55 | 50 | 50 | 50 | core100 seed created from core50; ready to resume |
+| 2026-07-22 19:32:47 | 54 | 50 | 50 | runner session was no longer active; no MACT runner process found; checkpointing before staged resume |
 
 ## Current Checks
 
 | check | current status |
 |---|---|
-| row completeness | partial seed: WTQ 50/100, TabFact 50/100, CRT 50/100 |
+| row completeness | partial run: WTQ 54/100, TabFact 50/100, CRT 50/100 |
 | wrapper failures | inherited from core50: WTQ 1 row, `nu-4299` |
-| critical log scan | inherited context length BadRequest on WTQ `nu-4299`; no new core100 rows yet |
+| critical log scan | inherited context length BadRequest on WTQ `nu-4299`; no new critical errors in rows 51-54 |
 | known diagnostic | inherited internal `Halted: 1`: WTQ 5, TabFact 4, CRT 19 |
 
 ## Sync Policy
@@ -141,8 +142,10 @@ Do not sync `tmp/`.
 
 ## Next Steps
 
-1. Push this initial seed checkpoint to MACT GitHub.
-2. Run WTQ, TabFact, CRT sequentially with `--limit 100 --resume`.
-3. Update and push this ledger at row checkpoints.
-4. Generate per-dataset eval, paired JSON, and overall summary.
-5. Update the MyAgent server report with the blind100 paired result.
+1. Push this 54/50/50 interruption checkpoint to MACT GitHub.
+2. Resume WTQ only to 100 rows with `--limit 100 --resume`.
+3. Update and push this ledger after WTQ reaches 100 rows.
+4. Run TabFact to 100, checkpoint and push.
+5. Run CRT to 100, checkpoint and push.
+6. Generate per-dataset eval, paired JSON, and overall summary.
+7. Update the MyAgent server report with the blind100 paired result.
