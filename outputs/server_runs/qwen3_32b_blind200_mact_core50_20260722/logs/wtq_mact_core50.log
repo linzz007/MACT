@@ -1139,3 +1139,458 @@ Finished Trial 1, Correct: 0, Incorrect: 1, Halted: 0
   warnings.warn(
 /home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
   warn_deprecated(
+==============current step===========
+Thought 1: The table includes a "Totaal" row indicating 4 total goals. To verify, I should sum the "Goals" column from all seasons to ensure consistency.
+Action 1: Retrieve[retrieve all values in the "Goals" column]
+Observation 1: | Goals |
+| 0.0 |
+| 0.0 |
+| 1.0 |
+| 0.0 |
+| 1.0 |
+| 0.0 |
+| 1.0 |
+| 1.0 |
+| 0.0 |
+| 0.0 |
+| 4.0 |
+
+==============current step===========
+Thought 1: The table includes a "Totaal" row indicating 4 total goals. To verify, I should sum the "Goals" column from all seasons to ensure consistency.
+Action 1: Retrieve[retrieve all values in the "Goals" column]
+Observation 1: | Goals |
+| 0.0 |
+| 0.0 |
+| 1.0 |
+| 0.0 |
+| 1.0 |
+| 0.0 |
+| 1.0 |
+| 1.0 |
+| 0.0 |
+| 0.0 |
+| 4.0 |
+Thought 2: The sum of the "Goals" column (0+0+1+0+1+0+1+1+0+0) equals 4, which matches the "Totaal" row. The total number of goals is confirmed as 4.
+Action 2: Finish[4]
+
+Finished Trial 1, Correct: 1, Incorrect: 0, Halted: 0
+
+=== sample 30 id=nu-2213 start ===
+=== sample 30 returncode=0 end ===
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain/__init__.py:29: UserWarning: Importing Wikipedia from langchain root module is no longer supported. Please use langchain.docstore.Wikipedia instead.
+  warnings.warn(
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
+  warn_deprecated(
+==============current step===========
+Thought 1: I need to find the winner of the award in 1991, the year before Ralph Lauren won in 1992.  
+Action 1: Retrieve[retrieve the designer(s) for the year 1991]  
+Observation 1: | Designer(s) |
+| Karl Lagerfeld for Chanel |
+
+==============current step===========
+Thought 1: I need to find the winner of the award in 1991, the year before Ralph Lauren won in 1992.  
+Action 1: Retrieve[retrieve the designer(s) for the year 1991]  
+Observation 1: | Designer(s) |
+| Karl Lagerfeld for Chanel |
+Thought 2: The question asks for the winner in 1991, which is the year before Ralph Lauren's 1992 win. The retrieved designer for 1991 is Karl Lagerfeld for Chanel.  
+Action 2: Finish[Karl Lagerfeld for Chanel]
+
+Finished Trial 1, Correct: 1, Incorrect: 0, Halted: 0
+
+=== sample 31 id=nu-1214 start ===
+=== sample 31 returncode=0 end ===
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain/__init__.py:29: UserWarning: Importing Wikipedia from langchain root module is no longer supported. Please use langchain.docstore.Wikipedia instead.
+  warnings.warn(
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
+  warn_deprecated(
+==============current step===========
+Thought 1: I need to find the combined numbers for Super G before 2011. First, I should retrieve the Super G values from the seasons prior to 2011 (i.e., 2007–2010).  
+Action 1: Retrieve[retrieve the Super G values for seasons before 2011]  
+Observation 1: | Season | Super G |  
+| 2007 | – |  
+| 2008 | 46 |  
+| 2009 | 16 |  
+| 2010 | 6 |  
+
+==============current step===========
+Thought 1: I need to find the combined numbers for Super G before 2011. First, I should retrieve the Super G values from the seasons prior to 2011 (i.e., 2007–2010).  
+Action 1: Retrieve[retrieve the Super G values for seasons before 2011]  
+Observation 1: | Season | Super G |  
+| 2007 | – |  
+| 2008 | 46 |  
+| 2009 | 16 |  
+| 2010 | 6 |  
+Thought 2: Now, I need to calculate the sum of the Super G values for 2008, 2009, and 2010 (since 2007 has no data indicated by "–").  
+Action 2: Calculate[sum the Super G values: 46 (2008) + 16 (2009) + 6 (2010)]  
+Observation 2: 68  
+
+==============current step===========
+Thought 1: I need to find the combined numbers for Super G before 2011. First, I should retrieve the Super G values from the seasons prior to 2011 (i.e., 2007–2010).  
+Action 1: Retrieve[retrieve the Super G values for seasons before 2011]  
+Observation 1: | Season | Super G |  
+| 2007 | – |  
+| 2008 | 46 |  
+| 2009 | 16 |  
+| 2010 | 6 |  
+Thought 2: Now, I need to calculate the sum of the Super G values for 2008, 2009, and 2010 (since 2007 has no data indicated by "–").  
+Action 2: Calculate[sum the Super G values: 46 (2008) + 16 (2009) + 6 (2010)]  
+Observation 2: 68  
+Thought 3: The sum of the Super G values for 2008, 2009, and 2010 is 68. Since 2007 has no data ("–"), it is excluded. The answer is 68.  
+Action 3: Finish[68]
+
+Finished Trial 1, Correct: 1, Incorrect: 0, Halted: 0
+
+=== sample 32 id=nu-2036 start ===
+=== sample 32 returncode=0 end ===
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain/__init__.py:29: UserWarning: Importing Wikipedia from langchain root module is no longer supported. Please use langchain.docstore.Wikipedia instead.
+  warnings.warn(
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
+  warn_deprecated(
+==============current step===========
+Thought 1: To determine if route 101 operates longer than route 25, I need to compare their operation times. The "Operation" column indicates whether a route is 24-hour or daily.  
+Action 1: Retrieve[retrieve the "Operation" details for routes 25 and 101]  
+Observation 1:  
+| Route Number | Operation |  
+| 25 | 24 Hours. London Buses service. Times |  
+| 101 | Daily. London Buses service. Times |  
+
+==============current step===========
+Thought 1: To determine if route 101 operates longer than route 25, I need to compare their operation times. The "Operation" column indicates whether a route is 24-hour or daily.  
+Action 1: Retrieve[retrieve the "Operation" details for routes 25 and 101]  
+Observation 1:  
+| Route Number | Operation |  
+| 25 | 24 Hours. London Buses service. Times |  
+| 101 | Daily. London Buses service. Times |  
+Thought 2: Route 25 operates 24 hours, while Route 101 operates daily. Since "24 Hours" implies continuous operation throughout the day and night, whereas "Daily" typically refers to regular service during standard hours (not 24/7), Route 25 has a longer operating duration.  
+Action 2: Finish[No]
+
+Finished Trial 1, Correct: 1, Incorrect: 0, Halted: 0
+
+=== sample 33 id=nu-3143 start ===
+=== sample 33 returncode=0 end ===
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain/__init__.py:29: UserWarning: Importing Wikipedia from langchain root module is no longer supported. Please use langchain.docstore.Wikipedia instead.
+  warnings.warn(
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
+  warn_deprecated(
+==============current step===========
+Thought 1: I need to find the ship(s) where the keel was laid in May and launched in July. I'll retrieve the relevant rows from the table.
+Action 1: Retrieve[retrieve rows where Keel Laid is in May and Launched is in July]
+Observation 1: | Designation | Keel Laid | Launched |
+| PE-1 | 7 May 1918 | 11 July 1918 |
+
+==============current step===========
+Thought 1: I need to find the ship(s) where the keel was laid in May and launched in July. I'll retrieve the relevant rows from the table.
+Action 1: Retrieve[retrieve rows where Keel Laid is in May and Launched is in July]
+Observation 1: | Designation | Keel Laid | Launched |
+| PE-1 | 7 May 1918 | 11 July 1918 |
+Thought 2: The question specifies a ship where the keel was laid in May and launched in July. The retrieved row (PE-1) matches this criteria exactly. No other ships in the table meet both conditions.
+Action 2: Finish[PE-1]
+
+Finished Trial 1, Correct: 1, Incorrect: 0, Halted: 0
+
+=== sample 34 id=nu-2878 start ===
+=== sample 34 returncode=0 end ===
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain/__init__.py:29: UserWarning: Importing Wikipedia from langchain root module is no longer supported. Please use langchain.docstore.Wikipedia instead.
+  warnings.warn(
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
+  warn_deprecated(
+==============current step===========
+Thought 1: I need to retrieve the precipitation values for January and December from the table.  
+Action 1: Retrieve[retrieve the precipitation values for Jan and Dec]  
+Observation 1: | Month | Precipitation mm (inches) |  
+| Jan | 12 (0.47) |  
+| Dec | 17 (0.67) |  
+
+==============current step===========
+Thought 1: I need to retrieve the precipitation values for January and December from the table.  
+Action 1: Retrieve[retrieve the precipitation values for Jan and Dec]  
+Observation 1: | Month | Precipitation mm (inches) |  
+| Jan | 12 (0.47) |  
+| Dec | 17 (0.67) |  
+Thought 2: Comparing the precipitation values, December has 17 mm versus January's 12 mm. Therefore, December had more precipitation.  
+Action 2: Finish[December]
+
+Finished Trial 1, Correct: 1, Incorrect: 0, Halted: 0
+
+=== sample 35 id=nu-1069 start ===
+=== sample 35 returncode=0 end ===
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain/__init__.py:29: UserWarning: Importing Wikipedia from langchain root module is no longer supported. Please use langchain.docstore.Wikipedia instead.
+  warnings.warn(
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
+  warn_deprecated(
+==============current step===========
+Thought 1: I need to find all championship games (tournaments) that Tipsarevic won in 2011. First, I will retrieve all entries from the table where the date is in 2011 and the outcome is "Winner".  
+Action 1: Retrieve[retrieve rows where Date is in 2011 and Outcome is "Winner"]  
+Observation 1: | Outcome | No. | Date | Tournament | Surface | Opponent | Score |  
+| Winner | 1. | 2 October 2011 | Malaysian Open, Malaysia | Hard (i) | Marcos Baghdatis | 6–4, 7–5 |  
+| Winner | 2. | 23 October 2011 | Kremlin Cup, Russia | Hard (i) | Viktor Troicki | 6–4, 6–2 |  
+
+==============current step===========
+Thought 1: I need to find all championship games (tournaments) that Tipsarevic won in 2011. First, I will retrieve all entries from the table where the date is in 2011 and the outcome is "Winner".  
+Action 1: Retrieve[retrieve rows where Date is in 2011 and Outcome is "Winner"]  
+Observation 1: | Outcome | No. | Date | Tournament | Surface | Opponent | Score |  
+| Winner | 1. | 2 October 2011 | Malaysian Open, Malaysia | Hard (i) | Marcos Baghdatis | 6–4, 7–5 |  
+| Winner | 2. | 23 October 2011 | Kremlin Cup, Russia | Hard (i) | Viktor Troicki | 6–4, 6–2 |  
+Thought 2: The retrieved data shows two tournament wins in 2011 (Malaysian Open and Kremlin Cup). The question asks for the number of championship games won in 2011, which corresponds to these two entries.  
+Action 2: Calculate[count the number of rows in Observation 1]  
+Observation 2: 2
+
+==============current step===========
+Thought 1: I need to find all championship games (tournaments) that Tipsarevic won in 2011. First, I will retrieve all entries from the table where the date is in 2011 and the outcome is "Winner".  
+Action 1: Retrieve[retrieve rows where Date is in 2011 and Outcome is "Winner"]  
+Observation 1: | Outcome | No. | Date | Tournament | Surface | Opponent | Score |  
+| Winner | 1. | 2 October 2011 | Malaysian Open, Malaysia | Hard (i) | Marcos Baghdatis | 6–4, 7–5 |  
+| Winner | 2. | 23 October 2011 | Kremlin Cup, Russia | Hard (i) | Viktor Troicki | 6–4, 6–2 |  
+Thought 2: The retrieved data shows two tournament wins in 2011 (Malaysian Open and Kremlin Cup). The question asks for the number of championship games won in 2011, which corresponds to these two entries.  
+Action 2: Calculate[count the number of rows in Observation 1]  
+Observation 2: 2
+Thought 3: The total number of championship games Tipsarevic won in 2011 is 2.  
+Action 3: Finish[2]
+
+Finished Trial 1, Correct: 1, Incorrect: 0, Halted: 0
+
+=== sample 36 id=nu-1411 start ===
+=== sample 36 returncode=0 end ===
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain/__init__.py:29: UserWarning: Importing Wikipedia from langchain root module is no longer supported. Please use langchain.docstore.Wikipedia instead.
+  warnings.warn(
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
+  warn_deprecated(
+==============current step===========
+Thought 1: I need to find the tournament that occurs immediately before "Chile F3" in the table. First, locate "Chile F3" in the "Tournament" column and check the preceding entry.
+Action 1: Retrieve[retrieve the row(s) where Tournament is "Chile F3" and the preceding row]
+Observation 1: | No. | Date | Tournament | Surface | Partnering | Opponent in the final | Score |
+| 2. | April 4, 2011 | Chile F2 | Clay | Sergio Galdós | Guillermo Hormazábal  Rodrigo Pérez | 5–7, 7–6(5), [10–5] |
+| 3. | April 11, 2011 | Chile F3 | Clay | Roberto Quiroz | Luis David Martínez  Miguel Ángel Reyes-Varela | 6–4, 7–5 |
+
+==============current step===========
+Thought 1: I need to find the tournament that occurs immediately before "Chile F3" in the table. First, locate "Chile F3" in the "Tournament" column and check the preceding entry.
+Action 1: Retrieve[retrieve the row(s) where Tournament is "Chile F3" and the preceding row]
+Observation 1: | No. | Date | Tournament | Surface | Partnering | Opponent in the final | Score |
+| 2. | April 4, 2011 | Chile F2 | Clay | Sergio Galdós | Guillermo Hormazábal  Rodrigo Pérez | 5–7, 7–6(5), [10–5] |
+| 3. | April 11, 2011 | Chile F3 | Clay | Roberto Quiroz | Luis David Martínez  Miguel Ángel Reyes-Varela | 6–4, 7–5 |
+Thought 2: The tournament immediately before "Chile F3" (entry #3) is "Chile F2" (entry #2). 
+Action 2: Finish[Chile F2]
+
+Finished Trial 1, Correct: 1, Incorrect: 0, Halted: 0
+
+=== sample 37 id=nu-4168 start ===
+=== sample 37 returncode=0 end ===
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain/__init__.py:29: UserWarning: Importing Wikipedia from langchain root module is no longer supported. Please use langchain.docstore.Wikipedia instead.
+  warnings.warn(
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
+  warn_deprecated(
+==============current step===========
+Thought 1: I need to retrieve all unique formats listed in the "Format" column of the table.
+Action 1: Retrieve[retrieve all entries from the "Format" column]
+Observation 1: | Format |
+| Telenovela |
+| Serie |
+| Short Film |
+| Short Film |
+| Serie |
+| Serie |
+| Short Film |
+| Feature Film |
+| Serie |
+| Feature Film |
+| Serie |
+| Feature Film |
+| Serie |
+| Short Film |
+| Capsulas |
+
+==============current step===========
+Thought 1: I need to retrieve all unique formats listed in the "Format" column of the table.
+Action 1: Retrieve[retrieve all entries from the "Format" column]
+Observation 1: | Format |
+| Telenovela |
+| Serie |
+| Short Film |
+| Short Film |
+| Serie |
+| Serie |
+| Short Film |
+| Feature Film |
+| Serie |
+| Feature Film |
+| Serie |
+| Feature Film |
+| Serie |
+| Short Film |
+| Capsulas |
+Thought 2: I need to identify unique formats from the retrieved entries. The duplicates should be removed to list each format only once.  
+Action 2: Calculate[remove duplicates from the "Format" entries in Observation 1 and return unique values]  
+Observation 2: Telenovela, Serie, Short Film, Feature Film, Capsulas  
+
+==============current step===========
+Thought 1: I need to retrieve all unique formats listed in the "Format" column of the table.
+Action 1: Retrieve[retrieve all entries from the "Format" column]
+Observation 1: | Format |
+| Telenovela |
+| Serie |
+| Short Film |
+| Short Film |
+| Serie |
+| Serie |
+| Short Film |
+| Feature Film |
+| Serie |
+| Feature Film |
+| Serie |
+| Feature Film |
+| Serie |
+| Short Film |
+| Capsulas |
+Thought 2: I need to identify unique formats from the retrieved entries. The duplicates should be removed to list each format only once.  
+Action 2: Calculate[remove duplicates from the "Format" entries in Observation 1 and return unique values]  
+Observation 2: Telenovela, Serie, Short Film, Feature Film, Capsulas  
+Thought 3: The unique formats have been identified as Telenovela, Serie, Short Film, Feature Film, and Capsulas. These are all the distinct formats present in the table.  
+Action 3: Finish[Telenovela, Serie, Short Film, Feature Film, Capsulas]
+
+Finished Trial 1, Correct: 1, Incorrect: 0, Halted: 0
+
+=== sample 38 id=nu-613 start ===
+=== sample 38 returncode=0 end ===
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain/__init__.py:29: UserWarning: Importing Wikipedia from langchain root module is no longer supported. Please use langchain.docstore.Wikipedia instead.
+  warnings.warn(
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
+  warn_deprecated(
+==============current step===========
+Thought 1: I need to determine which location has the most radio stations. To do this, I should first retrieve all the locations from the table and then count the occurrences of each location.  
+Action 1: Retrieve[all locations from the table]  
+Observation 1: | Location |
+| Rome |
+| Milan |
+| Milan |
+| Milan |
+| Cusano Milanino |
+| Milan |
+| Rome |
+| Milan |
+| Naples |
+| Erba, (CO) |
+| Milan |
+| Rome |
+| Rome |
+| Rome |
+|  |
+| Rome |
+| Rome |
+| Rome |
+| Cologno Monzese (MI) |
+| Milan |
+| Rome |
+| Rome |
+| Naples |
+|  |
+| Varese |
+| Rome |
+| Milan |
+| Cividate al piano. (BG) |
+| Massafra, (TA) |
+| Carpi (MO) |
+
+==============current step===========
+Thought 1: I need to determine which location has the most radio stations. To do this, I should first retrieve all the locations from the table and then count the occurrences of each location.  
+Action 1: Retrieve[all locations from the table]  
+Observation 1: | Location |
+| Rome |
+| Milan |
+| Milan |
+| Milan |
+| Cusano Milanino |
+| Milan |
+| Rome |
+| Milan |
+| Naples |
+| Erba, (CO) |
+| Milan |
+| Rome |
+| Rome |
+| Rome |
+|  |
+| Rome |
+| Rome |
+| Rome |
+| Cologno Monzese (MI) |
+| Milan |
+| Rome |
+| Rome |
+| Naples |
+|  |
+| Varese |
+| Rome |
+| Milan |
+| Cividate al piano. (BG) |
+| Massafra, (TA) |
+| Carpi (MO) |
+Thought 2: Now I need to count how many times each location appears in the list. From the retrieved locations, Rome appears most frequently. Let me count the occurrences.  
+Action 2: Calculate[count occurrences of each location in the retrieved list]  
+Observation 2:  
+- Rome: 13  
+- Milan: 9  
+- Naples: 2  
+- Erba, (CO): 1  
+- Cusano Milanino: 1  
+- Cologno Monzese (MI): 1  
+- Varese: 1  
+- Cividate al piano. (BG): 1  
+- Massafra, (TA): 1  
+- Carpi (MO): 1  
+
+==============current step===========
+Thought 1: I need to determine which location has the most radio stations. To do this, I should first retrieve all the locations from the table and then count the occurrences of each location.  
+Action 1: Retrieve[all locations from the table]  
+Observation 1: | Location |
+| Rome |
+| Milan |
+| Milan |
+| Milan |
+| Cusano Milanino |
+| Milan |
+| Rome |
+| Milan |
+| Naples |
+| Erba, (CO) |
+| Milan |
+| Rome |
+| Rome |
+| Rome |
+|  |
+| Rome |
+| Rome |
+| Rome |
+| Cologno Monzese (MI) |
+| Milan |
+| Rome |
+| Rome |
+| Naples |
+|  |
+| Varese |
+| Rome |
+| Milan |
+| Cividate al piano. (BG) |
+| Massafra, (TA) |
+| Carpi (MO) |
+Thought 2: Now I need to count how many times each location appears in the list. From the retrieved locations, Rome appears most frequently. Let me count the occurrences.  
+Action 2: Calculate[count occurrences of each location in the retrieved list]  
+Observation 2:  
+- Rome: 13  
+- Milan: 9  
+- Naples: 2  
+- Erba, (CO): 1  
+- Cusano Milanino: 1  
+- Cologno Monzese (MI): 1  
+- Varese: 1  
+- Cividate al piano. (BG): 1  
+- Massafra, (TA): 1  
+- Carpi (MO): 1  
+
+Finished Trial 1, Correct: 1, Incorrect: 0, Halted: 1
+
+=== sample 39 id=nu-2404 start ===
+=== sample 39 returncode=0 end ===
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain/__init__.py:29: UserWarning: Importing Wikipedia from langchain root module is no longer supported. Please use langchain.docstore.Wikipedia instead.
+  warnings.warn(
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
+  warn_deprecated(
