@@ -1,6 +1,6 @@
 # Qwen3-32B Blind200 MACT Core50 Live Ledger
 
-Last updated: 2026-07-22 13:52:15 CST
+Last updated: 2026-07-22 14:18:09 CST
 
 ## Goal
 
@@ -111,15 +111,16 @@ The copied IDs exactly match the first 5 IDs in each blind200 input. `--resume` 
 | 2026-07-22 12:51:16 | 50 | 50 | 10 | CRT checkpoint; failed/missing 0 so far |
 | 2026-07-22 13:16:55 | 50 | 50 | 20 | CRT checkpoint; failed/missing 0 so far |
 | 2026-07-22 13:52:15 | 50 | 50 | 30 | CRT checkpoint; failed/missing 0 so far |
+| 2026-07-22 14:18:09 | 50 | 50 | 41 | CRT checkpoint; failed/missing 0 so far |
 
 ## Current Checks
 
 | check | current status |
 |---|---|
-| row completeness | partial: WTQ 50/50, TabFact 50/50, CRT 30/50 |
+| row completeness | partial: WTQ 50/50, TabFact 50/50, CRT 41/50 |
 | wrapper failures | WTQ 1 row: `nu-4299` |
 | critical log scan | context length BadRequest found on WTQ `nu-4299` |
-| known diagnostic | MACT internal `Halted: 1` currently appears on WTQ 5 rows, TabFact 4 rows, and CRT 10 rows; output rows are still preserved |
+| known diagnostic | MACT internal `Halted: 1` currently appears on WTQ 5 rows, TabFact 4 rows, and CRT 14 rows; output rows are still preserved |
 
 ## WTQ Core50 Result
 
