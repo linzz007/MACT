@@ -1,6 +1,6 @@
 # Qwen3-32B Blind200 MACT Core100 Live Ledger
 
-Last updated: 2026-07-23 00:24:15 CST
+Last updated: 2026-07-23 00:44:32 CST
 
 ## Goal
 
@@ -110,12 +110,13 @@ python scripts/server/run_mact_one_by_one.py
 | 2026-07-22 21:21:35 | 54 | 50 | 50 | first detached WTQ resume script exited before running because `/usr/bin/time` is unavailable; script patched to use bash `SECONDS` |
 | 2026-07-23 00:08:45 | 61 | 50 | 50 | detached WTQ resume active at pid `318083`; checkpointing row 61 before continuing |
 | 2026-07-23 00:24:15 | 70 | 50 | 50 | detached WTQ resume still active at pid `318083`; checkpointing row 70 before continuing |
+| 2026-07-23 00:44:32 | 81 | 50 | 50 | detached WTQ resume still active at pid `318083`; checkpointing row 81 before continuing |
 
 ## Current Checks
 
 | check | current status |
 |---|---|
-| row completeness | partial run: WTQ 70/100, TabFact 50/100, CRT 50/100 |
+| row completeness | partial run: WTQ 81/100, TabFact 50/100, CRT 50/100 |
 | wrapper failures | inherited from core50: WTQ 1 row, `nu-4299` |
 | critical log scan | inherited context length BadRequest on WTQ `nu-4299`; no new critical errors in rows 51-54 |
 | known diagnostic | inherited internal `Halted: 1`: WTQ 5, TabFact 4, CRT 19 |
