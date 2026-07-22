@@ -1,0 +1,513 @@
+{
+  "dataset": "tabfact",
+  "rows": 50,
+  "matched_rows": 50,
+  "missing_agent_ids": [],
+  "mact": {
+    "result_schema": "mact",
+    "num_samples": 50,
+    "num_with_gold": 50,
+    "exact_match": 0.98,
+    "primary_accuracy": 0.98,
+    "accuracy_metric": "tabfact_binary_accuracy",
+    "num_failed_exec": 0,
+    "num_missing_answer": 0,
+    "num_em_mismatch": 1,
+    "num_multi_view_replan": 0,
+    "num_cross_path_mismatch": 0,
+    "route_distribution": {},
+    "difficulty_distribution": {},
+    "risk_distribution": {
+      "unknown": 50
+    },
+    "risk_strata": {
+      "unknown": {
+        "count": 50,
+        "num_with_gold": 50,
+        "correct": 49,
+        "accuracy": 0.98,
+        "avg_total_tokens": 10441.52,
+        "failure_count": 0
+      }
+    },
+    "simple_lookup_success_rate": 0.0,
+    "multi_view_pass_rate": 0.0,
+    "alternative_exec_success_rate": 0.0,
+    "avg_llm_calls": 3.1,
+    "avg_total_tokens": 10441.52,
+    "avg_prompt_tokens": 7731.18,
+    "avg_completion_tokens": 2710.34,
+    "token_measurement": "api_usage",
+    "avg_compression_ratio": 1.0,
+    "avg_token_compression_ratio_est": 0.0,
+    "avg_elapsed_seconds": 101.56178834687452,
+    "avg_total_tokens_est": 9818.22,
+    "avg_prompt_tokens_est": 7225.12,
+    "avg_completion_tokens_est": 2593.1
+  },
+  "myagent_matched": {
+    "result_schema": "myagent",
+    "num_samples": 50,
+    "num_with_gold": 50,
+    "exact_match": 0.96,
+    "primary_accuracy": 0.96,
+    "accuracy_metric": "tabfact_binary_accuracy",
+    "num_failed_exec": 0,
+    "num_missing_answer": 0,
+    "num_em_mismatch": 2,
+    "num_multi_view_replan": 0,
+    "num_cross_path_mismatch": 0,
+    "route_distribution": {
+      "COMPLEX": 49,
+      "SIMPLE": 1
+    },
+    "difficulty_distribution": {
+      "medium": 48,
+      "easy": 2
+    },
+    "risk_distribution": {
+      "high": 41,
+      "medium": 9
+    },
+    "risk_strata": {
+      "high": {
+        "count": 41,
+        "num_with_gold": 41,
+        "correct": 40,
+        "accuracy": 0.975609756097561,
+        "avg_total_tokens": 2491.7073170731705,
+        "failure_count": 0
+      },
+      "medium": {
+        "count": 9,
+        "num_with_gold": 9,
+        "correct": 8,
+        "accuracy": 0.8888888888888888,
+        "avg_total_tokens": 2234.6666666666665,
+        "failure_count": 0
+      }
+    },
+    "simple_lookup_success_rate": 0.0,
+    "multi_view_pass_rate": 0.0,
+    "alternative_exec_success_rate": 0.0,
+    "avg_llm_calls": 3.64,
+    "avg_total_tokens": 2445.44,
+    "avg_prompt_tokens": 2176.02,
+    "avg_completion_tokens": 269.42,
+    "token_measurement": "api_usage",
+    "avg_compression_ratio": 0.69297113997114,
+    "avg_token_compression_ratio_est": 0.6972496602232395,
+    "avg_elapsed_seconds": 10.556380657316186,
+    "avg_total_tokens_est": 2280.84,
+    "avg_prompt_tokens_est": 2023.88,
+    "avg_completion_tokens_est": 256.96
+  },
+  "paired_disagreement": {
+    "both_correct": 47,
+    "myagent_only": 1,
+    "mact_only": 2,
+    "neither": 0
+  },
+  "row_level": [
+    {
+      "id": "tabfact-test-6439",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "True",
+      "myagent_prediction": "true"
+    },
+    {
+      "id": "tabfact-test-11416",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "False",
+      "myagent_prediction": "false"
+    },
+    {
+      "id": "tabfact-test-3557",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "True",
+      "myagent_prediction": "true"
+    },
+    {
+      "id": "tabfact-test-1176",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "False",
+      "myagent_prediction": "false"
+    },
+    {
+      "id": "tabfact-test-2658",
+      "mact_correct": false,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "False",
+      "myagent_prediction": "true"
+    },
+    {
+      "id": "tabfact-test-192",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "**False**.",
+      "myagent_prediction": "false"
+    },
+    {
+      "id": "tabfact-test-238",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "True",
+      "myagent_prediction": "true"
+    },
+    {
+      "id": "tabfact-test-2930",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "False",
+      "myagent_prediction": "false"
+    },
+    {
+      "id": "tabfact-test-7116",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "True",
+      "myagent_prediction": "true"
+    },
+    {
+      "id": "tabfact-test-11171",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "False",
+      "myagent_prediction": "false"
+    },
+    {
+      "id": "tabfact-test-9454",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "True",
+      "myagent_prediction": "true"
+    },
+    {
+      "id": "tabfact-test-553",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "False",
+      "myagent_prediction": "false"
+    },
+    {
+      "id": "tabfact-test-8338",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "True",
+      "myagent_prediction": "true"
+    },
+    {
+      "id": "tabfact-test-8952",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "false",
+      "myagent_prediction": "false"
+    },
+    {
+      "id": "tabfact-test-11593",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "True",
+      "myagent_prediction": "true"
+    },
+    {
+      "id": "tabfact-test-7854",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "False",
+      "myagent_prediction": "false"
+    },
+    {
+      "id": "tabfact-test-1791",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "True.",
+      "myagent_prediction": "true"
+    },
+    {
+      "id": "tabfact-test-2910",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "False",
+      "myagent_prediction": "false"
+    },
+    {
+      "id": "tabfact-test-10605",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "True",
+      "myagent_prediction": "true"
+    },
+    {
+      "id": "tabfact-test-1168",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "False",
+      "myagent_prediction": "false"
+    },
+    {
+      "id": "tabfact-test-11869",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "True",
+      "myagent_prediction": "true"
+    },
+    {
+      "id": "tabfact-test-5647",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "False",
+      "myagent_prediction": "false"
+    },
+    {
+      "id": "tabfact-test-10342",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "True",
+      "myagent_prediction": "true"
+    },
+    {
+      "id": "tabfact-test-4015",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "False",
+      "myagent_prediction": "false"
+    },
+    {
+      "id": "tabfact-test-9879",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "True",
+      "myagent_prediction": "true"
+    },
+    {
+      "id": "tabfact-test-3333",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "False",
+      "myagent_prediction": "false"
+    },
+    {
+      "id": "tabfact-test-1040",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "True",
+      "myagent_prediction": "true"
+    },
+    {
+      "id": "tabfact-test-3884",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "False",
+      "myagent_prediction": "false"
+    },
+    {
+      "id": "tabfact-test-10634",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "True",
+      "myagent_prediction": "true"
+    },
+    {
+      "id": "tabfact-test-3515",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "False",
+      "myagent_prediction": "false"
+    },
+    {
+      "id": "tabfact-test-218",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "True",
+      "myagent_prediction": "true"
+    },
+    {
+      "id": "tabfact-test-4610",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "False",
+      "myagent_prediction": "false"
+    },
+    {
+      "id": "tabfact-test-1580",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "True",
+      "myagent_prediction": "true"
+    },
+    {
+      "id": "tabfact-test-10332",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "False",
+      "myagent_prediction": "false"
+    },
+    {
+      "id": "tabfact-test-11267",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "True",
+      "myagent_prediction": "true"
+    },
+    {
+      "id": "tabfact-test-7179",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "False",
+      "myagent_prediction": "false"
+    },
+    {
+      "id": "tabfact-test-9829",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "True",
+      "myagent_prediction": "true"
+    },
+    {
+      "id": "tabfact-test-6703",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "False",
+      "myagent_prediction": "false"
+    },
+    {
+      "id": "tabfact-test-8853",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "True",
+      "myagent_prediction": "true"
+    },
+    {
+      "id": "tabfact-test-4211",
+      "mact_correct": true,
+      "myagent_correct": false,
+      "mact_exec_error": false,
+      "mact_prediction": "false",
+      "myagent_prediction": "true"
+    },
+    {
+      "id": "tabfact-test-8470",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "True",
+      "myagent_prediction": "true"
+    },
+    {
+      "id": "tabfact-test-2331",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "False",
+      "myagent_prediction": "false"
+    },
+    {
+      "id": "tabfact-test-10834",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "True",
+      "myagent_prediction": "true"
+    },
+    {
+      "id": "tabfact-test-2871",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "False",
+      "myagent_prediction": "false"
+    },
+    {
+      "id": "tabfact-test-2725",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "True",
+      "myagent_prediction": "true"
+    },
+    {
+      "id": "tabfact-test-6483",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "False",
+      "myagent_prediction": "false"
+    },
+    {
+      "id": "tabfact-test-5383",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "True",
+      "myagent_prediction": "true"
+    },
+    {
+      "id": "tabfact-test-5090",
+      "mact_correct": true,
+      "myagent_correct": false,
+      "mact_exec_error": false,
+      "mact_prediction": "False",
+      "myagent_prediction": "true"
+    },
+    {
+      "id": "tabfact-test-1829",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "True",
+      "myagent_prediction": "true"
+    },
+    {
+      "id": "tabfact-test-11867",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "False",
+      "myagent_prediction": "false"
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 # Qwen3-32B Blind200 MACT Core50 Live Ledger
 
-Last updated: 2026-07-22 12:21:11 CST
+Last updated: 2026-07-22 12:37:46 CST
 
 ## Goal
 
@@ -106,12 +106,14 @@ The copied IDs exactly match the first 5 IDs in each blind200 input. `--resume` 
 | 2026-07-22 11:49:31 | 50 | 21 | 5 | TabFact checkpoint; failed/missing 0 so far |
 | 2026-07-22 12:05:49 | 50 | 30 | 5 | TabFact checkpoint; failed/missing 0 so far |
 | 2026-07-22 12:21:11 | 50 | 41 | 5 | TabFact checkpoint; failed/missing 0 so far |
+| 2026-07-22 12:36:16 | 50 | 50 | 5 | TabFact completed; CRT started |
+| 2026-07-22 12:37:46 | 50 | 50 | 5 | TabFact eval and paired files written |
 
 ## Current Checks
 
 | check | current status |
 |---|---|
-| row completeness | partial: WTQ 50/50, TabFact 41/50, CRT 5/50 |
+| row completeness | partial: WTQ 50/50, TabFact 50/50, CRT 5/50 |
 | wrapper failures | WTQ 1 row: `nu-4299` |
 | critical log scan | context length BadRequest found on WTQ `nu-4299` |
 | known diagnostic | MACT internal `Halted: 1` currently appears on WTQ 5 rows, TabFact 4 rows, and CRT 1 row; output rows are still preserved |
@@ -150,6 +152,40 @@ Interpretation:
 - On this blind50 WTQ subset, myAgent is much cheaper but less accurate than MACT.
 - This does not invalidate the earlier frozen150 strict paired result; it means blind50/100 paired evidence is necessary before making expert-facing claims.
 - The MACT context failure on `nu-4299` is counted as MACT failed/missing, but MACT still leads WTQ on this subset.
+
+## TabFact Core50 Result
+
+Generated files:
+
+```text
+tabfact_mact_core50.jsonl
+tabfact_mact_core50_eval.json
+tabfact_mact_core50_errors.jsonl
+tabfact_mact_core50_paired.json
+logs/tabfact_mact_core50.log
+```
+
+TabFact summary:
+
+| metric | myAgent | MACT |
+|---|---:|---:|
+| rows | 50 | 50 |
+| correct | 48 | 49 |
+| accuracy | 0.9600 | 0.9800 |
+| avg tokens | 2,445.44 | 10,441.52 |
+| failed exec | 0 | 0 |
+| missing answer | 0 | 0 |
+
+TabFact paired disagreement:
+
+| both correct | myAgent only | MACT only | neither |
+|---:|---:|---:|---:|
+| 47 | 1 | 2 | 0 |
+
+Interpretation:
+
+- On this blind50 TabFact subset, myAgent is one row below MACT but uses about 23.4% of MACT tokens.
+- This is expert-useful as a cost-efficiency result, but it is not an accuracy win on TabFact.
 
 ## Issues Found During Core50
 
