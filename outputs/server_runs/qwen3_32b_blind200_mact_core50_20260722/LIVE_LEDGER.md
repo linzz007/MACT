@@ -1,6 +1,6 @@
 # Qwen3-32B Blind200 MACT Core50 Live Ledger
 
-Last updated: 2026-07-22 14:18:09 CST
+Last updated: 2026-07-22 14:43:29 CST
 
 ## Goal
 
@@ -112,15 +112,17 @@ The copied IDs exactly match the first 5 IDs in each blind200 input. `--resume` 
 | 2026-07-22 13:16:55 | 50 | 50 | 20 | CRT checkpoint; failed/missing 0 so far |
 | 2026-07-22 13:52:15 | 50 | 50 | 30 | CRT checkpoint; failed/missing 0 so far |
 | 2026-07-22 14:18:09 | 50 | 50 | 41 | CRT checkpoint; failed/missing 0 so far |
+| 2026-07-22 14:42:13 | 50 | 50 | 50 | CRT completed; all core50 rows finished |
+| 2026-07-22 14:43:29 | 50 | 50 | 50 | CRT eval, CRT paired, and overall summary files written |
 
 ## Current Checks
 
 | check | current status |
 |---|---|
-| row completeness | partial: WTQ 50/50, TabFact 50/50, CRT 41/50 |
+| row completeness | complete: WTQ 50/50, TabFact 50/50, CRT 50/50 |
 | wrapper failures | WTQ 1 row: `nu-4299` |
 | critical log scan | context length BadRequest found on WTQ `nu-4299` |
-| known diagnostic | MACT internal `Halted: 1` currently appears on WTQ 5 rows, TabFact 4 rows, and CRT 14 rows; output rows are still preserved |
+| known diagnostic | MACT internal `Halted: 1` appears on WTQ 5 rows, TabFact 4 rows, and CRT 19 rows; output rows are still preserved |
 
 ## WTQ Core50 Result
 
@@ -190,6 +192,78 @@ Interpretation:
 
 - On this blind50 TabFact subset, myAgent is one row below MACT but uses about 23.4% of MACT tokens.
 - This is expert-useful as a cost-efficiency result, but it is not an accuracy win on TabFact.
+
+## CRT Core50 Result
+
+Generated files:
+
+```text
+crt_mact_core50.jsonl
+crt_mact_core50_eval.json
+crt_mact_core50_errors.jsonl
+crt_mact_core50_paired.json
+logs/crt_mact_core50.log
+```
+
+CRT summary:
+
+| metric | myAgent | MACT |
+|---|---:|---:|
+| rows | 50 | 50 |
+| correct | 42 | 29 |
+| accuracy | 0.8400 | 0.5800 |
+| avg tokens | 12,774.78 | 12,538.42 |
+| failed exec | 0 | 0 |
+| missing answer | 0 | 0 |
+
+CRT paired disagreement:
+
+| both correct | myAgent only | MACT only | neither |
+|---:|---:|---:|---:|
+| 27 | 15 | 2 | 6 |
+
+Interpretation:
+
+- On this blind50 CRT subset, myAgent is much more accurate than MACT.
+- CRT is the only dataset where myAgent average tokens are slightly higher than MACT (`1.0189x`).
+
+## Overall Core50 Result
+
+Generated file:
+
+```text
+overall_mact_core50_summary.json
+```
+
+Overall summary:
+
+| metric | myAgent | MACT |
+|---|---:|---:|
+| rows | 150 | 150 |
+| correct | 124 | 119 |
+| accuracy | 0.8267 | 0.7933 |
+| avg tokens | 6,998.64 | 11,186.52 |
+| avg seconds | 17.555s | 129.043s |
+| failed exec | 0 | 1 |
+| missing answer | 0 | 1 |
+
+Overall paired disagreement:
+
+| both correct | myAgent only | MACT only | neither |
+|---:|---:|---:|---:|
+| 106 | 18 | 13 | 13 |
+
+Token ratio:
+
+```text
+myAgent / MACT = 0.6256
+```
+
+Final interpretation for this stage:
+
+- The blind50 core paired result passes the overall stage gate: myAgent is `+5/150` correct over MACT and uses about `62.6%` of MACT tokens.
+- The claim must be stated carefully: overall accuracy is higher, but WTQ and TabFact individual accuracy are lower than MACT on this blind50 slice.
+- The current strongest expert-facing table should present per-dataset results and the overall result together, not only the overall row.
 
 ## Issues Found During Core50
 

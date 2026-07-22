@@ -1,0 +1,120 @@
+{
+  "run_root": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_blind200_mact_core50_20260722",
+  "scope": "blind200 first 50 samples per dataset; MACT side paired against existing myAgent blind200 outputs",
+  "datasets": {
+    "wtq": {
+      "mact_correct": 41,
+      "mact_rows": 50,
+      "mact_failed": 1,
+      "mact_missing": 1,
+      "mact_avg_tokens": 10579.62,
+      "mact_avg_seconds": 121.88946129410061,
+      "myagent_correct": 34,
+      "myagent_rows": 50,
+      "myagent_failed": 0,
+      "myagent_missing": 0,
+      "myagent_avg_tokens": 5775.7,
+      "myagent_avg_seconds": 13.868594701020047,
+      "paired_disagreement": {
+        "both_correct": 32,
+        "myagent_only": 2,
+        "mact_only": 9,
+        "neither": 7
+      }
+    },
+    "tabfact": {
+      "mact_correct": 49,
+      "mact_rows": 50,
+      "mact_failed": 0,
+      "mact_missing": 0,
+      "mact_avg_tokens": 10441.52,
+      "mact_avg_seconds": 101.56178834687452,
+      "myagent_correct": 48,
+      "myagent_rows": 50,
+      "myagent_failed": 0,
+      "myagent_missing": 0,
+      "myagent_avg_tokens": 2445.44,
+      "myagent_avg_seconds": 10.556380657316186,
+      "paired_disagreement": {
+        "both_correct": 47,
+        "myagent_only": 1,
+        "mact_only": 2,
+        "neither": 0
+      }
+    },
+    "crt": {
+      "mact_correct": 29,
+      "mact_rows": 50,
+      "mact_failed": 0,
+      "mact_missing": 0,
+      "mact_avg_tokens": 12538.42,
+      "mact_avg_seconds": 163.67801540687213,
+      "myagent_correct": 42,
+      "myagent_rows": 50,
+      "myagent_failed": 0,
+      "myagent_missing": 0,
+      "myagent_avg_tokens": 12774.78,
+      "myagent_avg_seconds": 28.240893886159174,
+      "paired_disagreement": {
+        "both_correct": 27,
+        "myagent_only": 15,
+        "mact_only": 2,
+        "neither": 6
+      }
+    }
+  },
+  "overall": {
+    "mact_correct": 119,
+    "mact_rows": 150,
+    "mact_accuracy": 0.7933333333333333,
+    "mact_failed": 1,
+    "mact_missing": 1,
+    "mact_avg_tokens": 11186.52,
+    "mact_avg_seconds": 129.04308834928244,
+    "myagent_correct": 124,
+    "myagent_rows": 150,
+    "myagent_accuracy": 0.8266666666666667,
+    "myagent_failed": 0,
+    "myagent_missing": 0,
+    "myagent_avg_tokens": 6998.64,
+    "myagent_avg_seconds": 17.555289748165137,
+    "token_ratio_myagent_over_mact": 0.6256315637034574,
+    "paired_disagreement": {
+      "both_correct": 106,
+      "myagent_only": 18,
+      "mact_only": 13,
+      "neither": 13
+    }
+  },
+  "diagnostics": {
+    "halted_by_dataset": {
+      "wtq": 5,
+      "tabfact": 4,
+      "crt": 19
+    },
+    "critical_log_hit_count": 2,
+    "critical_log_hits": [
+      {
+        "file": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_blind200_mact_core50_20260722/logs/wtq_mact_core50.log",
+        "line": 861,
+        "text": "Traceback (most recent call last):"
+      },
+      {
+        "file": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_blind200_mact_core50_20260722/logs/wtq_mact_core50.log",
+        "line": 892,
+        "text": "openai.BadRequestError: Error code: 400 - {'error': {'message': \"You passed 6145 input tokens and requested 2048 output tokens. However, the model's context length is only 8192 tokens, resulting in a maximum input length of 6144 tokens. Please reduce the length of the input prompt. (parameter=input_tokens, value=6145)\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}"
+      }
+    ],
+    "known_context_failure_ids": [
+      "nu-4299"
+    ],
+    "wall_clock": {
+      "start": "2026-07-22 09:44:09 CST",
+      "end": "2026-07-22 14:42:13 CST",
+      "total": "4h58m04s",
+      "wtq": "92m58.054s",
+      "tabfact": "79m08.875s",
+      "crt": "125m57.848s"
+    }
+  }
+}
