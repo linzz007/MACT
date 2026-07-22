@@ -15,7 +15,8 @@ cd /home/ubuntu/lzz/MyAgent
 source configs/server/qwen3_32b_2gpu_local.env
 
 status=0
-/usr/bin/time -p python scripts/server/run_mact_one_by_one.py \
+start_seconds=$SECONDS
+python scripts/server/run_mact_one_by_one.py \
   --mact-root /home/ubuntu/lzz/MACT \
   --dataset-path datasets_ready/blind_holdout_200_v1_2026-06-27/wtq.jsonl \
   --output-path "$RUN_ROOT/wtq_mact_core100.jsonl" \
@@ -38,6 +39,8 @@ status=0
   --temp-dir "$RUN_ROOT/tmp" \
   --limit 100 \
   --resume || status=$?
+elapsed_seconds=$((SECONDS - start_seconds))
 
+echo "WTQ_ELAPSED_SECONDS $elapsed_seconds"
 date "+END_WTQ %F %T %Z status=$status"
 exit "$status"
