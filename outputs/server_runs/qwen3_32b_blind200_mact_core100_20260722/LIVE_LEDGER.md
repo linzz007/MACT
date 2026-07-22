@@ -1,6 +1,6 @@
 # Qwen3-32B Blind200 MACT Core100 Live Ledger
 
-Last updated: 2026-07-23 01:02:33 CST
+Last updated: 2026-07-23 01:22:10 CST
 
 ## Goal
 
@@ -13,7 +13,7 @@ Current stage: `S4 paired expansion`, blind200 first 100 samples per dataset, MA
 | repo | path | branch | current baseline |
 |---|---|---|---|
 | MyAgent | `/home/ubuntu/lzz/MyAgent` | `codex/selective-risk-collaboration` | `adf915f Record Qwen3 blind core50 paired results` |
-| MACT | `/home/ubuntu/lzz/MACT` | `main` | `7e7b5ae Record Qwen3 blind core100 seed` |
+| MACT | `/home/ubuntu/lzz/MACT` | `main` | `32873a6 Checkpoint Qwen3 blind core100 WTQ row91` |
 
 ## Canonical Run Directory
 
@@ -112,15 +112,16 @@ python scripts/server/run_mact_one_by_one.py
 | 2026-07-23 00:24:15 | 70 | 50 | 50 | detached WTQ resume still active at pid `318083`; checkpointing row 70 before continuing |
 | 2026-07-23 00:44:32 | 81 | 50 | 50 | detached WTQ resume still active at pid `318083`; checkpointing row 81 before continuing |
 | 2026-07-23 01:02:33 | 91 | 50 | 50 | detached WTQ resume still active at pid `318083`; checkpointing row 91 before continuing |
+| 2026-07-23 01:22:10 | 100 | 50 | 50 | WTQ reached 100/100; detached runner exited status 0 after 5,243s |
 
 ## Current Checks
 
 | check | current status |
 |---|---|
-| row completeness | partial run: WTQ 91/100, TabFact 50/100, CRT 50/100 |
-| wrapper failures | inherited from core50: WTQ 1 row, `nu-4299` |
-| critical log scan | inherited context length BadRequest on WTQ `nu-4299`; no new critical errors in rows 51-54 |
-| known diagnostic | inherited internal `Halted: 1`: WTQ 5, TabFact 4, CRT 19 |
+| row completeness | partial run: WTQ 100/100, TabFact 50/100, CRT 50/100 |
+| wrapper failures | WTQ 2 rows: inherited `nu-4299`, new `nu-2633` |
+| critical log scan | WTQ context length BadRequest only: `nu-4299` and `nu-2633`; no connection/API transport errors |
+| known diagnostic | internal `Halted: 1`: WTQ 8, TabFact 4, CRT 19 |
 | launcher diagnostic | `run_wtq_resume.sh` first launch exited with status 127 before new rows; fixed by removing `/usr/bin/time` dependency |
 
 ## Sync Policy
