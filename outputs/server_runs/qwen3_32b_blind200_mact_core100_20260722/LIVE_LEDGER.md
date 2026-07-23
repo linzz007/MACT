@@ -1,6 +1,6 @@
 # Qwen3-32B Blind200 MACT Core100 Live Ledger
 
-Last updated: 2026-07-23 12:42:36 CST
+Last updated: 2026-07-23 13:11:42 CST
 
 ## Goal
 
@@ -13,7 +13,7 @@ Current stage: `S4 paired expansion`, blind200 first 100 samples per dataset, MA
 | repo | path | branch | current baseline |
 |---|---|---|---|
 | MyAgent | `/home/ubuntu/lzz/MyAgent` | `codex/selective-risk-collaboration` | `adf915f Record Qwen3 blind core50 paired results` |
-| MACT | `/home/ubuntu/lzz/MACT` | `main` | `ceb6904 Finalize Qwen3 blind core100 TabFact` |
+| MACT | `/home/ubuntu/lzz/MACT` | `main` | `189e998 Checkpoint Qwen3 blind core100 CRT row91` |
 
 ## Canonical Run Directory
 
@@ -125,15 +125,16 @@ python scripts/server/run_mact_one_by_one.py
 | 2026-07-23 11:43:41 | 100 | 100 | 71 | detached CRT resume still active at pid `346671`; checkpointing row 71 before continuing |
 | 2026-07-23 12:11:08 | 100 | 100 | 80 | detached CRT resume still active at pid `346671`; checkpointing row 80 before continuing |
 | 2026-07-23 12:42:36 | 100 | 100 | 91 | detached CRT resume still active at pid `346671`; checkpointing row 91 before continuing |
+| 2026-07-23 13:11:42 | 100 | 100 | 100 | CRT reached 100/100; detached runner exited status 0 after 8,394s |
 
 ## Current Checks
 
 | check | current status |
 |---|---|
-| row completeness | partial run: WTQ 100/100, TabFact 100/100, CRT 91/100 |
+| row completeness | raw complete: WTQ 100/100, TabFact 100/100, CRT 100/100 |
 | wrapper failures | WTQ 2 rows: inherited `nu-4299`, new `nu-2633` |
-| critical log scan | WTQ context length BadRequest only: `nu-4299` and `nu-2633`; TabFact has no critical errors; no connection/API transport errors |
-| known diagnostic | internal `Halted: 1`: WTQ 8, TabFact 9, CRT 19 |
+| critical log scan | WTQ context length BadRequest only: `nu-4299` and `nu-2633`; TabFact/CRT have no critical errors; no connection/API transport errors |
+| known diagnostic | internal `Halted: 1`: WTQ 8, TabFact 9, CRT 40 |
 | launcher diagnostic | `run_wtq_resume.sh` first launch exited with status 127 before new rows; fixed by removing `/usr/bin/time` dependency |
 
 ## Sync Policy
@@ -161,10 +162,8 @@ Do not sync `tmp/`.
 
 ## Next Steps
 
-1. Push this 54/50/50 interruption checkpoint to MACT GitHub.
-2. Resume WTQ only to 100 rows with `--limit 100 --resume`.
-3. Update and push this ledger after WTQ reaches 100 rows.
-4. Run TabFact to 100, checkpoint and push.
-5. Run CRT to 100, checkpoint and push.
-6. Generate per-dataset eval, paired JSON, and overall summary.
-7. Update the MyAgent server report with the blind100 paired result.
+1. Push this raw-complete 100/100/100 checkpoint to MACT GitHub.
+2. Generate per-dataset eval JSON and error JSONL.
+3. Generate same-ID paired JSON for WTQ, TabFact, and CRT.
+4. Generate `overall_mact_core100_summary.json`.
+5. Update the single MyAgent PRD with blind100 paired result.
