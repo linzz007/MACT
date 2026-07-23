@@ -3091,3 +3091,149 @@ Finished Trial 1, Correct: 1, Incorrect: 0, Halted: 0
   warnings.warn(
 /home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
   warn_deprecated(
+==============current step===========
+
+==============current step===========
+
+==============current step===========
+
+Finished Trial 1, Correct: 1, Incorrect: 0, Halted: 1
+
+=== sample 109 id=tabfact-test-8573 start ===
+=== sample 109 returncode=0 end ===
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain/__init__.py:29: UserWarning: Importing Wikipedia from langchain root module is no longer supported. Please use langchain.docstore.Wikipedia instead.
+  warnings.warn(
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
+  warn_deprecated(
+==============current step===========
+Thought 1: I need to verify if Orlando won game 65 with a score of 79-92. First, I will retrieve the row for game 65 from the table.
+Action 1: Retrieve[Retrieve the row where game is 65.]
+Observation 1: | game | date | team | score | high points | high rebounds | high assists | location attendance | record |
+| 65.0 | march 10 | orlando | l 79 - 92 (ot) | vince carter (16) | antonio davis (12) | chris childs (7) | td waterhouse centre 16171 | 30 - 35 |
+
+==============current step===========
+Thought 1: I need to verify if Orlando won game 65 with a score of 79-92. First, I will retrieve the row for game 65 from the table.
+Action 1: Retrieve[Retrieve the row where game is 65.]
+Observation 1: | game | date | team | score | high points | high rebounds | high assists | location attendance | record |
+| 65.0 | march 10 | orlando | l 79 - 92 (ot) | vince carter (16) | antonio davis (12) | chris childs (7) | td waterhouse centre 16171 | 30 - 35 |
+Thought 2: The retrieved row shows that for game 65, Orlando's result is "l 79 - 92 (ot)", where "l" indicates a loss. The context claims Orlando "win" the game, but the table explicitly states they lost. Therefore, the claim is false.  
+Action 2: Finish[False]
+
+Finished Trial 1, Correct: 0, Incorrect: 1, Halted: 0
+
+=== sample 110 id=tabfact-test-9431 start ===
+=== sample 110 returncode=0 end ===
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain/__init__.py:29: UserWarning: Importing Wikipedia from langchain root module is no longer supported. Please use langchain.docstore.Wikipedia instead.
+  warnings.warn(
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
+  warn_deprecated(
+==============current step===========
+Thought 1: The context states that only 4 episodes were written by "peter field rachael ray", but the table shows all 12 episodes have this exact name in the "written by" column. To verify, I need to count how many episodes in the table are credited to "peter field rachael ray".
+Action 1: Retrieve[Retrieve all cells in the "written by" column.]
+Observation 1: | written by |
+| peter field rachael ray |
+| peter field rachael ray |
+| peter field rachael ray |
+| peter field rachael ray |
+| peter field rachael ray |
+| peter field rachael ray |
+| peter field rachael ray |
+| peter field rachael ray |
+| peter field rachael ray |
+| peter field rachael ray |
+| peter field rachael ray |
+| peter field rachael ray |
+
+==============current step===========
+Thought 1: The context states that only 4 episodes were written by "peter field rachael ray", but the table shows all 12 episodes have this exact name in the "written by" column. To verify, I need to count how many episodes in the table are credited to "peter field rachael ray".
+Action 1: Retrieve[Retrieve all cells in the "written by" column.]
+Observation 1: | written by |
+| peter field rachael ray |
+| peter field rachael ray |
+| peter field rachael ray |
+| peter field rachael ray |
+| peter field rachael ray |
+| peter field rachael ray |
+| peter field rachael ray |
+| peter field rachael ray |
+| peter field rachael ray |
+| peter field rachael ray |
+| peter field rachael ray |
+| peter field rachael ray |
+Thought 2: The retrieved "written by" column shows all 12 episodes are credited to "peter field rachael ray", but the context claims only 4 episodes were written by them. This directly contradicts the table data.
+Action 2: Finish[False]
+
+Finished Trial 1, Correct: 1, Incorrect: 0, Halted: 0
+
+=== sample 111 id=tabfact-test-5677 start ===
+=== sample 111 returncode=0 end ===
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain/__init__.py:29: UserWarning: Importing Wikipedia from langchain root module is no longer supported. Please use langchain.docstore.Wikipedia instead.
+  warnings.warn(
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
+  warn_deprecated(
+==============current step===========
+Thought 1: I need to verify if Michael Kohlmann reached the semi-finals (sf) only once in 2010. The table lists Grand Slam tournament results for each year. For 2010, I should check the "2010" column to count how many "sf" entries exist.
+Action 1: Retrieve[Retrieve the cells in the 2010 column of the table.]
+Observation 1: | 2010 |
+| grand slam tournaments |
+| sf |
+| 1r |
+| 1r |
+| 2r |
+| 5 - 4 |
+
+==============current step===========
+Thought 1: I need to verify if Michael Kohlmann reached the semi-finals (sf) only once in 2010. The table lists Grand Slam tournament results for each year. For 2010, I should check the "2010" column to count how many "sf" entries exist.
+Action 1: Retrieve[Retrieve the cells in the 2010 column of the table.]
+Observation 1: | 2010 |
+| grand slam tournaments |
+| sf |
+| 1r |
+| 1r |
+| 2r |
+| 5 - 4 |
+Thought 2: The 2010 column shows "sf" (semi-final) only in the Australian Open row. No other "sf" entries exist in the 2010 column. This confirms the claim that Michael Kohlmann had only 1 semi-final appearance in 2010.
+Action 2: Finish[True]
+
+Finished Trial 1, Correct: 1, Incorrect: 0, Halted: 0
+
+=== sample 112 id=tabfact-test-3499 start ===
+=== sample 112 returncode=0 end ===
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain/__init__.py:29: UserWarning: Importing Wikipedia from langchain root module is no longer supported. Please use langchain.docstore.Wikipedia instead.
+  warnings.warn(
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
+  warn_deprecated(
+==============current step===========
+Thought 1: I need to verify the best record and the corresponding seed in 2012. The table lists the 2012 record as 29-7 with a seed of 12. The context claims the seed was 5, which contradicts the table.  
+Action 1: Retrieve[Retrieve the seed for the year 2012.]  
+Observation 1: | year | seed |
+| 2012.0 | 12.0 |
+
+==============current step===========
+Thought 1: I need to verify the best record and the corresponding seed in 2012. The table lists the 2012 record as 29-7 with a seed of 12. The context claims the seed was 5, which contradicts the table.  
+Action 1: Retrieve[Retrieve the seed for the year 2012.]  
+Observation 1: | year | seed |
+| 2012.0 | 12.0 |
+Thought 2: The context claims the 2012 seed was 5, but the table shows it was 12. The best record (29-7) in 2012 corresponds to a 12 seed, not a 5 seed. This directly contradicts the context's assertion.  
+Action 2: Finish[False]
+
+Finished Trial 1, Correct: 1, Incorrect: 0, Halted: 0
+
+=== sample 113 id=tabfact-test-9074 start ===
+=== sample 113 returncode=0 end ===
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain/__init__.py:29: UserWarning: Importing Wikipedia from langchain root module is no longer supported. Please use langchain.docstore.Wikipedia instead.
+  warnings.warn(
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
+  warn_deprecated(
+==============current step===========
+Thought 1: I need to determine the time between Southwark having the tallest building/structure. From the table, Southwark's Southwark Cathedral was the tallest from 1666-1677, and the Shard London Bridge (Southwark) became the tallest in 2010. The time between 1677 and 2010 is 333 years. Since 333 years is over 3 centuries (300 years), the claim is true.
+Action 1: Finish[True]
+
+Finished Trial 1, Correct: 1, Incorrect: 0, Halted: 0
+
+=== sample 114 id=tabfact-test-3580 start ===
+=== sample 114 returncode=0 end ===
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain/__init__.py:29: UserWarning: Importing Wikipedia from langchain root module is no longer supported. Please use langchain.docstore.Wikipedia instead.
+  warnings.warn(
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
+  warn_deprecated(
