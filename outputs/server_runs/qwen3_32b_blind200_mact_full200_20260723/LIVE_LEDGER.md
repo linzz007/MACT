@@ -1,6 +1,6 @@
 # Qwen3-32B Blind200 MACT Full200 Ledger
 
-最后更新：2026-07-23 19:04:39 CST
+最后更新：2026-07-23 19:15:25 CST
 
 ## 目标
 
@@ -25,7 +25,7 @@
 | dataset | output | rows | status |
 |---|---|---:|---|
 | WTQ | `wtq_mact_full200.jsonl` | 200/200 | complete; 5 context overflow failures |
-| TabFact | `tabfact_mact_full200.jsonl` | 102/200 | running; row101-row102 ok |
+| TabFact | `tabfact_mact_full200.jsonl` | 109/200 | running; row101-row109 ok |
 | CRT | `crt_mact_full200.jsonl` | 100/200 | seeded from core100; tail100 pending |
 
 ## 进度记录
@@ -102,6 +102,13 @@
 | 2026-07-23 19:02:34 CST | TabFact | 100/200 | started | host-level `setsid -f bash run_tabfact_resume.sh`; stdout `logs/tabfact_full200_resume_stdout.log`; first tail row still processing |
 | 2026-07-23 19:03:39 CST | TabFact | 101/200 | `tabfact-test-10886` | ok | row101 ok; token 8623; elapsed 69.6s |
 | 2026-07-23 19:04:39 CST | TabFact | 102/200 | `tabfact-test-12180` | ok | row102 ok; token 7743; elapsed 43.9s |
+| 2026-07-23 19:14:07 CST | TabFact | 103/200 | `tabfact-test-10698` | ok | row103 ok; token 9185; elapsed 97.3s |
+| 2026-07-23 19:14:07 CST | TabFact | 104/200 | `tabfact-test-4220` | ok | row104 ok; token 9609; elapsed 107.4s |
+| 2026-07-23 19:14:07 CST | TabFact | 105/200 | `tabfact-test-2040` | ok | row105 ok; token 13215; elapsed 120.6s |
+| 2026-07-23 19:14:07 CST | TabFact | 106/200 | `tabfact-test-7269` | ok | row106 ok; token 8081; elapsed 52.9s |
+| 2026-07-23 19:14:07 CST | TabFact | 107/200 | `tabfact-test-4644` | ok | row107 ok; token 10471; elapsed 128.2s |
+| 2026-07-23 19:14:07 CST | TabFact | 108/200 | `tabfact-test-6095` | ok | row108 ok; token 8952; elapsed 45.8s |
+| 2026-07-23 19:15:25 CST | TabFact | 109/200 | `tabfact-test-5452` | ok | row109 ok; token 13127; elapsed 84.7s |
 
 ## 已知 core100 结论
 
