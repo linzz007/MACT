@@ -1,6 +1,6 @@
 # Qwen3-32B Blind200 MACT Full200 Ledger
 
-最后更新：2026-07-23 16:50:49 CST
+最后更新：2026-07-23 19:04:39 CST
 
 ## 目标
 
@@ -25,7 +25,7 @@
 | dataset | output | rows | status |
 |---|---|---:|---|
 | WTQ | `wtq_mact_full200.jsonl` | 200/200 | complete; 5 context overflow failures |
-| TabFact | `tabfact_mact_full200.jsonl` | 100/200 | seeded from core100; tail100 pending |
+| TabFact | `tabfact_mact_full200.jsonl` | 102/200 | running; row101-row102 ok |
 | CRT | `crt_mact_full200.jsonl` | 100/200 | seeded from core100; tail100 pending |
 
 ## 进度记录
@@ -99,6 +99,9 @@
 | 2026-07-23 16:48:31 CST | WTQ | 199/200 | `nu-3200` | ok | row199 ok; last row token 6841; elapsed 72.4s |
 | 2026-07-23 16:48:31 CST | WTQ | 200/200 | `nu-2332` | ok | row200 ok; last row token 10496; elapsed 78.9s; END_WTQ_FULL200 2026-07-23 16:45:33 CST |
 | 2026-07-23 16:50:49 CST | WTQ | 200/200 | eval/paired | complete | generated `wtq_mact_full200_eval.json`, `wtq_mact_full200_errors.jsonl`, `wtq_mact_full200_paired.json`; paired myAgent 131/200 vs MACT 148/200; token ratio 0.5926 |
+| 2026-07-23 19:02:34 CST | TabFact | 100/200 | started | host-level `setsid -f bash run_tabfact_resume.sh`; stdout `logs/tabfact_full200_resume_stdout.log`; first tail row still processing |
+| 2026-07-23 19:03:39 CST | TabFact | 101/200 | `tabfact-test-10886` | ok | row101 ok; token 8623; elapsed 69.6s |
+| 2026-07-23 19:04:39 CST | TabFact | 102/200 | `tabfact-test-12180` | ok | row102 ok; token 7743; elapsed 43.9s |
 
 ## 已知 core100 结论
 

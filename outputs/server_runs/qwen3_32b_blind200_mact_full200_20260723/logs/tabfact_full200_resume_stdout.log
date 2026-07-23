@@ -1,0 +1,40 @@
+[health] testing port 8000
+{
+    "id": "chatcmpl-9fe5f7e720e1e3a7",
+    "object": "chat.completion",
+    "created": 1784804502,
+    "model": "qwen3-32b-local",
+    "choices": [
+        {
+            "index": 0,
+            "message": {
+                "role": "assistant",
+                "content": "ok",
+                "refusal": null,
+                "annotations": null,
+                "audio": null,
+                "function_call": null,
+                "tool_calls": [],
+                "reasoning": null
+            },
+            "logprobs": null,
+            "finish_reason": "stop",
+            "stop_reason": null,
+            "token_ids": null
+        }
+    ],
+    "service_tier": null,
+    "system_fingerprint": null,
+    "usage": {
+        "prompt_tokens": 16,
+        "total_tokens": 18,
+        "completion_tokens": 2,
+        "prompt_tokens_details": null
+    },
+    "prompt_logprobs": null,
+    "prompt_token_ids": null,
+    "kv_transfer_params": null
+}
+START_TABFACT_FULL200 2026-07-23 19:01:42 CST
+[mact-one] scitab 101/200 ok
+[mact-one] scitab 102/200 ok
