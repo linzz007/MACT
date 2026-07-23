@@ -1,6 +1,6 @@
 # Qwen3-32B Blind200 MACT Full200 Ledger
 
-最后更新：2026-07-23 16:05:22 CST
+最后更新：2026-07-23 16:12:29 CST
 
 ## 目标
 
@@ -24,7 +24,7 @@
 
 | dataset | output | rows | status |
 |---|---|---:|---|
-| WTQ | `wtq_mact_full200.jsonl` | 175/200 | running; row124, row133, and row156 context overflow failures |
+| WTQ | `wtq_mact_full200.jsonl` | 179/200 | running; row124, row133, and row156 context overflow failures |
 | TabFact | `tabfact_mact_full200.jsonl` | 100/200 | seeded from core100; tail100 pending |
 | CRT | `crt_mact_full200.jsonl` | 100/200 | seeded from core100; tail100 pending |
 
@@ -73,6 +73,10 @@
 | 2026-07-23 15:56:46 CST | WTQ | 173/200 | `nu-721` | ok | row173 ok; last row token 8239; elapsed 97.7s |
 | 2026-07-23 16:03:17 CST | WTQ | 174/200 | `nu-4162` | ok | row174 ok; last row token 15162; elapsed 286.9s |
 | 2026-07-23 16:05:22 CST | WTQ | 175/200 | `nu-641` | ok | row175 ok; last row token 16995; elapsed 202.7s |
+| 2026-07-23 16:11:12 CST | WTQ | 176/200 | `nu-1615` | ok | row176 ok; last row token 6561; elapsed 68.9s |
+| 2026-07-23 16:11:12 CST | WTQ | 177/200 | `nu-1845` | ok | row177 ok; last row token 8050; elapsed 86.1s |
+| 2026-07-23 16:11:12 CST | WTQ | 178/200 | `nu-888` | ok | row178 ok; last row token 2259; elapsed 21.3s |
+| 2026-07-23 16:12:29 CST | WTQ | 179/200 | `nu-1498` | ok | row179 ok; last row token 17523; elapsed 220.9s |
 
 ## 已知 core100 结论
 
