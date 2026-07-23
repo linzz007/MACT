@@ -1,6 +1,6 @@
 # Qwen3-32B Blind200 MACT Full200 Ledger
 
-最后更新：2026-07-23 14:15:29 CST
+最后更新：2026-07-23 14:24:07 CST
 
 ## 目标
 
@@ -24,7 +24,7 @@
 
 | dataset | output | rows | status |
 |---|---|---:|---|
-| WTQ | `wtq_mact_full200.jsonl` | 120/200 | running; row101-row120 ok |
+| WTQ | `wtq_mact_full200.jsonl` | 126/200 | running; row124 context overflow failure, row125-row126 ok |
 | TabFact | `tabfact_mact_full200.jsonl` | 100/200 | seeded from core100; tail100 pending |
 | CRT | `crt_mact_full200.jsonl` | 100/200 | seeded from core100; tail100 pending |
 
@@ -39,6 +39,9 @@
 | 2026-07-23 13:55:24 CST | WTQ | 109/200 | `nu-712` | ok | row101-row109 all ok; last row token 7551; elapsed 98.8s |
 | 2026-07-23 14:08:29 CST | WTQ | 116/200 | `nu-2903` | ok | row101-row116 all ok; last row token 11749; elapsed 132.6s |
 | 2026-07-23 14:15:29 CST | WTQ | 120/200 | `nu-3399` | ok | row101-row120 all ok; last row token 8017; elapsed 102.6s |
+| 2026-07-23 14:24:07 CST | WTQ | 124/200 | `nu-3290` | failed | context overflow: input 6145 + max_tokens 2048 > 8192 |
+| 2026-07-23 14:24:07 CST | WTQ | 125/200 | `nu-3922` | ok | runner continued after row124; last row token 8291; elapsed 116.7s |
+| 2026-07-23 14:24:07 CST | WTQ | 126/200 | `nu-3527` | ok | runner continued; last row token 7678; elapsed 76.6s |
 
 ## 已知 core100 结论
 
@@ -48,7 +51,7 @@ MACT:    227/300 = 0.7567
 token ratio: 0.5913
 ```
 
-WTQ 的 `nu-4299` 和 `nu-2633` 在 seed 中保留为 MACT context length failure，不能删除或重跑后静默替换。
+WTQ 的 `nu-4299` 和 `nu-2633` 在 seed 中保留为 MACT context length failure；full200 tail 新增 `nu-3290` 同类失败。不能删除或重跑后静默替换；若后续 repair，必须另行标注 repaired 口径。
 
 ## 运行入口
 
