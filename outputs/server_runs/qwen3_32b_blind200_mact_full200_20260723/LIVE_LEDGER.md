@@ -1,6 +1,6 @@
 # Qwen3-32B Blind200 MACT Full200 Ledger
 
-最后更新：2026-07-23 13:43:32 CST
+最后更新：2026-07-23 13:55:24 CST
 
 ## 目标
 
@@ -24,7 +24,7 @@
 
 | dataset | output | rows | status |
 |---|---|---:|---|
-| WTQ | `wtq_mact_full200.jsonl` | 104/200 | running; row101-row104 ok |
+| WTQ | `wtq_mact_full200.jsonl` | 109/200 | running; row101-row109 ok |
 | TabFact | `tabfact_mact_full200.jsonl` | 100/200 | seeded from core100; tail100 pending |
 | CRT | `crt_mact_full200.jsonl` | 100/200 | seeded from core100; tail100 pending |
 
@@ -36,6 +36,7 @@
 | 2026-07-23 13:33:25 CST | WTQ | 100/200 | seed | started | host-level `setsid -f bash run_wtq_resume.sh`; healthcheck ok |
 | 2026-07-23 13:36:06 CST | WTQ | 101/200 | `nu-4099` | ok | token 8735; elapsed 84.3s |
 | 2026-07-23 13:43:32 CST | WTQ | 104/200 | `nu-3939` | ok | row101-row104 all ok; last row token 16520; elapsed 173.7s |
+| 2026-07-23 13:55:24 CST | WTQ | 109/200 | `nu-712` | ok | row101-row109 all ok; last row token 7551; elapsed 98.8s |
 
 ## 已知 core100 结论
 
