@@ -1,6 +1,6 @@
 # Qwen3-32B Blind200 MACT Full200 Ledger
 
-最后更新：2026-07-23 13:25:38 CST
+最后更新：2026-07-23 13:36:06 CST
 
 ## 目标
 
@@ -24,9 +24,17 @@
 
 | dataset | output | rows | status |
 |---|---|---:|---|
-| WTQ | `wtq_mact_full200.jsonl` | 100/200 | seeded from core100; tail100 pending |
+| WTQ | `wtq_mact_full200.jsonl` | 101/200 | running; row101 `nu-4099` ok |
 | TabFact | `tabfact_mact_full200.jsonl` | 100/200 | seeded from core100; tail100 pending |
 | CRT | `crt_mact_full200.jsonl` | 100/200 | seeded from core100; tail100 pending |
+
+## 进度记录
+
+| time | dataset | rows | last id | status | notes |
+|---|---|---:|---|---|---|
+| 2026-07-23 13:25:38 CST | all | 100/200 each | seed | seeded | copied core100 raw/log/summary |
+| 2026-07-23 13:33:25 CST | WTQ | 100/200 | seed | started | host-level `setsid -f bash run_wtq_resume.sh`; healthcheck ok |
+| 2026-07-23 13:36:06 CST | WTQ | 101/200 | `nu-4099` | ok | token 8735; elapsed 84.3s |
 
 ## 已知 core100 结论
 
@@ -69,4 +77,3 @@ wc -l /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_blind200_mact_full200_
 3. 行数少于 200 时，用对应 `run_*_resume.sh` 继续。
 
 4. 每完成约 10 行或一个数据集，提交并推送 MACT `main`，再更新 MyAgent PRD。
-
