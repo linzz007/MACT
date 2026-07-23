@@ -8,6 +8,9 @@ source configs/server/qwen3_32b_2gpu_local.env
 
 RUN_ROOT=/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_blind200_mact_full200_20260723
 mkdir -p "${RUN_ROOT}/logs" "${RUN_ROOT}/tmp"
+exec >> "${RUN_ROOT}/logs/crt_full200_resume_stdout.log" 2>&1
+
+bash scripts/server/healthcheck_vllm_pool.sh configs/server/qwen3_32b_2gpu_local.env
 
 date "+START_CRT_FULL200 %F %T %Z"
 python scripts/server/run_mact_one_by_one.py \
@@ -34,4 +37,3 @@ python scripts/server/run_mact_one_by_one.py \
   --limit 200 \
   --resume
 date "+END_CRT_FULL200 %F %T %Z"
-
