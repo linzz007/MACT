@@ -1,6 +1,6 @@
 # Qwen3-32B Blind200 MACT Core100 Live Ledger
 
-Last updated: 2026-07-23 13:11:42 CST
+Last updated: 2026-07-23 13:15:37 CST
 
 ## Goal
 
@@ -126,6 +126,7 @@ python scripts/server/run_mact_one_by_one.py
 | 2026-07-23 12:11:08 | 100 | 100 | 80 | detached CRT resume still active at pid `346671`; checkpointing row 80 before continuing |
 | 2026-07-23 12:42:36 | 100 | 100 | 91 | detached CRT resume still active at pid `346671`; checkpointing row 91 before continuing |
 | 2026-07-23 13:11:42 | 100 | 100 | 100 | CRT reached 100/100; detached runner exited status 0 after 8,394s |
+| 2026-07-23 13:15:37 | 100 | 100 | 100 | eval, errors, paired JSON, and overall summary generated; overall myAgent 237/300 vs MACT 227/300, token ratio 0.591 |
 
 ## Current Checks
 
@@ -136,6 +137,7 @@ python scripts/server/run_mact_one_by_one.py
 | critical log scan | WTQ context length BadRequest only: `nu-4299` and `nu-2633`; TabFact/CRT have no critical errors; no connection/API transport errors |
 | known diagnostic | internal `Halted: 1`: WTQ 8, TabFact 9, CRT 40 |
 | launcher diagnostic | `run_wtq_resume.sh` first launch exited with status 127 before new rows; fixed by removing `/usr/bin/time` dependency |
+| core100 final paired | myAgent 237/300 vs MACT 227/300; token ratio 0.5913; per dataset: WTQ 69 vs 79, TabFact 95 vs 93, CRT 73 vs 55 |
 
 ## Sync Policy
 
@@ -162,8 +164,6 @@ Do not sync `tmp/`.
 
 ## Next Steps
 
-1. Push this raw-complete 100/100/100 checkpoint to MACT GitHub.
-2. Generate per-dataset eval JSON and error JSONL.
-3. Generate same-ID paired JSON for WTQ, TabFact, and CRT.
-4. Generate `overall_mact_core100_summary.json`.
-5. Update the single MyAgent PRD with blind100 paired result.
+1. Push this eval/paired/summary checkpoint to MACT GitHub.
+2. Update and push the single MyAgent PRD with blind100 paired result.
+3. Decide next stage: expand final candidate to blind200, or run new-model Gate-50/Gate-150 before any further MACT paired run.
