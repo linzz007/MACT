@@ -1,6 +1,6 @@
 # Qwen3-32B Blind200 MACT Core100 Live Ledger
 
-Last updated: 2026-07-23 08:43:38 CST
+Last updated: 2026-07-23 09:03:05 CST
 
 ## Goal
 
@@ -115,12 +115,13 @@ python scripts/server/run_mact_one_by_one.py
 | 2026-07-23 01:22:10 | 100 | 50 | 50 | WTQ reached 100/100; detached runner exited status 0 after 5,243s |
 | 2026-07-23 01:24:28 | 100 | 50 | 50 | TabFact and CRT resume scripts created; Qwen3 healthcheck ok; no active runner before TabFact start |
 | 2026-07-23 08:43:38 | 100 | 61 | 50 | detached TabFact resume active at pid `334723`; checkpointing row 61 before continuing |
+| 2026-07-23 09:03:05 | 100 | 72 | 50 | detached TabFact resume still active at pid `334723`; checkpointing row 72 before continuing |
 
 ## Current Checks
 
 | check | current status |
 |---|---|
-| row completeness | partial run: WTQ 100/100, TabFact 61/100, CRT 50/100 |
+| row completeness | partial run: WTQ 100/100, TabFact 72/100, CRT 50/100 |
 | wrapper failures | WTQ 2 rows: inherited `nu-4299`, new `nu-2633` |
 | critical log scan | WTQ context length BadRequest only: `nu-4299` and `nu-2633`; no connection/API transport errors |
 | known diagnostic | internal `Halted: 1`: WTQ 8, TabFact 4, CRT 19 |

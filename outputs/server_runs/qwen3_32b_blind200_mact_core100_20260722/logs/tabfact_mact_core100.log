@@ -1844,3 +1844,317 @@ Finished Trial 1, Correct: 1, Incorrect: 0, Halted: 0
   warnings.warn(
 /home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
   warn_deprecated(
+==============current step===========
+Thought 1: I need to verify the total number of international goals scored in all friendly games listed in the table. The context claims only 1 goal was scored, but the table's "score" and "result" columns suggest higher numbers. I will retrieve all friendly matches and analyze their scores.
+Action 1: Retrieve[Retrieve all rows where competition is "friendly".]
+Observation 1: | date | venue | score | result | competition |
+| 3 june 2000 | easycredit - stadion , nuremberg | 1 - 0 | 3 - 2 | friendly |
+| 7 june 2000 | dreisamstadion , freiburg | 6 - 2 | 8 - 2 | friendly |
+| 7 june 2000 | dreisamstadion , freiburg | 8 - 2 | 8 - 2 | friendly |
+| 15 august 2001 | ferenc puskás stadium , budapest | 3 - 0 | 5 - 2 | friendly |
+| 9 may 2002 | dreisamstadion , freiburg | 7 - 0 | 7 - 0 | friendly |
+| 21 august 2002 | vasil levski national stadium , sofia | 2 - 2 | 2 - 2 | friendly |
+| 11 october 2002 | asim ferhatović hase stadium , sarajevo | 1 - 1 | 1 - 1 | friendly |
+
+==============current step===========
+Thought 1: I need to verify the total number of international goals scored in all friendly games listed in the table. The context claims only 1 goal was scored, but the table's "score" and "result" columns suggest higher numbers. I will retrieve all friendly matches and analyze their scores.
+Action 1: Retrieve[Retrieve all rows where competition is "friendly".]
+Observation 1: | date | venue | score | result | competition |
+| 3 june 2000 | easycredit - stadion , nuremberg | 1 - 0 | 3 - 2 | friendly |
+| 7 june 2000 | dreisamstadion , freiburg | 6 - 2 | 8 - 2 | friendly |
+| 7 june 2000 | dreisamstadion , freiburg | 8 - 2 | 8 - 2 | friendly |
+| 15 august 2001 | ferenc puskás stadium , budapest | 3 - 0 | 5 - 2 | friendly |
+| 9 may 2002 | dreisamstadion , freiburg | 7 - 0 | 7 - 0 | friendly |
+| 21 august 2002 | vasil levski national stadium , sofia | 2 - 2 | 2 - 2 | friendly |
+| 11 october 2002 | asim ferhatović hase stadium , sarajevo | 1 - 1 | 1 - 1 | friendly |
+Thought 2: The total goals scored in friendly games (28) contradict the context's claim of only 1 goal. Therefore, the context is incorrect.
+Action 2: Finish[False]
+
+Finished Trial 1, Correct: 1, Incorrect: 0, Halted: 0
+
+=== sample 61 id=tabfact-test-1118 start ===
+=== sample 61 returncode=0 end ===
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain/__init__.py:29: UserWarning: Importing Wikipedia from langchain root module is no longer supported. Please use langchain.docstore.Wikipedia instead.
+  warnings.warn(
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
+  warn_deprecated(
+==============current step===========
+Thought 1: I need to verify if the Aqua Spirit is 26.3 meters shorter in length than the Aqua Maria. First, retrieve the lengths of both ships from the table.
+Action 1: Retrieve[Retrieve the length of Aqua Spirit and Aqua Maria from the table.]
+Observation 1: | ship name | length |
+| aqua maria | 101 , 3 m |
+| aqua spirit | 75 m |
+
+==============current step===========
+Thought 1: I need to verify if the Aqua Spirit is 26.3 meters shorter in length than the Aqua Maria. First, retrieve the lengths of both ships from the table.
+Action 1: Retrieve[Retrieve the length of Aqua Spirit and Aqua Maria from the table.]
+Observation 1: | ship name | length |
+| aqua maria | 101 , 3 m |
+| aqua spirit | 75 m |
+Thought 2: I need to calculate the difference in length between Aqua Maria (101.3 m) and Aqua Spirit (75 m).
+Action 2: Calculate[101.3 - 75]
+Observation 2: (26.299999999999997, '')
+
+==============current step===========
+Thought 1: I need to verify if the Aqua Spirit is 26.3 meters shorter in length than the Aqua Maria. First, retrieve the lengths of both ships from the table.
+Action 1: Retrieve[Retrieve the length of Aqua Spirit and Aqua Maria from the table.]
+Observation 1: | ship name | length |
+| aqua maria | 101 , 3 m |
+| aqua spirit | 75 m |
+Thought 2: I need to calculate the difference in length between Aqua Maria (101.3 m) and Aqua Spirit (75 m).
+Action 2: Calculate[101.3 - 75]
+Observation 2: (26.299999999999997, '')
+Thought 3: The calculated difference is approximately 26.3 meters (26.299999999999997 rounds to 26.3). This matches the claim that the Aqua Spirit is 26.3 meters smaller in length than the Aqua Maria. Therefore, the statement is true.
+Action 3: Finish[True]
+
+Finished Trial 1, Correct: 1, Incorrect: 0, Halted: 0
+
+=== sample 62 id=tabfact-test-8310 start ===
+=== sample 62 returncode=0 end ===
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain/__init__.py:29: UserWarning: Importing Wikipedia from langchain root module is no longer supported. Please use langchain.docstore.Wikipedia instead.
+  warnings.warn(
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
+  warn_deprecated(
+==============current step===========
+Thought 1: The context states "window have a percentage of 1.80% lower when other be 0.3%". I need to verify if there exists a row in the table where "other" is 0.3% and the Windows percentage is 1.80% lower than another value. 
+Action 1: Retrieve[Retrieve all rows where the "other" column is 0.3%.]
+Observation 1: | source | date | method | ios | android | blackberry | symbian / series 40 | bada | windows | other |
+| gartner | may - 13 | units sold | 18.2% | 74.4% | 3.0% | 0.6% | 0.7% | 2.9% | 0.3% |
+
+==============current step===========
+Thought 1: The context states "window have a percentage of 1.80% lower when other be 0.3%". I need to verify if there exists a row in the table where "other" is 0.3% and the Windows percentage is 1.80% lower than another value. 
+Action 1: Retrieve[Retrieve all rows where the "other" column is 0.3%.]
+Observation 1: | source | date | method | ios | android | blackberry | symbian / series 40 | bada | windows | other |
+| gartner | may - 13 | units sold | 18.2% | 74.4% | 3.0% | 0.6% | 0.7% | 2.9% | 0.3% |
+Thought 2: The only row with "other" = 0.3% is the Gartner May-13 row. The Windows percentage here is 2.9%. The claim states that this value is 1.80% lower. To verify, I need to check if 2.9% is 1.80% less than another value in the table.  
+Action 2: Calculate[2.9% + 1.80%]  
+Observation 2: 4.7%  
+
+==============current step===========
+Thought 1: The context states "window have a percentage of 1.80% lower when other be 0.3%". I need to verify if there exists a row in the table where "other" is 0.3% and the Windows percentage is 1.80% lower than another value. 
+Action 1: Retrieve[Retrieve all rows where the "other" column is 0.3%.]
+Observation 1: | source | date | method | ios | android | blackberry | symbian / series 40 | bada | windows | other |
+| gartner | may - 13 | units sold | 18.2% | 74.4% | 3.0% | 0.6% | 0.7% | 2.9% | 0.3% |
+Thought 2: The only row with "other" = 0.3% is the Gartner May-13 row. The Windows percentage here is 2.9%. The claim states that this value is 1.80% lower. To verify, I need to check if 2.9% is 1.80% less than another value in the table.  
+Action 2: Calculate[2.9% + 1.80%]  
+Observation 2: 4.7%  
+Thought 3: The calculated value of 4.7% does not appear in the Gartner May-13 row or any other row in the table. Therefore, there is no evidence that the Windows percentage (2.9%) is 1.80% lower than another value in the context of "other" being 0.3%. The claim is false.  
+Action 3: Finish[False]
+
+Finished Trial 1, Correct: 1, Incorrect: 0, Halted: 0
+
+=== sample 63 id=tabfact-test-11980 start ===
+=== sample 63 returncode=0 end ===
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain/__init__.py:29: UserWarning: Importing Wikipedia from langchain root module is no longer supported. Please use langchain.docstore.Wikipedia instead.
+  warnings.warn(
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
+  warn_deprecated(
+==============current step===========
+Thought 1: I need to verify if the London Broncos have fewer losses than the Warrington Wolves. To do this, I will retrieve the "lost" values for both clubs from the table.
+Action 1: Retrieve[Retrieve the "lost" values for London Broncos and Warrington Wolves.]
+Observation 1: | club | lost |
+| london broncos | 5.0 |
+| warrington wolves | 6.0 |
+
+==============current step===========
+Thought 1: I need to verify if the London Broncos have fewer losses than the Warrington Wolves. To do this, I will retrieve the "lost" values for both clubs from the table.
+Action 1: Retrieve[Retrieve the "lost" values for London Broncos and Warrington Wolves.]
+Observation 1: | club | lost |
+| london broncos | 5.0 |
+| warrington wolves | 6.0 |
+Thought 2: The London Broncos have 5 losses, while the Warrington Wolves have 6 losses. Since 5 is less than 6, the claim that the London Broncos have a lower number of losses than the Warrington Wolves is true.
+Action 2: Finish[True]
+
+Finished Trial 1, Correct: 1, Incorrect: 0, Halted: 0
+
+=== sample 64 id=tabfact-test-7522 start ===
+=== sample 64 returncode=0 end ===
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain/__init__.py:29: UserWarning: Importing Wikipedia from langchain root module is no longer supported. Please use langchain.docstore.Wikipedia instead.
+  warnings.warn(
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
+  warn_deprecated(
+==============current step===========
+Thought 1: The context claims that an average of 5.3 corresponds to players with more than 0 touchdowns and more than 135 yards. I need to verify if any player in the table meets both conditions (td's > 0 and yards > 135) and has an average of 5.3.
+Action 1: Retrieve[Retrieve all players with td's > 0 and yards > 135.]
+Observation 1: | player | rec | yards | avg | td 's |
+| rob turner | 16 | 171 | 10.6 | 4 |
+| kevin ingram | 13 | 135 | 10.3 | 1 |
+
+==============current step===========
+Thought 1: The context claims that an average of 5.3 corresponds to players with more than 0 touchdowns and more than 135 yards. I need to verify if any player in the table meets both conditions (td's > 0 and yards > 135) and has an average of 5.3.
+Action 1: Retrieve[Retrieve all players with td's > 0 and yards > 135.]
+Observation 1: | player | rec | yards | avg | td 's |
+| rob turner | 16 | 171 | 10.6 | 4 |
+| kevin ingram | 13 | 135 | 10.3 | 1 |
+
+==============current step===========
+Thought 1: The context claims that an average of 5.3 corresponds to players with more than 0 touchdowns and more than 135 yards. I need to verify if any player in the table meets both conditions (td's > 0 and yards > 135) and has an average of 5.3.
+Action 1: Retrieve[Retrieve all players with td's > 0 and yards > 135.]
+Observation 1: | player | rec | yards | avg | td 's |
+| rob turner | 16 | 171 | 10.6 | 4 |
+| kevin ingram | 13 | 135 | 10.3 | 1 |
+
+Finished Trial 1, Correct: 1, Incorrect: 0, Halted: 1
+
+=== sample 65 id=tabfact-test-11928 start ===
+=== sample 65 returncode=0 end ===
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain/__init__.py:29: UserWarning: Importing Wikipedia from langchain root module is no longer supported. Please use langchain.docstore.Wikipedia instead.
+  warnings.warn(
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
+  warn_deprecated(
+==============current step===========
+Thought 1: I need to verify if the date of game 4 in the table matches the context's statement.  
+Action 1: Retrieve[Retrieve the date of game 4 from the table.]  
+Observation 1: | date |
+| april 25 |
+
+==============current step===========
+Thought 1: I need to verify if the date of game 4 in the table matches the context's statement.  
+Action 1: Retrieve[Retrieve the date of game 4 from the table.]  
+Observation 1: | date |
+| april 25 |
+Thought 2: The retrieved date for game 4 is "april 25", which exactly matches the context's statement. Therefore, the claim is true.  
+Action 2: Finish[True]
+
+Finished Trial 1, Correct: 1, Incorrect: 0, Halted: 0
+
+=== sample 66 id=tabfact-test-8637 start ===
+=== sample 66 returncode=0 end ===
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain/__init__.py:29: UserWarning: Importing Wikipedia from langchain root module is no longer supported. Please use langchain.docstore.Wikipedia instead.
+  warnings.warn(
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
+  warn_deprecated(
+==============current step===========
+Thought 1: The context states that Guillaume Gillet scored 3 times as much as each of the other two players in the UEFA Champions League. I need to verify this by checking the relevant column in the table. The table's "total" column might represent the Champions League goals. Guillaume's total is 9, and if two other players have 3 each, the claim would be true.  
+Action 1: Retrieve[Retrieve the total scores of Guillaume Gillet and players with total 3.]  
+Observation 1: | player | total |  
+| guillaume gillet | 9 |  
+| matías suárez | 3 |  
+| jelle van damme | 3 |  
+| jan polák | 3 |  
+| ... | ... |  
+
+==============current step===========
+Thought 1: The context states that Guillaume Gillet scored 3 times as much as each of the other two players in the UEFA Champions League. I need to verify this by checking the relevant column in the table. The table's "total" column might represent the Champions League goals. Guillaume's total is 9, and if two other players have 3 each, the claim would be true.  
+Action 1: Retrieve[Retrieve the total scores of Guillaume Gillet and players with total 3.]  
+Observation 1: | player | total |  
+| guillaume gillet | 9 |  
+| matías suárez | 3 |  
+| jelle van damme | 3 |  
+| jan polák | 3 |  
+| ... | ... |  
+Thought 2: The observation shows Guillaume Gillet has a total of 9, and three players (matías suárez, jelle van damme, jan polák) have a total of 3 each. The claim specifies "each of the other 2 player," but there are three players with 3. Since 9 is exactly 3×3, the claim is true as it holds for at least two players.  
+Action 2: Finish[True]
+
+Finished Trial 1, Correct: 0, Incorrect: 1, Halted: 0
+
+=== sample 67 id=tabfact-test-33 start ===
+=== sample 67 returncode=0 end ===
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain/__init__.py:29: UserWarning: Importing Wikipedia from langchain root module is no longer supported. Please use langchain.docstore.Wikipedia instead.
+  warnings.warn(
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
+  warn_deprecated(
+==============current step===========
+Thought 1: I need to verify if the 300sel 6.3 has 2,957 fewer units built than the model with the highest production. First, identify the model with the highest "number built" value. The numbers are written with a decimal separator (e.g., 9.483), which likely represents 9,483 units in some notation systems. The highest value is 9.483 (9,483) for the 300sel 3.5 model. The 300sel 6.3 has 6.526 (6,526) units.  
+Action 1: Calculate[9483 - 6526]  
+Observation 1: (2957, '')
+
+==============current step===========
+Thought 1: I need to verify if the 300sel 6.3 has 2,957 fewer units built than the model with the highest production. First, identify the model with the highest "number built" value. The numbers are written with a decimal separator (e.g., 9.483), which likely represents 9,483 units in some notation systems. The highest value is 9.483 (9,483) for the 300sel 3.5 model. The 300sel 6.3 has 6.526 (6,526) units.  
+Action 1: Calculate[9483 - 6526]  
+Observation 1: (2957, '')
+Thought 2: The calculation confirms that the difference between the highest production model (9,483 units) and the 300sel 6.3 (6,526 units) is exactly 2,957 units. The claim is therefore true.  
+Action 2: Finish[True]
+
+Finished Trial 1, Correct: 1, Incorrect: 0, Halted: 0
+
+=== sample 68 id=tabfact-test-1134 start ===
+=== sample 68 returncode=0 end ===
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain/__init__.py:29: UserWarning: Importing Wikipedia from langchain root module is no longer supported. Please use langchain.docstore.Wikipedia instead.
+  warnings.warn(
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
+  warn_deprecated(
+==============current step===========
+Thought 1: I need to verify the number of players drafted from Washington and Notre Dame. The table's "college" column indicates each player's alma mater. I will retrieve all entries in the "college" column to count occurrences of "Washington" and "Notre Dame".
+Action 1: Retrieve[Retrieve all values in the "college" column.]
+Observation 1: | college |
+| georgia |
+| michigan |
+| tennessee |
+| penn state |
+| tennessee |
+| washington |
+| notre dame |
+| kentucky |
+| tennessee - chattanooga |
+| mcgill |
+
+==============current step===========
+Thought 1: I need to verify the number of players drafted from Washington and Notre Dame. The table's "college" column indicates each player's alma mater. I will retrieve all entries in the "college" column to count occurrences of "Washington" and "Notre Dame".
+Action 1: Retrieve[Retrieve all values in the "college" column.]
+Observation 1: | college |
+| georgia |
+| michigan |
+| tennessee |
+| penn state |
+| tennessee |
+| washington |
+| notre dame |
+| kentucky |
+| tennessee - chattanooga |
+| mcgill |
+Thought 2: From the retrieved college values, "Washington" appears once (Chad Ward) and "Notre Dame" appears once (Anthony Denman). The context claims 2 players from Washington and 1 from Notre Dame, but the table only shows 1 from each. Therefore, the claim is false.  
+Action 2: Finish[False]
+
+Finished Trial 1, Correct: 1, Incorrect: 0, Halted: 0
+
+=== sample 69 id=tabfact-test-6650 start ===
+=== sample 69 returncode=0 end ===
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain/__init__.py:29: UserWarning: Importing Wikipedia from langchain root module is no longer supported. Please use langchain.docstore.Wikipedia instead.
+  warnings.warn(
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
+  warn_deprecated(
+==============current step===========
+Thought 1: I need to verify if Zang Jialiang was the lead during the 2007-08 season as stated in the context. I will retrieve the row for the 2007-08 season and check the "lead" column.  
+Action 1: Retrieve[Retrieve the row where season is 2007-08.]  
+Observation 1: | season | skip | third | second | lead | alternate | events |
+| 2007 - 08 | wang fengchun | liu rui | xu xiaoming | zang jialiang | li dongyan | 2008 wmcc |
+
+==============current step===========
+Thought 1: I need to verify if Zang Jialiang was the lead during the 2007-08 season as stated in the context. I will retrieve the row for the 2007-08 season and check the "lead" column.  
+Action 1: Retrieve[Retrieve the row where season is 2007-08.]  
+Observation 1: | season | skip | third | second | lead | alternate | events |
+| 2007 - 08 | wang fengchun | liu rui | xu xiaoming | zang jialiang | li dongyan | 2008 wmcc |
+Thought 2: The retrieved row for the 2007-08 season confirms that Zang Jialiang is listed under the "lead" column. This directly matches the context's statement.  
+Action 2: Finish[True]
+
+Finished Trial 1, Correct: 1, Incorrect: 0, Halted: 0
+
+=== sample 70 id=tabfact-test-10769 start ===
+=== sample 70 returncode=0 end ===
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain/__init__.py:29: UserWarning: Importing Wikipedia from langchain root module is no longer supported. Please use langchain.docstore.Wikipedia instead.
+  warnings.warn(
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
+  warn_deprecated(
+==============current step===========
+Thought 1: I need to verify if the opponent in the final of the 2003 San Remo tournament was Alessio Di Mauro as stated in the context. I will retrieve the relevant row from the table.
+Action 1: Retrieve[Retrieve the row where date is 2003 and tournament is San Remo.]
+Observation 1: | date | tournament | surface | opponent in the final | score |
+| 2003.0 | san remo | clay | werner eschauer | 6 - 4 , 6 - 2 |
+
+==============current step===========
+Thought 1: I need to verify if the opponent in the final of the 2003 San Remo tournament was Alessio Di Mauro as stated in the context. I will retrieve the relevant row from the table.
+Action 1: Retrieve[Retrieve the row where date is 2003 and tournament is San Remo.]
+Observation 1: | date | tournament | surface | opponent in the final | score |
+| 2003.0 | san remo | clay | werner eschauer | 6 - 4 , 6 - 2 |
+Thought 2: The retrieved row shows that the opponent in the 2003 San Remo tournament was Werner Eschauer, not Alessio Di Mauro as stated in the context. This directly contradicts the claim in the context. Therefore, the claim is false.
+Action 2: Finish[False]
+
+Finished Trial 1, Correct: 1, Incorrect: 0, Halted: 0
+
+=== sample 71 id=tabfact-test-11430 start ===
+=== sample 71 returncode=0 end ===
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain/__init__.py:29: UserWarning: Importing Wikipedia from langchain root module is no longer supported. Please use langchain.docstore.Wikipedia instead.
+  warnings.warn(
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
+  warn_deprecated(
