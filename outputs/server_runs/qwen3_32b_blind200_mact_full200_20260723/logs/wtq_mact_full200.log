@@ -6016,3 +6016,39 @@ Finished Trial 1, Correct: 1, Incorrect: 0, Halted: 0
   warnings.warn(
 /home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
   warn_deprecated(
+==============current step===========
+
+==============current step===========
+
+==============current step===========
+
+Finished Trial 1, Correct: 1, Incorrect: 0, Halted: 1
+
+=== sample 165 id=nu-1446 start ===
+=== sample 165 returncode=0 end ===
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain/__init__.py:29: UserWarning: Importing Wikipedia from langchain root module is no longer supported. Please use langchain.docstore.Wikipedia instead.
+  warnings.warn(
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
+  warn_deprecated(
+==============current step===========
+Thought 1: I need to find the attendance for the game between Brentford and Burnley on 25 January 2003. I will retrieve the row where Home team is Brentford, Away team is Burnley, and Date is 25 January 2003.
+Action 1: Retrieve[retrieve the attendance for the game where Home team is Brentford, Away team is Burnley, and Date is 25 January 2003]
+Observation 1: | Attendance |
+| 9,563 |
+
+==============current step===========
+Thought 1: I need to find the attendance for the game between Brentford and Burnley on 25 January 2003. I will retrieve the row where Home team is Brentford, Away team is Burnley, and Date is 25 January 2003.
+Action 1: Retrieve[retrieve the attendance for the game where Home team is Brentford, Away team is Burnley, and Date is 25 January 2003]
+Observation 1: | Attendance |
+| 9,563 |
+Thought 2: The question specifically asks for the attendance at the Brentford vs. Burnley game on 25 January 2003. The retrieved attendance from Observation 1 is 9,563, which matches the criteria.  
+Action 2: Finish[9,563]
+
+Finished Trial 1, Correct: 1, Incorrect: 0, Halted: 0
+
+=== sample 166 id=nu-1246 start ===
+=== sample 166 returncode=0 end ===
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain/__init__.py:29: UserWarning: Importing Wikipedia from langchain root module is no longer supported. Please use langchain.docstore.Wikipedia instead.
+  warnings.warn(
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
+  warn_deprecated(
