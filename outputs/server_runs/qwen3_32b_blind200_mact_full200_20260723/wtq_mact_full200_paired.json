@@ -1,0 +1,1763 @@
+{
+  "dataset": "wtq",
+  "rows": 200,
+  "matched_rows": 200,
+  "missing_agent_ids": [],
+  "mact": {
+    "result_schema": "mact",
+    "num_samples": 200,
+    "num_with_gold": 200,
+    "exact_match": 0.735,
+    "primary_accuracy": 0.74,
+    "accuracy_metric": "wtq_denotation_accuracy",
+    "num_failed_exec": 5,
+    "num_missing_answer": 5,
+    "num_em_mismatch": 52,
+    "num_multi_view_replan": 0,
+    "num_cross_path_mismatch": 0,
+    "route_distribution": {},
+    "difficulty_distribution": {},
+    "risk_distribution": {
+      "unknown": 200
+    },
+    "risk_strata": {
+      "unknown": {
+        "count": 200,
+        "num_with_gold": 200,
+        "correct": 148,
+        "accuracy": 0.74,
+        "avg_total_tokens": 10508.03,
+        "failure_count": 5
+      }
+    },
+    "simple_lookup_success_rate": 0.0,
+    "multi_view_pass_rate": 0.0,
+    "alternative_exec_success_rate": 0.0,
+    "avg_llm_calls": 3.375,
+    "avg_total_tokens": 10508.03,
+    "avg_prompt_tokens": 7449.225,
+    "avg_completion_tokens": 3058.805,
+    "token_measurement": "api_usage",
+    "avg_compression_ratio": 1.0,
+    "avg_token_compression_ratio_est": 0.0,
+    "avg_elapsed_seconds": 114.77704198079883,
+    "avg_total_tokens_est": 9678.476923076923,
+    "avg_prompt_tokens_est": 6712.466666666666,
+    "avg_completion_tokens_est": 2966.0102564102563
+  },
+  "myagent_matched": {
+    "result_schema": "myagent",
+    "num_samples": 200,
+    "num_with_gold": 200,
+    "exact_match": 0.64,
+    "primary_accuracy": 0.655,
+    "accuracy_metric": "wtq_denotation_accuracy",
+    "num_failed_exec": 0,
+    "num_missing_answer": 0,
+    "num_em_mismatch": 69,
+    "num_multi_view_replan": 0,
+    "num_cross_path_mismatch": 0,
+    "route_distribution": {
+      "COMPLEX": 182,
+      "SIMPLE": 18
+    },
+    "difficulty_distribution": {
+      "medium": 160,
+      "easy": 38,
+      "hard": 2
+    },
+    "risk_distribution": {
+      "high": 185,
+      "medium": 6,
+      "light": 7,
+      "fallback": 2
+    },
+    "risk_strata": {
+      "fallback": {
+        "count": 2,
+        "num_with_gold": 2,
+        "correct": 1,
+        "accuracy": 0.5,
+        "avg_total_tokens": 13675.0,
+        "failure_count": 0
+      },
+      "high": {
+        "count": 185,
+        "num_with_gold": 185,
+        "correct": 120,
+        "accuracy": 0.6486486486486487,
+        "avg_total_tokens": 6398.572972972973,
+        "failure_count": 0
+      },
+      "light": {
+        "count": 7,
+        "num_with_gold": 7,
+        "correct": 6,
+        "accuracy": 0.8571428571428571,
+        "avg_total_tokens": 2137.4285714285716,
+        "failure_count": 0
+      },
+      "medium": {
+        "count": 6,
+        "num_with_gold": 6,
+        "correct": 4,
+        "accuracy": 0.6666666666666666,
+        "avg_total_tokens": 3222.8333333333335,
+        "failure_count": 0
+      }
+    },
+    "simple_lookup_success_rate": 0.005,
+    "multi_view_pass_rate": 0.0,
+    "alternative_exec_success_rate": 0.0,
+    "avg_llm_calls": 4.865,
+    "avg_total_tokens": 6226.925,
+    "avg_prompt_tokens": 5844.715,
+    "avg_completion_tokens": 382.21,
+    "token_measurement": "api_usage",
+    "avg_compression_ratio": 0.4023361789424884,
+    "avg_token_compression_ratio_est": 0.4095700414139366,
+    "avg_elapsed_seconds": 15.93860533822095,
+    "avg_total_tokens_est": 5822.505,
+    "avg_prompt_tokens_est": 5446.825,
+    "avg_completion_tokens_est": 375.68
+  },
+  "paired_disagreement": {
+    "both_correct": 108,
+    "myagent_only": 23,
+    "mact_only": 40,
+    "neither": 29
+  },
+  "row_level": [
+    {
+      "id": "nu-2923",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "Tony Arima",
+      "myagent_prediction": "Tony Arima"
+    },
+    {
+      "id": "nu-58",
+      "mact_correct": false,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "esther shahamorov with 5th place",
+      "myagent_prediction": "Esther Shahamorov"
+    },
+    {
+      "id": "nu-1874",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "6",
+      "myagent_prediction": 6
+    },
+    {
+      "id": "nu-4342",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "43.12",
+      "myagent_prediction": 43.12
+    },
+    {
+      "id": "nu-2772",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "2008",
+      "myagent_prediction": 2008.0
+    },
+    {
+      "id": "nu-3720",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "2",
+      "myagent_prediction": 2
+    },
+    {
+      "id": "nu-342",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "State of Origin series",
+      "myagent_prediction": "State of Origin series"
+    },
+    {
+      "id": "nu-1434",
+      "mact_correct": true,
+      "myagent_correct": false,
+      "mact_exec_error": false,
+      "mact_prediction": "3",
+      "myagent_prediction": "\\I Like It\\\"\""
+    },
+    {
+      "id": "nu-3442",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "1",
+      "myagent_prediction": 1
+    },
+    {
+      "id": "nu-2873",
+      "mact_correct": true,
+      "myagent_correct": false,
+      "mact_exec_error": false,
+      "mact_prediction": "Mike Imrie",
+      "myagent_prediction": 7.0
+    },
+    {
+      "id": "nu-192",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "Doug Shierson Racing",
+      "myagent_prediction": "Doug Shierson Racing"
+    },
+    {
+      "id": "nu-4268",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "Coral Springs, Florida",
+      "myagent_prediction": "coral springs, florida"
+    },
+    {
+      "id": "nu-1952",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "13",
+      "myagent_prediction": 13
+    },
+    {
+      "id": "nu-3470",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "2007",
+      "myagent_prediction": "2007"
+    },
+    {
+      "id": "nu-2178",
+      "mact_correct": false,
+      "myagent_correct": false,
+      "mact_exec_error": false,
+      "mact_prediction": "Jeanette W. Hyde",
+      "myagent_prediction": "Frank V. Ortiz, Jr."
+    },
+    {
+      "id": "nu-195",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "Soviet Union",
+      "myagent_prediction": "Soviet Union"
+    },
+    {
+      "id": "nu-965",
+      "mact_correct": false,
+      "myagent_correct": false,
+      "mact_exec_error": false,
+      "mact_prediction": "15.",
+      "myagent_prediction": 16
+    },
+    {
+      "id": "nu-2453",
+      "mact_correct": true,
+      "myagent_correct": false,
+      "mact_exec_error": false,
+      "mact_prediction": "Mahler",
+      "myagent_prediction": "Not found"
+    },
+    {
+      "id": "nu-709",
+      "mact_correct": true,
+      "myagent_correct": false,
+      "mact_exec_error": false,
+      "mact_prediction": "11",
+      "myagent_prediction": 12
+    },
+    {
+      "id": "nu-1373",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "Hong Kong (HKG)",
+      "myagent_prediction": "Hong Kong (HKG)"
+    },
+    {
+      "id": "nu-4062",
+      "mact_correct": false,
+      "myagent_correct": false,
+      "mact_exec_error": false,
+      "mact_prediction": "18.9375",
+      "myagent_prediction": 18.94
+    },
+    {
+      "id": "nu-4299",
+      "mact_correct": false,
+      "myagent_correct": false,
+      "mact_exec_error": true,
+      "mact_prediction": "",
+      "myagent_prediction": "Not found"
+    },
+    {
+      "id": "nu-1836",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "No",
+      "myagent_prediction": "no"
+    },
+    {
+      "id": "nu-3934",
+      "mact_correct": true,
+      "myagent_correct": false,
+      "mact_exec_error": false,
+      "mact_prediction": "1987",
+      "myagent_prediction": 1986.0
+    },
+    {
+      "id": "nu-226",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "Palais Royal!",
+      "myagent_prediction": "Palais Royal!"
+    },
+    {
+      "id": "nu-3191",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "31 minutes",
+      "myagent_prediction": "31 minutes"
+    },
+    {
+      "id": "nu-2779",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "10",
+      "myagent_prediction": 10.0
+    },
+    {
+      "id": "nu-2525",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "3",
+      "myagent_prediction": 3
+    },
+    {
+      "id": "nu-1505",
+      "mact_correct": true,
+      "myagent_correct": false,
+      "mact_exec_error": false,
+      "mact_prediction": "74.",
+      "myagent_prediction": 34
+    },
+    {
+      "id": "nu-1177",
+      "mact_correct": false,
+      "myagent_correct": false,
+      "mact_exec_error": false,
+      "mact_prediction": "\"The Harvest\"",
+      "myagent_prediction": "Lady In The Jaguar"
+    },
+    {
+      "id": "nu-2213",
+      "mact_correct": true,
+      "myagent_correct": false,
+      "mact_exec_error": false,
+      "mact_prediction": "4",
+      "myagent_prediction": 8.0
+    },
+    {
+      "id": "nu-1214",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "Karl Lagerfeld for Chanel",
+      "myagent_prediction": "Karl Lagerfeld for Chanel"
+    },
+    {
+      "id": "nu-2036",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "68",
+      "myagent_prediction": 68
+    },
+    {
+      "id": "nu-3143",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "No",
+      "myagent_prediction": false
+    },
+    {
+      "id": "nu-2878",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "PE-1",
+      "myagent_prediction": "PE-1"
+    },
+    {
+      "id": "nu-1069",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "December",
+      "myagent_prediction": "december"
+    },
+    {
+      "id": "nu-1411",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "2",
+      "myagent_prediction": 2
+    },
+    {
+      "id": "nu-4168",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "Chile F2",
+      "myagent_prediction": "Chile F2"
+    },
+    {
+      "id": "nu-613",
+      "mact_correct": false,
+      "myagent_correct": false,
+      "mact_exec_error": false,
+      "mact_prediction": "Telenovela, Serie, Short Film, Feature Film, Capsulas",
+      "myagent_prediction": "Telenovela, Serie, Short Film, Feature Film"
+    },
+    {
+      "id": "nu-2404",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "rome",
+      "myagent_prediction": "Rome"
+    },
+    {
+      "id": "nu-1826",
+      "mact_correct": true,
+      "myagent_correct": false,
+      "mact_exec_error": false,
+      "mact_prediction": "7",
+      "myagent_prediction": 4
+    },
+    {
+      "id": "nu-2897",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "21.00",
+      "myagent_prediction": 21.0
+    },
+    {
+      "id": "nu-3462",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "2",
+      "myagent_prediction": 2
+    },
+    {
+      "id": "nu-2240",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "Going Up!",
+      "myagent_prediction": "Going Up!"
+    },
+    {
+      "id": "nu-1263",
+      "mact_correct": false,
+      "myagent_correct": false,
+      "mact_exec_error": false,
+      "mact_prediction": "the Supporting Actor is the winner, and the Nominees column lists all the other nominees. So for 1997, the winner is Samuel L. Jackson, and the Nominees column lists Blair Underwood, Charles S. Dutton, Delroy Lindo, Forest Whitaker. That's four other nominees, making a total of 5 nominees for that year. \n\nSo for each year, the total number of nominees is 1 (the winner) plus the number of names listed in the Nominees column. However, in some years, the Nominees column is empty, meaning the winner was the only nominee. \n\nSo to calculate the total number of nominees across all years, we need to go through each year, count the number of nominees (1 if Nominees is empty, else 1 + number of names in Nominees column), and sum them all. \n\nBut the question is phrased as \"how many nominees are there each year for the naacp image award?\" which is a bit ambiguous. If it's asking for the number of nominees in each year, the answer would vary each year. But the answer format requires a single number. However, looking at the examples, the user might be asking for the total number of nominees across all years. \n\nAlternatively, maybe the question is asking for the number of nominees per year, but the answer is that it varies. However, the answer format requires a specific number. \n\nWait, perhaps the user is asking for the number of nominees in each year, but the answer is that each year has a certain",
+      "myagent_prediction": "The table does not provide a consistent number of nominees per year for the NAACP Image Award."
+    },
+    {
+      "id": "nu-2611",
+      "mact_correct": true,
+      "myagent_correct": false,
+      "mact_exec_error": false,
+      "mact_prediction": "Nieuport serial number 3958",
+      "myagent_prediction": "sopwith triplane s/n n5460"
+    },
+    {
+      "id": "nu-408",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "Team Bigazzi SRL",
+      "myagent_prediction": "Team Bigazzi SRL"
+    },
+    {
+      "id": "nu-1756",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "6",
+      "myagent_prediction": 6
+    },
+    {
+      "id": "nu-3422",
+      "mact_correct": false,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "more than 15",
+      "myagent_prediction": "more"
+    },
+    {
+      "id": "nu-1224",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "Canada",
+      "myagent_prediction": "Canada"
+    },
+    {
+      "id": "nu-4225",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "Linkou County",
+      "myagent_prediction": "Linkou County"
+    },
+    {
+      "id": "nu-3607",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "0",
+      "myagent_prediction": 0
+    },
+    {
+      "id": "nu-3336",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "3",
+      "myagent_prediction": 3
+    },
+    {
+      "id": "nu-484",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "2014",
+      "myagent_prediction": "2014.0"
+    },
+    {
+      "id": "nu-3535",
+      "mact_correct": true,
+      "myagent_correct": false,
+      "mact_exec_error": false,
+      "mact_prediction": "1985",
+      "myagent_prediction": "One or both bands not found in the table"
+    },
+    {
+      "id": "nu-4324",
+      "mact_correct": false,
+      "myagent_correct": false,
+      "mact_exec_error": false,
+      "mact_prediction": "August 2, 2027",
+      "myagent_prediction": "August 2, 2046"
+    },
+    {
+      "id": "nu-2269",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "3",
+      "myagent_prediction": 3
+    },
+    {
+      "id": "nu-866",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "5",
+      "myagent_prediction": 5
+    },
+    {
+      "id": "nu-2012",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "The Remixes",
+      "myagent_prediction": "The Remixes"
+    },
+    {
+      "id": "nu-3949",
+      "mact_correct": true,
+      "myagent_correct": false,
+      "mact_exec_error": false,
+      "mact_prediction": "Ulverstone",
+      "myagent_prediction": "Derby"
+    },
+    {
+      "id": "nu-1990",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "7",
+      "myagent_prediction": 7
+    },
+    {
+      "id": "nu-3542",
+      "mact_correct": false,
+      "myagent_correct": false,
+      "mact_exec_error": false,
+      "mact_prediction": "Peter Radford",
+      "myagent_prediction": "Peter Radford"
+    },
+    {
+      "id": "nu-1432",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "Alex Zanardi",
+      "myagent_prediction": "Alex Zanardi"
+    },
+    {
+      "id": "nu-1569",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "Milton Stapp",
+      "myagent_prediction": "Milton Stapp"
+    },
+    {
+      "id": "nu-3050",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "Matti Hautamäki",
+      "myagent_prediction": "Matti Hautamäki"
+    },
+    {
+      "id": "nu-2347",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "24",
+      "myagent_prediction": 24
+    },
+    {
+      "id": "nu-4087",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "2",
+      "myagent_prediction": 2
+    },
+    {
+      "id": "nu-2396",
+      "mact_correct": false,
+      "myagent_correct": false,
+      "mact_exec_error": false,
+      "mact_prediction": "5",
+      "myagent_prediction": 5
+    },
+    {
+      "id": "nu-1028",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "85",
+      "myagent_prediction": 85
+    },
+    {
+      "id": "nu-2232",
+      "mact_correct": true,
+      "myagent_correct": false,
+      "mact_exec_error": false,
+      "mact_prediction": "4",
+      "myagent_prediction": 0
+    },
+    {
+      "id": "nu-3438",
+      "mact_correct": false,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "Mr Sakkie",
+      "myagent_prediction": [
+        "Mr B.Melman",
+        "Mr P.Venter",
+        "Mrs E.Myer"
+      ]
+    },
+    {
+      "id": "nu-2223",
+      "mact_correct": true,
+      "myagent_correct": false,
+      "mact_exec_error": false,
+      "mact_prediction": "Kazuki Yoshino",
+      "myagent_prediction": "Rizawan Abdullah"
+    },
+    {
+      "id": "nu-2418",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "14",
+      "myagent_prediction": 14
+    },
+    {
+      "id": "nu-3140",
+      "mact_correct": false,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "prior to the start of each school year",
+      "myagent_prediction": "Accepts applications prior to the start of each school year"
+    },
+    {
+      "id": "nu-644",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "November 5",
+      "myagent_prediction": "November 5"
+    },
+    {
+      "id": "nu-1786",
+      "mact_correct": false,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "1990-1991 Season, 12, Chivas vs América, 1-1, December 9, 1990",
+      "myagent_prediction": "1990-1991 Season"
+    },
+    {
+      "id": "nu-3987",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "1950-1955",
+      "myagent_prediction": "1950-1955"
+    },
+    {
+      "id": "nu-1802",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "5",
+      "myagent_prediction": 5
+    },
+    {
+      "id": "nu-1951",
+      "mact_correct": true,
+      "myagent_correct": false,
+      "mact_exec_error": false,
+      "mact_prediction": "Runner-up",
+      "myagent_prediction": "No unique hard surface event found"
+    },
+    {
+      "id": "nu-3049",
+      "mact_correct": false,
+      "myagent_correct": false,
+      "mact_exec_error": false,
+      "mact_prediction": "M. Hirvonen",
+      "myagent_prediction": "Loten 1"
+    },
+    {
+      "id": "nu-1125",
+      "mact_correct": true,
+      "myagent_correct": false,
+      "mact_exec_error": false,
+      "mact_prediction": "7",
+      "myagent_prediction": 0
+    },
+    {
+      "id": "nu-2848",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "6",
+      "myagent_prediction": 6
+    },
+    {
+      "id": "nu-3406",
+      "mact_correct": false,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "15",
+      "myagent_prediction": 4
+    },
+    {
+      "id": "nu-4328",
+      "mact_correct": true,
+      "myagent_correct": false,
+      "mact_exec_error": false,
+      "mact_prediction": "Spain",
+      "myagent_prediction": "Total"
+    },
+    {
+      "id": "nu-956",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "5",
+      "myagent_prediction": 5
+    },
+    {
+      "id": "nu-35",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "0",
+      "myagent_prediction": 0
+    },
+    {
+      "id": "nu-403",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "Bansko, Bulgaria",
+      "myagent_prediction": "Bansko, Bulgaria"
+    },
+    {
+      "id": "nu-2291",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "2",
+      "myagent_prediction": 2
+    },
+    {
+      "id": "nu-2850",
+      "mact_correct": true,
+      "myagent_correct": false,
+      "mact_exec_error": false,
+      "mact_prediction": "\"Ironic\"",
+      "myagent_prediction": [
+        "You Oughta Know\" A",
+        "Hand in My Pocket"
+      ]
+    },
+    {
+      "id": "nu-600",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "Argentina",
+      "myagent_prediction": "Argentina"
+    },
+    {
+      "id": "nu-2502",
+      "mact_correct": false,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "China PR, Guam, Hong Kong, Japan, Korea DPR, Korea Republic, Macau, Mongolia, Northern Mariana Islands, Chinese Taipei",
+      "myagent_prediction": [
+        "China PR",
+        "Guam",
+        "Hong Kong",
+        "Japan",
+        "Korea DPR",
+        "Korea Republic",
+        "Macau",
+        "Mongolia",
+        "Northern Mariana Islands",
+        "Chinese Taipei"
+      ]
+    },
+    {
+      "id": "nu-2356",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "6",
+      "myagent_prediction": 6.0
+    },
+    {
+      "id": "nu-1815",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "2",
+      "myagent_prediction": 2
+    },
+    {
+      "id": "nu-1913",
+      "mact_correct": false,
+      "myagent_correct": false,
+      "mact_exec_error": false,
+      "mact_prediction": "Spain.",
+      "myagent_prediction": "the team"
+    },
+    {
+      "id": "nu-3226",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "Clyde",
+      "myagent_prediction": "Clyde"
+    },
+    {
+      "id": "nu-3116",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "Ukraine",
+      "myagent_prediction": "Ukraine"
+    },
+    {
+      "id": "nu-3085",
+      "mact_correct": false,
+      "myagent_correct": false,
+      "mact_exec_error": false,
+      "mact_prediction": "Hammer throw",
+      "myagent_prediction": "Hammer throw"
+    },
+    {
+      "id": "nu-2633",
+      "mact_correct": false,
+      "myagent_correct": true,
+      "mact_exec_error": true,
+      "mact_prediction": "",
+      "myagent_prediction": "below"
+    },
+    {
+      "id": "nu-1926",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "9",
+      "myagent_prediction": 9
+    },
+    {
+      "id": "nu-216",
+      "mact_correct": true,
+      "myagent_correct": false,
+      "mact_exec_error": false,
+      "mact_prediction": "11",
+      "myagent_prediction": 12
+    },
+    {
+      "id": "nu-4099",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "December 14, 1986",
+      "myagent_prediction": "December 14, 1986"
+    },
+    {
+      "id": "nu-1115",
+      "mact_correct": false,
+      "myagent_correct": false,
+      "mact_exec_error": false,
+      "mact_prediction": "4.0L and 4.4L",
+      "myagent_prediction": "Inconsistent volumes found"
+    },
+    {
+      "id": "nu-1749",
+      "mact_correct": false,
+      "myagent_correct": false,
+      "mact_exec_error": false,
+      "mact_prediction": "Igor' Livanov 49.the actor",
+      "myagent_prediction": "Igor' Livanov 49.the actor"
+    },
+    {
+      "id": "nu-3939",
+      "mact_correct": true,
+      "myagent_correct": false,
+      "mact_exec_error": false,
+      "mact_prediction": "Thiruvay Mozhi",
+      "myagent_prediction": "Total number of pasurams"
+    },
+    {
+      "id": "nu-2312",
+      "mact_correct": false,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "Downtown.",
+      "myagent_prediction": "Cataraqui Town Centre St. Lawrence College"
+    },
+    {
+      "id": "nu-3977",
+      "mact_correct": false,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "-18",
+      "myagent_prediction": 18
+    },
+    {
+      "id": "nu-2635",
+      "mact_correct": true,
+      "myagent_correct": false,
+      "mact_exec_error": false,
+      "mact_prediction": "Ole Mørk",
+      "myagent_prediction": "Henrik Jensen"
+    },
+    {
+      "id": "nu-3431",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "Lyndon B. Johnson",
+      "myagent_prediction": "Lyndon B. Johnson"
+    },
+    {
+      "id": "nu-712",
+      "mact_correct": false,
+      "myagent_correct": false,
+      "mact_exec_error": false,
+      "mact_prediction": "Cahill, Colosimo, Culina, Elrich, Griffiths, Skoko, Zdrilic",
+      "myagent_prediction": 7
+    },
+    {
+      "id": "nu-412",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "14",
+      "myagent_prediction": 14
+    },
+    {
+      "id": "nu-1591",
+      "mact_correct": false,
+      "myagent_correct": false,
+      "mact_exec_error": false,
+      "mact_prediction": "24.86",
+      "myagent_prediction": 24.86
+    },
+    {
+      "id": "nu-2297",
+      "mact_correct": false,
+      "myagent_correct": false,
+      "mact_exec_error": false,
+      "mact_prediction": "Tony Lang",
+      "myagent_prediction": "Tony Lang (29)"
+    },
+    {
+      "id": "nu-525",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "St. Louis Cardinals",
+      "myagent_prediction": "St. Louis Cardinals"
+    },
+    {
+      "id": "nu-1329",
+      "mact_correct": false,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "Major General Raza Hussain and Major General Ahmed Bilal",
+      "myagent_prediction": [
+        "Major General Raza Hussain",
+        "Major General Ahmed Bilal"
+      ]
+    },
+    {
+      "id": "nu-3088",
+      "mact_correct": false,
+      "myagent_correct": false,
+      "mact_exec_error": false,
+      "mact_prediction": "L 8–14",
+      "myagent_prediction": "L 8–14"
+    },
+    {
+      "id": "nu-2903",
+      "mact_correct": false,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "Narkhed-New Amravati Pass, Bhusaval-Narkhed Pass",
+      "myagent_prediction": [
+        "Narkhed-New Amravati Pass",
+        "Bhusaval-Narkhed Pass"
+      ]
+    },
+    {
+      "id": "nu-506",
+      "mact_correct": false,
+      "myagent_correct": false,
+      "mact_exec_error": false,
+      "mact_prediction": "5.0",
+      "myagent_prediction": 5.0
+    },
+    {
+      "id": "nu-2109",
+      "mact_correct": true,
+      "myagent_correct": false,
+      "mact_exec_error": false,
+      "mact_prediction": "5",
+      "myagent_prediction": "3"
+    },
+    {
+      "id": "nu-2139",
+      "mact_correct": true,
+      "myagent_correct": false,
+      "mact_exec_error": false,
+      "mact_prediction": "\\Thin Line\\\"",
+      "myagent_prediction": "No data available for 1984 in the table."
+    },
+    {
+      "id": "nu-3399",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "Italy",
+      "myagent_prediction": "Italy"
+    },
+    {
+      "id": "nu-1604",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "3",
+      "myagent_prediction": 3
+    },
+    {
+      "id": "nu-3428",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "2010",
+      "myagent_prediction": 2010
+    },
+    {
+      "id": "nu-2619",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "Uholka / Wide Meadow",
+      "myagent_prediction": "Uholka / Wide Meadow"
+    },
+    {
+      "id": "nu-3290",
+      "mact_correct": false,
+      "myagent_correct": false,
+      "mact_exec_error": true,
+      "mact_prediction": "",
+      "myagent_prediction": 49
+    },
+    {
+      "id": "nu-3922",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "2012",
+      "myagent_prediction": "2012"
+    },
+    {
+      "id": "nu-3527",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "AFR Midnight Rambler",
+      "myagent_prediction": "AFR Midnight Rambler"
+    },
+    {
+      "id": "nu-463",
+      "mact_correct": true,
+      "myagent_correct": false,
+      "mact_exec_error": false,
+      "mact_prediction": "3",
+      "myagent_prediction": "5"
+    },
+    {
+      "id": "nu-830",
+      "mact_correct": true,
+      "myagent_correct": false,
+      "mact_exec_error": false,
+      "mact_prediction": "Terry Furlow",
+      "myagent_prediction": "Bernie Fryer"
+    },
+    {
+      "id": "nu-697",
+      "mact_correct": true,
+      "myagent_correct": false,
+      "mact_exec_error": false,
+      "mact_prediction": "40",
+      "myagent_prediction": "13"
+    },
+    {
+      "id": "nu-3375",
+      "mact_correct": true,
+      "myagent_correct": false,
+      "mact_exec_error": false,
+      "mact_prediction": "Commonwealth Games",
+      "myagent_prediction": "No unique race in Malaysia found."
+    },
+    {
+      "id": "nu-1298",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "1960",
+      "myagent_prediction": 1960
+    },
+    {
+      "id": "nu-1870",
+      "mact_correct": true,
+      "myagent_correct": false,
+      "mact_exec_error": false,
+      "mact_prediction": "Five",
+      "myagent_prediction": [
+        "Four"
+      ]
+    },
+    {
+      "id": "nu-3139",
+      "mact_correct": false,
+      "myagent_correct": true,
+      "mact_exec_error": true,
+      "mact_prediction": "",
+      "myagent_prediction": 3
+    },
+    {
+      "id": "nu-2663",
+      "mact_correct": true,
+      "myagent_correct": false,
+      "mact_exec_error": false,
+      "mact_prediction": "5",
+      "myagent_prediction": 2
+    },
+    {
+      "id": "nu-4020",
+      "mact_correct": false,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "MLW",
+      "myagent_prediction": "ALCO"
+    },
+    {
+      "id": "nu-3279",
+      "mact_correct": true,
+      "myagent_correct": false,
+      "mact_exec_error": false,
+      "mact_prediction": "3",
+      "myagent_prediction": 5
+    },
+    {
+      "id": "nu-2265",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "10",
+      "myagent_prediction": 10
+    },
+    {
+      "id": "nu-824",
+      "mact_correct": false,
+      "myagent_correct": false,
+      "mact_exec_error": false,
+      "mact_prediction": "Lev Urusov (9)\n\nSo that's 9 ambassadors in the first part (entries 1-16). Then from 23 to",
+      "myagent_prediction": 9
+    },
+    {
+      "id": "nu-3767",
+      "mact_correct": true,
+      "myagent_correct": false,
+      "mact_exec_error": false,
+      "mact_prediction": "0",
+      "myagent_prediction": "Total"
+    },
+    {
+      "id": "nu-1093",
+      "mact_correct": true,
+      "myagent_correct": false,
+      "mact_exec_error": false,
+      "mact_prediction": "45",
+      "myagent_prediction": 42
+    },
+    {
+      "id": "nu-1357",
+      "mact_correct": false,
+      "myagent_correct": false,
+      "mact_exec_error": false,
+      "mact_prediction": "Durham Historic District, Smith Chapel, Gen. John Sullivan House, Thompson Hall, Wiswall Falls Mills Site",
+      "myagent_prediction": [
+        "Durham Historic District"
+      ]
+    },
+    {
+      "id": "nu-4307",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "less",
+      "myagent_prediction": "less"
+    },
+    {
+      "id": "nu-2788",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "2012",
+      "myagent_prediction": 2012.0
+    },
+    {
+      "id": "nu-976",
+      "mact_correct": true,
+      "myagent_correct": false,
+      "mact_exec_error": false,
+      "mact_prediction": "4",
+      "myagent_prediction": 0
+    },
+    {
+      "id": "nu-2426",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "Lyle Larson",
+      "myagent_prediction": "Lyle Larson"
+    },
+    {
+      "id": "nu-476",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "1 year",
+      "myagent_prediction": 1
+    },
+    {
+      "id": "nu-2311",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "FK Radnički Niš",
+      "myagent_prediction": "FK Radnički Niš"
+    },
+    {
+      "id": "nu-714",
+      "mact_correct": false,
+      "myagent_correct": false,
+      "mact_exec_error": false,
+      "mact_prediction": "Largest value is 9.99...×10^Emax",
+      "myagent_prediction": "decimal128"
+    },
+    {
+      "id": "nu-2919",
+      "mact_correct": true,
+      "myagent_correct": false,
+      "mact_exec_error": false,
+      "mact_prediction": "1773",
+      "myagent_prediction": 0.0
+    },
+    {
+      "id": "nu-4291",
+      "mact_correct": true,
+      "myagent_correct": false,
+      "mact_exec_error": false,
+      "mact_prediction": "Center",
+      "myagent_prediction": "Right Wing"
+    },
+    {
+      "id": "nu-2973",
+      "mact_correct": false,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "more than 15",
+      "myagent_prediction": "more"
+    },
+    {
+      "id": "nu-1313",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "5",
+      "myagent_prediction": 5
+    },
+    {
+      "id": "nu-3488",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "333",
+      "myagent_prediction": 333.0
+    },
+    {
+      "id": "nu-1030",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "23",
+      "myagent_prediction": 23
+    },
+    {
+      "id": "nu-3027",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "5",
+      "myagent_prediction": 5
+    },
+    {
+      "id": "nu-3487",
+      "mact_correct": false,
+      "myagent_correct": true,
+      "mact_exec_error": true,
+      "mact_prediction": "",
+      "myagent_prediction": "Darren Ramsay"
+    },
+    {
+      "id": "nu-1424",
+      "mact_correct": true,
+      "myagent_correct": false,
+      "mact_exec_error": false,
+      "mact_prediction": "September 23, 2001",
+      "myagent_prediction": "September 9, 2001"
+    },
+    {
+      "id": "nu-4318",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "Tiree",
+      "myagent_prediction": "Tiree"
+    },
+    {
+      "id": "nu-2547",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "Raphael Chukwu",
+      "myagent_prediction": "Raphael Chukwu"
+    },
+    {
+      "id": "nu-2981",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "2007",
+      "myagent_prediction": 2007
+    },
+    {
+      "id": "nu-2032",
+      "mact_correct": false,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "82",
+      "myagent_prediction": 11
+    },
+    {
+      "id": "nu-1761",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "2011",
+      "myagent_prediction": 2011.0
+    },
+    {
+      "id": "nu-3074",
+      "mact_correct": false,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "Surround Stakes and Warwick Stakes",
+      "myagent_prediction": [
+        "Surround Stakes",
+        "Warwick Stakes"
+      ]
+    },
+    {
+      "id": "nu-2506",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "Independent",
+      "myagent_prediction": "Independent"
+    },
+    {
+      "id": "nu-65",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "Alissa Joanndova",
+      "myagent_prediction": "Alissa Joanndova"
+    },
+    {
+      "id": "nu-1446",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "New York.",
+      "myagent_prediction": "New York"
+    },
+    {
+      "id": "nu-1246",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "9,563",
+      "myagent_prediction": 9563.0
+    },
+    {
+      "id": "nu-267",
+      "mact_correct": false,
+      "myagent_correct": false,
+      "mact_exec_error": false,
+      "mact_prediction": "Episode 8",
+      "myagent_prediction": "Episode 8 had a better BBC Three weekly ranking than Episode 9."
+    },
+    {
+      "id": "nu-4092",
+      "mact_correct": false,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "No, all draft picks are from the United States.",
+      "myagent_prediction": false
+    },
+    {
+      "id": "nu-107",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "Africa",
+      "myagent_prediction": "Africa"
+    },
+    {
+      "id": "nu-543",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "8",
+      "myagent_prediction": 8
+    },
+    {
+      "id": "nu-3982",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "before",
+      "myagent_prediction": "before"
+    },
+    {
+      "id": "nu-721",
+      "mact_correct": true,
+      "myagent_correct": false,
+      "mact_exec_error": false,
+      "mact_prediction": "carrots",
+      "myagent_prediction": "sugar not found in the table"
+    },
+    {
+      "id": "nu-4162",
+      "mact_correct": false,
+      "myagent_correct": false,
+      "mact_exec_error": false,
+      "mact_prediction": "1987–88",
+      "myagent_prediction": "1987–88"
+    },
+    {
+      "id": "nu-641",
+      "mact_correct": false,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "7",
+      "myagent_prediction": 8
+    },
+    {
+      "id": "nu-1615",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "London Heathrow",
+      "myagent_prediction": "London Heathrow"
+    },
+    {
+      "id": "nu-1845",
+      "mact_correct": true,
+      "myagent_correct": false,
+      "mact_exec_error": false,
+      "mact_prediction": "Re-establishment of Krooni currency",
+      "myagent_prediction": "Barcelona Olympics"
+    },
+    {
+      "id": "nu-888",
+      "mact_correct": false,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "retrieve all rows where Finish = 1 and Year is between 2001-2013",
+      "myagent_prediction": 3
+    },
+    {
+      "id": "nu-1498",
+      "mact_correct": false,
+      "myagent_correct": false,
+      "mact_exec_error": false,
+      "mact_prediction": "8",
+      "myagent_prediction": "Rasul Kudayev"
+    },
+    {
+      "id": "nu-53",
+      "mact_correct": true,
+      "myagent_correct": false,
+      "mact_exec_error": false,
+      "mact_prediction": "1935",
+      "myagent_prediction": 1988
+    },
+    {
+      "id": "nu-2144",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "1996",
+      "myagent_prediction": "1996"
+    },
+    {
+      "id": "nu-717",
+      "mact_correct": true,
+      "myagent_correct": false,
+      "mact_exec_error": false,
+      "mact_prediction": "6",
+      "myagent_prediction": "Game 33 not found in the table."
+    },
+    {
+      "id": "nu-1970",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "Poland",
+      "myagent_prediction": "Poland"
+    },
+    {
+      "id": "nu-1915",
+      "mact_correct": false,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "First Kiss",
+      "myagent_prediction": "Kiss"
+    },
+    {
+      "id": "nu-2183",
+      "mact_correct": true,
+      "myagent_correct": false,
+      "mact_exec_error": false,
+      "mact_prediction": "Spas Delev",
+      "myagent_prediction": "Total"
+    },
+    {
+      "id": "nu-889",
+      "mact_correct": false,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "retrieve the Finish value for the row where Year is 1930",
+      "myagent_prediction": "above"
+    },
+    {
+      "id": "nu-3891",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "6",
+      "myagent_prediction": 6
+    },
+    {
+      "id": "nu-996",
+      "mact_correct": false,
+      "myagent_correct": false,
+      "mact_exec_error": false,
+      "mact_prediction": "9",
+      "myagent_prediction": 7
+    },
+    {
+      "id": "nu-1317",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "United States",
+      "myagent_prediction": "United States"
+    },
+    {
+      "id": "nu-1421",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "6",
+      "myagent_prediction": 6
+    },
+    {
+      "id": "nu-2934",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "20",
+      "myagent_prediction": 20.0
+    },
+    {
+      "id": "nu-207",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "English",
+      "myagent_prediction": "English"
+    },
+    {
+      "id": "nu-1686",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "Bydgoszcz, Poland",
+      "myagent_prediction": "Bydgoszcz, Poland"
+    },
+    {
+      "id": "nu-2172",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "4",
+      "myagent_prediction": 4
+    },
+    {
+      "id": "nu-2483",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "1969",
+      "myagent_prediction": "1969"
+    },
+    {
+      "id": "nu-2120",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "4",
+      "myagent_prediction": 4
+    },
+    {
+      "id": "nu-1657",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "Sekgosese",
+      "myagent_prediction": "Sekgosese"
+    },
+    {
+      "id": "nu-983",
+      "mact_correct": false,
+      "myagent_correct": false,
+      "mact_exec_error": false,
+      "mact_prediction": "2.04 seconds",
+      "myagent_prediction": "0:2.04"
+    },
+    {
+      "id": "nu-3200",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "L.D. Alajuelense",
+      "myagent_prediction": "L.D. Alajuelense"
+    },
+    {
+      "id": "nu-2332",
+      "mact_correct": true,
+      "myagent_correct": true,
+      "mact_exec_error": false,
+      "mact_prediction": "Sharp",
+      "myagent_prediction": "Sharp"
+    }
+  ]
+}

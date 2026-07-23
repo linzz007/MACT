@@ -1,6 +1,6 @@
 # Qwen3-32B Blind200 MACT Full200 Ledger
 
-最后更新：2026-07-23 16:48:31 CST
+最后更新：2026-07-23 16:50:49 CST
 
 ## 目标
 
@@ -98,6 +98,7 @@
 | 2026-07-23 16:48:31 CST | WTQ | 198/200 | `nu-983` | ok | row198 ok; last row token 23692; elapsed 138.0s |
 | 2026-07-23 16:48:31 CST | WTQ | 199/200 | `nu-3200` | ok | row199 ok; last row token 6841; elapsed 72.4s |
 | 2026-07-23 16:48:31 CST | WTQ | 200/200 | `nu-2332` | ok | row200 ok; last row token 10496; elapsed 78.9s; END_WTQ_FULL200 2026-07-23 16:45:33 CST |
+| 2026-07-23 16:50:49 CST | WTQ | 200/200 | eval/paired | complete | generated `wtq_mact_full200_eval.json`, `wtq_mact_full200_errors.jsonl`, `wtq_mact_full200_paired.json`; paired myAgent 131/200 vs MACT 148/200; token ratio 0.5926 |
 
 ## 已知 core100 结论
 
@@ -108,6 +109,15 @@ token ratio: 0.5913
 ```
 
 WTQ 的 `nu-4299` 和 `nu-2633` 在 seed 中保留为 MACT context length failure；full200 tail 新增 `nu-3290`、`nu-3139`、`nu-3487` 同类失败。不能删除或重跑后静默替换；若后续 repair，必须另行标注 repaired 口径。
+
+WTQ full200 paired result:
+
+```text
+myAgent: 131/200 = 0.6550
+MACT:    148/200 = 0.7400
+token ratio: 0.5926
+paired disagreement: both_correct=108, myagent_only=23, mact_only=40, neither=29
+```
 
 ## 运行入口
 
