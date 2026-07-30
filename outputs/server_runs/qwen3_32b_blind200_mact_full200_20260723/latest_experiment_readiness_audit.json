@@ -39,7 +39,7 @@
       "present": true
     }
   },
-  "generated_at": "2026-07-30T13:40:05.964513Z",
+  "generated_at": "2026-07-30T13:44:03.282344Z",
   "mact_root": "/home/ubuntu/lzz/MACT",
   "model_readiness": {
     "api_keys_present": [],
@@ -51,6 +51,21 @@
       "Qwen3-14B-AWQ",
       "Qwen3-32B"
     ],
+    "local_model_paths": {
+      "Qwen2.5-14B-Instruct-AWQ": [
+        "/home/ubuntu/models/Qwen2.5-14B-Instruct-AWQ"
+      ],
+      "Qwen2.5-3B-Instruct": [
+        "/home/ubuntu/models/Qwen2.5-3B-Instruct"
+      ],
+      "Qwen3-14B-AWQ": [
+        "/home/ubuntu/models/Qwen3-14B-AWQ"
+      ],
+      "Qwen3-32B": [
+        "/home/ubuntu/.cache/huggingface/hub/models--Qwen--Qwen3-32B/snapshots/9216db5781bf21249d130ec9da846c4624c16137",
+        "/home/ubuntu/models/Qwen3-32B"
+      ]
+    },
     "local_models": [
       "Qwen2.5-14B-Instruct-AWQ",
       "Qwen2.5-3B-Instruct",
@@ -58,6 +73,7 @@
       "Qwen3-32B"
     ],
     "next_action": "wait_for_new_model_or_api_key",
+    "untested_local_model_paths": {},
     "untested_local_models": []
   },
   "myagent_root": "/home/ubuntu/lzz/MyAgent",
