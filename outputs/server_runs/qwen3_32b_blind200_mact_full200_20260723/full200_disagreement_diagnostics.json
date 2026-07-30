@@ -1,0 +1,3722 @@
+{
+  "generated_at": "2026-07-30 17:09:20 CST",
+  "source_run_dir": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_blind200_mact_full200_20260723",
+  "purpose": "Diagnose Qwen3-32B full200 paired disagreements and identify next optimization targets without rerunning models.",
+  "datasets": {
+    "wtq": {
+      "paired_disagreement": {
+        "both_correct": 108,
+        "myagent_only": 23,
+        "mact_only": 40,
+        "neither": 29
+      },
+      "net_vs_mact": -17,
+      "mact_exec_error_count": 5,
+      "mact_exec_error_samples": [
+        {
+          "id": "nu-4299",
+          "error": "MACT sample 21 failed or produced 0 rows with returncode 0; see /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_blind200_mact_core50_20260722/logs/wtq_mact_core50.log"
+        },
+        {
+          "id": "nu-2633",
+          "error": "MACT sample 97 failed or produced 0 rows with returncode 0; see /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_blind200_mact_core100_20260722/logs/wtq_mact_core100.log"
+        },
+        {
+          "id": "nu-3290",
+          "error": "MACT sample 123 failed or produced 0 rows with returncode 0; see /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_blind200_mact_full200_20260723/logs/wtq_mact_full200.log"
+        },
+        {
+          "id": "nu-3139",
+          "error": "MACT sample 132 failed or produced 0 rows with returncode 0; see /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_blind200_mact_full200_20260723/logs/wtq_mact_full200.log"
+        },
+        {
+          "id": "nu-3487",
+          "error": "MACT sample 155 failed or produced 0 rows with returncode 0; see /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_blind200_mact_full200_20260723/logs/wtq_mact_full200.log"
+        }
+      ],
+      "by_bucket": {
+        "mact_only": {
+          "count": 40,
+          "top_problem_tags": [
+            {
+              "key": "negation_logic",
+              "count": 16
+            },
+            {
+              "key": "count",
+              "count": 16
+            },
+            {
+              "key": "superlative_order",
+              "count": 15
+            },
+            {
+              "key": "temporal",
+              "count": 14
+            },
+            {
+              "key": "arithmetic",
+              "count": 5
+            },
+            {
+              "key": "list_entity",
+              "count": 2
+            },
+            {
+              "key": "comparison",
+              "count": 2
+            },
+            {
+              "key": "none",
+              "count": 1
+            }
+          ],
+          "top_question_categories": [
+            {
+              "key": "temporal",
+              "count": 18
+            },
+            {
+              "key": "count",
+              "count": 16
+            },
+            {
+              "key": "superlative",
+              "count": 11
+            },
+            {
+              "key": "arithmetic",
+              "count": 7
+            },
+            {
+              "key": "plain_lookup",
+              "count": 6
+            },
+            {
+              "key": "comparison",
+              "count": 2
+            },
+            {
+              "key": "closed_choice",
+              "count": 1
+            },
+            {
+              "key": "negation",
+              "count": 1
+            }
+          ],
+          "risk_level": {
+            "high": 38,
+            "light": 1,
+            "fallback": 1
+          },
+          "route_type": {
+            "COMPLEX": 36,
+            "SIMPLE": 4
+          },
+          "deterministic_shortcut_applied": {
+            "false": 40
+          },
+          "strong_verification_applied": {
+            "true": 39,
+            "false": 1
+          },
+          "avg_myagent_tokens": 6577.625,
+          "avg_myagent_seconds": 17.042610177147434,
+          "samples": [
+            {
+              "id": "nu-1434",
+              "question": "what is the highest chart position ever achieved by one of dino's singles?",
+              "gold": [
+                "3"
+              ],
+              "myagent_prediction": "\\I Like It\\\"\"",
+              "mact_prediction": "3",
+              "myagent_final_value": "\\I Like It\\\"\"",
+              "myagent_final_answer": "\\I Like It\\\"\"",
+              "myagent_exec_success": true,
+              "myagent_exec_error": null,
+              "risk_level": "high",
+              "route_type": "COMPLEX",
+              "problem_tags": [
+                "superlative_order"
+              ],
+              "deterministic_shortcut_applied": false,
+              "deterministic_shortcut_reason": "",
+              "strong_verification_applied": true,
+              "critic_skipped": true,
+              "categories": [
+                "superlative"
+              ],
+              "myagent_tokens": 5758,
+              "mact_tokens": 6751,
+              "myagent_seconds": 13.04415002395399,
+              "mact_seconds": 59.95807609008625,
+              "mact_exec_error": null
+            },
+            {
+              "id": "nu-2873",
+              "question": "who drove the only saab car?",
+              "gold": [
+                "Mike Imrie"
+              ],
+              "myagent_prediction": 7.0,
+              "mact_prediction": "Mike Imrie",
+              "myagent_final_value": 7.0,
+              "myagent_final_answer": "7.0",
+              "myagent_exec_success": true,
+              "myagent_exec_error": null,
+              "risk_level": "high",
+              "route_type": "COMPLEX",
+              "problem_tags": [
+                "negation_logic"
+              ],
+              "deterministic_shortcut_applied": false,
+              "deterministic_shortcut_reason": "",
+              "strong_verification_applied": true,
+              "critic_skipped": true,
+              "categories": [
+                "plain_lookup"
+              ],
+              "myagent_tokens": 6514,
+              "mact_tokens": 8174,
+              "myagent_seconds": 15.833300763042644,
+              "mact_seconds": 53.61416692798957,
+              "mact_exec_error": null
+            },
+            {
+              "id": "nu-2453",
+              "question": "for which film did georgina hale receive her bafta award?",
+              "gold": [
+                "Mahler"
+              ],
+              "myagent_prediction": "Not found",
+              "mact_prediction": "Mahler",
+              "myagent_final_value": "Not found",
+              "myagent_final_answer": "Not found",
+              "myagent_exec_success": true,
+              "myagent_exec_error": null,
+              "risk_level": "light",
+              "route_type": "COMPLEX",
+              "problem_tags": [],
+              "deterministic_shortcut_applied": false,
+              "deterministic_shortcut_reason": "",
+              "strong_verification_applied": false,
+              "critic_skipped": true,
+              "categories": [
+                "plain_lookup"
+              ],
+              "myagent_tokens": 1896,
+              "mact_tokens": 7957,
+              "myagent_seconds": 10.630309440894052,
+              "mact_seconds": 99.62272965698503,
+              "mact_exec_error": null
+            },
+            {
+              "id": "nu-709",
+              "question": "what is the number of tablets?",
+              "gold": [
+                "11"
+              ],
+              "myagent_prediction": 12,
+              "mact_prediction": "11",
+              "myagent_final_value": 12,
+              "myagent_final_answer": "12",
+              "myagent_exec_success": true,
+              "myagent_exec_error": null,
+              "risk_level": "high",
+              "route_type": "COMPLEX",
+              "problem_tags": [
+                "count"
+              ],
+              "deterministic_shortcut_applied": false,
+              "deterministic_shortcut_reason": "",
+              "strong_verification_applied": true,
+              "critic_skipped": true,
+              "categories": [
+                "count"
+              ],
+              "myagent_tokens": 5946,
+              "mact_tokens": 8561,
+              "myagent_seconds": 17.347742738900706,
+              "mact_seconds": 105.58370339195244,
+              "mact_exec_error": null
+            },
+            {
+              "id": "nu-3934",
+              "question": "in what year did salvatore bettiol run in the most marathons?",
+              "gold": [
+                "1987"
+              ],
+              "myagent_prediction": 1986.0,
+              "mact_prediction": "1987",
+              "myagent_final_value": 1986.0,
+              "myagent_final_answer": "1986.0",
+              "myagent_exec_success": true,
+              "myagent_exec_error": null,
+              "risk_level": "high",
+              "route_type": "COMPLEX",
+              "problem_tags": [
+                "superlative_order",
+                "temporal"
+              ],
+              "deterministic_shortcut_applied": false,
+              "deterministic_shortcut_reason": "",
+              "strong_verification_applied": true,
+              "critic_skipped": true,
+              "categories": [
+                "superlative",
+                "temporal"
+              ],
+              "myagent_tokens": 5461,
+              "mact_tokens": 7480,
+              "myagent_seconds": 15.320349320070818,
+              "mact_seconds": 96.70734446309507,
+              "mact_exec_error": null
+            },
+            {
+              "id": "nu-1505",
+              "question": "how many books did \"harper & brothers\" publish?",
+              "gold": [
+                "74"
+              ],
+              "myagent_prediction": 34,
+              "mact_prediction": "74.",
+              "myagent_final_value": 34,
+              "myagent_final_answer": "34",
+              "myagent_exec_success": true,
+              "myagent_exec_error": null,
+              "risk_level": "high",
+              "route_type": "COMPLEX",
+              "problem_tags": [
+                "count"
+              ],
+              "deterministic_shortcut_applied": false,
+              "deterministic_shortcut_reason": "",
+              "strong_verification_applied": true,
+              "critic_skipped": true,
+              "categories": [
+                "count"
+              ],
+              "myagent_tokens": 8223,
+              "mact_tokens": 22107,
+              "myagent_seconds": 11.684209886007011,
+              "mact_seconds": 304.26870515500195,
+              "mact_exec_error": null
+            },
+            {
+              "id": "nu-2213",
+              "question": "what is the total number of goals?",
+              "gold": [
+                "4"
+              ],
+              "myagent_prediction": 8.0,
+              "mact_prediction": "4",
+              "myagent_final_value": 8.0,
+              "myagent_final_answer": "8.0",
+              "myagent_exec_success": true,
+              "myagent_exec_error": null,
+              "risk_level": "high",
+              "route_type": "COMPLEX",
+              "problem_tags": [
+                "count",
+                "arithmetic"
+              ],
+              "deterministic_shortcut_applied": false,
+              "deterministic_shortcut_reason": "",
+              "strong_verification_applied": true,
+              "critic_skipped": true,
+              "categories": [
+                "arithmetic",
+                "count"
+              ],
+              "myagent_tokens": 4847,
+              "mact_tokens": 6358,
+              "myagent_seconds": 9.26744815800339,
+              "mact_seconds": 49.13273939304054,
+              "mact_exec_error": null
+            },
+            {
+              "id": "nu-1826",
+              "question": "how many of the educational websites have used at least limited advertising?",
+              "gold": [
+                "7"
+              ],
+              "myagent_prediction": 4,
+              "mact_prediction": "7",
+              "myagent_final_value": 4,
+              "myagent_final_answer": "4",
+              "myagent_exec_success": true,
+              "myagent_exec_error": null,
+              "risk_level": "high",
+              "route_type": "COMPLEX",
+              "problem_tags": [
+                "count",
+                "superlative_order",
+                "negation_logic"
+              ],
+              "deterministic_shortcut_applied": false,
+              "deterministic_shortcut_reason": "",
+              "strong_verification_applied": true,
+              "critic_skipped": true,
+              "categories": [
+                "count",
+                "superlative"
+              ],
+              "myagent_tokens": 5196,
+              "mact_tokens": 8775,
+              "myagent_seconds": 15.509047179017216,
+              "mact_seconds": 123.61505481391214,
+              "mact_exec_error": null
+            }
+          ]
+        },
+        "myagent_only": {
+          "count": 23,
+          "top_problem_tags": [
+            {
+              "key": "temporal",
+              "count": 10
+            },
+            {
+              "key": "negation_logic",
+              "count": 8
+            },
+            {
+              "key": "count",
+              "count": 5
+            },
+            {
+              "key": "comparison",
+              "count": 4
+            },
+            {
+              "key": "list_entity",
+              "count": 4
+            },
+            {
+              "key": "superlative_order",
+              "count": 3
+            },
+            {
+              "key": "none",
+              "count": 3
+            },
+            {
+              "key": "arithmetic",
+              "count": 1
+            }
+          ],
+          "top_question_categories": [
+            {
+              "key": "temporal",
+              "count": 11
+            },
+            {
+              "key": "plain_lookup",
+              "count": 5
+            },
+            {
+              "key": "count",
+              "count": 5
+            },
+            {
+              "key": "comparison",
+              "count": 4
+            },
+            {
+              "key": "arithmetic",
+              "count": 4
+            },
+            {
+              "key": "closed_choice",
+              "count": 3
+            },
+            {
+              "key": "negation",
+              "count": 2
+            },
+            {
+              "key": "superlative",
+              "count": 2
+            }
+          ],
+          "risk_level": {
+            "high": 20,
+            "medium": 2,
+            "fallback": 1
+          },
+          "route_type": {
+            "COMPLEX": 21,
+            "SIMPLE": 2
+          },
+          "deterministic_shortcut_applied": {
+            "true": 1,
+            "false": 22
+          },
+          "strong_verification_applied": {
+            "true": 21,
+            "false": 2
+          },
+          "avg_myagent_tokens": 6876.304347826087,
+          "avg_myagent_seconds": 17.777601034238774,
+          "samples": [
+            {
+              "id": "nu-58",
+              "question": "who was the top placing competitor?",
+              "gold": [
+                "Esther Shahamorov"
+              ],
+              "myagent_prediction": "Esther Shahamorov",
+              "mact_prediction": "esther shahamorov with 5th place",
+              "myagent_final_value": "Esther Shahamorov",
+              "myagent_final_answer": "Esther Shahamorov",
+              "myagent_exec_success": true,
+              "myagent_exec_error": null,
+              "risk_level": "high",
+              "route_type": "COMPLEX",
+              "problem_tags": [
+                "superlative_order"
+              ],
+              "deterministic_shortcut_applied": true,
+              "deterministic_shortcut_reason": "WTQ top placing competitor selected by minimum place/rank.",
+              "strong_verification_applied": true,
+              "critic_skipped": true,
+              "categories": [
+                "plain_lookup"
+              ],
+              "myagent_tokens": 4209,
+              "mact_tokens": 17379,
+              "myagent_seconds": 7.6065703050699085,
+              "mact_seconds": 266.6654684250243,
+              "mact_exec_error": null
+            },
+            {
+              "id": "nu-3422",
+              "question": "is cassiopeia 1's magnitude more or less than 15?",
+              "gold": [
+                "more"
+              ],
+              "myagent_prediction": "more",
+              "mact_prediction": "more than 15",
+              "myagent_final_value": "more",
+              "myagent_final_answer": "more",
+              "myagent_exec_success": true,
+              "myagent_exec_error": null,
+              "risk_level": "high",
+              "route_type": "COMPLEX",
+              "problem_tags": [
+                "comparison",
+                "negation_logic"
+              ],
+              "deterministic_shortcut_applied": false,
+              "deterministic_shortcut_reason": "",
+              "strong_verification_applied": true,
+              "critic_skipped": true,
+              "categories": [
+                "closed_choice",
+                "comparison"
+              ],
+              "myagent_tokens": 6554,
+              "mact_tokens": 8468,
+              "myagent_seconds": 16.347745784092695,
+              "mact_seconds": 103.09425571700558,
+              "mact_exec_error": null
+            },
+            {
+              "id": "nu-3438",
+              "question": "which mayors had more than 2 consecutive terms?",
+              "gold": [
+                "Mr B.Melman",
+                "Mr P.Venter",
+                "Mrs E.Myer"
+              ],
+              "myagent_prediction": [
+                "Mr B.Melman",
+                "Mr P.Venter",
+                "Mrs E.Myer"
+              ],
+              "mact_prediction": "Mr Sakkie",
+              "myagent_final_value": [
+                "Mr B.Melman",
+                "Mr P.Venter",
+                "Mrs E.Myer"
+              ],
+              "myagent_final_answer": "[\"Mr B.Melman\", \"Mr P.Venter\", \"Mrs E.Myer\"]",
+              "myagent_exec_success": true,
+              "myagent_exec_error": null,
+              "risk_level": "medium",
+              "route_type": "COMPLEX",
+              "problem_tags": [
+                "comparison",
+                "list_entity"
+              ],
+              "deterministic_shortcut_applied": false,
+              "deterministic_shortcut_reason": "",
+              "strong_verification_applied": false,
+              "critic_skipped": false,
+              "categories": [
+                "comparison"
+              ],
+              "myagent_tokens": 7756,
+              "mact_tokens": 18497,
+              "myagent_seconds": 43.01898324303329,
+              "mact_seconds": 306.6009818559978,
+              "mact_exec_error": null
+            },
+            {
+              "id": "nu-3140",
+              "question": "when does agape christian academy accept applications?",
+              "gold": [
+                "Accepts applications prior to the start of each school year"
+              ],
+              "myagent_prediction": "Accepts applications prior to the start of each school year",
+              "mact_prediction": "prior to the start of each school year",
+              "myagent_final_value": "Accepts applications prior to the start of each school year",
+              "myagent_final_answer": "Accepts applications prior to the start of each school year",
+              "myagent_exec_success": true,
+              "myagent_exec_error": null,
+              "risk_level": "high",
+              "route_type": "SIMPLE",
+              "problem_tags": [],
+              "deterministic_shortcut_applied": false,
+              "deterministic_shortcut_reason": "",
+              "strong_verification_applied": true,
+              "critic_skipped": false,
+              "categories": [
+                "plain_lookup"
+              ],
+              "myagent_tokens": 3364,
+              "mact_tokens": 5907,
+              "myagent_seconds": 6.25839230697602,
+              "mact_seconds": 40.63410409190692,
+              "mact_exec_error": null
+            },
+            {
+              "id": "nu-1786",
+              "question": "what was the next tie listed after the 1989-1990 season?",
+              "gold": [
+                "1990-1991 Season"
+              ],
+              "myagent_prediction": "1990-1991 Season",
+              "mact_prediction": "1990-1991 Season, 12, Chivas vs América, 1-1, December 9, 1990",
+              "myagent_final_value": "1990-1991 Season",
+              "myagent_final_answer": "1990-1991 Season",
+              "myagent_exec_success": true,
+              "myagent_exec_error": null,
+              "risk_level": "high",
+              "route_type": "COMPLEX",
+              "problem_tags": [
+                "temporal"
+              ],
+              "deterministic_shortcut_applied": false,
+              "deterministic_shortcut_reason": "",
+              "strong_verification_applied": true,
+              "critic_skipped": false,
+              "categories": [
+                "arithmetic",
+                "temporal"
+              ],
+              "myagent_tokens": 13207,
+              "mact_tokens": 30439,
+              "myagent_seconds": 41.469166297931224,
+              "mact_seconds": 250.31231296109036,
+              "mact_exec_error": null
+            },
+            {
+              "id": "nu-3406",
+              "question": "how many accolades ranked the album below 100th place?",
+              "gold": [
+                "4"
+              ],
+              "myagent_prediction": 4,
+              "mact_prediction": "15",
+              "myagent_final_value": 4,
+              "myagent_final_answer": "4",
+              "myagent_exec_success": true,
+              "myagent_exec_error": null,
+              "risk_level": "high",
+              "route_type": "COMPLEX",
+              "problem_tags": [
+                "count"
+              ],
+              "deterministic_shortcut_applied": false,
+              "deterministic_shortcut_reason": "",
+              "strong_verification_applied": true,
+              "critic_skipped": true,
+              "categories": [
+                "count"
+              ],
+              "myagent_tokens": 7216,
+              "mact_tokens": 10994,
+              "myagent_seconds": 18.13545017503202,
+              "mact_seconds": 155.05846661003307,
+              "mact_exec_error": null
+            },
+            {
+              "id": "nu-2502",
+              "question": "which associations have both a women's and men's team?",
+              "gold": [
+                "China PR",
+                "Guam",
+                "Hong Kong",
+                "Japan",
+                "Korea DPR",
+                "Korea Republic",
+                "Macau",
+                "Mongolia",
+                "Northern Mariana Islands",
+                "Chinese Taipei"
+              ],
+              "myagent_prediction": [
+                "China PR",
+                "Guam",
+                "Hong Kong",
+                "Japan",
+                "Korea DPR",
+                "Korea Republic",
+                "Macau",
+                "Mongolia",
+                "Northern Mariana Islands",
+                "Chinese Taipei"
+              ],
+              "mact_prediction": "China PR, Guam, Hong Kong, Japan, Korea DPR, Korea Republic, Macau, Mongolia, Northern Mariana Islands, Chinese Taipei",
+              "myagent_final_value": [
+                "China PR",
+                "Guam",
+                "Hong Kong",
+                "Japan",
+                "Korea DPR",
+                "Korea Republic",
+                "Macau",
+                "Mongolia",
+                "Northern Mariana Islands",
+                "Chinese Taipei"
+              ],
+              "myagent_final_answer": "[\"China PR\", \"Guam\", \"Hong Kong\", \"Japan\", \"Korea DPR\", \"Korea Republic\", \"Macau\", \"Mongolia\", \"Northern Mariana Islands\", \"Chinese Taipei\"]",
+              "myagent_exec_success": true,
+              "myagent_exec_error": null,
+              "risk_level": "high",
+              "route_type": "COMPLEX",
+              "problem_tags": [
+                "negation_logic",
+                "list_entity"
+              ],
+              "deterministic_shortcut_applied": false,
+              "deterministic_shortcut_reason": "",
+              "strong_verification_applied": true,
+              "critic_skipped": true,
+              "categories": [
+                "plain_lookup"
+              ],
+              "myagent_tokens": 4696,
+              "mact_tokens": 7739,
+              "myagent_seconds": 14.744400759926066,
+              "mact_seconds": 107.66328890901059,
+              "mact_exec_error": null
+            },
+            {
+              "id": "nu-2633",
+              "question": "is the altitude in bucharest above or below 100?",
+              "gold": [
+                "below"
+              ],
+              "myagent_prediction": "below",
+              "mact_prediction": "",
+              "myagent_final_value": "below",
+              "myagent_final_answer": "below",
+              "myagent_exec_success": true,
+              "myagent_exec_error": null,
+              "risk_level": "high",
+              "route_type": "SIMPLE",
+              "problem_tags": [
+                "negation_logic"
+              ],
+              "deterministic_shortcut_applied": false,
+              "deterministic_shortcut_reason": "",
+              "strong_verification_applied": true,
+              "critic_skipped": false,
+              "categories": [
+                "closed_choice"
+              ],
+              "myagent_tokens": 5836,
+              "mact_tokens": 0,
+              "myagent_seconds": 5.391683903988451,
+              "mact_seconds": 2.1846824949607253,
+              "mact_exec_error": "MACT sample 97 failed or produced 0 rows with returncode 0; see /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_blind200_mact_core100_20260722/logs/wtq_mact_core100.log"
+            }
+          ]
+        },
+        "neither": {
+          "count": 29,
+          "top_problem_tags": [
+            {
+              "key": "negation_logic",
+              "count": 12
+            },
+            {
+              "key": "superlative_order",
+              "count": 11
+            },
+            {
+              "key": "count",
+              "count": 10
+            },
+            {
+              "key": "temporal",
+              "count": 7
+            },
+            {
+              "key": "arithmetic",
+              "count": 6
+            },
+            {
+              "key": "comparison",
+              "count": 3
+            },
+            {
+              "key": "none",
+              "count": 2
+            },
+            {
+              "key": "list_entity",
+              "count": 1
+            }
+          ],
+          "top_question_categories": [
+            {
+              "key": "count",
+              "count": 10
+            },
+            {
+              "key": "superlative",
+              "count": 9
+            },
+            {
+              "key": "temporal",
+              "count": 8
+            },
+            {
+              "key": "arithmetic",
+              "count": 6
+            },
+            {
+              "key": "closed_choice",
+              "count": 6
+            },
+            {
+              "key": "plain_lookup",
+              "count": 4
+            },
+            {
+              "key": "comparison",
+              "count": 3
+            },
+            {
+              "key": "negation",
+              "count": 2
+            }
+          ],
+          "risk_level": {
+            "high": 27,
+            "medium": 2
+          },
+          "route_type": {
+            "COMPLEX": 26,
+            "SIMPLE": 3
+          },
+          "deterministic_shortcut_applied": {
+            "false": 29
+          },
+          "strong_verification_applied": {
+            "true": 27,
+            "false": 2
+          },
+          "avg_myagent_tokens": 7022,
+          "avg_myagent_seconds": 19.829196290040773,
+          "samples": [
+            {
+              "id": "nu-2178",
+              "question": "who was the first us ambassador to grenada appointed by bill clinton?",
+              "gold": [
+                "Ollie P. Anderson, Jr."
+              ],
+              "myagent_prediction": "Frank V. Ortiz, Jr.",
+              "mact_prediction": "Jeanette W. Hyde",
+              "myagent_final_value": "Frank V. Ortiz, Jr.",
+              "myagent_final_answer": "Frank V. Ortiz, Jr.",
+              "myagent_exec_success": true,
+              "myagent_exec_error": null,
+              "risk_level": "high",
+              "route_type": "COMPLEX",
+              "problem_tags": [
+                "superlative_order"
+              ],
+              "deterministic_shortcut_applied": false,
+              "deterministic_shortcut_reason": "",
+              "strong_verification_applied": true,
+              "critic_skipped": false,
+              "categories": [
+                "superlative",
+                "temporal"
+              ],
+              "myagent_tokens": 8104,
+              "mact_tokens": 8534,
+              "myagent_seconds": 19.978280919138342,
+              "mact_seconds": 66.31531891296618,
+              "mact_exec_error": null
+            },
+            {
+              "id": "nu-965",
+              "question": "how many times was a nomination awarded?",
+              "gold": [
+                "5"
+              ],
+              "myagent_prediction": 16,
+              "mact_prediction": "15.",
+              "myagent_final_value": 16,
+              "myagent_final_answer": "16",
+              "myagent_exec_success": true,
+              "myagent_exec_error": null,
+              "risk_level": "high",
+              "route_type": "COMPLEX",
+              "problem_tags": [
+                "count"
+              ],
+              "deterministic_shortcut_applied": false,
+              "deterministic_shortcut_reason": "",
+              "strong_verification_applied": true,
+              "critic_skipped": true,
+              "categories": [
+                "count"
+              ],
+              "myagent_tokens": 6092,
+              "mact_tokens": 17013,
+              "myagent_seconds": 10.560743723995984,
+              "mact_seconds": 181.18750696699135,
+              "mact_exec_error": null
+            },
+            {
+              "id": "nu-4062",
+              "question": "in cycle 4 of austria's next top model, what is the average of all the contestants' ages?",
+              "gold": [
+                "18"
+              ],
+              "myagent_prediction": 18.94,
+              "mact_prediction": "18.9375",
+              "myagent_final_value": 18.94,
+              "myagent_final_answer": "18.94",
+              "myagent_exec_success": true,
+              "myagent_exec_error": null,
+              "risk_level": "high",
+              "route_type": "COMPLEX",
+              "problem_tags": [
+                "superlative_order",
+                "arithmetic"
+              ],
+              "deterministic_shortcut_applied": false,
+              "deterministic_shortcut_reason": "",
+              "strong_verification_applied": true,
+              "critic_skipped": true,
+              "categories": [
+                "arithmetic"
+              ],
+              "myagent_tokens": 6800,
+              "mact_tokens": 18447,
+              "myagent_seconds": 19.433479147031903,
+              "mact_seconds": 296.0465371168684,
+              "mact_exec_error": null
+            },
+            {
+              "id": "nu-4299",
+              "question": "which artist did jaycen joshua work with before his first job with rick ross?",
+              "gold": [
+                "Puff Daddy"
+              ],
+              "myagent_prediction": "Not found",
+              "mact_prediction": "",
+              "myagent_final_value": "Not found",
+              "myagent_final_answer": "Not found",
+              "myagent_exec_success": true,
+              "myagent_exec_error": null,
+              "risk_level": "high",
+              "route_type": "COMPLEX",
+              "problem_tags": [
+                "superlative_order",
+                "temporal"
+              ],
+              "deterministic_shortcut_applied": false,
+              "deterministic_shortcut_reason": "",
+              "strong_verification_applied": true,
+              "critic_skipped": true,
+              "categories": [
+                "superlative",
+                "temporal"
+              ],
+              "myagent_tokens": 8574,
+              "mact_tokens": 0,
+              "myagent_seconds": 37.52400686708279,
+              "mact_seconds": 2.088123467983678,
+              "mact_exec_error": "MACT sample 21 failed or produced 0 rows with returncode 0; see /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_blind200_mact_core50_20260722/logs/wtq_mact_core50.log"
+            },
+            {
+              "id": "nu-1177",
+              "question": "on which song did the axe murder boyz first collaborate with boondox regarding lyrics?",
+              "gold": [
+                "Seven"
+              ],
+              "myagent_prediction": "Lady In The Jaguar",
+              "mact_prediction": "\"The Harvest\"",
+              "myagent_final_value": "Lady In The Jaguar",
+              "myagent_final_answer": "Lady In The Jaguar",
+              "myagent_exec_success": true,
+              "myagent_exec_error": null,
+              "risk_level": "high",
+              "route_type": "COMPLEX",
+              "problem_tags": [
+                "superlative_order"
+              ],
+              "deterministic_shortcut_applied": false,
+              "deterministic_shortcut_reason": "",
+              "strong_verification_applied": true,
+              "critic_skipped": true,
+              "categories": [
+                "superlative"
+              ],
+              "myagent_tokens": 6836,
+              "mact_tokens": 8362,
+              "myagent_seconds": 15.187223389046267,
+              "mact_seconds": 106.64768294687383,
+              "mact_exec_error": null
+            },
+            {
+              "id": "nu-613",
+              "question": "nameeach of the formats in the table.",
+              "gold": [
+                "Telenovela",
+                "Serie",
+                "Short Film",
+                "Feature Film",
+                "Capsulas"
+              ],
+              "myagent_prediction": "Telenovela, Serie, Short Film, Feature Film",
+              "mact_prediction": "Telenovela, Serie, Short Film, Feature Film, Capsulas",
+              "myagent_final_value": "Telenovela, Serie, Short Film, Feature Film",
+              "myagent_final_answer": "Telenovela, Serie, Short Film, Feature Film",
+              "myagent_exec_success": true,
+              "myagent_exec_error": null,
+              "risk_level": "high",
+              "route_type": "SIMPLE",
+              "problem_tags": [],
+              "deterministic_shortcut_applied": false,
+              "deterministic_shortcut_reason": "",
+              "strong_verification_applied": true,
+              "critic_skipped": false,
+              "categories": [
+                "plain_lookup"
+              ],
+              "myagent_tokens": 4492,
+              "mact_tokens": 13662,
+              "myagent_seconds": 10.058254968142137,
+              "mact_seconds": 149.76320765307173,
+              "mact_exec_error": null
+            },
+            {
+              "id": "nu-1263",
+              "question": "how many nominees are there each year for the naacp image award?",
+              "gold": [
+                "4"
+              ],
+              "myagent_prediction": "The table does not provide a consistent number of nominees per year for the NAACP Image Award.",
+              "mact_prediction": "the Supporting Actor is the winner, and the Nominees column lists all the other nominees. So for 1997, the winner is Samuel L. Jackson, and the Nominees column lists Blair Underwood, Charles S. Dutton, Delroy Lindo, Forest Whitaker. That's four other nominees, making a total of 5 nominees for that year. \n\nSo for each year, the total number of nominees is 1 (the winner) plus the number of names listed in the Nominees column. However, in some years, the Nominees column is empty, meaning the winner was the only nominee. \n\nSo to calculate the total number of nominees across all years, we need to go through each year, count the number of nominees (1 if Nominees is empty, else 1 + number of names in Nominees column), and sum them all. \n\nBut the question is phrased as \"how many nominees are there each year for the naacp image award?\" which is a bit ambiguous. If it's asking for the number of nominees in each year, the answer would vary each year. But the answer format requires a single number. However, looking at the examples, the user might be asking for the total number of nominees across all years. \n\nAlternatively, maybe the question is asking for the number of nominees per year, but the answer is that it varies. However, the answer format requires a specific number. \n\nWait, perhaps the user is asking for the number of nominees in each year, but the answer is that each year has a certain",
+              "myagent_final_value": "The table does not provide a consistent number of nominees per year for the NAACP Image Award.",
+              "myagent_final_answer": "The table does not provide a consistent number of nominees per year for the NAACP Image Award.",
+              "myagent_exec_success": true,
+              "myagent_exec_error": null,
+              "risk_level": "high",
+              "route_type": "COMPLEX",
+              "problem_tags": [
+                "count",
+                "temporal"
+              ],
+              "deterministic_shortcut_applied": false,
+              "deterministic_shortcut_reason": "",
+              "strong_verification_applied": true,
+              "critic_skipped": false,
+              "categories": [
+                "count",
+                "temporal"
+              ],
+              "myagent_tokens": 8352,
+              "mact_tokens": 18713,
+              "myagent_seconds": 18.839894799049944,
+              "mact_seconds": 306.72527808789164,
+              "mact_exec_error": null
+            },
+            {
+              "id": "nu-4324",
+              "question": "when is the next solar eclipse?",
+              "gold": [
+                "March 9, 2016"
+              ],
+              "myagent_prediction": "August 2, 2046",
+              "mact_prediction": "August 2, 2027",
+              "myagent_final_value": "August 2, 2046",
+              "myagent_final_answer": "August 2, 2046",
+              "myagent_exec_success": true,
+              "myagent_exec_error": null,
+              "risk_level": "medium",
+              "route_type": "COMPLEX",
+              "problem_tags": [],
+              "deterministic_shortcut_applied": false,
+              "deterministic_shortcut_reason": "",
+              "strong_verification_applied": false,
+              "critic_skipped": true,
+              "categories": [
+                "plain_lookup"
+              ],
+              "myagent_tokens": 2209,
+              "mact_tokens": 8822,
+              "myagent_seconds": 10.215512241004035,
+              "mact_seconds": 129.79864657693543,
+              "mact_exec_error": null
+            }
+          ]
+        },
+        "both_correct": {
+          "count": 108,
+          "top_problem_tags": [
+            {
+              "key": "count",
+              "count": 40
+            },
+            {
+              "key": "temporal",
+              "count": 40
+            },
+            {
+              "key": "superlative_order",
+              "count": 40
+            },
+            {
+              "key": "negation_logic",
+              "count": 34
+            },
+            {
+              "key": "arithmetic",
+              "count": 14
+            },
+            {
+              "key": "comparison",
+              "count": 13
+            },
+            {
+              "key": "none",
+              "count": 6
+            },
+            {
+              "key": "closed_choice",
+              "count": 1
+            }
+          ],
+          "top_question_categories": [
+            {
+              "key": "temporal",
+              "count": 47
+            },
+            {
+              "key": "count",
+              "count": 40
+            },
+            {
+              "key": "superlative",
+              "count": 36
+            },
+            {
+              "key": "arithmetic",
+              "count": 18
+            },
+            {
+              "key": "comparison",
+              "count": 17
+            },
+            {
+              "key": "closed_choice",
+              "count": 12
+            },
+            {
+              "key": "plain_lookup",
+              "count": 8
+            },
+            {
+              "key": "negation",
+              "count": 3
+            }
+          ],
+          "risk_level": {
+            "high": 100,
+            "medium": 2,
+            "light": 6
+          },
+          "route_type": {
+            "COMPLEX": 99,
+            "SIMPLE": 9
+          },
+          "deterministic_shortcut_applied": {
+            "false": 94,
+            "true": 14
+          },
+          "strong_verification_applied": {
+            "true": 100,
+            "false": 8
+          },
+          "avg_myagent_tokens": 5745.25,
+          "avg_myagent_seconds": 14.093380966292763,
+          "samples": []
+        }
+      }
+    },
+    "tabfact": {
+      "paired_disagreement": {
+        "both_correct": 178,
+        "myagent_only": 7,
+        "mact_only": 11,
+        "neither": 4
+      },
+      "net_vs_mact": -4,
+      "mact_exec_error_count": 0,
+      "mact_exec_error_samples": [],
+      "by_bucket": {
+        "mact_only": {
+          "count": 11,
+          "top_problem_tags": [
+            {
+              "key": "closed_choice",
+              "count": 11
+            },
+            {
+              "key": "temporal",
+              "count": 7
+            },
+            {
+              "key": "negation_logic",
+              "count": 4
+            },
+            {
+              "key": "superlative_order",
+              "count": 3
+            },
+            {
+              "key": "comparison",
+              "count": 1
+            }
+          ],
+          "top_question_categories": [
+            {
+              "key": "binary_fact",
+              "count": 11
+            },
+            {
+              "key": "closed_choice",
+              "count": 11
+            },
+            {
+              "key": "temporal",
+              "count": 9
+            },
+            {
+              "key": "superlative",
+              "count": 2
+            },
+            {
+              "key": "comparison",
+              "count": 1
+            },
+            {
+              "key": "arithmetic",
+              "count": 1
+            }
+          ],
+          "risk_level": {
+            "high": 9,
+            "medium": 2
+          },
+          "route_type": {
+            "COMPLEX": 11
+          },
+          "deterministic_shortcut_applied": {
+            "false": 11
+          },
+          "strong_verification_applied": {
+            "false": 11
+          },
+          "avg_myagent_tokens": 3421.909090909091,
+          "avg_myagent_seconds": 17.533476866421882,
+          "samples": [
+            {
+              "id": "tabfact-test-4211",
+              "question": "there be less than 17 player who untimely retire during the 1984 european grand prix",
+              "gold": [
+                "false"
+              ],
+              "myagent_prediction": "true",
+              "mact_prediction": "false",
+              "myagent_final_value": "true",
+              "myagent_final_answer": "true",
+              "myagent_exec_success": true,
+              "myagent_exec_error": null,
+              "risk_level": "high",
+              "route_type": "COMPLEX",
+              "problem_tags": [
+                "temporal",
+                "comparison",
+                "closed_choice"
+              ],
+              "deterministic_shortcut_applied": false,
+              "deterministic_shortcut_reason": "",
+              "strong_verification_applied": false,
+              "critic_skipped": true,
+              "categories": [
+                "binary_fact",
+                "closed_choice",
+                "comparison",
+                "temporal"
+              ],
+              "myagent_tokens": 2778,
+              "mact_tokens": 15378,
+              "myagent_seconds": 16.052390372147784,
+              "mact_seconds": 157.28300013695844,
+              "mact_exec_error": null
+            },
+            {
+              "id": "tabfact-test-5090",
+              "question": "jesper parnevik be from sweden , while justin leonard be from argentina",
+              "gold": [
+                "false"
+              ],
+              "myagent_prediction": "true",
+              "mact_prediction": "False",
+              "myagent_final_value": "true",
+              "myagent_final_answer": "true",
+              "myagent_exec_success": true,
+              "myagent_exec_error": null,
+              "risk_level": "medium",
+              "route_type": "COMPLEX",
+              "problem_tags": [
+                "closed_choice"
+              ],
+              "deterministic_shortcut_applied": false,
+              "deterministic_shortcut_reason": "",
+              "strong_verification_applied": false,
+              "critic_skipped": false,
+              "categories": [
+                "binary_fact",
+                "closed_choice",
+                "temporal"
+              ],
+              "myagent_tokens": 662,
+              "mact_tokens": 9750,
+              "myagent_seconds": 1.69488334399648,
+              "mact_seconds": 102.2538683861494,
+              "mact_exec_error": null
+            },
+            {
+              "id": "tabfact-test-6964",
+              "question": "there be 6 nation that didn't have any gold medal",
+              "gold": [
+                "true"
+              ],
+              "myagent_prediction": "false",
+              "mact_prediction": "True",
+              "myagent_final_value": "false",
+              "myagent_final_answer": "false",
+              "myagent_exec_success": true,
+              "myagent_exec_error": null,
+              "risk_level": "medium",
+              "route_type": "COMPLEX",
+              "problem_tags": [
+                "closed_choice"
+              ],
+              "deterministic_shortcut_applied": false,
+              "deterministic_shortcut_reason": "",
+              "strong_verification_applied": false,
+              "critic_skipped": true,
+              "categories": [
+                "binary_fact",
+                "closed_choice"
+              ],
+              "myagent_tokens": 2121,
+              "mact_tokens": 9070,
+              "myagent_seconds": 8.63223807187751,
+              "mact_seconds": 92.05626114900224,
+              "mact_exec_error": null
+            },
+            {
+              "id": "tabfact-test-8573",
+              "question": "motherwell be 1 of 4 team against whom llanelli a.f.c afc have only 1 victory",
+              "gold": [
+                "false"
+              ],
+              "myagent_prediction": "true",
+              "mact_prediction": "False.**",
+              "myagent_final_value": "true",
+              "myagent_final_answer": "true",
+              "myagent_exec_success": true,
+              "myagent_exec_error": null,
+              "risk_level": "high",
+              "route_type": "COMPLEX",
+              "problem_tags": [
+                "negation_logic",
+                "closed_choice"
+              ],
+              "deterministic_shortcut_applied": false,
+              "deterministic_shortcut_reason": "",
+              "strong_verification_applied": false,
+              "critic_skipped": false,
+              "categories": [
+                "binary_fact",
+                "closed_choice"
+              ],
+              "myagent_tokens": 5347,
+              "mact_tokens": 20668,
+              "myagent_seconds": 34.34551998297684,
+              "mact_seconds": 335.36889154301025,
+              "mact_exec_error": null
+            },
+            {
+              "id": "tabfact-test-3580",
+              "question": "over 3 century pass between southwark have the tallest building or structure",
+              "gold": [
+                "true"
+              ],
+              "myagent_prediction": "false",
+              "mact_prediction": "True",
+              "myagent_final_value": "false",
+              "myagent_final_answer": "false",
+              "myagent_exec_success": true,
+              "myagent_exec_error": null,
+              "risk_level": "high",
+              "route_type": "COMPLEX",
+              "problem_tags": [
+                "superlative_order",
+                "temporal",
+                "negation_logic",
+                "closed_choice"
+              ],
+              "deterministic_shortcut_applied": false,
+              "deterministic_shortcut_reason": "",
+              "strong_verification_applied": false,
+              "critic_skipped": false,
+              "categories": [
+                "binary_fact",
+                "closed_choice",
+                "temporal"
+              ],
+              "myagent_tokens": 4751,
+              "mact_tokens": 3141,
+              "myagent_seconds": 33.691767094191164,
+              "mact_seconds": 16.36212424794212,
+              "mact_exec_error": null
+            },
+            {
+              "id": "tabfact-test-1570",
+              "question": "every game before september 30 be a victory for the dolphin",
+              "gold": [
+                "true"
+              ],
+              "myagent_prediction": "false",
+              "mact_prediction": "True",
+              "myagent_final_value": "false",
+              "myagent_final_answer": "false",
+              "myagent_exec_success": true,
+              "myagent_exec_error": null,
+              "risk_level": "high",
+              "route_type": "COMPLEX",
+              "problem_tags": [
+                "temporal",
+                "closed_choice"
+              ],
+              "deterministic_shortcut_applied": false,
+              "deterministic_shortcut_reason": "",
+              "strong_verification_applied": false,
+              "critic_skipped": true,
+              "categories": [
+                "binary_fact",
+                "closed_choice",
+                "temporal"
+              ],
+              "myagent_tokens": 3640,
+              "mact_tokens": 11305,
+              "myagent_seconds": 10.240616200026125,
+              "mact_seconds": 125.8580487051513,
+              "mact_exec_error": null
+            },
+            {
+              "id": "tabfact-test-8166",
+              "question": "the second smallest budget be 1000 for the us special show february 2007",
+              "gold": [
+                "false"
+              ],
+              "myagent_prediction": "true",
+              "mact_prediction": "False",
+              "myagent_final_value": "true",
+              "myagent_final_answer": "true",
+              "myagent_exec_success": true,
+              "myagent_exec_error": null,
+              "risk_level": "high",
+              "route_type": "COMPLEX",
+              "problem_tags": [
+                "superlative_order",
+                "temporal",
+                "closed_choice"
+              ],
+              "deterministic_shortcut_applied": false,
+              "deterministic_shortcut_reason": "",
+              "strong_verification_applied": false,
+              "critic_skipped": true,
+              "categories": [
+                "binary_fact",
+                "closed_choice",
+                "superlative",
+                "temporal"
+              ],
+              "myagent_tokens": 4199,
+              "mact_tokens": 10945,
+              "myagent_seconds": 11.255687350174412,
+              "mact_seconds": 112.5247881389223,
+              "mact_exec_error": null
+            },
+            {
+              "id": "tabfact-test-9313",
+              "question": "the friendly competition at the venue shymkent , kazakhstan , be on june 2 , 2007",
+              "gold": [
+                "false"
+              ],
+              "myagent_prediction": "true",
+              "mact_prediction": "False",
+              "myagent_final_value": "true",
+              "myagent_final_answer": "true",
+              "myagent_exec_success": true,
+              "myagent_exec_error": null,
+              "risk_level": "high",
+              "route_type": "COMPLEX",
+              "problem_tags": [
+                "temporal",
+                "closed_choice"
+              ],
+              "deterministic_shortcut_applied": false,
+              "deterministic_shortcut_reason": "",
+              "strong_verification_applied": false,
+              "critic_skipped": false,
+              "categories": [
+                "binary_fact",
+                "closed_choice",
+                "temporal"
+              ],
+              "myagent_tokens": 4101,
+              "mact_tokens": 8472,
+              "myagent_seconds": 20.162124258000404,
+              "mact_seconds": 69.95657395012677,
+              "mact_exec_error": null
+            }
+          ]
+        },
+        "myagent_only": {
+          "count": 7,
+          "top_problem_tags": [
+            {
+              "key": "closed_choice",
+              "count": 7
+            },
+            {
+              "key": "temporal",
+              "count": 3
+            },
+            {
+              "key": "negation_logic",
+              "count": 3
+            },
+            {
+              "key": "superlative_order",
+              "count": 1
+            }
+          ],
+          "top_question_categories": [
+            {
+              "key": "binary_fact",
+              "count": 7
+            },
+            {
+              "key": "closed_choice",
+              "count": 7
+            },
+            {
+              "key": "temporal",
+              "count": 3
+            },
+            {
+              "key": "arithmetic",
+              "count": 2
+            },
+            {
+              "key": "superlative",
+              "count": 1
+            },
+            {
+              "key": "negation",
+              "count": 1
+            }
+          ],
+          "risk_level": {
+            "high": 5,
+            "medium": 2
+          },
+          "route_type": {
+            "COMPLEX": 7
+          },
+          "deterministic_shortcut_applied": {
+            "true": 2,
+            "false": 5
+          },
+          "strong_verification_applied": {
+            "false": 7
+          },
+          "avg_myagent_tokens": 3091.4285714285716,
+          "avg_myagent_seconds": 15.594831086994548,
+          "samples": [
+            {
+              "id": "tabfact-test-2658",
+              "question": "ask riga be the last place in the competition in the basketball",
+              "gold": [
+                "true"
+              ],
+              "myagent_prediction": "true",
+              "mact_prediction": "False",
+              "myagent_final_value": "true",
+              "myagent_final_answer": "true",
+              "myagent_exec_success": true,
+              "myagent_exec_error": null,
+              "risk_level": "high",
+              "route_type": "COMPLEX",
+              "problem_tags": [
+                "superlative_order",
+                "closed_choice"
+              ],
+              "deterministic_shortcut_applied": true,
+              "deterministic_shortcut_reason": "TabFact last-row entity order checked deterministically.",
+              "strong_verification_applied": false,
+              "critic_skipped": true,
+              "categories": [
+                "binary_fact",
+                "closed_choice",
+                "superlative"
+              ],
+              "myagent_tokens": 345,
+              "mact_tokens": 3266,
+              "myagent_seconds": 1.0133567510638386,
+              "mact_seconds": 27.648048787843436,
+              "mact_exec_error": null
+            },
+            {
+              "id": "tabfact-test-33",
+              "question": "guillaume gillet score 3 time as much as each of the other 2 player in the uefa champion league tournament",
+              "gold": [
+                "false"
+              ],
+              "myagent_prediction": "false",
+              "mact_prediction": "True",
+              "myagent_final_value": "false",
+              "myagent_final_answer": "false",
+              "myagent_exec_success": true,
+              "myagent_exec_error": null,
+              "risk_level": "medium",
+              "route_type": "COMPLEX",
+              "problem_tags": [
+                "closed_choice"
+              ],
+              "deterministic_shortcut_applied": false,
+              "deterministic_shortcut_reason": "",
+              "strong_verification_applied": false,
+              "critic_skipped": true,
+              "categories": [
+                "binary_fact",
+                "closed_choice"
+              ],
+              "myagent_tokens": 2846,
+              "mact_tokens": 11939,
+              "myagent_seconds": 14.431000591954216,
+              "mact_seconds": 177.2813298588153,
+              "mact_exec_error": null
+            },
+            {
+              "id": "tabfact-test-8673",
+              "question": "the screening complete on 30 june 2006 be start 5 month after the screening that be complete on 4 october 2006",
+              "gold": [
+                "false"
+              ],
+              "myagent_prediction": "false",
+              "mact_prediction": "Let's check the dates numerically. The screening that ended on 30 June 2006 started on 18 May 2006. The screening that ended on 10 October 2006 started on 7 September 2006. The difference between 18 May 2006 and 7 September 2006 is about 3 months and 19 days. That's not 5 months. \n\nTherefore, the claim that the screening starting on 18 May 2006 (which ended on 30 June 2006) is 5 months after the screening that ended on 10 October 2006 (which started on 7 September 2006) is false. \n\nBut wait, the user's original question says \"the screening complete on 30 june 2006 be start 5 month after the screening that be complete on 4 october 2006\". So the start date of the 30 June 2006 screening is supposed to be 5 months after the start date of the screening that ended on 4 October 2006. However, since there's no screening that ended on 4 October 2006, perhaps the user made a mistake. If we assume that the intended date is 10 October 2006, then the start date of that screening is 7 September 2006. Adding 5 months to 7 September 2006 would be February 7, 2007. The start date of the 30 June 2006 screening is 18 May 2006, which is earlier than February 2007. Therefore, the claim is false. \n\nAlternatively, if the user meant that the screening that ended on 30 June 2006 started 5 months after the screening that ended on 4 October 2006, but since the 30 June screening started in May and the 4 October screening started in September, the May start is",
+              "myagent_final_value": "false",
+              "myagent_final_answer": "false",
+              "myagent_exec_success": true,
+              "myagent_exec_error": null,
+              "risk_level": "high",
+              "route_type": "COMPLEX",
+              "problem_tags": [
+                "temporal",
+                "closed_choice"
+              ],
+              "deterministic_shortcut_applied": false,
+              "deterministic_shortcut_reason": "",
+              "strong_verification_applied": false,
+              "critic_skipped": false,
+              "categories": [
+                "binary_fact",
+                "closed_choice",
+                "temporal"
+              ],
+              "myagent_tokens": 6367,
+              "mact_tokens": 19767,
+              "myagent_seconds": 40.559529940830544,
+              "mact_seconds": 306.87445543706417,
+              "mact_exec_error": null
+            },
+            {
+              "id": "tabfact-test-12022",
+              "question": "model 26.260e and 31.260e have a gcm (kg) technical capacity of 42000",
+              "gold": [
+                "true"
+              ],
+              "myagent_prediction": "true",
+              "mact_prediction": "False",
+              "myagent_final_value": "true",
+              "myagent_final_answer": "true",
+              "myagent_exec_success": true,
+              "myagent_exec_error": null,
+              "risk_level": "high",
+              "route_type": "COMPLEX",
+              "problem_tags": [
+                "negation_logic",
+                "closed_choice"
+              ],
+              "deterministic_shortcut_applied": false,
+              "deterministic_shortcut_reason": "",
+              "strong_verification_applied": false,
+              "critic_skipped": true,
+              "categories": [
+                "binary_fact",
+                "closed_choice"
+              ],
+              "myagent_tokens": 4319,
+              "mact_tokens": 12636,
+              "myagent_seconds": 22.63350097113289,
+              "mact_seconds": 122.46089442889206,
+              "mact_exec_error": null
+            },
+            {
+              "id": "tabfact-test-6673",
+              "question": "binibining pilipinas - tourism do not start not until the year 1989",
+              "gold": [
+                "false"
+              ],
+              "myagent_prediction": "false",
+              "mact_prediction": "True",
+              "myagent_final_value": "false",
+              "myagent_final_answer": "false",
+              "myagent_exec_success": true,
+              "myagent_exec_error": null,
+              "risk_level": "high",
+              "route_type": "COMPLEX",
+              "problem_tags": [
+                "temporal",
+                "negation_logic",
+                "closed_choice"
+              ],
+              "deterministic_shortcut_applied": false,
+              "deterministic_shortcut_reason": "",
+              "strong_verification_applied": false,
+              "critic_skipped": true,
+              "categories": [
+                "arithmetic",
+                "binary_fact",
+                "closed_choice",
+                "negation",
+                "temporal"
+              ],
+              "myagent_tokens": 5357,
+              "mact_tokens": 12779,
+              "myagent_seconds": 20.327272387919948,
+              "mact_seconds": 127.66526088793762,
+              "mact_exec_error": null
+            },
+            {
+              "id": "tabfact-test-9431",
+              "question": "orlando win game 65 with a score of 79 - 92",
+              "gold": [
+                "true"
+              ],
+              "myagent_prediction": "true",
+              "mact_prediction": "False",
+              "myagent_final_value": "true",
+              "myagent_final_answer": "true",
+              "myagent_exec_success": true,
+              "myagent_exec_error": null,
+              "risk_level": "medium",
+              "route_type": "COMPLEX",
+              "problem_tags": [
+                "closed_choice"
+              ],
+              "deterministic_shortcut_applied": true,
+              "deterministic_shortcut_reason": "TabFact game result score checked deterministically.",
+              "strong_verification_applied": false,
+              "critic_skipped": true,
+              "categories": [
+                "arithmetic",
+                "binary_fact",
+                "closed_choice"
+              ],
+              "myagent_tokens": 408,
+              "mact_tokens": 10267,
+              "myagent_seconds": 1.253771479940042,
+              "mact_seconds": 48.133707656059414,
+              "mact_exec_error": null
+            },
+            {
+              "id": "tabfact-test-5093",
+              "question": "ivor bueb score zero point between 1957 and 1959",
+              "gold": [
+                "true"
+              ],
+              "myagent_prediction": "true",
+              "mact_prediction": "False",
+              "myagent_final_value": "true",
+              "myagent_final_answer": "true",
+              "myagent_exec_success": true,
+              "myagent_exec_error": null,
+              "risk_level": "high",
+              "route_type": "COMPLEX",
+              "problem_tags": [
+                "temporal",
+                "negation_logic",
+                "closed_choice"
+              ],
+              "deterministic_shortcut_applied": false,
+              "deterministic_shortcut_reason": "",
+              "strong_verification_applied": false,
+              "critic_skipped": true,
+              "categories": [
+                "binary_fact",
+                "closed_choice",
+                "temporal"
+              ],
+              "myagent_tokens": 1998,
+              "mact_tokens": 13539,
+              "myagent_seconds": 8.945385486120358,
+              "mact_seconds": 167.97716710111126,
+              "mact_exec_error": null
+            }
+          ]
+        },
+        "neither": {
+          "count": 4,
+          "top_problem_tags": [
+            {
+              "key": "closed_choice",
+              "count": 4
+            },
+            {
+              "key": "superlative_order",
+              "count": 2
+            },
+            {
+              "key": "temporal",
+              "count": 2
+            },
+            {
+              "key": "negation_logic",
+              "count": 2
+            },
+            {
+              "key": "count",
+              "count": 1
+            }
+          ],
+          "top_question_categories": [
+            {
+              "key": "binary_fact",
+              "count": 4
+            },
+            {
+              "key": "closed_choice",
+              "count": 4
+            },
+            {
+              "key": "arithmetic",
+              "count": 3
+            },
+            {
+              "key": "temporal",
+              "count": 3
+            },
+            {
+              "key": "count",
+              "count": 1
+            },
+            {
+              "key": "superlative",
+              "count": 1
+            }
+          ],
+          "risk_level": {
+            "high": 3,
+            "medium": 1
+          },
+          "route_type": {
+            "COMPLEX": 4
+          },
+          "deterministic_shortcut_applied": {
+            "false": 4
+          },
+          "strong_verification_applied": {
+            "false": 4
+          },
+          "avg_myagent_tokens": 2941.75,
+          "avg_myagent_seconds": 17.414471618947573,
+          "samples": [
+            {
+              "id": "tabfact-test-6430",
+              "question": "on april 2 2008 , the 2007 - 08 los angeles clippers season be the visitor compete against the supersonics with 10392 in attendance , while 1 day later in april 3 , 2008 the clipper be 1 time again the visitor against the king with attendance up to 12707",
+              "gold": [
+                "false"
+              ],
+              "myagent_prediction": "true",
+              "mact_prediction": "True",
+              "myagent_final_value": "true",
+              "myagent_final_answer": "true",
+              "myagent_exec_success": true,
+              "myagent_exec_error": null,
+              "risk_level": "high",
+              "route_type": "COMPLEX",
+              "problem_tags": [
+                "superlative_order",
+                "temporal",
+                "closed_choice"
+              ],
+              "deterministic_shortcut_applied": false,
+              "deterministic_shortcut_reason": "",
+              "strong_verification_applied": false,
+              "critic_skipped": true,
+              "categories": [
+                "arithmetic",
+                "binary_fact",
+                "closed_choice",
+                "temporal"
+              ],
+              "myagent_tokens": 3259,
+              "mact_tokens": 9250,
+              "myagent_seconds": 18.563045415095985,
+              "mact_seconds": 71.77561320993118,
+              "mact_exec_error": null
+            },
+            {
+              "id": "tabfact-test-5425",
+              "question": "the team play at least 1 game per day , every day , up until september 14th",
+              "gold": [
+                "true"
+              ],
+              "myagent_prediction": "false",
+              "mact_prediction": "False",
+              "myagent_final_value": "false",
+              "myagent_final_answer": "false",
+              "myagent_exec_success": true,
+              "myagent_exec_error": null,
+              "risk_level": "high",
+              "route_type": "COMPLEX",
+              "problem_tags": [
+                "count",
+                "superlative_order",
+                "negation_logic",
+                "closed_choice"
+              ],
+              "deterministic_shortcut_applied": false,
+              "deterministic_shortcut_reason": "",
+              "strong_verification_applied": false,
+              "critic_skipped": true,
+              "categories": [
+                "arithmetic",
+                "binary_fact",
+                "closed_choice",
+                "count",
+                "superlative",
+                "temporal"
+              ],
+              "myagent_tokens": 3937,
+              "mact_tokens": 10545,
+              "myagent_seconds": 29.28808167995885,
+              "mact_seconds": 60.00730179902166,
+              "mact_exec_error": null
+            },
+            {
+              "id": "tabfact-test-4166",
+              "question": "the test matches (1991 - 2000) in november and december take place at 2 different venue",
+              "gold": [
+                "true"
+              ],
+              "myagent_prediction": "false",
+              "mact_prediction": "False",
+              "myagent_final_value": "false",
+              "myagent_final_answer": "false",
+              "myagent_exec_success": true,
+              "myagent_exec_error": null,
+              "risk_level": "high",
+              "route_type": "COMPLEX",
+              "problem_tags": [
+                "temporal",
+                "negation_logic",
+                "closed_choice"
+              ],
+              "deterministic_shortcut_applied": false,
+              "deterministic_shortcut_reason": "",
+              "strong_verification_applied": false,
+              "critic_skipped": true,
+              "categories": [
+                "arithmetic",
+                "binary_fact",
+                "closed_choice",
+                "temporal"
+              ],
+              "myagent_tokens": 2442,
+              "mact_tokens": 10094,
+              "myagent_seconds": 11.518713381839916,
+              "mact_seconds": 126.1362103309948,
+              "mact_exec_error": null
+            },
+            {
+              "id": "tabfact-test-7026",
+              "question": "dana quigley have 45 win",
+              "gold": [
+                "true"
+              ],
+              "myagent_prediction": "false",
+              "mact_prediction": "False",
+              "myagent_final_value": "false",
+              "myagent_final_answer": "false",
+              "myagent_exec_success": true,
+              "myagent_exec_error": null,
+              "risk_level": "medium",
+              "route_type": "COMPLEX",
+              "problem_tags": [
+                "closed_choice"
+              ],
+              "deterministic_shortcut_applied": false,
+              "deterministic_shortcut_reason": "",
+              "strong_verification_applied": false,
+              "critic_skipped": true,
+              "categories": [
+                "binary_fact",
+                "closed_choice"
+              ],
+              "myagent_tokens": 2129,
+              "mact_tokens": 7937,
+              "myagent_seconds": 10.28804599889554,
+              "mact_seconds": 62.60174900200218,
+              "mact_exec_error": null
+            }
+          ]
+        },
+        "both_correct": {
+          "count": 178,
+          "top_problem_tags": [
+            {
+              "key": "closed_choice",
+              "count": 178
+            },
+            {
+              "key": "temporal",
+              "count": 68
+            },
+            {
+              "key": "negation_logic",
+              "count": 54
+            },
+            {
+              "key": "superlative_order",
+              "count": 35
+            },
+            {
+              "key": "comparison",
+              "count": 26
+            },
+            {
+              "key": "arithmetic",
+              "count": 13
+            },
+            {
+              "key": "count",
+              "count": 7
+            }
+          ],
+          "top_question_categories": [
+            {
+              "key": "binary_fact",
+              "count": 178
+            },
+            {
+              "key": "closed_choice",
+              "count": 178
+            },
+            {
+              "key": "temporal",
+              "count": 73
+            },
+            {
+              "key": "arithmetic",
+              "count": 41
+            },
+            {
+              "key": "superlative",
+              "count": 32
+            },
+            {
+              "key": "comparison",
+              "count": 31
+            },
+            {
+              "key": "negation",
+              "count": 9
+            },
+            {
+              "key": "count",
+              "count": 7
+            }
+          ],
+          "risk_level": {
+            "high": 136,
+            "medium": 42
+          },
+          "route_type": {
+            "COMPLEX": 176,
+            "SIMPLE": 2
+          },
+          "deterministic_shortcut_applied": {
+            "false": 147,
+            "true": 31
+          },
+          "strong_verification_applied": {
+            "false": 178
+          },
+          "avg_myagent_tokens": 2327.696629213483,
+          "avg_myagent_seconds": 9.996556581267459,
+          "samples": []
+        }
+      }
+    },
+    "crt": {
+      "paired_disagreement": {
+        "myagent_only": 36,
+        "neither": 51,
+        "both_correct": 101,
+        "mact_only": 12
+      },
+      "net_vs_mact": 24,
+      "mact_exec_error_count": 0,
+      "mact_exec_error_samples": [],
+      "by_bucket": {
+        "mact_only": {
+          "count": 12,
+          "top_problem_tags": [
+            {
+              "key": "superlative_order",
+              "count": 9
+            },
+            {
+              "key": "negation_logic",
+              "count": 9
+            },
+            {
+              "key": "temporal",
+              "count": 7
+            },
+            {
+              "key": "closed_choice",
+              "count": 7
+            },
+            {
+              "key": "arithmetic",
+              "count": 6
+            },
+            {
+              "key": "comparison",
+              "count": 3
+            },
+            {
+              "key": "list_entity",
+              "count": 1
+            },
+            {
+              "key": "count",
+              "count": 1
+            }
+          ],
+          "top_question_categories": [
+            {
+              "key": "crt_comparison",
+              "count": 12
+            },
+            {
+              "key": "temporal",
+              "count": 11
+            },
+            {
+              "key": "superlative",
+              "count": 9
+            },
+            {
+              "key": "arithmetic",
+              "count": 8
+            },
+            {
+              "key": "closed_choice",
+              "count": 7
+            },
+            {
+              "key": "negation",
+              "count": 7
+            },
+            {
+              "key": "comparison",
+              "count": 4
+            },
+            {
+              "key": "count",
+              "count": 1
+            }
+          ],
+          "risk_level": {
+            "high": 9,
+            "medium": 3
+          },
+          "route_type": {
+            "COMPLEX": 12
+          },
+          "deterministic_shortcut_applied": {
+            "false": 12
+          },
+          "strong_verification_applied": {
+            "true": 9,
+            "false": 3
+          },
+          "avg_myagent_tokens": 13420.916666666666,
+          "avg_myagent_seconds": 31.24058552563656,
+          "samples": [
+            {
+              "id": "crt-240",
+              "question": "What is the maximum points difference between the 2008 A season and the 2009 C season for the teams in the Mexican Primera División season?",
+              "gold": [
+                "15"
+              ],
+              "myagent_prediction": 13,
+              "mact_prediction": "15.0",
+              "myagent_final_value": 13,
+              "myagent_final_answer": "13",
+              "myagent_exec_success": true,
+              "myagent_exec_error": null,
+              "risk_level": "high",
+              "route_type": "COMPLEX",
+              "problem_tags": [
+                "superlative_order",
+                "temporal",
+                "comparison",
+                "arithmetic",
+                "negation_logic"
+              ],
+              "deterministic_shortcut_applied": false,
+              "deterministic_shortcut_reason": "",
+              "strong_verification_applied": true,
+              "critic_skipped": true,
+              "categories": [
+                "arithmetic",
+                "comparison",
+                "crt_comparison",
+                "superlative",
+                "temporal"
+              ],
+              "myagent_tokens": 21068,
+              "mact_tokens": 19596,
+              "myagent_seconds": 33.107834591995925,
+              "mact_seconds": 226.0857350670267,
+              "mact_exec_error": null
+            },
+            {
+              "id": "crt-234",
+              "question": "Are there any countries in the Matariki Network of Universities that have a higher average World Rank by the WUR, ARWU or QS than the members from the USA? Answer with only 'Yes' or 'No' that is most accurate and nothing else.",
+              "gold": [
+                "Yes"
+              ],
+              "myagent_prediction": "No",
+              "mact_prediction": "yes.",
+              "myagent_final_value": "No",
+              "myagent_final_answer": "No",
+              "myagent_exec_success": true,
+              "myagent_exec_error": null,
+              "risk_level": "high",
+              "route_type": "COMPLEX",
+              "problem_tags": [
+                "superlative_order",
+                "comparison",
+                "arithmetic",
+                "negation_logic",
+                "closed_choice"
+              ],
+              "deterministic_shortcut_applied": false,
+              "deterministic_shortcut_reason": "",
+              "strong_verification_applied": true,
+              "critic_skipped": false,
+              "categories": [
+                "arithmetic",
+                "closed_choice",
+                "comparison",
+                "crt_comparison",
+                "negation",
+                "superlative",
+                "temporal"
+              ],
+              "myagent_tokens": 17669,
+              "mact_tokens": 18499,
+              "myagent_seconds": 71.34893586416729,
+              "mact_seconds": 320.4836815427989,
+              "mact_exec_error": null
+            },
+            {
+              "id": "crt-265",
+              "question": "What countries experienced the greatest percentage increase in international tourist arrivals from 2010 to 2011?What countries experienced the greatest percentage increase in international tourist arrivals from 2010 to 2011?",
+              "gold": [
+                "uruguay"
+              ],
+              "myagent_prediction": [
+                "uruguay",
+                "chile",
+                "peru"
+              ],
+              "mact_prediction": "Uruguay.",
+              "myagent_final_value": [
+                "uruguay",
+                "chile",
+                "peru"
+              ],
+              "myagent_final_answer": "[\"uruguay\", \"chile\", \"peru\"]",
+              "myagent_exec_success": true,
+              "myagent_exec_error": null,
+              "risk_level": "medium",
+              "route_type": "COMPLEX",
+              "problem_tags": [
+                "temporal",
+                "arithmetic",
+                "list_entity"
+              ],
+              "deterministic_shortcut_applied": false,
+              "deterministic_shortcut_reason": "",
+              "strong_verification_applied": false,
+              "critic_skipped": false,
+              "categories": [
+                "arithmetic",
+                "crt_comparison",
+                "temporal"
+              ],
+              "myagent_tokens": 5214,
+              "mact_tokens": 7801,
+              "myagent_seconds": 34.89527283492498,
+              "mact_seconds": 67.36843668902293,
+              "mact_exec_error": null
+            },
+            {
+              "id": "crt-254",
+              "question": "Is there any evidence of an increase/decrease in Krung Thai Bank's performance from 2004-2005 and from 2008-2009? Answer with only 'Yes' or 'No' that is most accurate and nothing else.",
+              "gold": [
+                "yes"
+              ],
+              "myagent_prediction": "No",
+              "mact_prediction": "Yes.",
+              "myagent_final_value": "No",
+              "myagent_final_answer": "No",
+              "myagent_exec_success": true,
+              "myagent_exec_error": null,
+              "risk_level": "high",
+              "route_type": "COMPLEX",
+              "problem_tags": [
+                "superlative_order",
+                "temporal",
+                "arithmetic",
+                "negation_logic",
+                "closed_choice"
+              ],
+              "deterministic_shortcut_applied": false,
+              "deterministic_shortcut_reason": "",
+              "strong_verification_applied": true,
+              "critic_skipped": false,
+              "categories": [
+                "arithmetic",
+                "closed_choice",
+                "crt_comparison",
+                "negation",
+                "superlative",
+                "temporal"
+              ],
+              "myagent_tokens": 27276,
+              "mact_tokens": 15791,
+              "myagent_seconds": 79.68888867506757,
+              "mact_seconds": 208.0185670440551,
+              "mact_exec_error": null
+            },
+            {
+              "id": "crt-180",
+              "question": "What is the ratio of stumpings to catches for West Indies test wicket-keepers?",
+              "gold": [
+                "16:117"
+              ],
+              "myagent_prediction": 0.13675213675213677,
+              "mact_prediction": "16:117",
+              "myagent_final_value": 0.13675213675213677,
+              "myagent_final_answer": "0.13675213675213677",
+              "myagent_exec_success": true,
+              "myagent_exec_error": null,
+              "risk_level": "medium",
+              "route_type": "COMPLEX",
+              "problem_tags": [
+                "arithmetic"
+              ],
+              "deterministic_shortcut_applied": false,
+              "deterministic_shortcut_reason": "",
+              "strong_verification_applied": false,
+              "critic_skipped": true,
+              "categories": [
+                "arithmetic",
+                "crt_comparison",
+                "temporal"
+              ],
+              "myagent_tokens": 2371,
+              "mact_tokens": 15073,
+              "myagent_seconds": 12.55047630215995,
+              "mact_seconds": 248.1591706960462,
+              "mact_exec_error": null
+            },
+            {
+              "id": "crt-316",
+              "question": "Are there any Superfund sites in Mississippi that have been proposed and listed in the same year? Answer with only 'Yes' or 'No' that is most accurate and nothing else.",
+              "gold": [
+                "Yes"
+              ],
+              "myagent_prediction": "No",
+              "mact_prediction": "yes.",
+              "myagent_final_value": "No",
+              "myagent_final_answer": "No",
+              "myagent_exec_success": true,
+              "myagent_exec_error": null,
+              "risk_level": "high",
+              "route_type": "COMPLEX",
+              "problem_tags": [
+                "superlative_order",
+                "temporal",
+                "negation_logic",
+                "closed_choice"
+              ],
+              "deterministic_shortcut_applied": false,
+              "deterministic_shortcut_reason": "",
+              "strong_verification_applied": true,
+              "critic_skipped": false,
+              "categories": [
+                "closed_choice",
+                "comparison",
+                "crt_comparison",
+                "negation",
+                "superlative",
+                "temporal"
+              ],
+              "myagent_tokens": 14476,
+              "mact_tokens": 12440,
+              "myagent_seconds": 16.79707382316701,
+              "mact_seconds": 137.10287051898194,
+              "mact_exec_error": null
+            },
+            {
+              "id": "crt-591",
+              "question": "Are the three Italian origin aircrafts distributed evenly among the categories they belong to? Answer with only 'Yes' or 'No' that is most accurate and nothing else.",
+              "gold": [
+                "Yes"
+              ],
+              "myagent_prediction": "No",
+              "mact_prediction": "Yes.",
+              "myagent_final_value": "No",
+              "myagent_final_answer": "No",
+              "myagent_exec_success": true,
+              "myagent_exec_error": null,
+              "risk_level": "high",
+              "route_type": "COMPLEX",
+              "problem_tags": [
+                "superlative_order",
+                "negation_logic",
+                "closed_choice"
+              ],
+              "deterministic_shortcut_applied": false,
+              "deterministic_shortcut_reason": "",
+              "strong_verification_applied": true,
+              "critic_skipped": false,
+              "categories": [
+                "closed_choice",
+                "crt_comparison",
+                "negation",
+                "superlative",
+                "temporal"
+              ],
+              "myagent_tokens": 10500,
+              "mact_tokens": 6883,
+              "myagent_seconds": 16.75396526698023,
+              "mact_seconds": 49.809669209003914,
+              "mact_exec_error": null
+            },
+            {
+              "id": "crt-703",
+              "question": "Does the release date of the paid download format in each region vary from the other formats? Answer with only 'Yes' or 'No' that is most accurate and nothing else.",
+              "gold": [
+                "No"
+              ],
+              "myagent_prediction": "Yes",
+              "mact_prediction": "no.",
+              "myagent_final_value": "Yes",
+              "myagent_final_answer": "Yes",
+              "myagent_exec_success": true,
+              "myagent_exec_error": null,
+              "risk_level": "high",
+              "route_type": "COMPLEX",
+              "problem_tags": [
+                "superlative_order",
+                "temporal",
+                "negation_logic",
+                "closed_choice"
+              ],
+              "deterministic_shortcut_applied": false,
+              "deterministic_shortcut_reason": "",
+              "strong_verification_applied": true,
+              "critic_skipped": false,
+              "categories": [
+                "closed_choice",
+                "crt_comparison",
+                "negation",
+                "superlative",
+                "temporal"
+              ],
+              "myagent_tokens": 10447,
+              "mact_tokens": 11041,
+              "myagent_seconds": 18.661596989026293,
+              "mact_seconds": 124.34121587499976,
+              "mact_exec_error": null
+            }
+          ]
+        },
+        "myagent_only": {
+          "count": 36,
+          "top_problem_tags": [
+            {
+              "key": "superlative_order",
+              "count": 31
+            },
+            {
+              "key": "negation_logic",
+              "count": 30
+            },
+            {
+              "key": "closed_choice",
+              "count": 26
+            },
+            {
+              "key": "temporal",
+              "count": 15
+            },
+            {
+              "key": "arithmetic",
+              "count": 12
+            },
+            {
+              "key": "comparison",
+              "count": 11
+            },
+            {
+              "key": "count",
+              "count": 7
+            },
+            {
+              "key": "trend_correlation",
+              "count": 2
+            },
+            {
+              "key": "none",
+              "count": 2
+            }
+          ],
+          "top_question_categories": [
+            {
+              "key": "crt_comparison",
+              "count": 36
+            },
+            {
+              "key": "superlative",
+              "count": 29
+            },
+            {
+              "key": "closed_choice",
+              "count": 26
+            },
+            {
+              "key": "temporal",
+              "count": 25
+            },
+            {
+              "key": "negation",
+              "count": 21
+            },
+            {
+              "key": "arithmetic",
+              "count": 17
+            },
+            {
+              "key": "comparison",
+              "count": 13
+            },
+            {
+              "key": "count",
+              "count": 7
+            }
+          ],
+          "risk_level": {
+            "high": 31,
+            "medium": 3,
+            "light": 2
+          },
+          "route_type": {
+            "COMPLEX": 36
+          },
+          "deterministic_shortcut_applied": {
+            "false": 28,
+            "true": 8
+          },
+          "strong_verification_applied": {
+            "true": 31,
+            "false": 5
+          },
+          "avg_myagent_tokens": 12460.694444444445,
+          "avg_myagent_seconds": 25.01545037386758,
+          "samples": [
+            {
+              "id": "crt-601",
+              "question": "How does the number of fatalities compare between accidents that occurred during training flights versus those that occurred during take-offs or landings? Answer with only 'more', 'less' or 'equal' that is most accurate and nothing else.",
+              "gold": [
+                "less"
+              ],
+              "myagent_prediction": "less",
+              "mact_prediction": "\"4 + 24 / 24\" – maybe 4 fatalities (crew?) and 24 total (passengers?), but the total is 24",
+              "myagent_final_value": "less",
+              "myagent_final_answer": "less",
+              "myagent_exec_success": true,
+              "myagent_exec_error": null,
+              "risk_level": "high",
+              "route_type": "COMPLEX",
+              "problem_tags": [
+                "count",
+                "superlative_order",
+                "temporal",
+                "comparison",
+                "negation_logic",
+                "closed_choice"
+              ],
+              "deterministic_shortcut_applied": false,
+              "deterministic_shortcut_reason": "",
+              "strong_verification_applied": true,
+              "critic_skipped": true,
+              "categories": [
+                "arithmetic",
+                "closed_choice",
+                "comparison",
+                "count",
+                "crt_comparison",
+                "superlative",
+                "temporal"
+              ],
+              "myagent_tokens": 22840,
+              "mact_tokens": 20807,
+              "myagent_seconds": 34.85158222494647,
+              "mact_seconds": 308.24403076199815,
+              "mact_exec_error": null
+            },
+            {
+              "id": "crt-419",
+              "question": "Is religious or spiritual content a popular format among radio stations in Fargo-Moorhead? Answer with only 'Yes' or 'No' that is most accurate and nothing else.",
+              "gold": [
+                "No"
+              ],
+              "myagent_prediction": "No",
+              "mact_prediction": "Yes.",
+              "myagent_final_value": "No",
+              "myagent_final_answer": "No",
+              "myagent_exec_success": true,
+              "myagent_exec_error": null,
+              "risk_level": "high",
+              "route_type": "COMPLEX",
+              "problem_tags": [
+                "superlative_order",
+                "negation_logic",
+                "closed_choice"
+              ],
+              "deterministic_shortcut_applied": false,
+              "deterministic_shortcut_reason": "",
+              "strong_verification_applied": true,
+              "critic_skipped": false,
+              "categories": [
+                "arithmetic",
+                "closed_choice",
+                "crt_comparison",
+                "negation",
+                "superlative"
+              ],
+              "myagent_tokens": 11612,
+              "mact_tokens": 7807,
+              "myagent_seconds": 16.354382543824613,
+              "mact_seconds": 89.56629519094713,
+              "mact_exec_error": null
+            },
+            {
+              "id": "crt-541",
+              "question": "Are there any films that were released on the same date but belong to different series? Answer with only 'Yes' or 'No' that is most accurate and nothing else.",
+              "gold": [
+                "No"
+              ],
+              "myagent_prediction": "No",
+              "mact_prediction": "People Are Bunny (MM)\n\nLooking through all these dates, none of them repeat. Each date is unique. Therefore, there are no films released on the same date with different series. The answer should be No.\n</think>\n\nNo",
+              "myagent_final_value": "No",
+              "myagent_final_answer": "No",
+              "myagent_exec_success": true,
+              "myagent_exec_error": null,
+              "risk_level": "high",
+              "route_type": "COMPLEX",
+              "problem_tags": [
+                "superlative_order",
+                "temporal",
+                "negation_logic",
+                "closed_choice"
+              ],
+              "deterministic_shortcut_applied": false,
+              "deterministic_shortcut_reason": "",
+              "strong_verification_applied": true,
+              "critic_skipped": false,
+              "categories": [
+                "closed_choice",
+                "comparison",
+                "crt_comparison",
+                "negation",
+                "superlative",
+                "temporal"
+              ],
+              "myagent_tokens": 14451,
+              "mact_tokens": 16436,
+              "myagent_seconds": 15.848300850950181,
+              "mact_seconds": 271.0308931679465,
+              "mact_exec_error": null
+            },
+            {
+              "id": "crt-613",
+              "question": "How did the number of points scored by Derek Daly vary according to the different teams? Answer with only 'Increase', 'Decrease' or 'Remain stable' that is most accurate and nothing else.",
+              "gold": [
+                "Increase"
+              ],
+              "myagent_prediction": "Increase",
+              "mact_prediction": "Remain stable",
+              "myagent_final_value": "Increase",
+              "myagent_final_answer": "Increase",
+              "myagent_exec_success": true,
+              "myagent_exec_error": null,
+              "risk_level": "high",
+              "route_type": "COMPLEX",
+              "problem_tags": [
+                "count",
+                "superlative_order",
+                "arithmetic",
+                "negation_logic",
+                "closed_choice"
+              ],
+              "deterministic_shortcut_applied": false,
+              "deterministic_shortcut_reason": "",
+              "strong_verification_applied": true,
+              "critic_skipped": true,
+              "categories": [
+                "arithmetic",
+                "closed_choice",
+                "count",
+                "crt_comparison",
+                "superlative",
+                "temporal"
+              ],
+              "myagent_tokens": 16133,
+              "mact_tokens": 2993,
+              "myagent_seconds": 48.27288802713156,
+              "mact_seconds": 34.022402497939765,
+              "mact_exec_error": null
+            },
+            {
+              "id": "crt-313",
+              "question": "How does the Miami Dolphins' record in the first half of the season compare to their record in the second half? Answer with only 'better', 'worse' or 'equal' that is most accurate and nothing else.",
+              "gold": [
+                "worse"
+              ],
+              "myagent_prediction": "worse",
+              "mact_prediction": "better",
+              "myagent_final_value": "worse",
+              "myagent_final_answer": "worse",
+              "myagent_exec_success": true,
+              "myagent_exec_error": null,
+              "risk_level": "high",
+              "route_type": "COMPLEX",
+              "problem_tags": [
+                "superlative_order",
+                "temporal",
+                "comparison",
+                "negation_logic",
+                "closed_choice"
+              ],
+              "deterministic_shortcut_applied": false,
+              "deterministic_shortcut_reason": "",
+              "strong_verification_applied": true,
+              "critic_skipped": true,
+              "categories": [
+                "closed_choice",
+                "comparison",
+                "crt_comparison",
+                "superlative",
+                "temporal"
+              ],
+              "myagent_tokens": 12506,
+              "mact_tokens": 15514,
+              "myagent_seconds": 33.646786735160276,
+              "mact_seconds": 230.00744906114414,
+              "mact_exec_error": null
+            },
+            {
+              "id": "crt-59",
+              "question": "Are there any outliers in the data that suggest a significant difference in the value of a country's currency compared to others in the region? Answer with only 'Yes' or 'No' that is most accurate and nothing else.",
+              "gold": [
+                "Yes"
+              ],
+              "myagent_prediction": "Yes",
+              "mact_prediction": "<think>\nOkay, let's see. The question is asking if there are any outliers in the data that show a significant difference in the value of a country's currency compared to others in the region. The table lists several South American countries and their currencies along with exchange rates to the euro and USD.\n\nFirst, I need to understand what an outlier would look like here. An outlier would be a country whose currency value is much higher or lower than the others when compared to either the euro or USD. Let's look at the exchange rates.\n\nLooking at the \"1 euro =\" column, most countries have values in the single or low hundreds. For example, Argentina is 5.72, Bolivia 9.02, Brazil 2.26, Chile 635, Colombia 2353, Ecuador (USD) 1.46, Guyana 264, Paraguay 4500, Peru 3.53, Suriname 4.27, Uruguay 25.38, Venezuela 5.65.\n\nWait, Paraguay's 1 euro equals 4500 guaraní. That's way higher than most others. For example, the next highest is Colombia at 2353, but Paraguay is double that. Similarly, in the \"1 USD =\" column, Paraguay has 5916.27, which is also much higher than others. Most other countries are in the hundreds or low thousands, but Paraguay is in the thousands. That seems like a big difference. \n\nEcuador uses the USD as their currency, so their exchange rate to USD is 1, which is an extreme outlier compared to others. But since they're using USD, maybe that's expected. However, the question is about the value compared to others in the region. Ecuador's USD is the same as the US, so maybe not an outlier in terms of their own currency. But Paraguay's guaraní is extremely low in value compared to others. \n\nSo, Paraguay's currency is an outlier because 4500 guaraní per euro is much higher than the next highest, which is Colombia at 2353. Similarly, Venezuela's 5.65 per euro is higher than some but not as extreme as Paraguay. So Paraguay's exchange rate is an outlier. Therefore, the answer should be Yes.\n</think>\n\nYes",
+              "myagent_final_value": "Yes",
+              "myagent_final_answer": "Yes",
+              "myagent_exec_success": true,
+              "myagent_exec_error": null,
+              "risk_level": "high",
+              "route_type": "COMPLEX",
+              "problem_tags": [
+                "superlative_order",
+                "comparison",
+                "arithmetic",
+                "negation_logic",
+                "closed_choice"
+              ],
+              "deterministic_shortcut_applied": false,
+              "deterministic_shortcut_reason": "",
+              "strong_verification_applied": true,
+              "critic_skipped": true,
+              "categories": [
+                "arithmetic",
+                "closed_choice",
+                "comparison",
+                "crt_comparison",
+                "negation",
+                "superlative",
+                "temporal"
+              ],
+              "myagent_tokens": 18561,
+              "mact_tokens": 10985,
+              "myagent_seconds": 53.90098620997742,
+              "mact_seconds": 115.6072258760687,
+              "mact_exec_error": null
+            },
+            {
+              "id": "crt-530",
+              "question": "What percentage of radio stations in Melville are owned by Harvard Broadcasting",
+              "gold": [
+                "0.4"
+              ],
+              "myagent_prediction": 0.4,
+              "mact_prediction": "40%",
+              "myagent_final_value": 0.4,
+              "myagent_final_answer": "0.4",
+              "myagent_exec_success": true,
+              "myagent_exec_error": null,
+              "risk_level": "medium",
+              "route_type": "COMPLEX",
+              "problem_tags": [
+                "arithmetic"
+              ],
+              "deterministic_shortcut_applied": true,
+              "deterministic_shortcut_reason": "CRT owner percentage computed deterministically.",
+              "strong_verification_applied": false,
+              "critic_skipped": true,
+              "categories": [
+                "arithmetic",
+                "crt_comparison"
+              ],
+              "myagent_tokens": 368,
+              "mact_tokens": 8539,
+              "myagent_seconds": 2.146859483094886,
+              "mact_seconds": 54.23786926199682,
+              "mact_exec_error": null
+            },
+            {
+              "id": "crt-519",
+              "question": "What is the correlation coefficient between earnings and wins for the top 5 players in the 1985 PGA tour?",
+              "gold": [
+                "0.9775"
+              ],
+              "myagent_prediction": 0.9775,
+              "mact_prediction": "55,200,000,000 + 2,576,000,000 = 57,776,000,000. So total for 2ab is 736,000,000,000 + 57,776,000,000 = 793,776,000,000.",
+              "myagent_final_value": 0.9775,
+              "myagent_final_answer": "0.9775",
+              "myagent_exec_success": true,
+              "myagent_exec_error": null,
+              "risk_level": "high",
+              "route_type": "COMPLEX",
+              "problem_tags": [
+                "superlative_order",
+                "temporal",
+                "arithmetic",
+                "negation_logic",
+                "trend_correlation"
+              ],
+              "deterministic_shortcut_applied": false,
+              "deterministic_shortcut_reason": "",
+              "strong_verification_applied": true,
+              "critic_skipped": true,
+              "categories": [
+                "arithmetic",
+                "crt_comparison",
+                "temporal"
+              ],
+              "myagent_tokens": 10550,
+              "mact_tokens": 19584,
+              "myagent_seconds": 24.252285558031872,
+              "mact_seconds": 380.8471538259182,
+              "mact_exec_error": null
+            }
+          ]
+        },
+        "neither": {
+          "count": 51,
+          "top_problem_tags": [
+            {
+              "key": "temporal",
+              "count": 29
+            },
+            {
+              "key": "negation_logic",
+              "count": 27
+            },
+            {
+              "key": "superlative_order",
+              "count": 25
+            },
+            {
+              "key": "arithmetic",
+              "count": 23
+            },
+            {
+              "key": "comparison",
+              "count": 16
+            },
+            {
+              "key": "closed_choice",
+              "count": 11
+            },
+            {
+              "key": "count",
+              "count": 9
+            },
+            {
+              "key": "none",
+              "count": 2
+            },
+            {
+              "key": "list_entity",
+              "count": 1
+            },
+            {
+              "key": "trend_correlation",
+              "count": 1
+            }
+          ],
+          "top_question_categories": [
+            {
+              "key": "crt_comparison",
+              "count": 51
+            },
+            {
+              "key": "temporal",
+              "count": 35
+            },
+            {
+              "key": "arithmetic",
+              "count": 28
+            },
+            {
+              "key": "superlative",
+              "count": 19
+            },
+            {
+              "key": "comparison",
+              "count": 17
+            },
+            {
+              "key": "closed_choice",
+              "count": 16
+            },
+            {
+              "key": "negation",
+              "count": 12
+            },
+            {
+              "key": "count",
+              "count": 9
+            }
+          ],
+          "risk_level": {
+            "medium": 30,
+            "high": 20,
+            "light": 1
+          },
+          "route_type": {
+            "COMPLEX": 51
+          },
+          "deterministic_shortcut_applied": {
+            "false": 51
+          },
+          "strong_verification_applied": {
+            "false": 31,
+            "true": 20
+          },
+          "avg_myagent_tokens": 7449.823529411765,
+          "avg_myagent_seconds": 25.153742895657928,
+          "samples": [
+            {
+              "id": "crt-391",
+              "question": "What was the total time frame for filming for all episodes during season 5 of ídolos brazil?",
+              "gold": [
+                "28"
+              ],
+              "myagent_prediction": "19 days",
+              "mact_prediction": "June 10, 2010, to June 29, 2010.",
+              "myagent_final_value": "19 days",
+              "myagent_final_answer": "19 days",
+              "myagent_exec_success": true,
+              "myagent_exec_error": null,
+              "risk_level": "medium",
+              "route_type": "COMPLEX",
+              "problem_tags": [
+                "temporal",
+                "arithmetic"
+              ],
+              "deterministic_shortcut_applied": false,
+              "deterministic_shortcut_reason": "",
+              "strong_verification_applied": false,
+              "critic_skipped": true,
+              "categories": [
+                "arithmetic",
+                "crt_comparison",
+                "temporal"
+              ],
+              "myagent_tokens": 2236,
+              "mact_tokens": 7577,
+              "myagent_seconds": 11.738146409858018,
+              "mact_seconds": 70.09456423809752,
+              "mact_exec_error": null
+            },
+            {
+              "id": "crt-505",
+              "question": "How many buildings in the European Union have held the title of tallest building for more than 10 years?",
+              "gold": [
+                "4"
+              ],
+              "myagent_prediction": 3,
+              "mact_prediction": "2.",
+              "myagent_final_value": 3,
+              "myagent_final_answer": "3",
+              "myagent_exec_success": true,
+              "myagent_exec_error": null,
+              "risk_level": "medium",
+              "route_type": "COMPLEX",
+              "problem_tags": [
+                "count",
+                "superlative_order",
+                "comparison"
+              ],
+              "deterministic_shortcut_applied": false,
+              "deterministic_shortcut_reason": "",
+              "strong_verification_applied": false,
+              "critic_skipped": true,
+              "categories": [
+                "comparison",
+                "count",
+                "crt_comparison"
+              ],
+              "myagent_tokens": 3731,
+              "mact_tokens": 17518,
+              "myagent_seconds": 23.983428010949865,
+              "mact_seconds": 284.5460844319314,
+              "mact_exec_error": null
+            },
+            {
+              "id": "crt-381",
+              "question": "Which combination of writer and director in season 2 of The Good Wife had the highest average number of US viewers?",
+              "gold": [
+                "dean parisot, ted humphrey"
+              ],
+              "myagent_prediction": "robert king & michelle king",
+              "mact_prediction": "Dean Parisot and Ted Humphrey.",
+              "myagent_final_value": "robert king & michelle king",
+              "myagent_final_answer": "robert king & michelle king",
+              "myagent_exec_success": true,
+              "myagent_exec_error": null,
+              "risk_level": "high",
+              "route_type": "COMPLEX",
+              "problem_tags": [
+                "count",
+                "superlative_order",
+                "temporal",
+                "arithmetic",
+                "negation_logic"
+              ],
+              "deterministic_shortcut_applied": false,
+              "deterministic_shortcut_reason": "",
+              "strong_verification_applied": true,
+              "critic_skipped": false,
+              "categories": [
+                "arithmetic",
+                "count",
+                "crt_comparison",
+                "superlative",
+                "temporal"
+              ],
+              "myagent_tokens": 20198,
+              "mact_tokens": 16709,
+              "myagent_seconds": 36.77952121314593,
+              "mact_seconds": 303.26447635982186,
+              "mact_exec_error": null
+            },
+            {
+              "id": "crt-606",
+              "question": "What was the ratio of awards won to nominations received by Catalina Sandino Moreno in 2004?",
+              "gold": [
+                "11:5"
+              ],
+              "myagent_prediction": 0.0,
+              "mact_prediction": "11:6",
+              "myagent_final_value": 0.0,
+              "myagent_final_answer": "0.0",
+              "myagent_exec_success": true,
+              "myagent_exec_error": null,
+              "risk_level": "medium",
+              "route_type": "COMPLEX",
+              "problem_tags": [
+                "temporal",
+                "arithmetic"
+              ],
+              "deterministic_shortcut_applied": false,
+              "deterministic_shortcut_reason": "",
+              "strong_verification_applied": false,
+              "critic_skipped": true,
+              "categories": [
+                "arithmetic",
+                "crt_comparison",
+                "temporal"
+              ],
+              "myagent_tokens": 2039,
+              "mact_tokens": 16046,
+              "myagent_seconds": 12.217851148918271,
+              "mact_seconds": 185.79351032990962,
+              "mact_exec_error": null
+            },
+            {
+              "id": "crt-204",
+              "question": "What is the rate of change in the percentage of popular vote for the Green Party between 1988 and 2008?",
+              "gold": [
+                "6.44%"
+              ],
+              "myagent_prediction": "0.32% per year",
+              "mact_prediction": "0.322",
+              "myagent_final_value": "0.32% per year",
+              "myagent_final_answer": "0.32% per year",
+              "myagent_exec_success": true,
+              "myagent_exec_error": null,
+              "risk_level": "medium",
+              "route_type": "COMPLEX",
+              "problem_tags": [
+                "temporal",
+                "arithmetic",
+                "negation_logic"
+              ],
+              "deterministic_shortcut_applied": false,
+              "deterministic_shortcut_reason": "",
+              "strong_verification_applied": false,
+              "critic_skipped": true,
+              "categories": [
+                "arithmetic",
+                "crt_comparison",
+                "temporal"
+              ],
+              "myagent_tokens": 4825,
+              "mact_tokens": 15984,
+              "myagent_seconds": 34.36910617002286,
+              "mact_seconds": 243.34843583288603,
+              "mact_exec_error": null
+            },
+            {
+              "id": "crt-685",
+              "question": "What teams had the biggest discrepancy between home and away games in terms of the percentage of points won?",
+              "gold": [
+                "townsville crocodiles"
+              ],
+              "myagent_prediction": [
+                "adelaide 36ers",
+                "wollongong hawks",
+                "sydney spirit"
+              ],
+              "mact_prediction": "Adelaide 36ers",
+              "myagent_final_value": [
+                "adelaide 36ers",
+                "wollongong hawks",
+                "sydney spirit"
+              ],
+              "myagent_final_answer": "[\"adelaide 36ers\", \"wollongong hawks\", \"sydney spirit\"]",
+              "myagent_exec_success": true,
+              "myagent_exec_error": null,
+              "risk_level": "high",
+              "route_type": "COMPLEX",
+              "problem_tags": [
+                "temporal",
+                "arithmetic",
+                "negation_logic",
+                "list_entity"
+              ],
+              "deterministic_shortcut_applied": false,
+              "deterministic_shortcut_reason": "",
+              "strong_verification_applied": true,
+              "critic_skipped": true,
+              "categories": [
+                "arithmetic",
+                "crt_comparison",
+                "temporal"
+              ],
+              "myagent_tokens": 16765,
+              "mact_tokens": 15240,
+              "myagent_seconds": 32.48124711611308,
+              "mact_seconds": 270.1683469230775,
+              "mact_exec_error": null
+            },
+            {
+              "id": "crt-570",
+              "question": "What was the winning percentage for the team when Chris Paul was the leading scorer?",
+              "gold": [
+                "66.7%"
+              ],
+              "myagent_prediction": 0.6666666666666666,
+              "mact_prediction": "66.67%",
+              "myagent_final_value": 0.6666666666666666,
+              "myagent_final_answer": "0.6666666666666666",
+              "myagent_exec_success": true,
+              "myagent_exec_error": null,
+              "risk_level": "medium",
+              "route_type": "COMPLEX",
+              "problem_tags": [
+                "arithmetic"
+              ],
+              "deterministic_shortcut_applied": false,
+              "deterministic_shortcut_reason": "",
+              "strong_verification_applied": false,
+              "critic_skipped": true,
+              "categories": [
+                "arithmetic",
+                "crt_comparison"
+              ],
+              "myagent_tokens": 3001,
+              "mact_tokens": 20910,
+              "myagent_seconds": 17.61861116811633,
+              "mact_seconds": 305.5114736480173,
+              "mact_exec_error": null
+            },
+            {
+              "id": "crt-667",
+              "question": "Are Big Finish audio plays featuring the 1st Doctor released more frequently in the summer months?",
+              "gold": [
+                "Yes"
+              ],
+              "myagent_prediction": "No",
+              "mact_prediction": "No.",
+              "myagent_final_value": "No",
+              "myagent_final_answer": "No",
+              "myagent_exec_success": true,
+              "myagent_exec_error": null,
+              "risk_level": "high",
+              "route_type": "COMPLEX",
+              "problem_tags": [
+                "comparison",
+                "closed_choice"
+              ],
+              "deterministic_shortcut_applied": false,
+              "deterministic_shortcut_reason": "",
+              "strong_verification_applied": true,
+              "critic_skipped": true,
+              "categories": [
+                "closed_choice",
+                "comparison",
+                "crt_comparison"
+              ],
+              "myagent_tokens": 13092,
+              "mact_tokens": 6614,
+              "myagent_seconds": 31.9118274259381,
+              "mact_seconds": 44.685263158986345,
+              "mact_exec_error": null
+            }
+          ]
+        },
+        "both_correct": {
+          "count": 101,
+          "top_problem_tags": [
+            {
+              "key": "superlative_order",
+              "count": 80
+            },
+            {
+              "key": "negation_logic",
+              "count": 73
+            },
+            {
+              "key": "closed_choice",
+              "count": 72
+            },
+            {
+              "key": "comparison",
+              "count": 41
+            },
+            {
+              "key": "temporal",
+              "count": 36
+            },
+            {
+              "key": "arithmetic",
+              "count": 28
+            },
+            {
+              "key": "count",
+              "count": 21
+            },
+            {
+              "key": "trend_correlation",
+              "count": 6
+            },
+            {
+              "key": "none",
+              "count": 2
+            }
+          ],
+          "top_question_categories": [
+            {
+              "key": "crt_comparison",
+              "count": 101
+            },
+            {
+              "key": "superlative",
+              "count": 78
+            },
+            {
+              "key": "closed_choice",
+              "count": 74
+            },
+            {
+              "key": "temporal",
+              "count": 67
+            },
+            {
+              "key": "negation",
+              "count": 55
+            },
+            {
+              "key": "comparison",
+              "count": 48
+            },
+            {
+              "key": "arithmetic",
+              "count": 41
+            },
+            {
+              "key": "count",
+              "count": 21
+            }
+          ],
+          "risk_level": {
+            "high": 79,
+            "medium": 20,
+            "light": 2
+          },
+          "route_type": {
+            "COMPLEX": 100,
+            "SIMPLE": 1
+          },
+          "deterministic_shortcut_applied": {
+            "false": 91,
+            "true": 10
+          },
+          "strong_verification_applied": {
+            "true": 79,
+            "false": 22
+          },
+          "avg_myagent_tokens": 11664.089108910892,
+          "avg_myagent_seconds": 23.975286018066477,
+          "samples": []
+        }
+      }
+    }
+  },
+  "overall": {
+    "paired_disagreement": {
+      "both_correct": 387,
+      "myagent_only": 66,
+      "mact_only": 63,
+      "neither": 84
+    },
+    "net_vs_mact": 3,
+    "top_mact_only_tags": [
+      {
+        "key": "wtq:negation_logic",
+        "count": 16
+      },
+      {
+        "key": "wtq:count",
+        "count": 16
+      },
+      {
+        "key": "wtq:superlative_order",
+        "count": 15
+      },
+      {
+        "key": "wtq:temporal",
+        "count": 14
+      },
+      {
+        "key": "tabfact:closed_choice",
+        "count": 11
+      },
+      {
+        "key": "crt:superlative_order",
+        "count": 9
+      },
+      {
+        "key": "crt:negation_logic",
+        "count": 9
+      },
+      {
+        "key": "tabfact:temporal",
+        "count": 7
+      },
+      {
+        "key": "crt:temporal",
+        "count": 7
+      },
+      {
+        "key": "crt:closed_choice",
+        "count": 7
+      },
+      {
+        "key": "crt:arithmetic",
+        "count": 6
+      },
+      {
+        "key": "wtq:arithmetic",
+        "count": 5
+      },
+      {
+        "key": "tabfact:negation_logic",
+        "count": 4
+      },
+      {
+        "key": "tabfact:superlative_order",
+        "count": 3
+      },
+      {
+        "key": "crt:comparison",
+        "count": 3
+      },
+      {
+        "key": "wtq:list_entity",
+        "count": 2
+      },
+      {
+        "key": "wtq:comparison",
+        "count": 2
+      },
+      {
+        "key": "wtq:none",
+        "count": 1
+      },
+      {
+        "key": "tabfact:comparison",
+        "count": 1
+      },
+      {
+        "key": "crt:list_entity",
+        "count": 1
+      }
+    ],
+    "top_mact_only_categories": [
+      {
+        "key": "wtq:temporal",
+        "count": 18
+      },
+      {
+        "key": "wtq:count",
+        "count": 16
+      },
+      {
+        "key": "crt:crt_comparison",
+        "count": 12
+      },
+      {
+        "key": "wtq:superlative",
+        "count": 11
+      },
+      {
+        "key": "tabfact:binary_fact",
+        "count": 11
+      },
+      {
+        "key": "tabfact:closed_choice",
+        "count": 11
+      },
+      {
+        "key": "crt:temporal",
+        "count": 11
+      },
+      {
+        "key": "tabfact:temporal",
+        "count": 9
+      },
+      {
+        "key": "crt:superlative",
+        "count": 9
+      },
+      {
+        "key": "crt:arithmetic",
+        "count": 8
+      },
+      {
+        "key": "wtq:arithmetic",
+        "count": 7
+      },
+      {
+        "key": "crt:closed_choice",
+        "count": 7
+      },
+      {
+        "key": "crt:negation",
+        "count": 7
+      },
+      {
+        "key": "wtq:plain_lookup",
+        "count": 6
+      },
+      {
+        "key": "crt:comparison",
+        "count": 4
+      },
+      {
+        "key": "wtq:comparison",
+        "count": 2
+      },
+      {
+        "key": "tabfact:superlative",
+        "count": 2
+      },
+      {
+        "key": "wtq:closed_choice",
+        "count": 1
+      },
+      {
+        "key": "wtq:negation",
+        "count": 1
+      },
+      {
+        "key": "tabfact:comparison",
+        "count": 1
+      }
+    ],
+    "top_myagent_only_tags": [
+      {
+        "key": "crt:superlative_order",
+        "count": 31
+      },
+      {
+        "key": "crt:negation_logic",
+        "count": 30
+      },
+      {
+        "key": "crt:closed_choice",
+        "count": 26
+      },
+      {
+        "key": "crt:temporal",
+        "count": 15
+      },
+      {
+        "key": "crt:arithmetic",
+        "count": 12
+      },
+      {
+        "key": "crt:comparison",
+        "count": 11
+      },
+      {
+        "key": "wtq:temporal",
+        "count": 10
+      },
+      {
+        "key": "wtq:negation_logic",
+        "count": 8
+      },
+      {
+        "key": "tabfact:closed_choice",
+        "count": 7
+      },
+      {
+        "key": "crt:count",
+        "count": 7
+      },
+      {
+        "key": "wtq:count",
+        "count": 5
+      },
+      {
+        "key": "wtq:comparison",
+        "count": 4
+      },
+      {
+        "key": "wtq:list_entity",
+        "count": 4
+      },
+      {
+        "key": "wtq:superlative_order",
+        "count": 3
+      },
+      {
+        "key": "wtq:none",
+        "count": 3
+      },
+      {
+        "key": "tabfact:temporal",
+        "count": 3
+      },
+      {
+        "key": "tabfact:negation_logic",
+        "count": 3
+      },
+      {
+        "key": "crt:trend_correlation",
+        "count": 2
+      },
+      {
+        "key": "crt:none",
+        "count": 2
+      },
+      {
+        "key": "wtq:arithmetic",
+        "count": 1
+      }
+    ],
+    "top_myagent_only_categories": [
+      {
+        "key": "crt:crt_comparison",
+        "count": 36
+      },
+      {
+        "key": "crt:superlative",
+        "count": 29
+      },
+      {
+        "key": "crt:closed_choice",
+        "count": 26
+      },
+      {
+        "key": "crt:temporal",
+        "count": 25
+      },
+      {
+        "key": "crt:negation",
+        "count": 21
+      },
+      {
+        "key": "crt:arithmetic",
+        "count": 17
+      },
+      {
+        "key": "crt:comparison",
+        "count": 13
+      },
+      {
+        "key": "wtq:temporal",
+        "count": 11
+      },
+      {
+        "key": "tabfact:binary_fact",
+        "count": 7
+      },
+      {
+        "key": "tabfact:closed_choice",
+        "count": 7
+      },
+      {
+        "key": "crt:count",
+        "count": 7
+      },
+      {
+        "key": "wtq:plain_lookup",
+        "count": 5
+      },
+      {
+        "key": "wtq:count",
+        "count": 5
+      },
+      {
+        "key": "wtq:comparison",
+        "count": 4
+      },
+      {
+        "key": "wtq:arithmetic",
+        "count": 4
+      },
+      {
+        "key": "wtq:closed_choice",
+        "count": 3
+      },
+      {
+        "key": "tabfact:temporal",
+        "count": 3
+      },
+      {
+        "key": "wtq:negation",
+        "count": 2
+      },
+      {
+        "key": "wtq:superlative",
+        "count": 2
+      },
+      {
+        "key": "tabfact:arithmetic",
+        "count": 2
+      }
+    ]
+  }
+}

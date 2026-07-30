@@ -277,3 +277,16 @@ crt_mact_full200_eval.json                     MACT 113/200, failed_exec 0, erro
 crt_mact_full200_paired.json                   myAgent 137/200 vs MACT 113/200
 overall_mact_full200_summary.json              myAgent 453/600 vs MACT 450/600, token ratio 0.5708
 ```
+
+## 2026-07-30 full200 disagreement diagnostics
+
+| time | artifact | status | notes |
+|---|---|---|---|
+| 2026-07-30 17:09:20 CST | `full200_disagreement_diagnostics.md` | complete | human-readable same-ID disagreement diagnosis; WTQ net `-17`, TabFact net `-4`, CRT net `+24`, overall net `+3` |
+| 2026-07-30 17:09:20 CST | `full200_disagreement_diagnostics.json` | complete | structured bucket/tag/category/sample diagnostics for follow-up WTQ discordant subset analysis |
+| 2026-07-30 17:09:20 CST | `wtq_discordant_debug_subset_50.md` | complete | WTQ debug subset summary: all 40 `mact_only` rows plus 10 prioritized `neither` rows |
+| 2026-07-30 17:09:20 CST | `wtq_discordant_debug_subset_50.jsonl` | complete | structured WTQ debug subset with table, gold, predictions, categories, tags, shortcut/verifier fields, and token metrics |
+| 2026-07-30 17:12:48 CST | `wtq_compression_bucket_diagnostics.md` | complete | WTQ bucket-level compression and prediction-signal diagnosis; MACT-only median compression ratio `0.25`, not-found-like `7`, header prediction `3` |
+| 2026-07-30 17:12:48 CST | `wtq_compression_bucket_diagnostics.json` | complete | structured WTQ compression bucket metrics for testing retrieval/compression hypotheses |
+
+Diagnostic conclusion: the current acceptance blocker is dataset-level, not execution stability. WTQ is the main negative contributor and should be the first code-debug target if we optimize current Qwen3-32B; TabFact is not the next priority, and CRT is the main positive contributor.

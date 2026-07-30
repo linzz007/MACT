@@ -1,0 +1,865 @@
+{
+  "generated_at": "2026-07-30 17:12:48 CST",
+  "dataset": "wtq",
+  "source_run_dir": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_blind200_mact_full200_20260723",
+  "buckets": {
+    "mact_only": {
+      "count": 40,
+      "strategy": {
+        "expanded_context_block_global_rows_global_columns": 1,
+        "expanded_context_block": 22,
+        "expanded_context_block_global_rows": 6,
+        "strict_cell_block_global_rows": 3,
+        "strict_cell_block": 6,
+        "full_table_for_high_coverage": 1,
+        "expanded_context_block_global_columns": 1
+      },
+      "prediction_signals": {
+        "numeric_scalar_prediction": 14,
+        "not_found_like_prediction": 7,
+        "header_prediction": 3,
+        "list_prediction": 1
+      },
+      "metrics": {
+        "original_rows": {
+          "mean": 19.7,
+          "median": 16.5,
+          "min": 6.0,
+          "max": 101.0
+        },
+        "compressed_rows": {
+          "mean": 10.925,
+          "median": 8.0,
+          "min": 1.0,
+          "max": 40.0
+        },
+        "original_cols": {
+          "mean": 6.625,
+          "median": 6.0,
+          "min": 3.0,
+          "max": 12.0
+        },
+        "compressed_cols": {
+          "mean": 3.675,
+          "median": 3.0,
+          "min": 1.0,
+          "max": 9.0
+        },
+        "compression_ratio": {
+          "mean": 0.338232,
+          "median": 0.25,
+          "min": 0.019704433497536946,
+          "max": 1.0
+        },
+        "token_compression_ratio_est": {
+          "mean": 0.350857,
+          "median": 0.25341,
+          "min": 0.02308136180034622,
+          "max": 1.0
+        },
+        "full_table_tokens_est": {
+          "mean": 617.95,
+          "median": 477.0,
+          "min": 144.0,
+          "max": 1951.0
+        },
+        "compressed_table_tokens_est": {
+          "mean": 214.225,
+          "median": 102.5,
+          "min": 14.0,
+          "max": 1102.0
+        }
+      },
+      "signal_samples": [
+        {
+          "id": "nu-2873",
+          "bucket": "mact_only",
+          "signals": [
+            "numeric_scalar_prediction"
+          ],
+          "question": "who drove the only saab car?",
+          "gold": [
+            "Mike Imrie"
+          ],
+          "myagent_prediction": 7.0,
+          "mact_prediction": "Mike Imrie",
+          "strategy": "expanded_context_block",
+          "compression_ratio": 0.2,
+          "compressed_rows": 24,
+          "compressed_cols": 2
+        },
+        {
+          "id": "nu-2453",
+          "bucket": "mact_only",
+          "signals": [
+            "not_found_like_prediction"
+          ],
+          "question": "for which film did georgina hale receive her bafta award?",
+          "gold": [
+            "Mahler"
+          ],
+          "myagent_prediction": "Not found",
+          "mact_prediction": "Mahler",
+          "strategy": "expanded_context_block",
+          "compression_ratio": 0.10714285714285714,
+          "compressed_rows": 3,
+          "compressed_cols": 3
+        },
+        {
+          "id": "nu-709",
+          "bucket": "mact_only",
+          "signals": [
+            "numeric_scalar_prediction"
+          ],
+          "question": "what is the number of tablets?",
+          "gold": [
+            "11"
+          ],
+          "myagent_prediction": 12,
+          "mact_prediction": "11",
+          "strategy": "expanded_context_block",
+          "compression_ratio": 0.25,
+          "compressed_rows": 12,
+          "compressed_cols": 1
+        },
+        {
+          "id": "nu-3934",
+          "bucket": "mact_only",
+          "signals": [
+            "numeric_scalar_prediction"
+          ],
+          "question": "in what year did salvatore bettiol run in the most marathons?",
+          "gold": [
+            "1987"
+          ],
+          "myagent_prediction": 1986.0,
+          "mact_prediction": "1987",
+          "strategy": "expanded_context_block_global_rows",
+          "compression_ratio": 0.5,
+          "compressed_rows": 8,
+          "compressed_cols": 3
+        },
+        {
+          "id": "nu-1505",
+          "bucket": "mact_only",
+          "signals": [
+            "numeric_scalar_prediction"
+          ],
+          "question": "how many books did \"harper & brothers\" publish?",
+          "gold": [
+            "74"
+          ],
+          "myagent_prediction": 34,
+          "mact_prediction": "74.",
+          "strategy": "expanded_context_block",
+          "compression_ratio": 0.15841584158415842,
+          "compressed_rows": 40,
+          "compressed_cols": 2
+        },
+        {
+          "id": "nu-2213",
+          "bucket": "mact_only",
+          "signals": [
+            "numeric_scalar_prediction"
+          ],
+          "question": "what is the total number of goals?",
+          "gold": [
+            "4"
+          ],
+          "myagent_prediction": 8.0,
+          "mact_prediction": "4",
+          "strategy": "strict_cell_block_global_rows",
+          "compression_ratio": 0.4,
+          "compressed_rows": 11,
+          "compressed_cols": 2
+        },
+        {
+          "id": "nu-1826",
+          "bucket": "mact_only",
+          "signals": [
+            "numeric_scalar_prediction"
+          ],
+          "question": "how many of the educational websites have used at least limited advertising?",
+          "gold": [
+            "7"
+          ],
+          "myagent_prediction": 4,
+          "mact_prediction": "7",
+          "strategy": "expanded_context_block_global_rows",
+          "compression_ratio": 0.8,
+          "compressed_rows": 17,
+          "compressed_cols": 4
+        },
+        {
+          "id": "nu-3535",
+          "bucket": "mact_only",
+          "signals": [
+            "not_found_like_prediction"
+          ],
+          "question": "u2 and redbox both had releases in what year?",
+          "gold": [
+            "1985"
+          ],
+          "myagent_prediction": "One or both bands not found in the table",
+          "mact_prediction": "1985",
+          "strategy": "expanded_context_block",
+          "compression_ratio": 0.13636363636363635,
+          "compressed_rows": 3,
+          "compressed_cols": 3
+        }
+      ]
+    },
+    "myagent_only": {
+      "count": 23,
+      "strategy": {
+        "expanded_context_block": 14,
+        "full_table_for_high_coverage": 1,
+        "strict_cell_block": 3,
+        "expanded_context_block_global_rows": 4,
+        "expanded_context_block_global_columns": 1
+      },
+      "prediction_signals": {
+        "list_prediction": 5,
+        "numeric_scalar_prediction": 6
+      },
+      "metrics": {
+        "original_rows": {
+          "mean": 66.304348,
+          "median": 15.0,
+          "min": 6.0,
+          "max": 517.0
+        },
+        "compressed_rows": {
+          "mean": 12.695652,
+          "median": 10.0,
+          "min": 1.0,
+          "max": 40.0
+        },
+        "original_cols": {
+          "mean": 6.043478,
+          "median": 6.0,
+          "min": 3.0,
+          "max": 9.0
+        },
+        "compressed_cols": {
+          "mean": 3.869565,
+          "median": 4.0,
+          "min": 1.0,
+          "max": 7.0
+        },
+        "compression_ratio": {
+          "mean": 0.417136,
+          "median": 0.4,
+          "min": 0.0020898641588296763,
+          "max": 1.0
+        },
+        "token_compression_ratio_est": {
+          "mean": 0.416469,
+          "median": 0.397516,
+          "min": 0.0025129135836939828,
+          "max": 1.0
+        },
+        "full_table_tokens_est": {
+          "mean": 1537.391304,
+          "median": 469.0,
+          "min": 161.0,
+          "max": 8264.0
+        },
+        "compressed_table_tokens_est": {
+          "mean": 262.73913,
+          "median": 170.0,
+          "min": 18.0,
+          "max": 963.0
+        }
+      },
+      "signal_samples": [
+        {
+          "id": "nu-3438",
+          "bucket": "myagent_only",
+          "signals": [
+            "list_prediction"
+          ],
+          "question": "which mayors had more than 2 consecutive terms?",
+          "gold": [
+            "Mr B.Melman",
+            "Mr P.Venter",
+            "Mrs E.Myer"
+          ],
+          "myagent_prediction": [
+            "Mr B.Melman",
+            "Mr P.Venter",
+            "Mrs E.Myer"
+          ],
+          "mact_prediction": "Mr Sakkie",
+          "strategy": "full_table_for_high_coverage",
+          "compression_ratio": 1.0,
+          "compressed_rows": 31,
+          "compressed_cols": 6
+        },
+        {
+          "id": "nu-3406",
+          "bucket": "myagent_only",
+          "signals": [
+            "numeric_scalar_prediction"
+          ],
+          "question": "how many accolades ranked the album below 100th place?",
+          "gold": [
+            "4"
+          ],
+          "myagent_prediction": 4,
+          "mact_prediction": "15",
+          "strategy": "expanded_context_block_global_rows",
+          "compression_ratio": 0.6,
+          "compressed_rows": 29,
+          "compressed_cols": 3
+        },
+        {
+          "id": "nu-2502",
+          "bucket": "myagent_only",
+          "signals": [
+            "list_prediction"
+          ],
+          "question": "which associations have both a women's and men's team?",
+          "gold": [
+            "China PR",
+            "Guam",
+            "Hong Kong",
+            "Japan",
+            "Korea DPR",
+            "Korea Republic",
+            "Macau",
+            "Mongolia",
+            "Northern Mariana Islands",
+            "Chinese Taipei"
+          ],
+          "myagent_prediction": [
+            "China PR",
+            "Guam",
+            "Hong Kong",
+            "Japan",
+            "Korea DPR",
+            "Korea Republic",
+            "Macau",
+            "Mongolia",
+            "Northern Mariana Islands",
+            "Chinese Taipei"
+          ],
+          "mact_prediction": "China PR, Guam, Hong Kong, Japan, Korea DPR, Korea Republic, Macau, Mongolia, Northern Mariana Islands, Chinese Taipei",
+          "strategy": "expanded_context_block",
+          "compression_ratio": 0.8,
+          "compressed_rows": 10,
+          "compressed_cols": 4
+        },
+        {
+          "id": "nu-3977",
+          "bucket": "myagent_only",
+          "signals": [
+            "numeric_scalar_prediction"
+          ],
+          "question": "what is the difference of the jsu and tu scores in 2001",
+          "gold": [
+            "18"
+          ],
+          "myagent_prediction": 18,
+          "mact_prediction": "-18",
+          "strategy": "expanded_context_block",
+          "compression_ratio": 0.026785714285714284,
+          "compressed_rows": 3,
+          "compressed_cols": 4
+        },
+        {
+          "id": "nu-1329",
+          "bucket": "myagent_only",
+          "signals": [
+            "list_prediction"
+          ],
+          "question": "which administrators started their terms after 1998?",
+          "gold": [
+            "Major General Raza Hussain",
+            "Major General Ahmed Bilal"
+          ],
+          "myagent_prediction": [
+            "Major General Raza Hussain",
+            "Major General Ahmed Bilal"
+          ],
+          "mact_prediction": "Major General Raza Hussain and Major General Ahmed Bilal",
+          "strategy": "strict_cell_block",
+          "compression_ratio": 1.0,
+          "compressed_rows": 9,
+          "compressed_cols": 7
+        },
+        {
+          "id": "nu-2903",
+          "bucket": "myagent_only",
+          "signals": [
+            "list_prediction"
+          ],
+          "question": "which trains do not give an arrival time",
+          "gold": [
+            "Narkhed-New Amravati Pass",
+            "Bhusaval-Narkhed Pass"
+          ],
+          "myagent_prediction": [
+            "Narkhed-New Amravati Pass",
+            "Bhusaval-Narkhed Pass"
+          ],
+          "mact_prediction": "Narkhed-New Amravati Pass, Bhusaval-Narkhed Pass",
+          "strategy": "expanded_context_block",
+          "compression_ratio": 0.8333333333333334,
+          "compressed_rows": 35,
+          "compressed_cols": 5
+        },
+        {
+          "id": "nu-3139",
+          "bucket": "myagent_only",
+          "signals": [
+            "numeric_scalar_prediction"
+          ],
+          "question": "what is the number of locations named st. clair in pennsylvania?",
+          "gold": [
+            "3"
+          ],
+          "myagent_prediction": 3,
+          "mact_prediction": "",
+          "strategy": "expanded_context_block",
+          "compression_ratio": 0.003094777562862669,
+          "compressed_rows": 8,
+          "compressed_cols": 1
+        },
+        {
+          "id": "nu-2032",
+          "bucket": "myagent_only",
+          "signals": [
+            "numeric_scalar_prediction"
+          ],
+          "question": "how many players competed in the 1939 masters tournament?",
+          "gold": [
+            "11"
+          ],
+          "myagent_prediction": 11,
+          "mact_prediction": "82",
+          "strategy": "expanded_context_block_global_rows",
+          "compression_ratio": 0.6666666666666666,
+          "compressed_rows": 11,
+          "compressed_cols": 4
+        }
+      ]
+    },
+    "neither": {
+      "count": 29,
+      "strategy": {
+        "expanded_context_block": 11,
+        "expanded_context_block_global_rows": 11,
+        "strict_cell_block": 4,
+        "strict_cell_block_global_rows": 2,
+        "expanded_context_block_global_rows_global_columns": 1
+      },
+      "prediction_signals": {
+        "numeric_scalar_prediction": 7,
+        "not_found_like_prediction": 2
+      },
+      "metrics": {
+        "original_rows": {
+          "mean": 27.103448,
+          "median": 16.0,
+          "min": 7.0,
+          "max": 171.0
+        },
+        "compressed_rows": {
+          "mean": 14.37931,
+          "median": 12.0,
+          "min": 1.0,
+          "max": 62.0
+        },
+        "original_cols": {
+          "mean": 6.137931,
+          "median": 6.0,
+          "min": 4.0,
+          "max": 10.0
+        },
+        "compressed_cols": {
+          "mean": 3.689655,
+          "median": 3.0,
+          "min": 2.0,
+          "max": 7.0
+        },
+        "compression_ratio": {
+          "mean": 0.422296,
+          "median": 0.4,
+          "min": 0.0234375,
+          "max": 1.0
+        },
+        "token_compression_ratio_est": {
+          "mean": 0.436537,
+          "median": 0.456693,
+          "min": 0.032423208191126277,
+          "max": 1.0
+        },
+        "full_table_tokens_est": {
+          "mean": 1100.103448,
+          "median": 577.0,
+          "min": 228.0,
+          "max": 6886.0
+        },
+        "compressed_table_tokens_est": {
+          "mean": 452.37931,
+          "median": 176.0,
+          "min": 24.0,
+          "max": 6317.0
+        }
+      },
+      "signal_samples": [
+        {
+          "id": "nu-965",
+          "bucket": "neither",
+          "signals": [
+            "numeric_scalar_prediction"
+          ],
+          "question": "how many times was a nomination awarded?",
+          "gold": [
+            "5"
+          ],
+          "myagent_prediction": 16,
+          "mact_prediction": "15.",
+          "strategy": "expanded_context_block_global_rows",
+          "compression_ratio": 0.75,
+          "compressed_rows": 21,
+          "compressed_cols": 3
+        },
+        {
+          "id": "nu-4299",
+          "bucket": "neither",
+          "signals": [
+            "not_found_like_prediction"
+          ],
+          "question": "which artist did jaycen joshua work with before his first job with rick ross?",
+          "gold": [
+            "Puff Daddy"
+          ],
+          "myagent_prediction": "Not found",
+          "mact_prediction": "",
+          "strategy": "expanded_context_block",
+          "compression_ratio": 0.08771929824561403,
+          "compressed_rows": 15,
+          "compressed_cols": 7
+        },
+        {
+          "id": "nu-1263",
+          "bucket": "neither",
+          "signals": [
+            "not_found_like_prediction"
+          ],
+          "question": "how many nominees are there each year for the naacp image award?",
+          "gold": [
+            "4"
+          ],
+          "myagent_prediction": "The table does not provide a consistent number of nominees per year for the NAACP Image Award.",
+          "mact_prediction": "the Supporting Actor is the winner, and the Nominees column lists all the other nominees. So for 1997, the winner is Samuel L. Jackson, and the Nominees column lists Blair Underwood, Charles S. Dutton, Delroy Lindo, Forest Whitaker. That's four other nominees, making a total of 5 nominees for that year. \n\nSo for each year, the total number of nominees is 1 (the winner) plus the number of names listed in the Nominees column. However, in some years, the Nominees column is empty, meaning the winner was the only nominee. \n\nSo to calculate the total number of nominees across all years, we need to go through each year, count the number of nominees (1 if Nominees is empty, else 1 + number of names in Nominees column), and sum them all. \n\nBut the question is phrased as \"how many nominees are there each year for the naacp image award?\" which is a bit ambiguous. If it's asking for the number of nominees in each year, the answer would vary each year. But the answer format requires a single number. However, looking at the examples, the user might be asking for the total number of nominees across all years. \n\nAlternatively, maybe the question is asking for the number of nominees per year, but the answer is that it varies. However, the answer format requires a specific number. \n\nWait, perhaps the user is asking for the number of nominees in each year, but the answer is that each year has a certain",
+          "strategy": "expanded_context_block_global_rows",
+          "compression_ratio": 0.5,
+          "compressed_rows": 46,
+          "compressed_cols": 2
+        },
+        {
+          "id": "nu-2396",
+          "bucket": "neither",
+          "signals": [
+            "numeric_scalar_prediction"
+          ],
+          "question": "what is the total number of years for port douglas crocs?",
+          "gold": [
+            "2"
+          ],
+          "myagent_prediction": 5,
+          "mact_prediction": "5",
+          "strategy": "expanded_context_block_global_rows",
+          "compression_ratio": 0.6,
+          "compressed_rows": 11,
+          "compressed_cols": 3
+        },
+        {
+          "id": "nu-712",
+          "bucket": "neither",
+          "signals": [
+            "numeric_scalar_prediction"
+          ],
+          "question": "players who scored at most 1 total goal",
+          "gold": [
+            "Cahill",
+            "Colosimo",
+            "Culina",
+            "Elrich",
+            "Griffiths",
+            "Skoko",
+            "Zdrilic"
+          ],
+          "myagent_prediction": 7,
+          "mact_prediction": "Cahill, Colosimo, Culina, Elrich, Griffiths, Skoko, Zdrilic",
+          "strategy": "expanded_context_block_global_rows",
+          "compression_ratio": 0.4,
+          "compressed_rows": 14,
+          "compressed_cols": 2
+        },
+        {
+          "id": "nu-506",
+          "bucket": "neither",
+          "signals": [
+            "numeric_scalar_prediction"
+          ],
+          "question": "what is the total number of fw-190's he damaged or destroyed?",
+          "gold": [
+            "2"
+          ],
+          "myagent_prediction": 5.0,
+          "mact_prediction": "5.0",
+          "strategy": "expanded_context_block_global_rows",
+          "compression_ratio": 0.6666666666666666,
+          "compressed_rows": 13,
+          "compressed_cols": 4
+        },
+        {
+          "id": "nu-3290",
+          "bucket": "neither",
+          "signals": [
+            "numeric_scalar_prediction"
+          ],
+          "question": "how many terminals have at least four major streets listed?",
+          "gold": [
+            "17"
+          ],
+          "myagent_prediction": 49,
+          "mact_prediction": "",
+          "strategy": "expanded_context_block_global_rows",
+          "compression_ratio": 0.75,
+          "compressed_rows": 62,
+          "compressed_cols": 6
+        },
+        {
+          "id": "nu-824",
+          "bucket": "neither",
+          "signals": [
+            "numeric_scalar_prediction"
+          ],
+          "question": "how many total ambassadors were there?",
+          "gold": [
+            "34"
+          ],
+          "myagent_prediction": 9,
+          "mact_prediction": "Lev Urusov (9)\n\nSo that's 9 ambassadors in the first part (entries 1-16). Then from 23 to",
+          "strategy": "strict_cell_block_global_rows",
+          "compression_ratio": 0.3333333333333333,
+          "compressed_rows": 34,
+          "compressed_cols": 2
+        }
+      ]
+    },
+    "both_correct": {
+      "count": 108,
+      "strategy": {
+        "expanded_context_block": 54,
+        "strict_cell_block": 11,
+        "expanded_context_block_global_columns": 3,
+        "strict_cell_block_global_rows": 7,
+        "expanded_context_block_global_rows": 31,
+        "strict_cell_block_global_rows_global_columns": 1,
+        "strict_cell_block_global_columns": 1
+      },
+      "prediction_signals": {
+        "numeric_scalar_prediction": 52
+      },
+      "metrics": {
+        "original_rows": {
+          "mean": 18.851852,
+          "median": 13.0,
+          "min": 5.0,
+          "max": 95.0
+        },
+        "compressed_rows": {
+          "mean": 11.444444,
+          "median": 8.0,
+          "min": 1.0,
+          "max": 95.0
+        },
+        "original_cols": {
+          "mean": 6.287037,
+          "median": 6.0,
+          "min": 4.0,
+          "max": 14.0
+        },
+        "compressed_cols": {
+          "mean": 3.731481,
+          "median": 3.0,
+          "min": 1.0,
+          "max": 10.0
+        },
+        "compression_ratio": {
+          "mean": 0.417567,
+          "median": 0.375,
+          "min": 0.022222222222222223,
+          "max": 1.0
+        },
+        "token_compression_ratio_est": {
+          "mean": 0.422606,
+          "median": 0.38438,
+          "min": 0.026932084309133488,
+          "max": 1.0
+        },
+        "full_table_tokens_est": {
+          "mean": 584.944444,
+          "median": 403.5,
+          "min": 103.0,
+          "max": 2784.0
+        },
+        "compressed_table_tokens_est": {
+          "mean": 194.601852,
+          "median": 138.0,
+          "min": 9.0,
+          "max": 1248.0
+        }
+      },
+      "signal_samples": [
+        {
+          "id": "nu-1874",
+          "bucket": "both_correct",
+          "signals": [
+            "numeric_scalar_prediction"
+          ],
+          "question": "what was south korea's total medal count?",
+          "gold": [
+            "6"
+          ],
+          "myagent_prediction": 6,
+          "mact_prediction": "6",
+          "strategy": "strict_cell_block",
+          "compression_ratio": 0.0625,
+          "compressed_rows": 2,
+          "compressed_cols": 3
+        },
+        {
+          "id": "nu-2772",
+          "bucket": "both_correct",
+          "signals": [
+            "numeric_scalar_prediction"
+          ],
+          "question": "which year was her best year in terms of number of awards won?",
+          "gold": [
+            "2008"
+          ],
+          "myagent_prediction": 2008.0,
+          "mact_prediction": "2008",
+          "strategy": "expanded_context_block_global_columns",
+          "compression_ratio": 0.9090909090909091,
+          "compressed_rows": 20,
+          "compressed_cols": 5
+        },
+        {
+          "id": "nu-3720",
+          "bucket": "both_correct",
+          "signals": [
+            "numeric_scalar_prediction"
+          ],
+          "question": "how many players went to oklahoma?",
+          "gold": [
+            "2"
+          ],
+          "myagent_prediction": 2,
+          "mact_prediction": "2",
+          "strategy": "strict_cell_block_global_rows",
+          "compression_ratio": 0.6,
+          "compressed_rows": 13,
+          "compressed_cols": 3
+        },
+        {
+          "id": "nu-3442",
+          "bucket": "both_correct",
+          "signals": [
+            "numeric_scalar_prediction"
+          ],
+          "question": "how many lieutenants served in 1949?",
+          "gold": [
+            "1"
+          ],
+          "myagent_prediction": 1,
+          "mact_prediction": "1",
+          "strategy": "expanded_context_block_global_rows",
+          "compression_ratio": 0.6,
+          "compressed_rows": 8,
+          "compressed_cols": 3
+        },
+        {
+          "id": "nu-1952",
+          "bucket": "both_correct",
+          "signals": [
+            "numeric_scalar_prediction"
+          ],
+          "question": "how many locations are listed?",
+          "gold": [
+            "13"
+          ],
+          "myagent_prediction": 13,
+          "mact_prediction": "13",
+          "strategy": "expanded_context_block_global_rows",
+          "compression_ratio": 1.0,
+          "compressed_rows": 13,
+          "compressed_cols": 5
+        },
+        {
+          "id": "nu-3470",
+          "bucket": "both_correct",
+          "signals": [
+            "numeric_scalar_prediction"
+          ],
+          "question": "which year was the first to break a 20% increase in passengers?",
+          "gold": [
+            "2007"
+          ],
+          "myagent_prediction": "2007",
+          "mact_prediction": "2007",
+          "strategy": "expanded_context_block",
+          "compression_ratio": 0.3333333333333333,
+          "compressed_rows": 14,
+          "compressed_cols": 3
+        },
+        {
+          "id": "nu-2779",
+          "bucket": "both_correct",
+          "signals": [
+            "numeric_scalar_prediction"
+          ],
+          "question": "what was the point differential between the baltimore colts and oakland raiders in the 1970-71 game?",
+          "gold": [
+            "10"
+          ],
+          "myagent_prediction": 10.0,
+          "mact_prediction": "10",
+          "strategy": "expanded_context_block",
+          "compression_ratio": 0.045454545454545456,
+          "compressed_rows": 2,
+          "compressed_cols": 7
+        },
+        {
+          "id": "nu-2525",
+          "bucket": "both_correct",
+          "signals": [
+            "numeric_scalar_prediction"
+          ],
+          "question": "how many governorate's have at least 4 million or more in population?",
+          "gold": [
+            "3"
+          ],
+          "myagent_prediction": 3,
+          "mact_prediction": "3",
+          "strategy": "expanded_context_block_global_rows",
+          "compression_ratio": 0.6666666666666666,
+          "compressed_rows": 8,
+          "compressed_cols": 4
+        }
+      ]
+    }
+  },
+  "interpretation": [
+    "WTQ mact_only is not caused by service failures; rows are valid paired rows.",
+    "mact_only has lower median compression ratio than both_correct, and contains not-found/header-like predictions, suggesting retrieval or table-context targeting misses in addition to reasoning errors.",
+    "The dominant semantic categories remain temporal/count/superlative/negation, so fixes should target generic table selection and boundary handling before rerunning large samples."
+  ]
+}
