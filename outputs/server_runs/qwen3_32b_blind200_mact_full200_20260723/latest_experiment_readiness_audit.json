@@ -1,0 +1,75 @@
+{
+  "canonical_full200": {
+    "datasets_myagent_at_least_mact": 1,
+    "mact_accuracy": 0.75,
+    "mact_correct": 450,
+    "mact_rows": 600,
+    "myagent_accuracy": 0.755,
+    "myagent_correct": 453,
+    "myagent_rows": 600,
+    "overall_accuracy_at_least_mact": true,
+    "strict_acceptance": false,
+    "token_ratio": 0.5707972803761415,
+    "token_ratio_at_most_0_75": true
+  },
+  "current_crt_staged_composite": {
+    "mact_accuracy": 0.75,
+    "mact_correct": 450,
+    "mact_rows": 600,
+    "myagent_accuracy": 0.76,
+    "myagent_correct": 456,
+    "myagent_rows": 600,
+    "overall_accuracy_at_least_mact": true,
+    "present": true,
+    "token_ratio": 0.5708240748441236,
+    "token_ratio_at_most_0_75": true
+  },
+  "evidence_complete": true,
+  "evidence_files": {
+    "canonical_full200_summary": {
+      "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_blind200_mact_full200_20260723/overall_mact_full200_summary.json",
+      "present": true
+    },
+    "current_crt_comparison": {
+      "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_crt_full200_current_20260730_1822/crt_full200_current_comparison.json",
+      "present": true
+    },
+    "wtq_representative100_comparison": {
+      "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_wtq_extreme_fix_representative100_20260730_1805/wtq_representative100_extreme_fix_comparison.json",
+      "present": true
+    }
+  },
+  "generated_at": "2026-07-30T11:28:40.170947Z",
+  "mact_root": "/home/ubuntu/lzz/MACT",
+  "model_readiness": {
+    "api_keys_present": [],
+    "can_start_new_experiment": false,
+    "known_tested_local_models": [
+      "Qwen2.5-14B-AWQ",
+      "Qwen2.5-14B-Instruct-AWQ",
+      "Qwen2.5-3B-Instruct",
+      "Qwen3-14B-AWQ",
+      "Qwen3-32B"
+    ],
+    "local_models": [
+      "Qwen2.5-14B-Instruct-AWQ",
+      "Qwen2.5-3B-Instruct",
+      "Qwen3-14B-AWQ",
+      "Qwen3-32B"
+    ],
+    "next_action": "wait_for_new_model_or_api_key",
+    "untested_local_models": []
+  },
+  "myagent_root": "/home/ubuntu/lzz/MyAgent",
+  "wtq_representative100": {
+    "decision": "do_not_expand_wtq_extreme_only_fix",
+    "mact_accuracy": 0.79,
+    "net_recovered_rows": 0,
+    "new_myagent_accuracy": 0.69,
+    "old_myagent_accuracy": 0.69,
+    "recovered_rows": 3,
+    "regressed_rows": 3,
+    "token_ratio_new_vs_mact": 0.5789501181691757,
+    "token_ratio_new_vs_old_myagent": 1.009121344177175
+  }
+}
