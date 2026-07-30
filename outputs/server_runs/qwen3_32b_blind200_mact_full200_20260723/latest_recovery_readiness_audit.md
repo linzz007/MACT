@@ -1,19 +1,19 @@
 # Latest Recovery Readiness Audit
 
-Generated: 2026-07-30 20:13:09 CST
+Generated: 2026-07-30 20:24:40 CST
 
 This audit checks whether the current staged evidence can be recovered from GitHub after the server is cleared.
 
 ## Git State Checked
 
-The commits below are the minimum pushed checkpoints needed for this recovery set. Later metadata-only commits may supersede them without changing the underlying recoverable evidence.
+The commits below are the minimum pushed checkpoints needed for the canonical recovery set. Later metadata-only commits may supersede them without changing the underlying recoverable evidence. The full MyAgent `outputs/server_runs` archive is an additional recovery package tracked by this audit commit and later.
 
 | repo | branch | minimum evidence commit |
 |---|---|---|
 | MyAgent | `codex/selective-risk-collaboration` | `b5c7b44 Record canonical myAgent artifact recovery path` |
 | MACT | `main` | `aebf366 Mirror canonical myAgent full200 artifacts` |
 
-Both repositories were clean before this audit metadata correction.
+Both repositories were clean before this archive and audit update.
 
 ## Recoverable Evidence
 
@@ -28,6 +28,7 @@ Both repositories were clean before this audit metadata correction.
 | Multi-model Gate-50 summaries | `/home/ubuntu/lzz/MACT/outputs/server_runs/multimodel_gate50_summaries_20260730_1948/` | tracked |
 | Multi-model Gate-50 raw artifacts | `/home/ubuntu/lzz/MACT/outputs/server_runs/multimodel_gate50_raw_artifacts_20260730_2002/` | tracked |
 | Canonical myAgent full200 raw artifacts | `/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_canonical_myagent_full200_raw_artifacts_20260730_2008/` | tracked |
+| Full MyAgent `outputs/server_runs` archive | `/home/ubuntu/lzz/MACT/outputs/server_runs/myagent_server_runs_archive_20260730_2020/` | tracked by this audit commit and later |
 
 ## Dataset Row Checks
 
@@ -40,6 +41,29 @@ Both repositories were clean before this audit metadata correction.
 | Canonical myAgent TabFact merged | 200 |
 | Canonical myAgent CRT merged | 200 |
 | Each non-main model Gate-50 merged total | 150 |
+
+## Exploratory MyAgent Outputs Archive
+
+This archive preserves the local MyAgent exploratory run outputs that are not part of the canonical MACT paired evidence but are useful for server-wipe recovery and later audit.
+
+| item | value |
+|---|---|
+| source path | `/home/ubuntu/lzz/MyAgent/outputs/server_runs` |
+| archive path | `/home/ubuntu/lzz/MACT/outputs/server_runs/myagent_server_runs_archive_20260730_2020/myagent_outputs_server_runs_20260730_2020.tar.gz` |
+| archive README | `/home/ubuntu/lzz/MACT/outputs/server_runs/myagent_server_runs_archive_20260730_2020/README.md` |
+| source size | `241M` |
+| compressed size | about `27M` |
+| run directories | `43` |
+| files | `433` |
+| sha256 | `478205603b38f01e62f0a64230a89c3a24602fa1499235fdc56c60cc1ff2816e` |
+| inventory | `/home/ubuntu/lzz/MACT/outputs/server_runs/myagent_server_runs_archive_20260730_2020/inventory.tsv` |
+| secret scan | no matches for `Authorization`, `Bearer`, common API key env names, `PASSWORD`, or `SECRET` |
+
+Recovery command:
+
+```bash
+tar -xzf /home/ubuntu/lzz/MACT/outputs/server_runs/myagent_server_runs_archive_20260730_2020/myagent_outputs_server_runs_20260730_2020.tar.gz -C /home/ubuntu/lzz/MyAgent
+```
 
 ## Metric Checks
 
@@ -68,4 +92,4 @@ The canonical full200 MACT directory still has local untracked files, but they a
 
 ## Decision
 
-Recovery readiness is acceptable for the current staged evidence. The canonical myAgent full200 raw artifact directory has been committed and pushed to MACT. Do not restart old no-go models; the next experiment should start only after a new local model is mounted or a usable external API key is provided.
+Recovery readiness is acceptable for the current staged evidence. The canonical myAgent full200 raw artifact directory has been committed and pushed to MACT, and the full MyAgent exploratory `server_runs` archive is now included as a supplemental recovery package. Do not restart old no-go models; the next experiment should start only after a new local model is mounted or a usable external API key is provided.
