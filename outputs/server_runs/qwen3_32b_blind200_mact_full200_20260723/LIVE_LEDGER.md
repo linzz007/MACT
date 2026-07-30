@@ -294,5 +294,7 @@ overall_mact_full200_summary.json              myAgent 453/600 vs MACT 450/600, 
 | 2026-07-30 17:23:00 CST | `wtq_compressor_hypothesis_diagnostics.json` | complete | structured hypothesis mapping for targeted WTQ fixes |
 | 2026-07-30 17:23:06 CST | `wtq_fix_candidate_coverage_estimate.md` | complete | candidate fix coverage estimate; recommended first test is WTQ extreme/only global rows |
 | 2026-07-30 17:23:06 CST | `wtq_fix_candidate_coverage_estimate.json` | complete | structured candidate fix coverage estimate |
+| 2026-07-30 17:32:46 CST | `wtq_extreme_only_global_rows_offline_check.md` | complete | offline check for minimal myAgent patch; 18/50 debug rows newly trigger global rows, 10 literal gold row-loss cases become row-recoverable |
+| 2026-07-30 17:32:46 CST | `wtq_extreme_only_global_rows_offline_check.json` | complete | structured offline coverage check; no model call and no measured accuracy claim |
 
 Diagnostic conclusion: the current acceptance blocker is dataset-level, not execution stability. WTQ is the main negative contributor and should be the first code-debug target if we optimize current Qwen3-32B; TabFact is not the next priority, and CRT is the main positive contributor.

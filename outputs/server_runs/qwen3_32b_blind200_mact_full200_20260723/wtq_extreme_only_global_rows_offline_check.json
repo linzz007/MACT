@@ -1,0 +1,1926 @@
+{
+  "generated_at": "2026-07-30 17:32:46 CST",
+  "source_subset": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_blind200_mact_full200_20260723/wtq_discordant_debug_subset_50.jsonl",
+  "source_gold_diagnostic": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_blind200_mact_full200_20260723/wtq_gold_rowcol_loss_diagnostics.json",
+  "purpose": "Offline check for the minimal TableCompressor patch that adds only/top/first/last/earliest/latest as global-row WTQ triggers. This estimates compression coverage only, not model accuracy.",
+  "summary": {
+    "newly_global_triggered": 18,
+    "literal_gold_row_loss_recoverable": 10,
+    "debug_subset_rows": 50,
+    "mact_only_rows": 40,
+    "neither_rows": 10,
+    "affected_avg_old_cell_ratio": 0.21578801903314931,
+    "affected_avg_estimated_new_cell_ratio_same_cols": 0.605453342953343
+  },
+  "term_counts": {
+    "only": 9,
+    "top": 2,
+    "first": 5,
+    "last": 2,
+    "earliest": 1
+  },
+  "by_bucket": {
+    "mact_only": {
+      "newly_global_triggered": 15,
+      "literal_gold_row_loss_recoverable": 9
+    },
+    "neither": {
+      "newly_global_triggered": 3,
+      "literal_gold_row_loss_recoverable": 1
+    }
+  },
+  "by_loss_category": {
+    "gold_row_kept_col_dropped": {
+      "newly_global_triggered": 1
+    },
+    "gold_col_kept_row_dropped": {
+      "newly_global_triggered": 10,
+      "literal_gold_row_loss_recoverable": 10
+    },
+    "gold_cell_selected": {
+      "newly_global_triggered": 6
+    },
+    "gold_not_literal_or_computed": {
+      "newly_global_triggered": 1
+    }
+  },
+  "recoverable_ids": [
+    "nu-3949",
+    "nu-2223",
+    "nu-4328",
+    "nu-2850",
+    "nu-2139",
+    "nu-3375",
+    "nu-1870",
+    "nu-4291",
+    "nu-53",
+    "nu-2178"
+  ],
+  "rows": [
+    {
+      "id": "nu-1434",
+      "bucket": "mact_only",
+      "question": "what is the highest chart position ever achieved by one of dino's singles?",
+      "matched_new_term": [],
+      "old_global_by_strategy": true,
+      "old_would_global_by_pre_patch_terms": true,
+      "newly_global_triggered_by_patch": false,
+      "loss_category": "gold_cell_selected",
+      "row_loss_recoverable_by_global_rows": false,
+      "old_strategy": "expanded_context_block_global_rows_global_columns",
+      "old_compressed_rows": 11,
+      "original_rows": 11,
+      "old_compressed_cols": 5,
+      "original_cols": 5,
+      "old_cell_compression_ratio": 1.0,
+      "estimated_new_cell_compression_ratio_same_cols": 1.0,
+      "used_cols": [
+        "Year",
+        "Song",
+        "Album",
+        "Position",
+        "Chart"
+      ],
+      "gold": [
+        "3.0"
+      ],
+      "myagent_prediction": "\\I Like It\\\"\"",
+      "mact_prediction": "3",
+      "categories": [
+        "superlative"
+      ],
+      "problem_tags": [
+        "superlative_order"
+      ]
+    },
+    {
+      "id": "nu-2873",
+      "bucket": "mact_only",
+      "question": "who drove the only saab car?",
+      "matched_new_term": [
+        "only"
+      ],
+      "old_global_by_strategy": false,
+      "old_would_global_by_pre_patch_terms": false,
+      "newly_global_triggered_by_patch": true,
+      "loss_category": "gold_row_kept_col_dropped",
+      "row_loss_recoverable_by_global_rows": false,
+      "old_strategy": "expanded_context_block",
+      "old_compressed_rows": 24,
+      "original_rows": 24,
+      "old_compressed_cols": 2,
+      "original_cols": 10,
+      "old_cell_compression_ratio": 0.2,
+      "estimated_new_cell_compression_ratio_same_cols": 0.2,
+      "used_cols": [
+        "Position",
+        "Car"
+      ],
+      "gold": [
+        "Mike Imrie"
+      ],
+      "myagent_prediction": 7.0,
+      "mact_prediction": "Mike Imrie",
+      "categories": [
+        "negation"
+      ],
+      "problem_tags": [
+        "negation_logic"
+      ]
+    },
+    {
+      "id": "nu-2453",
+      "bucket": "mact_only",
+      "question": "for which film did georgina hale receive her bafta award?",
+      "matched_new_term": [],
+      "old_global_by_strategy": false,
+      "old_would_global_by_pre_patch_terms": false,
+      "newly_global_triggered_by_patch": false,
+      "loss_category": "gold_col_kept_row_dropped",
+      "row_loss_recoverable_by_global_rows": false,
+      "old_strategy": "expanded_context_block",
+      "old_compressed_rows": 3,
+      "original_rows": 21,
+      "old_compressed_cols": 3,
+      "original_cols": 4,
+      "old_cell_compression_ratio": 0.10714285714285714,
+      "estimated_new_cell_compression_ratio_same_cols": 0.10714285714285714,
+      "used_cols": [
+        "Year",
+        "Film",
+        "Notes"
+      ],
+      "gold": [
+        "Mahler"
+      ],
+      "myagent_prediction": "Not found",
+      "mact_prediction": "Mahler",
+      "categories": [
+        "plain_lookup"
+      ],
+      "problem_tags": []
+    },
+    {
+      "id": "nu-709",
+      "bucket": "mact_only",
+      "question": "what is the number of tablets?",
+      "matched_new_term": [],
+      "old_global_by_strategy": false,
+      "old_would_global_by_pre_patch_terms": false,
+      "newly_global_triggered_by_patch": false,
+      "loss_category": "gold_cell_selected",
+      "row_loss_recoverable_by_global_rows": false,
+      "old_strategy": "expanded_context_block",
+      "old_compressed_rows": 12,
+      "original_rows": 12,
+      "old_compressed_cols": 1,
+      "original_cols": 4,
+      "old_cell_compression_ratio": 0.25,
+      "estimated_new_cell_compression_ratio_same_cols": 0.25,
+      "used_cols": [
+        "Tablet"
+      ],
+      "gold": [
+        "11.0"
+      ],
+      "myagent_prediction": 12,
+      "mact_prediction": "11",
+      "categories": [
+        "count"
+      ],
+      "problem_tags": [
+        "count"
+      ]
+    },
+    {
+      "id": "nu-3934",
+      "bucket": "mact_only",
+      "question": "in what year did salvatore bettiol run in the most marathons?",
+      "matched_new_term": [],
+      "old_global_by_strategy": true,
+      "old_would_global_by_pre_patch_terms": true,
+      "newly_global_triggered_by_patch": false,
+      "loss_category": "gold_cell_selected",
+      "row_loss_recoverable_by_global_rows": false,
+      "old_strategy": "expanded_context_block_global_rows",
+      "old_compressed_rows": 8,
+      "original_rows": 8,
+      "old_compressed_cols": 3,
+      "original_cols": 6,
+      "old_cell_compression_ratio": 0.5,
+      "estimated_new_cell_compression_ratio_same_cols": 0.5,
+      "used_cols": [
+        "Year",
+        "Competition",
+        "Event"
+      ],
+      "gold": [
+        "1987.0"
+      ],
+      "myagent_prediction": 1986.0,
+      "mact_prediction": "1987",
+      "categories": [
+        "superlative",
+        "temporal"
+      ],
+      "problem_tags": [
+        "superlative_order",
+        "temporal"
+      ]
+    },
+    {
+      "id": "nu-1505",
+      "bucket": "mact_only",
+      "question": "how many books did \"harper & brothers\" publish?",
+      "matched_new_term": [],
+      "old_global_by_strategy": false,
+      "old_would_global_by_pre_patch_terms": false,
+      "newly_global_triggered_by_patch": false,
+      "loss_category": "gold_not_literal_or_computed",
+      "row_loss_recoverable_by_global_rows": false,
+      "old_strategy": "expanded_context_block",
+      "old_compressed_rows": 40,
+      "original_rows": 101,
+      "old_compressed_cols": 2,
+      "original_cols": 5,
+      "old_cell_compression_ratio": 0.15841584158415842,
+      "estimated_new_cell_compression_ratio_same_cols": 0.15841584158415842,
+      "used_cols": [
+        "Year",
+        "Publisher"
+      ],
+      "gold": [
+        "74.0"
+      ],
+      "myagent_prediction": 34,
+      "mact_prediction": "74.",
+      "categories": [
+        "count"
+      ],
+      "problem_tags": [
+        "count"
+      ]
+    },
+    {
+      "id": "nu-2213",
+      "bucket": "mact_only",
+      "question": "what is the total number of goals?",
+      "matched_new_term": [],
+      "old_global_by_strategy": true,
+      "old_would_global_by_pre_patch_terms": true,
+      "newly_global_triggered_by_patch": false,
+      "loss_category": "gold_cell_selected",
+      "row_loss_recoverable_by_global_rows": false,
+      "old_strategy": "strict_cell_block_global_rows",
+      "old_compressed_rows": 11,
+      "original_rows": 11,
+      "old_compressed_cols": 2,
+      "original_cols": 5,
+      "old_cell_compression_ratio": 0.4,
+      "estimated_new_cell_compression_ratio_same_cols": 0.4,
+      "used_cols": [
+        "Season",
+        "Goals"
+      ],
+      "gold": [
+        "4.0"
+      ],
+      "myagent_prediction": 8.0,
+      "mact_prediction": "4",
+      "categories": [
+        "arithmetic",
+        "count"
+      ],
+      "problem_tags": [
+        "count",
+        "arithmetic"
+      ]
+    },
+    {
+      "id": "nu-1826",
+      "bucket": "mact_only",
+      "question": "how many of the educational websites have used at least limited advertising?",
+      "matched_new_term": [],
+      "old_global_by_strategy": true,
+      "old_would_global_by_pre_patch_terms": true,
+      "newly_global_triggered_by_patch": false,
+      "loss_category": "gold_not_literal_or_computed",
+      "row_loss_recoverable_by_global_rows": false,
+      "old_strategy": "expanded_context_block_global_rows",
+      "old_compressed_rows": 17,
+      "original_rows": 17,
+      "old_compressed_cols": 4,
+      "original_cols": 5,
+      "old_cell_compression_ratio": 0.8,
+      "estimated_new_cell_compression_ratio_same_cols": 0.8,
+      "used_cols": [
+        "Name",
+        "Topic",
+        "Target age",
+        "Advertising"
+      ],
+      "gold": [
+        "7.0"
+      ],
+      "myagent_prediction": 4,
+      "mact_prediction": "7",
+      "categories": [
+        "count",
+        "negation",
+        "superlative"
+      ],
+      "problem_tags": [
+        "count",
+        "superlative_order",
+        "negation_logic"
+      ]
+    },
+    {
+      "id": "nu-2611",
+      "bucket": "mact_only",
+      "question": "which was earlier, sopwith triplane s/n n5460 or nieuport serial number 3958?",
+      "matched_new_term": [],
+      "old_global_by_strategy": false,
+      "old_would_global_by_pre_patch_terms": false,
+      "newly_global_triggered_by_patch": false,
+      "loss_category": "gold_cell_selected",
+      "row_loss_recoverable_by_global_rows": false,
+      "old_strategy": "expanded_context_block",
+      "old_compressed_rows": 7,
+      "original_rows": 8,
+      "old_compressed_cols": 3,
+      "original_cols": 7,
+      "old_cell_compression_ratio": 0.375,
+      "estimated_new_cell_compression_ratio_same_cols": 0.375,
+      "used_cols": [
+        "No.",
+        "Date/time",
+        "Aircraft"
+      ],
+      "gold": [
+        "Nieuport serial number 3958"
+      ],
+      "myagent_prediction": "sopwith triplane s/n n5460",
+      "mact_prediction": "Nieuport serial number 3958",
+      "categories": [
+        "arithmetic",
+        "closed_choice",
+        "negation",
+        "superlative",
+        "temporal"
+      ],
+      "problem_tags": [
+        "superlative_order",
+        "temporal",
+        "negation_logic"
+      ]
+    },
+    {
+      "id": "nu-3535",
+      "bucket": "mact_only",
+      "question": "u2 and redbox both had releases in what year?",
+      "matched_new_term": [],
+      "old_global_by_strategy": false,
+      "old_would_global_by_pre_patch_terms": false,
+      "newly_global_triggered_by_patch": false,
+      "loss_category": "gold_cell_selected",
+      "row_loss_recoverable_by_global_rows": false,
+      "old_strategy": "expanded_context_block",
+      "old_compressed_rows": 3,
+      "original_rows": 11,
+      "old_compressed_cols": 3,
+      "original_cols": 6,
+      "old_cell_compression_ratio": 0.13636363636363635,
+      "estimated_new_cell_compression_ratio_same_cols": 0.13636363636363635,
+      "used_cols": [
+        "Band",
+        "Released",
+        "Disc Description"
+      ],
+      "gold": [
+        "1985.0"
+      ],
+      "myagent_prediction": "One or both bands not found in the table",
+      "mact_prediction": "1985",
+      "categories": [
+        "negation",
+        "temporal"
+      ],
+      "problem_tags": [
+        "temporal",
+        "negation_logic"
+      ]
+    },
+    {
+      "id": "nu-3949",
+      "bucket": "mact_only",
+      "question": "derby and which other station are the only ones to not have a frequency?",
+      "matched_new_term": [
+        "only"
+      ],
+      "old_global_by_strategy": false,
+      "old_would_global_by_pre_patch_terms": false,
+      "newly_global_triggered_by_patch": true,
+      "loss_category": "gold_col_kept_row_dropped",
+      "row_loss_recoverable_by_global_rows": true,
+      "old_strategy": "expanded_context_block",
+      "old_compressed_rows": 3,
+      "original_rows": 11,
+      "old_compressed_cols": 3,
+      "original_cols": 7,
+      "old_cell_compression_ratio": 0.11688311688311688,
+      "estimated_new_cell_compression_ratio_same_cols": 0.42857142857142855,
+      "used_cols": [
+        "Callsign",
+        "Area served",
+        "Frequency"
+      ],
+      "gold": [
+        "Ulverstone"
+      ],
+      "myagent_prediction": "Derby",
+      "mact_prediction": "Ulverstone",
+      "categories": [
+        "negation",
+        "temporal"
+      ],
+      "problem_tags": [
+        "negation_logic"
+      ]
+    },
+    {
+      "id": "nu-2232",
+      "bucket": "mact_only",
+      "question": "how many championship tournaments did she play in after 1984?",
+      "matched_new_term": [],
+      "old_global_by_strategy": false,
+      "old_would_global_by_pre_patch_terms": false,
+      "newly_global_triggered_by_patch": false,
+      "loss_category": "gold_cell_selected",
+      "row_loss_recoverable_by_global_rows": false,
+      "old_strategy": "expanded_context_block",
+      "old_compressed_rows": 16,
+      "original_rows": 20,
+      "old_compressed_cols": 8,
+      "original_cols": 8,
+      "old_cell_compression_ratio": 0.8,
+      "estimated_new_cell_compression_ratio_same_cols": 0.8,
+      "used_cols": [
+        "Result",
+        "Date",
+        "Category",
+        "Tournament",
+        "Surface",
+        "Partnering",
+        "Opponents",
+        "Score"
+      ],
+      "gold": [
+        "4.0"
+      ],
+      "myagent_prediction": 0,
+      "mact_prediction": "4",
+      "categories": [
+        "count",
+        "temporal"
+      ],
+      "problem_tags": [
+        "count",
+        "temporal"
+      ]
+    },
+    {
+      "id": "nu-2223",
+      "bucket": "mact_only",
+      "question": "name the only player transferred from albirex niigata.",
+      "matched_new_term": [
+        "only"
+      ],
+      "old_global_by_strategy": false,
+      "old_would_global_by_pre_patch_terms": false,
+      "newly_global_triggered_by_patch": true,
+      "loss_category": "gold_col_kept_row_dropped",
+      "row_loss_recoverable_by_global_rows": true,
+      "old_strategy": "strict_cell_block",
+      "old_compressed_rows": 2,
+      "original_rows": 12,
+      "old_compressed_cols": 3,
+      "original_cols": 4,
+      "old_cell_compression_ratio": 0.125,
+      "estimated_new_cell_compression_ratio_same_cols": 0.75,
+      "used_cols": [
+        "Position",
+        "Player",
+        "Transferred From"
+      ],
+      "gold": [
+        "Kazuki Yoshino"
+      ],
+      "myagent_prediction": "Rizawan Abdullah",
+      "mact_prediction": "Kazuki Yoshino",
+      "categories": [
+        "negation",
+        "temporal"
+      ],
+      "problem_tags": [
+        "negation_logic"
+      ]
+    },
+    {
+      "id": "nu-1951",
+      "bucket": "mact_only",
+      "question": "what was the outcome the only time a hard surface was used?",
+      "matched_new_term": [
+        "only"
+      ],
+      "old_global_by_strategy": false,
+      "old_would_global_by_pre_patch_terms": false,
+      "newly_global_triggered_by_patch": true,
+      "loss_category": "gold_cell_selected",
+      "row_loss_recoverable_by_global_rows": false,
+      "old_strategy": "expanded_context_block",
+      "old_compressed_rows": 12,
+      "original_rows": 18,
+      "old_compressed_cols": 2,
+      "original_cols": 7,
+      "old_cell_compression_ratio": 0.19047619047619047,
+      "estimated_new_cell_compression_ratio_same_cols": 0.2857142857142857,
+      "used_cols": [
+        "Outcome",
+        "Surface"
+      ],
+      "gold": [
+        "Runner-up"
+      ],
+      "myagent_prediction": "No unique hard surface event found",
+      "mact_prediction": "Runner-up",
+      "categories": [
+        "negation"
+      ],
+      "problem_tags": [
+        "negation_logic"
+      ]
+    },
+    {
+      "id": "nu-1125",
+      "bucket": "mact_only",
+      "question": "in season 1, what number of episodes were written by morton fine and david friedkin?",
+      "matched_new_term": [],
+      "old_global_by_strategy": false,
+      "old_would_global_by_pre_patch_terms": false,
+      "newly_global_triggered_by_patch": false,
+      "loss_category": "gold_cell_selected",
+      "row_loss_recoverable_by_global_rows": false,
+      "old_strategy": "expanded_context_block",
+      "old_compressed_rows": 28,
+      "original_rows": 28,
+      "old_compressed_cols": 7,
+      "original_cols": 7,
+      "old_cell_compression_ratio": 1.0,
+      "estimated_new_cell_compression_ratio_same_cols": 1.0,
+      "used_cols": [
+        "No. in series",
+        "No. in season",
+        "Title",
+        "Directed by",
+        "Written by",
+        "Original air date",
+        "Prod. code"
+      ],
+      "gold": [
+        "7.0"
+      ],
+      "myagent_prediction": 0,
+      "mact_prediction": "7",
+      "categories": [
+        "count",
+        "negation",
+        "temporal"
+      ],
+      "problem_tags": [
+        "count",
+        "temporal",
+        "negation_logic"
+      ]
+    },
+    {
+      "id": "nu-4328",
+      "bucket": "mact_only",
+      "question": "which country has the top number of silver medals won?",
+      "matched_new_term": [
+        "top"
+      ],
+      "old_global_by_strategy": false,
+      "old_would_global_by_pre_patch_terms": false,
+      "newly_global_triggered_by_patch": true,
+      "loss_category": "gold_col_kept_row_dropped",
+      "row_loss_recoverable_by_global_rows": true,
+      "old_strategy": "strict_cell_block",
+      "old_compressed_rows": 1,
+      "original_rows": 10,
+      "old_compressed_cols": 3,
+      "original_cols": 6,
+      "old_cell_compression_ratio": 0.05,
+      "estimated_new_cell_compression_ratio_same_cols": 0.5,
+      "used_cols": [
+        "Rank",
+        "Nation",
+        "Silver"
+      ],
+      "gold": [
+        "Spain"
+      ],
+      "myagent_prediction": "Total",
+      "mact_prediction": "Spain",
+      "categories": [
+        "count",
+        "superlative"
+      ],
+      "problem_tags": [
+        "count",
+        "superlative_order"
+      ]
+    },
+    {
+      "id": "nu-2850",
+      "bucket": "mact_only",
+      "question": "which singles charted in the top five of canada and also australia?",
+      "matched_new_term": [
+        "top"
+      ],
+      "old_global_by_strategy": false,
+      "old_would_global_by_pre_patch_terms": false,
+      "newly_global_triggered_by_patch": true,
+      "loss_category": "gold_col_kept_row_dropped",
+      "row_loss_recoverable_by_global_rows": true,
+      "old_strategy": "expanded_context_block",
+      "old_compressed_rows": 2,
+      "original_rows": 6,
+      "old_compressed_cols": 4,
+      "original_cols": 11,
+      "old_cell_compression_ratio": 0.12121212121212122,
+      "estimated_new_cell_compression_ratio_same_cols": 0.36363636363636365,
+      "used_cols": [
+        "Year",
+        "Title",
+        "Chart positions AU",
+        "Chart positions CA"
+      ],
+      "gold": [
+        "Ironic"
+      ],
+      "myagent_prediction": [
+        "You Oughta Know\" A",
+        "Hand in My Pocket"
+      ],
+      "mact_prediction": "\"Ironic\"",
+      "categories": [
+        "negation",
+        "superlative"
+      ],
+      "problem_tags": [
+        "superlative_order",
+        "negation_logic",
+        "list_entity"
+      ]
+    },
+    {
+      "id": "nu-216",
+      "bucket": "mact_only",
+      "question": "how many contestants were on the original manobo tribe?",
+      "matched_new_term": [],
+      "old_global_by_strategy": true,
+      "old_would_global_by_pre_patch_terms": true,
+      "newly_global_triggered_by_patch": false,
+      "loss_category": "gold_not_literal_or_computed",
+      "row_loss_recoverable_by_global_rows": false,
+      "old_strategy": "expanded_context_block_global_rows",
+      "old_compressed_rows": 24,
+      "original_rows": 24,
+      "old_compressed_cols": 4,
+      "original_cols": 8,
+      "old_cell_compression_ratio": 0.5,
+      "estimated_new_cell_compression_ratio_same_cols": 0.5,
+      "used_cols": [
+        "Contestant",
+        "Original Tribe",
+        "First Switch",
+        "Second Switch"
+      ],
+      "gold": [
+        "11.0"
+      ],
+      "myagent_prediction": 12,
+      "mact_prediction": "11",
+      "categories": [
+        "count"
+      ],
+      "problem_tags": [
+        "count"
+      ]
+    },
+    {
+      "id": "nu-3939",
+      "bucket": "mact_only",
+      "question": "name the prabandham with the most number of pasurams",
+      "matched_new_term": [],
+      "old_global_by_strategy": true,
+      "old_would_global_by_pre_patch_terms": true,
+      "newly_global_triggered_by_patch": false,
+      "loss_category": "gold_cell_selected",
+      "row_loss_recoverable_by_global_rows": false,
+      "old_strategy": "expanded_context_block_global_rows",
+      "old_compressed_rows": 24,
+      "original_rows": 24,
+      "old_compressed_cols": 3,
+      "original_cols": 6,
+      "old_cell_compression_ratio": 0.5,
+      "estimated_new_cell_compression_ratio_same_cols": 0.5,
+      "used_cols": [
+        "Sl no",
+        "Name of the prabandham",
+        "Number of pasurams"
+      ],
+      "gold": [
+        "Thiruvay Mozhi"
+      ],
+      "myagent_prediction": "Total number of pasurams",
+      "mact_prediction": "Thiruvay Mozhi",
+      "categories": [
+        "count",
+        "superlative"
+      ],
+      "problem_tags": [
+        "count",
+        "superlative_order"
+      ]
+    },
+    {
+      "id": "nu-2635",
+      "bucket": "mact_only",
+      "question": "list the only coach that won promotion to the first tier.",
+      "matched_new_term": [
+        "first",
+        "only"
+      ],
+      "old_global_by_strategy": false,
+      "old_would_global_by_pre_patch_terms": false,
+      "newly_global_triggered_by_patch": true,
+      "loss_category": "gold_cell_selected",
+      "row_loss_recoverable_by_global_rows": false,
+      "old_strategy": "expanded_context_block",
+      "old_compressed_rows": 11,
+      "original_rows": 11,
+      "old_compressed_cols": 4,
+      "original_cols": 6,
+      "old_cell_compression_ratio": 0.6666666666666666,
+      "estimated_new_cell_compression_ratio_same_cols": 0.6666666666666666,
+      "used_cols": [
+        "Name",
+        "From",
+        "To",
+        "Honours"
+      ],
+      "gold": [
+        "Ole Mørk"
+      ],
+      "myagent_prediction": "Henrik Jensen",
+      "mact_prediction": "Ole Mørk",
+      "categories": [
+        "negation",
+        "superlative",
+        "temporal"
+      ],
+      "problem_tags": [
+        "superlative_order",
+        "negation_logic"
+      ]
+    },
+    {
+      "id": "nu-2109",
+      "bucket": "mact_only",
+      "question": "how many tournaments did stephen hendry win?",
+      "matched_new_term": [],
+      "old_global_by_strategy": false,
+      "old_would_global_by_pre_patch_terms": false,
+      "newly_global_triggered_by_patch": false,
+      "loss_category": "gold_cell_selected",
+      "row_loss_recoverable_by_global_rows": false,
+      "old_strategy": "strict_cell_block",
+      "old_compressed_rows": 12,
+      "original_rows": 19,
+      "old_compressed_cols": 5,
+      "original_cols": 10,
+      "old_cell_compression_ratio": 0.3157894736842105,
+      "estimated_new_cell_compression_ratio_same_cols": 0.3157894736842105,
+      "used_cols": [
+        "Date",
+        "Tournament name",
+        "Winner",
+        "Runner-up",
+        "Score"
+      ],
+      "gold": [
+        "5.0"
+      ],
+      "myagent_prediction": "3",
+      "mact_prediction": "5",
+      "categories": [
+        "count"
+      ],
+      "problem_tags": [
+        "count"
+      ]
+    },
+    {
+      "id": "nu-2139",
+      "bucket": "mact_only",
+      "question": "what is sinnamon's only hit of 1984?",
+      "matched_new_term": [
+        "only"
+      ],
+      "old_global_by_strategy": false,
+      "old_would_global_by_pre_patch_terms": false,
+      "newly_global_triggered_by_patch": true,
+      "loss_category": "gold_col_kept_row_dropped",
+      "row_loss_recoverable_by_global_rows": true,
+      "old_strategy": "expanded_context_block",
+      "old_compressed_rows": 2,
+      "original_rows": 7,
+      "old_compressed_cols": 2,
+      "original_cols": 5,
+      "old_cell_compression_ratio": 0.11428571428571428,
+      "estimated_new_cell_compression_ratio_same_cols": 0.4,
+      "used_cols": [
+        "Year",
+        "Name"
+      ],
+      "gold": [
+        "Thin Line"
+      ],
+      "myagent_prediction": "No data available for 1984 in the table.",
+      "mact_prediction": "\\Thin Line\\\"",
+      "categories": [
+        "negation",
+        "temporal"
+      ],
+      "problem_tags": [
+        "temporal",
+        "negation_logic"
+      ]
+    },
+    {
+      "id": "nu-463",
+      "bucket": "mact_only",
+      "question": "list the number of times the rating was above a 4.0.",
+      "matched_new_term": [],
+      "old_global_by_strategy": false,
+      "old_would_global_by_pre_patch_terms": false,
+      "newly_global_triggered_by_patch": false,
+      "loss_category": "gold_cell_selected",
+      "row_loss_recoverable_by_global_rows": false,
+      "old_strategy": "strict_cell_block",
+      "old_compressed_rows": 8,
+      "original_rows": 8,
+      "old_compressed_cols": 3,
+      "original_cols": 8,
+      "old_cell_compression_ratio": 0.375,
+      "estimated_new_cell_compression_ratio_same_cols": 0.375,
+      "used_cols": [
+        "Year",
+        "Network",
+        "Ratings"
+      ],
+      "gold": [
+        "3.0"
+      ],
+      "myagent_prediction": "5",
+      "mact_prediction": "3",
+      "categories": [
+        "count"
+      ],
+      "problem_tags": [
+        "count"
+      ]
+    },
+    {
+      "id": "nu-830",
+      "bucket": "mact_only",
+      "question": "who was ranked last among this group?",
+      "matched_new_term": [
+        "last"
+      ],
+      "old_global_by_strategy": true,
+      "old_would_global_by_pre_patch_terms": false,
+      "newly_global_triggered_by_patch": true,
+      "loss_category": "gold_cell_selected",
+      "row_loss_recoverable_by_global_rows": false,
+      "old_strategy": "full_table_for_high_coverage",
+      "old_compressed_rows": 8,
+      "original_rows": 8,
+      "old_compressed_cols": 6,
+      "original_cols": 6,
+      "old_cell_compression_ratio": 1.0,
+      "estimated_new_cell_compression_ratio_same_cols": 1.0,
+      "used_cols": [
+        "Player",
+        "No.",
+        "Nationality",
+        "Position",
+        "Years for Jazz",
+        "School/Club Team"
+      ],
+      "gold": [
+        "Terry Furlow"
+      ],
+      "myagent_prediction": "Bernie Fryer",
+      "mact_prediction": "Terry Furlow",
+      "categories": [
+        "superlative"
+      ],
+      "problem_tags": [
+        "superlative_order"
+      ]
+    },
+    {
+      "id": "nu-697",
+      "bucket": "mact_only",
+      "question": "how many total episodes aired in season 13?",
+      "matched_new_term": [],
+      "old_global_by_strategy": true,
+      "old_would_global_by_pre_patch_terms": true,
+      "newly_global_triggered_by_patch": false,
+      "loss_category": "gold_cell_selected",
+      "row_loss_recoverable_by_global_rows": false,
+      "old_strategy": "strict_cell_block_global_rows",
+      "old_compressed_rows": 38,
+      "original_rows": 38,
+      "old_compressed_cols": 4,
+      "original_cols": 6,
+      "old_cell_compression_ratio": 0.6666666666666666,
+      "estimated_new_cell_compression_ratio_same_cols": 0.6666666666666666,
+      "used_cols": [
+        "No. in season",
+        "Canadian airdate",
+        "US airdate",
+        "Production code"
+      ],
+      "gold": [
+        "40.0"
+      ],
+      "myagent_prediction": "13",
+      "mact_prediction": "40",
+      "categories": [
+        "arithmetic",
+        "count",
+        "temporal"
+      ],
+      "problem_tags": [
+        "count",
+        "temporal",
+        "arithmetic"
+      ]
+    },
+    {
+      "id": "nu-3375",
+      "bucket": "mact_only",
+      "question": "what was the competition in his only race in malaysia?",
+      "matched_new_term": [
+        "only"
+      ],
+      "old_global_by_strategy": false,
+      "old_would_global_by_pre_patch_terms": false,
+      "newly_global_triggered_by_patch": true,
+      "loss_category": "gold_col_kept_row_dropped",
+      "row_loss_recoverable_by_global_rows": true,
+      "old_strategy": "expanded_context_block",
+      "old_compressed_rows": 3,
+      "original_rows": 8,
+      "old_compressed_cols": 4,
+      "original_cols": 5,
+      "old_cell_compression_ratio": 0.3,
+      "estimated_new_cell_compression_ratio_same_cols": 0.8,
+      "used_cols": [
+        "Year",
+        "Competition",
+        "Venue",
+        "Event"
+      ],
+      "gold": [
+        "Commonwealth Games"
+      ],
+      "myagent_prediction": "No unique race in Malaysia found.",
+      "mact_prediction": "Commonwealth Games",
+      "categories": [
+        "negation"
+      ],
+      "problem_tags": [
+        "negation_logic"
+      ]
+    },
+    {
+      "id": "nu-1870",
+      "bucket": "mact_only",
+      "question": "in the beginning of the show thee were only 3 judges, but what series did the show change to 4 judges?",
+      "matched_new_term": [
+        "only"
+      ],
+      "old_global_by_strategy": false,
+      "old_would_global_by_pre_patch_terms": false,
+      "newly_global_triggered_by_patch": true,
+      "loss_category": "gold_col_kept_row_dropped",
+      "row_loss_recoverable_by_global_rows": true,
+      "old_strategy": "expanded_context_block_global_columns",
+      "old_compressed_rows": 2,
+      "original_rows": 9,
+      "old_compressed_cols": 9,
+      "original_cols": 9,
+      "old_cell_compression_ratio": 0.2222222222222222,
+      "estimated_new_cell_compression_ratio_same_cols": 1.0,
+      "used_cols": [
+        "Series",
+        "Premiere",
+        "Finale",
+        "Winner",
+        "Runner-up",
+        "Third place",
+        "Host(s)",
+        "Judging panel",
+        "Guest judge(s)"
+      ],
+      "gold": [
+        "Five"
+      ],
+      "myagent_prediction": [
+        "Four"
+      ],
+      "mact_prediction": "Five",
+      "categories": [
+        "negation",
+        "temporal"
+      ],
+      "problem_tags": [
+        "negation_logic",
+        "list_entity"
+      ]
+    },
+    {
+      "id": "nu-2663",
+      "bucket": "mact_only",
+      "question": "how many total labels did this singer release single on?",
+      "matched_new_term": [],
+      "old_global_by_strategy": false,
+      "old_would_global_by_pre_patch_terms": false,
+      "newly_global_triggered_by_patch": false,
+      "loss_category": "gold_not_literal_or_computed",
+      "row_loss_recoverable_by_global_rows": false,
+      "old_strategy": "expanded_context_block",
+      "old_compressed_rows": 2,
+      "original_rows": 23,
+      "old_compressed_cols": 3,
+      "original_cols": 5,
+      "old_cell_compression_ratio": 0.05217391304347826,
+      "estimated_new_cell_compression_ratio_same_cols": 0.05217391304347826,
+      "used_cols": [
+        "Single / EP",
+        "Tracks",
+        "Label"
+      ],
+      "gold": [
+        "5.0"
+      ],
+      "myagent_prediction": 2,
+      "mact_prediction": "5",
+      "categories": [
+        "arithmetic",
+        "count"
+      ],
+      "problem_tags": [
+        "count",
+        "arithmetic"
+      ]
+    },
+    {
+      "id": "nu-3279",
+      "bucket": "mact_only",
+      "question": "how many consecutive days did south korea play?",
+      "matched_new_term": [],
+      "old_global_by_strategy": false,
+      "old_would_global_by_pre_patch_terms": false,
+      "newly_global_triggered_by_patch": false,
+      "loss_category": "gold_row_kept_col_dropped",
+      "row_loss_recoverable_by_global_rows": false,
+      "old_strategy": "expanded_context_block",
+      "old_compressed_rows": 15,
+      "original_rows": 15,
+      "old_compressed_cols": 3,
+      "original_cols": 12,
+      "old_cell_compression_ratio": 0.25,
+      "estimated_new_cell_compression_ratio_same_cols": 0.25,
+      "used_cols": [
+        "Date",
+        "column_3",
+        "column_5"
+      ],
+      "gold": [
+        "3.0"
+      ],
+      "myagent_prediction": 5,
+      "mact_prediction": "3",
+      "categories": [
+        "count"
+      ],
+      "problem_tags": [
+        "count"
+      ]
+    },
+    {
+      "id": "nu-3767",
+      "bucket": "mact_only",
+      "question": "how many goals did manchester have in 1997-1998?",
+      "matched_new_term": [],
+      "old_global_by_strategy": false,
+      "old_would_global_by_pre_patch_terms": false,
+      "newly_global_triggered_by_patch": false,
+      "loss_category": "gold_row_kept_col_dropped",
+      "row_loss_recoverable_by_global_rows": false,
+      "old_strategy": "expanded_context_block",
+      "old_compressed_rows": 3,
+      "original_rows": 35,
+      "old_compressed_cols": 3,
+      "original_cols": 9,
+      "old_cell_compression_ratio": 0.02857142857142857,
+      "estimated_new_cell_compression_ratio_same_cols": 0.02857142857142857,
+      "used_cols": [
+        "Club performance Season Norway",
+        "Club performance Club Norway",
+        "Total Goals Total"
+      ],
+      "gold": [
+        "0.0"
+      ],
+      "myagent_prediction": "Total",
+      "mact_prediction": "0",
+      "categories": [
+        "arithmetic",
+        "count",
+        "temporal"
+      ],
+      "problem_tags": [
+        "count",
+        "temporal"
+      ]
+    },
+    {
+      "id": "nu-1093",
+      "bucket": "mact_only",
+      "question": "what are the most points won during the 1998 arizona cardinals season?",
+      "matched_new_term": [],
+      "old_global_by_strategy": true,
+      "old_would_global_by_pre_patch_terms": true,
+      "newly_global_triggered_by_patch": false,
+      "loss_category": "gold_cell_selected",
+      "row_loss_recoverable_by_global_rows": false,
+      "old_strategy": "expanded_context_block_global_rows",
+      "old_compressed_rows": 17,
+      "original_rows": 17,
+      "old_compressed_cols": 3,
+      "original_cols": 6,
+      "old_cell_compression_ratio": 0.5,
+      "estimated_new_cell_compression_ratio_same_cols": 0.5,
+      "used_cols": [
+        "Week",
+        "Date",
+        "Result"
+      ],
+      "gold": [
+        "45.0"
+      ],
+      "myagent_prediction": 42,
+      "mact_prediction": "45",
+      "categories": [
+        "superlative",
+        "temporal"
+      ],
+      "problem_tags": [
+        "superlative_order",
+        "temporal"
+      ]
+    },
+    {
+      "id": "nu-976",
+      "bucket": "mact_only",
+      "question": "how many seasons was morten rasmussen the top scorer?",
+      "matched_new_term": [
+        "top"
+      ],
+      "old_global_by_strategy": true,
+      "old_would_global_by_pre_patch_terms": true,
+      "newly_global_triggered_by_patch": false,
+      "loss_category": "gold_row_kept_col_dropped",
+      "row_loss_recoverable_by_global_rows": false,
+      "old_strategy": "expanded_context_block_global_rows",
+      "old_compressed_rows": 31,
+      "original_rows": 31,
+      "old_compressed_cols": 3,
+      "original_cols": 7,
+      "old_cell_compression_ratio": 0.42857142857142855,
+      "estimated_new_cell_compression_ratio_same_cols": 0.42857142857142855,
+      "used_cols": [
+        "Season",
+        "League Competition",
+        "League Top scorer"
+      ],
+      "gold": [
+        "4.0"
+      ],
+      "myagent_prediction": 0,
+      "mact_prediction": "4",
+      "categories": [
+        "count",
+        "superlative"
+      ],
+      "problem_tags": [
+        "count",
+        "superlative_order"
+      ]
+    },
+    {
+      "id": "nu-2919",
+      "bucket": "mact_only",
+      "question": "in plumas, what was the difference between brown and nixon's votes?",
+      "matched_new_term": [],
+      "old_global_by_strategy": false,
+      "old_would_global_by_pre_patch_terms": false,
+      "newly_global_triggered_by_patch": false,
+      "loss_category": "gold_not_literal_or_computed",
+      "row_loss_recoverable_by_global_rows": false,
+      "old_strategy": "expanded_context_block",
+      "old_compressed_rows": 2,
+      "original_rows": 58,
+      "old_compressed_cols": 4,
+      "original_cols": 7,
+      "old_cell_compression_ratio": 0.019704433497536946,
+      "estimated_new_cell_compression_ratio_same_cols": 0.019704433497536946,
+      "used_cols": [
+        "County",
+        "Brown",
+        "Votes",
+        "Nixon"
+      ],
+      "gold": [
+        "1773.0"
+      ],
+      "myagent_prediction": 0.0,
+      "mact_prediction": "1773",
+      "categories": [
+        "arithmetic",
+        "comparison",
+        "negation",
+        "temporal"
+      ],
+      "problem_tags": [
+        "temporal",
+        "comparison",
+        "arithmetic",
+        "negation_logic"
+      ]
+    },
+    {
+      "id": "nu-4291",
+      "bucket": "mact_only",
+      "question": "name the position with only two players in such a position.",
+      "matched_new_term": [
+        "only"
+      ],
+      "old_global_by_strategy": false,
+      "old_would_global_by_pre_patch_terms": false,
+      "newly_global_triggered_by_patch": true,
+      "loss_category": "gold_col_kept_row_dropped",
+      "row_loss_recoverable_by_global_rows": true,
+      "old_strategy": "expanded_context_block",
+      "old_compressed_rows": 3,
+      "original_rows": 21,
+      "old_compressed_cols": 3,
+      "original_cols": 6,
+      "old_cell_compression_ratio": 0.07142857142857142,
+      "estimated_new_cell_compression_ratio_same_cols": 0.5,
+      "used_cols": [
+        "Pick #",
+        "Player",
+        "Position"
+      ],
+      "gold": [
+        "Center"
+      ],
+      "myagent_prediction": "Right Wing",
+      "mact_prediction": "Center",
+      "categories": [
+        "negation"
+      ],
+      "problem_tags": [
+        "negation_logic"
+      ]
+    },
+    {
+      "id": "nu-1424",
+      "bucket": "mact_only",
+      "question": "what was the first date they played the 49ers?",
+      "matched_new_term": [
+        "first"
+      ],
+      "old_global_by_strategy": false,
+      "old_would_global_by_pre_patch_terms": false,
+      "newly_global_triggered_by_patch": true,
+      "loss_category": "gold_not_literal_or_computed",
+      "row_loss_recoverable_by_global_rows": false,
+      "old_strategy": "strict_cell_block",
+      "old_compressed_rows": 1,
+      "original_rows": 17,
+      "old_compressed_cols": 3,
+      "original_cols": 7,
+      "old_cell_compression_ratio": 0.025210084033613446,
+      "estimated_new_cell_compression_ratio_same_cols": 0.42857142857142855,
+      "used_cols": [
+        "Week",
+        "Date",
+        "Opponent"
+      ],
+      "gold": [
+        "2001-09-23"
+      ],
+      "myagent_prediction": "September 9, 2001",
+      "mact_prediction": "September 23, 2001",
+      "categories": [
+        "superlative",
+        "temporal"
+      ],
+      "problem_tags": [
+        "superlative_order",
+        "temporal"
+      ]
+    },
+    {
+      "id": "nu-721",
+      "bucket": "mact_only",
+      "question": "what is the next secret ingredient after sugar?",
+      "matched_new_term": [],
+      "old_global_by_strategy": false,
+      "old_would_global_by_pre_patch_terms": false,
+      "newly_global_triggered_by_patch": false,
+      "loss_category": "gold_col_kept_row_dropped",
+      "row_loss_recoverable_by_global_rows": false,
+      "old_strategy": "expanded_context_block",
+      "old_compressed_rows": 2,
+      "original_rows": 12,
+      "old_compressed_cols": 8,
+      "original_cols": 8,
+      "old_cell_compression_ratio": 0.16666666666666666,
+      "estimated_new_cell_compression_ratio_same_cols": 0.16666666666666666,
+      "used_cols": [
+        "Episode",
+        "Show #",
+        "Iron Chef",
+        "Challenger",
+        "Challenger specialty",
+        "Secret ingredient(s) or theme",
+        "Winner",
+        "Final score"
+      ],
+      "gold": [
+        "Carrots"
+      ],
+      "myagent_prediction": "sugar not found in the table",
+      "mact_prediction": "carrots",
+      "categories": [
+        "temporal"
+      ],
+      "problem_tags": [
+        "temporal"
+      ]
+    },
+    {
+      "id": "nu-1845",
+      "bucket": "mact_only",
+      "question": "which is the first model listed with 10 krooni as the denomination?",
+      "matched_new_term": [
+        "first"
+      ],
+      "old_global_by_strategy": false,
+      "old_would_global_by_pre_patch_terms": false,
+      "newly_global_triggered_by_patch": true,
+      "loss_category": "gold_cell_selected",
+      "row_loss_recoverable_by_global_rows": false,
+      "old_strategy": "strict_cell_block",
+      "old_compressed_rows": 6,
+      "original_rows": 8,
+      "old_compressed_cols": 3,
+      "original_cols": 5,
+      "old_cell_compression_ratio": 0.45,
+      "estimated_new_cell_compression_ratio_same_cols": 0.6,
+      "used_cols": [
+        "Year",
+        "Model",
+        "Denomination"
+      ],
+      "gold": [
+        "Re-establishment of Krooni currency"
+      ],
+      "myagent_prediction": "Barcelona Olympics",
+      "mact_prediction": "Re-establishment of Krooni currency",
+      "categories": [
+        "superlative"
+      ],
+      "problem_tags": [
+        "superlative_order"
+      ]
+    },
+    {
+      "id": "nu-53",
+      "bucket": "mact_only",
+      "question": "what is the earliest date kodak made 16mm film?",
+      "matched_new_term": [
+        "earliest"
+      ],
+      "old_global_by_strategy": false,
+      "old_would_global_by_pre_patch_terms": false,
+      "newly_global_triggered_by_patch": true,
+      "loss_category": "gold_col_kept_row_dropped",
+      "row_loss_recoverable_by_global_rows": true,
+      "old_strategy": "expanded_context_block",
+      "old_compressed_rows": 2,
+      "original_rows": 32,
+      "old_compressed_cols": 3,
+      "original_cols": 3,
+      "old_cell_compression_ratio": 0.0625,
+      "estimated_new_cell_compression_ratio_same_cols": 1.0,
+      "used_cols": [
+        "Film",
+        "Film_2",
+        "Date"
+      ],
+      "gold": [
+        "1935.0"
+      ],
+      "myagent_prediction": 1988,
+      "mact_prediction": "1935",
+      "categories": [
+        "superlative",
+        "temporal"
+      ],
+      "problem_tags": [
+        "superlative_order",
+        "temporal"
+      ]
+    },
+    {
+      "id": "nu-717",
+      "bucket": "mact_only",
+      "question": "what was the point difference between the sacramento and detroit for game 33?",
+      "matched_new_term": [],
+      "old_global_by_strategy": false,
+      "old_would_global_by_pre_patch_terms": false,
+      "newly_global_triggered_by_patch": false,
+      "loss_category": "gold_col_kept_row_dropped",
+      "row_loss_recoverable_by_global_rows": false,
+      "old_strategy": "expanded_context_block",
+      "old_compressed_rows": 3,
+      "original_rows": 16,
+      "old_compressed_cols": 4,
+      "original_cols": 9,
+      "old_cell_compression_ratio": 0.08333333333333333,
+      "estimated_new_cell_compression_ratio_same_cols": 0.08333333333333333,
+      "used_cols": [
+        "Game",
+        "Date",
+        "Team",
+        "Score"
+      ],
+      "gold": [
+        "6.0"
+      ],
+      "myagent_prediction": "Game 33 not found in the table.",
+      "mact_prediction": "6",
+      "categories": [
+        "arithmetic",
+        "comparison",
+        "negation",
+        "temporal"
+      ],
+      "problem_tags": [
+        "temporal",
+        "comparison",
+        "arithmetic",
+        "negation_logic"
+      ]
+    },
+    {
+      "id": "nu-2183",
+      "bucket": "mact_only",
+      "question": "who scored the most goals?",
+      "matched_new_term": [],
+      "old_global_by_strategy": true,
+      "old_would_global_by_pre_patch_terms": true,
+      "newly_global_triggered_by_patch": false,
+      "loss_category": "gold_cell_selected",
+      "row_loss_recoverable_by_global_rows": false,
+      "old_strategy": "strict_cell_block_global_rows",
+      "old_compressed_rows": 18,
+      "original_rows": 18,
+      "old_compressed_cols": 2,
+      "original_cols": 5,
+      "old_cell_compression_ratio": 0.4,
+      "estimated_new_cell_compression_ratio_same_cols": 0.4,
+      "used_cols": [
+        "Player",
+        "Total"
+      ],
+      "gold": [
+        "Spas Delev"
+      ],
+      "myagent_prediction": "Total",
+      "mact_prediction": "Spas Delev",
+      "categories": [
+        "superlative"
+      ],
+      "problem_tags": [
+        "superlative_order"
+      ]
+    },
+    {
+      "id": "nu-1263",
+      "bucket": "neither",
+      "question": "how many nominees are there each year for the naacp image award?",
+      "matched_new_term": [],
+      "old_global_by_strategy": true,
+      "old_would_global_by_pre_patch_terms": true,
+      "newly_global_triggered_by_patch": false,
+      "loss_category": "gold_cell_selected",
+      "row_loss_recoverable_by_global_rows": false,
+      "old_strategy": "expanded_context_block_global_rows",
+      "old_compressed_rows": 46,
+      "original_rows": 46,
+      "old_compressed_cols": 2,
+      "original_cols": 4,
+      "old_cell_compression_ratio": 0.5,
+      "estimated_new_cell_compression_ratio_same_cols": 0.5,
+      "used_cols": [
+        "Year",
+        "Nominees"
+      ],
+      "gold": [
+        "4.0"
+      ],
+      "myagent_prediction": "The table does not provide a consistent number of nominees per year for the NAACP Image Award.",
+      "mact_prediction": "the Supporting Actor is the winner, and the Nominees column lists all the other nominees. So for 1997, the winner is Samuel L. Jackson, and the Nominees column lists Blair Underwood, Charles S. Dutton, Delroy Lindo, Forest Whitaker. That's four other nominees, making a total of 5 nominees for that year. \n\nSo for each year, the total number of nominees is 1 (the winner) plus the number of names listed in the Nominees column. However, in some years, the Nominees column is empty, meaning the winner was the only nominee. \n\nSo to calculate the total number of nominees across all years, we need to go through each year, count the number of nominees (1 if Nominees is empty, else 1 + number of names in Nominees column), and sum them all. \n\nBut the question is phrased as \"how many nominees are there each year for the naacp image award?\" which is a bit ambiguous. If it's asking for the number of nominees in each year, the answer would vary each year. But the answer format requires a single number. However, looking at the examples, the user might be asking for the total number of nominees across all years. \n\nAlternatively, maybe the question is asking for the number of nominees per year, but the answer is that it varies. However, the answer format requires a specific number. \n\nWait, perhaps the user is asking for the number of nominees in each year, but the answer is that each year has a certain",
+      "categories": [
+        "count",
+        "temporal"
+      ],
+      "problem_tags": [
+        "count",
+        "temporal"
+      ]
+    },
+    {
+      "id": "nu-1591",
+      "bucket": "neither",
+      "question": "how many viewers tuned in for the 6th season?",
+      "matched_new_term": [],
+      "old_global_by_strategy": true,
+      "old_would_global_by_pre_patch_terms": true,
+      "newly_global_triggered_by_patch": false,
+      "loss_category": "gold_not_literal_or_computed",
+      "row_loss_recoverable_by_global_rows": false,
+      "old_strategy": "strict_cell_block_global_rows",
+      "old_compressed_rows": 13,
+      "original_rows": 13,
+      "old_compressed_cols": 7,
+      "original_cols": 8,
+      "old_cell_compression_ratio": 0.875,
+      "estimated_new_cell_compression_ratio_same_cols": 0.875,
+      "used_cols": [
+        "Season",
+        "Episodes",
+        "Original airing Season premiere",
+        "Original airing Season finale",
+        "Original airing TV season",
+        "Rank",
+        "Viewers (in millions)"
+      ],
+      "gold": [
+        "24860000.0"
+      ],
+      "myagent_prediction": 24.86,
+      "mact_prediction": "24.86",
+      "categories": [
+        "count",
+        "temporal"
+      ],
+      "problem_tags": [
+        "count",
+        "temporal"
+      ]
+    },
+    {
+      "id": "nu-1913",
+      "bucket": "neither",
+      "question": "which team competed for the euro 2000 qualifying the most consecutive years?",
+      "matched_new_term": [],
+      "old_global_by_strategy": true,
+      "old_would_global_by_pre_patch_terms": true,
+      "newly_global_triggered_by_patch": false,
+      "loss_category": "gold_row_kept_col_dropped",
+      "row_loss_recoverable_by_global_rows": false,
+      "old_strategy": "expanded_context_block_global_rows",
+      "old_compressed_rows": 8,
+      "original_rows": 8,
+      "old_compressed_cols": 4,
+      "original_cols": 7,
+      "old_cell_compression_ratio": 0.5714285714285714,
+      "estimated_new_cell_compression_ratio_same_cols": 0.5714285714285714,
+      "used_cols": [
+        "#",
+        "Date",
+        "Result",
+        "Competition"
+      ],
+      "gold": [
+        "Cyprus"
+      ],
+      "myagent_prediction": "the team",
+      "mact_prediction": "Spain.",
+      "categories": [
+        "superlative",
+        "temporal"
+      ],
+      "problem_tags": [
+        "superlative_order",
+        "temporal"
+      ]
+    },
+    {
+      "id": "nu-2178",
+      "bucket": "neither",
+      "question": "who was the first us ambassador to grenada appointed by bill clinton?",
+      "matched_new_term": [
+        "first"
+      ],
+      "old_global_by_strategy": false,
+      "old_would_global_by_pre_patch_terms": false,
+      "newly_global_triggered_by_patch": true,
+      "loss_category": "gold_col_kept_row_dropped",
+      "row_loss_recoverable_by_global_rows": true,
+      "old_strategy": "expanded_context_block",
+      "old_compressed_rows": 2,
+      "original_rows": 21,
+      "old_compressed_cols": 3,
+      "original_cols": 5,
+      "old_cell_compression_ratio": 0.05714285714285714,
+      "estimated_new_cell_compression_ratio_same_cols": 0.6,
+      "used_cols": [
+        "Representative",
+        "Title",
+        "Appointed by"
+      ],
+      "gold": [
+        "Ollie P. Anderson, Jr."
+      ],
+      "myagent_prediction": "Frank V. Ortiz, Jr.",
+      "mact_prediction": "Jeanette W. Hyde",
+      "categories": [
+        "superlative",
+        "temporal"
+      ],
+      "problem_tags": [
+        "superlative_order"
+      ]
+    },
+    {
+      "id": "nu-3088",
+      "bucket": "neither",
+      "question": "what was the score of the last game of the season?",
+      "matched_new_term": [
+        "last"
+      ],
+      "old_global_by_strategy": false,
+      "old_would_global_by_pre_patch_terms": false,
+      "newly_global_triggered_by_patch": true,
+      "loss_category": "gold_cell_selected",
+      "row_loss_recoverable_by_global_rows": false,
+      "old_strategy": "strict_cell_block",
+      "old_compressed_rows": 1,
+      "original_rows": 16,
+      "old_compressed_cols": 3,
+      "original_cols": 8,
+      "old_cell_compression_ratio": 0.0234375,
+      "estimated_new_cell_compression_ratio_same_cols": 0.375,
+      "used_cols": [
+        "Game",
+        "Date",
+        "Score"
+      ],
+      "gold": [
+        "8-14"
+      ],
+      "myagent_prediction": "L 8–14",
+      "mact_prediction": "L 8–14",
+      "categories": [
+        "superlative",
+        "temporal"
+      ],
+      "problem_tags": [
+        "superlative_order",
+        "temporal"
+      ]
+    },
+    {
+      "id": "nu-4162",
+      "bucket": "neither",
+      "question": "which season did flamurtari vlorë win more home games than away?",
+      "matched_new_term": [],
+      "old_global_by_strategy": false,
+      "old_would_global_by_pre_patch_terms": false,
+      "newly_global_triggered_by_patch": false,
+      "loss_category": "gold_cell_selected",
+      "row_loss_recoverable_by_global_rows": false,
+      "old_strategy": "expanded_context_block",
+      "old_compressed_rows": 13,
+      "original_rows": 13,
+      "old_compressed_cols": 3,
+      "original_cols": 6,
+      "old_cell_compression_ratio": 0.5,
+      "estimated_new_cell_compression_ratio_same_cols": 0.5,
+      "used_cols": [
+        "Season",
+        "Home",
+        "Away"
+      ],
+      "gold": [
+        "1986-87"
+      ],
+      "myagent_prediction": "1987–88",
+      "mact_prediction": "1987–88",
+      "categories": [
+        "comparison",
+        "temporal"
+      ],
+      "problem_tags": [
+        "temporal",
+        "comparison"
+      ]
+    },
+    {
+      "id": "nu-4299",
+      "bucket": "neither",
+      "question": "which artist did jaycen joshua work with before his first job with rick ross?",
+      "matched_new_term": [
+        "first"
+      ],
+      "old_global_by_strategy": false,
+      "old_would_global_by_pre_patch_terms": false,
+      "newly_global_triggered_by_patch": true,
+      "loss_category": "gold_cell_selected",
+      "row_loss_recoverable_by_global_rows": false,
+      "old_strategy": "expanded_context_block",
+      "old_compressed_rows": 15,
+      "original_rows": 171,
+      "old_compressed_cols": 7,
+      "original_cols": 7,
+      "old_cell_compression_ratio": 0.08771929824561403,
+      "estimated_new_cell_compression_ratio_same_cols": 1.0,
+      "used_cols": [
+        "Chart Year",
+        "Artist",
+        "Album",
+        "Song",
+        "Billboard Hot 100",
+        "Billboard Hot R&B/Hip Hop",
+        "column_7"
+      ],
+      "gold": [
+        "Puff Daddy"
+      ],
+      "myagent_prediction": "Not found",
+      "mact_prediction": "",
+      "categories": [
+        "superlative",
+        "temporal"
+      ],
+      "problem_tags": [
+        "superlative_order",
+        "temporal"
+      ]
+    },
+    {
+      "id": "nu-983",
+      "bucket": "neither",
+      "question": "what is the time difference between take charge indy and vicar?",
+      "matched_new_term": [],
+      "old_global_by_strategy": false,
+      "old_would_global_by_pre_patch_terms": false,
+      "newly_global_triggered_by_patch": false,
+      "loss_category": "gold_not_literal_or_computed",
+      "row_loss_recoverable_by_global_rows": false,
+      "old_strategy": "expanded_context_block",
+      "old_compressed_rows": 6,
+      "original_rows": 64,
+      "old_compressed_cols": 3,
+      "original_cols": 10,
+      "old_cell_compression_ratio": 0.028125,
+      "estimated_new_cell_compression_ratio_same_cols": 0.028125,
+      "used_cols": [
+        "Year",
+        "Winner",
+        "Time"
+      ],
+      "gold": [
+        "2.04"
+      ],
+      "myagent_prediction": "0:2.04",
+      "mact_prediction": "2.04 seconds",
+      "categories": [
+        "arithmetic",
+        "comparison",
+        "negation",
+        "temporal"
+      ],
+      "problem_tags": [
+        "temporal",
+        "comparison",
+        "arithmetic",
+        "negation_logic"
+      ]
+    },
+    {
+      "id": "nu-1498",
+      "bucket": "neither",
+      "question": "what is the number of russian detainees at guantanamo?",
+      "matched_new_term": [],
+      "old_global_by_strategy": false,
+      "old_would_global_by_pre_patch_terms": false,
+      "newly_global_triggered_by_patch": false,
+      "loss_category": "gold_not_literal_or_computed",
+      "row_loss_recoverable_by_global_rows": false,
+      "old_strategy": "strict_cell_block",
+      "old_compressed_rows": 1,
+      "original_rows": 14,
+      "old_compressed_cols": 3,
+      "original_cols": 5,
+      "old_cell_compression_ratio": 0.04285714285714286,
+      "estimated_new_cell_compression_ratio_same_cols": 0.04285714285714286,
+      "used_cols": [
+        "isn",
+        "name",
+        "notes"
+      ],
+      "gold": [
+        "9.0"
+      ],
+      "myagent_prediction": "Rasul Kudayev",
+      "mact_prediction": "8",
+      "categories": [
+        "count"
+      ],
+      "problem_tags": [
+        "count"
+      ]
+    },
+    {
+      "id": "nu-2396",
+      "bucket": "neither",
+      "question": "what is the total number of years for port douglas crocs?",
+      "matched_new_term": [],
+      "old_global_by_strategy": true,
+      "old_would_global_by_pre_patch_terms": true,
+      "newly_global_triggered_by_patch": false,
+      "loss_category": "gold_row_kept_col_dropped",
+      "row_loss_recoverable_by_global_rows": false,
+      "old_strategy": "expanded_context_block_global_rows",
+      "old_compressed_rows": 11,
+      "original_rows": 11,
+      "old_compressed_cols": 3,
+      "original_cols": 5,
+      "old_cell_compression_ratio": 0.6,
+      "estimated_new_cell_compression_ratio_same_cols": 0.6,
+      "used_cols": [
+        "Year",
+        "Premiers",
+        "Runners Up"
+      ],
+      "gold": [
+        "2.0"
+      ],
+      "myagent_prediction": 5,
+      "mact_prediction": "5",
+      "categories": [
+        "arithmetic",
+        "count"
+      ],
+      "problem_tags": [
+        "count",
+        "arithmetic"
+      ]
+    }
+  ]
+}
