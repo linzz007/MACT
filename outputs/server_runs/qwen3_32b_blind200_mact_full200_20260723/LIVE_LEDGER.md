@@ -252,3 +252,28 @@ wc -l /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_blind200_mact_full200_
 3. 行数少于 200 时，用对应 `run_*_resume.sh` 继续。
 
 4. 每完成约 10 行或一个数据集，提交并推送 MACT `main`，再更新 MyAgent PRD。
+
+## 2026-07-30 CRT full200 resume and final merge
+
+| time | dataset | progress | id/artifact | status | notes |
+|---|---|---:|---|---|---|
+| 2026-07-30 13:54:58 CST | model | service | `qwen3-32b-local` | ready | single Qwen3-32B vLLM service on GPU `5,6`, port `8000`; healthcheck returned `ok` |
+| 2026-07-30 13:55:20 CST | CRT | 100/200 | `run_crt_resume.sh` | started | resumed canonical `crt_mact_full200.jsonl` from core100 seed |
+| 2026-07-30 14:40:00 CST | CRT | 120/200 | `crt-187` | checkpoint | single runner stopped at clean 120-row checkpoint after user allowed two model services |
+| 2026-07-30 14:44:46 CST | model | service | `qwen3_32b_4gpu_2svc.env` | ready | two Qwen3-32B services: GPU `4,5` on port `8000`, GPU `6,7` on port `8001`; both healthchecks returned `ok` |
+| 2026-07-30 14:46:36 CST | CRT | shard 121-160 | `run_crt_shard_121_160.sh` | started | input `shards/crt_121_160.jsonl`, output `crt_mact_full200_shard_121_160.jsonl`, API `8000` |
+| 2026-07-30 14:46:36 CST | CRT | shard 161-200 | `run_crt_shard_161_200.sh` | started | input `shards/crt_161_200.jsonl`, output `crt_mact_full200_shard_161_200.jsonl`, API `8001` |
+| 2026-07-30 16:38:30 CST | CRT | shard 121-160 | `crt-302` | complete | 40/40 ok, 0 exec failure |
+| 2026-07-30 16:44:11 CST | CRT | shard 161-200 | `crt-686` | complete | 40/40 ok, 0 exec failure |
+| 2026-07-30 16:48:00 CST | CRT | 200/200 | `crt_mact_full200.jsonl` | merged | canonical rebuilt from prefix120 + two shards; ID order verified against blind holdout CRT; backup `crt_mact_full200_prefix120_before_shard_merge.jsonl` |
+| 2026-07-30 16:50:00 CST | CRT | 200/200 | eval/paired | complete | MACT `113/200 = 0.5650`, myAgent `137/200 = 0.6850`, token ratio `0.8461`, paired `both=101,myAgent-only=36,MACT-only=12,neither=51` |
+| 2026-07-30 16:50:00 CST | overall | 600/600 | `overall_mact_full200_summary.json` | complete | myAgent `453/600 = 0.7550`, MACT `450/600 = 0.7500`, token ratio `0.5708`; accepted=false because only CRT dataset is >= MACT |
+
+CRT full200 file summary:
+
+```text
+crt_mact_full200.jsonl                         200 rows
+crt_mact_full200_eval.json                     MACT 113/200, failed_exec 0, errors 87 EM mismatch
+crt_mact_full200_paired.json                   myAgent 137/200 vs MACT 113/200
+overall_mact_full200_summary.json              myAgent 453/600 vs MACT 450/600, token ratio 0.5708
+```
