@@ -1,0 +1,56 @@
+{
+  "criteria": {
+    "max_failure_rate": 0.02,
+    "max_token_ratio": 0.75,
+    "reference_correct": 124
+  },
+  "decision": "no-go",
+  "decision_reasons": [
+    "overall_correct_below_reference"
+  ],
+  "gate_root": "/home/ubuntu/lzz/MyAgent/outputs/server_runs/qwen25_14b_awq_gate50_20260721",
+  "missing_tasks": [],
+  "model_tag": "qwen25_14b_awq",
+  "overall": {
+    "accuracy": 0.7133333333333334,
+    "avg_total_tokens": 7308.3533333333335,
+    "bad_rows": 0,
+    "correct": 107,
+    "failure_rate": 0.0,
+    "mact_avg_tokens_reference": 11262.41,
+    "rows": 150,
+    "token_ratio_to_mact": 0.6489155814193706
+  },
+  "per_dataset": {
+    "crt": {
+      "accuracy": 0.56,
+      "avg_total_tokens": 12868.24,
+      "bad_rows": 0,
+      "correct": 28,
+      "eval_path": "/home/ubuntu/lzz/MyAgent/outputs/server_runs/qwen25_14b_awq_gate50_20260721/eval/crt_qwen25-14b-awq-local_eval.json",
+      "num_failed_exec": 0,
+      "num_missing_answer": 0,
+      "rows": 50
+    },
+    "tabfact": {
+      "accuracy": 0.9,
+      "avg_total_tokens": 2729.18,
+      "bad_rows": 0,
+      "correct": 45,
+      "eval_path": "/home/ubuntu/lzz/MyAgent/outputs/server_runs/qwen25_14b_awq_gate50_20260721/eval/tabfact_qwen25-14b-awq-local_eval.json",
+      "num_failed_exec": 0,
+      "num_missing_answer": 0,
+      "rows": 50
+    },
+    "wtq": {
+      "accuracy": 0.68,
+      "avg_total_tokens": 6327.64,
+      "bad_rows": 0,
+      "correct": 34,
+      "eval_path": "/home/ubuntu/lzz/MyAgent/outputs/server_runs/qwen25_14b_awq_gate50_20260721/eval/wtq_qwen25-14b-awq-local_eval.json",
+      "num_failed_exec": 0,
+      "num_missing_answer": 0,
+      "rows": 50
+    }
+  }
+}
