@@ -1,0 +1,742 @@
+{
+  "generated_at": "2026-07-30 17:23:06 CST",
+  "source": "wtq_gold_rowcol_loss_diagnostics.json + wtq_discordant_debug_subset_50.jsonl",
+  "purpose": "Estimate which generic WTQ fix direction is worth testing before any code change or model rerun. This is coverage potential, not measured accuracy gain.",
+  "scenario_counts": {
+    "planner_or_answer_selection_fix": 22,
+    "preserve_more_answer_columns_for_implicit_answer": 3,
+    "row_match_all_cells_or_semantic_filter": 3,
+    "operation_trace_or_count_fix": 9,
+    "global_rows_for_wtq_extreme_or_only": 10,
+    "other": 3
+  },
+  "scenarios": {
+    "planner_or_answer_selection_fix": [
+      {
+        "id": "nu-1434",
+        "bucket": "mact_only",
+        "loss_category": "gold_cell_selected",
+        "question": "what is the highest chart position ever achieved by one of dino's singles?",
+        "myagent_prediction": "\\I Like It\\\"\"",
+        "mact_prediction": "3",
+        "compression_ratio": 1.0,
+        "used_cols": [
+          "Year",
+          "Song",
+          "Album",
+          "Position",
+          "Chart"
+        ]
+      },
+      {
+        "id": "nu-709",
+        "bucket": "mact_only",
+        "loss_category": "gold_cell_selected",
+        "question": "what is the number of tablets?",
+        "myagent_prediction": 12,
+        "mact_prediction": "11",
+        "compression_ratio": 0.25,
+        "used_cols": [
+          "Tablet"
+        ]
+      },
+      {
+        "id": "nu-3934",
+        "bucket": "mact_only",
+        "loss_category": "gold_cell_selected",
+        "question": "in what year did salvatore bettiol run in the most marathons?",
+        "myagent_prediction": 1986.0,
+        "mact_prediction": "1987",
+        "compression_ratio": 0.5,
+        "used_cols": [
+          "Year",
+          "Competition",
+          "Event"
+        ]
+      },
+      {
+        "id": "nu-2213",
+        "bucket": "mact_only",
+        "loss_category": "gold_cell_selected",
+        "question": "what is the total number of goals?",
+        "myagent_prediction": 8.0,
+        "mact_prediction": "4",
+        "compression_ratio": 0.4,
+        "used_cols": [
+          "Season",
+          "Goals"
+        ]
+      },
+      {
+        "id": "nu-2611",
+        "bucket": "mact_only",
+        "loss_category": "gold_cell_selected",
+        "question": "which was earlier, sopwith triplane s/n n5460 or nieuport serial number 3958?",
+        "myagent_prediction": "sopwith triplane s/n n5460",
+        "mact_prediction": "Nieuport serial number 3958",
+        "compression_ratio": 0.375,
+        "used_cols": [
+          "No.",
+          "Date/time",
+          "Aircraft"
+        ]
+      },
+      {
+        "id": "nu-3535",
+        "bucket": "mact_only",
+        "loss_category": "gold_cell_selected",
+        "question": "u2 and redbox both had releases in what year?",
+        "myagent_prediction": "One or both bands not found in the table",
+        "mact_prediction": "1985",
+        "compression_ratio": 0.13636363636363635,
+        "used_cols": [
+          "Band",
+          "Released",
+          "Disc Description"
+        ]
+      },
+      {
+        "id": "nu-2232",
+        "bucket": "mact_only",
+        "loss_category": "gold_cell_selected",
+        "question": "how many championship tournaments did she play in after 1984?",
+        "myagent_prediction": 0,
+        "mact_prediction": "4",
+        "compression_ratio": 0.8,
+        "used_cols": [
+          "Result",
+          "Date",
+          "Category",
+          "Tournament",
+          "Surface",
+          "Partnering",
+          "Opponents",
+          "Score"
+        ]
+      },
+      {
+        "id": "nu-1951",
+        "bucket": "mact_only",
+        "loss_category": "gold_cell_selected",
+        "question": "what was the outcome the only time a hard surface was used?",
+        "myagent_prediction": "No unique hard surface event found",
+        "mact_prediction": "Runner-up",
+        "compression_ratio": 0.19047619047619047,
+        "used_cols": [
+          "Outcome",
+          "Surface"
+        ]
+      },
+      {
+        "id": "nu-1125",
+        "bucket": "mact_only",
+        "loss_category": "gold_cell_selected",
+        "question": "in season 1, what number of episodes were written by morton fine and david friedkin?",
+        "myagent_prediction": 0,
+        "mact_prediction": "7",
+        "compression_ratio": 1.0,
+        "used_cols": [
+          "No. in series",
+          "No. in season",
+          "Title",
+          "Directed by",
+          "Written by",
+          "Original air date",
+          "Prod. code"
+        ]
+      },
+      {
+        "id": "nu-3939",
+        "bucket": "mact_only",
+        "loss_category": "gold_cell_selected",
+        "question": "name the prabandham with the most number of pasurams",
+        "myagent_prediction": "Total number of pasurams",
+        "mact_prediction": "Thiruvay Mozhi",
+        "compression_ratio": 0.5,
+        "used_cols": [
+          "Sl no",
+          "Name of the prabandham",
+          "Number of pasurams"
+        ]
+      },
+      {
+        "id": "nu-2635",
+        "bucket": "mact_only",
+        "loss_category": "gold_cell_selected",
+        "question": "list the only coach that won promotion to the first tier.",
+        "myagent_prediction": "Henrik Jensen",
+        "mact_prediction": "Ole Mørk",
+        "compression_ratio": 0.6666666666666666,
+        "used_cols": [
+          "Name",
+          "From",
+          "To",
+          "Honours"
+        ]
+      },
+      {
+        "id": "nu-2109",
+        "bucket": "mact_only",
+        "loss_category": "gold_cell_selected",
+        "question": "how many tournaments did stephen hendry win?",
+        "myagent_prediction": "3",
+        "mact_prediction": "5",
+        "compression_ratio": 0.3157894736842105,
+        "used_cols": [
+          "Date",
+          "Tournament name",
+          "Winner",
+          "Runner-up",
+          "Score"
+        ]
+      },
+      {
+        "id": "nu-463",
+        "bucket": "mact_only",
+        "loss_category": "gold_cell_selected",
+        "question": "list the number of times the rating was above a 4.0.",
+        "myagent_prediction": "5",
+        "mact_prediction": "3",
+        "compression_ratio": 0.375,
+        "used_cols": [
+          "Year",
+          "Network",
+          "Ratings"
+        ]
+      },
+      {
+        "id": "nu-830",
+        "bucket": "mact_only",
+        "loss_category": "gold_cell_selected",
+        "question": "who was ranked last among this group?",
+        "myagent_prediction": "Bernie Fryer",
+        "mact_prediction": "Terry Furlow",
+        "compression_ratio": 1.0,
+        "used_cols": [
+          "Player",
+          "No.",
+          "Nationality",
+          "Position",
+          "Years for Jazz",
+          "School/Club Team"
+        ]
+      },
+      {
+        "id": "nu-697",
+        "bucket": "mact_only",
+        "loss_category": "gold_cell_selected",
+        "question": "how many total episodes aired in season 13?",
+        "myagent_prediction": "13",
+        "mact_prediction": "40",
+        "compression_ratio": 0.6666666666666666,
+        "used_cols": [
+          "No. in season",
+          "Canadian airdate",
+          "US airdate",
+          "Production code"
+        ]
+      },
+      {
+        "id": "nu-1093",
+        "bucket": "mact_only",
+        "loss_category": "gold_cell_selected",
+        "question": "what are the most points won during the 1998 arizona cardinals season?",
+        "myagent_prediction": 42,
+        "mact_prediction": "45",
+        "compression_ratio": 0.5,
+        "used_cols": [
+          "Week",
+          "Date",
+          "Result"
+        ]
+      },
+      {
+        "id": "nu-1845",
+        "bucket": "mact_only",
+        "loss_category": "gold_cell_selected",
+        "question": "which is the first model listed with 10 krooni as the denomination?",
+        "myagent_prediction": "Barcelona Olympics",
+        "mact_prediction": "Re-establishment of Krooni currency",
+        "compression_ratio": 0.45,
+        "used_cols": [
+          "Year",
+          "Model",
+          "Denomination"
+        ]
+      },
+      {
+        "id": "nu-2183",
+        "bucket": "mact_only",
+        "loss_category": "gold_cell_selected",
+        "question": "who scored the most goals?",
+        "myagent_prediction": "Total",
+        "mact_prediction": "Spas Delev",
+        "compression_ratio": 0.4,
+        "used_cols": [
+          "Player",
+          "Total"
+        ]
+      },
+      {
+        "id": "nu-1263",
+        "bucket": "neither",
+        "loss_category": "gold_cell_selected",
+        "question": "how many nominees are there each year for the naacp image award?",
+        "myagent_prediction": "The table does not provide a consistent number of nominees per year for the NAACP Image Award.",
+        "mact_prediction": "the Supporting Actor is the winner, and the Nominees column lists all the other nominees. So for 1997, the winner is Samuel L. Jackson, and the Nominees column lists Blair Underwood, Charles S. Dutton, Delroy Lindo, Forest Whitaker. That's four other nominees, making a total of 5 nominees for that year. \n\nSo for each year, the total number of nominees is 1 (the winner) plus the number of names listed in the Nominees column. However, in some years, the Nominees column is empty, meaning the winner was the only nominee. \n\nSo to calculate the total number of nominees across all years, we need to go through each year, count the number of nominees (1 if Nominees is empty, else 1 + number of names in Nominees column), and sum them all. \n\nBut the question is phrased as \"how many nominees are there each year for the naacp image award?\" which is a bit ambiguous. If it's asking for the number of nominees in each year, the answer would vary each year. But the answer format requires a single number. However, looking at the examples, the user might be asking for the total number of nominees across all years. \n\nAlternatively, maybe the question is asking for the number of nominees per year, but the answer is that it varies. However, the answer format requires a specific number. \n\nWait, perhaps the user is asking for the number of nominees in each year, but the answer is that each year has a certain",
+        "compression_ratio": 0.5,
+        "used_cols": [
+          "Year",
+          "Nominees"
+        ]
+      },
+      {
+        "id": "nu-3088",
+        "bucket": "neither",
+        "loss_category": "gold_cell_selected",
+        "question": "what was the score of the last game of the season?",
+        "myagent_prediction": "L 8–14",
+        "mact_prediction": "L 8–14",
+        "compression_ratio": 0.0234375,
+        "used_cols": [
+          "Game",
+          "Date",
+          "Score"
+        ]
+      }
+    ],
+    "preserve_more_answer_columns_for_implicit_answer": [
+      {
+        "id": "nu-2873",
+        "bucket": "mact_only",
+        "loss_category": "gold_row_kept_col_dropped",
+        "question": "who drove the only saab car?",
+        "myagent_prediction": 7.0,
+        "mact_prediction": "Mike Imrie",
+        "compression_ratio": 0.2,
+        "used_cols": [
+          "Position",
+          "Car"
+        ]
+      },
+      {
+        "id": "nu-1913",
+        "bucket": "neither",
+        "loss_category": "gold_row_kept_col_dropped",
+        "question": "which team competed for the euro 2000 qualifying the most consecutive years?",
+        "myagent_prediction": "the team",
+        "mact_prediction": "Spain.",
+        "compression_ratio": 0.5714285714285714,
+        "used_cols": [
+          "#",
+          "Date",
+          "Result",
+          "Competition"
+        ]
+      },
+      {
+        "id": "nu-2396",
+        "bucket": "neither",
+        "loss_category": "gold_row_kept_col_dropped",
+        "question": "what is the total number of years for port douglas crocs?",
+        "myagent_prediction": 5,
+        "mact_prediction": "5",
+        "compression_ratio": 0.6,
+        "used_cols": [
+          "Year",
+          "Premiers",
+          "Runners Up"
+        ]
+      }
+    ],
+    "row_match_all_cells_or_semantic_filter": [
+      {
+        "id": "nu-2453",
+        "bucket": "mact_only",
+        "loss_category": "gold_col_kept_row_dropped",
+        "question": "for which film did georgina hale receive her bafta award?",
+        "myagent_prediction": "Not found",
+        "mact_prediction": "Mahler",
+        "compression_ratio": 0.10714285714285714,
+        "used_cols": [
+          "Year",
+          "Film",
+          "Notes"
+        ]
+      },
+      {
+        "id": "nu-721",
+        "bucket": "mact_only",
+        "loss_category": "gold_col_kept_row_dropped",
+        "question": "what is the next secret ingredient after sugar?",
+        "myagent_prediction": "sugar not found in the table",
+        "mact_prediction": "carrots",
+        "compression_ratio": 0.16666666666666666,
+        "used_cols": [
+          "Episode",
+          "Show #",
+          "Iron Chef",
+          "Challenger",
+          "Challenger specialty",
+          "Secret ingredient(s) or theme",
+          "Winner",
+          "Final score"
+        ]
+      },
+      {
+        "id": "nu-717",
+        "bucket": "mact_only",
+        "loss_category": "gold_col_kept_row_dropped",
+        "question": "what was the point difference between the sacramento and detroit for game 33?",
+        "myagent_prediction": "Game 33 not found in the table.",
+        "mact_prediction": "6",
+        "compression_ratio": 0.08333333333333333,
+        "used_cols": [
+          "Game",
+          "Date",
+          "Team",
+          "Score"
+        ]
+      }
+    ],
+    "operation_trace_or_count_fix": [
+      {
+        "id": "nu-1505",
+        "bucket": "mact_only",
+        "loss_category": "gold_not_literal_or_computed",
+        "question": "how many books did \"harper & brothers\" publish?",
+        "myagent_prediction": 34,
+        "mact_prediction": "74.",
+        "compression_ratio": 0.15841584158415842,
+        "used_cols": [
+          "Year",
+          "Publisher"
+        ]
+      },
+      {
+        "id": "nu-1826",
+        "bucket": "mact_only",
+        "loss_category": "gold_not_literal_or_computed",
+        "question": "how many of the educational websites have used at least limited advertising?",
+        "myagent_prediction": 4,
+        "mact_prediction": "7",
+        "compression_ratio": 0.8,
+        "used_cols": [
+          "Name",
+          "Topic",
+          "Target age",
+          "Advertising"
+        ]
+      },
+      {
+        "id": "nu-216",
+        "bucket": "mact_only",
+        "loss_category": "gold_not_literal_or_computed",
+        "question": "how many contestants were on the original manobo tribe?",
+        "myagent_prediction": 12,
+        "mact_prediction": "11",
+        "compression_ratio": 0.5,
+        "used_cols": [
+          "Contestant",
+          "Original Tribe",
+          "First Switch",
+          "Second Switch"
+        ]
+      },
+      {
+        "id": "nu-2663",
+        "bucket": "mact_only",
+        "loss_category": "gold_not_literal_or_computed",
+        "question": "how many total labels did this singer release single on?",
+        "myagent_prediction": 2,
+        "mact_prediction": "5",
+        "compression_ratio": 0.05217391304347826,
+        "used_cols": [
+          "Single / EP",
+          "Tracks",
+          "Label"
+        ]
+      },
+      {
+        "id": "nu-2919",
+        "bucket": "mact_only",
+        "loss_category": "gold_not_literal_or_computed",
+        "question": "in plumas, what was the difference between brown and nixon's votes?",
+        "myagent_prediction": 0.0,
+        "mact_prediction": "1773",
+        "compression_ratio": 0.019704433497536946,
+        "used_cols": [
+          "County",
+          "Brown",
+          "Votes",
+          "Nixon"
+        ]
+      },
+      {
+        "id": "nu-1424",
+        "bucket": "mact_only",
+        "loss_category": "gold_not_literal_or_computed",
+        "question": "what was the first date they played the 49ers?",
+        "myagent_prediction": "September 9, 2001",
+        "mact_prediction": "September 23, 2001",
+        "compression_ratio": 0.025210084033613446,
+        "used_cols": [
+          "Week",
+          "Date",
+          "Opponent"
+        ]
+      },
+      {
+        "id": "nu-1591",
+        "bucket": "neither",
+        "loss_category": "gold_not_literal_or_computed",
+        "question": "how many viewers tuned in for the 6th season?",
+        "myagent_prediction": 24.86,
+        "mact_prediction": "24.86",
+        "compression_ratio": 0.875,
+        "used_cols": [
+          "Season",
+          "Episodes",
+          "Original airing Season premiere",
+          "Original airing Season finale",
+          "Original airing TV season",
+          "Rank",
+          "Viewers (in millions)"
+        ]
+      },
+      {
+        "id": "nu-983",
+        "bucket": "neither",
+        "loss_category": "gold_not_literal_or_computed",
+        "question": "what is the time difference between take charge indy and vicar?",
+        "myagent_prediction": "0:2.04",
+        "mact_prediction": "2.04 seconds",
+        "compression_ratio": 0.028125,
+        "used_cols": [
+          "Year",
+          "Winner",
+          "Time"
+        ]
+      },
+      {
+        "id": "nu-1498",
+        "bucket": "neither",
+        "loss_category": "gold_not_literal_or_computed",
+        "question": "what is the number of russian detainees at guantanamo?",
+        "myagent_prediction": "Rasul Kudayev",
+        "mact_prediction": "8",
+        "compression_ratio": 0.04285714285714286,
+        "used_cols": [
+          "isn",
+          "name",
+          "notes"
+        ]
+      }
+    ],
+    "global_rows_for_wtq_extreme_or_only": [
+      {
+        "id": "nu-3949",
+        "bucket": "mact_only",
+        "loss_category": "gold_col_kept_row_dropped",
+        "question": "derby and which other station are the only ones to not have a frequency?",
+        "myagent_prediction": "Derby",
+        "mact_prediction": "Ulverstone",
+        "compression_ratio": 0.11688311688311688,
+        "used_cols": [
+          "Callsign",
+          "Area served",
+          "Frequency"
+        ]
+      },
+      {
+        "id": "nu-2223",
+        "bucket": "mact_only",
+        "loss_category": "gold_col_kept_row_dropped",
+        "question": "name the only player transferred from albirex niigata.",
+        "myagent_prediction": "Rizawan Abdullah",
+        "mact_prediction": "Kazuki Yoshino",
+        "compression_ratio": 0.125,
+        "used_cols": [
+          "Position",
+          "Player",
+          "Transferred From"
+        ]
+      },
+      {
+        "id": "nu-4328",
+        "bucket": "mact_only",
+        "loss_category": "gold_col_kept_row_dropped",
+        "question": "which country has the top number of silver medals won?",
+        "myagent_prediction": "Total",
+        "mact_prediction": "Spain",
+        "compression_ratio": 0.05,
+        "used_cols": [
+          "Rank",
+          "Nation",
+          "Silver"
+        ]
+      },
+      {
+        "id": "nu-2850",
+        "bucket": "mact_only",
+        "loss_category": "gold_col_kept_row_dropped",
+        "question": "which singles charted in the top five of canada and also australia?",
+        "myagent_prediction": [
+          "You Oughta Know\" A",
+          "Hand in My Pocket"
+        ],
+        "mact_prediction": "\"Ironic\"",
+        "compression_ratio": 0.12121212121212122,
+        "used_cols": [
+          "Year",
+          "Title",
+          "Chart positions AU",
+          "Chart positions CA"
+        ]
+      },
+      {
+        "id": "nu-2139",
+        "bucket": "mact_only",
+        "loss_category": "gold_col_kept_row_dropped",
+        "question": "what is sinnamon's only hit of 1984?",
+        "myagent_prediction": "No data available for 1984 in the table.",
+        "mact_prediction": "\\Thin Line\\\"",
+        "compression_ratio": 0.11428571428571428,
+        "used_cols": [
+          "Year",
+          "Name"
+        ]
+      },
+      {
+        "id": "nu-3375",
+        "bucket": "mact_only",
+        "loss_category": "gold_col_kept_row_dropped",
+        "question": "what was the competition in his only race in malaysia?",
+        "myagent_prediction": "No unique race in Malaysia found.",
+        "mact_prediction": "Commonwealth Games",
+        "compression_ratio": 0.3,
+        "used_cols": [
+          "Year",
+          "Competition",
+          "Venue",
+          "Event"
+        ]
+      },
+      {
+        "id": "nu-1870",
+        "bucket": "mact_only",
+        "loss_category": "gold_col_kept_row_dropped",
+        "question": "in the beginning of the show thee were only 3 judges, but what series did the show change to 4 judges?",
+        "myagent_prediction": [
+          "Four"
+        ],
+        "mact_prediction": "Five",
+        "compression_ratio": 0.2222222222222222,
+        "used_cols": [
+          "Series",
+          "Premiere",
+          "Finale",
+          "Winner",
+          "Runner-up",
+          "Third place",
+          "Host(s)",
+          "Judging panel",
+          "Guest judge(s)"
+        ]
+      },
+      {
+        "id": "nu-4291",
+        "bucket": "mact_only",
+        "loss_category": "gold_col_kept_row_dropped",
+        "question": "name the position with only two players in such a position.",
+        "myagent_prediction": "Right Wing",
+        "mact_prediction": "Center",
+        "compression_ratio": 0.07142857142857142,
+        "used_cols": [
+          "Pick #",
+          "Player",
+          "Position"
+        ]
+      },
+      {
+        "id": "nu-53",
+        "bucket": "mact_only",
+        "loss_category": "gold_col_kept_row_dropped",
+        "question": "what is the earliest date kodak made 16mm film?",
+        "myagent_prediction": 1988,
+        "mact_prediction": "1935",
+        "compression_ratio": 0.0625,
+        "used_cols": [
+          "Film",
+          "Film_2",
+          "Date"
+        ]
+      },
+      {
+        "id": "nu-2178",
+        "bucket": "neither",
+        "loss_category": "gold_col_kept_row_dropped",
+        "question": "who was the first us ambassador to grenada appointed by bill clinton?",
+        "myagent_prediction": "Frank V. Ortiz, Jr.",
+        "mact_prediction": "Jeanette W. Hyde",
+        "compression_ratio": 0.05714285714285714,
+        "used_cols": [
+          "Representative",
+          "Title",
+          "Appointed by"
+        ]
+      }
+    ],
+    "other": [
+      {
+        "id": "nu-3279",
+        "bucket": "mact_only",
+        "loss_category": "gold_row_kept_col_dropped",
+        "question": "how many consecutive days did south korea play?",
+        "myagent_prediction": 5,
+        "mact_prediction": "3",
+        "compression_ratio": 0.25,
+        "used_cols": [
+          "Date",
+          "column_3",
+          "column_5"
+        ]
+      },
+      {
+        "id": "nu-3767",
+        "bucket": "mact_only",
+        "loss_category": "gold_row_kept_col_dropped",
+        "question": "how many goals did manchester have in 1997-1998?",
+        "myagent_prediction": "Total",
+        "mact_prediction": "0",
+        "compression_ratio": 0.02857142857142857,
+        "used_cols": [
+          "Club performance Season Norway",
+          "Club performance Club Norway",
+          "Total Goals Total"
+        ]
+      },
+      {
+        "id": "nu-976",
+        "bucket": "mact_only",
+        "loss_category": "gold_row_kept_col_dropped",
+        "question": "how many seasons was morten rasmussen the top scorer?",
+        "myagent_prediction": 0,
+        "mact_prediction": "4",
+        "compression_ratio": 0.42857142857142855,
+        "used_cols": [
+          "Season",
+          "League Competition",
+          "League Top scorer"
+        ]
+      }
+    ]
+  },
+  "recommended_test_order": [
+    "global_rows_for_wtq_extreme_or_only",
+    "row_match_all_cells_or_semantic_filter",
+    "planner_or_answer_selection_fix",
+    "operation_trace_or_count_fix",
+    "preserve_more_answer_columns_for_implicit_answer"
+  ]
+}

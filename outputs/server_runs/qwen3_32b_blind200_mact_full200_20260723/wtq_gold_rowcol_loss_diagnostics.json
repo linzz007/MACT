@@ -1,0 +1,2510 @@
+{
+  "generated_at": "2026-07-30 17:20:00 CST",
+  "source_subset": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_blind200_mact_full200_20260723/wtq_discordant_debug_subset_50.jsonl",
+  "method": "Find literal gold cells in the original WTQ DataFrame reconstructed with build_df_from_table semantics, then test whether their row and column survived compression_info.used_rows/used_cols. Count/arithmetic gold may not be literal cells and is labeled separately.",
+  "summary": {
+    "gold_cell_selected": 22,
+    "gold_row_kept_col_dropped": 6,
+    "gold_col_kept_row_dropped": 13,
+    "gold_not_literal_or_computed": 9
+  },
+  "by_bucket": {
+    "mact_only": {
+      "gold_cell_selected": 18,
+      "gold_row_kept_col_dropped": 4,
+      "gold_col_kept_row_dropped": 12,
+      "gold_not_literal_or_computed": 6
+    },
+    "neither": {
+      "gold_cell_selected": 4,
+      "gold_not_literal_or_computed": 3,
+      "gold_row_kept_col_dropped": 2,
+      "gold_col_kept_row_dropped": 1
+    }
+  },
+  "by_shape": {
+    "entity_or_text": {
+      "gold_cell_selected": 10,
+      "gold_row_kept_col_dropped": 2,
+      "gold_col_kept_row_dropped": 9
+    },
+    "count": {
+      "gold_cell_selected": 9,
+      "gold_not_literal_or_computed": 6,
+      "gold_col_kept_row_dropped": 1,
+      "gold_row_kept_col_dropped": 4
+    },
+    "temporal": {
+      "gold_cell_selected": 3,
+      "gold_not_literal_or_computed": 1,
+      "gold_col_kept_row_dropped": 2
+    },
+    "arithmetic": {
+      "gold_not_literal_or_computed": 2,
+      "gold_col_kept_row_dropped": 1
+    }
+  },
+  "rows": [
+    {
+      "id": "nu-1434",
+      "bucket": "mact_only",
+      "loss_category": "gold_cell_selected",
+      "shape": "entity_or_text",
+      "categories": [
+        "superlative"
+      ],
+      "problem_tags": [
+        "superlative_order"
+      ],
+      "gold": [
+        "3.0"
+      ],
+      "hits": [
+        {
+          "gold": "3.0",
+          "row": 4,
+          "col": "Position",
+          "value": "3",
+          "row_selected": true,
+          "col_selected": true
+        }
+      ],
+      "used_cols": [
+        "Year",
+        "Song",
+        "Album",
+        "Position",
+        "Chart"
+      ],
+      "used_rows_count": 11,
+      "strategy": "expanded_context_block_global_rows_global_columns",
+      "compression_ratio": 1.0,
+      "question": "what is the highest chart position ever achieved by one of dino's singles?",
+      "myagent_prediction": "\\I Like It\\\"\"",
+      "mact_prediction": "3"
+    },
+    {
+      "id": "nu-2873",
+      "bucket": "mact_only",
+      "loss_category": "gold_row_kept_col_dropped",
+      "shape": "entity_or_text",
+      "categories": [
+        "negation"
+      ],
+      "problem_tags": [
+        "negation_logic"
+      ],
+      "gold": [
+        "Mike Imrie"
+      ],
+      "hits": [
+        {
+          "gold": "Mike Imrie",
+          "row": 6,
+          "col": "Driver",
+          "value": "Mike Imrie",
+          "row_selected": true,
+          "col_selected": false
+        }
+      ],
+      "used_cols": [
+        "Position",
+        "Car"
+      ],
+      "used_rows_count": 24,
+      "strategy": "expanded_context_block",
+      "compression_ratio": 0.2,
+      "question": "who drove the only saab car?",
+      "myagent_prediction": 7.0,
+      "mact_prediction": "Mike Imrie"
+    },
+    {
+      "id": "nu-2453",
+      "bucket": "mact_only",
+      "loss_category": "gold_col_kept_row_dropped",
+      "shape": "entity_or_text",
+      "categories": [
+        "plain_lookup"
+      ],
+      "problem_tags": [],
+      "gold": [
+        "Mahler"
+      ],
+      "hits": [
+        {
+          "gold": "Mahler",
+          "row": 4,
+          "col": "Film",
+          "value": "Mahler",
+          "row_selected": false,
+          "col_selected": true
+        },
+        {
+          "gold": "Mahler",
+          "row": 4,
+          "col": "Role",
+          "value": "Alma Mahler",
+          "row_selected": false,
+          "col_selected": false
+        }
+      ],
+      "used_cols": [
+        "Year",
+        "Film",
+        "Notes"
+      ],
+      "used_rows_count": 3,
+      "strategy": "expanded_context_block",
+      "compression_ratio": 0.10714285714285714,
+      "question": "for which film did georgina hale receive her bafta award?",
+      "myagent_prediction": "Not found",
+      "mact_prediction": "Mahler"
+    },
+    {
+      "id": "nu-709",
+      "bucket": "mact_only",
+      "loss_category": "gold_cell_selected",
+      "shape": "count",
+      "categories": [
+        "count"
+      ],
+      "problem_tags": [
+        "count"
+      ],
+      "gold": [
+        "11.0"
+      ],
+      "hits": [
+        {
+          "gold": "11.0",
+          "row": 3,
+          "col": "Narrative",
+          "value": "6:11 to 9:29",
+          "row_selected": true,
+          "col_selected": false
+        },
+        {
+          "gold": "11.0",
+          "row": 4,
+          "col": "Narrative",
+          "value": "11:1 - 9",
+          "row_selected": true,
+          "col_selected": false
+        },
+        {
+          "gold": "11.0",
+          "row": 4,
+          "col": "Colophon",
+          "value": "\\This is the account of Shem.\\\" 11:10\"",
+          "row_selected": true,
+          "col_selected": false
+        },
+        {
+          "gold": "11.0",
+          "row": 5,
+          "col": "Genealogy",
+          "value": "Shem to Terah 11:10 - 26",
+          "row_selected": true,
+          "col_selected": false
+        },
+        {
+          "gold": "11.0",
+          "row": 5,
+          "col": "Colophon",
+          "value": "\\This is the account of Terah.\\\" 11:27\"",
+          "row_selected": true,
+          "col_selected": false
+        },
+        {
+          "gold": "11.0",
+          "row": 6,
+          "col": "Genealogy",
+          "value": "Terah to Abraham 11:27",
+          "row_selected": true,
+          "col_selected": false
+        },
+        {
+          "gold": "11.0",
+          "row": 6,
+          "col": "Narrative",
+          "value": "11:28 to 25:11",
+          "row_selected": true,
+          "col_selected": false
+        },
+        {
+          "gold": "11.0",
+          "row": 10,
+          "col": "Tablet",
+          "value": "11",
+          "row_selected": true,
+          "col_selected": true
+        }
+      ],
+      "used_cols": [
+        "Tablet"
+      ],
+      "used_rows_count": 12,
+      "strategy": "expanded_context_block",
+      "compression_ratio": 0.25,
+      "question": "what is the number of tablets?",
+      "myagent_prediction": 12,
+      "mact_prediction": "11"
+    },
+    {
+      "id": "nu-3934",
+      "bucket": "mact_only",
+      "loss_category": "gold_cell_selected",
+      "shape": "temporal",
+      "categories": [
+        "superlative",
+        "temporal"
+      ],
+      "problem_tags": [
+        "superlative_order",
+        "temporal"
+      ],
+      "gold": [
+        "1987.0"
+      ],
+      "hits": [
+        {
+          "gold": "1987.0",
+          "row": 1,
+          "col": "Year",
+          "value": "1987",
+          "row_selected": true,
+          "col_selected": true
+        },
+        {
+          "gold": "1987.0",
+          "row": 2,
+          "col": "Year",
+          "value": "1987",
+          "row_selected": true,
+          "col_selected": true
+        }
+      ],
+      "used_cols": [
+        "Year",
+        "Competition",
+        "Event"
+      ],
+      "used_rows_count": 8,
+      "strategy": "expanded_context_block_global_rows",
+      "compression_ratio": 0.5,
+      "question": "in what year did salvatore bettiol run in the most marathons?",
+      "myagent_prediction": 1986.0,
+      "mact_prediction": "1987"
+    },
+    {
+      "id": "nu-1505",
+      "bucket": "mact_only",
+      "loss_category": "gold_not_literal_or_computed",
+      "shape": "count",
+      "categories": [
+        "count"
+      ],
+      "problem_tags": [
+        "count"
+      ],
+      "gold": [
+        "74.0"
+      ],
+      "hits": [],
+      "used_cols": [
+        "Year",
+        "Publisher"
+      ],
+      "used_rows_count": 40,
+      "strategy": "expanded_context_block",
+      "compression_ratio": 0.15841584158415842,
+      "question": "how many books did \"harper & brothers\" publish?",
+      "myagent_prediction": 34,
+      "mact_prediction": "74."
+    },
+    {
+      "id": "nu-2213",
+      "bucket": "mact_only",
+      "loss_category": "gold_cell_selected",
+      "shape": "count",
+      "categories": [
+        "arithmetic",
+        "count"
+      ],
+      "problem_tags": [
+        "count",
+        "arithmetic"
+      ],
+      "gold": [
+        "4.0"
+      ],
+      "hits": [
+        {
+          "gold": "4.0",
+          "row": 10,
+          "col": "Goals",
+          "value": "4",
+          "row_selected": true,
+          "col_selected": true
+        }
+      ],
+      "used_cols": [
+        "Season",
+        "Goals"
+      ],
+      "used_rows_count": 11,
+      "strategy": "strict_cell_block_global_rows",
+      "compression_ratio": 0.4,
+      "question": "what is the total number of goals?",
+      "myagent_prediction": 8.0,
+      "mact_prediction": "4"
+    },
+    {
+      "id": "nu-1826",
+      "bucket": "mact_only",
+      "loss_category": "gold_not_literal_or_computed",
+      "shape": "count",
+      "categories": [
+        "count",
+        "negation",
+        "superlative"
+      ],
+      "problem_tags": [
+        "count",
+        "superlative_order",
+        "negation_logic"
+      ],
+      "gold": [
+        "7.0"
+      ],
+      "hits": [],
+      "used_cols": [
+        "Name",
+        "Topic",
+        "Target age",
+        "Advertising"
+      ],
+      "used_rows_count": 17,
+      "strategy": "expanded_context_block_global_rows",
+      "compression_ratio": 0.8,
+      "question": "how many of the educational websites have used at least limited advertising?",
+      "myagent_prediction": 4,
+      "mact_prediction": "7"
+    },
+    {
+      "id": "nu-2611",
+      "bucket": "mact_only",
+      "loss_category": "gold_cell_selected",
+      "shape": "entity_or_text",
+      "categories": [
+        "arithmetic",
+        "closed_choice",
+        "negation",
+        "superlative",
+        "temporal"
+      ],
+      "problem_tags": [
+        "superlative_order",
+        "temporal",
+        "negation_logic"
+      ],
+      "gold": [
+        "Nieuport serial number 3958"
+      ],
+      "hits": [
+        {
+          "gold": "Nieuport serial number 3958",
+          "row": 0,
+          "col": "Aircraft",
+          "value": "Nieuport serial number 3958",
+          "row_selected": true,
+          "col_selected": true
+        }
+      ],
+      "used_cols": [
+        "No.",
+        "Date/time",
+        "Aircraft"
+      ],
+      "used_rows_count": 7,
+      "strategy": "expanded_context_block",
+      "compression_ratio": 0.375,
+      "question": "which was earlier, sopwith triplane s/n n5460 or nieuport serial number 3958?",
+      "myagent_prediction": "sopwith triplane s/n n5460",
+      "mact_prediction": "Nieuport serial number 3958"
+    },
+    {
+      "id": "nu-3535",
+      "bucket": "mact_only",
+      "loss_category": "gold_cell_selected",
+      "shape": "temporal",
+      "categories": [
+        "negation",
+        "temporal"
+      ],
+      "problem_tags": [
+        "temporal",
+        "negation_logic"
+      ],
+      "gold": [
+        "1985.0"
+      ],
+      "hits": [
+        {
+          "gold": "1985.0",
+          "row": 8,
+          "col": "Image",
+          "value": "Negasonic Teenage Warhead  Shaped like a mushroom cloud 12\\\",\" OMD\" La Femme Accident 1985   ",
+          "row_selected": true,
+          "col_selected": false
+        },
+        {
+          "gold": "1985.0",
+          "row": 9,
+          "col": "Released",
+          "value": "1985",
+          "row_selected": true,
+          "col_selected": true
+        },
+        {
+          "gold": "1985.0",
+          "row": 9,
+          "col": "Image",
+          "value": "Back on the Streets Again  Shaped as an apple (as is printed on one side of the disk). 7\\\",\" Tangerine Dream\" Warsaw in the Sun 1984 The record is in the shape of Poland and has several images including Lech Wałęsa and Pope John Paul II. 7\\\",\" The Coconuts (Side project of Kid Creole and the Coconuts)\" Did You Have To Love Me Like You Did 1983 In the shape of a coconut. 7\\\",\" The Fat Boys\" Wipe Out  Shaped like a Hamburger 7\\\",\" The Enemy\" You're not alone 2007 Square shaped. Has the single cover art on the A-side and a black and white picture of the band on the B-side with track listing. 7\\\",\" The Mars Volta\" Mr. Muggs 2008 In the shape of a clear planchette. 7\\\",\" U2\" The Unforgettable Fire (single) 1985 Shaped as letter & number \\U2\\\" with various pictures of the band from the period.\" 7\\\",U2\"",
+          "row_selected": true,
+          "col_selected": false
+        }
+      ],
+      "used_cols": [
+        "Band",
+        "Released",
+        "Disc Description"
+      ],
+      "used_rows_count": 3,
+      "strategy": "expanded_context_block",
+      "compression_ratio": 0.13636363636363635,
+      "question": "u2 and redbox both had releases in what year?",
+      "myagent_prediction": "One or both bands not found in the table",
+      "mact_prediction": "1985"
+    },
+    {
+      "id": "nu-3949",
+      "bucket": "mact_only",
+      "loss_category": "gold_col_kept_row_dropped",
+      "shape": "entity_or_text",
+      "categories": [
+        "negation",
+        "temporal"
+      ],
+      "problem_tags": [
+        "negation_logic"
+      ],
+      "gold": [
+        "Ulverstone"
+      ],
+      "hits": [
+        {
+          "gold": "Ulverstone",
+          "row": 9,
+          "col": "Area served",
+          "value": "Ulverstone",
+          "row_selected": false,
+          "col_selected": true
+        }
+      ],
+      "used_cols": [
+        "Callsign",
+        "Area served",
+        "Frequency"
+      ],
+      "used_rows_count": 3,
+      "strategy": "expanded_context_block",
+      "compression_ratio": 0.11688311688311688,
+      "question": "derby and which other station are the only ones to not have a frequency?",
+      "myagent_prediction": "Derby",
+      "mact_prediction": "Ulverstone"
+    },
+    {
+      "id": "nu-2232",
+      "bucket": "mact_only",
+      "loss_category": "gold_cell_selected",
+      "shape": "count",
+      "categories": [
+        "count",
+        "temporal"
+      ],
+      "problem_tags": [
+        "count",
+        "temporal"
+      ],
+      "gold": [
+        "4.0"
+      ],
+      "hits": [
+        {
+          "gold": "4.0",
+          "row": 0,
+          "col": "Score",
+          "value": "2–6, 6–4, 2–6",
+          "row_selected": false,
+          "col_selected": true
+        },
+        {
+          "gold": "4.0",
+          "row": 1,
+          "col": "Score",
+          "value": "3–6, 4–6",
+          "row_selected": true,
+          "col_selected": true
+        },
+        {
+          "gold": "4.0",
+          "row": 3,
+          "col": "Score",
+          "value": "6–4, 7–6(7–2)",
+          "row_selected": true,
+          "col_selected": true
+        },
+        {
+          "gold": "4.0",
+          "row": 5,
+          "col": "Score",
+          "value": "6–4, 5–7, 7–5",
+          "row_selected": true,
+          "col_selected": true
+        },
+        {
+          "gold": "4.0",
+          "row": 6,
+          "col": "Score",
+          "value": "6–3, 6–4",
+          "row_selected": true,
+          "col_selected": true
+        },
+        {
+          "gold": "4.0",
+          "row": 7,
+          "col": "Score",
+          "value": "6–4, 6–3",
+          "row_selected": true,
+          "col_selected": true
+        },
+        {
+          "gold": "4.0",
+          "row": 8,
+          "col": "Score",
+          "value": "4–6, 7–6, 2–6",
+          "row_selected": true,
+          "col_selected": true
+        },
+        {
+          "gold": "4.0",
+          "row": 12,
+          "col": "Score",
+          "value": "4–6, 6–3, 4–6",
+          "row_selected": false,
+          "col_selected": true
+        },
+        {
+          "gold": "4.0",
+          "row": 14,
+          "col": "Score",
+          "value": "6–3, 4–6, 7–6(13–11)",
+          "row_selected": true,
+          "col_selected": true
+        },
+        {
+          "gold": "4.0",
+          "row": 15,
+          "col": "Score",
+          "value": "2–6, 4–6",
+          "row_selected": true,
+          "col_selected": true
+        }
+      ],
+      "used_cols": [
+        "Result",
+        "Date",
+        "Category",
+        "Tournament",
+        "Surface",
+        "Partnering",
+        "Opponents",
+        "Score"
+      ],
+      "used_rows_count": 16,
+      "strategy": "expanded_context_block",
+      "compression_ratio": 0.8,
+      "question": "how many championship tournaments did she play in after 1984?",
+      "myagent_prediction": 0,
+      "mact_prediction": "4"
+    },
+    {
+      "id": "nu-2223",
+      "bucket": "mact_only",
+      "loss_category": "gold_col_kept_row_dropped",
+      "shape": "entity_or_text",
+      "categories": [
+        "negation",
+        "temporal"
+      ],
+      "problem_tags": [
+        "negation_logic"
+      ],
+      "gold": [
+        "Kazuki Yoshino"
+      ],
+      "hits": [
+        {
+          "gold": "Kazuki Yoshino",
+          "row": 3,
+          "col": "Player",
+          "value": "Kazuki Yoshino",
+          "row_selected": false,
+          "col_selected": true
+        }
+      ],
+      "used_cols": [
+        "Position",
+        "Player",
+        "Transferred From"
+      ],
+      "used_rows_count": 2,
+      "strategy": "strict_cell_block",
+      "compression_ratio": 0.125,
+      "question": "name the only player transferred from albirex niigata.",
+      "myagent_prediction": "Rizawan Abdullah",
+      "mact_prediction": "Kazuki Yoshino"
+    },
+    {
+      "id": "nu-1951",
+      "bucket": "mact_only",
+      "loss_category": "gold_cell_selected",
+      "shape": "entity_or_text",
+      "categories": [
+        "negation"
+      ],
+      "problem_tags": [
+        "negation_logic"
+      ],
+      "gold": [
+        "Runner-up"
+      ],
+      "hits": [
+        {
+          "gold": "Runner-up",
+          "row": 0,
+          "col": "Outcome",
+          "value": "Runner-up",
+          "row_selected": false,
+          "col_selected": true
+        },
+        {
+          "gold": "Runner-up",
+          "row": 1,
+          "col": "Outcome",
+          "value": "Runner-up",
+          "row_selected": false,
+          "col_selected": true
+        },
+        {
+          "gold": "Runner-up",
+          "row": 2,
+          "col": "Outcome",
+          "value": "Runner-up",
+          "row_selected": true,
+          "col_selected": true
+        },
+        {
+          "gold": "Runner-up",
+          "row": 4,
+          "col": "Outcome",
+          "value": "Runner-up",
+          "row_selected": true,
+          "col_selected": true
+        },
+        {
+          "gold": "Runner-up",
+          "row": 5,
+          "col": "Outcome",
+          "value": "Runner-up",
+          "row_selected": false,
+          "col_selected": true
+        },
+        {
+          "gold": "Runner-up",
+          "row": 6,
+          "col": "Outcome",
+          "value": "Runner-up",
+          "row_selected": false,
+          "col_selected": true
+        },
+        {
+          "gold": "Runner-up",
+          "row": 7,
+          "col": "Outcome",
+          "value": "Runner-up",
+          "row_selected": false,
+          "col_selected": true
+        },
+        {
+          "gold": "Runner-up",
+          "row": 8,
+          "col": "Outcome",
+          "value": "Runner-up",
+          "row_selected": false,
+          "col_selected": true
+        },
+        {
+          "gold": "Runner-up",
+          "row": 9,
+          "col": "Outcome",
+          "value": "Runner-up",
+          "row_selected": true,
+          "col_selected": true
+        },
+        {
+          "gold": "Runner-up",
+          "row": 11,
+          "col": "Outcome",
+          "value": "Runner-up",
+          "row_selected": true,
+          "col_selected": true
+        },
+        {
+          "gold": "Runner-up",
+          "row": 13,
+          "col": "Outcome",
+          "value": "Runner-up",
+          "row_selected": true,
+          "col_selected": true
+        },
+        {
+          "gold": "Runner-up",
+          "row": 15,
+          "col": "Outcome",
+          "value": "Runner-up",
+          "row_selected": true,
+          "col_selected": true
+        },
+        {
+          "gold": "Runner-up",
+          "row": 17,
+          "col": "Outcome",
+          "value": "Runner-up",
+          "row_selected": true,
+          "col_selected": true
+        }
+      ],
+      "used_cols": [
+        "Outcome",
+        "Surface"
+      ],
+      "used_rows_count": 12,
+      "strategy": "expanded_context_block",
+      "compression_ratio": 0.19047619047619047,
+      "question": "what was the outcome the only time a hard surface was used?",
+      "myagent_prediction": "No unique hard surface event found",
+      "mact_prediction": "Runner-up"
+    },
+    {
+      "id": "nu-1125",
+      "bucket": "mact_only",
+      "loss_category": "gold_cell_selected",
+      "shape": "count",
+      "categories": [
+        "count",
+        "negation",
+        "temporal"
+      ],
+      "problem_tags": [
+        "count",
+        "temporal",
+        "negation_logic"
+      ],
+      "gold": [
+        "7.0"
+      ],
+      "hits": [
+        {
+          "gold": "7.0",
+          "row": 4,
+          "col": "No. in series",
+          "value": "7",
+          "row_selected": true,
+          "col_selected": true
+        },
+        {
+          "gold": "7.0",
+          "row": 6,
+          "col": "No. in season",
+          "value": "7",
+          "row_selected": true,
+          "col_selected": true
+        }
+      ],
+      "used_cols": [
+        "No. in series",
+        "No. in season",
+        "Title",
+        "Directed by",
+        "Written by",
+        "Original air date",
+        "Prod. code"
+      ],
+      "used_rows_count": 28,
+      "strategy": "expanded_context_block",
+      "compression_ratio": 1.0,
+      "question": "in season 1, what number of episodes were written by morton fine and david friedkin?",
+      "myagent_prediction": 0,
+      "mact_prediction": "7"
+    },
+    {
+      "id": "nu-4328",
+      "bucket": "mact_only",
+      "loss_category": "gold_col_kept_row_dropped",
+      "shape": "count",
+      "categories": [
+        "count",
+        "superlative"
+      ],
+      "problem_tags": [
+        "count",
+        "superlative_order"
+      ],
+      "gold": [
+        "Spain"
+      ],
+      "hits": [
+        {
+          "gold": "Spain",
+          "row": 3,
+          "col": "Nation",
+          "value": "Spain",
+          "row_selected": false,
+          "col_selected": true
+        }
+      ],
+      "used_cols": [
+        "Rank",
+        "Nation",
+        "Silver"
+      ],
+      "used_rows_count": 1,
+      "strategy": "strict_cell_block",
+      "compression_ratio": 0.05,
+      "question": "which country has the top number of silver medals won?",
+      "myagent_prediction": "Total",
+      "mact_prediction": "Spain"
+    },
+    {
+      "id": "nu-2850",
+      "bucket": "mact_only",
+      "loss_category": "gold_col_kept_row_dropped",
+      "shape": "entity_or_text",
+      "categories": [
+        "negation",
+        "superlative"
+      ],
+      "problem_tags": [
+        "superlative_order",
+        "negation_logic",
+        "list_entity"
+      ],
+      "gold": [
+        "Ironic"
+      ],
+      "hits": [
+        {
+          "gold": "Ironic",
+          "row": 2,
+          "col": "Title",
+          "value": "\\Ironic\\\"\"",
+          "row_selected": false,
+          "col_selected": true
+        }
+      ],
+      "used_cols": [
+        "Year",
+        "Title",
+        "Chart positions AU",
+        "Chart positions CA"
+      ],
+      "used_rows_count": 2,
+      "strategy": "expanded_context_block",
+      "compression_ratio": 0.12121212121212122,
+      "question": "which singles charted in the top five of canada and also australia?",
+      "myagent_prediction": [
+        "You Oughta Know\" A",
+        "Hand in My Pocket"
+      ],
+      "mact_prediction": "\"Ironic\""
+    },
+    {
+      "id": "nu-216",
+      "bucket": "mact_only",
+      "loss_category": "gold_not_literal_or_computed",
+      "shape": "count",
+      "categories": [
+        "count"
+      ],
+      "problem_tags": [
+        "count"
+      ],
+      "gold": [
+        "11.0"
+      ],
+      "hits": [],
+      "used_cols": [
+        "Contestant",
+        "Original Tribe",
+        "First Switch",
+        "Second Switch"
+      ],
+      "used_rows_count": 24,
+      "strategy": "expanded_context_block_global_rows",
+      "compression_ratio": 0.5,
+      "question": "how many contestants were on the original manobo tribe?",
+      "myagent_prediction": 12,
+      "mact_prediction": "11"
+    },
+    {
+      "id": "nu-3939",
+      "bucket": "mact_only",
+      "loss_category": "gold_cell_selected",
+      "shape": "count",
+      "categories": [
+        "count",
+        "superlative"
+      ],
+      "problem_tags": [
+        "count",
+        "superlative_order"
+      ],
+      "gold": [
+        "Thiruvay Mozhi"
+      ],
+      "hits": [
+        {
+          "gold": "Thiruvay Mozhi",
+          "row": 22,
+          "col": "Name of the prabandham",
+          "value": "Thiruvay Mozhi",
+          "row_selected": true,
+          "col_selected": true
+        }
+      ],
+      "used_cols": [
+        "Sl no",
+        "Name of the prabandham",
+        "Number of pasurams"
+      ],
+      "used_rows_count": 24,
+      "strategy": "expanded_context_block_global_rows",
+      "compression_ratio": 0.5,
+      "question": "name the prabandham with the most number of pasurams",
+      "myagent_prediction": "Total number of pasurams",
+      "mact_prediction": "Thiruvay Mozhi"
+    },
+    {
+      "id": "nu-2635",
+      "bucket": "mact_only",
+      "loss_category": "gold_cell_selected",
+      "shape": "entity_or_text",
+      "categories": [
+        "negation",
+        "superlative",
+        "temporal"
+      ],
+      "problem_tags": [
+        "superlative_order",
+        "negation_logic"
+      ],
+      "gold": [
+        "Ole Mørk"
+      ],
+      "hits": [
+        {
+          "gold": "Ole Mørk",
+          "row": 8,
+          "col": "Name",
+          "value": "Ole Mørk",
+          "row_selected": true,
+          "col_selected": true
+        }
+      ],
+      "used_cols": [
+        "Name",
+        "From",
+        "To",
+        "Honours"
+      ],
+      "used_rows_count": 11,
+      "strategy": "expanded_context_block",
+      "compression_ratio": 0.6666666666666666,
+      "question": "list the only coach that won promotion to the first tier.",
+      "myagent_prediction": "Henrik Jensen",
+      "mact_prediction": "Ole Mørk"
+    },
+    {
+      "id": "nu-2109",
+      "bucket": "mact_only",
+      "loss_category": "gold_cell_selected",
+      "shape": "count",
+      "categories": [
+        "count"
+      ],
+      "problem_tags": [
+        "count"
+      ],
+      "gold": [
+        "5.0"
+      ],
+      "hits": [
+        {
+          "gold": "5.0",
+          "row": 4,
+          "col": "Score",
+          "value": "9–5",
+          "row_selected": true,
+          "col_selected": true
+        },
+        {
+          "gold": "5.0",
+          "row": 12,
+          "col": "Score",
+          "value": "9–5",
+          "row_selected": false,
+          "col_selected": true
+        }
+      ],
+      "used_cols": [
+        "Date",
+        "Tournament name",
+        "Winner",
+        "Runner-up",
+        "Score"
+      ],
+      "used_rows_count": 12,
+      "strategy": "strict_cell_block",
+      "compression_ratio": 0.3157894736842105,
+      "question": "how many tournaments did stephen hendry win?",
+      "myagent_prediction": "3",
+      "mact_prediction": "5"
+    },
+    {
+      "id": "nu-2139",
+      "bucket": "mact_only",
+      "loss_category": "gold_col_kept_row_dropped",
+      "shape": "entity_or_text",
+      "categories": [
+        "negation",
+        "temporal"
+      ],
+      "problem_tags": [
+        "temporal",
+        "negation_logic"
+      ],
+      "gold": [
+        "Thin Line"
+      ],
+      "hits": [
+        {
+          "gold": "Thin Line",
+          "row": 3,
+          "col": "Name",
+          "value": "\\Thin Line\\\"\"",
+          "row_selected": false,
+          "col_selected": true
+        }
+      ],
+      "used_cols": [
+        "Year",
+        "Name"
+      ],
+      "used_rows_count": 2,
+      "strategy": "expanded_context_block",
+      "compression_ratio": 0.11428571428571428,
+      "question": "what is sinnamon's only hit of 1984?",
+      "myagent_prediction": "No data available for 1984 in the table.",
+      "mact_prediction": "\\Thin Line\\\""
+    },
+    {
+      "id": "nu-463",
+      "bucket": "mact_only",
+      "loss_category": "gold_cell_selected",
+      "shape": "count",
+      "categories": [
+        "count"
+      ],
+      "problem_tags": [
+        "count"
+      ],
+      "gold": [
+        "3.0"
+      ],
+      "hits": [
+        {
+          "gold": "3.0",
+          "row": 1,
+          "col": "Ratings",
+          "value": "4.3 (5.1 cable)",
+          "row_selected": true,
+          "col_selected": true
+        },
+        {
+          "gold": "3.0",
+          "row": 3,
+          "col": "Ratings",
+          "value": "3.6 (4.2 cable)",
+          "row_selected": true,
+          "col_selected": true
+        },
+        {
+          "gold": "3.0",
+          "row": 5,
+          "col": "Ratings",
+          "value": "3.3",
+          "row_selected": true,
+          "col_selected": true
+        },
+        {
+          "gold": "3.0",
+          "row": 6,
+          "col": "Ratings",
+          "value": "3.6",
+          "row_selected": true,
+          "col_selected": true
+        }
+      ],
+      "used_cols": [
+        "Year",
+        "Network",
+        "Ratings"
+      ],
+      "used_rows_count": 8,
+      "strategy": "strict_cell_block",
+      "compression_ratio": 0.375,
+      "question": "list the number of times the rating was above a 4.0.",
+      "myagent_prediction": "5",
+      "mact_prediction": "3"
+    },
+    {
+      "id": "nu-830",
+      "bucket": "mact_only",
+      "loss_category": "gold_cell_selected",
+      "shape": "entity_or_text",
+      "categories": [
+        "superlative"
+      ],
+      "problem_tags": [
+        "superlative_order"
+      ],
+      "gold": [
+        "Terry Furlow"
+      ],
+      "hits": [
+        {
+          "gold": "Terry Furlow",
+          "row": 7,
+          "col": "Player",
+          "value": "Terry Furlow",
+          "row_selected": true,
+          "col_selected": true
+        }
+      ],
+      "used_cols": [
+        "Player",
+        "No.",
+        "Nationality",
+        "Position",
+        "Years for Jazz",
+        "School/Club Team"
+      ],
+      "used_rows_count": 8,
+      "strategy": "full_table_for_high_coverage",
+      "compression_ratio": 1.0,
+      "question": "who was ranked last among this group?",
+      "myagent_prediction": "Bernie Fryer",
+      "mact_prediction": "Terry Furlow"
+    },
+    {
+      "id": "nu-697",
+      "bucket": "mact_only",
+      "loss_category": "gold_cell_selected",
+      "shape": "count",
+      "categories": [
+        "arithmetic",
+        "count",
+        "temporal"
+      ],
+      "problem_tags": [
+        "count",
+        "temporal",
+        "arithmetic"
+      ],
+      "gold": [
+        "40.0"
+      ],
+      "hits": [
+        {
+          "gold": "40.0",
+          "row": 37,
+          "col": "No. in season",
+          "value": "40",
+          "row_selected": true,
+          "col_selected": true
+        }
+      ],
+      "used_cols": [
+        "No. in season",
+        "Canadian airdate",
+        "US airdate",
+        "Production code"
+      ],
+      "used_rows_count": 38,
+      "strategy": "strict_cell_block_global_rows",
+      "compression_ratio": 0.6666666666666666,
+      "question": "how many total episodes aired in season 13?",
+      "myagent_prediction": "13",
+      "mact_prediction": "40"
+    },
+    {
+      "id": "nu-3375",
+      "bucket": "mact_only",
+      "loss_category": "gold_col_kept_row_dropped",
+      "shape": "entity_or_text",
+      "categories": [
+        "negation"
+      ],
+      "problem_tags": [
+        "negation_logic"
+      ],
+      "gold": [
+        "Commonwealth Games"
+      ],
+      "hits": [
+        {
+          "gold": "Commonwealth Games",
+          "row": 2,
+          "col": "Competition",
+          "value": "Commonwealth Games",
+          "row_selected": false,
+          "col_selected": true
+        }
+      ],
+      "used_cols": [
+        "Year",
+        "Competition",
+        "Venue",
+        "Event"
+      ],
+      "used_rows_count": 3,
+      "strategy": "expanded_context_block",
+      "compression_ratio": 0.3,
+      "question": "what was the competition in his only race in malaysia?",
+      "myagent_prediction": "No unique race in Malaysia found.",
+      "mact_prediction": "Commonwealth Games"
+    },
+    {
+      "id": "nu-1870",
+      "bucket": "mact_only",
+      "loss_category": "gold_col_kept_row_dropped",
+      "shape": "entity_or_text",
+      "categories": [
+        "negation",
+        "temporal"
+      ],
+      "problem_tags": [
+        "negation_logic",
+        "list_entity"
+      ],
+      "gold": [
+        "Five"
+      ],
+      "hits": [
+        {
+          "gold": "Five",
+          "row": 4,
+          "col": "Series",
+          "value": "Five",
+          "row_selected": false,
+          "col_selected": true
+        }
+      ],
+      "used_cols": [
+        "Series",
+        "Premiere",
+        "Finale",
+        "Winner",
+        "Runner-up",
+        "Third place",
+        "Host(s)",
+        "Judging panel",
+        "Guest judge(s)"
+      ],
+      "used_rows_count": 2,
+      "strategy": "expanded_context_block_global_columns",
+      "compression_ratio": 0.2222222222222222,
+      "question": "in the beginning of the show thee were only 3 judges, but what series did the show change to 4 judges?",
+      "myagent_prediction": [
+        "Four"
+      ],
+      "mact_prediction": "Five"
+    },
+    {
+      "id": "nu-2663",
+      "bucket": "mact_only",
+      "loss_category": "gold_not_literal_or_computed",
+      "shape": "count",
+      "categories": [
+        "arithmetic",
+        "count"
+      ],
+      "problem_tags": [
+        "count",
+        "arithmetic"
+      ],
+      "gold": [
+        "5.0"
+      ],
+      "hits": [],
+      "used_cols": [
+        "Single / EP",
+        "Tracks",
+        "Label"
+      ],
+      "used_rows_count": 2,
+      "strategy": "expanded_context_block",
+      "compression_ratio": 0.05217391304347826,
+      "question": "how many total labels did this singer release single on?",
+      "myagent_prediction": 2,
+      "mact_prediction": "5"
+    },
+    {
+      "id": "nu-3279",
+      "bucket": "mact_only",
+      "loss_category": "gold_row_kept_col_dropped",
+      "shape": "count",
+      "categories": [
+        "count"
+      ],
+      "problem_tags": [
+        "count"
+      ],
+      "gold": [
+        "3.0"
+      ],
+      "hits": [
+        {
+          "gold": "3.0",
+          "row": 0,
+          "col": "Score",
+          "value": "3–0",
+          "row_selected": true,
+          "col_selected": false
+        },
+        {
+          "gold": "3.0",
+          "row": 1,
+          "col": "Score",
+          "value": "0–3",
+          "row_selected": true,
+          "col_selected": false
+        },
+        {
+          "gold": "3.0",
+          "row": 2,
+          "col": "Score",
+          "value": "3–2",
+          "row_selected": true,
+          "col_selected": false
+        },
+        {
+          "gold": "3.0",
+          "row": 3,
+          "col": "Score",
+          "value": "3–0",
+          "row_selected": true,
+          "col_selected": false
+        },
+        {
+          "gold": "3.0",
+          "row": 4,
+          "col": "Score",
+          "value": "3–1",
+          "row_selected": true,
+          "col_selected": false
+        },
+        {
+          "gold": "3.0",
+          "row": 5,
+          "col": "Score",
+          "value": "1–3",
+          "row_selected": true,
+          "col_selected": false
+        },
+        {
+          "gold": "3.0",
+          "row": 6,
+          "col": "Score",
+          "value": "1–3",
+          "row_selected": true,
+          "col_selected": false
+        },
+        {
+          "gold": "3.0",
+          "row": 7,
+          "col": "Score",
+          "value": "0–3",
+          "row_selected": true,
+          "col_selected": false
+        },
+        {
+          "gold": "3.0",
+          "row": 8,
+          "col": "Score",
+          "value": "0–3",
+          "row_selected": true,
+          "col_selected": false
+        },
+        {
+          "gold": "3.0",
+          "row": 9,
+          "col": "Score",
+          "value": "2–3",
+          "row_selected": true,
+          "col_selected": false
+        },
+        {
+          "gold": "3.0",
+          "row": 10,
+          "col": "Score",
+          "value": "3–1",
+          "row_selected": true,
+          "col_selected": false
+        },
+        {
+          "gold": "3.0",
+          "row": 11,
+          "col": "Score",
+          "value": "3–0",
+          "row_selected": true,
+          "col_selected": false
+        },
+        {
+          "gold": "3.0",
+          "row": 12,
+          "col": "Score",
+          "value": "0–3",
+          "row_selected": true,
+          "col_selected": false
+        },
+        {
+          "gold": "3.0",
+          "row": 13,
+          "col": "Score",
+          "value": "0–3",
+          "row_selected": true,
+          "col_selected": false
+        },
+        {
+          "gold": "3.0",
+          "row": 14,
+          "col": "Score",
+          "value": "0–3",
+          "row_selected": true,
+          "col_selected": false
+        }
+      ],
+      "used_cols": [
+        "Date",
+        "column_3",
+        "column_5"
+      ],
+      "used_rows_count": 15,
+      "strategy": "expanded_context_block",
+      "compression_ratio": 0.25,
+      "question": "how many consecutive days did south korea play?",
+      "myagent_prediction": 5,
+      "mact_prediction": "3"
+    },
+    {
+      "id": "nu-3767",
+      "bucket": "mact_only",
+      "loss_category": "gold_row_kept_col_dropped",
+      "shape": "count",
+      "categories": [
+        "arithmetic",
+        "count",
+        "temporal"
+      ],
+      "problem_tags": [
+        "count",
+        "temporal"
+      ],
+      "gold": [
+        "0.0"
+      ],
+      "hits": [
+        {
+          "gold": "0.0",
+          "row": 0,
+          "col": "League Goals League",
+          "value": "0",
+          "row_selected": false,
+          "col_selected": false
+        },
+        {
+          "gold": "0.0",
+          "row": 3,
+          "col": "League Goals League",
+          "value": "0",
+          "row_selected": true,
+          "col_selected": false
+        },
+        {
+          "gold": "0.0",
+          "row": 3,
+          "col": "Cup Goals Norwegian Cup",
+          "value": "0",
+          "row_selected": true,
+          "col_selected": false
+        },
+        {
+          "gold": "0.0",
+          "row": 7,
+          "col": "League Goals League",
+          "value": "0",
+          "row_selected": false,
+          "col_selected": false
+        },
+        {
+          "gold": "0.0",
+          "row": 9,
+          "col": "League Apps League",
+          "value": "0",
+          "row_selected": false,
+          "col_selected": false
+        },
+        {
+          "gold": "0.0",
+          "row": 9,
+          "col": "League Goals League",
+          "value": "0",
+          "row_selected": false,
+          "col_selected": false
+        },
+        {
+          "gold": "0.0",
+          "row": 9,
+          "col": "Cup Apps Norwegian Cup",
+          "value": "0",
+          "row_selected": false,
+          "col_selected": false
+        },
+        {
+          "gold": "0.0",
+          "row": 9,
+          "col": "Cup Goals Norwegian Cup",
+          "value": "0",
+          "row_selected": false,
+          "col_selected": false
+        },
+        {
+          "gold": "0.0",
+          "row": 17,
+          "col": "Cup Apps Norwegian Cup",
+          "value": "0",
+          "row_selected": false,
+          "col_selected": false
+        },
+        {
+          "gold": "0.0",
+          "row": 17,
+          "col": "Cup Goals Norwegian Cup",
+          "value": "0",
+          "row_selected": false,
+          "col_selected": false
+        },
+        {
+          "gold": "0.0",
+          "row": 19,
+          "col": "Cup Goals Norwegian Cup",
+          "value": "0",
+          "row_selected": false,
+          "col_selected": false
+        },
+        {
+          "gold": "0.0",
+          "row": 20,
+          "col": "Cup Goals Norwegian Cup",
+          "value": "0",
+          "row_selected": false,
+          "col_selected": false
+        },
+        {
+          "gold": "0.0",
+          "row": 22,
+          "col": "Cup Apps Norwegian Cup",
+          "value": "0",
+          "row_selected": false,
+          "col_selected": false
+        },
+        {
+          "gold": "0.0",
+          "row": 22,
+          "col": "Cup Goals Norwegian Cup",
+          "value": "0",
+          "row_selected": false,
+          "col_selected": false
+        },
+        {
+          "gold": "0.0",
+          "row": 23,
+          "col": "Cup Goals Norwegian Cup",
+          "value": "0",
+          "row_selected": false,
+          "col_selected": false
+        },
+        {
+          "gold": "0.0",
+          "row": 26,
+          "col": "Cup Goals Norwegian Cup",
+          "value": "0",
+          "row_selected": false,
+          "col_selected": false
+        },
+        {
+          "gold": "0.0",
+          "row": 32,
+          "col": "League Goals League",
+          "value": "0",
+          "row_selected": false,
+          "col_selected": false
+        }
+      ],
+      "used_cols": [
+        "Club performance Season Norway",
+        "Club performance Club Norway",
+        "Total Goals Total"
+      ],
+      "used_rows_count": 3,
+      "strategy": "expanded_context_block",
+      "compression_ratio": 0.02857142857142857,
+      "question": "how many goals did manchester have in 1997-1998?",
+      "myagent_prediction": "Total",
+      "mact_prediction": "0"
+    },
+    {
+      "id": "nu-1093",
+      "bucket": "mact_only",
+      "loss_category": "gold_cell_selected",
+      "shape": "entity_or_text",
+      "categories": [
+        "superlative",
+        "temporal"
+      ],
+      "problem_tags": [
+        "superlative_order",
+        "temporal"
+      ],
+      "gold": [
+        "45.0"
+      ],
+      "hits": [
+        {
+          "gold": "45.0",
+          "row": 9,
+          "col": "Attendance",
+          "value": "45,950",
+          "row_selected": true,
+          "col_selected": false
+        },
+        {
+          "gold": "45.0",
+          "row": 11,
+          "col": "Result",
+          "value": "W 45–42",
+          "row_selected": true,
+          "col_selected": true
+        }
+      ],
+      "used_cols": [
+        "Week",
+        "Date",
+        "Result"
+      ],
+      "used_rows_count": 17,
+      "strategy": "expanded_context_block_global_rows",
+      "compression_ratio": 0.5,
+      "question": "what are the most points won during the 1998 arizona cardinals season?",
+      "myagent_prediction": 42,
+      "mact_prediction": "45"
+    },
+    {
+      "id": "nu-976",
+      "bucket": "mact_only",
+      "loss_category": "gold_row_kept_col_dropped",
+      "shape": "count",
+      "categories": [
+        "count",
+        "superlative"
+      ],
+      "problem_tags": [
+        "count",
+        "superlative_order"
+      ],
+      "gold": [
+        "4.0"
+      ],
+      "hits": [
+        {
+          "gold": "4.0",
+          "row": 0,
+          "col": "League Pos.",
+          "value": "4",
+          "row_selected": true,
+          "col_selected": false
+        },
+        {
+          "gold": "4.0",
+          "row": 1,
+          "col": "League Pos.",
+          "value": "4",
+          "row_selected": true,
+          "col_selected": false
+        },
+        {
+          "gold": "4.0",
+          "row": 2,
+          "col": "League Pos.",
+          "value": "4",
+          "row_selected": true,
+          "col_selected": false
+        }
+      ],
+      "used_cols": [
+        "Season",
+        "League Competition",
+        "League Top scorer"
+      ],
+      "used_rows_count": 31,
+      "strategy": "expanded_context_block_global_rows",
+      "compression_ratio": 0.42857142857142855,
+      "question": "how many seasons was morten rasmussen the top scorer?",
+      "myagent_prediction": 0,
+      "mact_prediction": "4"
+    },
+    {
+      "id": "nu-2919",
+      "bucket": "mact_only",
+      "loss_category": "gold_not_literal_or_computed",
+      "shape": "arithmetic",
+      "categories": [
+        "arithmetic",
+        "comparison",
+        "negation",
+        "temporal"
+      ],
+      "problem_tags": [
+        "temporal",
+        "comparison",
+        "arithmetic",
+        "negation_logic"
+      ],
+      "gold": [
+        "1773.0"
+      ],
+      "hits": [],
+      "used_cols": [
+        "County",
+        "Brown",
+        "Votes",
+        "Nixon"
+      ],
+      "used_rows_count": 2,
+      "strategy": "expanded_context_block",
+      "compression_ratio": 0.019704433497536946,
+      "question": "in plumas, what was the difference between brown and nixon's votes?",
+      "myagent_prediction": 0.0,
+      "mact_prediction": "1773"
+    },
+    {
+      "id": "nu-4291",
+      "bucket": "mact_only",
+      "loss_category": "gold_col_kept_row_dropped",
+      "shape": "entity_or_text",
+      "categories": [
+        "negation"
+      ],
+      "problem_tags": [
+        "negation_logic"
+      ],
+      "gold": [
+        "Center"
+      ],
+      "hits": [
+        {
+          "gold": "Center",
+          "row": 1,
+          "col": "Position",
+          "value": "Center",
+          "row_selected": false,
+          "col_selected": true
+        },
+        {
+          "gold": "Center",
+          "row": 13,
+          "col": "Position",
+          "value": "Center",
+          "row_selected": false,
+          "col_selected": true
+        }
+      ],
+      "used_cols": [
+        "Pick #",
+        "Player",
+        "Position"
+      ],
+      "used_rows_count": 3,
+      "strategy": "expanded_context_block",
+      "compression_ratio": 0.07142857142857142,
+      "question": "name the position with only two players in such a position.",
+      "myagent_prediction": "Right Wing",
+      "mact_prediction": "Center"
+    },
+    {
+      "id": "nu-1424",
+      "bucket": "mact_only",
+      "loss_category": "gold_not_literal_or_computed",
+      "shape": "temporal",
+      "categories": [
+        "superlative",
+        "temporal"
+      ],
+      "problem_tags": [
+        "superlative_order",
+        "temporal"
+      ],
+      "gold": [
+        "2001-09-23"
+      ],
+      "hits": [],
+      "used_cols": [
+        "Week",
+        "Date",
+        "Opponent"
+      ],
+      "used_rows_count": 1,
+      "strategy": "strict_cell_block",
+      "compression_ratio": 0.025210084033613446,
+      "question": "what was the first date they played the 49ers?",
+      "myagent_prediction": "September 9, 2001",
+      "mact_prediction": "September 23, 2001"
+    },
+    {
+      "id": "nu-721",
+      "bucket": "mact_only",
+      "loss_category": "gold_col_kept_row_dropped",
+      "shape": "temporal",
+      "categories": [
+        "temporal"
+      ],
+      "problem_tags": [
+        "temporal"
+      ],
+      "gold": [
+        "Carrots"
+      ],
+      "hits": [
+        {
+          "gold": "Carrots",
+          "row": 10,
+          "col": "Secret ingredient(s) or theme",
+          "value": "Carrots",
+          "row_selected": false,
+          "col_selected": true
+        }
+      ],
+      "used_cols": [
+        "Episode",
+        "Show #",
+        "Iron Chef",
+        "Challenger",
+        "Challenger specialty",
+        "Secret ingredient(s) or theme",
+        "Winner",
+        "Final score"
+      ],
+      "used_rows_count": 2,
+      "strategy": "expanded_context_block",
+      "compression_ratio": 0.16666666666666666,
+      "question": "what is the next secret ingredient after sugar?",
+      "myagent_prediction": "sugar not found in the table",
+      "mact_prediction": "carrots"
+    },
+    {
+      "id": "nu-1845",
+      "bucket": "mact_only",
+      "loss_category": "gold_cell_selected",
+      "shape": "entity_or_text",
+      "categories": [
+        "superlative"
+      ],
+      "problem_tags": [
+        "superlative_order"
+      ],
+      "gold": [
+        "Re-establishment of Krooni currency"
+      ],
+      "hits": [
+        {
+          "gold": "Re-establishment of Krooni currency",
+          "row": 3,
+          "col": "Model",
+          "value": "Re-establishment of Krooni currency",
+          "row_selected": true,
+          "col_selected": true
+        }
+      ],
+      "used_cols": [
+        "Year",
+        "Model",
+        "Denomination"
+      ],
+      "used_rows_count": 6,
+      "strategy": "strict_cell_block",
+      "compression_ratio": 0.45,
+      "question": "which is the first model listed with 10 krooni as the denomination?",
+      "myagent_prediction": "Barcelona Olympics",
+      "mact_prediction": "Re-establishment of Krooni currency"
+    },
+    {
+      "id": "nu-53",
+      "bucket": "mact_only",
+      "loss_category": "gold_col_kept_row_dropped",
+      "shape": "temporal",
+      "categories": [
+        "superlative",
+        "temporal"
+      ],
+      "problem_tags": [
+        "superlative_order",
+        "temporal"
+      ],
+      "gold": [
+        "1935.0"
+      ],
+      "hits": [
+        {
+          "gold": "1935.0",
+          "row": 0,
+          "col": "Date",
+          "value": "1935–1962",
+          "row_selected": false,
+          "col_selected": true
+        }
+      ],
+      "used_cols": [
+        "Film",
+        "Film_2",
+        "Date"
+      ],
+      "used_rows_count": 2,
+      "strategy": "expanded_context_block",
+      "compression_ratio": 0.0625,
+      "question": "what is the earliest date kodak made 16mm film?",
+      "myagent_prediction": 1988,
+      "mact_prediction": "1935"
+    },
+    {
+      "id": "nu-717",
+      "bucket": "mact_only",
+      "loss_category": "gold_col_kept_row_dropped",
+      "shape": "arithmetic",
+      "categories": [
+        "arithmetic",
+        "comparison",
+        "negation",
+        "temporal"
+      ],
+      "problem_tags": [
+        "temporal",
+        "comparison",
+        "arithmetic",
+        "negation_logic"
+      ],
+      "gold": [
+        "6.0"
+      ],
+      "hits": [
+        {
+          "gold": "6.0",
+          "row": 1,
+          "col": "High assists",
+          "value": "Kevin Martin, Brad Miller (6)",
+          "row_selected": false,
+          "col_selected": false
+        },
+        {
+          "gold": "6.0",
+          "row": 3,
+          "col": "Date",
+          "value": "January 6",
+          "row_selected": false,
+          "col_selected": true
+        },
+        {
+          "gold": "6.0",
+          "row": 5,
+          "col": "High assists",
+          "value": "Beno Udrih (6)",
+          "row_selected": false,
+          "col_selected": false
+        },
+        {
+          "gold": "6.0",
+          "row": 8,
+          "col": "High assists",
+          "value": "John Salmons (6)",
+          "row_selected": false,
+          "col_selected": false
+        }
+      ],
+      "used_cols": [
+        "Game",
+        "Date",
+        "Team",
+        "Score"
+      ],
+      "used_rows_count": 3,
+      "strategy": "expanded_context_block",
+      "compression_ratio": 0.08333333333333333,
+      "question": "what was the point difference between the sacramento and detroit for game 33?",
+      "myagent_prediction": "Game 33 not found in the table.",
+      "mact_prediction": "6"
+    },
+    {
+      "id": "nu-2183",
+      "bucket": "mact_only",
+      "loss_category": "gold_cell_selected",
+      "shape": "entity_or_text",
+      "categories": [
+        "superlative"
+      ],
+      "problem_tags": [
+        "superlative_order"
+      ],
+      "gold": [
+        "Spas Delev"
+      ],
+      "hits": [
+        {
+          "gold": "Spas Delev",
+          "row": 0,
+          "col": "Player",
+          "value": "Spas Delev",
+          "row_selected": true,
+          "col_selected": true
+        }
+      ],
+      "used_cols": [
+        "Player",
+        "Total"
+      ],
+      "used_rows_count": 18,
+      "strategy": "strict_cell_block_global_rows",
+      "compression_ratio": 0.4,
+      "question": "who scored the most goals?",
+      "myagent_prediction": "Total",
+      "mact_prediction": "Spas Delev"
+    },
+    {
+      "id": "nu-1263",
+      "bucket": "neither",
+      "loss_category": "gold_cell_selected",
+      "shape": "count",
+      "categories": [
+        "count",
+        "temporal"
+      ],
+      "problem_tags": [
+        "count",
+        "temporal"
+      ],
+      "gold": [
+        "4.0"
+      ],
+      "hits": [
+        {
+          "gold": "4.0",
+          "row": 30,
+          "col": "Nominees",
+          "value": "Andre Braugher- City of Angels Chris Rock- Lethal Weapon 4 Cuba Gooding Jr.- What Dreams May Come Don Cheadle- Bulworth",
+          "row_selected": true,
+          "col_selected": true
+        }
+      ],
+      "used_cols": [
+        "Year",
+        "Nominees"
+      ],
+      "used_rows_count": 46,
+      "strategy": "expanded_context_block_global_rows",
+      "compression_ratio": 0.5,
+      "question": "how many nominees are there each year for the naacp image award?",
+      "myagent_prediction": "The table does not provide a consistent number of nominees per year for the NAACP Image Award.",
+      "mact_prediction": "the Supporting Actor is the winner, and the Nominees column lists all the other nominees. So for 1997, the winner is Samuel L. Jackson, and the Nominees column lists Blair Underwood, Charles S. Dutton, Delroy Lindo, Forest Whitaker. That's four other nominees, making a total of 5 nominees for that year. \n\nSo for each year, the total number of nominees is 1 (the winner) plus the number of names listed in the Nominees column. However, in some years, the Nominees column is empty, meaning the winner was the only nominee. \n\nSo to calculate the total number of nominees across all years, we need to go through each year, count the number of nominees (1 if Nominees is empty, else 1 + number of names in Nominees column), and sum them all. \n\nBut the question is phrased as \"how many nominees are there each year for the naacp image award?\" which is a bit ambiguous. If it's asking for the number of nominees in each year, the answer would vary each year. But the answer format requires a single number. However, looking at the examples, the user might be asking for the total number of nominees across all years. \n\nAlternatively, maybe the question is asking for the number of nominees per year, but the answer is that it varies. However, the answer format requires a specific number. \n\nWait, perhaps the user is asking for the number of nominees in each year, but the answer is that each year has a certain"
+    },
+    {
+      "id": "nu-1591",
+      "bucket": "neither",
+      "loss_category": "gold_not_literal_or_computed",
+      "shape": "count",
+      "categories": [
+        "count",
+        "temporal"
+      ],
+      "problem_tags": [
+        "count",
+        "temporal"
+      ],
+      "gold": [
+        "24860000.0"
+      ],
+      "hits": [],
+      "used_cols": [
+        "Season",
+        "Episodes",
+        "Original airing Season premiere",
+        "Original airing Season finale",
+        "Original airing TV season",
+        "Rank",
+        "Viewers (in millions)"
+      ],
+      "used_rows_count": 13,
+      "strategy": "strict_cell_block_global_rows",
+      "compression_ratio": 0.875,
+      "question": "how many viewers tuned in for the 6th season?",
+      "myagent_prediction": 24.86,
+      "mact_prediction": "24.86"
+    },
+    {
+      "id": "nu-1913",
+      "bucket": "neither",
+      "loss_category": "gold_row_kept_col_dropped",
+      "shape": "entity_or_text",
+      "categories": [
+        "superlative",
+        "temporal"
+      ],
+      "problem_tags": [
+        "superlative_order",
+        "temporal"
+      ],
+      "gold": [
+        "Cyprus"
+      ],
+      "hits": [
+        {
+          "gold": "Cyprus",
+          "row": 3,
+          "col": "Opponent",
+          "value": "Cyprus",
+          "row_selected": true,
+          "col_selected": false
+        },
+        {
+          "gold": "Cyprus",
+          "row": 4,
+          "col": "Opponent",
+          "value": "Cyprus",
+          "row_selected": true,
+          "col_selected": false
+        },
+        {
+          "gold": "Cyprus",
+          "row": 5,
+          "col": "Opponent",
+          "value": "Cyprus",
+          "row_selected": true,
+          "col_selected": false
+        }
+      ],
+      "used_cols": [
+        "#",
+        "Date",
+        "Result",
+        "Competition"
+      ],
+      "used_rows_count": 8,
+      "strategy": "expanded_context_block_global_rows",
+      "compression_ratio": 0.5714285714285714,
+      "question": "which team competed for the euro 2000 qualifying the most consecutive years?",
+      "myagent_prediction": "the team",
+      "mact_prediction": "Spain."
+    },
+    {
+      "id": "nu-2178",
+      "bucket": "neither",
+      "loss_category": "gold_col_kept_row_dropped",
+      "shape": "entity_or_text",
+      "categories": [
+        "superlative",
+        "temporal"
+      ],
+      "problem_tags": [
+        "superlative_order"
+      ],
+      "gold": [
+        "Ollie P. Anderson, Jr."
+      ],
+      "hits": [
+        {
+          "gold": "Ollie P. Anderson, Jr.",
+          "row": 10,
+          "col": "Representative",
+          "value": "Ollie P. Anderson, Jr.",
+          "row_selected": false,
+          "col_selected": true
+        }
+      ],
+      "used_cols": [
+        "Representative",
+        "Title",
+        "Appointed by"
+      ],
+      "used_rows_count": 2,
+      "strategy": "expanded_context_block",
+      "compression_ratio": 0.05714285714285714,
+      "question": "who was the first us ambassador to grenada appointed by bill clinton?",
+      "myagent_prediction": "Frank V. Ortiz, Jr.",
+      "mact_prediction": "Jeanette W. Hyde"
+    },
+    {
+      "id": "nu-3088",
+      "bucket": "neither",
+      "loss_category": "gold_cell_selected",
+      "shape": "entity_or_text",
+      "categories": [
+        "superlative",
+        "temporal"
+      ],
+      "problem_tags": [
+        "superlative_order",
+        "temporal"
+      ],
+      "gold": [
+        "8-14"
+      ],
+      "hits": [
+        {
+          "gold": "8-14",
+          "row": 15,
+          "col": "Score",
+          "value": "L 8–14",
+          "row_selected": true,
+          "col_selected": true
+        }
+      ],
+      "used_cols": [
+        "Game",
+        "Date",
+        "Score"
+      ],
+      "used_rows_count": 1,
+      "strategy": "strict_cell_block",
+      "compression_ratio": 0.0234375,
+      "question": "what was the score of the last game of the season?",
+      "myagent_prediction": "L 8–14",
+      "mact_prediction": "L 8–14"
+    },
+    {
+      "id": "nu-4162",
+      "bucket": "neither",
+      "loss_category": "gold_cell_selected",
+      "shape": "entity_or_text",
+      "categories": [
+        "comparison",
+        "temporal"
+      ],
+      "problem_tags": [
+        "temporal",
+        "comparison"
+      ],
+      "gold": [
+        "1986-87"
+      ],
+      "hits": [
+        {
+          "gold": "1986-87",
+          "row": 1,
+          "col": "Season",
+          "value": "1986–87",
+          "row_selected": true,
+          "col_selected": true
+        }
+      ],
+      "used_cols": [
+        "Season",
+        "Home",
+        "Away"
+      ],
+      "used_rows_count": 13,
+      "strategy": "expanded_context_block",
+      "compression_ratio": 0.5,
+      "question": "which season did flamurtari vlorë win more home games than away?",
+      "myagent_prediction": "1987–88",
+      "mact_prediction": "1987–88"
+    },
+    {
+      "id": "nu-4299",
+      "bucket": "neither",
+      "loss_category": "gold_cell_selected",
+      "shape": "temporal",
+      "categories": [
+        "superlative",
+        "temporal"
+      ],
+      "problem_tags": [
+        "superlative_order",
+        "temporal"
+      ],
+      "gold": [
+        "Puff Daddy"
+      ],
+      "hits": [
+        {
+          "gold": "Puff Daddy",
+          "row": 0,
+          "col": "Artist",
+          "value": "Puff Daddy",
+          "row_selected": true,
+          "col_selected": true
+        }
+      ],
+      "used_cols": [
+        "Chart Year",
+        "Artist",
+        "Album",
+        "Song",
+        "Billboard Hot 100",
+        "Billboard Hot R&B/Hip Hop",
+        "column_7"
+      ],
+      "used_rows_count": 15,
+      "strategy": "expanded_context_block",
+      "compression_ratio": 0.08771929824561403,
+      "question": "which artist did jaycen joshua work with before his first job with rick ross?",
+      "myagent_prediction": "Not found",
+      "mact_prediction": ""
+    },
+    {
+      "id": "nu-983",
+      "bucket": "neither",
+      "loss_category": "gold_not_literal_or_computed",
+      "shape": "arithmetic",
+      "categories": [
+        "arithmetic",
+        "comparison",
+        "negation",
+        "temporal"
+      ],
+      "problem_tags": [
+        "temporal",
+        "comparison",
+        "arithmetic",
+        "negation_logic"
+      ],
+      "gold": [
+        "2.04"
+      ],
+      "hits": [],
+      "used_cols": [
+        "Year",
+        "Winner",
+        "Time"
+      ],
+      "used_rows_count": 6,
+      "strategy": "expanded_context_block",
+      "compression_ratio": 0.028125,
+      "question": "what is the time difference between take charge indy and vicar?",
+      "myagent_prediction": "0:2.04",
+      "mact_prediction": "2.04 seconds"
+    },
+    {
+      "id": "nu-1498",
+      "bucket": "neither",
+      "loss_category": "gold_not_literal_or_computed",
+      "shape": "count",
+      "categories": [
+        "count"
+      ],
+      "problem_tags": [
+        "count"
+      ],
+      "gold": [
+        "9.0"
+      ],
+      "hits": [],
+      "used_cols": [
+        "isn",
+        "name",
+        "notes"
+      ],
+      "used_rows_count": 1,
+      "strategy": "strict_cell_block",
+      "compression_ratio": 0.04285714285714286,
+      "question": "what is the number of russian detainees at guantanamo?",
+      "myagent_prediction": "Rasul Kudayev",
+      "mact_prediction": "8"
+    },
+    {
+      "id": "nu-2396",
+      "bucket": "neither",
+      "loss_category": "gold_row_kept_col_dropped",
+      "shape": "count",
+      "categories": [
+        "arithmetic",
+        "count"
+      ],
+      "problem_tags": [
+        "count",
+        "arithmetic"
+      ],
+      "gold": [
+        "2.0"
+      ],
+      "hits": [
+        {
+          "gold": "2.0",
+          "row": 4,
+          "col": "Score_2",
+          "value": "11.2 (68)",
+          "row_selected": true,
+          "col_selected": false
+        },
+        {
+          "gold": "2.0",
+          "row": 5,
+          "col": "Score_2",
+          "value": "2.9 (21)",
+          "row_selected": true,
+          "col_selected": false
+        }
+      ],
+      "used_cols": [
+        "Year",
+        "Premiers",
+        "Runners Up"
+      ],
+      "used_rows_count": 11,
+      "strategy": "expanded_context_block_global_rows",
+      "compression_ratio": 0.6,
+      "question": "what is the total number of years for port douglas crocs?",
+      "myagent_prediction": 5,
+      "mact_prediction": "5"
+    }
+  ]
+}

@@ -288,5 +288,11 @@ overall_mact_full200_summary.json              myAgent 453/600 vs MACT 450/600, 
 | 2026-07-30 17:09:20 CST | `wtq_discordant_debug_subset_50.jsonl` | complete | structured WTQ debug subset with table, gold, predictions, categories, tags, shortcut/verifier fields, and token metrics |
 | 2026-07-30 17:12:48 CST | `wtq_compression_bucket_diagnostics.md` | complete | WTQ bucket-level compression and prediction-signal diagnosis; MACT-only median compression ratio `0.25`, not-found-like `7`, header prediction `3` |
 | 2026-07-30 17:12:48 CST | `wtq_compression_bucket_diagnostics.json` | complete | structured WTQ compression bucket metrics for testing retrieval/compression hypotheses |
+| 2026-07-30 17:20:00 CST | `wtq_gold_rowcol_loss_diagnostics.md` | complete | WTQ literal-gold row/column loss diagnosis; debug subset: gold cell selected `22`, row kept/col dropped `6`, col kept/row dropped `13`, non-literal/computed `9` |
+| 2026-07-30 17:20:00 CST | `wtq_gold_rowcol_loss_diagnostics.json` | complete | structured row/column coverage diagnostics using `build_df_from_table` indexing semantics |
+| 2026-07-30 17:23:00 CST | `wtq_compressor_hypothesis_diagnostics.md` | complete | code-level hypothesis mapping: planner/answer selection `22`, operation trace `9`, extreme/only global rows candidate `10`, implicit answer column candidate `3` |
+| 2026-07-30 17:23:00 CST | `wtq_compressor_hypothesis_diagnostics.json` | complete | structured hypothesis mapping for targeted WTQ fixes |
+| 2026-07-30 17:23:06 CST | `wtq_fix_candidate_coverage_estimate.md` | complete | candidate fix coverage estimate; recommended first test is WTQ extreme/only global rows |
+| 2026-07-30 17:23:06 CST | `wtq_fix_candidate_coverage_estimate.json` | complete | structured candidate fix coverage estimate |
 
 Diagnostic conclusion: the current acceptance blocker is dataset-level, not execution stability. WTQ is the main negative contributor and should be the first code-debug target if we optimize current Qwen3-32B; TabFact is not the next priority, and CRT is the main positive contributor.
