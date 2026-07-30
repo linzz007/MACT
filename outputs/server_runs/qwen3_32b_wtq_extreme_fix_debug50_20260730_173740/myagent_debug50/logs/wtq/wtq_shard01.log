@@ -1,0 +1,68 @@
+<string>:5: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+<string>:7: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+Finished sample 1/25
+Finished sample 2/25
+Finished sample 3/25
+Finished sample 4/25
+Finished sample 5/25
+Finished sample 6/25
+Finished sample 7/25
+Finished sample 8/25
+Finished sample 9/25
+Finished sample 10/25
+Finished sample 11/25
+Finished sample 12/25
+Finished sample 13/25
+Finished sample 14/25
+Finished sample 15/25
+Finished sample 16/25
+Finished sample 17/25
+Finished sample 18/25
+Finished sample 19/25
+Finished sample 20/25
+Finished sample 21/25
+Traceback (most recent call last):
+  File "/home/ubuntu/lzz/MyAgent/code/tqa.py", line 316, in main
+    state = pipeline.run(state)
+            ^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/lzz/MyAgent/code/my_agents.py", line 2987, in run
+    return self._run_selective(state)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/lzz/MyAgent/code/my_agents.py", line 7008, in _run_selective
+    decision = judge.decide(candidates)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/lzz/MyAgent/code/selective_collaboration.py", line 226, in decide
+    verification_gap=verification_gap(selected, self.evidence_pack),
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/lzz/MyAgent/code/selective_collaboration.py", line 184, in verification_gap
+    if candidate.execution_result not in (None, "", []):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+
+Traceback (most recent call last):
+  File "/home/ubuntu/lzz/MyAgent/code/tqa.py", line 535, in <module>
+    main(args)
+  File "/home/ubuntu/lzz/MyAgent/code/tqa.py", line 316, in main
+    state = pipeline.run(state)
+            ^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/lzz/MyAgent/code/my_agents.py", line 2987, in run
+    return self._run_selective(state)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/lzz/MyAgent/code/my_agents.py", line 7008, in _run_selective
+    decision = judge.decide(candidates)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/lzz/MyAgent/code/selective_collaboration.py", line 226, in decide
+    verification_gap=verification_gap(selected, self.evidence_pack),
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/lzz/MyAgent/code/selective_collaboration.py", line 184, in verification_gap
+    if candidate.execution_result not in (None, "", []):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
