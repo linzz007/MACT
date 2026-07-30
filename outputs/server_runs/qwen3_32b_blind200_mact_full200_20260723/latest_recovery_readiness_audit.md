@@ -1,6 +1,6 @@
 # Latest Recovery Readiness Audit
 
-Generated: 2026-07-30 20:08:45 CST
+Generated: 2026-07-30 20:13:09 CST
 
 This audit checks whether the current staged evidence can be recovered from GitHub after the server is cleared.
 
@@ -8,8 +8,8 @@ This audit checks whether the current staged evidence can be recovered from GitH
 
 | repo | branch | latest commit |
 |---|---|---|
-| MyAgent | `codex/selective-risk-collaboration` | `d3c7238 Record Gate-50 raw artifact migration in PRD` |
-| MACT | `main` | `4547083 Mirror multimodel Gate-50 raw artifacts` |
+| MyAgent | `codex/selective-risk-collaboration` | `b5c7b44 Record canonical myAgent artifact recovery path` |
+| MACT | `main` | `aebf366 Mirror canonical myAgent full200 artifacts` |
 
 Both repositories were clean before this audit write.
 
@@ -25,7 +25,7 @@ Both repositories were clean before this audit write.
 | WTQ representative100 comparison | `/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_wtq_extreme_fix_representative100_20260730_1805/wtq_representative100_extreme_fix_comparison.json` | tracked |
 | Multi-model Gate-50 summaries | `/home/ubuntu/lzz/MACT/outputs/server_runs/multimodel_gate50_summaries_20260730_1948/` | tracked |
 | Multi-model Gate-50 raw artifacts | `/home/ubuntu/lzz/MACT/outputs/server_runs/multimodel_gate50_raw_artifacts_20260730_2002/` | tracked |
-| Canonical myAgent full200 raw artifacts | `/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_canonical_myagent_full200_raw_artifacts_20260730_2008/` | ready to track in this checkpoint |
+| Canonical myAgent full200 raw artifacts | `/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_canonical_myagent_full200_raw_artifacts_20260730_2008/` | tracked |
 
 ## Dataset Row Checks
 
@@ -66,4 +66,4 @@ The canonical full200 MACT directory still has local untracked files, but they a
 
 ## Decision
 
-Recovery readiness is acceptable for the current staged evidence after the canonical myAgent full200 raw artifact directory is committed and pushed. Do not restart old no-go models; the next experiment should start only after a new local model is mounted or a usable external API key is provided.
+Recovery readiness is acceptable for the current staged evidence. The canonical myAgent full200 raw artifact directory has been committed and pushed to MACT. Do not restart old no-go models; the next experiment should start only after a new local model is mounted or a usable external API key is provided.
