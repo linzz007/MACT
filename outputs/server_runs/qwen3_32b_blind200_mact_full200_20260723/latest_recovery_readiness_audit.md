@@ -6,12 +6,14 @@ This audit checks whether the current staged evidence can be recovered from GitH
 
 ## Git State Checked
 
-| repo | branch | latest commit |
+The commits below are the minimum pushed checkpoints needed for this recovery set. Later metadata-only commits may supersede them without changing the underlying recoverable evidence.
+
+| repo | branch | minimum evidence commit |
 |---|---|---|
 | MyAgent | `codex/selective-risk-collaboration` | `b5c7b44 Record canonical myAgent artifact recovery path` |
 | MACT | `main` | `aebf366 Mirror canonical myAgent full200 artifacts` |
 
-Both repositories were clean before this audit write.
+Both repositories were clean before this audit metadata correction.
 
 ## Recoverable Evidence
 
