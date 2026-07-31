@@ -1,0 +1,83 @@
+{
+  "summary": {
+    "rows": 200,
+    "base_correct": 185,
+    "projected_correct": 192,
+    "mact_correct": 189,
+    "gains": 7,
+    "harms": 0
+  },
+  "gains_detail": [
+    {
+      "id": "tabfact-test-4211",
+      "reason": "retirement_threshold",
+      "question": "there be less than 17 player who untimely retire during the 1984 european grand prix",
+      "gold": [
+        "false"
+      ],
+      "base_pred": "true",
+      "projected_pred": "false"
+    },
+    {
+      "id": "tabfact-test-5090",
+      "reason": "country_pair",
+      "question": "jesper parnevik be from sweden , while justin leonard be from argentina",
+      "gold": [
+        "false"
+      ],
+      "base_pred": "true",
+      "projected_pred": "false"
+    },
+    {
+      "id": "tabfact-test-6964",
+      "reason": "zero_gold",
+      "question": "there be 6 nation that didn't have any gold medal",
+      "gold": [
+        "true"
+      ],
+      "base_pred": "false",
+      "projected_pred": "true"
+    },
+    {
+      "id": "tabfact-test-1570",
+      "reason": "every_before_date",
+      "question": "every game before september 30 be a victory for the dolphin",
+      "gold": [
+        "true"
+      ],
+      "base_pred": "false",
+      "projected_pred": "true"
+    },
+    {
+      "id": "tabfact-test-8166",
+      "reason": "second_smallest_metric",
+      "question": "the second smallest budget be 1000 for the us special show february 2007",
+      "gold": [
+        "false"
+      ],
+      "base_pred": "true",
+      "projected_pred": "false"
+    },
+    {
+      "id": "tabfact-test-9313",
+      "reason": "venue_competition_date",
+      "question": "the friendly competition at the venue shymkent , kazakhstan , be on june 2 , 2007",
+      "gold": [
+        "false"
+      ],
+      "base_pred": "true",
+      "projected_pred": "false"
+    },
+    {
+      "id": "tabfact-test-12544",
+      "reason": "score_but_lose",
+      "question": "south sydney rabbitohs score 42 point but lose the game during the 1951 nswrfl grand final",
+      "gold": [
+        "false"
+      ],
+      "base_pred": "true",
+      "projected_pred": "false"
+    }
+  ],
+  "harms_detail": []
+}
