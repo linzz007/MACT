@@ -1,0 +1,39 @@
+{
+  "dataset": "tabfact",
+  "run_dir": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_tabfact_policy_v6b_full200_20260731_1255",
+  "myagent_commit": "ef19d9d",
+  "rows": 187,
+  "current_correct": 182,
+  "old_correct": 175,
+  "mact_correct": 177,
+  "current_avg_tokens": 2171.529411764706,
+  "old_avg_tokens": 2387.818181818182,
+  "mact_avg_tokens": 10794.342245989305,
+  "current_to_mact_token_ratio": 0.20117292580486312,
+  "failures": 0,
+  "missing_answers": 0,
+  "old_wrong_current_correct": [
+    "tabfact-test-4211",
+    "tabfact-test-5090",
+    "tabfact-test-6964",
+    "tabfact-test-8573",
+    "tabfact-test-1570",
+    "tabfact-test-8166",
+    "tabfact-test-9313"
+  ],
+  "old_correct_current_wrong": [],
+  "mact_correct_current_wrong": [
+    "tabfact-test-3580",
+    "tabfact-test-8276"
+  ],
+  "current_correct_mact_wrong": [
+    "tabfact-test-2658",
+    "tabfact-test-33",
+    "tabfact-test-8673",
+    "tabfact-test-12022",
+    "tabfact-test-6673",
+    "tabfact-test-9431",
+    "tabfact-test-5093"
+  ],
+  "note": "Partial checkpoint while TabFact v6b full200 run is still in progress; final acceptance uses full200."
+}
