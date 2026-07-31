@@ -1,0 +1,139 @@
+{
+  "title": "Qwen3-32B MyAgent policy v6b all200 acceptance against MACT",
+  "created_at_local": "2026-07-31 13:26:11 Asia/Shanghai",
+  "myagent_commits": {
+    "wtq_run": "490c352",
+    "tabfact_run": "ef19d9d",
+    "crt_run": "current_20260730_1822"
+  },
+  "datasets": {
+    "wtq": {
+      "rows": 200,
+      "merged_rows": 200,
+      "eval_path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_wtq_policy_v6b_full200_20260731_1115/myagent_wtq_full200/eval/wtq_qwen3-32b-local_eval.json",
+      "merged_path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_wtq_policy_v6b_full200_20260731_1115/myagent_wtq_full200/merged/wtq_qwen3-32b-local.jsonl",
+      "current": {
+        "rows": 200,
+        "correct": 155,
+        "primary_accuracy": 0.775,
+        "avg_total_tokens": 6501.025,
+        "avg_elapsed_seconds": 16.80141694454127,
+        "num_failed_exec": 0,
+        "num_missing_answer": 0,
+        "num_em_mismatch": 45
+      },
+      "mact": {
+        "rows": 200,
+        "correct": 148,
+        "primary_accuracy": 0.74,
+        "avg_total_tokens": 10508.03,
+        "avg_elapsed_seconds": 114.77704198079883,
+        "num_failed_exec": 5,
+        "num_missing_answer": 5,
+        "num_em_mismatch": 52
+      },
+      "accuracy_delta_correct": 7,
+      "token_ratio_current_over_mact": 0.6186721012406702,
+      "elapsed_ratio_current_over_mact": 0.14638308022742036,
+      "pass_accuracy": true,
+      "pass_token_below_mact": true,
+      "pass_failures_zero": true
+    },
+    "tabfact": {
+      "rows": 200,
+      "merged_rows": 200,
+      "eval_path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_tabfact_policy_v6b_full200_20260731_1255/myagent_tabfact_full200/eval/tabfact_qwen3-32b-local_eval.json",
+      "merged_path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_tabfact_policy_v6b_full200_20260731_1255/myagent_tabfact_full200/merged/tabfact_qwen3-32b-local.jsonl",
+      "current": {
+        "rows": 200,
+        "correct": 194,
+        "primary_accuracy": 0.97,
+        "avg_total_tokens": 2181.67,
+        "avg_elapsed_seconds": 9.75614469674154,
+        "num_failed_exec": 0,
+        "num_missing_answer": 0,
+        "num_em_mismatch": 6
+      },
+      "mact": {
+        "rows": 200,
+        "correct": 189,
+        "primary_accuracy": 0.945,
+        "avg_total_tokens": 10830.825,
+        "avg_elapsed_seconds": 103.16003494331264,
+        "num_failed_exec": 0,
+        "num_missing_answer": 0,
+        "num_em_mismatch": 11
+      },
+      "accuracy_delta_correct": 5,
+      "token_ratio_current_over_mact": 0.20143156223094733,
+      "elapsed_ratio_current_over_mact": 0.094572909965595,
+      "pass_accuracy": true,
+      "pass_token_below_mact": true,
+      "pass_failures_zero": true
+    },
+    "crt": {
+      "rows": 200,
+      "merged_rows": 200,
+      "eval_path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_crt_full200_current_20260730_1822/myagent_crt200/eval/crt_qwen3-32b-local_eval.json",
+      "merged_path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_crt_full200_current_20260730_1822/myagent_crt200/merged/crt_qwen3-32b-local.jsonl",
+      "current": {
+        "rows": 200,
+        "correct": 140,
+        "primary_accuracy": 0.7,
+        "avg_total_tokens": 10839.165,
+        "avg_elapsed_seconds": 24.462966608785354,
+        "num_failed_exec": 0,
+        "num_missing_answer": 0,
+        "num_em_mismatch": 60
+      },
+      "mact": {
+        "rows": 200,
+        "correct": 113,
+        "primary_accuracy": 0.565,
+        "avg_total_tokens": 12809.985,
+        "avg_elapsed_seconds": 163.68205947966374,
+        "num_failed_exec": 0,
+        "num_missing_answer": 0,
+        "num_em_mismatch": 87
+      },
+      "accuracy_delta_correct": 27,
+      "token_ratio_current_over_mact": 0.8461497027514084,
+      "elapsed_ratio_current_over_mact": 0.14945417162120136,
+      "pass_accuracy": true,
+      "pass_token_below_mact": true,
+      "pass_failures_zero": true
+    }
+  },
+  "aggregate": {
+    "rows": 600,
+    "current_correct": 489,
+    "mact_correct": 450,
+    "current_accuracy": 0.815,
+    "mact_accuracy": 0.75,
+    "accuracy_delta_correct": 39,
+    "accuracy_delta": 0.06499999999999995,
+    "current_avg_total_tokens_weighted": 6507.286666666667,
+    "mact_avg_total_tokens_weighted": 11382.946666666667,
+    "token_ratio_current_over_mact": 0.5716697843909193,
+    "current_avg_elapsed_seconds_weighted": 17.00684275002272,
+    "mact_avg_elapsed_seconds_weighted": 127.2063788012584,
+    "elapsed_ratio_current_over_mact": 0.1336948894409883,
+    "current_failures": 0,
+    "current_missing_answers": 0
+  },
+  "acceptance": {
+    "all_datasets_accuracy_exceed_mact": true,
+    "all_datasets_token_below_mact": true,
+    "aggregate_accuracy_exceeds_mact": true,
+    "aggregate_token_clearly_below_mact_under_0_75": true,
+    "current_failures_zero": true,
+    "current_missing_answers_zero": true,
+    "qwen3_current_goal_pass": true,
+    "note": "CRT token ratio is below MACT but not under the 0.75 clear-saving threshold; aggregate token ratio is clearly below MACT because WTQ and TabFact savings are large."
+  },
+  "source_comparisons": {
+    "wtq": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_wtq_policy_v6b_full200_20260731_1115/wtq_policy_v6b_full200_comparison.json",
+    "tabfact": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_tabfact_policy_v6b_full200_20260731_1255/tabfact_policy_v6b_full200_comparison.json",
+    "crt": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_crt_full200_current_20260730_1822/crt_full200_current_comparison.json"
+  }
+}
