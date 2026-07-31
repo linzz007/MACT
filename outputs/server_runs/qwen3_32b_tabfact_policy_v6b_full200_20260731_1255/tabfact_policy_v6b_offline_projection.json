@@ -1,0 +1,122 @@
+{
+  "summary": {
+    "rows": 200,
+    "triggered": 11,
+    "base_correct": 185,
+    "projected_correct": 194,
+    "mact_correct": 189,
+    "gains": 9,
+    "harms": 0
+  },
+  "gains_detail": [
+    {
+      "id": "tabfact-test-7116",
+      "reason": "two_entity_appearance_count",
+      "question": "both the arsenal and chelsea team be only feature on the list a single time",
+      "gold": [
+        "true"
+      ],
+      "base_pred": "false",
+      "projected_pred": "true",
+      "base_correct": false,
+      "projected_correct": true
+    },
+    {
+      "id": "tabfact-test-3333",
+      "reason": "same_row_cell_mention",
+      "question": "when the decision be mclean with the series at 2 - 3 and the home team be vancouver be the score be 3 - 5 with a date of may 13",
+      "gold": [
+        "false"
+      ],
+      "base_pred": "true",
+      "projected_pred": "false",
+      "base_correct": false,
+      "projected_correct": true
+    },
+    {
+      "id": "tabfact-test-2518",
+      "reason": "column_value_count_assertion",
+      "question": "will campbell be 1 of 6 student that go to michigan college",
+      "gold": [
+        "true"
+      ],
+      "base_pred": "false",
+      "projected_pred": "true",
+      "base_correct": false,
+      "projected_correct": true
+    },
+    {
+      "id": "tabfact-test-8310",
+      "reason": "entity_metric_difference_value",
+      "question": "the aqua spirit be 26.3 meter smaller in length than the aqua maria",
+      "gold": [
+        "true"
+      ],
+      "base_pred": "false",
+      "projected_pred": "true",
+      "base_correct": false,
+      "projected_correct": true
+    },
+    {
+      "id": "tabfact-test-3450",
+      "reason": "column_value_count_assertion",
+      "question": "11 representative be re - elect in their district in united states house of representatives elections , 1794",
+      "gold": [
+        "true"
+      ],
+      "base_pred": "false",
+      "projected_pred": "true",
+      "base_correct": false,
+      "projected_correct": true
+    },
+    {
+      "id": "tabfact-test-3499",
+      "reason": "column_value_count_assertion",
+      "question": "there be only 1 sf in 2010 for michael kohlmann",
+      "gold": [
+        "true"
+      ],
+      "base_pred": "false",
+      "projected_pred": "true",
+      "base_correct": false,
+      "projected_correct": true
+    },
+    {
+      "id": "tabfact-test-12699",
+      "reason": "entity_attribute",
+      "question": "the company of epcor have a joint control entity type",
+      "gold": [
+        "false"
+      ],
+      "base_pred": "true",
+      "projected_pred": "false",
+      "base_correct": false,
+      "projected_correct": true
+    },
+    {
+      "id": "tabfact-test-12773",
+      "reason": "same_row_cell_mention",
+      "question": "enzyme ala synthase have a location mitochondrion and porphyria of porphyria cutanea tarda",
+      "gold": [
+        "false"
+      ],
+      "base_pred": "true",
+      "projected_pred": "false",
+      "base_correct": false,
+      "projected_correct": true
+    },
+    {
+      "id": "tabfact-test-5960",
+      "reason": "first_last_time_gap",
+      "question": "there be 47.416 second between the first and last race car driver in the 2007 - 08 a1 grand prix of nations , malaysia in malaysia",
+      "gold": [
+        "true"
+      ],
+      "base_pred": "false",
+      "projected_pred": "true",
+      "base_correct": false,
+      "projected_correct": true
+    }
+  ],
+  "harms_detail": []
+}
