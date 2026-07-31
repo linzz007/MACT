@@ -3,3 +3,187 @@ A value is trying to be set on a copy of a slice from a DataFrame.
 Try using .loc[row_indexer,col_indexer] = value instead
 
 See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+Finished sample 1/200
+Finished sample 2/200
+Finished sample 3/200
+Finished sample 4/200
+Finished sample 5/200
+Finished sample 6/200
+Finished sample 7/200
+Finished sample 8/200
+Finished sample 9/200
+Finished sample 10/200
+Finished sample 11/200
+Finished sample 12/200
+Finished sample 13/200
+Finished sample 14/200
+Finished sample 15/200
+Finished sample 16/200
+Finished sample 17/200
+Finished sample 18/200
+Finished sample 19/200
+Finished sample 20/200
+Finished sample 21/200
+Finished sample 22/200
+Finished sample 23/200
+Finished sample 24/200
+Finished sample 25/200
+Finished sample 26/200
+Finished sample 27/200
+Finished sample 28/200
+Finished sample 29/200
+Finished sample 30/200
+Finished sample 31/200
+Finished sample 32/200
+Finished sample 33/200
+Finished sample 34/200
+Finished sample 35/200
+Finished sample 36/200
+Finished sample 37/200
+Finished sample 38/200
+Finished sample 39/200
+Finished sample 40/200
+Finished sample 41/200
+Finished sample 42/200
+Finished sample 43/200
+Finished sample 44/200
+Finished sample 45/200
+Finished sample 46/200
+Finished sample 47/200
+Finished sample 48/200
+Finished sample 49/200
+Finished sample 50/200
+Finished sample 51/200
+Finished sample 52/200
+Finished sample 53/200
+Finished sample 54/200
+Finished sample 55/200
+Finished sample 56/200
+Finished sample 57/200
+Finished sample 58/200
+Finished sample 59/200
+Finished sample 60/200
+Finished sample 61/200
+Finished sample 62/200
+Finished sample 63/200
+Finished sample 64/200
+Finished sample 65/200
+Finished sample 66/200
+Finished sample 67/200
+Finished sample 68/200
+Finished sample 69/200
+Finished sample 70/200
+Finished sample 71/200
+Finished sample 72/200
+Finished sample 73/200
+Finished sample 74/200
+Finished sample 75/200
+Finished sample 76/200
+Finished sample 77/200
+Finished sample 78/200
+Finished sample 79/200
+Finished sample 80/200
+Finished sample 81/200
+Finished sample 82/200
+Finished sample 83/200
+Finished sample 84/200
+Finished sample 85/200
+Finished sample 86/200
+Finished sample 87/200
+Finished sample 88/200
+Finished sample 89/200
+Finished sample 90/200
+Finished sample 91/200
+Finished sample 92/200
+Finished sample 93/200
+Finished sample 94/200
+Finished sample 95/200
+Finished sample 96/200
+Finished sample 97/200
+Finished sample 98/200
+Finished sample 99/200
+Finished sample 100/200
+Finished sample 101/200
+Finished sample 102/200
+Finished sample 103/200
+Finished sample 104/200
+Finished sample 105/200
+Finished sample 106/200
+Finished sample 107/200
+Traceback (most recent call last):
+  File "/home/ubuntu/lzz/MyAgent/code/tqa.py", line 545, in <module>
+    main(args)
+  File "/home/ubuntu/lzz/MyAgent/code/tqa.py", line 326, in main
+    state = pipeline.run(state)
+            ^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/lzz/MyAgent/code/my_agents.py", line 3016, in run
+    return self._run_selective(state)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/lzz/MyAgent/code/my_agents.py", line 7244, in _run_selective
+    "one or both",
+               ^^^
+  File "/home/ubuntu/lzz/MyAgent/code/selective_collaboration.py", line 342, in solve
+    payload = _first_json_object(self._call_llm(prompt))
+                                 ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/lzz/MyAgent/code/selective_collaboration.py", line 280, in _call_llm
+    return self.llm.complete(prompt, temperature=0.0, max_tokens=512)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/lzz/MyAgent/code/my_agents.py", line 199, in complete
+    output = self.llm_fn.complete(
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/lzz/MyAgent/code/model_backends.py", line 150, in complete
+    return self._complete_chat(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/lzz/MyAgent/code/model_backends.py", line 133, in _complete_chat
+    completion = self.client.chat.completions.create(**request)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/openai/_utils/_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/openai/resources/chat/completions/completions.py", line 1204, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/openai/_base_client.py", line 1297, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/openai/_base_client.py", line 1005, in request
+    response = self._client.send(
+               ^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 103, in handle_request
+    return self._connection.handle_request(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/httpcore/_sync/http11.py", line 136, in handle_request
+    raise exc
+  File "/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/httpcore/_sync/http11.py", line 106, in handle_request
+    ) = self._receive_response_headers(**kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/httpcore/_sync/http11.py", line 177, in _receive_response_headers
+    event = self._receive_event(timeout=timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/httpcore/_sync/http11.py", line 217, in _receive_event
+    data = self._network_stream.read(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/httpcore/_backends/sync.py", line 128, in read
+    return self._sock.recv(max_bytes)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
