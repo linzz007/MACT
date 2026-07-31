@@ -1,0 +1,591 @@
+{
+  "title": "Qwen3-32B policy-v6b coarse diagnostic Gate-50 ablation summary",
+  "created_at_local": "2026-08-01 02:37 CST",
+  "run_dir": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_coarse_ablation_gate50_20260801_0040",
+  "note": "Diagnostic Gate-50 prioritizes disagreement rows and is intended for mechanism diagnosis, not fresh random-seed generalization.",
+  "variants": {
+    "legacy": {
+      "variant": "legacy",
+      "run_dir": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_coarse_ablation_gate50_20260801_0040",
+      "datasets": {
+        "wtq": {
+          "status": "complete",
+          "merged_path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_coarse_ablation_gate50_20260801_0040/variants/legacy/merged/wtq_qwen3-32b-local.jsonl",
+          "eval_path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_coarse_ablation_gate50_20260801_0040/variants/legacy/eval/wtq_qwen3-32b-local_eval.json",
+          "variant": {
+            "rows": 50,
+            "correct": 25,
+            "primary_accuracy": 0.5,
+            "avg_total_tokens": 2690.66,
+            "avg_elapsed_seconds": 14.321391996578313,
+            "num_failed_exec": 0,
+            "num_missing_answer": 0,
+            "num_em_mismatch": 25
+          },
+          "current_reference": {
+            "rows": 50,
+            "correct": 32,
+            "primary_accuracy": 0.64,
+            "avg_total_tokens": 7082.94,
+            "avg_elapsed_seconds": 18.950927036120557,
+            "num_failed_exec": 0,
+            "num_missing_answer": 0,
+            "num_em_mismatch": 18
+          },
+          "old_reference": {
+            "rows": 50,
+            "correct": 8,
+            "primary_accuracy": 0.16,
+            "avg_total_tokens": 6720.02,
+            "avg_elapsed_seconds": 18.195298906476236,
+            "num_failed_exec": 0,
+            "num_missing_answer": 0,
+            "num_em_mismatch": 42
+          },
+          "mact_reference": {
+            "rows": 50,
+            "correct": 40,
+            "primary_accuracy": 0.8,
+            "avg_total_tokens": 11128.36,
+            "avg_elapsed_seconds": 121.56989527217112,
+            "num_failed_exec": 0,
+            "num_missing_answer": 0,
+            "num_em_mismatch": 10
+          },
+          "delta_vs_current": -7,
+          "delta_vs_old": 17,
+          "delta_vs_mact": -15,
+          "token_ratio_vs_current": 0.3798789768090652,
+          "token_ratio_vs_mact": 0.2417840544338968
+        },
+        "tabfact": {
+          "status": "complete",
+          "merged_path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_coarse_ablation_gate50_20260801_0040/variants/legacy/merged/tabfact_qwen3-32b-local.jsonl",
+          "eval_path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_coarse_ablation_gate50_20260801_0040/variants/legacy/eval/tabfact_qwen3-32b-local_eval.json",
+          "variant": {
+            "rows": 50,
+            "correct": 47,
+            "primary_accuracy": 0.94,
+            "avg_total_tokens": 2114.12,
+            "avg_elapsed_seconds": 10.0992775278748,
+            "num_failed_exec": 0,
+            "num_missing_answer": 0,
+            "num_em_mismatch": 3
+          },
+          "current_reference": {
+            "rows": 50,
+            "correct": 48,
+            "primary_accuracy": 0.96,
+            "avg_total_tokens": 2220.04,
+            "avg_elapsed_seconds": 9.959811179322424,
+            "num_failed_exec": 0,
+            "num_missing_answer": 0,
+            "num_em_mismatch": 2
+          },
+          "old_reference": {
+            "rows": 50,
+            "correct": 39,
+            "primary_accuracy": 0.78,
+            "avg_total_tokens": 2865.42,
+            "avg_elapsed_seconds": 13.308502787961624,
+            "num_failed_exec": 0,
+            "num_missing_answer": 0,
+            "num_em_mismatch": 11
+          },
+          "mact_reference": {
+            "rows": 50,
+            "correct": 43,
+            "primary_accuracy": 0.86,
+            "avg_total_tokens": 11067.8,
+            "avg_elapsed_seconds": 114.04430599105079,
+            "num_failed_exec": 0,
+            "num_missing_answer": 0,
+            "num_em_mismatch": 7
+          },
+          "delta_vs_current": -1,
+          "delta_vs_old": 8,
+          "delta_vs_mact": 4,
+          "token_ratio_vs_current": 0.9522891479432802,
+          "token_ratio_vs_mact": 0.19101537794322268
+        },
+        "crt": {
+          "status": "complete",
+          "merged_path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_coarse_ablation_gate50_20260801_0040/variants/legacy/merged/crt_qwen3-32b-local.jsonl",
+          "eval_path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_coarse_ablation_gate50_20260801_0040/variants/legacy/eval/crt_qwen3-32b-local_eval.json",
+          "variant": {
+            "rows": 50,
+            "correct": 37,
+            "primary_accuracy": 0.74,
+            "avg_total_tokens": 2436.2,
+            "avg_elapsed_seconds": 15.889070568756432,
+            "num_failed_exec": 0,
+            "num_missing_answer": 0,
+            "num_em_mismatch": 13
+          },
+          "current_reference": {
+            "rows": 50,
+            "correct": 37,
+            "primary_accuracy": 0.74,
+            "avg_total_tokens": 12622.9,
+            "avg_elapsed_seconds": 27.83634122904332,
+            "num_failed_exec": 0,
+            "num_missing_answer": 0,
+            "num_em_mismatch": 13
+          },
+          "old_reference": {
+            "rows": 50,
+            "correct": 34,
+            "primary_accuracy": 0.68,
+            "avg_total_tokens": 12576.24,
+            "avg_elapsed_seconds": 27.930407853494398,
+            "num_failed_exec": 0,
+            "num_missing_answer": 0,
+            "num_em_mismatch": 16
+          },
+          "mact_reference": {
+            "rows": 50,
+            "correct": 15,
+            "primary_accuracy": 0.3,
+            "avg_total_tokens": 13103.84,
+            "avg_elapsed_seconds": 174.8698208105244,
+            "num_failed_exec": 0,
+            "num_missing_answer": 0,
+            "num_em_mismatch": 35
+          },
+          "delta_vs_current": 0,
+          "delta_vs_old": 3,
+          "delta_vs_mact": 22,
+          "token_ratio_vs_current": 0.1929984393443662,
+          "token_ratio_vs_mact": 0.18591496843673302
+        }
+      }
+    },
+    "no_strong_verification": {
+      "variant": "no_strong_verification",
+      "run_dir": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_coarse_ablation_gate50_20260801_0040",
+      "datasets": {
+        "wtq": {
+          "status": "complete",
+          "merged_path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_coarse_ablation_gate50_20260801_0040/variants/no_strong_verification/merged/wtq_qwen3-32b-local.jsonl",
+          "eval_path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_coarse_ablation_gate50_20260801_0040/variants/no_strong_verification/eval/wtq_qwen3-32b-local_eval.json",
+          "variant": {
+            "rows": 50,
+            "correct": 25,
+            "primary_accuracy": 0.5,
+            "avg_total_tokens": 2691.52,
+            "avg_elapsed_seconds": 14.339960180722409,
+            "num_failed_exec": 0,
+            "num_missing_answer": 0,
+            "num_em_mismatch": 25
+          },
+          "current_reference": {
+            "rows": 50,
+            "correct": 32,
+            "primary_accuracy": 0.64,
+            "avg_total_tokens": 7082.94,
+            "avg_elapsed_seconds": 18.950927036120557,
+            "num_failed_exec": 0,
+            "num_missing_answer": 0,
+            "num_em_mismatch": 18
+          },
+          "old_reference": {
+            "rows": 50,
+            "correct": 8,
+            "primary_accuracy": 0.16,
+            "avg_total_tokens": 6720.02,
+            "avg_elapsed_seconds": 18.195298906476236,
+            "num_failed_exec": 0,
+            "num_missing_answer": 0,
+            "num_em_mismatch": 42
+          },
+          "mact_reference": {
+            "rows": 50,
+            "correct": 40,
+            "primary_accuracy": 0.8,
+            "avg_total_tokens": 11128.36,
+            "avg_elapsed_seconds": 121.56989527217112,
+            "num_failed_exec": 0,
+            "num_missing_answer": 0,
+            "num_em_mismatch": 10
+          },
+          "delta_vs_current": -7,
+          "delta_vs_old": 17,
+          "delta_vs_mact": -15,
+          "token_ratio_vs_current": 0.38000039531606933,
+          "token_ratio_vs_mact": 0.2418613344643775
+        },
+        "tabfact": {
+          "status": "complete",
+          "merged_path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_coarse_ablation_gate50_20260801_0040/variants/no_strong_verification/merged/tabfact_qwen3-32b-local.jsonl",
+          "eval_path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_coarse_ablation_gate50_20260801_0040/variants/no_strong_verification/eval/tabfact_qwen3-32b-local_eval.json",
+          "variant": {
+            "rows": 50,
+            "correct": 47,
+            "primary_accuracy": 0.94,
+            "avg_total_tokens": 2114.12,
+            "avg_elapsed_seconds": 10.100641147483838,
+            "num_failed_exec": 0,
+            "num_missing_answer": 0,
+            "num_em_mismatch": 3
+          },
+          "current_reference": {
+            "rows": 50,
+            "correct": 48,
+            "primary_accuracy": 0.96,
+            "avg_total_tokens": 2220.04,
+            "avg_elapsed_seconds": 9.959811179322424,
+            "num_failed_exec": 0,
+            "num_missing_answer": 0,
+            "num_em_mismatch": 2
+          },
+          "old_reference": {
+            "rows": 50,
+            "correct": 39,
+            "primary_accuracy": 0.78,
+            "avg_total_tokens": 2865.42,
+            "avg_elapsed_seconds": 13.308502787961624,
+            "num_failed_exec": 0,
+            "num_missing_answer": 0,
+            "num_em_mismatch": 11
+          },
+          "mact_reference": {
+            "rows": 50,
+            "correct": 43,
+            "primary_accuracy": 0.86,
+            "avg_total_tokens": 11067.8,
+            "avg_elapsed_seconds": 114.04430599105079,
+            "num_failed_exec": 0,
+            "num_missing_answer": 0,
+            "num_em_mismatch": 7
+          },
+          "delta_vs_current": -1,
+          "delta_vs_old": 8,
+          "delta_vs_mact": 4,
+          "token_ratio_vs_current": 0.9522891479432802,
+          "token_ratio_vs_mact": 0.19101537794322268
+        },
+        "crt": {
+          "status": "complete",
+          "merged_path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_coarse_ablation_gate50_20260801_0040/variants/no_strong_verification/merged/crt_qwen3-32b-local.jsonl",
+          "eval_path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_coarse_ablation_gate50_20260801_0040/variants/no_strong_verification/eval/crt_qwen3-32b-local_eval.json",
+          "variant": {
+            "rows": 50,
+            "correct": 37,
+            "primary_accuracy": 0.74,
+            "avg_total_tokens": 2436.2,
+            "avg_elapsed_seconds": 15.890854019519175,
+            "num_failed_exec": 0,
+            "num_missing_answer": 0,
+            "num_em_mismatch": 13
+          },
+          "current_reference": {
+            "rows": 50,
+            "correct": 37,
+            "primary_accuracy": 0.74,
+            "avg_total_tokens": 12622.9,
+            "avg_elapsed_seconds": 27.83634122904332,
+            "num_failed_exec": 0,
+            "num_missing_answer": 0,
+            "num_em_mismatch": 13
+          },
+          "old_reference": {
+            "rows": 50,
+            "correct": 34,
+            "primary_accuracy": 0.68,
+            "avg_total_tokens": 12576.24,
+            "avg_elapsed_seconds": 27.930407853494398,
+            "num_failed_exec": 0,
+            "num_missing_answer": 0,
+            "num_em_mismatch": 16
+          },
+          "mact_reference": {
+            "rows": 50,
+            "correct": 15,
+            "primary_accuracy": 0.3,
+            "avg_total_tokens": 13103.84,
+            "avg_elapsed_seconds": 174.8698208105244,
+            "num_failed_exec": 0,
+            "num_missing_answer": 0,
+            "num_em_mismatch": 35
+          },
+          "delta_vs_current": 0,
+          "delta_vs_old": 3,
+          "delta_vs_mact": 22,
+          "token_ratio_vs_current": 0.1929984393443662,
+          "token_ratio_vs_mact": 0.18591496843673302
+        }
+      }
+    },
+    "no_deterministic_shortcuts": {
+      "variant": "no_deterministic_shortcuts",
+      "run_dir": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_coarse_ablation_gate50_20260801_0040",
+      "datasets": {
+        "wtq": {
+          "status": "complete",
+          "merged_path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_coarse_ablation_gate50_20260801_0040/variants/no_deterministic_shortcuts/merged/wtq_qwen3-32b-local.jsonl",
+          "eval_path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_coarse_ablation_gate50_20260801_0040/variants/no_deterministic_shortcuts/eval/wtq_qwen3-32b-local_eval.json",
+          "variant": {
+            "rows": 50,
+            "correct": 33,
+            "primary_accuracy": 0.66,
+            "avg_total_tokens": 6733.56,
+            "avg_elapsed_seconds": 19.62077601455734,
+            "num_failed_exec": 0,
+            "num_missing_answer": 0,
+            "num_em_mismatch": 17
+          },
+          "current_reference": {
+            "rows": 50,
+            "correct": 32,
+            "primary_accuracy": 0.64,
+            "avg_total_tokens": 7082.94,
+            "avg_elapsed_seconds": 18.950927036120557,
+            "num_failed_exec": 0,
+            "num_missing_answer": 0,
+            "num_em_mismatch": 18
+          },
+          "old_reference": {
+            "rows": 50,
+            "correct": 8,
+            "primary_accuracy": 0.16,
+            "avg_total_tokens": 6720.02,
+            "avg_elapsed_seconds": 18.195298906476236,
+            "num_failed_exec": 0,
+            "num_missing_answer": 0,
+            "num_em_mismatch": 42
+          },
+          "mact_reference": {
+            "rows": 50,
+            "correct": 40,
+            "primary_accuracy": 0.8,
+            "avg_total_tokens": 11128.36,
+            "avg_elapsed_seconds": 121.56989527217112,
+            "num_failed_exec": 0,
+            "num_missing_answer": 0,
+            "num_em_mismatch": 10
+          },
+          "delta_vs_current": 1,
+          "delta_vs_old": 25,
+          "delta_vs_mact": -7,
+          "token_ratio_vs_current": 0.9506730256080104,
+          "token_ratio_vs_mact": 0.6050810721436043
+        },
+        "tabfact": {
+          "status": "complete",
+          "merged_path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_coarse_ablation_gate50_20260801_0040/variants/no_deterministic_shortcuts/merged/tabfact_qwen3-32b-local.jsonl",
+          "eval_path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_coarse_ablation_gate50_20260801_0040/variants/no_deterministic_shortcuts/eval/tabfact_qwen3-32b-local_eval.json",
+          "variant": {
+            "rows": 50,
+            "correct": 39,
+            "primary_accuracy": 0.78,
+            "avg_total_tokens": 3216.2,
+            "avg_elapsed_seconds": 15.077664590259083,
+            "num_failed_exec": 0,
+            "num_missing_answer": 0,
+            "num_em_mismatch": 11
+          },
+          "current_reference": {
+            "rows": 50,
+            "correct": 48,
+            "primary_accuracy": 0.96,
+            "avg_total_tokens": 2220.04,
+            "avg_elapsed_seconds": 9.959811179322424,
+            "num_failed_exec": 0,
+            "num_missing_answer": 0,
+            "num_em_mismatch": 2
+          },
+          "old_reference": {
+            "rows": 50,
+            "correct": 39,
+            "primary_accuracy": 0.78,
+            "avg_total_tokens": 2865.42,
+            "avg_elapsed_seconds": 13.308502787961624,
+            "num_failed_exec": 0,
+            "num_missing_answer": 0,
+            "num_em_mismatch": 11
+          },
+          "mact_reference": {
+            "rows": 50,
+            "correct": 43,
+            "primary_accuracy": 0.86,
+            "avg_total_tokens": 11067.8,
+            "avg_elapsed_seconds": 114.04430599105079,
+            "num_failed_exec": 0,
+            "num_missing_answer": 0,
+            "num_em_mismatch": 7
+          },
+          "delta_vs_current": -9,
+          "delta_vs_old": 0,
+          "delta_vs_mact": -4,
+          "token_ratio_vs_current": 1.4487126358083637,
+          "token_ratio_vs_mact": 0.2905907226368384
+        },
+        "crt": {
+          "status": "complete",
+          "merged_path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_coarse_ablation_gate50_20260801_0040/variants/no_deterministic_shortcuts/merged/crt_qwen3-32b-local.jsonl",
+          "eval_path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_coarse_ablation_gate50_20260801_0040/variants/no_deterministic_shortcuts/eval/crt_qwen3-32b-local_eval.json",
+          "variant": {
+            "rows": 50,
+            "correct": 30,
+            "primary_accuracy": 0.6,
+            "avg_total_tokens": 12529.22,
+            "avg_elapsed_seconds": 29.0959696093353,
+            "num_failed_exec": 0,
+            "num_missing_answer": 0,
+            "num_em_mismatch": 20
+          },
+          "current_reference": {
+            "rows": 50,
+            "correct": 37,
+            "primary_accuracy": 0.74,
+            "avg_total_tokens": 12622.9,
+            "avg_elapsed_seconds": 27.83634122904332,
+            "num_failed_exec": 0,
+            "num_missing_answer": 0,
+            "num_em_mismatch": 13
+          },
+          "old_reference": {
+            "rows": 50,
+            "correct": 34,
+            "primary_accuracy": 0.68,
+            "avg_total_tokens": 12576.24,
+            "avg_elapsed_seconds": 27.930407853494398,
+            "num_failed_exec": 0,
+            "num_missing_answer": 0,
+            "num_em_mismatch": 16
+          },
+          "mact_reference": {
+            "rows": 50,
+            "correct": 15,
+            "primary_accuracy": 0.3,
+            "avg_total_tokens": 13103.84,
+            "avg_elapsed_seconds": 174.8698208105244,
+            "num_failed_exec": 0,
+            "num_missing_answer": 0,
+            "num_em_mismatch": 35
+          },
+          "delta_vs_current": -7,
+          "delta_vs_old": -4,
+          "delta_vs_mact": 15,
+          "token_ratio_vs_current": 0.992578567524103,
+          "token_ratio_vs_mact": 0.9561487319747494
+        }
+      }
+    }
+  },
+  "interpretation": {
+    "legacy_and_no_strong": "Both legacy and no_strong_verification score 25/50 WTQ, 47/50 TabFact, 37/50 CRT on this diagnostic slice. Compared with current references, the largest drop is WTQ -7, supporting strong verification / persuasion-back as a core WTQ contributor.",
+    "no_deterministic_shortcuts": "Disabling deterministic shortcuts sharply hurts TabFact: 39/50 vs current 48/50, and raises token usage to 1.4487x current. It also hurts CRT -7 on this diagnostic slice. This supports deterministic audit as a high-value low-cost module.",
+    "next": "Do not expand every variant to full200. First use these results in the patent evidence package, then decide whether fine-grained switches are needed for no_wtq_verifier_override or no_tabfact_audit_v6b."
+  },
+  "compact_rows": [
+    {
+      "variant": "legacy",
+      "dataset": "wtq",
+      "variant_correct": 25,
+      "current_reference_correct": 32,
+      "old_reference_correct": 8,
+      "mact_reference_correct": 40,
+      "delta_vs_current": -7,
+      "token_ratio_vs_current": 0.3798789768090652,
+      "failed": 0,
+      "missing": 0
+    },
+    {
+      "variant": "legacy",
+      "dataset": "tabfact",
+      "variant_correct": 47,
+      "current_reference_correct": 48,
+      "old_reference_correct": 39,
+      "mact_reference_correct": 43,
+      "delta_vs_current": -1,
+      "token_ratio_vs_current": 0.9522891479432802,
+      "failed": 0,
+      "missing": 0
+    },
+    {
+      "variant": "legacy",
+      "dataset": "crt",
+      "variant_correct": 37,
+      "current_reference_correct": 37,
+      "old_reference_correct": 34,
+      "mact_reference_correct": 15,
+      "delta_vs_current": 0,
+      "token_ratio_vs_current": 0.1929984393443662,
+      "failed": 0,
+      "missing": 0
+    },
+    {
+      "variant": "no_strong_verification",
+      "dataset": "wtq",
+      "variant_correct": 25,
+      "current_reference_correct": 32,
+      "old_reference_correct": 8,
+      "mact_reference_correct": 40,
+      "delta_vs_current": -7,
+      "token_ratio_vs_current": 0.38000039531606933,
+      "failed": 0,
+      "missing": 0
+    },
+    {
+      "variant": "no_strong_verification",
+      "dataset": "tabfact",
+      "variant_correct": 47,
+      "current_reference_correct": 48,
+      "old_reference_correct": 39,
+      "mact_reference_correct": 43,
+      "delta_vs_current": -1,
+      "token_ratio_vs_current": 0.9522891479432802,
+      "failed": 0,
+      "missing": 0
+    },
+    {
+      "variant": "no_strong_verification",
+      "dataset": "crt",
+      "variant_correct": 37,
+      "current_reference_correct": 37,
+      "old_reference_correct": 34,
+      "mact_reference_correct": 15,
+      "delta_vs_current": 0,
+      "token_ratio_vs_current": 0.1929984393443662,
+      "failed": 0,
+      "missing": 0
+    },
+    {
+      "variant": "no_deterministic_shortcuts",
+      "dataset": "wtq",
+      "variant_correct": 33,
+      "current_reference_correct": 32,
+      "old_reference_correct": 8,
+      "mact_reference_correct": 40,
+      "delta_vs_current": 1,
+      "token_ratio_vs_current": 0.9506730256080104,
+      "failed": 0,
+      "missing": 0
+    },
+    {
+      "variant": "no_deterministic_shortcuts",
+      "dataset": "tabfact",
+      "variant_correct": 39,
+      "current_reference_correct": 48,
+      "old_reference_correct": 39,
+      "mact_reference_correct": 43,
+      "delta_vs_current": -9,
+      "token_ratio_vs_current": 1.4487126358083637,
+      "failed": 0,
+      "missing": 0
+    },
+    {
+      "variant": "no_deterministic_shortcuts",
+      "dataset": "crt",
+      "variant_correct": 30,
+      "current_reference_correct": 37,
+      "old_reference_correct": 34,
+      "mact_reference_correct": 15,
+      "delta_vs_current": -7,
+      "token_ratio_vs_current": 0.992578567524103,
+      "failed": 0,
+      "missing": 0
+    }
+  ]
+}
