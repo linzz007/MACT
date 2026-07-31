@@ -1,0 +1,560 @@
+{
+  "summary": {
+    "rows": 27,
+    "new_correct": 27,
+    "old_correct": 9,
+    "mact_correct": 24,
+    "new_accuracy": 1.0,
+    "old_accuracy": 0.3333333333333333,
+    "mact_accuracy": 0.8888888888888888,
+    "new_avg_tokens": 6878.814814814815,
+    "old_avg_tokens": 6645.37037037037,
+    "mact_avg_tokens": 9518.185185185184,
+    "new_vs_mact_token_ratio": 0.722702351444214,
+    "new_failures": 0,
+    "old_wrong_new_correct": [
+      "nu-2873",
+      "nu-2213",
+      "nu-2611",
+      "nu-3535",
+      "nu-2223",
+      "nu-1951",
+      "nu-3049",
+      "nu-4328",
+      "nu-2635",
+      "nu-3375",
+      "nu-3279",
+      "nu-976",
+      "nu-1424",
+      "nu-721",
+      "nu-1845",
+      "nu-53",
+      "nu-717",
+      "nu-2183"
+    ],
+    "old_correct_new_wrong": [],
+    "mact_correct_new_wrong": []
+  },
+  "rows": [
+    {
+      "id": "nu-2873",
+      "question": "who drove the only saab car?",
+      "gold": [
+        "Mike Imrie"
+      ],
+      "new_pred": "Mike Imrie",
+      "old_pred": 7.0,
+      "mact_pred": "Mike Imrie",
+      "new_ok": true,
+      "old_ok": false,
+      "mact_ok": true,
+      "new_tokens": 6511,
+      "old_tokens": 6514,
+      "mact_tokens": 8174,
+      "reason": "wtq_answer_shape_verifier_override",
+      "shortcut": "",
+      "failed": false
+    },
+    {
+      "id": "nu-4268",
+      "question": "which was earlier, syndney, australia or coral springs, florida?",
+      "gold": [
+        "Coral Springs, Florida"
+      ],
+      "new_pred": "coral springs, florida",
+      "old_pred": "coral springs, florida",
+      "mact_pred": "Coral Springs, Florida",
+      "new_ok": true,
+      "old_ok": true,
+      "mact_ok": true,
+      "new_tokens": 6437,
+      "old_tokens": 6953,
+      "mact_tokens": 8719,
+      "reason": "valid_candidates_disagree",
+      "shortcut": "",
+      "failed": false
+    },
+    {
+      "id": "nu-2213",
+      "question": "what is the total number of goals?",
+      "gold": [
+        "4"
+      ],
+      "new_pred": 4,
+      "old_pred": 8.0,
+      "mact_pred": "4",
+      "new_ok": true,
+      "old_ok": false,
+      "mact_ok": true,
+      "new_tokens": 3340,
+      "old_tokens": 4847,
+      "mact_tokens": 6358,
+      "reason": "strong_verification_consensus",
+      "shortcut": "WTQ existing total row metric selected deterministically.",
+      "failed": false
+    },
+    {
+      "id": "nu-2036",
+      "question": "before 2011 whats the combined numbers for super g?",
+      "gold": [
+        "68"
+      ],
+      "new_pred": 68,
+      "old_pred": 68,
+      "mact_pred": "68",
+      "new_ok": true,
+      "old_ok": true,
+      "mact_ok": true,
+      "new_tokens": 5103,
+      "old_tokens": 4976,
+      "mact_tokens": 16670,
+      "reason": "deterministic_shortcut_preserved",
+      "shortcut": "WTQ combined-numbers phrasing interpreted as summing the requested metric column.",
+      "failed": false
+    },
+    {
+      "id": "nu-2404",
+      "question": "what location has the most radio stations?",
+      "gold": [
+        "Rome"
+      ],
+      "new_pred": "Rome",
+      "old_pred": "Rome",
+      "mact_pred": "rome",
+      "new_ok": true,
+      "old_ok": true,
+      "mact_ok": true,
+      "new_tokens": 8935,
+      "old_tokens": 8935,
+      "mact_tokens": 20103,
+      "reason": "valid_candidates_disagree",
+      "shortcut": "",
+      "failed": false
+    },
+    {
+      "id": "nu-2611",
+      "question": "which was earlier, sopwith triplane s/n n5460 or nieuport serial number 3958?",
+      "gold": [
+        "Nieuport serial number 3958"
+      ],
+      "new_pred": "nieuport serial number 3958",
+      "old_pred": "sopwith triplane s/n n5460",
+      "mact_pred": "Nieuport serial number 3958",
+      "new_ok": true,
+      "old_ok": false,
+      "mact_ok": true,
+      "new_tokens": 7436,
+      "old_tokens": 7436,
+      "mact_tokens": 8482,
+      "reason": "wtq_answer_shape_verifier_override",
+      "shortcut": "",
+      "failed": false
+    },
+    {
+      "id": "nu-3535",
+      "question": "u2 and redbox both had releases in what year?",
+      "gold": [
+        "1985"
+      ],
+      "new_pred": "1985",
+      "old_pred": "One or both bands not found in the table",
+      "mact_pred": "1985",
+      "new_ok": true,
+      "old_ok": false,
+      "mact_ok": true,
+      "new_tokens": 5062,
+      "old_tokens": 5062,
+      "mact_tokens": 15144,
+      "reason": "wtq_answer_shape_verifier_override",
+      "shortcut": "",
+      "failed": false
+    },
+    {
+      "id": "nu-2223",
+      "question": "name the only player transferred from albirex niigata.",
+      "gold": [
+        "Kazuki Yoshino"
+      ],
+      "new_pred": "Kazuki Yoshino",
+      "old_pred": "Rizawan Abdullah",
+      "mact_pred": "Kazuki Yoshino",
+      "new_ok": true,
+      "old_ok": false,
+      "mact_ok": true,
+      "new_tokens": 4934,
+      "old_tokens": 3152,
+      "mact_tokens": 6504,
+      "reason": "strong_verification_consensus",
+      "shortcut": "",
+      "failed": false
+    },
+    {
+      "id": "nu-1951",
+      "question": "what was the outcome the only time a hard surface was used?",
+      "gold": [
+        "Runner-up"
+      ],
+      "new_pred": "Runner-up",
+      "old_pred": "No unique hard surface event found",
+      "mact_pred": "Runner-up",
+      "new_ok": true,
+      "old_ok": false,
+      "mact_ok": true,
+      "new_tokens": 5832,
+      "old_tokens": 6958,
+      "mact_tokens": 7980,
+      "reason": "strong_verification_consensus",
+      "shortcut": "",
+      "failed": false
+    },
+    {
+      "id": "nu-3049",
+      "question": "who had the shortest time loten 1 or loten 2?",
+      "gold": [
+        "Loten 2"
+      ],
+      "new_pred": "Loten 2",
+      "old_pred": "Loten 1",
+      "mact_pred": "M. Hirvonen",
+      "new_ok": true,
+      "old_ok": false,
+      "mact_ok": false,
+      "new_tokens": 12113,
+      "old_tokens": 10319,
+      "mact_tokens": 10407,
+      "reason": "wtq_answer_shape_verifier_override",
+      "shortcut": "",
+      "failed": false
+    },
+    {
+      "id": "nu-4328",
+      "question": "which country has the top number of silver medals won?",
+      "gold": [
+        "Spain"
+      ],
+      "new_pred": "Spain",
+      "old_pred": "Total",
+      "mact_pred": "Spain",
+      "new_ok": true,
+      "old_ok": false,
+      "mact_ok": true,
+      "new_tokens": 4884,
+      "old_tokens": 4545,
+      "mact_tokens": 7554,
+      "reason": "wtq_answer_shape_verifier_override",
+      "shortcut": "",
+      "failed": false
+    },
+    {
+      "id": "nu-1926",
+      "question": "how many drivers, total, drove alfa romeo's in the 1930 rome grand prix?",
+      "gold": [
+        "9"
+      ],
+      "new_pred": 9,
+      "old_pred": 9,
+      "mact_pred": "9",
+      "new_ok": true,
+      "old_ok": true,
+      "mact_ok": true,
+      "new_tokens": 8861,
+      "old_tokens": 8861,
+      "mact_tokens": 8952,
+      "reason": "valid_candidates_disagree",
+      "shortcut": "",
+      "failed": false
+    },
+    {
+      "id": "nu-2635",
+      "question": "list the only coach that won promotion to the first tier.",
+      "gold": [
+        "Ole Mørk"
+      ],
+      "new_pred": "Ole Mørk",
+      "old_pred": "Henrik Jensen",
+      "mact_pred": "Ole Mørk",
+      "new_ok": true,
+      "old_ok": false,
+      "mact_ok": true,
+      "new_tokens": 10803,
+      "old_tokens": 9137,
+      "mact_tokens": 8071,
+      "reason": "wtq_answer_shape_verifier_override",
+      "shortcut": "",
+      "failed": false
+    },
+    {
+      "id": "nu-3431",
+      "question": "which president was oldest living for the least amount of time?",
+      "gold": [
+        "Lyndon B. Johnson"
+      ],
+      "new_pred": "Lyndon B. Johnson",
+      "old_pred": "Lyndon B. Johnson",
+      "mact_pred": "Lyndon B. Johnson",
+      "new_ok": true,
+      "old_ok": true,
+      "mact_ok": true,
+      "new_tokens": 8094,
+      "old_tokens": 8094,
+      "mact_tokens": 11501,
+      "reason": "valid_candidates_disagree",
+      "shortcut": "",
+      "failed": false
+    },
+    {
+      "id": "nu-2903",
+      "question": "which trains do not give an arrival time",
+      "gold": [
+        "Narkhed-New Amravati Pass",
+        "Bhusaval-Narkhed Pass"
+      ],
+      "new_pred": [
+        "Narkhed-New Amravati Pass",
+        "Bhusaval-Narkhed Pass"
+      ],
+      "old_pred": [
+        "Narkhed-New Amravati Pass",
+        "Bhusaval-Narkhed Pass"
+      ],
+      "mact_pred": "Narkhed-New Amravati Pass, Bhusaval-Narkhed Pass",
+      "new_ok": true,
+      "old_ok": true,
+      "mact_ok": false,
+      "new_tokens": 9051,
+      "old_tokens": 9066,
+      "mact_tokens": 11749,
+      "reason": "valid_candidates_disagree",
+      "shortcut": "",
+      "failed": false
+    },
+    {
+      "id": "nu-3375",
+      "question": "what was the competition in his only race in malaysia?",
+      "gold": [
+        "Commonwealth Games"
+      ],
+      "new_pred": "Commonwealth Games",
+      "old_pred": "No unique race in Malaysia found.",
+      "mact_pred": "Commonwealth Games",
+      "new_ok": true,
+      "old_ok": false,
+      "mact_ok": true,
+      "new_tokens": 4953,
+      "old_tokens": 4675,
+      "mact_tokens": 7312,
+      "reason": "strong_verification_consensus",
+      "shortcut": "",
+      "failed": false
+    },
+    {
+      "id": "nu-3139",
+      "question": "what is the number of locations named st. clair in pennsylvania?",
+      "gold": [
+        "3"
+      ],
+      "new_pred": 3,
+      "old_pred": 3,
+      "mact_pred": "",
+      "new_ok": true,
+      "old_ok": true,
+      "mact_ok": false,
+      "new_tokens": 6189,
+      "old_tokens": 6189,
+      "mact_tokens": 0,
+      "reason": "valid_candidates_disagree",
+      "shortcut": "",
+      "failed": false
+    },
+    {
+      "id": "nu-3279",
+      "question": "how many consecutive days did south korea play?",
+      "gold": [
+        "3"
+      ],
+      "new_pred": 3,
+      "old_pred": 5,
+      "mact_pred": "3",
+      "new_ok": true,
+      "old_ok": false,
+      "mact_ok": true,
+      "new_tokens": 8898,
+      "old_tokens": 8898,
+      "mact_tokens": 14125,
+      "reason": "wtq_answer_shape_verifier_override",
+      "shortcut": "",
+      "failed": false
+    },
+    {
+      "id": "nu-2788",
+      "question": "which year the czech republic compete in the olympics and finish best?",
+      "gold": [
+        "2012"
+      ],
+      "new_pred": 2012.0,
+      "old_pred": 2012.0,
+      "mact_pred": "2012",
+      "new_ok": true,
+      "old_ok": true,
+      "mact_ok": true,
+      "new_tokens": 5762,
+      "old_tokens": 5762,
+      "mact_tokens": 6708,
+      "reason": "valid_candidates_disagree",
+      "shortcut": "",
+      "failed": false
+    },
+    {
+      "id": "nu-976",
+      "question": "how many seasons was morten rasmussen the top scorer?",
+      "gold": [
+        "4"
+      ],
+      "new_pred": 4,
+      "old_pred": 0,
+      "mact_pred": "4",
+      "new_ok": true,
+      "old_ok": false,
+      "mact_ok": true,
+      "new_tokens": 7607,
+      "old_tokens": 7607,
+      "mact_tokens": 11989,
+      "reason": "wtq_answer_shape_verifier_override",
+      "shortcut": "",
+      "failed": false
+    },
+    {
+      "id": "nu-1424",
+      "question": "what was the first date they played the 49ers?",
+      "gold": [
+        "September 23, 2001"
+      ],
+      "new_pred": "September 23, 2001",
+      "old_pred": "September 9, 2001",
+      "mact_pred": "September 23, 2001",
+      "new_ok": true,
+      "old_ok": false,
+      "mact_ok": true,
+      "new_tokens": 7226,
+      "old_tokens": 5184,
+      "mact_tokens": 12536,
+      "reason": "strong_verification_consensus",
+      "shortcut": "",
+      "failed": false
+    },
+    {
+      "id": "nu-721",
+      "question": "what is the next secret ingredient after sugar?",
+      "gold": [
+        "Carrots"
+      ],
+      "new_pred": "Carrots",
+      "old_pred": "sugar not found in the table",
+      "mact_pred": "carrots",
+      "new_ok": true,
+      "old_ok": false,
+      "mact_ok": true,
+      "new_tokens": 7455,
+      "old_tokens": 7455,
+      "mact_tokens": 8239,
+      "reason": "wtq_answer_shape_verifier_override",
+      "shortcut": "",
+      "failed": false
+    },
+    {
+      "id": "nu-1845",
+      "question": "which is the first model listed with 10 krooni as the denomination?",
+      "gold": [
+        "Re-establishment of Krooni currency"
+      ],
+      "new_pred": "Re-establishment of Krooni currency",
+      "old_pred": "Barcelona Olympics",
+      "mact_pred": "Re-establishment of Krooni currency",
+      "new_ok": true,
+      "old_ok": false,
+      "mact_ok": true,
+      "new_tokens": 6498,
+      "old_tokens": 6156,
+      "mact_tokens": 8050,
+      "reason": "strong_verification_consensus",
+      "shortcut": "",
+      "failed": false
+    },
+    {
+      "id": "nu-53",
+      "question": "what is the earliest date kodak made 16mm film?",
+      "gold": [
+        "1935"
+      ],
+      "new_pred": "1935",
+      "old_pred": 1988,
+      "mact_pred": "1935",
+      "new_ok": true,
+      "old_ok": false,
+      "mact_ok": true,
+      "new_tokens": 7781,
+      "old_tokens": 6705,
+      "mact_tokens": 10299,
+      "reason": "strong_verification_consensus",
+      "shortcut": "",
+      "failed": false
+    },
+    {
+      "id": "nu-717",
+      "question": "what was the point difference between the sacramento and detroit for game 33?",
+      "gold": [
+        "6"
+      ],
+      "new_pred": 6,
+      "old_pred": "Game 33 not found in the table.",
+      "mact_pred": "6",
+      "new_ok": true,
+      "old_ok": false,
+      "mact_ok": true,
+      "new_tokens": 6263,
+      "old_tokens": 6237,
+      "mact_tokens": 5679,
+      "reason": "wtq_answer_shape_verifier_override",
+      "shortcut": "",
+      "failed": false
+    },
+    {
+      "id": "nu-2183",
+      "question": "who scored the most goals?",
+      "gold": [
+        "Spas Delev"
+      ],
+      "new_pred": "Spas Delev",
+      "old_pred": "Total",
+      "mact_pred": "Spas Delev",
+      "new_ok": true,
+      "old_ok": false,
+      "mact_ok": true,
+      "new_tokens": 5086,
+      "old_tokens": 5088,
+      "mact_tokens": 7935,
+      "reason": "wtq_answer_shape_verifier_override",
+      "shortcut": "",
+      "failed": false
+    },
+    {
+      "id": "nu-2934",
+      "question": "how many metals did netherlands and the us win together?",
+      "gold": [
+        "20"
+      ],
+      "new_pred": 20.0,
+      "old_pred": 20.0,
+      "mact_pred": "20",
+      "new_ok": true,
+      "old_ok": true,
+      "mact_ok": true,
+      "new_tokens": 4614,
+      "old_tokens": 4614,
+      "mact_tokens": 7751,
+      "reason": "valid_candidates_disagree",
+      "shortcut": "",
+      "failed": false
+    }
+  ]
+}
