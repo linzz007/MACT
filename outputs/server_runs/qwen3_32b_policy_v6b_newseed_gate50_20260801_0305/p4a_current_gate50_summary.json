@@ -1,0 +1,70 @@
+{
+  "run_dir": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305",
+  "stage": "P4a current new-seed Gate-50",
+  "model": "qwen3-32b-local",
+  "datasets": {
+    "wtq": {
+      "input_rows": 50,
+      "merged_rows": 50,
+      "eval_path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/myagent_current/eval/wtq_qwen3-32b-local_eval.json",
+      "merged_path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/myagent_current/merged/wtq_qwen3-32b-local.jsonl",
+      "eval_rows": 50,
+      "num_with_gold": 50,
+      "correct": 37,
+      "accuracy": 0.74,
+      "avg_total_tokens": 6763.02,
+      "mact_avg_tokens_reference": 10508.03,
+      "token_ratio_to_mact_full200": 0.6436049383186001,
+      "avg_elapsed_seconds": 17.284565151501447,
+      "num_failed_exec": 0,
+      "num_missing_answer": 0,
+      "num_em_mismatch": 13,
+      "passed_p4a_dataset_gate": true
+    },
+    "tabfact": {
+      "input_rows": 50,
+      "merged_rows": 50,
+      "eval_path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/myagent_current/eval/tabfact_qwen3-32b-local_eval.json",
+      "merged_path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/myagent_current/merged/tabfact_qwen3-32b-local.jsonl",
+      "eval_rows": 50,
+      "num_with_gold": 50,
+      "correct": 42,
+      "accuracy": 0.84,
+      "avg_total_tokens": 2585.0,
+      "mact_avg_tokens_reference": 10830.825,
+      "token_ratio_to_mact_full200": 0.23867064604958532,
+      "avg_elapsed_seconds": 11.508407768921462,
+      "num_failed_exec": 0,
+      "num_missing_answer": 0,
+      "num_em_mismatch": 8,
+      "passed_p4a_dataset_gate": false
+    },
+    "crt": {
+      "input_rows": 50,
+      "merged_rows": 50,
+      "eval_path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/myagent_current/eval/crt_qwen3-32b-local_eval.json",
+      "merged_path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/myagent_current/merged/crt_qwen3-32b-local.jsonl",
+      "eval_rows": 50,
+      "num_with_gold": 50,
+      "correct": 21,
+      "accuracy": 0.42,
+      "avg_total_tokens": 10250.4,
+      "mact_avg_tokens_reference": 12809.985,
+      "token_ratio_to_mact_full200": 0.8001882906186072,
+      "avg_elapsed_seconds": 24.181372918206034,
+      "num_failed_exec": 0,
+      "num_missing_answer": 0,
+      "num_em_mismatch": 29,
+      "passed_p4a_dataset_gate": false
+    }
+  },
+  "overall": {
+    "correct": 100,
+    "rows": 150,
+    "accuracy": 0.6666666666666666,
+    "avg_total_tokens_weighted": 6532.806666666666,
+    "token_ratio_to_mact_full200_weighted": 0.5739117346299318,
+    "avg_elapsed_seconds_weighted": 17.65811527954298
+  },
+  "decision": "stop_or_inspect"
+}
