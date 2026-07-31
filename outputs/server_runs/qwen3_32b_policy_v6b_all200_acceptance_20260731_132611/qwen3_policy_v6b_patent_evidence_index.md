@@ -34,6 +34,36 @@ Current staged conclusion: under the same full200 validation scope, MyAgent exce
 | Same-row and count consistency checks | Reject claims whose mentioned cells exist in the table but not in the same row, or whose count assertion conflicts with exact table counts | TabFact v6b gained 9 over old MyAgent with 0 old-correct/current-wrong in the full200 comparison | TabFact policy-v6b comparison transitions |
 | Budget-aware validation | Apply expensive collaboration only where risk justifies it, preserving accuracy gains while reducing elapsed time | Aggregate elapsed ratio 0.1337 vs MACT | All200 acceptance summary |
 
+## Coarse Diagnostic Gate-50 Ablation Evidence
+
+Source:
+
+```text
+/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_coarse_ablation_gate50_20260801_0040/coarse_ablation_gate50_summary.json
+/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_coarse_ablation_gate50_20260801_0040/coarse_ablation_gate50_summary.md
+```
+
+This Gate-50 slice is diagnostic: it prioritizes current / old / MACT disagreement rows, so it supports mechanism attribution but should not be presented as fresh random-seed generalization.
+
+| Variant | Dataset | Variant Correct | Current Ref | Delta vs Current | Token Ratio vs Current | Failure / Missing |
+|---|---|---:|---:|---:|---:|---:|
+| legacy | WTQ | 25/50 | 32/50 | -7 | 0.3799 | 0 / 0 |
+| legacy | TabFact | 47/50 | 48/50 | -1 | 0.9523 | 0 / 0 |
+| legacy | CRT | 37/50 | 37/50 | +0 | 0.1930 | 0 / 0 |
+| no_strong_verification | WTQ | 25/50 | 32/50 | -7 | 0.3800 | 0 / 0 |
+| no_strong_verification | TabFact | 47/50 | 48/50 | -1 | 0.9523 | 0 / 0 |
+| no_strong_verification | CRT | 37/50 | 37/50 | +0 | 0.1930 | 0 / 0 |
+| no_deterministic_shortcuts | WTQ | 33/50 | 32/50 | +1 | 0.9507 | 0 / 0 |
+| no_deterministic_shortcuts | TabFact | 39/50 | 48/50 | -9 | 1.4487 | 0 / 0 |
+| no_deterministic_shortcuts | CRT | 30/50 | 37/50 | -7 | 0.9926 | 0 / 0 |
+
+Mechanism interpretation:
+
+1. `legacy` and `no_strong_verification` have the same diagnostic result. The largest gap is WTQ `-7/50` versus current reference, supporting the claim that strong verification / persuasion-back primarily protects complex WTQ cases.
+2. `no_deterministic_shortcuts` drops TabFact from `48/50` to `39/50` while token use rises to `1.4487x` current. This supports deterministic semantic audit as both an accuracy and cost-control mechanism.
+3. The same no-shortcut variant drops CRT from `37/50` to `30/50`, so deterministic audit should be described as a cross-dataset module instead of a TabFact-only patch.
+4. All three coarse variants have failure / missing answer `0 / 0`; the observed differences are mechanism effects under the diagnostic slice rather than execution failures.
+
 ## Current Limitations
 
 1. This evidence uses a frozen 600-row validation scope. It is strong stage evidence but not yet the final formal experiment package.
