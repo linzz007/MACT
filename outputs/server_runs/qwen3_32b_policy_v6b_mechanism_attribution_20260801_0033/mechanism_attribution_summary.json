@@ -1,0 +1,2062 @@
+{
+  "title": "Qwen3-32B policy-v6b mechanism attribution from frozen artifacts",
+  "created_at_local": "2026-08-01 00:33 CST",
+  "method": "Offline associative attribution by aligning current/old/MACT rows and counting mechanism metadata on transition sets. This is not a causal ablation; P2 run-based ablations are still required for causal claims.",
+  "source_paths": {
+    "wtq": {
+      "cur": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_wtq_policy_v6b_full200_20260731_1115/myagent_wtq_full200/merged/wtq_qwen3-32b-local.jsonl",
+      "old": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_canonical_myagent_full200_raw_artifacts_20260730_2008/wtq_shortcutfix2/merged/wtq_qwen3-32b-local.jsonl",
+      "mact": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_blind200_mact_full200_20260723/wtq_mact_full200.jsonl"
+    },
+    "tabfact": {
+      "cur": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_tabfact_policy_v6b_full200_20260731_1255/myagent_tabfact_full200/merged/tabfact_qwen3-32b-local.jsonl",
+      "old": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_canonical_myagent_full200_raw_artifacts_20260730_2008/tabfact_crt_current_blind200/merged/tabfact_qwen3-32b-local.jsonl",
+      "mact": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_blind200_mact_full200_20260723/tabfact_mact_full200.jsonl"
+    },
+    "crt": {
+      "cur": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_crt_full200_current_20260730_1822/myagent_crt200/merged/crt_qwen3-32b-local.jsonl",
+      "old": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_canonical_myagent_full200_raw_artifacts_20260730_2008/tabfact_crt_current_blind200/merged/crt_qwen3-32b-local.jsonl",
+      "mact": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_blind200_mact_full200_20260723/crt_mact_full200.jsonl"
+    }
+  },
+  "datasets": {
+    "wtq": {
+      "rows": 200,
+      "current_correct": 155,
+      "old_correct": 131,
+      "mact_correct": 148,
+      "net_gain_vs_old": 24,
+      "net_gain_vs_mact": 7,
+      "groups": {
+        "gain_vs_old": {
+          "count": 25,
+          "ids": [
+            "nu-2873",
+            "nu-2453",
+            "nu-709",
+            "nu-2213",
+            "nu-2611",
+            "nu-3535",
+            "nu-2223",
+            "nu-1951",
+            "nu-3049",
+            "nu-4328",
+            "nu-2850",
+            "nu-2635",
+            "nu-2109",
+            "nu-2139",
+            "nu-3375",
+            "nu-1870",
+            "nu-3279",
+            "nu-976",
+            "nu-1424",
+            "nu-267",
+            "nu-721",
+            "nu-1845",
+            "nu-53",
+            "nu-717",
+            "nu-2183"
+          ],
+          "avg_current_tokens": 7156.28,
+          "avg_old_tokens": 6618.76,
+          "family_counts": {
+            "risk_level": 25,
+            "evidence_source": 24,
+            "strong_verification": 24,
+            "evidence_retention": 16,
+            "deterministic_audit": 1
+          },
+          "tag_counts": {
+            "evidence_source:strong_verification_consensus": 24,
+            "risk_level:high": 23,
+            "strong_verification:wtq_high_risk_denotation": 22,
+            "evidence_retention:expanded_context_block_global_rows": 9,
+            "evidence_retention:strict_cell_block_global_rows": 6,
+            "risk_level:light": 1,
+            "strong_verification:post_risk_requires_fallback": 1,
+            "risk_level:fallback": 1,
+            "deterministic_audit:WTQ existing total row metric selected deterministically.": 1,
+            "evidence_retention:expanded_context_block_global_rows_global_columns": 1,
+            "strong_verification:wtq_temporal_crosscheck": 1
+          },
+          "examples": [
+            {
+              "id": "nu-2873",
+              "question_or_statement": "who drove the only saab car?",
+              "current_final_value": "Mike Imrie",
+              "gold_answer": [
+                "Mike Imrie"
+              ],
+              "mechanism_tags": [
+                "evidence_source:strong_verification_consensus",
+                "strong_verification:wtq_high_risk_denotation",
+                "evidence_retention:expanded_context_block_global_rows",
+                "risk_level:high"
+              ],
+              "current_tokens": 6518,
+              "old_tokens": 6514
+            },
+            {
+              "id": "nu-2453",
+              "question_or_statement": "for which film did georgina hale receive her bafta award?",
+              "current_final_value": "Mahler",
+              "gold_answer": [
+                "Mahler"
+              ],
+              "mechanism_tags": [
+                "risk_level:light"
+              ],
+              "current_tokens": 1942,
+              "old_tokens": 1896
+            },
+            {
+              "id": "nu-709",
+              "question_or_statement": "what is the number of tablets?",
+              "current_final_value": 11,
+              "gold_answer": [
+                "11"
+              ],
+              "mechanism_tags": [
+                "evidence_source:strong_verification_consensus",
+                "strong_verification:post_risk_requires_fallback",
+                "risk_level:fallback"
+              ],
+              "current_tokens": 12238,
+              "old_tokens": 5946
+            },
+            {
+              "id": "nu-2213",
+              "question_or_statement": "what is the total number of goals?",
+              "current_final_value": 4,
+              "gold_answer": [
+                "4"
+              ],
+              "mechanism_tags": [
+                "deterministic_audit:WTQ existing total row metric selected deterministically.",
+                "evidence_source:strong_verification_consensus",
+                "strong_verification:wtq_high_risk_denotation",
+                "evidence_retention:strict_cell_block_global_rows",
+                "risk_level:high"
+              ],
+              "current_tokens": 3340,
+              "old_tokens": 4847
+            },
+            {
+              "id": "nu-2611",
+              "question_or_statement": "which was earlier, sopwith triplane s/n n5460 or nieuport serial number 3958?",
+              "current_final_value": "nieuport serial number 3958",
+              "gold_answer": [
+                "Nieuport serial number 3958"
+              ],
+              "mechanism_tags": [
+                "evidence_source:strong_verification_consensus",
+                "strong_verification:wtq_high_risk_denotation",
+                "evidence_retention:expanded_context_block_global_rows",
+                "risk_level:high"
+              ],
+              "current_tokens": 7501,
+              "old_tokens": 7436
+            },
+            {
+              "id": "nu-3535",
+              "question_or_statement": "u2 and redbox both had releases in what year?",
+              "current_final_value": "1985",
+              "gold_answer": [
+                "1985"
+              ],
+              "mechanism_tags": [
+                "evidence_source:strong_verification_consensus",
+                "strong_verification:wtq_high_risk_denotation",
+                "risk_level:high"
+              ],
+              "current_tokens": 5062,
+              "old_tokens": 5062
+            },
+            {
+              "id": "nu-2223",
+              "question_or_statement": "name the only player transferred from albirex niigata.",
+              "current_final_value": "Kazuki Yoshino",
+              "gold_answer": [
+                "Kazuki Yoshino"
+              ],
+              "mechanism_tags": [
+                "evidence_source:strong_verification_consensus",
+                "strong_verification:wtq_high_risk_denotation",
+                "evidence_retention:strict_cell_block_global_rows",
+                "risk_level:high"
+              ],
+              "current_tokens": 4934,
+              "old_tokens": 3152
+            },
+            {
+              "id": "nu-1951",
+              "question_or_statement": "what was the outcome the only time a hard surface was used?",
+              "current_final_value": "Runner-up",
+              "gold_answer": [
+                "Runner-up"
+              ],
+              "mechanism_tags": [
+                "evidence_source:strong_verification_consensus",
+                "strong_verification:wtq_high_risk_denotation",
+                "evidence_retention:expanded_context_block_global_rows",
+                "risk_level:high"
+              ],
+              "current_tokens": 5832,
+              "old_tokens": 6958
+            },
+            {
+              "id": "nu-3049",
+              "question_or_statement": "who had the shortest time loten 1 or loten 2?",
+              "current_final_value": "Loten 2",
+              "gold_answer": [
+                "Loten 2"
+              ],
+              "mechanism_tags": [
+                "evidence_source:strong_verification_consensus",
+                "strong_verification:wtq_high_risk_denotation",
+                "risk_level:high"
+              ],
+              "current_tokens": 12113,
+              "old_tokens": 10319
+            },
+            {
+              "id": "nu-4328",
+              "question_or_statement": "which country has the top number of silver medals won?",
+              "current_final_value": "Spain",
+              "gold_answer": [
+                "Spain"
+              ],
+              "mechanism_tags": [
+                "evidence_source:strong_verification_consensus",
+                "strong_verification:wtq_high_risk_denotation",
+                "evidence_retention:strict_cell_block_global_rows",
+                "risk_level:high"
+              ],
+              "current_tokens": 4884,
+              "old_tokens": 4545
+            },
+            {
+              "id": "nu-2850",
+              "question_or_statement": "which singles charted in the top five of canada and also australia?",
+              "current_final_value": [
+                "Ironic"
+              ],
+              "gold_answer": [
+                "Ironic"
+              ],
+              "mechanism_tags": [
+                "evidence_source:strong_verification_consensus",
+                "strong_verification:wtq_high_risk_denotation",
+                "evidence_retention:expanded_context_block_global_rows",
+                "risk_level:high"
+              ],
+              "current_tokens": 5688,
+              "old_tokens": 7069
+            },
+            {
+              "id": "nu-2635",
+              "question_or_statement": "list the only coach that won promotion to the first tier.",
+              "current_final_value": "Ole Mørk",
+              "gold_answer": [
+                "Ole Mørk"
+              ],
+              "mechanism_tags": [
+                "evidence_source:strong_verification_consensus",
+                "strong_verification:wtq_high_risk_denotation",
+                "evidence_retention:expanded_context_block_global_rows",
+                "risk_level:high"
+              ],
+              "current_tokens": 10803,
+              "old_tokens": 9137
+            },
+            {
+              "id": "nu-2109",
+              "question_or_statement": "how many tournaments did stephen hendry win?",
+              "current_final_value": 5,
+              "gold_answer": [
+                "5"
+              ],
+              "mechanism_tags": [
+                "evidence_source:strong_verification_consensus",
+                "strong_verification:wtq_high_risk_denotation",
+                "risk_level:high"
+              ],
+              "current_tokens": 7454,
+              "old_tokens": 5841
+            },
+            {
+              "id": "nu-2139",
+              "question_or_statement": "what is sinnamon's only hit of 1984?",
+              "current_final_value": "\\Thin Line\\\"\"",
+              "gold_answer": [
+                "Thin Line"
+              ],
+              "mechanism_tags": [
+                "evidence_source:strong_verification_consensus",
+                "strong_verification:wtq_high_risk_denotation",
+                "evidence_retention:expanded_context_block_global_rows",
+                "risk_level:high"
+              ],
+              "current_tokens": 7431,
+              "old_tokens": 4531
+            },
+            {
+              "id": "nu-3375",
+              "question_or_statement": "what was the competition in his only race in malaysia?",
+              "current_final_value": "Commonwealth Games",
+              "gold_answer": [
+                "Commonwealth Games"
+              ],
+              "mechanism_tags": [
+                "evidence_source:strong_verification_consensus",
+                "strong_verification:wtq_high_risk_denotation",
+                "evidence_retention:expanded_context_block_global_rows",
+                "risk_level:high"
+              ],
+              "current_tokens": 4953,
+              "old_tokens": 4675
+            }
+          ]
+        },
+        "harm_vs_old": {
+          "count": 1,
+          "ids": [
+            "nu-1915"
+          ],
+          "avg_current_tokens": 7424.0,
+          "avg_old_tokens": 7457.0,
+          "family_counts": {
+            "evidence_source": 1,
+            "strong_verification": 1,
+            "evidence_retention": 1,
+            "risk_level": 1
+          },
+          "tag_counts": {
+            "evidence_source:strong_verification_consensus": 1,
+            "strong_verification:wtq_high_risk_denotation": 1,
+            "evidence_retention:expanded_context_block_global_rows_global_columns": 1,
+            "risk_level:high": 1
+          },
+          "examples": [
+            {
+              "id": "nu-1915",
+              "question_or_statement": "in 2007 inoue was nominated for best actress in a work titled \"first ___\" what?",
+              "current_final_value": "First Kiss",
+              "gold_answer": [
+                "Kiss"
+              ],
+              "mechanism_tags": [
+                "evidence_source:strong_verification_consensus",
+                "strong_verification:wtq_high_risk_denotation",
+                "evidence_retention:expanded_context_block_global_rows_global_columns",
+                "risk_level:high"
+              ],
+              "current_tokens": 7424,
+              "old_tokens": 7457
+            }
+          ]
+        },
+        "current_only_vs_mact": {
+          "count": 24,
+          "ids": [
+            "nu-58",
+            "nu-3422",
+            "nu-3438",
+            "nu-3140",
+            "nu-1786",
+            "nu-3049",
+            "nu-3406",
+            "nu-2502",
+            "nu-2633",
+            "nu-2312",
+            "nu-3977",
+            "nu-1329",
+            "nu-2903",
+            "nu-3139",
+            "nu-4020",
+            "nu-2973",
+            "nu-3487",
+            "nu-2032",
+            "nu-3074",
+            "nu-267",
+            "nu-4092",
+            "nu-641",
+            "nu-888",
+            "nu-889"
+          ],
+          "avg_current_tokens": 7310.583333333333,
+          "avg_old_tokens": 7047.291666666667,
+          "family_counts": {
+            "risk_level": 24,
+            "strong_verification": 22,
+            "evidence_source": 19,
+            "evidence_retention": 5,
+            "deterministic_audit": 1
+          },
+          "tag_counts": {
+            "risk_level:high": 21,
+            "evidence_source:strong_verification_consensus": 19,
+            "strong_verification:wtq_high_risk_denotation": 14,
+            "evidence_retention:expanded_context_block_global_rows": 5,
+            "strong_verification:wtq_temporal_crosscheck": 5,
+            "risk_level:medium": 2,
+            "strong_verification:wtq_simple_crosscheck": 2,
+            "deterministic_audit:WTQ top placing competitor selected by minimum place/rank.": 1,
+            "strong_verification:post_risk_requires_fallback": 1,
+            "risk_level:fallback": 1
+          },
+          "examples": [
+            {
+              "id": "nu-58",
+              "question_or_statement": "who was the top placing competitor?",
+              "current_final_value": "Esther Shahamorov",
+              "gold_answer": [
+                "Esther Shahamorov"
+              ],
+              "mechanism_tags": [
+                "deterministic_audit:WTQ top placing competitor selected by minimum place/rank.",
+                "evidence_source:strong_verification_consensus",
+                "strong_verification:wtq_high_risk_denotation",
+                "evidence_retention:expanded_context_block_global_rows",
+                "risk_level:high"
+              ],
+              "current_tokens": 4211,
+              "old_tokens": 4209
+            },
+            {
+              "id": "nu-3422",
+              "question_or_statement": "is cassiopeia 1's magnitude more or less than 15?",
+              "current_final_value": "more",
+              "gold_answer": [
+                "more"
+              ],
+              "mechanism_tags": [
+                "evidence_source:strong_verification_consensus",
+                "strong_verification:wtq_high_risk_denotation",
+                "risk_level:high"
+              ],
+              "current_tokens": 6554,
+              "old_tokens": 6554
+            },
+            {
+              "id": "nu-3438",
+              "question_or_statement": "which mayors had more than 2 consecutive terms?",
+              "current_final_value": [
+                "Mr B.Melman",
+                "Mr P.Venter",
+                "Mrs E.Myer"
+              ],
+              "gold_answer": [
+                "Mr B.Melman",
+                "Mr P.Venter",
+                "Mrs E.Myer"
+              ],
+              "mechanism_tags": [
+                "risk_level:medium"
+              ],
+              "current_tokens": 7756,
+              "old_tokens": 7756
+            },
+            {
+              "id": "nu-3140",
+              "question_or_statement": "when does agape christian academy accept applications?",
+              "current_final_value": "Accepts applications prior to the start of each school year",
+              "gold_answer": [
+                "Accepts applications prior to the start of each school year"
+              ],
+              "mechanism_tags": [
+                "evidence_source:strong_verification_consensus",
+                "strong_verification:wtq_simple_crosscheck",
+                "risk_level:high"
+              ],
+              "current_tokens": 3364,
+              "old_tokens": 3364
+            },
+            {
+              "id": "nu-1786",
+              "question_or_statement": "what was the next tie listed after the 1989-1990 season?",
+              "current_final_value": "1990-1991 Season",
+              "gold_answer": [
+                "1990-1991 Season"
+              ],
+              "mechanism_tags": [
+                "evidence_source:strong_verification_consensus",
+                "strong_verification:wtq_temporal_crosscheck",
+                "risk_level:high"
+              ],
+              "current_tokens": 15378,
+              "old_tokens": 13207
+            },
+            {
+              "id": "nu-3049",
+              "question_or_statement": "who had the shortest time loten 1 or loten 2?",
+              "current_final_value": "Loten 2",
+              "gold_answer": [
+                "Loten 2"
+              ],
+              "mechanism_tags": [
+                "evidence_source:strong_verification_consensus",
+                "strong_verification:wtq_high_risk_denotation",
+                "risk_level:high"
+              ],
+              "current_tokens": 12113,
+              "old_tokens": 10319
+            },
+            {
+              "id": "nu-3406",
+              "question_or_statement": "how many accolades ranked the album below 100th place?",
+              "current_final_value": 4,
+              "gold_answer": [
+                "4"
+              ],
+              "mechanism_tags": [
+                "evidence_source:strong_verification_consensus",
+                "strong_verification:wtq_high_risk_denotation",
+                "evidence_retention:expanded_context_block_global_rows",
+                "risk_level:high"
+              ],
+              "current_tokens": 7216,
+              "old_tokens": 7216
+            },
+            {
+              "id": "nu-2502",
+              "question_or_statement": "which associations have both a women's and men's team?",
+              "current_final_value": [
+                "China PR",
+                "Guam",
+                "Hong Kong",
+                "Japan",
+                "Korea DPR",
+                "Korea Republic",
+                "Macau",
+                "Mongolia",
+                "Northern Mariana Islands",
+                "Chinese Taipei"
+              ],
+              "gold_answer": [
+                "China PR",
+                "Guam",
+                "Hong Kong",
+                "Japan",
+                "Korea DPR",
+                "Korea Republic",
+                "Macau",
+                "Mongolia",
+                "Northern Mariana Islands",
+                "Chinese Taipei"
+              ],
+              "mechanism_tags": [
+                "evidence_source:strong_verification_consensus",
+                "strong_verification:wtq_high_risk_denotation",
+                "risk_level:high"
+              ],
+              "current_tokens": 4696,
+              "old_tokens": 4696
+            },
+            {
+              "id": "nu-2633",
+              "question_or_statement": "is the altitude in bucharest above or below 100?",
+              "current_final_value": "below",
+              "gold_answer": [
+                "below"
+              ],
+              "mechanism_tags": [
+                "evidence_source:strong_verification_consensus",
+                "strong_verification:wtq_simple_crosscheck",
+                "risk_level:high"
+              ],
+              "current_tokens": 5836,
+              "old_tokens": 5836
+            },
+            {
+              "id": "nu-2312",
+              "question_or_statement": "after princess street, what is the next kingston transit stop?",
+              "current_final_value": "Cataraqui Town Centre St. Lawrence College",
+              "gold_answer": [
+                "Cataraqui Town Centre St. Lawrence College"
+              ],
+              "mechanism_tags": [
+                "evidence_source:strong_verification_consensus",
+                "strong_verification:wtq_temporal_crosscheck",
+                "risk_level:high"
+              ],
+              "current_tokens": 7591,
+              "old_tokens": 7591
+            },
+            {
+              "id": "nu-3977",
+              "question_or_statement": "what is the difference of the jsu and tu scores in 2001",
+              "current_final_value": 18,
+              "gold_answer": [
+                "18"
+              ],
+              "mechanism_tags": [
+                "evidence_source:strong_verification_consensus",
+                "strong_verification:wtq_high_risk_denotation",
+                "risk_level:high"
+              ],
+              "current_tokens": 8513,
+              "old_tokens": 8513
+            },
+            {
+              "id": "nu-1329",
+              "question_or_statement": "which administrators started their terms after 1998?",
+              "current_final_value": [
+                "Major General Raza Hussain",
+                "Major General Ahmed Bilal"
+              ],
+              "gold_answer": [
+                "Major General Raza Hussain",
+                "Major General Ahmed Bilal"
+              ],
+              "mechanism_tags": [
+                "evidence_source:strong_verification_consensus",
+                "strong_verification:wtq_temporal_crosscheck",
+                "risk_level:high"
+              ],
+              "current_tokens": 5646,
+              "old_tokens": 5646
+            },
+            {
+              "id": "nu-2903",
+              "question_or_statement": "which trains do not give an arrival time",
+              "current_final_value": [
+                "Narkhed-New Amravati Pass",
+                "Bhusaval-Narkhed Pass"
+              ],
+              "gold_answer": [
+                "Narkhed-New Amravati Pass",
+                "Bhusaval-Narkhed Pass"
+              ],
+              "mechanism_tags": [
+                "strong_verification:wtq_high_risk_denotation",
+                "risk_level:high"
+              ],
+              "current_tokens": 9051,
+              "old_tokens": 9066
+            },
+            {
+              "id": "nu-3139",
+              "question_or_statement": "what is the number of locations named st. clair in pennsylvania?",
+              "current_final_value": 3,
+              "gold_answer": [
+                "3"
+              ],
+              "mechanism_tags": [
+                "strong_verification:wtq_high_risk_denotation",
+                "risk_level:high"
+              ],
+              "current_tokens": 6189,
+              "old_tokens": 6189
+            },
+            {
+              "id": "nu-4020",
+              "question_or_statement": "name a builder that had above 7 gt numbers.",
+              "current_final_value": "ALCO",
+              "gold_answer": [
+                "ALCO"
+              ],
+              "mechanism_tags": [
+                "risk_level:medium"
+              ],
+              "current_tokens": 3482,
+              "old_tokens": 3482
+            }
+          ]
+        },
+        "mact_only": {
+          "count": 17,
+          "ids": [
+            "nu-1434",
+            "nu-3934",
+            "nu-1505",
+            "nu-1826",
+            "nu-3949",
+            "nu-2232",
+            "nu-1125",
+            "nu-216",
+            "nu-3939",
+            "nu-463",
+            "nu-830",
+            "nu-697",
+            "nu-2663",
+            "nu-3767",
+            "nu-1093",
+            "nu-2919",
+            "nu-4291"
+          ],
+          "avg_current_tokens": 6978.882352941177,
+          "avg_old_tokens": 6827.823529411765,
+          "family_counts": {
+            "strong_verification": 17,
+            "risk_level": 17,
+            "evidence_source": 13,
+            "evidence_retention": 9
+          },
+          "tag_counts": {
+            "risk_level:high": 17,
+            "strong_verification:wtq_high_risk_denotation": 16,
+            "evidence_source:strong_verification_consensus": 13,
+            "evidence_retention:expanded_context_block_global_rows": 7,
+            "evidence_retention:expanded_context_block_global_rows_global_columns": 1,
+            "strong_verification:wtq_simple_crosscheck": 1,
+            "evidence_retention:strict_cell_block_global_rows": 1
+          },
+          "examples": [
+            {
+              "id": "nu-1434",
+              "question_or_statement": "what is the highest chart position ever achieved by one of dino's singles?",
+              "current_final_value": "\\I Like It\\\"\"",
+              "gold_answer": [
+                "3"
+              ],
+              "mechanism_tags": [
+                "evidence_source:strong_verification_consensus",
+                "strong_verification:wtq_high_risk_denotation",
+                "evidence_retention:expanded_context_block_global_rows_global_columns",
+                "risk_level:high"
+              ],
+              "current_tokens": 5758,
+              "old_tokens": 5758
+            },
+            {
+              "id": "nu-3934",
+              "question_or_statement": "in what year did salvatore bettiol run in the most marathons?",
+              "current_final_value": 1986.0,
+              "gold_answer": [
+                "1987"
+              ],
+              "mechanism_tags": [
+                "strong_verification:wtq_high_risk_denotation",
+                "evidence_retention:expanded_context_block_global_rows",
+                "risk_level:high"
+              ],
+              "current_tokens": 5461,
+              "old_tokens": 5461
+            },
+            {
+              "id": "nu-1505",
+              "question_or_statement": "how many books did \"harper & brothers\" publish?",
+              "current_final_value": 38,
+              "gold_answer": [
+                "74"
+              ],
+              "mechanism_tags": [
+                "evidence_source:strong_verification_consensus",
+                "strong_verification:wtq_high_risk_denotation",
+                "risk_level:high"
+              ],
+              "current_tokens": 8173,
+              "old_tokens": 8223
+            },
+            {
+              "id": "nu-1826",
+              "question_or_statement": "how many of the educational websites have used at least limited advertising?",
+              "current_final_value": 4,
+              "gold_answer": [
+                "7"
+              ],
+              "mechanism_tags": [
+                "evidence_source:strong_verification_consensus",
+                "strong_verification:wtq_high_risk_denotation",
+                "evidence_retention:expanded_context_block_global_rows",
+                "risk_level:high"
+              ],
+              "current_tokens": 5196,
+              "old_tokens": 5196
+            },
+            {
+              "id": "nu-3949",
+              "question_or_statement": "derby and which other station are the only ones to not have a frequency?",
+              "current_final_value": "7UV",
+              "gold_answer": [
+                "Ulverstone"
+              ],
+              "mechanism_tags": [
+                "evidence_source:strong_verification_consensus",
+                "strong_verification:wtq_high_risk_denotation",
+                "evidence_retention:expanded_context_block_global_rows",
+                "risk_level:high"
+              ],
+              "current_tokens": 5801,
+              "old_tokens": 6833
+            },
+            {
+              "id": "nu-2232",
+              "question_or_statement": "how many championship tournaments did she play in after 1984?",
+              "current_final_value": 0,
+              "gold_answer": [
+                "4"
+              ],
+              "mechanism_tags": [
+                "evidence_source:strong_verification_consensus",
+                "strong_verification:wtq_high_risk_denotation",
+                "risk_level:high"
+              ],
+              "current_tokens": 7444,
+              "old_tokens": 7444
+            },
+            {
+              "id": "nu-1125",
+              "question_or_statement": "in season 1, what number of episodes were written by morton fine and david friedkin?",
+              "current_final_value": 0,
+              "gold_answer": [
+                "7"
+              ],
+              "mechanism_tags": [
+                "strong_verification:wtq_high_risk_denotation",
+                "risk_level:high"
+              ],
+              "current_tokens": 8471,
+              "old_tokens": 8471
+            },
+            {
+              "id": "nu-216",
+              "question_or_statement": "how many contestants were on the original manobo tribe?",
+              "current_final_value": 12,
+              "gold_answer": [
+                "11"
+              ],
+              "mechanism_tags": [
+                "evidence_source:strong_verification_consensus",
+                "strong_verification:wtq_high_risk_denotation",
+                "evidence_retention:expanded_context_block_global_rows",
+                "risk_level:high"
+              ],
+              "current_tokens": 7484,
+              "old_tokens": 7484
+            },
+            {
+              "id": "nu-3939",
+              "question_or_statement": "name the prabandham with the most number of pasurams",
+              "current_final_value": "Peria Thirumozhi",
+              "gold_answer": [
+                "Thiruvay Mozhi"
+              ],
+              "mechanism_tags": [
+                "evidence_source:strong_verification_consensus",
+                "strong_verification:wtq_high_risk_denotation",
+                "evidence_retention:expanded_context_block_global_rows",
+                "risk_level:high"
+              ],
+              "current_tokens": 7098,
+              "old_tokens": 7098
+            },
+            {
+              "id": "nu-463",
+              "question_or_statement": "list the number of times the rating was above a 4.0.",
+              "current_final_value": "5",
+              "gold_answer": [
+                "3"
+              ],
+              "mechanism_tags": [
+                "evidence_source:strong_verification_consensus",
+                "strong_verification:wtq_simple_crosscheck",
+                "risk_level:high"
+              ],
+              "current_tokens": 4080,
+              "old_tokens": 4080
+            },
+            {
+              "id": "nu-830",
+              "question_or_statement": "who was ranked last among this group?",
+              "current_final_value": "Bernie Fryer",
+              "gold_answer": [
+                "Terry Furlow"
+              ],
+              "mechanism_tags": [
+                "evidence_source:strong_verification_consensus",
+                "strong_verification:wtq_high_risk_denotation",
+                "risk_level:high"
+              ],
+              "current_tokens": 7270,
+              "old_tokens": 7270
+            },
+            {
+              "id": "nu-697",
+              "question_or_statement": "how many total episodes aired in season 13?",
+              "current_final_value": "13",
+              "gold_answer": [
+                "40"
+              ],
+              "mechanism_tags": [
+                "evidence_source:strong_verification_consensus",
+                "strong_verification:wtq_high_risk_denotation",
+                "evidence_retention:strict_cell_block_global_rows",
+                "risk_level:high"
+              ],
+              "current_tokens": 12411,
+              "old_tokens": 10508
+            },
+            {
+              "id": "nu-2663",
+              "question_or_statement": "how many total labels did this singer release single on?",
+              "current_final_value": 2,
+              "gold_answer": [
+                "5"
+              ],
+              "mechanism_tags": [
+                "strong_verification:wtq_high_risk_denotation",
+                "risk_level:high"
+              ],
+              "current_tokens": 4510,
+              "old_tokens": 4510
+            },
+            {
+              "id": "nu-3767",
+              "question_or_statement": "how many goals did manchester have in 1997-1998?",
+              "current_final_value": "Total",
+              "gold_answer": [
+                "0"
+              ],
+              "mechanism_tags": [
+                "evidence_source:strong_verification_consensus",
+                "strong_verification:wtq_high_risk_denotation",
+                "risk_level:high"
+              ],
+              "current_tokens": 8418,
+              "old_tokens": 7247
+            },
+            {
+              "id": "nu-1093",
+              "question_or_statement": "what are the most points won during the 1998 arizona cardinals season?",
+              "current_final_value": 42,
+              "gold_answer": [
+                "45"
+              ],
+              "mechanism_tags": [
+                "evidence_source:strong_verification_consensus",
+                "strong_verification:wtq_high_risk_denotation",
+                "evidence_retention:expanded_context_block_global_rows",
+                "risk_level:high"
+              ],
+              "current_tokens": 8467,
+              "old_tokens": 8467
+            }
+          ]
+        }
+      }
+    },
+    "tabfact": {
+      "rows": 200,
+      "current_correct": 194,
+      "old_correct": 185,
+      "mact_correct": 189,
+      "net_gain_vs_old": 9,
+      "net_gain_vs_mact": 5,
+      "groups": {
+        "gain_vs_old": {
+          "count": 9,
+          "ids": [
+            "tabfact-test-4211",
+            "tabfact-test-5090",
+            "tabfact-test-6964",
+            "tabfact-test-8573",
+            "tabfact-test-1570",
+            "tabfact-test-8166",
+            "tabfact-test-9313",
+            "tabfact-test-5960",
+            "tabfact-test-12544"
+          ],
+          "avg_current_tokens": 736.1111111111111,
+          "avg_old_tokens": 3365.222222222222,
+          "family_counts": {
+            "evidence_retention": 9,
+            "risk_level": 9,
+            "deterministic_audit": 8
+          },
+          "tag_counts": {
+            "evidence_retention:expanded_context_block_global_rows": 7,
+            "risk_level:high": 7,
+            "risk_level:medium": 2,
+            "deterministic_audit:TabFact retirement threshold count checked deterministically.": 1,
+            "deterministic_audit:TabFact country pair affiliation checked deterministically.": 1,
+            "deterministic_audit:TabFact zero gold medal count checked deterministically.": 1,
+            "deterministic_audit:TabFact all games before date result checked deterministically.": 1,
+            "deterministic_audit:TabFact second-smallest metric row checked deterministically.": 1,
+            "evidence_retention:expanded_context_block_global_rows_global_columns": 1,
+            "deterministic_audit:TabFact venue competition date checked deterministically.": 1,
+            "evidence_retention:strict_cell_block_global_rows": 1,
+            "deterministic_audit:TabFact first-last time gap checked deterministically.": 1,
+            "deterministic_audit:TabFact score-but-lose relation checked deterministically.": 1
+          },
+          "examples": [
+            {
+              "id": "tabfact-test-4211",
+              "question_or_statement": "there be less than 17 player who untimely retire during the 1984 european grand prix",
+              "current_final_value": "false",
+              "gold_answer": [
+                "false"
+              ],
+              "mechanism_tags": [
+                "deterministic_audit:TabFact retirement threshold count checked deterministically.",
+                "evidence_retention:expanded_context_block_global_rows",
+                "risk_level:high"
+              ],
+              "current_tokens": 640,
+              "old_tokens": 2778
+            },
+            {
+              "id": "tabfact-test-5090",
+              "question_or_statement": "jesper parnevik be from sweden , while justin leonard be from argentina",
+              "current_final_value": "false",
+              "gold_answer": [
+                "false"
+              ],
+              "mechanism_tags": [
+                "deterministic_audit:TabFact country pair affiliation checked deterministically.",
+                "evidence_retention:expanded_context_block_global_rows",
+                "risk_level:medium"
+              ],
+              "current_tokens": 350,
+              "old_tokens": 662
+            },
+            {
+              "id": "tabfact-test-6964",
+              "question_or_statement": "there be 6 nation that didn't have any gold medal",
+              "current_final_value": "true",
+              "gold_answer": [
+                "true"
+              ],
+              "mechanism_tags": [
+                "deterministic_audit:TabFact zero gold medal count checked deterministically.",
+                "evidence_retention:expanded_context_block_global_rows",
+                "risk_level:medium"
+              ],
+              "current_tokens": 359,
+              "old_tokens": 2121
+            },
+            {
+              "id": "tabfact-test-8573",
+              "question_or_statement": "motherwell be 1 of 4 team against whom llanelli a.f.c afc have only 1 victory",
+              "current_final_value": "false",
+              "gold_answer": [
+                "false"
+              ],
+              "mechanism_tags": [
+                "evidence_retention:expanded_context_block_global_rows",
+                "risk_level:high"
+              ],
+              "current_tokens": 3217,
+              "old_tokens": 5347
+            },
+            {
+              "id": "tabfact-test-1570",
+              "question_or_statement": "every game before september 30 be a victory for the dolphin",
+              "current_final_value": "true",
+              "gold_answer": [
+                "true"
+              ],
+              "mechanism_tags": [
+                "deterministic_audit:TabFact all games before date result checked deterministically.",
+                "evidence_retention:expanded_context_block_global_rows",
+                "risk_level:high"
+              ],
+              "current_tokens": 421,
+              "old_tokens": 3640
+            },
+            {
+              "id": "tabfact-test-8166",
+              "question_or_statement": "the second smallest budget be 1000 for the us special show february 2007",
+              "current_final_value": "false",
+              "gold_answer": [
+                "false"
+              ],
+              "mechanism_tags": [
+                "deterministic_audit:TabFact second-smallest metric row checked deterministically.",
+                "evidence_retention:expanded_context_block_global_rows_global_columns",
+                "risk_level:high"
+              ],
+              "current_tokens": 418,
+              "old_tokens": 4199
+            },
+            {
+              "id": "tabfact-test-9313",
+              "question_or_statement": "the friendly competition at the venue shymkent , kazakhstan , be on june 2 , 2007",
+              "current_final_value": "false",
+              "gold_answer": [
+                "false"
+              ],
+              "mechanism_tags": [
+                "deterministic_audit:TabFact venue competition date checked deterministically.",
+                "evidence_retention:strict_cell_block_global_rows",
+                "risk_level:high"
+              ],
+              "current_tokens": 420,
+              "old_tokens": 4101
+            },
+            {
+              "id": "tabfact-test-5960",
+              "question_or_statement": "there be 47.416 second between the first and last race car driver in the 2007 - 08 a1 grand prix of nations , malaysia in malaysia",
+              "current_final_value": "true",
+              "gold_answer": [
+                "true"
+              ],
+              "mechanism_tags": [
+                "deterministic_audit:TabFact first-last time gap checked deterministically.",
+                "evidence_retention:expanded_context_block_global_rows",
+                "risk_level:high"
+              ],
+              "current_tokens": 423,
+              "old_tokens": 4604
+            },
+            {
+              "id": "tabfact-test-12544",
+              "question_or_statement": "south sydney rabbitohs score 42 point but lose the game during the 1951 nswrfl grand final",
+              "current_final_value": "false",
+              "gold_answer": [
+                "false"
+              ],
+              "mechanism_tags": [
+                "deterministic_audit:TabFact score-but-lose relation checked deterministically.",
+                "evidence_retention:expanded_context_block_global_rows",
+                "risk_level:high"
+              ],
+              "current_tokens": 377,
+              "old_tokens": 2835
+            }
+          ]
+        },
+        "harm_vs_old": {
+          "count": 0,
+          "ids": [],
+          "avg_current_tokens": 0,
+          "avg_old_tokens": 0,
+          "family_counts": {},
+          "tag_counts": {},
+          "examples": []
+        },
+        "current_only_vs_mact": {
+          "count": 7,
+          "ids": [
+            "tabfact-test-2658",
+            "tabfact-test-33",
+            "tabfact-test-8673",
+            "tabfact-test-12022",
+            "tabfact-test-6673",
+            "tabfact-test-9431",
+            "tabfact-test-5093"
+          ],
+          "avg_current_tokens": 2889.8571428571427,
+          "avg_old_tokens": 3091.4285714285716,
+          "family_counts": {
+            "evidence_retention": 7,
+            "risk_level": 7,
+            "deterministic_audit": 2
+          },
+          "tag_counts": {
+            "evidence_retention:expanded_context_block_global_rows": 6,
+            "risk_level:high": 5,
+            "risk_level:medium": 2,
+            "deterministic_audit:TabFact last-row entity order checked deterministically.": 1,
+            "evidence_retention:strict_cell_block_global_rows": 1,
+            "deterministic_audit:TabFact game result score checked deterministically.": 1
+          },
+          "examples": [
+            {
+              "id": "tabfact-test-2658",
+              "question_or_statement": "ask riga be the last place in the competition in the basketball",
+              "current_final_value": "true",
+              "gold_answer": [
+                "true"
+              ],
+              "mechanism_tags": [
+                "deterministic_audit:TabFact last-row entity order checked deterministically.",
+                "evidence_retention:expanded_context_block_global_rows",
+                "risk_level:high"
+              ],
+              "current_tokens": 345,
+              "old_tokens": 345
+            },
+            {
+              "id": "tabfact-test-33",
+              "question_or_statement": "guillaume gillet score 3 time as much as each of the other 2 player in the uefa champion league tournament",
+              "current_final_value": "false",
+              "gold_answer": [
+                "false"
+              ],
+              "mechanism_tags": [
+                "evidence_retention:expanded_context_block_global_rows",
+                "risk_level:medium"
+              ],
+              "current_tokens": 2708,
+              "old_tokens": 2846
+            },
+            {
+              "id": "tabfact-test-8673",
+              "question_or_statement": "the screening complete on 30 june 2006 be start 5 month after the screening that be complete on 4 october 2006",
+              "current_final_value": "false",
+              "gold_answer": [
+                "false"
+              ],
+              "mechanism_tags": [
+                "evidence_retention:expanded_context_block_global_rows",
+                "risk_level:high"
+              ],
+              "current_tokens": 6654,
+              "old_tokens": 6367
+            },
+            {
+              "id": "tabfact-test-12022",
+              "question_or_statement": "model 26.260e and 31.260e have a gcm (kg) technical capacity of 42000",
+              "current_final_value": "true",
+              "gold_answer": [
+                "true"
+              ],
+              "mechanism_tags": [
+                "evidence_retention:strict_cell_block_global_rows",
+                "risk_level:high"
+              ],
+              "current_tokens": 2764,
+              "old_tokens": 4319
+            },
+            {
+              "id": "tabfact-test-6673",
+              "question_or_statement": "binibining pilipinas - tourism do not start not until the year 1989",
+              "current_final_value": "false",
+              "gold_answer": [
+                "false"
+              ],
+              "mechanism_tags": [
+                "evidence_retention:expanded_context_block_global_rows",
+                "risk_level:high"
+              ],
+              "current_tokens": 5356,
+              "old_tokens": 5357
+            },
+            {
+              "id": "tabfact-test-9431",
+              "question_or_statement": "orlando win game 65 with a score of 79 - 92",
+              "current_final_value": "true",
+              "gold_answer": [
+                "true"
+              ],
+              "mechanism_tags": [
+                "deterministic_audit:TabFact game result score checked deterministically.",
+                "evidence_retention:expanded_context_block_global_rows",
+                "risk_level:medium"
+              ],
+              "current_tokens": 408,
+              "old_tokens": 408
+            },
+            {
+              "id": "tabfact-test-5093",
+              "question_or_statement": "ivor bueb score zero point between 1957 and 1959",
+              "current_final_value": "true",
+              "gold_answer": [
+                "true"
+              ],
+              "mechanism_tags": [
+                "evidence_retention:expanded_context_block_global_rows",
+                "risk_level:high"
+              ],
+              "current_tokens": 1994,
+              "old_tokens": 1998
+            }
+          ]
+        },
+        "mact_only": {
+          "count": 2,
+          "ids": [
+            "tabfact-test-3580",
+            "tabfact-test-8276"
+          ],
+          "avg_current_tokens": 2789.0,
+          "avg_old_tokens": 3677.0,
+          "family_counts": {
+            "evidence_retention": 2,
+            "risk_level": 2
+          },
+          "tag_counts": {
+            "evidence_retention:expanded_context_block_global_rows": 2,
+            "risk_level:high": 2
+          },
+          "examples": [
+            {
+              "id": "tabfact-test-3580",
+              "question_or_statement": "over 3 century pass between southwark have the tallest building or structure",
+              "current_final_value": "false",
+              "gold_answer": [
+                "true"
+              ],
+              "mechanism_tags": [
+                "evidence_retention:expanded_context_block_global_rows",
+                "risk_level:high"
+              ],
+              "current_tokens": 2960,
+              "old_tokens": 4751
+            },
+            {
+              "id": "tabfact-test-8276",
+              "question_or_statement": "phyllis nelson be unable to hit the us hot 100 and us dance chart for both i like you , as well as don't stop the train",
+              "current_final_value": "true",
+              "gold_answer": [
+                "false"
+              ],
+              "mechanism_tags": [
+                "evidence_retention:expanded_context_block_global_rows",
+                "risk_level:high"
+              ],
+              "current_tokens": 2618,
+              "old_tokens": 2603
+            }
+          ]
+        }
+      }
+    },
+    "crt": {
+      "rows": 200,
+      "current_correct": 140,
+      "old_correct": 137,
+      "mact_correct": 113,
+      "net_gain_vs_old": 3,
+      "net_gain_vs_mact": 27,
+      "groups": {
+        "gain_vs_old": {
+          "count": 6,
+          "ids": [
+            "crt-265",
+            "crt-82",
+            "crt-574",
+            "crt-295",
+            "crt-228",
+            "crt-682"
+          ],
+          "avg_current_tokens": 6936.0,
+          "avg_old_tokens": 7281.166666666667,
+          "family_counts": {
+            "evidence_retention": 6,
+            "risk_level": 6,
+            "evidence_source": 2,
+            "strong_verification": 2
+          },
+          "tag_counts": {
+            "evidence_retention:expanded_context_block_global_rows": 6,
+            "risk_level:medium": 4,
+            "evidence_source:strong_verification_consensus": 2,
+            "strong_verification:crt_closed_choice_verification": 2,
+            "risk_level:high": 2
+          },
+          "examples": [
+            {
+              "id": "crt-265",
+              "question_or_statement": "What countries experienced the greatest percentage increase in international tourist arrivals from 2010 to 2011?What countries experienced the greatest percentage increase in international tourist arrivals from 2010 to 2011?",
+              "current_final_value": [
+                "uruguay"
+              ],
+              "gold_answer": [
+                "uruguay"
+              ],
+              "mechanism_tags": [
+                "evidence_retention:expanded_context_block_global_rows",
+                "risk_level:medium"
+              ],
+              "current_tokens": 2424,
+              "old_tokens": 5214
+            },
+            {
+              "id": "crt-82",
+              "question_or_statement": "n which year did Andy Wallace achieve his first overall victory in a major endurance race based on the table?",
+              "current_final_value": 1988.0,
+              "gold_answer": [
+                "1988"
+              ],
+              "mechanism_tags": [
+                "evidence_retention:expanded_context_block_global_rows",
+                "risk_level:medium"
+              ],
+              "current_tokens": 2319,
+              "old_tokens": 3578
+            },
+            {
+              "id": "crt-574",
+              "question_or_statement": "Is there a relationship between the length of reign and the country of the monarch? Answer with only 'Yes' or 'No' that is most accurate and nothing else.",
+              "current_final_value": "No",
+              "gold_answer": [
+                "No"
+              ],
+              "mechanism_tags": [
+                "evidence_source:strong_verification_consensus",
+                "strong_verification:crt_closed_choice_verification",
+                "evidence_retention:expanded_context_block_global_rows",
+                "risk_level:high"
+              ],
+              "current_tokens": 17149,
+              "old_tokens": 14609
+            },
+            {
+              "id": "crt-295",
+              "question_or_statement": "How many Prime Ministers of Albania in the table died in office?",
+              "current_final_value": 1,
+              "gold_answer": [
+                "1"
+              ],
+              "mechanism_tags": [
+                "evidence_retention:expanded_context_block_global_rows",
+                "risk_level:medium"
+              ],
+              "current_tokens": 2468,
+              "old_tokens": 2494
+            },
+            {
+              "id": "crt-228",
+              "question_or_statement": "Is there any noticeable relationship between the states chosen for college and the hometowns of the players? Answer with only 'Yes' or 'No' that is most accurate and nothing else.",
+              "current_final_value": "No",
+              "gold_answer": [
+                "No"
+              ],
+              "mechanism_tags": [
+                "evidence_source:strong_verification_consensus",
+                "strong_verification:crt_closed_choice_verification",
+                "evidence_retention:expanded_context_block_global_rows",
+                "risk_level:high"
+              ],
+              "current_tokens": 14929,
+              "old_tokens": 15436
+            },
+            {
+              "id": "crt-682",
+              "question_or_statement": "How many Division 1 teams failed to score in the second round of the 1987-88 Coupe de France?",
+              "current_final_value": 1,
+              "gold_answer": [
+                "1"
+              ],
+              "mechanism_tags": [
+                "evidence_retention:expanded_context_block_global_rows",
+                "risk_level:medium"
+              ],
+              "current_tokens": 2327,
+              "old_tokens": 2356
+            }
+          ]
+        },
+        "harm_vs_old": {
+          "count": 3,
+          "ids": [
+            "crt-243",
+            "crt-696",
+            "crt-257"
+          ],
+          "avg_current_tokens": 16636.666666666668,
+          "avg_old_tokens": 16130.333333333334,
+          "family_counts": {
+            "evidence_source": 3,
+            "strong_verification": 3,
+            "evidence_retention": 3,
+            "risk_level": 3
+          },
+          "tag_counts": {
+            "evidence_source:strong_verification_consensus": 3,
+            "risk_level:high": 3,
+            "evidence_retention:expanded_context_block_global_rows": 2,
+            "strong_verification:crt_closed_choice_verification": 2,
+            "strong_verification:crt_ordered_numeric_verification": 1,
+            "evidence_retention:expanded_context_block_global_rows_global_columns": 1
+          },
+          "examples": [
+            {
+              "id": "crt-243",
+              "question_or_statement": "What is the most common winning margin for teams in the 1930-31 FA Cup?",
+              "current_final_value": "1 goal",
+              "gold_answer": [
+                "2"
+              ],
+              "mechanism_tags": [
+                "evidence_source:strong_verification_consensus",
+                "strong_verification:crt_ordered_numeric_verification",
+                "evidence_retention:expanded_context_block_global_rows",
+                "risk_level:high"
+              ],
+              "current_tokens": 18706,
+              "old_tokens": 17185
+            },
+            {
+              "id": "crt-696",
+              "question_or_statement": "How does the number of awards won by Kristofer Martin compare to those he has been nominated for? Answer with only 'more', 'less' or 'equal' that is most accurate and nothing else.",
+              "current_final_value": "less",
+              "gold_answer": [
+                "more"
+              ],
+              "mechanism_tags": [
+                "evidence_source:strong_verification_consensus",
+                "strong_verification:crt_closed_choice_verification",
+                "evidence_retention:expanded_context_block_global_rows_global_columns",
+                "risk_level:high"
+              ],
+              "current_tokens": 14488,
+              "old_tokens": 14488
+            },
+            {
+              "id": "crt-257",
+              "question_or_statement": "Are justices appointed by Sila María Calderón more likely to have a shorter years until mandatory retirement? Answer with only 'Yes' or 'No' that is most accurate and nothing else.",
+              "current_final_value": "No",
+              "gold_answer": [
+                "Yes"
+              ],
+              "mechanism_tags": [
+                "evidence_source:strong_verification_consensus",
+                "strong_verification:crt_closed_choice_verification",
+                "evidence_retention:expanded_context_block_global_rows",
+                "risk_level:high"
+              ],
+              "current_tokens": 16716,
+              "old_tokens": 16718
+            }
+          ]
+        },
+        "current_only_vs_mact": {
+          "count": 40,
+          "ids": [
+            "crt-601",
+            "crt-419",
+            "crt-541",
+            "crt-613",
+            "crt-313",
+            "crt-59",
+            "crt-530",
+            "crt-519",
+            "crt-104",
+            "crt-614",
+            "crt-355",
+            "crt-678",
+            "crt-156",
+            "crt-434",
+            "crt-687",
+            "crt-617",
+            "crt-297",
+            "crt-461",
+            "crt-427",
+            "crt-650",
+            "crt-116",
+            "crt-532",
+            "crt-300",
+            "crt-248",
+            "crt-154",
+            "crt-124",
+            "crt-722",
+            "crt-276",
+            "crt-466",
+            "crt-82",
+            "crt-329",
+            "crt-453",
+            "crt-485",
+            "crt-284",
+            "crt-574",
+            "crt-558",
+            "crt-440",
+            "crt-295",
+            "crt-228",
+            "crt-217"
+          ],
+          "avg_current_tokens": 12189.0,
+          "avg_old_tokens": 12117.55,
+          "family_counts": {
+            "risk_level": 40,
+            "evidence_retention": 37,
+            "evidence_source": 33,
+            "strong_verification": 33,
+            "deterministic_audit": 8
+          },
+          "tag_counts": {
+            "evidence_source:strong_verification_consensus": 33,
+            "risk_level:high": 33,
+            "evidence_retention:expanded_context_block_global_rows": 32,
+            "strong_verification:crt_closed_choice_verification": 26,
+            "evidence_retention:expanded_context_block_global_rows_global_columns": 5,
+            "risk_level:medium": 5,
+            "strong_verification:crt_ordered_numeric_verification": 3,
+            "strong_verification:risk_level:high": 3,
+            "deterministic_audit:CRT medal probability computed deterministically.": 2,
+            "risk_level:light": 2,
+            "deterministic_audit:CRT medal ratio computed deterministically.": 2,
+            "deterministic_audit:CRT owner percentage computed deterministically.": 1,
+            "strong_verification:crt_trend_or_correlation_verification": 1,
+            "deterministic_audit:CRT repeated named entity checked deterministically.": 1,
+            "deterministic_audit:CRT majority medal group checked deterministically.": 1,
+            "deterministic_audit:CRT diverse content beyond excluded theme checked deterministically.": 1
+          },
+          "examples": [
+            {
+              "id": "crt-601",
+              "question_or_statement": "How does the number of fatalities compare between accidents that occurred during training flights versus those that occurred during take-offs or landings? Answer with only 'more', 'less' or 'equal' that is most accurate and nothing else.",
+              "current_final_value": "less",
+              "gold_answer": [
+                "less"
+              ],
+              "mechanism_tags": [
+                "evidence_source:strong_verification_consensus",
+                "strong_verification:crt_closed_choice_verification",
+                "evidence_retention:expanded_context_block_global_rows_global_columns",
+                "risk_level:high"
+              ],
+              "current_tokens": 25587,
+              "old_tokens": 22840
+            },
+            {
+              "id": "crt-419",
+              "question_or_statement": "Is religious or spiritual content a popular format among radio stations in Fargo-Moorhead? Answer with only 'Yes' or 'No' that is most accurate and nothing else.",
+              "current_final_value": "No",
+              "gold_answer": [
+                "No"
+              ],
+              "mechanism_tags": [
+                "evidence_source:strong_verification_consensus",
+                "strong_verification:crt_closed_choice_verification",
+                "evidence_retention:expanded_context_block_global_rows",
+                "risk_level:high"
+              ],
+              "current_tokens": 11612,
+              "old_tokens": 11612
+            },
+            {
+              "id": "crt-541",
+              "question_or_statement": "Are there any films that were released on the same date but belong to different series? Answer with only 'Yes' or 'No' that is most accurate and nothing else.",
+              "current_final_value": "No",
+              "gold_answer": [
+                "No"
+              ],
+              "mechanism_tags": [
+                "evidence_source:strong_verification_consensus",
+                "strong_verification:crt_closed_choice_verification",
+                "evidence_retention:expanded_context_block_global_rows",
+                "risk_level:high"
+              ],
+              "current_tokens": 14451,
+              "old_tokens": 14451
+            },
+            {
+              "id": "crt-613",
+              "question_or_statement": "How did the number of points scored by Derek Daly vary according to the different teams? Answer with only 'Increase', 'Decrease' or 'Remain stable' that is most accurate and nothing else.",
+              "current_final_value": "Increase",
+              "gold_answer": [
+                "Increase"
+              ],
+              "mechanism_tags": [
+                "evidence_source:strong_verification_consensus",
+                "strong_verification:crt_ordered_numeric_verification",
+                "evidence_retention:expanded_context_block_global_rows",
+                "risk_level:high"
+              ],
+              "current_tokens": 16070,
+              "old_tokens": 16133
+            },
+            {
+              "id": "crt-313",
+              "question_or_statement": "How does the Miami Dolphins' record in the first half of the season compare to their record in the second half? Answer with only 'better', 'worse' or 'equal' that is most accurate and nothing else.",
+              "current_final_value": "worse",
+              "gold_answer": [
+                "worse"
+              ],
+              "mechanism_tags": [
+                "evidence_source:strong_verification_consensus",
+                "strong_verification:crt_closed_choice_verification",
+                "evidence_retention:expanded_context_block_global_rows_global_columns",
+                "risk_level:high"
+              ],
+              "current_tokens": 12523,
+              "old_tokens": 12506
+            },
+            {
+              "id": "crt-59",
+              "question_or_statement": "Are there any outliers in the data that suggest a significant difference in the value of a country's currency compared to others in the region? Answer with only 'Yes' or 'No' that is most accurate and nothing else.",
+              "current_final_value": "Yes",
+              "gold_answer": [
+                "Yes"
+              ],
+              "mechanism_tags": [
+                "evidence_source:strong_verification_consensus",
+                "strong_verification:crt_closed_choice_verification",
+                "evidence_retention:expanded_context_block_global_rows",
+                "risk_level:high"
+              ],
+              "current_tokens": 16538,
+              "old_tokens": 18561
+            },
+            {
+              "id": "crt-530",
+              "question_or_statement": "What percentage of radio stations in Melville are owned by Harvard Broadcasting",
+              "current_final_value": 0.4,
+              "gold_answer": [
+                "0.4"
+              ],
+              "mechanism_tags": [
+                "deterministic_audit:CRT owner percentage computed deterministically.",
+                "evidence_retention:expanded_context_block_global_rows",
+                "risk_level:medium"
+              ],
+              "current_tokens": 368,
+              "old_tokens": 368
+            },
+            {
+              "id": "crt-519",
+              "question_or_statement": "What is the correlation coefficient between earnings and wins for the top 5 players in the 1985 PGA tour?",
+              "current_final_value": 0.9775,
+              "gold_answer": [
+                "0.9775"
+              ],
+              "mechanism_tags": [
+                "evidence_source:strong_verification_consensus",
+                "strong_verification:crt_trend_or_correlation_verification",
+                "evidence_retention:expanded_context_block_global_rows",
+                "risk_level:high"
+              ],
+              "current_tokens": 10568,
+              "old_tokens": 10550
+            },
+            {
+              "id": "crt-104",
+              "question_or_statement": "What is the probability that a randomly chosen medalist in the championships is from the Netherlands?",
+              "current_final_value": "33.3%",
+              "gold_answer": [
+                "33.3%"
+              ],
+              "mechanism_tags": [
+                "deterministic_audit:CRT medal probability computed deterministically.",
+                "risk_level:light"
+              ],
+              "current_tokens": 352,
+              "old_tokens": 352
+            },
+            {
+              "id": "crt-614",
+              "question_or_statement": "Is there a difference in the distribution of air dates between the first and second halves of the season? Answer with only 'Yes' or 'No' that is most accurate and nothing else.",
+              "current_final_value": "Yes",
+              "gold_answer": [
+                "Yes"
+              ],
+              "mechanism_tags": [
+                "evidence_source:strong_verification_consensus",
+                "strong_verification:crt_closed_choice_verification",
+                "evidence_retention:expanded_context_block_global_rows",
+                "risk_level:high"
+              ],
+              "current_tokens": 15807,
+              "old_tokens": 15806
+            },
+            {
+              "id": "crt-355",
+              "question_or_statement": "What is the relationship between the home team's performance and the size of the crowd in the 1969 VFL season? Answer with only 'Positive', 'Negative' or 'No' above that is most accurate and nothing else.",
+              "current_final_value": "No",
+              "gold_answer": [
+                "No"
+              ],
+              "mechanism_tags": [
+                "evidence_source:strong_verification_consensus",
+                "strong_verification:risk_level:high",
+                "evidence_retention:expanded_context_block_global_rows_global_columns",
+                "risk_level:high"
+              ],
+              "current_tokens": 19376,
+              "old_tokens": 17173
+            },
+            {
+              "id": "crt-678",
+              "question_or_statement": "Are there any schools in the eastern states collegiate hockey league with a founding year significantly earlier or later than the other schools in their conference? Answer with only 'Yes' or 'No' that is most accurate and nothing else.",
+              "current_final_value": "Yes",
+              "gold_answer": [
+                "Yes"
+              ],
+              "mechanism_tags": [
+                "evidence_source:strong_verification_consensus",
+                "strong_verification:crt_closed_choice_verification",
+                "evidence_retention:expanded_context_block_global_rows",
+                "risk_level:high"
+              ],
+              "current_tokens": 12158,
+              "old_tokens": 12158
+            },
+            {
+              "id": "crt-156",
+              "question_or_statement": "How does Christian Pescatori's performance in GT1 compare to his performance in LMP900? Answer with only 'better', 'worse' or 'equal' that is most accurate and nothing else.",
+              "current_final_value": "worse",
+              "gold_answer": [
+                "worse"
+              ],
+              "mechanism_tags": [
+                "evidence_source:strong_verification_consensus",
+                "strong_verification:crt_closed_choice_verification",
+                "evidence_retention:expanded_context_block_global_rows_global_columns",
+                "risk_level:high"
+              ],
+              "current_tokens": 14389,
+              "old_tokens": 14389
+            },
+            {
+              "id": "crt-434",
+              "question_or_statement": "Can a causal relationship be drawn between a character's duration on the show and their number of episodes? Answer with only 'Yes' or 'No' that is most accurate and nothing else.",
+              "current_final_value": "No",
+              "gold_answer": [
+                "No"
+              ],
+              "mechanism_tags": [
+                "evidence_source:strong_verification_consensus",
+                "strong_verification:crt_closed_choice_verification",
+                "evidence_retention:expanded_context_block_global_rows",
+                "risk_level:high"
+              ],
+              "current_tokens": 17397,
+              "old_tokens": 17723
+            },
+            {
+              "id": "crt-687",
+              "question_or_statement": "What is the ratio of silver to gold medals among the nations that earned a gold medal?",
+              "current_final_value": "2:6",
+              "gold_answer": [
+                "2:6"
+              ],
+              "mechanism_tags": [
+                "deterministic_audit:CRT medal ratio computed deterministically.",
+                "risk_level:medium"
+              ],
+              "current_tokens": 345,
+              "old_tokens": 345
+            }
+          ]
+        },
+        "mact_only": {
+          "count": 13,
+          "ids": [
+            "crt-240",
+            "crt-234",
+            "crt-243",
+            "crt-696",
+            "crt-257",
+            "crt-254",
+            "crt-180",
+            "crt-316",
+            "crt-591",
+            "crt-703",
+            "crt-716",
+            "crt-9",
+            "crt-402"
+          ],
+          "avg_current_tokens": 15705.076923076924,
+          "avg_old_tokens": 15528.615384615385,
+          "family_counts": {
+            "risk_level": 13,
+            "evidence_source": 12,
+            "strong_verification": 12,
+            "evidence_retention": 12
+          },
+          "tag_counts": {
+            "evidence_source:strong_verification_consensus": 12,
+            "risk_level:high": 12,
+            "strong_verification:crt_closed_choice_verification": 9,
+            "evidence_retention:expanded_context_block_global_rows": 7,
+            "strong_verification:crt_ordered_numeric_verification": 3,
+            "evidence_retention:expanded_context_block_global_rows_global_columns": 3,
+            "evidence_retention:expanded_context_block_global_columns": 2,
+            "risk_level:medium": 1
+          },
+          "examples": [
+            {
+              "id": "crt-240",
+              "question_or_statement": "What is the maximum points difference between the 2008 A season and the 2009 C season for the teams in the Mexican Primera División season?",
+              "current_final_value": 13,
+              "gold_answer": [
+                "15"
+              ],
+              "mechanism_tags": [
+                "evidence_source:strong_verification_consensus",
+                "strong_verification:crt_ordered_numeric_verification",
+                "evidence_retention:expanded_context_block_global_columns",
+                "risk_level:high"
+              ],
+              "current_tokens": 21301,
+              "old_tokens": 21068
+            },
+            {
+              "id": "crt-234",
+              "question_or_statement": "Are there any countries in the Matariki Network of Universities that have a higher average World Rank by the WUR, ARWU or QS than the members from the USA? Answer with only 'Yes' or 'No' that is most accurate and nothing else.",
+              "current_final_value": "No",
+              "gold_answer": [
+                "Yes"
+              ],
+              "mechanism_tags": [
+                "evidence_source:strong_verification_consensus",
+                "strong_verification:crt_closed_choice_verification",
+                "evidence_retention:expanded_context_block_global_rows",
+                "risk_level:high"
+              ],
+              "current_tokens": 17716,
+              "old_tokens": 17669
+            },
+            {
+              "id": "crt-243",
+              "question_or_statement": "What is the most common winning margin for teams in the 1930-31 FA Cup?",
+              "current_final_value": "1 goal",
+              "gold_answer": [
+                "2"
+              ],
+              "mechanism_tags": [
+                "evidence_source:strong_verification_consensus",
+                "strong_verification:crt_ordered_numeric_verification",
+                "evidence_retention:expanded_context_block_global_rows",
+                "risk_level:high"
+              ],
+              "current_tokens": 18706,
+              "old_tokens": 17185
+            },
+            {
+              "id": "crt-696",
+              "question_or_statement": "How does the number of awards won by Kristofer Martin compare to those he has been nominated for? Answer with only 'more', 'less' or 'equal' that is most accurate and nothing else.",
+              "current_final_value": "less",
+              "gold_answer": [
+                "more"
+              ],
+              "mechanism_tags": [
+                "evidence_source:strong_verification_consensus",
+                "strong_verification:crt_closed_choice_verification",
+                "evidence_retention:expanded_context_block_global_rows_global_columns",
+                "risk_level:high"
+              ],
+              "current_tokens": 14488,
+              "old_tokens": 14488
+            },
+            {
+              "id": "crt-257",
+              "question_or_statement": "Are justices appointed by Sila María Calderón more likely to have a shorter years until mandatory retirement? Answer with only 'Yes' or 'No' that is most accurate and nothing else.",
+              "current_final_value": "No",
+              "gold_answer": [
+                "Yes"
+              ],
+              "mechanism_tags": [
+                "evidence_source:strong_verification_consensus",
+                "strong_verification:crt_closed_choice_verification",
+                "evidence_retention:expanded_context_block_global_rows",
+                "risk_level:high"
+              ],
+              "current_tokens": 16716,
+              "old_tokens": 16718
+            },
+            {
+              "id": "crt-254",
+              "question_or_statement": "Is there any evidence of an increase/decrease in Krung Thai Bank's performance from 2004-2005 and from 2008-2009? Answer with only 'Yes' or 'No' that is most accurate and nothing else.",
+              "current_final_value": "No",
+              "gold_answer": [
+                "yes"
+              ],
+              "mechanism_tags": [
+                "evidence_source:strong_verification_consensus",
+                "strong_verification:crt_closed_choice_verification",
+                "evidence_retention:expanded_context_block_global_rows_global_columns",
+                "risk_level:high"
+              ],
+              "current_tokens": 27744,
+              "old_tokens": 27276
+            },
+            {
+              "id": "crt-180",
+              "question_or_statement": "What is the ratio of stumpings to catches for West Indies test wicket-keepers?",
+              "current_final_value": 0.13675213675213677,
+              "gold_answer": [
+                "16:117"
+              ],
+              "mechanism_tags": [
+                "risk_level:medium"
+              ],
+              "current_tokens": 2371,
+              "old_tokens": 2371
+            },
+            {
+              "id": "crt-316",
+              "question_or_statement": "Are there any Superfund sites in Mississippi that have been proposed and listed in the same year? Answer with only 'Yes' or 'No' that is most accurate and nothing else.",
+              "current_final_value": "No",
+              "gold_answer": [
+                "Yes"
+              ],
+              "mechanism_tags": [
+                "evidence_source:strong_verification_consensus",
+                "strong_verification:crt_closed_choice_verification",
+                "evidence_retention:expanded_context_block_global_rows",
+                "risk_level:high"
+              ],
+              "current_tokens": 14476,
+              "old_tokens": 14476
+            },
+            {
+              "id": "crt-591",
+              "question_or_statement": "Are the three Italian origin aircrafts distributed evenly among the categories they belong to? Answer with only 'Yes' or 'No' that is most accurate and nothing else.",
+              "current_final_value": "No",
+              "gold_answer": [
+                "Yes"
+              ],
+              "mechanism_tags": [
+                "evidence_source:strong_verification_consensus",
+                "strong_verification:crt_closed_choice_verification",
+                "evidence_retention:expanded_context_block_global_rows",
+                "risk_level:high"
+              ],
+              "current_tokens": 10500,
+              "old_tokens": 10500
+            },
+            {
+              "id": "crt-703",
+              "question_or_statement": "Does the release date of the paid download format in each region vary from the other formats? Answer with only 'Yes' or 'No' that is most accurate and nothing else.",
+              "current_final_value": "Yes",
+              "gold_answer": [
+                "No"
+              ],
+              "mechanism_tags": [
+                "evidence_source:strong_verification_consensus",
+                "strong_verification:crt_closed_choice_verification",
+                "evidence_retention:expanded_context_block_global_rows",
+                "risk_level:high"
+              ],
+              "current_tokens": 10447,
+              "old_tokens": 10447
+            },
+            {
+              "id": "crt-716",
+              "question_or_statement": "Does the home-away performance of ŠK Slovan Bratislava differ across different competitions? Answer with only 'Yes' or 'No' that is most accurate and nothing else.",
+              "current_final_value": "No",
+              "gold_answer": [
+                "Yes"
+              ],
+              "mechanism_tags": [
+                "evidence_source:strong_verification_consensus",
+                "strong_verification:crt_closed_choice_verification",
+                "evidence_retention:expanded_context_block_global_rows_global_columns",
+                "risk_level:high"
+              ],
+              "current_tokens": 14029,
+              "old_tokens": 14029
+            },
+            {
+              "id": "crt-9",
+              "question_or_statement": "Did any drivers who retired due to an accident complete more laps than those who retired for other reasons? Answer with only 'Yes' or 'No' that is most accurate and nothing else.",
+              "current_final_value": "No",
+              "gold_answer": [
+                "Yes"
+              ],
+              "mechanism_tags": [
+                "evidence_source:strong_verification_consensus",
+                "strong_verification:crt_closed_choice_verification",
+                "evidence_retention:expanded_context_block_global_rows",
+                "risk_level:high"
+              ],
+              "current_tokens": 19239,
+              "old_tokens": 19212
+            },
+            {
+              "id": "crt-402",
+              "question_or_statement": "Which community had the largest increase in population between 2006 and 2011, in terms of absolute numbers?",
+              "current_final_value": "pelican narrows",
+              "gold_answer": [
+                "la loche"
+              ],
+              "mechanism_tags": [
+                "evidence_source:strong_verification_consensus",
+                "strong_verification:crt_ordered_numeric_verification",
+                "evidence_retention:expanded_context_block_global_columns",
+                "risk_level:high"
+              ],
+              "current_tokens": 16433,
+              "old_tokens": 16433
+            }
+          ]
+        }
+      }
+    }
+  }
+}
