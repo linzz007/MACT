@@ -1,0 +1,766 @@
+{
+  "run_dir": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305",
+  "stage": "P4a current new-seed error inspection",
+  "datasets": {
+    "wtq": {
+      "rows": 50,
+      "correct": 37,
+      "wrong": 13,
+      "wrong_ids": [
+        "nu-3537",
+        "nu-2572",
+        "nu-1108",
+        "nu-1104",
+        "nu-2825",
+        "nu-3905",
+        "nu-3317",
+        "nu-3990",
+        "nu-1478",
+        "nu-66",
+        "nu-3320",
+        "nu-1825",
+        "nu-1775"
+      ],
+      "wrong_risk_distribution": {
+        "high": 13
+      },
+      "wrong_route_distribution": {
+        "COMPLEX": 10,
+        "SIMPLE": 3
+      },
+      "wrong_difficulty_distribution": {
+        "easy": 4,
+        "medium": 9
+      },
+      "wrong_deterministic_shortcut_reasons": {
+        "WTQ row-major listed-after value selected deterministically.": 1,
+        "unknown": 12
+      },
+      "wrong_examples": [
+        {
+          "id": "nu-3537",
+          "table_id": "csv/203-csv/284.csv",
+          "question": "how many years did the true american club make the playoff?",
+          "gold": [
+            "1"
+          ],
+          "prediction_for_em": 2,
+          "final_answer": "2",
+          "final_value": 2,
+          "exec_error": null,
+          "route_type": "COMPLEX",
+          "difficulty_level": "medium",
+          "risk_level": "high",
+          "deterministic_shortcut_reason": "",
+          "simple_lookup_success": false,
+          "avg_context_hint": null,
+          "elapsed_seconds_total": 17.013442295021378,
+          "total_tokens": 6569
+        },
+        {
+          "id": "nu-2572",
+          "table_id": "csv/203-csv/453.csv",
+          "question": "how many cars had a maximum velocity of at least 100 km/h?",
+          "gold": [
+            "17"
+          ],
+          "prediction_for_em": "1",
+          "final_answer": "1",
+          "final_value": "1",
+          "exec_error": null,
+          "route_type": "COMPLEX",
+          "difficulty_level": "medium",
+          "risk_level": "high",
+          "deterministic_shortcut_reason": "",
+          "simple_lookup_success": false,
+          "avg_context_hint": null,
+          "elapsed_seconds_total": 53.31162423500791,
+          "total_tokens": 16477
+        },
+        {
+          "id": "nu-1108",
+          "table_id": "csv/203-csv/326.csv",
+          "question": "who came first john f. williams or william a. mann?",
+          "gold": [
+            "William A. Mann"
+          ],
+          "prediction_for_em": "MG William A. Mann",
+          "final_answer": "MG William A. Mann",
+          "final_value": "MG William A. Mann",
+          "exec_error": null,
+          "route_type": "COMPLEX",
+          "difficulty_level": "medium",
+          "risk_level": "high",
+          "deterministic_shortcut_reason": "",
+          "simple_lookup_success": false,
+          "avg_context_hint": null,
+          "elapsed_seconds_total": 22.312268914014567,
+          "total_tokens": 7839
+        },
+        {
+          "id": "nu-1104",
+          "table_id": "csv/203-csv/87.csv",
+          "question": "how many robots are from the united states?",
+          "gold": [
+            "2"
+          ],
+          "prediction_for_em": 1,
+          "final_answer": "1",
+          "final_value": 1,
+          "exec_error": null,
+          "route_type": "COMPLEX",
+          "difficulty_level": "medium",
+          "risk_level": "high",
+          "deterministic_shortcut_reason": "",
+          "simple_lookup_success": false,
+          "avg_context_hint": null,
+          "elapsed_seconds_total": 10.395256938994862,
+          "total_tokens": 5852
+        },
+        {
+          "id": "nu-2825",
+          "table_id": "csv/204-csv/656.csv",
+          "question": "what is the number of winners in the community division?",
+          "gold": [
+            "8"
+          ],
+          "prediction_for_em": "7",
+          "final_answer": "7",
+          "final_value": "7",
+          "exec_error": null,
+          "route_type": "SIMPLE",
+          "difficulty_level": "easy",
+          "risk_level": "high",
+          "deterministic_shortcut_reason": "",
+          "simple_lookup_success": false,
+          "avg_context_hint": null,
+          "elapsed_seconds_total": 6.8567024760413915,
+          "total_tokens": 4049
+        },
+        {
+          "id": "nu-3905",
+          "table_id": "csv/203-csv/792.csv",
+          "question": "who is the last person listed under slalom?",
+          "gold": [
+            "Ludwig Wolf"
+          ],
+          "prediction_for_em": "Ludwig Wolf Germany (GER)",
+          "final_answer": "Ludwig Wolf Germany (GER)",
+          "final_value": "Ludwig Wolf Germany (GER)",
+          "exec_error": null,
+          "route_type": "COMPLEX",
+          "difficulty_level": "easy",
+          "risk_level": "high",
+          "deterministic_shortcut_reason": "",
+          "simple_lookup_success": false,
+          "avg_context_hint": null,
+          "elapsed_seconds_total": 12.612351160030812,
+          "total_tokens": 6300
+        },
+        {
+          "id": "nu-3317",
+          "table_id": "csv/203-csv/329.csv",
+          "question": "total number of sponsors?",
+          "gold": [
+            "13"
+          ],
+          "prediction_for_em": 21,
+          "final_answer": "21",
+          "final_value": 21,
+          "exec_error": null,
+          "route_type": "COMPLEX",
+          "difficulty_level": "medium",
+          "risk_level": "high",
+          "deterministic_shortcut_reason": "",
+          "simple_lookup_success": false,
+          "avg_context_hint": null,
+          "elapsed_seconds_total": 14.52695369697176,
+          "total_tokens": 5510
+        },
+        {
+          "id": "nu-3990",
+          "table_id": "csv/204-csv/5.csv",
+          "question": "which experiment number came directly before felix?",
+          "gold": [
+            "009"
+          ],
+          "prediction_for_em": "Pop",
+          "final_answer": "Pop",
+          "final_value": "Pop",
+          "exec_error": null,
+          "route_type": "COMPLEX",
+          "difficulty_level": "medium",
+          "risk_level": "high",
+          "deterministic_shortcut_reason": "",
+          "simple_lookup_success": false,
+          "avg_context_hint": null,
+          "elapsed_seconds_total": 20.23216027696617,
+          "total_tokens": 10654
+        },
+        {
+          "id": "nu-1478",
+          "table_id": "csv/204-csv/393.csv",
+          "question": "what is the number of times a game went into overtime between the eagles and giants?",
+          "gold": [
+            "2"
+          ],
+          "prediction_for_em": 0,
+          "final_answer": "0",
+          "final_value": 0,
+          "exec_error": null,
+          "route_type": "COMPLEX",
+          "difficulty_level": "medium",
+          "risk_level": "high",
+          "deterministic_shortcut_reason": "",
+          "simple_lookup_success": false,
+          "avg_context_hint": null,
+          "elapsed_seconds_total": 27.967254469986074,
+          "total_tokens": 8084
+        },
+        {
+          "id": "nu-66",
+          "table_id": "csv/203-csv/714.csv",
+          "question": "what date is next listed after june 14, 2010.",
+          "gold": [
+            "December 6, 2010"
+          ],
+          "prediction_for_em": "September 6, 2010",
+          "final_answer": "September 6, 2010",
+          "final_value": "September 6, 2010",
+          "exec_error": null,
+          "route_type": "SIMPLE",
+          "difficulty_level": "easy",
+          "risk_level": "high",
+          "deterministic_shortcut_reason": "",
+          "simple_lookup_success": false,
+          "avg_context_hint": null,
+          "elapsed_seconds_total": 6.263322077982593,
+          "total_tokens": 4026
+        },
+        {
+          "id": "nu-3320",
+          "table_id": "csv/203-csv/0.csv",
+          "question": "which person retired injured after three attempts in their event?",
+          "gold": [
+            "Yossef Romano"
+          ],
+          "prediction_for_em": "Esther Shahamorov",
+          "final_answer": "Esther Shahamorov",
+          "final_value": "Esther Shahamorov",
+          "exec_error": null,
+          "route_type": "COMPLEX",
+          "difficulty_level": "medium",
+          "risk_level": "high",
+          "deterministic_shortcut_reason": "",
+          "simple_lookup_success": false,
+          "avg_context_hint": null,
+          "elapsed_seconds_total": 42.42505770601565,
+          "total_tokens": 12293
+        },
+        {
+          "id": "nu-1825",
+          "table_id": "csv/204-csv/67.csv",
+          "question": "what is the next stadium listed after parc des princes?",
+          "gold": [
+            "Stade Félix Bollaert"
+          ],
+          "prediction_for_em": 48712.0,
+          "final_answer": "48712.0",
+          "final_value": 48712.0,
+          "exec_error": null,
+          "route_type": "SIMPLE",
+          "difficulty_level": "easy",
+          "risk_level": "high",
+          "deterministic_shortcut_reason": "WTQ row-major listed-after value selected deterministically.",
+          "simple_lookup_success": false,
+          "avg_context_hint": null,
+          "elapsed_seconds_total": 12.796140917984303,
+          "total_tokens": 5303
+        }
+      ]
+    },
+    "tabfact": {
+      "rows": 50,
+      "correct": 42,
+      "wrong": 8,
+      "wrong_ids": [
+        "tabfact-test-7551",
+        "tabfact-test-7952",
+        "tabfact-test-11953",
+        "tabfact-test-5024",
+        "tabfact-test-3629",
+        "tabfact-test-5316",
+        "tabfact-test-11907",
+        "tabfact-test-5704"
+      ],
+      "wrong_risk_distribution": {
+        "high": 4,
+        "medium": 4
+      },
+      "wrong_route_distribution": {
+        "COMPLEX": 8
+      },
+      "wrong_difficulty_distribution": {
+        "medium": 8
+      },
+      "wrong_deterministic_shortcut_reasons": {
+        "TabFact entity attribute row checked deterministically.": 2,
+        "unknown": 6
+      },
+      "wrong_examples": [
+        {
+          "id": "tabfact-test-7551",
+          "table_id": "2-12586672-1.html.csv",
+          "question": "the only player who be not from the united state be from scotland",
+          "gold": [
+            "true"
+          ],
+          "prediction_for_em": "false",
+          "final_answer": "false",
+          "final_value": "false",
+          "exec_error": null,
+          "route_type": "COMPLEX",
+          "difficulty_level": "medium",
+          "risk_level": "high",
+          "deterministic_shortcut_reason": "",
+          "simple_lookup_success": false,
+          "avg_context_hint": "1937 masters tournament",
+          "elapsed_seconds_total": 1.6030188580043614,
+          "total_tokens": 654
+        },
+        {
+          "id": "tabfact-test-7952",
+          "table_id": "2-18726561-5.html.csv",
+          "question": "chelsea be the home team when crystal palace be the away team and norwich city be the home team when bradford city be the away team",
+          "gold": [
+            "true"
+          ],
+          "prediction_for_em": "false",
+          "final_answer": "false",
+          "final_value": "false",
+          "exec_error": null,
+          "route_type": "COMPLEX",
+          "difficulty_level": "medium",
+          "risk_level": "high",
+          "deterministic_shortcut_reason": "TabFact entity attribute row checked deterministically.",
+          "simple_lookup_success": false,
+          "avg_context_hint": "1975 - 76 fa cup",
+          "elapsed_seconds_total": 1.210671627020929,
+          "total_tokens": 378
+        },
+        {
+          "id": "tabfact-test-11953",
+          "table_id": "1-184334-2.html.csv",
+          "question": "the santa mesa district have a population of 99993 in 2010",
+          "gold": [
+            "true"
+          ],
+          "prediction_for_em": "false",
+          "final_answer": "false",
+          "final_value": "false",
+          "exec_error": null,
+          "route_type": "COMPLEX",
+          "difficulty_level": "medium",
+          "risk_level": "high",
+          "deterministic_shortcut_reason": "",
+          "simple_lookup_success": false,
+          "avg_context_hint": "manila",
+          "elapsed_seconds_total": 8.939228467992507,
+          "total_tokens": 2364
+        },
+        {
+          "id": "tabfact-test-5024",
+          "table_id": "2-1140105-6.html.csv",
+          "question": "the constructor be lotus - climax for 11 of the 20 one race",
+          "gold": [
+            "true"
+          ],
+          "prediction_for_em": "false",
+          "final_answer": "false",
+          "final_value": "false",
+          "exec_error": null,
+          "route_type": "COMPLEX",
+          "difficulty_level": "medium",
+          "risk_level": "medium",
+          "deterministic_shortcut_reason": "",
+          "simple_lookup_success": false,
+          "avg_context_hint": "1961 formula one season",
+          "elapsed_seconds_total": 15.548069165961351,
+          "total_tokens": 2837
+        },
+        {
+          "id": "tabfact-test-3629",
+          "table_id": "2-11138928-1.html.csv",
+          "question": "giorgio zampori finish 3rd 3 time",
+          "gold": [
+            "true"
+          ],
+          "prediction_for_em": "false",
+          "final_answer": "false",
+          "final_value": "false",
+          "exec_error": null,
+          "route_type": "COMPLEX",
+          "difficulty_level": "medium",
+          "risk_level": "medium",
+          "deterministic_shortcut_reason": "",
+          "simple_lookup_success": false,
+          "avg_context_hint": "giorgio zampori",
+          "elapsed_seconds_total": 8.31497882498661,
+          "total_tokens": 2181
+        },
+        {
+          "id": "tabfact-test-5316",
+          "table_id": "2-17751797-2.html.csv",
+          "question": "8 team score zero point",
+          "gold": [
+            "true"
+          ],
+          "prediction_for_em": "false",
+          "final_answer": "false",
+          "final_value": "false",
+          "exec_error": null,
+          "route_type": "COMPLEX",
+          "difficulty_level": "medium",
+          "risk_level": "medium",
+          "deterministic_shortcut_reason": "",
+          "simple_lookup_success": false,
+          "avg_context_hint": "1990 - 91 fa cup",
+          "elapsed_seconds_total": 11.144687473017257,
+          "total_tokens": 3306
+        },
+        {
+          "id": "tabfact-test-11907",
+          "table_id": "2-1804821-1.html.csv",
+          "question": "two shortswords be the external weapon with a falcon shield animal",
+          "gold": [
+            "true"
+          ],
+          "prediction_for_em": "false",
+          "final_answer": "false",
+          "final_value": "false",
+          "exec_error": null,
+          "route_type": "COMPLEX",
+          "difficulty_level": "medium",
+          "risk_level": "medium",
+          "deterministic_shortcut_reason": "TabFact entity attribute row checked deterministically.",
+          "simple_lookup_success": false,
+          "avg_context_hint": "king arthur and the knights of justice",
+          "elapsed_seconds_total": 1.0864132520509884,
+          "total_tokens": 341
+        },
+        {
+          "id": "tabfact-test-5704",
+          "table_id": "2-15278857-2.html.csv",
+          "question": "the lowest average be 0.33 lower than the highest average",
+          "gold": [
+            "true"
+          ],
+          "prediction_for_em": "false",
+          "final_answer": "false",
+          "final_value": "false",
+          "exec_error": null,
+          "route_type": "COMPLEX",
+          "difficulty_level": "medium",
+          "risk_level": "high",
+          "deterministic_shortcut_reason": "",
+          "simple_lookup_success": false,
+          "avg_context_hint": "list of bradford city a.f.c. records and statistics",
+          "elapsed_seconds_total": 12.824335824989248,
+          "total_tokens": 3388
+        }
+      ]
+    },
+    "crt": {
+      "rows": 50,
+      "correct": 21,
+      "wrong": 29,
+      "wrong_ids": [
+        "crt-188",
+        "crt-287",
+        "crt-415",
+        "crt-463",
+        "crt-298",
+        "crt-242",
+        "crt-704",
+        "crt-158",
+        "crt-359",
+        "crt-232",
+        "crt-306",
+        "crt-68",
+        "crt-291",
+        "crt-470",
+        "crt-299",
+        "crt-35",
+        "crt-653",
+        "crt-105",
+        "crt-223",
+        "crt-308",
+        "crt-363",
+        "crt-286",
+        "crt-663",
+        "crt-141",
+        "crt-231",
+        "crt-597",
+        "crt-428",
+        "crt-61",
+        "crt-702"
+      ],
+      "wrong_risk_distribution": {
+        "high": 14,
+        "medium": 15
+      },
+      "wrong_route_distribution": {
+        "COMPLEX": 29
+      },
+      "wrong_difficulty_distribution": {
+        "hard": 1,
+        "medium": 28
+      },
+      "wrong_deterministic_shortcut_reasons": {
+        "unknown": 29
+      },
+      "wrong_examples": [
+        {
+          "id": "crt-188",
+          "table_id": "1-2655016-4.html.csv",
+          "question": "What is the average gap in days between the original air date of episodes?",
+          "gold": [
+            "21"
+          ],
+          "prediction_for_em": 19.0,
+          "final_answer": "19.0",
+          "final_value": 19.0,
+          "exec_error": null,
+          "route_type": "COMPLEX",
+          "difficulty_level": "medium",
+          "risk_level": "medium",
+          "deterministic_shortcut_reason": "",
+          "simple_lookup_success": false,
+          "avg_context_hint": "list of all that episodes",
+          "elapsed_seconds_total": 11.436846288968809,
+          "total_tokens": 2226
+        },
+        {
+          "id": "crt-287",
+          "table_id": "2-12450336-19.html.csv",
+          "question": "Did any teams in the 2008 - 09 UEFA Cup have an aggregate score of 4 - 3 with a penalty shootout?  Answer with only 'Yes' or 'No' that is most accurate and nothing else.",
+          "gold": [
+            "Yes"
+          ],
+          "prediction_for_em": "No",
+          "final_answer": "No",
+          "final_value": "No",
+          "exec_error": null,
+          "route_type": "COMPLEX",
+          "difficulty_level": "medium",
+          "risk_level": "high",
+          "deterministic_shortcut_reason": "",
+          "simple_lookup_success": false,
+          "avg_context_hint": "2008 - 09 uefa cup",
+          "elapsed_seconds_total": 19.381255229993258,
+          "total_tokens": 10684
+        },
+        {
+          "id": "crt-415",
+          "table_id": "2-1235868-1.html.csv",
+          "question": "Did Peter Whitehead's performance fluctuate in any particular year? Answer with only 'Yes' or 'No' that is most accurate and nothing else.",
+          "gold": [
+            "No"
+          ],
+          "prediction_for_em": "Yes",
+          "final_answer": "Yes",
+          "final_value": "Yes",
+          "exec_error": null,
+          "route_type": "COMPLEX",
+          "difficulty_level": "medium",
+          "risk_level": "high",
+          "deterministic_shortcut_reason": "",
+          "simple_lookup_success": false,
+          "avg_context_hint": "peter whitehead (racing driver)",
+          "elapsed_seconds_total": 13.171413644042332,
+          "total_tokens": 11340
+        },
+        {
+          "id": "crt-463",
+          "table_id": "2-15805928-1.html.csv",
+          "question": "What is the percentage of trains within this table that are currently operated by Nemisis Rail?",
+          "gold": [
+            "0.25"
+          ],
+          "prediction_for_em": 20.0,
+          "final_answer": "20.0",
+          "final_value": 20.0,
+          "exec_error": null,
+          "route_type": "COMPLEX",
+          "difficulty_level": "medium",
+          "risk_level": "medium",
+          "deterministic_shortcut_reason": "",
+          "simple_lookup_success": false,
+          "avg_context_hint": "ect mainline rail",
+          "elapsed_seconds_total": 11.573721509019379,
+          "total_tokens": 2100
+        },
+        {
+          "id": "crt-298",
+          "table_id": "2-16590486-3.html.csv",
+          "question": "What is the ratio of gold medals earned by the United States to the total medals earned by UK?",
+          "gold": [
+            "3:2"
+          ],
+          "prediction_for_em": 1.5,
+          "final_answer": "1.5",
+          "final_value": 1.5,
+          "exec_error": null,
+          "route_type": "COMPLEX",
+          "difficulty_level": "medium",
+          "risk_level": "medium",
+          "deterministic_shortcut_reason": "",
+          "simple_lookup_success": false,
+          "avg_context_hint": "tennis at the 2012 summer olympics",
+          "elapsed_seconds_total": 12.057571208977606,
+          "total_tokens": 2044
+        },
+        {
+          "id": "crt-242",
+          "table_id": "1-25887826-17.html.csv",
+          "question": "What is the ratio of total points earned in the 2008 A season to total points earned in the 2009 C season for teams in the Mexican Primera División season?",
+          "gold": [
+            "1.01"
+          ],
+          "prediction_for_em": 1.013586956521739,
+          "final_answer": "1.013586956521739",
+          "final_value": 1.013586956521739,
+          "exec_error": null,
+          "route_type": "COMPLEX",
+          "difficulty_level": "medium",
+          "risk_level": "medium",
+          "deterministic_shortcut_reason": "",
+          "simple_lookup_success": false,
+          "avg_context_hint": "2009 - 10 mexican primera división season",
+          "elapsed_seconds_total": 16.210218851978425,
+          "total_tokens": 2669
+        },
+        {
+          "id": "crt-704",
+          "table_id": "2-10753786-4.html.csv",
+          "question": "What is the average order of world number one golfers who have spent more than 40 weeks at the top?",
+          "gold": [
+            "6.4"
+          ],
+          "prediction_for_em": 6.43,
+          "final_answer": "6.43",
+          "final_value": 6.43,
+          "exec_error": null,
+          "route_type": "COMPLEX",
+          "difficulty_level": "medium",
+          "risk_level": "high",
+          "deterministic_shortcut_reason": "",
+          "simple_lookup_success": false,
+          "avg_context_hint": "list of world number one male golfers",
+          "elapsed_seconds_total": 30.153547219990287,
+          "total_tokens": 14930
+        },
+        {
+          "id": "crt-158",
+          "table_id": "2-16514839-1.html.csv",
+          "question": "How many races has Christian Pescatori competed in throughout his career, based on the given data?",
+          "gold": [
+            "3"
+          ],
+          "prediction_for_em": 0,
+          "final_answer": "0",
+          "final_value": 0,
+          "exec_error": null,
+          "route_type": "COMPLEX",
+          "difficulty_level": "medium",
+          "risk_level": "medium",
+          "deterministic_shortcut_reason": "",
+          "simple_lookup_success": false,
+          "avg_context_hint": "christian pescatori",
+          "elapsed_seconds_total": 7.255342065007426,
+          "total_tokens": 1977
+        },
+        {
+          "id": "crt-359",
+          "table_id": "2-16788123-5.html.csv",
+          "question": "What is the correlation between a team's number of conceded goals and their final position in the league in 2001?",
+          "gold": [
+            "Negative"
+          ],
+          "prediction_for_em": 0.6300530880244544,
+          "final_answer": "0.6300530880244544",
+          "final_value": 0.6300530880244544,
+          "exec_error": null,
+          "route_type": "COMPLEX",
+          "difficulty_level": "medium",
+          "risk_level": "high",
+          "deterministic_shortcut_reason": "",
+          "simple_lookup_success": false,
+          "avg_context_hint": "2001 in paraguayan football",
+          "elapsed_seconds_total": 27.95538573898375,
+          "total_tokens": 14550
+        },
+        {
+          "id": "crt-232",
+          "table_id": "1-27484208-1.html.csv",
+          "question": "How much variation is there in the year established among the members of the Matariki Network of Universities?",
+          "gold": [
+            "434"
+          ],
+          "prediction_for_em": 218.6869909253863,
+          "final_answer": "218.6869909253863",
+          "final_value": 218.6869909253863,
+          "exec_error": null,
+          "route_type": "COMPLEX",
+          "difficulty_level": "medium",
+          "risk_level": "medium",
+          "deterministic_shortcut_reason": "",
+          "simple_lookup_success": false,
+          "avg_context_hint": "matariki network of universities",
+          "elapsed_seconds_total": 7.840523668040987,
+          "total_tokens": 1856
+        },
+        {
+          "id": "crt-306",
+          "table_id": "2-13949437-2.html.csv",
+          "question": "What is the range in height of the tallest buildings in Portland, Oregon?",
+          "gold": [
+            "185 / 56\t-  546 / 166"
+          ],
+          "prediction_for_em": 361,
+          "final_answer": "361",
+          "final_value": 361,
+          "exec_error": null,
+          "route_type": "COMPLEX",
+          "difficulty_level": "medium",
+          "risk_level": "medium",
+          "deterministic_shortcut_reason": "",
+          "simple_lookup_success": false,
+          "avg_context_hint": "list of tallest buildings in portland , oregon",
+          "elapsed_seconds_total": 13.170757641026285,
+          "total_tokens": 2185
+        },
+        {
+          "id": "crt-68",
+          "table_id": "2-12057147-2.html.csv",
+          "question": "Have any members of the band played both the alto 1 and mellophone? Answer with only 'Yes' or 'No' that is most accurate and nothing else.",
+          "gold": [
+            "No"
+          ],
+          "prediction_for_em": "Yes",
+          "final_answer": "Yes",
+          "final_value": "Yes",
+          "exec_error": null,
+          "route_type": "COMPLEX",
+          "difficulty_level": "medium",
+          "risk_level": "high",
+          "deterministic_shortcut_reason": "",
+          "simple_lookup_success": false,
+          "avg_context_hint": "oregon marching band",
+          "elapsed_seconds_total": 24.53820974600967,
+          "total_tokens": 13784
+        }
+      ]
+    }
+  }
+}
