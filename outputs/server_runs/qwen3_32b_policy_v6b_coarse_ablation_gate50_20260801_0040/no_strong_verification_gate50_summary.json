@@ -1,0 +1,156 @@
+{
+  "variant": "no_strong_verification",
+  "run_dir": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_coarse_ablation_gate50_20260801_0040",
+  "datasets": {
+    "wtq": {
+      "status": "complete",
+      "merged_path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_coarse_ablation_gate50_20260801_0040/variants/no_strong_verification/merged/wtq_qwen3-32b-local.jsonl",
+      "eval_path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_coarse_ablation_gate50_20260801_0040/variants/no_strong_verification/eval/wtq_qwen3-32b-local_eval.json",
+      "variant": {
+        "rows": 50,
+        "correct": 25,
+        "primary_accuracy": 0.5,
+        "avg_total_tokens": 2691.52,
+        "avg_elapsed_seconds": 14.339960180722409,
+        "num_failed_exec": 0,
+        "num_missing_answer": 0,
+        "num_em_mismatch": 25
+      },
+      "current_reference": {
+        "rows": 50,
+        "correct": 32,
+        "primary_accuracy": 0.64,
+        "avg_total_tokens": 7082.94,
+        "avg_elapsed_seconds": 18.950927036120557,
+        "num_failed_exec": 0,
+        "num_missing_answer": 0,
+        "num_em_mismatch": 18
+      },
+      "old_reference": {
+        "rows": 50,
+        "correct": 8,
+        "primary_accuracy": 0.16,
+        "avg_total_tokens": 6720.02,
+        "avg_elapsed_seconds": 18.195298906476236,
+        "num_failed_exec": 0,
+        "num_missing_answer": 0,
+        "num_em_mismatch": 42
+      },
+      "mact_reference": {
+        "rows": 50,
+        "correct": 40,
+        "primary_accuracy": 0.8,
+        "avg_total_tokens": 11128.36,
+        "avg_elapsed_seconds": 121.56989527217112,
+        "num_failed_exec": 0,
+        "num_missing_answer": 0,
+        "num_em_mismatch": 10
+      },
+      "delta_vs_current": -7,
+      "delta_vs_old": 17,
+      "delta_vs_mact": -15,
+      "token_ratio_vs_current": 0.38000039531606933,
+      "token_ratio_vs_mact": 0.2418613344643775
+    },
+    "tabfact": {
+      "status": "complete",
+      "merged_path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_coarse_ablation_gate50_20260801_0040/variants/no_strong_verification/merged/tabfact_qwen3-32b-local.jsonl",
+      "eval_path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_coarse_ablation_gate50_20260801_0040/variants/no_strong_verification/eval/tabfact_qwen3-32b-local_eval.json",
+      "variant": {
+        "rows": 50,
+        "correct": 47,
+        "primary_accuracy": 0.94,
+        "avg_total_tokens": 2114.12,
+        "avg_elapsed_seconds": 10.100641147483838,
+        "num_failed_exec": 0,
+        "num_missing_answer": 0,
+        "num_em_mismatch": 3
+      },
+      "current_reference": {
+        "rows": 50,
+        "correct": 48,
+        "primary_accuracy": 0.96,
+        "avg_total_tokens": 2220.04,
+        "avg_elapsed_seconds": 9.959811179322424,
+        "num_failed_exec": 0,
+        "num_missing_answer": 0,
+        "num_em_mismatch": 2
+      },
+      "old_reference": {
+        "rows": 50,
+        "correct": 39,
+        "primary_accuracy": 0.78,
+        "avg_total_tokens": 2865.42,
+        "avg_elapsed_seconds": 13.308502787961624,
+        "num_failed_exec": 0,
+        "num_missing_answer": 0,
+        "num_em_mismatch": 11
+      },
+      "mact_reference": {
+        "rows": 50,
+        "correct": 43,
+        "primary_accuracy": 0.86,
+        "avg_total_tokens": 11067.8,
+        "avg_elapsed_seconds": 114.04430599105079,
+        "num_failed_exec": 0,
+        "num_missing_answer": 0,
+        "num_em_mismatch": 7
+      },
+      "delta_vs_current": -1,
+      "delta_vs_old": 8,
+      "delta_vs_mact": 4,
+      "token_ratio_vs_current": 0.9522891479432802,
+      "token_ratio_vs_mact": 0.19101537794322268
+    },
+    "crt": {
+      "status": "complete",
+      "merged_path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_coarse_ablation_gate50_20260801_0040/variants/no_strong_verification/merged/crt_qwen3-32b-local.jsonl",
+      "eval_path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_coarse_ablation_gate50_20260801_0040/variants/no_strong_verification/eval/crt_qwen3-32b-local_eval.json",
+      "variant": {
+        "rows": 50,
+        "correct": 37,
+        "primary_accuracy": 0.74,
+        "avg_total_tokens": 2436.2,
+        "avg_elapsed_seconds": 15.890854019519175,
+        "num_failed_exec": 0,
+        "num_missing_answer": 0,
+        "num_em_mismatch": 13
+      },
+      "current_reference": {
+        "rows": 50,
+        "correct": 37,
+        "primary_accuracy": 0.74,
+        "avg_total_tokens": 12622.9,
+        "avg_elapsed_seconds": 27.83634122904332,
+        "num_failed_exec": 0,
+        "num_missing_answer": 0,
+        "num_em_mismatch": 13
+      },
+      "old_reference": {
+        "rows": 50,
+        "correct": 34,
+        "primary_accuracy": 0.68,
+        "avg_total_tokens": 12576.24,
+        "avg_elapsed_seconds": 27.930407853494398,
+        "num_failed_exec": 0,
+        "num_missing_answer": 0,
+        "num_em_mismatch": 16
+      },
+      "mact_reference": {
+        "rows": 50,
+        "correct": 15,
+        "primary_accuracy": 0.3,
+        "avg_total_tokens": 13103.84,
+        "avg_elapsed_seconds": 174.8698208105244,
+        "num_failed_exec": 0,
+        "num_missing_answer": 0,
+        "num_em_mismatch": 35
+      },
+      "delta_vs_current": 0,
+      "delta_vs_old": 3,
+      "delta_vs_mact": 22,
+      "token_ratio_vs_current": 0.1929984393443662,
+      "token_ratio_vs_mact": 0.18591496843673302
+    }
+  }
+}
