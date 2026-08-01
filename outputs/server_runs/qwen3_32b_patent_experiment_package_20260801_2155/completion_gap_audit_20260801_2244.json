@@ -1,0 +1,134 @@
+{
+  "audit_name": "qwen3_32b_patent_experiment_completion_gap_audit_20260801_2244",
+  "created_at_local": "2026-08-01 22:44 CST",
+  "purpose": "Requirement-by-requirement audit for the active patent-facing MyAgent vs MACT experiment goal.",
+  "repositories": {
+    "myagent": {
+      "path": "/home/ubuntu/lzz/MyAgent",
+      "branch": "codex/selective-risk-collaboration",
+      "latest_commit_checked": "6c8bf70"
+    },
+    "mact": {
+      "path": "/home/ubuntu/lzz/MACT",
+      "branch": "main",
+      "latest_commit_checked": "0843894"
+    }
+  },
+  "runtime_recheck": {
+    "checked_at_local": "2026-08-01 22:44 CST",
+    "port_8000_models": "connection_refused",
+    "port_8001_models": "connection_refused",
+    "gpu_6_memory_used_mib": 42031,
+    "gpu_7_memory_used_mib": 42027,
+    "gpu_6_utilization_percent": 100,
+    "gpu_7_utilization_percent": 100,
+    "visible_compute_apps": 0,
+    "visible_runner_processes": 0,
+    "fuser_available": false,
+    "interpretation": "Fresh Qwen3-32B runs are not reliable under the current user constraint to use only GPUs 6,7."
+  },
+  "requirements": [
+    {
+      "id": "R1",
+      "requirement": "Qwen3-32B full200 anchor evidence must show MyAgent exceeds MACT on WTQ, TabFact, and CRT, with lower token usage.",
+      "status": "complete",
+      "evidence": [
+        "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_all200_acceptance_20260731_132611/qwen3_policy_v6b_all200_acceptance_summary.json",
+        "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_all200_acceptance_20260731_132611/qwen3_policy_v6b_patent_evidence_index.md"
+      ],
+      "metrics": {
+        "aggregate_myagent_correct": 489,
+        "aggregate_mact_correct": 450,
+        "aggregate_rows": 600,
+        "token_ratio_myagent_to_mact": 0.5716697843909193,
+        "wtq": "155/200 vs 148/200",
+        "tabfact": "194/200 vs 189/200",
+        "crt": "140/200 vs 113/200"
+      }
+    },
+    {
+      "id": "R2",
+      "requirement": "Mechanism evidence must support the patent concept of selective risk collaboration / persuasion-back instead of sample hardcoding.",
+      "status": "substantially_complete",
+      "evidence": [
+        "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_patent_mechanism_evidence_20260801_2222/patent_mechanism_evidence_matrix.md",
+        "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_coarse_ablation_gate50_20260801_0040/coarse_ablation_gate50_summary.md",
+        "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_mechanism_attribution_20260801_0033/mechanism_attribution_summary.md"
+      ],
+      "gap": "Fine-grained verifier-override/evidence-retention ablation remains optional unless fresh WTQ validation reveals unclear causality."
+    },
+    {
+      "id": "R3",
+      "requirement": "WTQ new-seed risk exposed by P4b must be closed with fresh Qwen validation before claiming stable all-dataset superiority.",
+      "status": "incomplete_runtime_pending",
+      "evidence": [
+        "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/p4b_paired_gate50_summary.md",
+        "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/p4b_wtq_discordant_diagnosis.md",
+        "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/p4b_wtq_targeted_fix_projection.md"
+      ],
+      "known_result": "P4b overall accepted by existing paired gate, but WTQ is MyAgent 37/50 vs MACT 43/50.",
+      "next_required_evidence": [
+        "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/p4b_wtq_targeted_fresh_summary.json",
+        "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/p4b_after_wtq_targeted_paired_summary.json"
+      ]
+    },
+    {
+      "id": "R4",
+      "requirement": "Multi-seed stability evidence must show the effect is not tied to one frozen full200 or one P4b seed.",
+      "status": "prepared_not_executed",
+      "evidence": [
+        "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/README.md",
+        "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/multiseed_gate50_manifest.json",
+        "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/input_generation_summary.md"
+      ],
+      "prepared_rows": 300,
+      "next_required_evidence": [
+        "summary/seed_c_myagent_gate50_summary.json",
+        "summary/seed_c_paired_gate50_summary.json if current-only gate passes",
+        "summary/seed_d_myagent_gate50_summary.json",
+        "summary/seed_d_paired_gate50_summary.json if current-only gate passes"
+      ]
+    },
+    {
+      "id": "R5",
+      "requirement": "Multi-model gate evidence must test whether the mechanism has model externality without running every model full200.",
+      "status": "partial_pending_new_candidate",
+      "evidence": [
+        "/home/ubuntu/lzz/MACT/outputs/server_runs/multimodel_gate50_summaries_20260730_1948/",
+        "/home/ubuntu/lzz/MACT/outputs/server_runs/multimodel_gate50_raw_artifacts_20260730_2002/",
+        "/home/ubuntu/lzz/MyAgent/scripts/server/prepare_model_gate_run.py"
+      ],
+      "known_result": "Qwen3-14B-AWQ, Qwen2.5-14B-AWQ, and Qwen2.5-3B were no-go under historical Gate-50 summaries.",
+      "gap": "At least one additional viable local model or external API candidate still needs Gate-10 -> Gate-50 -> Gate-150 -> paired-200 evidence."
+    },
+    {
+      "id": "R6",
+      "requirement": "Expert/patent package and Chinese patent disclosure draft must exist and point to auditable evidence.",
+      "status": "draft_complete_final_pending",
+      "evidence": [
+        "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/experiment_package_index_zh.md",
+        "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/patent_disclosure_draft_zh.md",
+        "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/formal_experiment_schedule_zh.md"
+      ],
+      "gap": "Final claims and formal experiment section should be updated after R3/R4/R5 fresh evidence."
+    },
+    {
+      "id": "R7",
+      "requirement": "All process/result context must be recorded in the single PRD and MACT artifacts, then pushed to GitHub.",
+      "status": "complete_for_current_state",
+      "evidence": [
+        "/home/ubuntu/lzz/MyAgent/docs/server/server_codex_reports/current-qwen3-mact-experiment-prd.md",
+        "MyAgent commit 6c8bf70 pushed to origin/codex/selective-risk-collaboration",
+        "MACT commit 0843894 pushed to origin/main"
+      ]
+    }
+  ],
+  "current_next_actions": [
+    "After GPU 6,7 are clean and 8000/8001 endpoints are healthy, run WTQ targeted fresh affected slice.",
+    "If the affected slice passes, run P4b WTQ after-fix full50 and paired comparison.",
+    "Run E3 Seed-C/Seed-D current-only Gate-50, then run paired MACT only for seeds that pass current-only gate.",
+    "When a viable new model/API candidate appears, run the prepared gate funnel rather than full200 immediately."
+  ],
+  "overall_completion_status": "active_not_complete",
+  "reason_not_complete": "Fresh WTQ closure, multi-seed execution, and at least one viable multi-model gate result remain missing."
+}

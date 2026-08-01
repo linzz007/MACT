@@ -18,6 +18,8 @@ experiment_package_index_zh.md
 formal_experiment_schedule_zh.md
 patent_disclosure_draft_zh.md
 next_validation_checklist_zh.md
+completion_gap_audit_20260801_2244.json
+completion_gap_audit_20260801_2244_zh.md
 ```
 
 Current status:
@@ -32,5 +34,8 @@ Current status:
   ablation, and offline attribution evidence.
 - E3 multi-seed Gate-50 inputs and runners are prepared for Seed-C/Seed-D; no
   model rows have been run yet in that package.
+- The latest completion-gap audit records that the active goal is not complete:
+  fresh WTQ closure, multi-seed execution, and one viable multi-model gate remain
+  missing.
 - Fresh Qwen affected-slice validation is still pending because local vLLM
   endpoints are down and GPUs have residual memory without visible compute PIDs.

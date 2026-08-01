@@ -140,3 +140,9 @@ E3 multi-seed 准备包：
 ```text
 /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/evidence_manifest.json
 ```
+
+最新完成度审计：
+
+```text
+/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/completion_gap_audit_20260801_2244_zh.md
+```
