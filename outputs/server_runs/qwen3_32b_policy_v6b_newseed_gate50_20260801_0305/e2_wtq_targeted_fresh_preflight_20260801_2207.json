@@ -1,0 +1,31 @@
+{
+  "created_at_local": "2026-08-01 22:07 CST",
+  "scope": "E2 WTQ targeted-fix fresh validation preflight",
+  "intended_next_run": "run_myagent_wtq_targeted_fix_slice.sh",
+  "fresh_run_executed": false,
+  "reason_not_executed": "Qwen3-32B vLLM endpoints were down and the user-constrained GPU pair 6,7 had high residual memory/use without visible compute PIDs.",
+  "endpoint_checks": {
+    "http://127.0.0.1:8000/v1/models": "connection_refused",
+    "http://127.0.0.1:8001/v1/models": "connection_refused"
+  },
+  "gpu_query": [
+    {"index": 0, "memory_used_mib": 41710, "memory_total_mib": 49140, "utilization_gpu_percent": 0},
+    {"index": 1, "memory_used_mib": 47018, "memory_total_mib": 49140, "utilization_gpu_percent": 100},
+    {"index": 2, "memory_used_mib": 19983, "memory_total_mib": 49140, "utilization_gpu_percent": 0},
+    {"index": 3, "memory_used_mib": 19981, "memory_total_mib": 49140, "utilization_gpu_percent": 0},
+    {"index": 4, "memory_used_mib": 42031, "memory_total_mib": 49140, "utilization_gpu_percent": 10},
+    {"index": 5, "memory_used_mib": 42031, "memory_total_mib": 49140, "utilization_gpu_percent": 100},
+    {"index": 6, "memory_used_mib": 42031, "memory_total_mib": 49140, "utilization_gpu_percent": 100},
+    {"index": 7, "memory_used_mib": 42027, "memory_total_mib": 49140, "utilization_gpu_percent": 100}
+  ],
+  "visible_compute_apps": [],
+  "visible_runner_processes": [],
+  "new_automation": {
+    "fresh_runner": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/run_myagent_wtq_targeted_fix_slice.sh",
+    "fresh_summarizer": "/home/ubuntu/lzz/MyAgent/scripts/server/summarize_wtq_targeted_fresh.py",
+    "future_summary_json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/p4b_wtq_targeted_fresh_summary.json",
+    "future_summary_md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/p4b_wtq_targeted_fresh_summary.md",
+    "pass_threshold": ">= 7/9 correct with 0 failed/missing rows"
+  },
+  "next_action_after_server_cleanup": "Start Qwen3-32B on GPU 6,7, run run_myagent_wtq_targeted_fix_slice.sh, inspect p4b_wtq_targeted_fresh_summary.json/md, and only rerun P4b WTQ full50 if the affected slice passes."
+}

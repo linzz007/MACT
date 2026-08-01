@@ -22,3 +22,11 @@ python scripts/server/run_sharded_tqa.py \
   --mact-avg-tokens 10508.03 \
   --max-replan 3 \
   --resume
+
+python scripts/server/summarize_wtq_targeted_fresh.py \
+  --run-dir "$RUN_DIR" \
+  --output-root "$RUN_DIR/myagent_wtq_targeted_fix" \
+  --min-correct 7 \
+  --fail-on-inspect
+
+cat "$RUN_DIR/p4b_wtq_targeted_fresh_summary.md"

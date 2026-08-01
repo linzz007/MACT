@@ -64,6 +64,23 @@ bash /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate
 3. 正确数接近或达到 `9/9`。
 4. 若低于 `7/9`，先诊断，不重跑 WTQ full50。
 
+该脚本现在会自动调用：
+
+```bash
+python /home/ubuntu/lzz/MyAgent/scripts/server/summarize_wtq_targeted_fresh.py \
+  --run-dir /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305 \
+  --output-root /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/myagent_wtq_targeted_fix \
+  --min-correct 7 \
+  --fail-on-inspect
+```
+
+成功时会生成：
+
+```text
+/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/p4b_wtq_targeted_fresh_summary.json
+/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/p4b_wtq_targeted_fresh_summary.md
+```
+
 ## 4. 再决定是否重跑 P4b WTQ full50
 
 只有 affected-slice fresh 结果证明方向有效，才重跑 WTQ full50 after-fix：
