@@ -22,6 +22,8 @@ completion_gap_audit_20260801_2244.json
 completion_gap_audit_20260801_2244_zh.md
 claim_evidence_traceability_20260801_2248.json
 claim_evidence_traceability_20260801_2248_zh.md
+formal_result_tables_template_20260801_2252.json
+formal_result_tables_template_20260801_2252_zh.md
 ```
 
 Current status:
@@ -41,5 +43,7 @@ Current status:
   missing.
 - The claim-to-evidence traceability matrix maps six patent claim families to
   mechanisms, evidence files, support strength, and remaining gaps.
+- The formal result-table template defines the exact fields and decision ledger
+  to fill after each pending fresh/gate run.
 - Fresh Qwen affected-slice validation is still pending because local vLLM
   endpoints are down and GPUs have residual memory without visible compute PIDs.

@@ -162,6 +162,37 @@
       "C6"
     ]
   },
+  "formal_result_tables_template": {
+    "json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/formal_result_tables_template_20260801_2252.json",
+    "md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/formal_result_tables_template_20260801_2252_zh.md",
+    "required_fields": [
+      "stage",
+      "dataset",
+      "input_rows",
+      "merged_rows",
+      "eval_rows",
+      "myagent_correct",
+      "mact_correct_or_reference",
+      "token_ratio",
+      "avg_total_tokens",
+      "avg_elapsed_seconds",
+      "num_failed_exec",
+      "num_missing_answer",
+      "decision",
+      "evidence_json",
+      "evidence_md",
+      "git_commit"
+    ],
+    "pending_rows": [
+      "WTQ targeted fresh affected slice",
+      "P4b WTQ after-fix full50",
+      "E3 Seed-C current-only Gate-50",
+      "E3 Seed-C paired Gate-50",
+      "E3 Seed-D current-only Gate-50",
+      "E3 Seed-D paired Gate-50",
+      "Additional model gate funnel"
+    ]
+  },
   "current_prd": "/home/ubuntu/lzz/MyAgent/docs/server/server_codex_reports/current-qwen3-mact-experiment-prd.md",
   "formal_experiment_schedule": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/formal_experiment_schedule_zh.md",
   "remaining_work": [

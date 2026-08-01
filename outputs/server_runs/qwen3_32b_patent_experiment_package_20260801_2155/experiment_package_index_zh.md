@@ -152,3 +152,9 @@ E3 multi-seed 准备包：
 ```text
 /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/claim_evidence_traceability_20260801_2248_zh.md
 ```
+
+正式实验结果表模板：
+
+```text
+/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/formal_result_tables_template_20260801_2252_zh.md
+```

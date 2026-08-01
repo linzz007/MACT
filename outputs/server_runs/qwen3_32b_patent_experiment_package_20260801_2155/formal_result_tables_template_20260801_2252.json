@@ -1,0 +1,189 @@
+{
+  "artifact_name": "qwen3_32b_formal_result_tables_template_20260801_2252",
+  "created_at_local": "2026-08-01 22:52 CST",
+  "purpose": "Machine-readable result table and decision ledger template for the remaining patent-facing experiments.",
+  "scope_boundary": "This template defines required fields and acceptance criteria. Pending rows are not experimental results.",
+  "required_fields_for_every_completed_run": [
+    "stage",
+    "dataset",
+    "input_rows",
+    "merged_rows",
+    "eval_rows",
+    "myagent_correct",
+    "mact_correct_or_reference",
+    "token_ratio",
+    "avg_total_tokens",
+    "avg_elapsed_seconds",
+    "num_failed_exec",
+    "num_missing_answer",
+    "decision",
+    "evidence_json",
+    "evidence_md",
+    "git_commit"
+  ],
+  "frozen_anchor": {
+    "status": "complete",
+    "summary_json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_all200_acceptance_20260731_132611/qwen3_policy_v6b_all200_acceptance_summary.json",
+    "rows": [
+      {
+        "stage": "Qwen3-32B full200 anchor",
+        "dataset": "wtq",
+        "input_rows": 200,
+        "merged_rows": 200,
+        "eval_rows": 200,
+        "myagent_correct": 155,
+        "mact_correct_or_reference": 148,
+        "token_ratio": 0.6186721012406702,
+        "avg_total_tokens": 6501.03,
+        "avg_elapsed_seconds": 16.80,
+        "num_failed_exec": 0,
+        "num_missing_answer": 0,
+        "decision": "complete_full200_dataset_superiority"
+      },
+      {
+        "stage": "Qwen3-32B full200 anchor",
+        "dataset": "tabfact",
+        "input_rows": 200,
+        "merged_rows": 200,
+        "eval_rows": 200,
+        "myagent_correct": 194,
+        "mact_correct_or_reference": 189,
+        "token_ratio": 0.20143156223094733,
+        "avg_total_tokens": 2181.67,
+        "avg_elapsed_seconds": 9.76,
+        "num_failed_exec": 0,
+        "num_missing_answer": 0,
+        "decision": "complete_full200_dataset_superiority"
+      },
+      {
+        "stage": "Qwen3-32B full200 anchor",
+        "dataset": "crt",
+        "input_rows": 200,
+        "merged_rows": 200,
+        "eval_rows": 200,
+        "myagent_correct": 140,
+        "mact_correct_or_reference": 113,
+        "token_ratio": 0.8461497027514084,
+        "avg_total_tokens": 10839.17,
+        "avg_elapsed_seconds": 24.46,
+        "num_failed_exec": 0,
+        "num_missing_answer": 0,
+        "decision": "complete_full200_dataset_superiority"
+      }
+    ]
+  },
+  "pending_experiment_rows": [
+    {
+      "stage": "WTQ targeted fresh affected slice",
+      "status": "pending_runtime",
+      "dataset": "wtq",
+      "input_rows_required": 9,
+      "pass_condition": "merged_rows=9, eval_rows=9, failed=0, missing=0, myagent_correct>=7",
+      "preferred_condition": "myagent_correct=9",
+      "input_path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/input/wtq_p4b_targeted_fix_affected_slice.jsonl",
+      "runner": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/run_myagent_wtq_targeted_fix_slice.sh",
+      "expected_evidence_json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/p4b_wtq_targeted_fresh_summary.json",
+      "expected_evidence_md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/p4b_wtq_targeted_fresh_summary.md",
+      "if_fail": "Do not run WTQ after-fix full50; diagnose fresh wrong ids first."
+    },
+    {
+      "stage": "P4b WTQ after-fix full50",
+      "status": "pending_after_targeted_pass",
+      "dataset": "wtq",
+      "input_rows_required": 50,
+      "pass_condition": "myagent_correct>43, token_ratio<0.75, failed=0, missing=0",
+      "input_path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/input/wtq_newseed_gate50.jsonl",
+      "runner": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/run_myagent_wtq_after_targeted_fix_full50.sh",
+      "expected_evidence_json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/p4b_after_wtq_targeted_paired_summary.json",
+      "expected_evidence_md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/p4b_after_wtq_targeted_paired_summary.md",
+      "if_fail": "Record WTQ generalization boundary; do not expand WTQ Gate-100/150 without diagnosis."
+    },
+    {
+      "stage": "E3 Seed-C current-only Gate-50",
+      "status": "pending_runtime",
+      "dataset": "wtq_tabfact_crt",
+      "input_rows_required": 150,
+      "pass_condition": "summary decision=run_paired_mact; failed/missing=0; token ratio below MACT full200 references",
+      "runner": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/run_seed_myagent_gate50.sh seed_c",
+      "expected_evidence_json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/summary/seed_c_myagent_gate50_summary.json",
+      "expected_evidence_md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/summary/seed_c_myagent_gate50_summary.md",
+      "if_fail": "Do not run Seed-C MACT baseline; inspect MyAgent errors first."
+    },
+    {
+      "stage": "E3 Seed-C paired Gate-50",
+      "status": "pending_after_current_only_pass",
+      "dataset": "wtq_tabfact_crt",
+      "input_rows_required": 150,
+      "pass_condition": "strict_all_dataset_superiority=true for strong claim; existing paired criteria accepted only supports overall/token claim",
+      "runner": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/run_seed_paired_compare.sh seed_c",
+      "expected_evidence_json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/summary/seed_c_paired_gate50_summary.json",
+      "expected_evidence_md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/summary/seed_c_paired_gate50_summary.md",
+      "if_fail": "Record per-dataset loss and decide whether to diagnose or stop expansion."
+    },
+    {
+      "stage": "E3 Seed-D current-only Gate-50",
+      "status": "pending_runtime",
+      "dataset": "wtq_tabfact_crt",
+      "input_rows_required": 150,
+      "pass_condition": "summary decision=run_paired_mact; failed/missing=0; token ratio below MACT full200 references",
+      "runner": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/run_seed_myagent_gate50.sh seed_d",
+      "expected_evidence_json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/summary/seed_d_myagent_gate50_summary.json",
+      "expected_evidence_md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/summary/seed_d_myagent_gate50_summary.md",
+      "if_fail": "Do not run Seed-D MACT baseline; inspect MyAgent errors first."
+    },
+    {
+      "stage": "E3 Seed-D paired Gate-50",
+      "status": "pending_after_current_only_pass",
+      "dataset": "wtq_tabfact_crt",
+      "input_rows_required": 150,
+      "pass_condition": "strict_all_dataset_superiority=true for strong claim; existing paired criteria accepted only supports overall/token claim",
+      "runner": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/run_seed_paired_compare.sh seed_d",
+      "expected_evidence_json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/summary/seed_d_paired_gate50_summary.json",
+      "expected_evidence_md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/summary/seed_d_paired_gate50_summary.md",
+      "if_fail": "Record per-dataset loss and decide whether to diagnose or stop expansion."
+    },
+    {
+      "stage": "Additional model gate funnel",
+      "status": "pending_new_candidate",
+      "dataset": "wtq_tabfact_crt",
+      "input_rows_required": "Gate-10=30, Gate-50=150, Gate-150=450, paired-200=600",
+      "pass_condition": "Follow prepare_model_gate_run.py and summarize_model_gate_results.py decisions; only Gate-150 decision=paired200 enters paired-200.",
+      "runner": "/home/ubuntu/lzz/MyAgent/scripts/server/prepare_model_gate_run.py",
+      "expected_evidence_json": "MACT outputs/server_runs/<model_tag>_gate*/gate*_summary.json",
+      "expected_evidence_md": "MACT outputs/server_runs/<model_tag>_gate*/gate*_summary.md",
+      "if_fail": "Record no-go and do not expand to full paired run."
+    }
+  ],
+  "decision_ledger": [
+    {
+      "decision_id": "D0",
+      "decision": "Use Qwen3-32B full200 as v1 prototype anchor.",
+      "status": "accepted",
+      "evidence": "All three full200 datasets exceed MACT and overall token ratio is 0.5717."
+    },
+    {
+      "decision_id": "D1",
+      "decision": "Do not claim new-seed all-dataset superiority from P4b alone.",
+      "status": "accepted",
+      "evidence": "P4b overall accepted but WTQ is 37/50 vs MACT 43/50."
+    },
+    {
+      "decision_id": "D2",
+      "decision": "Run WTQ targeted fresh before WTQ after-fix full50.",
+      "status": "pending_runtime",
+      "evidence": "E2 projection is offline; fresh validation is required."
+    },
+    {
+      "decision_id": "D3",
+      "decision": "Run E3 Seed-C/Seed-D current-only before spending MACT baseline time.",
+      "status": "prepared",
+      "evidence": "E3 package contains non-overlapping seed inputs, runners, and verify script."
+    },
+    {
+      "decision_id": "D4",
+      "decision": "Do not run every model full200; use Gate-10/50/150/paired-200 funnel.",
+      "status": "accepted",
+      "evidence": "Historical smaller local models are no-go; gate scripts and manifests exist."
+    }
+  ]
+}

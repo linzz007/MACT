@@ -139,6 +139,12 @@ bash checkpoint_to_git.sh --commit "checkpoint: e3 multiseed gate50 <stage>" --p
 
 ## 6. 同步规则
 
+每次 fresh/gate run 完成后，先按正式结果表模板确认字段是否齐全：
+
+```text
+/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/formal_result_tables_template_20260801_2252_zh.md
+```
+
 任何 fresh run 结束后，先更新：
 
 ```text
