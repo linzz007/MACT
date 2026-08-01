@@ -216,8 +216,18 @@
             "The queue does not automatically expand to Gate-150 or full200."
         ],
         "current_online_status": "blocked_gpu_runtime_residual",
-        "latest_observed_at_local": "2026-08-01 23:10:59 CST",
+        "latest_observed_at_local": "2026-08-01 23:19:45 CST",
         "latest_observation": "Endpoints 8000/8001 were both connection refused; target GPUs 6/7 each showed about 42GB memory used and 100% utilization while nvidia-smi compute apps and pmon reported no process."
+    },
+    "package_consistency_audit": {
+        "script": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/audit_patent_package_consistency.py",
+        "latest_json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_patent_package_consistency_audit.json",
+        "latest_md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_patent_package_consistency_audit_zh.md",
+        "purpose": "Verify that PRD, manifest, latest formal result ledger, latest runtime preflight, and key numeric claims remain consistent.",
+        "latest_status": "pass",
+        "latest_errors": 0,
+        "latest_warnings": 1,
+        "latest_observed_at_local": "2026-08-01 23:22:19 CST"
     },
     "current_prd": "/home/ubuntu/lzz/MyAgent/docs/server/server_codex_reports/current-qwen3-mact-experiment-prd.md",
   "formal_experiment_schedule": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/formal_experiment_schedule_zh.md",

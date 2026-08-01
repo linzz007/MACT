@@ -1,0 +1,151 @@
+{
+  "generated_at_local": "2026-08-01 23:22:19 CST",
+  "package_dir": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155",
+  "git_heads": {
+    "myagent": "6f7bd9c",
+    "mact": "3f8574b"
+  },
+  "path_checks": {
+    "prd": {
+      "path": "/home/ubuntu/lzz/MyAgent/docs/server/server_codex_reports/current-qwen3-mact-experiment-prd.md",
+      "exists": true
+    },
+    "manifest": {
+      "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/evidence_manifest.json",
+      "exists": true
+    },
+    "latest_formal_result_ledger": {
+      "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_formal_result_ledger_current.json",
+      "exists": true
+    },
+    "latest_runtime_preflight": {
+      "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_qwen3_runtime_preflight.json",
+      "exists": true
+    },
+    "queue_script": {
+      "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/run_remaining_qwen3_patent_queue.sh",
+      "exists": true
+    },
+    "runtime_preflight_script": {
+      "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/preflight_qwen3_runtime.py",
+      "exists": true
+    },
+    "formal_ledger_builder": {
+      "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/build_current_formal_result_ledger.py",
+      "exists": true
+    }
+  },
+  "checks": {
+    "ledger completed rows": {
+      "actual": 8,
+      "expected": 8,
+      "pass": true
+    },
+    "ledger pending rows": {
+      "actual": 7,
+      "expected": 7,
+      "pass": true
+    },
+    "ledger overall status": {
+      "actual": "active_not_complete",
+      "expected": "active_not_complete",
+      "pass": true
+    },
+    "full200 aggregate row count": {
+      "actual": 1,
+      "expected": 1,
+      "pass": true
+    },
+    "full200 myagent correct": {
+      "actual": 489,
+      "expected": 489,
+      "pass": true
+    },
+    "full200 mact correct": {
+      "actual": 450,
+      "expected": 450,
+      "pass": true
+    },
+    "full200 failures": {
+      "actual": 0,
+      "expected": 0,
+      "pass": true
+    },
+    "full200 missing": {
+      "actual": 0,
+      "expected": 0,
+      "pass": true
+    },
+    "P4b WTQ risk row count": {
+      "actual": 1,
+      "expected": 1,
+      "pass": true
+    },
+    "P4b WTQ MyAgent correct": {
+      "actual": 37,
+      "expected": 37,
+      "pass": true
+    },
+    "P4b WTQ MACT correct": {
+      "actual": 43,
+      "expected": 43,
+      "pass": true
+    },
+    "P4b WTQ decision": {
+      "actual": "complete_dataset_risk",
+      "expected": "complete_dataset_risk",
+      "pass": true
+    },
+    "E3 pending row count": {
+      "actual": 4,
+      "expected": 4,
+      "pass": true
+    },
+    "preflight status matches ledger": {
+      "actual": "blocked_gpu_runtime_residual",
+      "expected": "blocked_gpu_runtime_residual",
+      "pass": true
+    },
+    "preflight generated_at matches ledger": {
+      "actual": "2026-08-01 23:19:45 CST",
+      "expected": "2026-08-01 23:19:45 CST",
+      "pass": true
+    },
+    "manifest latest ledger path": {
+      "actual": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_formal_result_ledger_current.json",
+      "expected": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_formal_result_ledger_current.json",
+      "pass": true
+    },
+    "manifest latest preflight path": {
+      "actual": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_qwen3_runtime_preflight.json",
+      "expected": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_qwen3_runtime_preflight.json",
+      "pass": true
+    },
+    "manifest online status": {
+      "actual": "blocked_gpu_runtime_residual",
+      "expected": "blocked_gpu_runtime_residual",
+      "pass": true
+    },
+    "PRD queue script": {
+      "needle": "run_remaining_qwen3_patent_queue.sh",
+      "pass": true
+    },
+    "PRD runtime preflight": {
+      "needle": "latest_qwen3_runtime_preflight_zh.md",
+      "pass": true
+    },
+    "PRD formal ledger": {
+      "needle": "latest_formal_result_ledger_current_zh.md",
+      "pass": true
+    },
+    "PRD active status": {
+      "needle": "active_not_complete",
+      "pass": true
+    }
+  },
+  "errors": [],
+  "warnings": [
+    "online experiments remain gated by runtime status: blocked_gpu_runtime_residual"
+  ],
+  "overall_status": "pass"
+}

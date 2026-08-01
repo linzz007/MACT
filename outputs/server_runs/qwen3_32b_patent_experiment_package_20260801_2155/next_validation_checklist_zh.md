@@ -186,6 +186,13 @@ python /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_pac
 cat /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_formal_result_ledger_current_zh.md
 ```
 
+提交前建议跑一致性审计：
+
+```bash
+python /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/audit_patent_package_consistency.py --fail-on-error
+cat /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_patent_package_consistency_audit_zh.md
+```
+
 任何 fresh run 结束后，先更新：
 
 ```text

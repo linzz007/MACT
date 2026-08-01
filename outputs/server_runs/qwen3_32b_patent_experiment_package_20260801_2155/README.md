@@ -32,6 +32,9 @@ latest_qwen3_runtime_preflight_zh.md
 build_current_formal_result_ledger.py
 latest_formal_result_ledger_current.json
 latest_formal_result_ledger_current_zh.md
+audit_patent_package_consistency.py
+latest_patent_package_consistency_audit.json
+latest_patent_package_consistency_audit_zh.md
 ```
 
 Current status:
@@ -59,7 +62,9 @@ Current status:
   and blocks queue execution when target GPUs show residual runtime state.
 - Fresh Qwen affected-slice validation is still pending because local vLLM
   endpoints are down and GPUs have residual memory without visible compute PIDs.
-  Latest recorded preflight: `qwen3_runtime_preflight_20260801_231059.json/md`.
+  Latest recorded preflight: `qwen3_runtime_preflight_20260801_231945.json/md`.
 - The current formal-result ledger is generated from frozen JSON sources and
   keeps pending stages explicit rather than mixing them with completed results.
-  Latest generated ledger: `formal_result_ledger_current_20260801_231652.json/md`.
+  Latest generated ledger: `formal_result_ledger_current_20260801_232007.json/md`.
+- The latest consistency audit passes with 0 errors and 1 warning for the
+  still-blocked online runtime: `patent_package_consistency_audit_20260801_232219.json/md`.

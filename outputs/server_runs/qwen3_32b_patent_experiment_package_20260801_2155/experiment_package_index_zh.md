@@ -138,6 +138,8 @@ E3 multi-seed 准备包：
 /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_qwen3_runtime_preflight_zh.md
 /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/build_current_formal_result_ledger.py
 /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_formal_result_ledger_current_zh.md
+/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/audit_patent_package_consistency.py
+/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_patent_package_consistency_audit_zh.md
 ```
 
 建议顺序：
@@ -154,6 +156,8 @@ bash /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_packa
 该脚本会在 WTQ targeted fresh 未通过时停止，不会启动 WTQ full50；也会在 Seed-C/D current-only 未通过时停止，不会启动 MACT paired。它不会自动扩大到 Gate-150 或 full200。
 
 当前正式结果台账由 `build_current_formal_result_ledger.py` 从 frozen summary、P4b summary、模板和 latest preflight 生成，用于专家/专利材料填表；它不会把 pending 项写成 completed。
+
+`audit_patent_package_consistency.py` 用于检查 PRD、manifest、latest formal ledger、latest preflight 和关键数字是否一致。在线阻塞会记录为 warning；数字或路径不一致会记录为 error。
 
 ## 9. 专家可复核路径
 
