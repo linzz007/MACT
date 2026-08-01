@@ -1,0 +1,188 @@
+{
+  "artifact_name": "qwen3_32b_claim_evidence_traceability_20260801_2248",
+  "created_at_local": "2026-08-01 22:48 CST",
+  "purpose": "Map patent claim families to implementation mechanisms, experimental evidence, and remaining validation gaps.",
+  "scope_boundary": "This is a patent-writing traceability artifact. It does not add new benchmark results.",
+  "claim_families": [
+    {
+      "id": "C1",
+      "claim_family": "Risk-stratified selective collaboration",
+      "draft_claim_language": "A table reasoning method that estimates sample risk from question semantics, table structure, answer contract, and execution signals, then selectively routes the sample to lightweight execution, deterministic audit, or stronger verification/collaboration.",
+      "supported_modules": [
+        "risk assessment",
+        "route selection",
+        "budget-aware high-risk escalation"
+      ],
+      "implementation_trace": [
+        "/home/ubuntu/lzz/MyAgent/code/my_agents.py",
+        "/home/ubuntu/lzz/MyAgent/docs/server/server_codex_reports/current-qwen3-mact-experiment-prd.md"
+      ],
+      "experimental_trace": [
+        {
+          "source": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_all200_acceptance_20260731_132611/qwen3_policy_v6b_all200_acceptance_summary.json",
+          "evidence": "Full200 aggregate MyAgent 489/600 vs MACT 450/600; token ratio 0.5717; elapsed ratio 0.1337; failures/missing 0/0."
+        },
+        {
+          "source": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_patent_mechanism_evidence_20260801_2222/patent_mechanism_evidence_matrix.md",
+          "evidence": "Mechanism matrix ties full200 performance to risk collaboration and budget control."
+        }
+      ],
+      "current_support_level": "strong_stage_evidence",
+      "remaining_gap": "Multi-seed and multi-model execution remain needed before making broad stability/generalization claims."
+    },
+    {
+      "id": "C2",
+      "claim_family": "Evidence-retention table compression",
+      "draft_claim_language": "A compression method that preserves global rows, candidate rows, late-column evidence, and neighbor rows when the question contains comparative, temporal, ordinal, count, or entity-disambiguation risk signals.",
+      "supported_modules": [
+        "question-aware compression",
+        "global/candidate row retention",
+        "answer-bearing column retention"
+      ],
+      "implementation_trace": [
+        "/home/ubuntu/lzz/MyAgent/code/my_agents.py"
+      ],
+      "experimental_trace": [
+        {
+          "source": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_mechanism_attribution_20260801_0033/mechanism_attribution_summary.md",
+          "evidence": "WTQ gain rows 16/25 tagged evidence_retention; TabFact gain rows 9/9 tagged evidence_retention; CRT current-only vs MACT 37/40 tagged evidence_retention."
+        },
+        {
+          "source": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/p4b_wtq_discordant_diagnosis.md",
+          "evidence": "WTQ P4b diagnosis separates compression/evidence issues from answer-contract and semantic shortcut issues."
+        }
+      ],
+      "current_support_level": "moderate_to_strong_associative_evidence",
+      "remaining_gap": "Fine-grained no_evidence_retention ablation would strengthen causal proof if requested by patent counsel."
+    },
+    {
+      "id": "C3",
+      "claim_family": "Deterministic semantic audit",
+      "draft_claim_language": "A deterministic audit layer that directly validates table-consistency patterns such as same-row constraints, column-value counts, entity attributes, numeric differences, temporal gaps, overtime markers, listed-after target columns, and ordinal/cardinal phrase matching.",
+      "supported_modules": [
+        "TabFact deterministic shortcuts",
+        "CRT structured audits",
+        "WTQ target-column and marker audits"
+      ],
+      "implementation_trace": [
+        "/home/ubuntu/lzz/MyAgent/code/my_agents.py",
+        "/home/ubuntu/lzz/MyAgent/tests/test_myagent_pipeline.py"
+      ],
+      "experimental_trace": [
+        {
+          "source": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_coarse_ablation_gate50_20260801_0040/coarse_ablation_gate50_summary.md",
+          "evidence": "no_deterministic_shortcuts drops overall by 15/150; TabFact by 9/50; CRT by 7/50; TabFact token/current becomes 1.4487x."
+        },
+        {
+          "source": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_all200_acceptance_20260731_132611/qwen3_policy_v6b_all200_acceptance_summary.json",
+          "evidence": "TabFact full200 MyAgent 194/200 vs MACT 189/200 with token ratio 0.2014."
+        }
+      ],
+      "current_support_level": "strong_mechanism_evidence",
+      "remaining_gap": "Fresh WTQ targeted run is still pending for WTQ-specific deterministic fixes."
+    },
+    {
+      "id": "C4",
+      "claim_family": "Controlled persuasion-back / verifier override",
+      "draft_claim_language": "A conflict-resolution method that accepts a verifier or reviewer candidate only when confidence, answer contract, table evidence, and conflict type satisfy bounded override criteria.",
+      "supported_modules": [
+        "strong verification",
+        "answer-contract validation",
+        "conflict gate",
+        "bounded override"
+      ],
+      "implementation_trace": [
+        "/home/ubuntu/lzz/MyAgent/code/my_agents.py"
+      ],
+      "experimental_trace": [
+        {
+          "source": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_coarse_ablation_gate50_20260801_0040/coarse_ablation_gate50_summary.md",
+          "evidence": "no_strong_verification is 8/150 below current reference and WTQ is 7/50 below current reference on diagnostic slice."
+        },
+        {
+          "source": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_mechanism_attribution_20260801_0033/mechanism_attribution_summary.md",
+          "evidence": "WTQ 24/25 gain rows tagged strong_verification."
+        },
+        {
+          "source": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/p4b_wtq_targeted_fix_projection.md",
+          "evidence": "WTQ P4b offline projection 37/50 -> 46/50 with 9 wrong-to-correct and 0 projected harm."
+        }
+      ],
+      "current_support_level": "strong_stage_evidence_with_fresh_gap",
+      "remaining_gap": "Need WTQ targeted fresh affected-slice validation, then WTQ after-fix full50 if affected slice passes."
+    },
+    {
+      "id": "C5",
+      "claim_family": "Answer-contract enforcement",
+      "draft_claim_language": "An answer contract module that constrains final outputs to scalar, label, entity, tuple, or list shapes and rejects or rewrites answers whose surface form does not match the requested denotation.",
+      "supported_modules": [
+        "answer shape detection",
+        "surface canonicalization",
+        "missing-answer prevention",
+        "dataset-specific normalized accuracy"
+      ],
+      "implementation_trace": [
+        "/home/ubuntu/lzz/MyAgent/code/my_agents.py",
+        "/home/ubuntu/lzz/MyAgent/code/evaluate_results.py"
+      ],
+      "experimental_trace": [
+        {
+          "source": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_all200_acceptance_20260731_132611/qwen3_policy_v6b_all200_acceptance_summary.json",
+          "evidence": "Full200 MyAgent failures/missing 0/0 across WTQ, TabFact, and CRT."
+        },
+        {
+          "source": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/p4b_wtq_discordant_diagnosis.md",
+          "evidence": "Diagnosis includes myAgent-only rows where concise denotation succeeds while MACT explanatory answers fail strict WTQ matching."
+        }
+      ],
+      "current_support_level": "strong_stage_evidence",
+      "remaining_gap": "No immediate gap; continue recording failures/missing in every future seed/model run."
+    },
+    {
+      "id": "C6",
+      "claim_family": "Budget-aware experimental funnel",
+      "draft_claim_language": "A validation and deployment funnel that applies Gate-10, Gate-50, Gate-150, and paired-200 stages to avoid spending full experimental cost on models or seeds that fail early reliability, accuracy, or token criteria.",
+      "supported_modules": [
+        "gate preparation",
+        "healthcheck",
+        "summary decision",
+        "checkpoint-to-git backup"
+      ],
+      "implementation_trace": [
+        "/home/ubuntu/lzz/MyAgent/scripts/server/prepare_model_gate_run.py",
+        "/home/ubuntu/lzz/MyAgent/scripts/server/prepare_paired200_run.py",
+        "/home/ubuntu/lzz/MyAgent/scripts/server/summarize_model_gate_results.py",
+        "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/README.md"
+      ],
+      "experimental_trace": [
+        {
+          "source": "/home/ubuntu/lzz/MACT/outputs/server_runs/multimodel_gate50_summaries_20260730_1948/",
+          "evidence": "Historical non-main local models recorded as no-go rather than expanded to paired-200."
+        },
+        {
+          "source": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/multiseed_gate50_manifest.json",
+          "evidence": "Seed-C/Seed-D prepared with non-overlapping inputs and current-only-before-paired execution rule."
+        }
+      ],
+      "current_support_level": "process_complete_execution_pending",
+      "remaining_gap": "Need at least one new viable model/API candidate and actual Seed-C/Seed-D execution."
+    }
+  ],
+  "claim_strength_summary": {
+    "ready_for_stage_patent_draft": [
+      "C1",
+      "C3",
+      "C5"
+    ],
+    "ready_with_explicit_boundary": [
+      "C2",
+      "C4",
+      "C6"
+    ],
+    "requires_future_evidence_before_broad_claim": [
+      "WTQ targeted fresh closure",
+      "E3 Seed-C/Seed-D execution",
+      "At least one viable additional model/API gate result"
+    ]
+  }
+}
