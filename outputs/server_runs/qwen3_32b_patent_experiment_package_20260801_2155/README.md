@@ -29,6 +29,9 @@ remaining_qwen3_queue_runbook_zh.md
 preflight_qwen3_runtime.py
 latest_qwen3_runtime_preflight.json
 latest_qwen3_runtime_preflight_zh.md
+build_current_formal_result_ledger.py
+latest_formal_result_ledger_current.json
+latest_formal_result_ledger_current_zh.md
 ```
 
 Current status:
@@ -56,4 +59,7 @@ Current status:
   and blocks queue execution when target GPUs show residual runtime state.
 - Fresh Qwen affected-slice validation is still pending because local vLLM
   endpoints are down and GPUs have residual memory without visible compute PIDs.
-  Latest recorded preflight: `qwen3_runtime_preflight_20260801_230739.json/md`.
+  Latest recorded preflight: `qwen3_runtime_preflight_20260801_231059.json/md`.
+- The current formal-result ledger is generated from frozen JSON sources and
+  keeps pending stages explicit rather than mixing them with completed results.
+  Latest generated ledger: `formal_result_ledger_current_20260801_231652.json/md`.

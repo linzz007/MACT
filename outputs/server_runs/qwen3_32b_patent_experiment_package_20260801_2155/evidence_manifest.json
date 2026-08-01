@@ -165,6 +165,9 @@
     "formal_result_tables_template": {
         "json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/formal_result_tables_template_20260801_2252.json",
         "md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/formal_result_tables_template_20260801_2252_zh.md",
+        "current_ledger_builder": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/build_current_formal_result_ledger.py",
+        "latest_current_ledger_json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_formal_result_ledger_current.json",
+        "latest_current_ledger_md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_formal_result_ledger_current_zh.md",
         "required_fields": [
       "stage",
       "dataset",
@@ -213,7 +216,7 @@
             "The queue does not automatically expand to Gate-150 or full200."
         ],
         "current_online_status": "blocked_gpu_runtime_residual",
-        "latest_observed_at_local": "2026-08-01 23:07:39 CST",
+        "latest_observed_at_local": "2026-08-01 23:10:59 CST",
         "latest_observation": "Endpoints 8000/8001 were both connection refused; target GPUs 6/7 each showed about 42GB memory used and 100% utilization while nvidia-smi compute apps and pmon reported no process."
     },
     "current_prd": "/home/ubuntu/lzz/MyAgent/docs/server/server_codex_reports/current-qwen3-mact-experiment-prd.md",

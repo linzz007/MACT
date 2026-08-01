@@ -179,6 +179,13 @@ bash checkpoint_to_git.sh --commit "checkpoint: e3 multiseed gate50 <stage>" --p
 /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/formal_result_tables_template_20260801_2252_zh.md
 ```
 
+也可以重新生成当前正式结果台账，自动把 completed/pending 分开：
+
+```bash
+python /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/build_current_formal_result_ledger.py
+cat /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_formal_result_ledger_current_zh.md
+```
+
 任何 fresh run 结束后，先更新：
 
 ```text
