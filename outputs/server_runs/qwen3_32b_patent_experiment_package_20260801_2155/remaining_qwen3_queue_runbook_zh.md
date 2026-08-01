@@ -23,6 +23,15 @@
 
 ## 2. 启动 Qwen3 服务
 
+先跑 runtime preflight。该命令只写入 readiness JSON/MD，不启动模型：
+
+```bash
+python /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/preflight_qwen3_runtime.py
+cat /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_qwen3_runtime_preflight_zh.md
+```
+
+只有 `status` 是 `start_service_required` 或已有 endpoint healthy 时，才进入服务启动/队列执行。若 `status=blocked_gpu_runtime_residual`，不要启动 Qwen3，需要先清理服务器 runtime 或得到授权改用其他干净 GPU。
+
 如果只使用用户当前指定的 GPU `6,7`，开一个服务即可：
 
 ```bash

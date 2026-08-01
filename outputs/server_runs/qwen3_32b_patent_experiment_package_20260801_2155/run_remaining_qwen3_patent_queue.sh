@@ -101,6 +101,9 @@ second_or_first_endpoint() {
 
 healthcheck_endpoints() {
   local endpoints_csv="$1"
+  python "$PATENT_RUN_DIR/preflight_qwen3_runtime.py" \
+    --endpoints "$endpoints_csv" \
+    --fail-if-not-ready
   split_endpoints "$endpoints_csv"
   for endpoint in "${ENDPOINT_ARRAY[@]}"; do
     endpoint="${endpoint%/}"

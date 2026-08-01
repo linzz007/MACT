@@ -26,6 +26,9 @@ formal_result_tables_template_20260801_2252.json
 formal_result_tables_template_20260801_2252_zh.md
 run_remaining_qwen3_patent_queue.sh
 remaining_qwen3_queue_runbook_zh.md
+preflight_qwen3_runtime.py
+latest_qwen3_runtime_preflight.json
+latest_qwen3_runtime_preflight_zh.md
 ```
 
 Current status:
@@ -49,5 +52,8 @@ Current status:
   to fill after each pending fresh/gate run.
 - The remaining-Qwen3 queue script now provides a guarded executable entry for
   WTQ fresh closure and E3 Seed-C/Seed-D validation.
+- Runtime preflight records endpoint/GPU/process readiness before any queue run
+  and blocks queue execution when target GPUs show residual runtime state.
 - Fresh Qwen affected-slice validation is still pending because local vLLM
   endpoints are down and GPUs have residual memory without visible compute PIDs.
+  Latest recorded preflight: `qwen3_runtime_preflight_20260801_230739.json/md`.

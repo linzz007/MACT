@@ -32,6 +32,15 @@ MACT a6d3162 results: add wtq targeted fix projection
 
 优先按用户指定资源使用 GPU `6,7`。如果 6/7 不可用，先记录 GPU 状态，不要静默换口径。
 
+先跑 runtime preflight；该命令会把 endpoint、GPU、可见进程和推荐动作写到 MACT 专利实验包：
+
+```bash
+python /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/preflight_qwen3_runtime.py
+cat /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_qwen3_runtime_preflight_zh.md
+```
+
+若输出 `blocked_gpu_runtime_residual`，不要启动模型；先等服务器清理/扩容，或由用户明确授权改用其他 GPU。
+
 ```bash
 cd /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305
 bash start_qwen3_67_service.sh
