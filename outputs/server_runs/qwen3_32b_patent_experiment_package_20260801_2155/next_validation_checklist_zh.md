@@ -193,6 +193,13 @@ python /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_pac
 cat /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_patent_package_consistency_audit_zh.md
 ```
 
+服务器清空/迁移后建议验证 checksum：
+
+```bash
+cd /home/ubuntu/lzz
+sha256sum -c MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/SHA256SUMS
+```
+
 任何 fresh run 结束后，先更新：
 
 ```text

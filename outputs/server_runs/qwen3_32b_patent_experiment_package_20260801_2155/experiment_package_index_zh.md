@@ -140,6 +140,8 @@ E3 multi-seed 准备包：
 /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_formal_result_ledger_current_zh.md
 /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/audit_patent_package_consistency.py
 /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_patent_package_consistency_audit_zh.md
+/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/build_patent_package_checksums.py
+/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/SHA256SUMS
 ```
 
 建议顺序：
@@ -158,6 +160,8 @@ bash /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_packa
 当前正式结果台账由 `build_current_formal_result_ledger.py` 从 frozen summary、P4b summary、模板和 latest preflight 生成，用于专家/专利材料填表；它不会把 pending 项写成 completed。
 
 `audit_patent_package_consistency.py` 用于检查 PRD、manifest、latest formal ledger、latest preflight 和关键数字是否一致。在线阻塞会记录为 warning；数字或路径不一致会记录为 error。
+
+`build_patent_package_checksums.py` 用于生成 `SHA256SUMS`，覆盖本实验包文件和 manifest 中已经存在的关键证据文件。服务器清空/迁移后，可在 `/home/ubuntu/lzz` 下执行 `sha256sum -c MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/SHA256SUMS` 校验恢复完整性。
 
 ## 9. 专家可复核路径
 

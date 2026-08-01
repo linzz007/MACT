@@ -35,6 +35,10 @@ latest_formal_result_ledger_current_zh.md
 audit_patent_package_consistency.py
 latest_patent_package_consistency_audit.json
 latest_patent_package_consistency_audit_zh.md
+build_patent_package_checksums.py
+SHA256SUMS
+latest_patent_package_checksums.json
+latest_patent_package_checksums_zh.md
 ```
 
 Current status:
@@ -68,3 +72,6 @@ Current status:
   Latest generated ledger: `formal_result_ledger_current_20260801_232007.json/md`.
 - The latest consistency audit passes with 0 errors and 1 warning for the
   still-blocked online runtime: `patent_package_consistency_audit_20260801_232219.json/md`.
+- The checksum manifest lets a restored server verify that package files and
+  existing referenced evidence files were recovered without corruption.
+  Use `latest_patent_package_checksums.json/md` and `SHA256SUMS`.
