@@ -119,6 +119,14 @@ bash /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate
 
 目的：证明结果不是单一 full200 或单一 P4b seed 的偶然。
 
+当前准备包：
+
+```text
+/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/
+```
+
+该目录已准备 Seed-C/Seed-D，各数据集 50 行输入、manifest、校验脚本、MyAgent runner、MACT runner 和 paired compare runner；模型执行仍 pending。
+
 执行顺序：
 
 | stage | rows | estimated MyAgent tokens | purpose |
@@ -132,6 +140,7 @@ bash /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate
 1. 不要求每组每个数据集都大幅领先，但 WTQ 不能连续明显落后且无法解释。
 2. overall 必须稳定高于 MACT/Qwen reference，token 必须明显低于 MACT。
 3. 任何 seed 出现 failed/missing > 2%，先排查 runner/endpoint，不把该结果写成模型效果。
+4. 若 current-only summary 的 decision 是 `stop_or_inspect`，不跑 MACT baseline，先诊断该 seed 的 MyAgent 错误。
 
 ## E. 多模型 Gate
 

@@ -30,5 +30,7 @@ Current status:
   P4b MACT-only WTQ rows, with 0 projected harm.
 - The patent-facing mechanism evidence matrix now combines full200, coarse
   ablation, and offline attribution evidence.
+- E3 multi-seed Gate-50 inputs and runners are prepared for Seed-C/Seed-D; no
+  model rows have been run yet in that package.
 - Fresh Qwen affected-slice validation is still pending because local vLLM
   endpoints are down and GPUs have residual memory without visible compute PIDs.

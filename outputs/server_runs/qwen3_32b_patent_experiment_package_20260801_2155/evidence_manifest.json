@@ -116,13 +116,31 @@
     "correct_to_wrong": 0,
     "fresh_model_validation_status": "pending"
   },
+  "multiseed_e3_prepared": {
+    "run_dir": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231",
+    "readme": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/README.md",
+    "manifest_json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/multiseed_gate50_manifest.json",
+    "input_summary_md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/input_generation_summary.md",
+    "verify_script": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/verify_multiseed_package.py",
+    "myagent_runner": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/run_seed_myagent_gate50.sh",
+    "mact_runner": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/run_seed_mact_gate50.sh",
+    "paired_compare_runner": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/run_seed_paired_compare.sh",
+    "seeds": {
+      "seed_c": 20260802,
+      "seed_d": 20260803
+    },
+    "prepared_input_rows": 300,
+    "prepared_rows_per_seed": 150,
+    "validation_status": "prepared_inputs_verified",
+    "model_execution_status": "pending_endpoint_gpu_recovery"
+  },
   "current_prd": "/home/ubuntu/lzz/MyAgent/docs/server/server_codex_reports/current-qwen3-mact-experiment-prd.md",
   "formal_experiment_schedule": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/formal_experiment_schedule_zh.md",
   "remaining_work": [
     "Run fresh Qwen3 affected-slice validation for WTQ targeted fixes.",
     "If affected-slice passes, rerun P4b WTQ after-fix full50.",
     "Add fine-grained ablation switches if needed for verifier override/evidence retention.",
-    "Run at least two additional new-seed gates or one larger Gate-100/150.",
+    "Run prepared E3 Seed-C/Seed-D Gate-50 current-only validations, then only run paired MACT baselines for seeds that pass current-only gate.",
     "Run at least one additional model through the gate funnel after server expansion or API key availability.",
     "Finalize patent claims and formal experimental section after fresh validation."
   ]

@@ -115,9 +115,17 @@ E2 targeted fix 投影：
 |---|---|---|
 | WTQ targeted fresh Qwen validation | endpoint 8000/8001 down，GPU 有 residual memory | 服务器清理/扩容后先跑 9-row affected slice |
 | P4b WTQ after-fix full50 | 需要 affected-slice fresh 先验证机制方向 | affected-slice 过后再重跑 WTQ full50 |
-| 多 seed 稳定性 | 目前只有一组新 seed Gate-50 | 至少补 2 组 Gate-50 或 1 组 Gate-100/150 |
+| 多 seed 稳定性 | E3 Seed-C/Seed-D 输入和 runner 已准备，但尚未执行模型 | 服务器恢复后先跑 current-only Gate-50；通过后再跑同 ID MACT baseline |
 | 多模型 gate | 当前只有 Qwen3-32B 真正有效 | 新本地模型/API key 出现后按 Gate-10 -> Gate-50 -> Gate-150 执行 |
 | 细粒度消融 | coarse 消融已有，但 verifier override/evidence retention 细粒度 causal 证据仍可增强 | 需要时新增开关并跑 targeted ablation |
+
+E3 multi-seed 准备包：
+
+```text
+/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/
+```
+
+该包已生成 Seed-C/Seed-D 各 WTQ/TabFact/CRT `50` 行输入，总计 `300` 行，并通过 `verify_multiseed_package.py` 校验。它只是准备包，不包含模型运行结果。
 
 ## 8. 专家可复核路径
 

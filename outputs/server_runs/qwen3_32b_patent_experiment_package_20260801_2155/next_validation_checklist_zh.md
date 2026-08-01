@@ -109,7 +109,35 @@ bash /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate
 /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/p4b_after_wtq_targeted_paired_summary.md
 ```
 
-## 5. 同步规则
+## 5. E3 multi-seed 准备入口
+
+WTQ affected-slice 和 P4b WTQ after-fix full50 有结论后，再启动 E3 Seed-C/Seed-D。不要直接扩 full200。
+
+```bash
+cd /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231
+python verify_multiseed_package.py
+bash healthcheck_vllm.sh
+bash run_seed_myagent_gate50.sh seed_c
+cat summary/seed_c_myagent_gate50_summary.md
+```
+
+只有 `summary/seed_c_myagent_gate50_summary.json` 的 `decision=run_paired_mact` 时，才继续跑同 ID MACT：
+
+```bash
+bash run_seed_mact_gate50.sh seed_c wtq http://127.0.0.1:8000/v1
+bash run_seed_mact_gate50.sh seed_c tabfact http://127.0.0.1:8001/v1
+bash run_seed_mact_gate50.sh seed_c crt http://127.0.0.1:8000/v1
+bash run_seed_paired_compare.sh seed_c
+cat summary/seed_c_paired_gate50_summary.md
+```
+
+Seed-D 同理。每完成一个 seed 后立即：
+
+```bash
+bash checkpoint_to_git.sh --commit "checkpoint: e3 multiseed gate50 <stage>" --push
+```
+
+## 6. 同步规则
 
 任何 fresh run 结束后，先更新：
 
