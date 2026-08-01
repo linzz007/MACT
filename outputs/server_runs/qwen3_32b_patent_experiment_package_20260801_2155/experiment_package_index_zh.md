@@ -52,11 +52,18 @@ coarse diagnostic Gate-50 来源：
 /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_coarse_ablation_gate50_20260801_0040/coarse_ablation_gate50_summary.md
 ```
 
+专利机制证据矩阵：
+
+```text
+/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_patent_mechanism_evidence_20260801_2222/patent_mechanism_evidence_matrix.md
+```
+
 关键结论：
 
 1. `legacy` 和 `no_strong_verification` 在 diagnostic slice 上相对 current 的最大差距集中在 WTQ，支持 strong verification / 劝返路径对 WTQ 的贡献。
 2. `no_deterministic_shortcuts` 使 TabFact 从 current ref `48/50` 降至 `39/50`，token 变为 current 的 `1.4487x`，说明 deterministic audit 同时提高准确率并降低 token。
 3. `no_deterministic_shortcuts` 使 CRT 从 `37/50` 降至 `30/50`，说明 deterministic audit 是跨数据集模块，不是 TabFact 特例。
+4. 机制矩阵把 full200 anchor、coarse ablation 和 offline attribution 合并，明确风险协作/劝返、确定性审计、证据保留和预算控制四类专利机制的证据与边界。
 
 限制：这是 diagnostic slice，不是随机新 seed 泛化实验。正式材料中应表述为机制归因证据，不应单独作为泛化准确率。
 

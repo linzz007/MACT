@@ -76,6 +76,14 @@ WTQ E2 targeted projection：
 
 该投影不能替代 fresh model run，但说明 E1 诊断出的 9 条 MACT-only WTQ 错误均可由通用机制覆盖，而非样本 ID 硬编码。
 
+机制证据矩阵：
+
+```text
+/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_patent_mechanism_evidence_20260801_2222/patent_mechanism_evidence_matrix.md
+```
+
+该矩阵将 full200 主结果、coarse Gate-50 消融和 offline attribution 合并为专利可引用证据。当前可写的机制证据包括：关闭 strong verification 在 diagnostic slice 上 overall `-8/150`，其中 WTQ `-7/50`；关闭 deterministic shortcuts overall `-15/150`，其中 TabFact `-9/50` 且 token 为 current 的 `1.4487x`，CRT `-7/50`；offline attribution 中 WTQ gain rows `24/25` 带 strong-verification tag，TabFact gain rows `8/9` 带 deterministic-audit tag。
+
 ## 7. 权利要求草案方向
 
 1. 一种表格推理方法，包括：接收表格和自然语言问题；生成答案契约；基于问题类型和表格结构评估风险；根据风险选择轻量路径、确定性审计路径或强验证协作路径；在候选答案冲突时执行劝返判断；输出满足答案契约的结果。

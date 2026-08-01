@@ -28,5 +28,7 @@ Current status:
 - E1 WTQ discordant diagnosis is complete.
 - E2 WTQ targeted fixes are implemented and projected offline to recover all 9
   P4b MACT-only WTQ rows, with 0 projected harm.
+- The patent-facing mechanism evidence matrix now combines full200, coarse
+  ablation, and offline attribution evidence.
 - Fresh Qwen affected-slice validation is still pending because local vLLM
   endpoints are down and GPUs have residual memory without visible compute PIDs.

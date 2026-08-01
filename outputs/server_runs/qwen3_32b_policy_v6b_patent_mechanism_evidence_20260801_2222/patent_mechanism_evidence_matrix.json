@@ -1,0 +1,377 @@
+{
+  "title": "Qwen3-32B patent-facing mechanism evidence matrix",
+  "created_at_local": "2026-08-01 22:22 CST",
+  "scope": "Combine frozen full200, run-based coarse Gate-50 ablations, and offline attribution for patent/expert evidence.",
+  "source_paths": {
+    "full200": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_all200_acceptance_20260731_132611/qwen3_policy_v6b_all200_acceptance_summary.json",
+    "coarse_ablation": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_coarse_ablation_gate50_20260801_0040/coarse_ablation_gate50_summary.json",
+    "mechanism_attribution": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_mechanism_attribution_20260801_0033/mechanism_attribution_summary.json"
+  },
+  "full200_anchor": {
+    "rows": 600,
+    "current_correct": 489,
+    "mact_correct": 450,
+    "current_accuracy": 0.815,
+    "mact_accuracy": 0.75,
+    "accuracy_delta_correct": 39,
+    "accuracy_delta": 0.06499999999999995,
+    "current_avg_total_tokens_weighted": 6507.286666666667,
+    "mact_avg_total_tokens_weighted": 11382.946666666667,
+    "token_ratio_current_over_mact": 0.5716697843909193,
+    "current_avg_elapsed_seconds_weighted": 17.00684275002272,
+    "mact_avg_elapsed_seconds_weighted": 127.2063788012584,
+    "elapsed_ratio_current_over_mact": 0.1336948894409883,
+    "current_failures": 0,
+    "current_missing_answers": 0
+  },
+  "coarse_ablation": {
+    "note": "Diagnostic Gate-50 prioritizes disagreement rows and is intended for mechanism diagnosis, not fresh random-seed generalization.",
+    "variants": {
+      "legacy": {
+        "variant": "legacy",
+        "rows": 150,
+        "correct": 109,
+        "current_reference_correct": 117,
+        "mact_reference_correct": 98,
+        "delta_vs_current": -8,
+        "delta_vs_mact": 11,
+        "avg_total_tokens": 2413.66,
+        "token_ratio_vs_current": 0.3302480903845136,
+        "token_ratio_vs_mact": 0.2051269121813031,
+        "per_dataset": {
+          "wtq": {
+            "rows": 50,
+            "variant_correct": 25,
+            "current_correct": 32,
+            "mact_correct": 40,
+            "delta_vs_current": -7,
+            "delta_vs_mact": -15,
+            "token_ratio_vs_current": 0.3798789768090652,
+            "token_ratio_vs_mact": 0.2417840544338968,
+            "failed": 0,
+            "missing": 0
+          },
+          "tabfact": {
+            "rows": 50,
+            "variant_correct": 47,
+            "current_correct": 48,
+            "mact_correct": 43,
+            "delta_vs_current": -1,
+            "delta_vs_mact": 4,
+            "token_ratio_vs_current": 0.9522891479432802,
+            "token_ratio_vs_mact": 0.19101537794322268,
+            "failed": 0,
+            "missing": 0
+          },
+          "crt": {
+            "rows": 50,
+            "variant_correct": 37,
+            "current_correct": 37,
+            "mact_correct": 15,
+            "delta_vs_current": 0,
+            "delta_vs_mact": 22,
+            "token_ratio_vs_current": 0.1929984393443662,
+            "token_ratio_vs_mact": 0.18591496843673302,
+            "failed": 0,
+            "missing": 0
+          }
+        }
+      },
+      "no_strong_verification": {
+        "variant": "no_strong_verification",
+        "rows": 150,
+        "correct": 109,
+        "current_reference_correct": 117,
+        "mact_reference_correct": 98,
+        "delta_vs_current": -8,
+        "delta_vs_mact": 11,
+        "avg_total_tokens": 2413.9466666666667,
+        "token_ratio_vs_current": 0.330287313439643,
+        "token_ratio_vs_mact": 0.20515127478753542,
+        "per_dataset": {
+          "wtq": {
+            "rows": 50,
+            "variant_correct": 25,
+            "current_correct": 32,
+            "mact_correct": 40,
+            "delta_vs_current": -7,
+            "delta_vs_mact": -15,
+            "token_ratio_vs_current": 0.38000039531606933,
+            "token_ratio_vs_mact": 0.2418613344643775,
+            "failed": 0,
+            "missing": 0
+          },
+          "tabfact": {
+            "rows": 50,
+            "variant_correct": 47,
+            "current_correct": 48,
+            "mact_correct": 43,
+            "delta_vs_current": -1,
+            "delta_vs_mact": 4,
+            "token_ratio_vs_current": 0.9522891479432802,
+            "token_ratio_vs_mact": 0.19101537794322268,
+            "failed": 0,
+            "missing": 0
+          },
+          "crt": {
+            "rows": 50,
+            "variant_correct": 37,
+            "current_correct": 37,
+            "mact_correct": 15,
+            "delta_vs_current": 0,
+            "delta_vs_mact": 22,
+            "token_ratio_vs_current": 0.1929984393443662,
+            "token_ratio_vs_mact": 0.18591496843673302,
+            "failed": 0,
+            "missing": 0
+          }
+        }
+      },
+      "no_deterministic_shortcuts": {
+        "variant": "no_deterministic_shortcuts",
+        "rows": 150,
+        "correct": 102,
+        "current_reference_correct": 117,
+        "mact_reference_correct": 98,
+        "delta_vs_current": -15,
+        "delta_vs_mact": 4,
+        "avg_total_tokens": 7492.993333333333,
+        "token_ratio_vs_current": 1.025225897432623,
+        "token_ratio_vs_mact": 0.6367983002832861,
+        "per_dataset": {
+          "wtq": {
+            "rows": 50,
+            "variant_correct": 33,
+            "current_correct": 32,
+            "mact_correct": 40,
+            "delta_vs_current": 1,
+            "delta_vs_mact": -7,
+            "token_ratio_vs_current": 0.9506730256080104,
+            "token_ratio_vs_mact": 0.6050810721436043,
+            "failed": 0,
+            "missing": 0
+          },
+          "tabfact": {
+            "rows": 50,
+            "variant_correct": 39,
+            "current_correct": 48,
+            "mact_correct": 43,
+            "delta_vs_current": -9,
+            "delta_vs_mact": -4,
+            "token_ratio_vs_current": 1.4487126358083637,
+            "token_ratio_vs_mact": 0.2905907226368384,
+            "failed": 0,
+            "missing": 0
+          },
+          "crt": {
+            "rows": 50,
+            "variant_correct": 30,
+            "current_correct": 37,
+            "mact_correct": 15,
+            "delta_vs_current": -7,
+            "delta_vs_mact": 15,
+            "token_ratio_vs_current": 0.992578567524103,
+            "token_ratio_vs_mact": 0.9561487319747494,
+            "failed": 0,
+            "missing": 0
+          }
+        }
+      }
+    }
+  },
+  "offline_attribution": {
+    "method": "Offline associative attribution by aligning current/old/MACT rows and counting mechanism metadata on transition sets. This is not a causal ablation; P2 run-based ablations are still required for causal claims.",
+    "datasets": {
+      "wtq": {
+        "current_correct": 155,
+        "old_correct": 131,
+        "mact_correct": 148,
+        "net_gain_vs_old": 24,
+        "net_gain_vs_mact": 7,
+        "gain_vs_old": {
+          "count": 25,
+          "family_counts": {
+            "risk_level": 25,
+            "evidence_source": 24,
+            "strong_verification": 24,
+            "evidence_retention": 16,
+            "deterministic_audit": 1
+          },
+          "top_tags": {
+            "evidence_source:strong_verification_consensus": 24,
+            "risk_level:high": 23,
+            "strong_verification:wtq_high_risk_denotation": 22,
+            "evidence_retention:expanded_context_block_global_rows": 9,
+            "evidence_retention:strict_cell_block_global_rows": 6,
+            "risk_level:light": 1,
+            "strong_verification:post_risk_requires_fallback": 1,
+            "risk_level:fallback": 1
+          }
+        },
+        "harm_vs_old": {
+          "count": 1,
+          "family_counts": {
+            "evidence_source": 1,
+            "strong_verification": 1,
+            "evidence_retention": 1,
+            "risk_level": 1
+          }
+        },
+        "current_only_vs_mact": {
+          "count": 24,
+          "family_counts": {
+            "risk_level": 24,
+            "strong_verification": 22,
+            "evidence_source": 19,
+            "evidence_retention": 5,
+            "deterministic_audit": 1
+          }
+        },
+        "mact_only": {
+          "count": 17,
+          "family_counts": {
+            "strong_verification": 17,
+            "risk_level": 17,
+            "evidence_source": 13,
+            "evidence_retention": 9
+          }
+        }
+      },
+      "tabfact": {
+        "current_correct": 194,
+        "old_correct": 185,
+        "mact_correct": 189,
+        "net_gain_vs_old": 9,
+        "net_gain_vs_mact": 5,
+        "gain_vs_old": {
+          "count": 9,
+          "family_counts": {
+            "evidence_retention": 9,
+            "risk_level": 9,
+            "deterministic_audit": 8
+          },
+          "top_tags": {
+            "evidence_retention:expanded_context_block_global_rows": 7,
+            "risk_level:high": 7,
+            "risk_level:medium": 2,
+            "deterministic_audit:TabFact retirement threshold count checked deterministically.": 1,
+            "deterministic_audit:TabFact country pair affiliation checked deterministically.": 1,
+            "deterministic_audit:TabFact zero gold medal count checked deterministically.": 1,
+            "deterministic_audit:TabFact all games before date result checked deterministically.": 1,
+            "deterministic_audit:TabFact second-smallest metric row checked deterministically.": 1
+          }
+        },
+        "harm_vs_old": {
+          "count": 0,
+          "family_counts": {}
+        },
+        "current_only_vs_mact": {
+          "count": 7,
+          "family_counts": {
+            "evidence_retention": 7,
+            "risk_level": 7,
+            "deterministic_audit": 2
+          }
+        },
+        "mact_only": {
+          "count": 2,
+          "family_counts": {
+            "evidence_retention": 2,
+            "risk_level": 2
+          }
+        }
+      },
+      "crt": {
+        "current_correct": 140,
+        "old_correct": 137,
+        "mact_correct": 113,
+        "net_gain_vs_old": 3,
+        "net_gain_vs_mact": 27,
+        "gain_vs_old": {
+          "count": 6,
+          "family_counts": {
+            "evidence_retention": 6,
+            "risk_level": 6,
+            "evidence_source": 2,
+            "strong_verification": 2
+          },
+          "top_tags": {
+            "evidence_retention:expanded_context_block_global_rows": 6,
+            "risk_level:medium": 4,
+            "evidence_source:strong_verification_consensus": 2,
+            "strong_verification:crt_closed_choice_verification": 2,
+            "risk_level:high": 2
+          }
+        },
+        "harm_vs_old": {
+          "count": 3,
+          "family_counts": {
+            "evidence_source": 3,
+            "strong_verification": 3,
+            "evidence_retention": 3,
+            "risk_level": 3
+          }
+        },
+        "current_only_vs_mact": {
+          "count": 40,
+          "family_counts": {
+            "risk_level": 40,
+            "evidence_retention": 37,
+            "evidence_source": 33,
+            "strong_verification": 33,
+            "deterministic_audit": 8
+          }
+        },
+        "mact_only": {
+          "count": 13,
+          "family_counts": {
+            "risk_level": 13,
+            "evidence_source": 12,
+            "strong_verification": 12,
+            "evidence_retention": 12
+          }
+        }
+      }
+    }
+  },
+  "patent_mechanism_evidence": {
+    "risk_collaboration_and_persuasion_back": {
+      "primary_evidence": [
+        "coarse_ablation.no_strong_verification: overall -8/150 vs current reference",
+        "coarse_ablation.no_strong_verification.wtq: -7/50 vs current reference",
+        "offline_attribution.wtq.gain_vs_old: 24/25 gain rows tagged strong_verification and 16/25 tagged evidence_retention"
+      ],
+      "boundary": "The coarse slice is diagnostic and disagreement-enriched; it supports mechanism contribution, not a random-seed generalization estimate."
+    },
+    "deterministic_audit": {
+      "primary_evidence": [
+        "coarse_ablation.no_deterministic_shortcuts: overall -15/150 vs current reference",
+        "coarse_ablation.no_deterministic_shortcuts.tabfact: -9/50 vs current reference and 1.4487x current tokens",
+        "coarse_ablation.no_deterministic_shortcuts.crt: -7/50 vs current reference",
+        "offline_attribution.tabfact.gain_vs_old: 8/9 gain rows tagged deterministic_audit"
+      ],
+      "boundary": "WTQ deterministic shortcuts are mixed on this coarse slice; the strongest deterministic-audit evidence is TabFact and CRT."
+    },
+    "evidence_retention": {
+      "primary_evidence": [
+        "offline_attribution.wtq.gain_vs_old: 16/25 gain rows tagged evidence_retention",
+        "offline_attribution.tabfact.gain_vs_old: 9/9 gain rows tagged evidence_retention",
+        "offline_attribution.crt.current_only_vs_mact: 37/40 current-only rows tagged evidence_retention"
+      ],
+      "boundary": "Evidence-retention attribution is associative unless followed by a fine-grained no_evidence_retention ablation."
+    },
+    "budget_control": {
+      "primary_evidence": [
+        "full200 aggregate token ratio current/MACT = 0.5717",
+        "full200 aggregate elapsed ratio current/MACT = 0.1337",
+        "coarse deterministic audit on TabFact improves accuracy while avoiding the high token path"
+      ],
+      "boundary": "CRT token savings are weaker than WTQ/TabFact; formal claims should use overall token reduction and per-dataset ratios."
+    }
+  },
+  "remaining_e2_work": [
+    "Run WTQ targeted fresh validation on Qwen3-32B.",
+    "Run WTQ after-targeted P4b full50 only if targeted fresh passes.",
+    "Add fine-grained no_evidence_retention or no_wtq_verifier_override ablation only if fresh WTQ remains ambiguous."
+  ]
+}
