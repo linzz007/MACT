@@ -66,6 +66,14 @@ bash /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate
 /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/myagent_current_after_wtq_targeted_fix/
 ```
 
+执行：
+
+```bash
+bash /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/run_myagent_wtq_after_targeted_fix_full50.sh
+```
+
+该脚本会先检查 A 阶段 `p4b_wtq_targeted_fresh_summary.json` 是否 `decision=pass`，再跑 WTQ full50，并自动生成 after-targeted paired summary。
+
 规模：50 行，预计 MyAgent 约 `325.1k` tokens，单 endpoint 按 full200 均值约 `14.0` 分钟模型侧运行时间。
 
 通过条件：
@@ -77,6 +85,13 @@ bash /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate
 | failed/missing | 0/0 |
 
 停止规则：若没有超过 `43/50`，先更新 WTQ 风险诊断，不进入更大新 seed。
+
+输出：
+
+```text
+/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/p4b_after_wtq_targeted_paired_summary.json
+/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/p4b_after_wtq_targeted_paired_summary.md
+```
 
 ## C. 机制消融
 

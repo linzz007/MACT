@@ -1,0 +1,33 @@
+{
+  "created_at_local": "2026-08-01 22:17 CST",
+  "scope": "E2 WTQ targeted-fix after-slice full50 automation",
+  "fresh_model_run_executed": false,
+  "reason_fresh_model_run_not_executed": "Qwen3-32B endpoints remained down and GPU 6,7 were not available for reliable startup.",
+  "artifacts_added": {
+    "full50_runner": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/run_myagent_wtq_after_targeted_fix_full50.sh",
+    "paired_compare_runner": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/run_p4b_after_wtq_targeted_eval_compare.sh",
+    "paired_summary_renderer": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/summarize_p4b_after_wtq_targeted_paired.py"
+  },
+  "guard": {
+    "requires_fresh_summary": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/p4b_wtq_targeted_fresh_summary.json",
+    "requires_decision": "pass",
+    "requires_failed_missing": "0/0",
+    "verified_behavior": "When fresh summary is absent, run_myagent_wtq_after_targeted_fix_full50.sh exits before run_sharded_tqa.",
+    "verified_exit_code": 1,
+    "verified_message": "Missing targeted fresh summary"
+  },
+  "verification": [
+    "bash -n run_myagent_wtq_after_targeted_fix_full50.sh",
+    "bash -n run_p4b_after_wtq_targeted_eval_compare.sh",
+    "python -m py_compile summarize_p4b_after_wtq_targeted_paired.py",
+    "python -m json.tool evidence_manifest.json",
+    "manifest path check for fresh/full50 automation paths",
+    "guard smoke test for missing p4b_wtq_targeted_fresh_summary.json"
+  ],
+  "next_action_after_server_cleanup": [
+    "Start Qwen3-32B on GPU 6,7.",
+    "Run run_myagent_wtq_targeted_fix_slice.sh.",
+    "If p4b_wtq_targeted_fresh_summary.json has decision=pass, run run_myagent_wtq_after_targeted_fix_full50.sh.",
+    "Inspect p4b_after_wtq_targeted_paired_summary.json/md for WTQ > 43/50 and all three datasets > MACT."
+  ]
+}

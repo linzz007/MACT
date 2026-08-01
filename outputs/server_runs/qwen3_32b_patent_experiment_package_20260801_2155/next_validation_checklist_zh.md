@@ -86,8 +86,7 @@ python /home/ubuntu/lzz/MyAgent/scripts/server/summarize_wtq_targeted_fresh.py \
 只有 affected-slice fresh 结果证明方向有效，才重跑 WTQ full50 after-fix：
 
 ```bash
-# 可复用 run_myagent_p4a_current.sh 中的 WTQ 段，输出目录必须新建：
-# myagent_current_after_wtq_targeted_fix/
+bash /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/run_myagent_wtq_after_targeted_fix_full50.sh
 ```
 
 重跑后比较：
@@ -95,6 +94,20 @@ python /home/ubuntu/lzz/MyAgent/scripts/server/summarize_wtq_targeted_fresh.py \
 - MyAgent WTQ after-fix 是否超过 MACT `43/50`。
 - token ratio 是否仍明显低于 MACT。
 - failed/missing 是否仍为 `0/0`。
+
+该脚本会先读取 `p4b_wtq_targeted_fresh_summary.json`，只有 `decision=pass` 且 failed/missing 为 `0/0` 时才继续跑 WTQ full50。跑完后自动调用：
+
+```bash
+bash /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/run_p4b_after_wtq_targeted_eval_compare.sh
+```
+
+输出：
+
+```text
+/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/myagent_current_after_wtq_targeted_fix/
+/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/p4b_after_wtq_targeted_paired_summary.json
+/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/p4b_after_wtq_targeted_paired_summary.md
+```
 
 ## 5. 同步规则
 
