@@ -17,8 +17,8 @@ python code/evaluate_results.py "$RUN_DIR/mact/crt_mact_newseed_gate50.jsonl" \
   > "$RUN_DIR/eval/crt_mact_newseed_gate50_eval.json"
 python code/compare_blind_results.py \
   --myagent_wtq "$RUN_DIR/myagent_current/merged/wtq_qwen3-32b-local.jsonl" \
-  --myagent_tabfact "$RUN_DIR/myagent_current/merged/tabfact_qwen3-32b-local.jsonl" \
-  --myagent_crt "$RUN_DIR/myagent_current/merged/crt_qwen3-32b-local.jsonl" \
+  --myagent_tabfact "$RUN_DIR/myagent_current_after_fix/merged/tabfact_qwen3-32b-local.jsonl" \
+  --myagent_crt "$RUN_DIR/myagent_current_after_fix/merged/crt_qwen3-32b-local.jsonl" \
   --mact_wtq "$RUN_DIR/mact/wtq_mact_newseed_gate50.jsonl" \
   --mact_tabfact "$RUN_DIR/mact/tabfact_mact_newseed_gate50.jsonl" \
   --mact_crt "$RUN_DIR/mact/crt_mact_newseed_gate50.jsonl" \

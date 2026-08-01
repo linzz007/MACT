@@ -1,0 +1,55 @@
+{
+  "result_schema": "myagent",
+  "num_samples": 9,
+  "num_with_gold": 9,
+  "exact_match": 1.0,
+  "primary_accuracy": 1.0,
+  "accuracy_metric": "crt_normalized_accuracy",
+  "num_failed_exec": 0,
+  "num_missing_answer": 0,
+  "num_em_mismatch": 0,
+  "num_multi_view_replan": 0,
+  "num_cross_path_mismatch": 0,
+  "route_distribution": {
+    "COMPLEX": 9
+  },
+  "difficulty_distribution": {
+    "medium": 9
+  },
+  "risk_distribution": {
+    "high": 4,
+    "medium": 5
+  },
+  "risk_strata": {
+    "high": {
+      "count": 4,
+      "num_with_gold": 4,
+      "correct": 4,
+      "accuracy": 1.0,
+      "avg_total_tokens": 10149.0,
+      "failure_count": 0
+    },
+    "medium": {
+      "count": 5,
+      "num_with_gold": 5,
+      "correct": 5,
+      "accuracy": 1.0,
+      "avg_total_tokens": 409.6,
+      "failure_count": 0
+    }
+  },
+  "simple_lookup_success_rate": 0.0,
+  "multi_view_pass_rate": 0.0,
+  "alternative_exec_success_rate": 0.0,
+  "avg_llm_calls": 3.5555555555555554,
+  "avg_total_tokens": 4738.222222222223,
+  "avg_prompt_tokens": 4559.111111111111,
+  "avg_completion_tokens": 179.11111111111111,
+  "token_measurement": "api_usage",
+  "avg_compression_ratio": 0.47863155363155363,
+  "avg_token_compression_ratio_est": 0.48172624020224225,
+  "avg_elapsed_seconds": 8.071853707673856,
+  "avg_total_tokens_est": 4576.444444444444,
+  "avg_prompt_tokens_est": 4402.333333333333,
+  "avg_completion_tokens_est": 174.11111111111111
+}

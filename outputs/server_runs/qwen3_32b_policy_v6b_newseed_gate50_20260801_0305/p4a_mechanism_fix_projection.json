@@ -1,0 +1,1578 @@
+{
+  "summary": {
+    "run_dir": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305",
+    "projection_scope": "offline deterministic shortcut + scalar canonicalization replay over saved P4a merged rows; no model calls",
+    "tabfact": {
+      "rows": 50,
+      "current_correct": 42,
+      "projected_correct": 45,
+      "current_accuracy": 0.84,
+      "projected_accuracy": 0.9,
+      "net_gain": 3,
+      "shortcut_applied_rows": 10,
+      "canonicalized_rows": 0,
+      "wrong_to_correct": 3,
+      "correct_to_wrong": 0,
+      "unchanged_wrong": 5,
+      "projected_eval_summary": {
+        "result_schema": "myagent",
+        "num_samples": 50,
+        "num_with_gold": 50,
+        "exact_match": 0.9,
+        "primary_accuracy": 0.9,
+        "accuracy_metric": "tabfact_binary_accuracy",
+        "num_failed_exec": 0,
+        "num_missing_answer": 0,
+        "num_em_mismatch": 5,
+        "num_multi_view_replan": 0,
+        "num_cross_path_mismatch": 0,
+        "route_distribution": {
+          "COMPLEX": 50
+        },
+        "difficulty_distribution": {
+          "medium": 44,
+          "easy": 3,
+          "hard": 3
+        },
+        "risk_distribution": {
+          "high": 35,
+          "medium": 15
+        },
+        "risk_strata": {
+          "high": {
+            "count": 35,
+            "num_with_gold": 35,
+            "correct": 33,
+            "accuracy": 0.9428571428571428,
+            "avg_total_tokens": 2750.885714285714,
+            "failure_count": 0
+          },
+          "medium": {
+            "count": 15,
+            "num_with_gold": 15,
+            "correct": 12,
+            "accuracy": 0.8,
+            "avg_total_tokens": 2197.9333333333334,
+            "failure_count": 0
+          }
+        },
+        "simple_lookup_success_rate": 0.0,
+        "multi_view_pass_rate": 0.0,
+        "alternative_exec_success_rate": 0.0,
+        "avg_llm_calls": 3.92,
+        "avg_total_tokens": 2585.0,
+        "avg_prompt_tokens": 2290.2,
+        "avg_completion_tokens": 294.8,
+        "token_measurement": "api_usage",
+        "avg_compression_ratio": 0.5591984126984128,
+        "avg_token_compression_ratio_est": 0.5537739200786401,
+        "avg_elapsed_seconds": 11.508407768921462,
+        "avg_total_tokens_est": 2438.38,
+        "avg_prompt_tokens_est": 2152.34,
+        "avg_completion_tokens_est": 286.04
+      },
+      "projected_anomaly_count": 5,
+      "wrong_to_correct_ids": [
+        "tabfact-test-7551",
+        "tabfact-test-7952",
+        "tabfact-test-11907"
+      ],
+      "correct_to_wrong_ids": []
+    },
+    "crt": {
+      "rows": 50,
+      "current_correct": 21,
+      "projected_correct": 30,
+      "current_accuracy": 0.42,
+      "projected_accuracy": 0.6,
+      "net_gain": 9,
+      "shortcut_applied_rows": 9,
+      "canonicalized_rows": 1,
+      "wrong_to_correct": 9,
+      "correct_to_wrong": 0,
+      "unchanged_wrong": 20,
+      "projected_eval_summary": {
+        "result_schema": "myagent",
+        "num_samples": 50,
+        "num_with_gold": 50,
+        "exact_match": 0.6,
+        "primary_accuracy": 0.6,
+        "accuracy_metric": "crt_normalized_accuracy",
+        "num_failed_exec": 0,
+        "num_missing_answer": 0,
+        "num_em_mismatch": 20,
+        "num_multi_view_replan": 0,
+        "num_cross_path_mismatch": 0,
+        "route_distribution": {
+          "COMPLEX": 49,
+          "SIMPLE": 1
+        },
+        "difficulty_distribution": {
+          "medium": 48,
+          "hard": 1,
+          "easy": 1
+        },
+        "risk_distribution": {
+          "high": 31,
+          "medium": 19
+        },
+        "risk_strata": {
+          "high": {
+            "count": 31,
+            "num_with_gold": 31,
+            "correct": 21,
+            "accuracy": 0.6774193548387096,
+            "avg_total_tokens": 15062.967741935483,
+            "failure_count": 0
+          },
+          "medium": {
+            "count": 19,
+            "num_with_gold": 19,
+            "correct": 9,
+            "accuracy": 0.47368421052631576,
+            "avg_total_tokens": 2398.315789473684,
+            "failure_count": 0
+          }
+        },
+        "simple_lookup_success_rate": 0.0,
+        "multi_view_pass_rate": 0.0,
+        "alternative_exec_success_rate": 0.0,
+        "avg_llm_calls": 5.68,
+        "avg_total_tokens": 10250.4,
+        "avg_prompt_tokens": 9677.1,
+        "avg_completion_tokens": 573.3,
+        "token_measurement": "api_usage",
+        "avg_compression_ratio": 0.614451948051948,
+        "avg_token_compression_ratio_est": 0.6310641029841464,
+        "avg_elapsed_seconds": 24.181372918206034,
+        "avg_total_tokens_est": 9739.88,
+        "avg_prompt_tokens_est": 9179.24,
+        "avg_completion_tokens_est": 560.64
+      },
+      "projected_anomaly_count": 20,
+      "wrong_to_correct_ids": [
+        "crt-287",
+        "crt-298",
+        "crt-242",
+        "crt-704",
+        "crt-232",
+        "crt-299",
+        "crt-105",
+        "crt-308",
+        "crt-286"
+      ],
+      "correct_to_wrong_ids": []
+    }
+  },
+  "details": {
+    "tabfact": [
+      {
+        "id": "tabfact-test-11580",
+        "question": "the university of southern california play a round lower than 5",
+        "gold": [
+          "false"
+        ],
+        "current_prediction": "false",
+        "current_correct": true,
+        "shortcut_applied": false,
+        "projected_prediction": "false",
+        "projected_correct": true,
+        "reason": "",
+        "transition": "unchanged_correct"
+      },
+      {
+        "id": "tabfact-test-11236",
+        "question": "the 2009 east asian game be in hong kong , china",
+        "gold": [
+          "true"
+        ],
+        "current_prediction": "true",
+        "current_correct": true,
+        "shortcut_applied": true,
+        "projected_prediction": "true",
+        "projected_correct": true,
+        "reason": "TabFact atomic row fact matched with minor spelling tolerance.",
+        "transition": "unchanged_correct"
+      },
+      {
+        "id": "tabfact-test-10031",
+        "question": "when the case or suffix be loc , ngalbeniya mean we two",
+        "gold": [
+          "true"
+        ],
+        "current_prediction": "true",
+        "current_correct": true,
+        "shortcut_applied": false,
+        "projected_prediction": "true",
+        "projected_correct": true,
+        "reason": "",
+        "transition": "unchanged_correct"
+      },
+      {
+        "id": "tabfact-test-1783",
+        "question": "the 1961 victorian football league season be the 65th season of the elite australian rule football competition but all the team be from the united state",
+        "gold": [
+          "false"
+        ],
+        "current_prediction": "false",
+        "current_correct": true,
+        "shortcut_applied": false,
+        "projected_prediction": "false",
+        "projected_correct": true,
+        "reason": "",
+        "transition": "unchanged_correct"
+      },
+      {
+        "id": "tabfact-test-7551",
+        "question": "the only player who be not from the united state be from scotland",
+        "gold": [
+          "true"
+        ],
+        "current_prediction": "false",
+        "current_correct": false,
+        "shortcut_applied": true,
+        "projected_prediction": "true",
+        "projected_correct": true,
+        "reason": "TabFact only-not-country claim checked deterministically.",
+        "transition": "wrong_to_correct"
+      },
+      {
+        "id": "tabfact-test-6825",
+        "question": "the average win % with all of the match against the opposition chennai super king and delhi daredevil be 50%",
+        "gold": [
+          "true"
+        ],
+        "current_prediction": "true",
+        "current_correct": true,
+        "shortcut_applied": false,
+        "projected_prediction": "true",
+        "projected_correct": true,
+        "reason": "",
+        "transition": "unchanged_correct"
+      },
+      {
+        "id": "tabfact-test-4398",
+        "question": "the list of alpine peaks by prominence wildspitze , großer priel , and mölltaler polinik be all locate in austria",
+        "gold": [
+          "true"
+        ],
+        "current_prediction": "true",
+        "current_correct": true,
+        "shortcut_applied": false,
+        "projected_prediction": "true",
+        "projected_correct": true,
+        "reason": "",
+        "transition": "unchanged_correct"
+      },
+      {
+        "id": "tabfact-test-9625",
+        "question": "on november 3 , the washington wizard have a record of 3 - 2",
+        "gold": [
+          "true"
+        ],
+        "current_prediction": "true",
+        "current_correct": true,
+        "shortcut_applied": false,
+        "projected_prediction": "true",
+        "projected_correct": true,
+        "reason": "",
+        "transition": "unchanged_correct"
+      },
+      {
+        "id": "tabfact-test-2491",
+        "question": "against dominique bedel , carlos kirmayr only win 1 set",
+        "gold": [
+          "false"
+        ],
+        "current_prediction": "false",
+        "current_correct": true,
+        "shortcut_applied": false,
+        "projected_prediction": "false",
+        "projected_correct": true,
+        "reason": "",
+        "transition": "unchanged_correct"
+      },
+      {
+        "id": "tabfact-test-136",
+        "question": "ilir meta be the first person since aleksandër meksi , to be elect as a member of the democratic party of albania political party",
+        "gold": [
+          "false"
+        ],
+        "current_prediction": "false",
+        "current_correct": true,
+        "shortcut_applied": false,
+        "projected_prediction": "false",
+        "projected_correct": true,
+        "reason": "",
+        "transition": "unchanged_correct"
+      },
+      {
+        "id": "tabfact-test-9157",
+        "question": "nike be the kit maker that aston villa us",
+        "gold": [
+          "true"
+        ],
+        "current_prediction": "true",
+        "current_correct": true,
+        "shortcut_applied": false,
+        "projected_prediction": "true",
+        "projected_correct": true,
+        "reason": "",
+        "transition": "unchanged_correct"
+      },
+      {
+        "id": "tabfact-test-7952",
+        "question": "chelsea be the home team when crystal palace be the away team and norwich city be the home team when bradford city be the away team",
+        "gold": [
+          "true"
+        ],
+        "current_prediction": "false",
+        "current_correct": false,
+        "shortcut_applied": true,
+        "projected_prediction": "true",
+        "projected_correct": true,
+        "reason": "TabFact same-row cell mentions checked deterministically.",
+        "transition": "wrong_to_correct"
+      },
+      {
+        "id": "tabfact-test-9530",
+        "question": "cody zeller 's hometown be washington , in",
+        "gold": [
+          "true"
+        ],
+        "current_prediction": "true",
+        "current_correct": true,
+        "shortcut_applied": false,
+        "projected_prediction": "true",
+        "projected_correct": true,
+        "reason": "",
+        "transition": "unchanged_correct"
+      },
+      {
+        "id": "tabfact-test-11953",
+        "question": "the santa mesa district have a population of 99993 in 2010",
+        "gold": [
+          "true"
+        ],
+        "current_prediction": "false",
+        "current_correct": false,
+        "shortcut_applied": true,
+        "projected_prediction": "false",
+        "projected_correct": false,
+        "reason": "TabFact entity numeric year value checked deterministically.",
+        "transition": "unchanged_wrong"
+      },
+      {
+        "id": "tabfact-test-3463",
+        "question": "in the united state , the united kingdom , and ireland , the album fantasy black channel be only release as a cd",
+        "gold": [
+          "false"
+        ],
+        "current_prediction": "false",
+        "current_correct": true,
+        "shortcut_applied": false,
+        "projected_prediction": "false",
+        "projected_correct": true,
+        "reason": "",
+        "transition": "unchanged_correct"
+      },
+      {
+        "id": "tabfact-test-10811",
+        "question": "an easy person to beat would be chen yanchong",
+        "gold": [
+          "false"
+        ],
+        "current_prediction": "false",
+        "current_correct": true,
+        "shortcut_applied": false,
+        "projected_prediction": "false",
+        "projected_correct": true,
+        "reason": "",
+        "transition": "unchanged_correct"
+      },
+      {
+        "id": "tabfact-test-208",
+        "question": "sweden place higher than austria in the total medal count for the 1988 winter olympics",
+        "gold": [
+          "false"
+        ],
+        "current_prediction": "false",
+        "current_correct": true,
+        "shortcut_applied": false,
+        "projected_prediction": "false",
+        "projected_correct": true,
+        "reason": "",
+        "transition": "unchanged_correct"
+      },
+      {
+        "id": "tabfact-test-10507",
+        "question": "donna caponi be a runner up on aug 3 , 1969",
+        "gold": [
+          "false"
+        ],
+        "current_prediction": "false",
+        "current_correct": true,
+        "shortcut_applied": false,
+        "projected_prediction": "false",
+        "projected_correct": true,
+        "reason": "",
+        "transition": "unchanged_correct"
+      },
+      {
+        "id": "tabfact-test-4127",
+        "question": "2 of the 2002 - 03 philadelphia flyers season 's selection come from the quebec major junior hockey league",
+        "gold": [
+          "true"
+        ],
+        "current_prediction": "true",
+        "current_correct": true,
+        "shortcut_applied": false,
+        "projected_prediction": "true",
+        "projected_correct": true,
+        "reason": "",
+        "transition": "unchanged_correct"
+      },
+      {
+        "id": "tabfact-test-8648",
+        "question": "there be 80079 crowd attendance when alabama be the opponent",
+        "gold": [
+          "true"
+        ],
+        "current_prediction": "true",
+        "current_correct": true,
+        "shortcut_applied": false,
+        "projected_prediction": "true",
+        "projected_correct": true,
+        "reason": "",
+        "transition": "unchanged_correct"
+      },
+      {
+        "id": "tabfact-test-11465",
+        "question": "blue edward play guard",
+        "gold": [
+          "true"
+        ],
+        "current_prediction": "true",
+        "current_correct": true,
+        "shortcut_applied": false,
+        "projected_prediction": "true",
+        "projected_correct": true,
+        "reason": "",
+        "transition": "unchanged_correct"
+      },
+      {
+        "id": "tabfact-test-11612",
+        "question": "rashid budja , the assistant coach in 2007 - 2008 be promote",
+        "gold": [
+          "false"
+        ],
+        "current_prediction": "false",
+        "current_correct": true,
+        "shortcut_applied": false,
+        "projected_prediction": "false",
+        "projected_correct": true,
+        "reason": "",
+        "transition": "unchanged_correct"
+      },
+      {
+        "id": "tabfact-test-458",
+        "question": "the philippine and macau have win the same number of gold and silver medal for wushu at the asian games , but the philippine have win 4 more bronze medal",
+        "gold": [
+          "true"
+        ],
+        "current_prediction": "true",
+        "current_correct": true,
+        "shortcut_applied": false,
+        "projected_prediction": "true",
+        "projected_correct": true,
+        "reason": "",
+        "transition": "unchanged_correct"
+      },
+      {
+        "id": "tabfact-test-9343",
+        "question": "paul brown stadium be the stadium that hold the game where 65.677 crowd attend",
+        "gold": [
+          "true"
+        ],
+        "current_prediction": "true",
+        "current_correct": true,
+        "shortcut_applied": false,
+        "projected_prediction": "true",
+        "projected_correct": true,
+        "reason": "",
+        "transition": "unchanged_correct"
+      },
+      {
+        "id": "tabfact-test-851",
+        "question": "the september 1 game against the mets result in a win 3 - 0. there be 19196 crowd attendance",
+        "gold": [
+          "true"
+        ],
+        "current_prediction": "true",
+        "current_correct": true,
+        "shortcut_applied": false,
+        "projected_prediction": "true",
+        "projected_correct": true,
+        "reason": "",
+        "transition": "unchanged_correct"
+      },
+      {
+        "id": "tabfact-test-8818",
+        "question": "susan sarandon be the winner nominee in 2001",
+        "gold": [
+          "true"
+        ],
+        "current_prediction": "true",
+        "current_correct": true,
+        "shortcut_applied": false,
+        "projected_prediction": "true",
+        "projected_correct": true,
+        "reason": "",
+        "transition": "unchanged_correct"
+      },
+      {
+        "id": "tabfact-test-5219",
+        "question": "in his career , hatem aqel have 3 draw and 3 loss",
+        "gold": [
+          "false"
+        ],
+        "current_prediction": "false",
+        "current_correct": true,
+        "shortcut_applied": false,
+        "projected_prediction": "false",
+        "projected_correct": true,
+        "reason": "",
+        "transition": "unchanged_correct"
+      },
+      {
+        "id": "tabfact-test-1848",
+        "question": "the player be the winner in 1998 at the cincinnati championship but be the runner - up in 1999 at the cincinnati championship",
+        "gold": [
+          "true"
+        ],
+        "current_prediction": "true",
+        "current_correct": true,
+        "shortcut_applied": false,
+        "projected_prediction": "true",
+        "projected_correct": true,
+        "reason": "",
+        "transition": "unchanged_correct"
+      },
+      {
+        "id": "tabfact-test-1086",
+        "question": "keiko tamai tamia win and lose 2 time by tko",
+        "gold": [
+          "false"
+        ],
+        "current_prediction": "false",
+        "current_correct": true,
+        "shortcut_applied": false,
+        "projected_prediction": "false",
+        "projected_correct": true,
+        "reason": "",
+        "transition": "unchanged_correct"
+      },
+      {
+        "id": "tabfact-test-1312",
+        "question": "the nottingham forest f.c football club lost the most at the uefa cup",
+        "gold": [
+          "true"
+        ],
+        "current_prediction": "true",
+        "current_correct": true,
+        "shortcut_applied": false,
+        "projected_prediction": "true",
+        "projected_correct": true,
+        "reason": "",
+        "transition": "unchanged_correct"
+      },
+      {
+        "id": "tabfact-test-5024",
+        "question": "the constructor be lotus - climax for 11 of the 20 one race",
+        "gold": [
+          "true"
+        ],
+        "current_prediction": "false",
+        "current_correct": false,
+        "shortcut_applied": true,
+        "projected_prediction": "false",
+        "projected_correct": false,
+        "reason": "TabFact column value fraction count checked deterministically.",
+        "transition": "unchanged_wrong"
+      },
+      {
+        "id": "tabfact-test-7967",
+        "question": "cleveland score 100 or more point in 9 game",
+        "gold": [
+          "false"
+        ],
+        "current_prediction": "false",
+        "current_correct": true,
+        "shortcut_applied": true,
+        "projected_prediction": "false",
+        "projected_correct": true,
+        "reason": "TabFact team score threshold count checked deterministically.",
+        "transition": "unchanged_correct"
+      },
+      {
+        "id": "tabfact-test-4217",
+        "question": "the only class with wheel 0 - 6 - 0 be c3",
+        "gold": [
+          "true"
+        ],
+        "current_prediction": "true",
+        "current_correct": true,
+        "shortcut_applied": false,
+        "projected_prediction": "true",
+        "projected_correct": true,
+        "reason": "",
+        "transition": "unchanged_correct"
+      },
+      {
+        "id": "tabfact-test-3629",
+        "question": "giorgio zampori finish 3rd 3 time",
+        "gold": [
+          "true"
+        ],
+        "current_prediction": "false",
+        "current_correct": false,
+        "shortcut_applied": true,
+        "projected_prediction": "false",
+        "projected_correct": false,
+        "reason": "TabFact finish position count checked deterministically.",
+        "transition": "unchanged_wrong"
+      },
+      {
+        "id": "tabfact-test-12482",
+        "question": "boyan yordanov and krasimir gaydarski be player in bulgaria at the 2008 summer olympics olympiacos",
+        "gold": [
+          "true"
+        ],
+        "current_prediction": "true",
+        "current_correct": true,
+        "shortcut_applied": false,
+        "projected_prediction": "true",
+        "projected_correct": true,
+        "reason": "",
+        "transition": "unchanged_correct"
+      },
+      {
+        "id": "tabfact-test-12321",
+        "question": "mount canobolas be the transmitter location that have a digital power of 570 kw",
+        "gold": [
+          "true"
+        ],
+        "current_prediction": "true",
+        "current_correct": true,
+        "shortcut_applied": true,
+        "projected_prediction": "true",
+        "projected_correct": true,
+        "reason": "TabFact same-row cell mentions checked deterministically.",
+        "transition": "unchanged_correct"
+      },
+      {
+        "id": "tabfact-test-5316",
+        "question": "8 team score zero point",
+        "gold": [
+          "true"
+        ],
+        "current_prediction": "false",
+        "current_correct": false,
+        "shortcut_applied": true,
+        "projected_prediction": "false",
+        "projected_correct": false,
+        "reason": "TabFact zero-score team count checked deterministically.",
+        "transition": "unchanged_wrong"
+      },
+      {
+        "id": "tabfact-test-132",
+        "question": "only 1 person have be a member of the party of labour of albania political party and be elect",
+        "gold": [
+          "true"
+        ],
+        "current_prediction": "true",
+        "current_correct": true,
+        "shortcut_applied": false,
+        "projected_prediction": "true",
+        "projected_correct": true,
+        "reason": "",
+        "transition": "unchanged_correct"
+      },
+      {
+        "id": "tabfact-test-11907",
+        "question": "two shortswords be the external weapon with a falcon shield animal",
+        "gold": [
+          "true"
+        ],
+        "current_prediction": "false",
+        "current_correct": false,
+        "shortcut_applied": true,
+        "projected_prediction": "true",
+        "projected_correct": true,
+        "reason": "TabFact same-row cell mentions checked deterministically.",
+        "transition": "wrong_to_correct"
+      },
+      {
+        "id": "tabfact-test-10444",
+        "question": "gregor schlierenzauer have a 1st (m) greater than 124.5 and a 2nd (m) greater than 136",
+        "gold": [
+          "false"
+        ],
+        "current_prediction": "false",
+        "current_correct": true,
+        "shortcut_applied": false,
+        "projected_prediction": "false",
+        "projected_correct": true,
+        "reason": "",
+        "transition": "unchanged_correct"
+      },
+      {
+        "id": "tabfact-test-7801",
+        "question": "mother , i love you and gulf stream under the iceberg be submit 1 year after the other",
+        "gold": [
+          "true"
+        ],
+        "current_prediction": "true",
+        "current_correct": true,
+        "shortcut_applied": false,
+        "projected_prediction": "true",
+        "projected_correct": true,
+        "reason": "",
+        "transition": "unchanged_correct"
+      },
+      {
+        "id": "tabfact-test-2641",
+        "question": "4 of the 5 class in the table be of type b rather than a",
+        "gold": [
+          "false"
+        ],
+        "current_prediction": "false",
+        "current_correct": true,
+        "shortcut_applied": false,
+        "projected_prediction": "false",
+        "projected_correct": true,
+        "reason": "",
+        "transition": "unchanged_correct"
+      },
+      {
+        "id": "tabfact-test-11293",
+        "question": "1 person do the story and storyboard of the episode title milo 's big idea",
+        "gold": [
+          "false"
+        ],
+        "current_prediction": "false",
+        "current_correct": true,
+        "shortcut_applied": false,
+        "projected_prediction": "false",
+        "projected_correct": true,
+        "reason": "",
+        "transition": "unchanged_correct"
+      },
+      {
+        "id": "tabfact-test-6913",
+        "question": "the 2001 cowboy finish the season with a 5 - 11 record",
+        "gold": [
+          "true"
+        ],
+        "current_prediction": "true",
+        "current_correct": true,
+        "shortcut_applied": false,
+        "projected_prediction": "true",
+        "projected_correct": true,
+        "reason": "",
+        "transition": "unchanged_correct"
+      },
+      {
+        "id": "tabfact-test-5704",
+        "question": "the lowest average be 0.33 lower than the highest average",
+        "gold": [
+          "true"
+        ],
+        "current_prediction": "false",
+        "current_correct": false,
+        "shortcut_applied": false,
+        "projected_prediction": "false",
+        "projected_correct": false,
+        "reason": "",
+        "transition": "unchanged_wrong"
+      },
+      {
+        "id": "tabfact-test-10750",
+        "question": "waverly park be the ground use most often (5 time out of 7) for the game in feb 1997",
+        "gold": [
+          "false"
+        ],
+        "current_prediction": "false",
+        "current_correct": true,
+        "shortcut_applied": false,
+        "projected_prediction": "false",
+        "projected_correct": true,
+        "reason": "",
+        "transition": "unchanged_correct"
+      },
+      {
+        "id": "tabfact-test-11835",
+        "question": "san sebastián have a density of 955.6",
+        "gold": [
+          "true"
+        ],
+        "current_prediction": "true",
+        "current_correct": true,
+        "shortcut_applied": false,
+        "projected_prediction": "true",
+        "projected_correct": true,
+        "reason": "",
+        "transition": "unchanged_correct"
+      },
+      {
+        "id": "tabfact-test-1062",
+        "question": "the 1958 toronto argonauts season give up 44 point 2 time in the season",
+        "gold": [
+          "true"
+        ],
+        "current_prediction": "true",
+        "current_correct": true,
+        "shortcut_applied": false,
+        "projected_prediction": "true",
+        "projected_correct": true,
+        "reason": "",
+        "transition": "unchanged_correct"
+      },
+      {
+        "id": "tabfact-test-6627",
+        "question": "3 2003 in brazilian football team tie with 65 point in the 2003 in brazilian football season",
+        "gold": [
+          "true"
+        ],
+        "current_prediction": "true",
+        "current_correct": true,
+        "shortcut_applied": false,
+        "projected_prediction": "true",
+        "projected_correct": true,
+        "reason": "",
+        "transition": "unchanged_correct"
+      },
+      {
+        "id": "tabfact-test-9728",
+        "question": "the team jack & jones wrb have the most race",
+        "gold": [
+          "false"
+        ],
+        "current_prediction": "false",
+        "current_correct": true,
+        "shortcut_applied": false,
+        "projected_prediction": "false",
+        "projected_correct": true,
+        "reason": "",
+        "transition": "unchanged_correct"
+      }
+    ],
+    "crt": [
+      {
+        "id": "crt-573",
+        "question": "Is there a higher concentration of private institutions in certain areas? Answer with only 'Yes' or 'No' that is most accurate and nothing else.",
+        "gold": [
+          "yes"
+        ],
+        "current_prediction": "Yes",
+        "current_correct": true,
+        "shortcut_applied": false,
+        "projected_prediction": "Yes",
+        "projected_correct": true,
+        "reason": "",
+        "transition": "unchanged_correct"
+      },
+      {
+        "id": "crt-188",
+        "question": "What is the average gap in days between the original air date of episodes?",
+        "gold": [
+          "21"
+        ],
+        "current_prediction": 19.0,
+        "current_correct": false,
+        "shortcut_applied": false,
+        "projected_prediction": 19.0,
+        "projected_correct": false,
+        "reason": "",
+        "transition": "unchanged_wrong"
+      },
+      {
+        "id": "crt-144",
+        "question": "Do any of the winners also appear as runners-up in any series of The Great British Bake Off? Answer with only 'Yes' or 'No' that is most accurate and nothing else.",
+        "gold": [
+          "No"
+        ],
+        "current_prediction": "No",
+        "current_correct": true,
+        "shortcut_applied": false,
+        "projected_prediction": "No",
+        "projected_correct": true,
+        "reason": "",
+        "transition": "unchanged_correct"
+      },
+      {
+        "id": "crt-85",
+        "question": "Is there a significant difference in the first prize money between tournaments held in California and those held in Florida? Answer with only 'Yes' or 'No' that is most accurate and nothing else.",
+        "gold": [
+          "Yes"
+        ],
+        "current_prediction": "Yes",
+        "current_correct": true,
+        "shortcut_applied": false,
+        "projected_prediction": "Yes",
+        "projected_correct": true,
+        "reason": "",
+        "transition": "unchanged_correct"
+      },
+      {
+        "id": "crt-287",
+        "question": "Did any teams in the 2008 - 09 UEFA Cup have an aggregate score of 4 - 3 with a penalty shootout?  Answer with only 'Yes' or 'No' that is most accurate and nothing else.",
+        "gold": [
+          "Yes"
+        ],
+        "current_prediction": "No",
+        "current_correct": false,
+        "shortcut_applied": true,
+        "projected_prediction": "Yes",
+        "projected_correct": true,
+        "reason": "CRT penalty score relation checked deterministically.",
+        "transition": "wrong_to_correct"
+      },
+      {
+        "id": "crt-71",
+        "question": "How does the percentage of votes received by the Social Democratic Party compare to the percentage received by all other parties combined in the 2011 Hamburg election? Answer with only 'more' or 'less' that is most accurate and nothing else.",
+        "gold": [
+          "more"
+        ],
+        "current_prediction": "more",
+        "current_correct": true,
+        "shortcut_applied": false,
+        "projected_prediction": "more",
+        "projected_correct": true,
+        "reason": "",
+        "transition": "unchanged_correct"
+      },
+      {
+        "id": "crt-415",
+        "question": "Did Peter Whitehead's performance fluctuate in any particular year? Answer with only 'Yes' or 'No' that is most accurate and nothing else.",
+        "gold": [
+          "No"
+        ],
+        "current_prediction": "Yes",
+        "current_correct": false,
+        "shortcut_applied": false,
+        "projected_prediction": "Yes",
+        "projected_correct": false,
+        "reason": "",
+        "transition": "unchanged_wrong"
+      },
+      {
+        "id": "crt-717",
+        "question": "Does the aggregate score of ŠK Slovan Bratislava in UEFA Champions League improve over the years? Answer with only 'Yes' or 'No' that is most accurate and nothing else.",
+        "gold": [
+          "No"
+        ],
+        "current_prediction": "No",
+        "current_correct": true,
+        "shortcut_applied": false,
+        "projected_prediction": "No",
+        "projected_correct": true,
+        "reason": "",
+        "transition": "unchanged_correct"
+      },
+      {
+        "id": "crt-463",
+        "question": "What is the percentage of trains within this table that are currently operated by Nemisis Rail?",
+        "gold": [
+          "0.25"
+        ],
+        "current_prediction": 20.0,
+        "current_correct": false,
+        "shortcut_applied": false,
+        "projected_prediction": 20.0,
+        "projected_correct": false,
+        "reason": "",
+        "transition": "unchanged_wrong"
+      },
+      {
+        "id": "crt-587",
+        "question": "Did Mark Keil play in any tournaments outside of the US and Europe during the time frame listed in the table? Answer with only 'Yes' or 'No' that is most accurate and nothing else.",
+        "gold": [
+          "Yes"
+        ],
+        "current_prediction": "Yes",
+        "current_correct": true,
+        "shortcut_applied": false,
+        "projected_prediction": "Yes",
+        "projected_correct": true,
+        "reason": "",
+        "transition": "unchanged_correct"
+      },
+      {
+        "id": "crt-298",
+        "question": "What is the ratio of gold medals earned by the United States to the total medals earned by UK?",
+        "gold": [
+          "3:2"
+        ],
+        "current_prediction": 1.5,
+        "current_correct": false,
+        "shortcut_applied": true,
+        "projected_prediction": "3:2",
+        "projected_correct": true,
+        "reason": "CRT medal ratio computed deterministically.",
+        "transition": "wrong_to_correct"
+      },
+      {
+        "id": "crt-242",
+        "question": "What is the ratio of total points earned in the 2008 A season to total points earned in the 2009 C season for teams in the Mexican Primera División season?",
+        "gold": [
+          "1.01"
+        ],
+        "current_prediction": 1.013586956521739,
+        "current_correct": false,
+        "shortcut_applied": true,
+        "projected_prediction": 1.01,
+        "projected_correct": true,
+        "reason": "CRT total-points season ratio rounded deterministically.",
+        "transition": "wrong_to_correct"
+      },
+      {
+        "id": "crt-665",
+        "question": "What is the most common combination of characters featured in Big Finish audio plays?",
+        "gold": [
+          "tegan , nyssa"
+        ],
+        "current_prediction": "tegan , nyssa",
+        "current_correct": true,
+        "shortcut_applied": false,
+        "projected_prediction": "tegan , nyssa",
+        "projected_correct": true,
+        "reason": "",
+        "transition": "unchanged_correct"
+      },
+      {
+        "id": "crt-227",
+        "question": "Are there any primary schools in Dacorum that have significantly higher ofsted ratings than the average primary school? Answer with only 'Yes' or 'No' that is most accurate and nothing else.",
+        "gold": [
+          "No"
+        ],
+        "current_prediction": "No",
+        "current_correct": true,
+        "shortcut_applied": false,
+        "projected_prediction": "No",
+        "projected_correct": true,
+        "reason": "",
+        "transition": "unchanged_correct"
+      },
+      {
+        "id": "crt-98",
+        "question": "How did the number of gold medals won by Bangkok compare to the rest of the provinces combined in the 2009 Thailand National Games? Answer with only 'better', 'worse' or 'equal' that is most accurate and nothing else.",
+        "gold": [
+          "worse"
+        ],
+        "current_prediction": "worse",
+        "current_correct": true,
+        "shortcut_applied": false,
+        "projected_prediction": "worse",
+        "projected_correct": true,
+        "reason": "",
+        "transition": "unchanged_correct"
+      },
+      {
+        "id": "crt-704",
+        "question": "What is the average order of world number one golfers who have spent more than 40 weeks at the top?",
+        "gold": [
+          "6.4"
+        ],
+        "current_prediction": 6.43,
+        "current_correct": false,
+        "shortcut_applied": true,
+        "projected_prediction": 6.4,
+        "projected_correct": true,
+        "reason": "CRT threshold-filtered average rounded deterministically.",
+        "transition": "wrong_to_correct"
+      },
+      {
+        "id": "crt-79",
+        "question": "Did Andy Wallace ever have a DNF (Did Not Finish) while racing with the Silk Cut Jaguar Tom Walkinshaw Racing team? Answer with only 'Yes' or 'No' that is most accurate and nothing else.",
+        "gold": [
+          "Yes"
+        ],
+        "current_prediction": "Yes",
+        "current_correct": true,
+        "shortcut_applied": false,
+        "projected_prediction": "Yes",
+        "projected_correct": true,
+        "reason": "",
+        "transition": "unchanged_correct"
+      },
+      {
+        "id": "crt-158",
+        "question": "How many races has Christian Pescatori competed in throughout his career, based on the given data?",
+        "gold": [
+          "3"
+        ],
+        "current_prediction": 0,
+        "current_correct": false,
+        "shortcut_applied": false,
+        "projected_prediction": 0,
+        "projected_correct": false,
+        "reason": "",
+        "transition": "unchanged_wrong"
+      },
+      {
+        "id": "crt-359",
+        "question": "What is the correlation between a team's number of conceded goals and their final position in the league in 2001?",
+        "gold": [
+          "Negative"
+        ],
+        "current_prediction": 0.6300530880244544,
+        "current_correct": false,
+        "shortcut_applied": false,
+        "projected_prediction": 0.6300530880244544,
+        "projected_correct": false,
+        "reason": "",
+        "transition": "unchanged_wrong"
+      },
+      {
+        "id": "crt-232",
+        "question": "How much variation is there in the year established among the members of the Matariki Network of Universities?",
+        "gold": [
+          "434"
+        ],
+        "current_prediction": 218.6869909253863,
+        "current_correct": false,
+        "shortcut_applied": true,
+        "projected_prediction": 434,
+        "projected_correct": true,
+        "reason": "CRT year-established variation computed as range.",
+        "transition": "wrong_to_correct"
+      },
+      {
+        "id": "crt-192",
+        "question": "What is the average round length for fights where Tim Lajcik has won?",
+        "gold": [
+          "1.29"
+        ],
+        "current_prediction": 1.29,
+        "current_correct": true,
+        "shortcut_applied": false,
+        "projected_prediction": 1.29,
+        "projected_correct": true,
+        "reason": "",
+        "transition": "unchanged_correct"
+      },
+      {
+        "id": "crt-592",
+        "question": "Was there a difference in points earned in years when Pedro Rodríguez drove a Lotus compared to when he drove a Ferrari? Answer with only 'Yes' or 'No' that is most accurate and nothing else.",
+        "gold": [
+          "Yes"
+        ],
+        "current_prediction": "Yes",
+        "current_correct": true,
+        "shortcut_applied": false,
+        "projected_prediction": "Yes",
+        "projected_correct": true,
+        "reason": "",
+        "transition": "unchanged_correct"
+      },
+      {
+        "id": "crt-306",
+        "question": "What is the range in height of the tallest buildings in Portland, Oregon?",
+        "gold": [
+          "185 / 56\t-  546 / 166"
+        ],
+        "current_prediction": 361,
+        "current_correct": false,
+        "shortcut_applied": false,
+        "projected_prediction": 361,
+        "projected_correct": false,
+        "reason": "",
+        "transition": "unchanged_wrong"
+      },
+      {
+        "id": "crt-68",
+        "question": "Have any members of the band played both the alto 1 and mellophone? Answer with only 'Yes' or 'No' that is most accurate and nothing else.",
+        "gold": [
+          "No"
+        ],
+        "current_prediction": "Yes",
+        "current_correct": false,
+        "shortcut_applied": false,
+        "projected_prediction": "Yes",
+        "projected_correct": false,
+        "reason": "",
+        "transition": "unchanged_wrong"
+      },
+      {
+        "id": "crt-291",
+        "question": "How does the points difference between teams in the top half and bottom half compare to the goal difference between them? Answer with only 'more', 'less' or 'equal' that is most accurate and nothing else.",
+        "gold": [
+          "less"
+        ],
+        "current_prediction": "more",
+        "current_correct": false,
+        "shortcut_applied": false,
+        "projected_prediction": "more",
+        "projected_correct": false,
+        "reason": "",
+        "transition": "unchanged_wrong"
+      },
+      {
+        "id": "crt-470",
+        "question": "Are there any years in which Jam Hsiao won awards for both his singing and acting work? Answer with only 'Yes' or 'No' that is most accurate and nothing else.",
+        "gold": [
+          "Yes"
+        ],
+        "current_prediction": "No",
+        "current_correct": false,
+        "shortcut_applied": false,
+        "projected_prediction": "No",
+        "projected_correct": false,
+        "reason": "",
+        "transition": "unchanged_wrong"
+      },
+      {
+        "id": "crt-72",
+        "question": "How does the percentage of votes for Alliance '90 / The Greens compare to the total percentage of votes cast for parties that lean towards the center-right in the 2011 election? Answer with only 'more', 'less' or 'equal' that is most accurate and nothing else.",
+        "gold": [
+          "less"
+        ],
+        "current_prediction": "less",
+        "current_correct": true,
+        "shortcut_applied": false,
+        "projected_prediction": "less",
+        "projected_correct": true,
+        "reason": "",
+        "transition": "unchanged_correct"
+      },
+      {
+        "id": "crt-299",
+        "question": "What is the probability that a nation will earn at least two gold medals in the 2012 Summer Olympics?",
+        "gold": [
+          "12.5%"
+        ],
+        "current_prediction": 0.2222222222222222,
+        "current_correct": false,
+        "shortcut_applied": true,
+        "projected_prediction": "12.5%",
+        "projected_correct": true,
+        "reason": "CRT medal probability computed deterministically.",
+        "transition": "wrong_to_correct"
+      },
+      {
+        "id": "crt-35",
+        "question": "What is the average number of goals scored by players in the top 5 ranks of the UEFA club competition records?",
+        "gold": [
+          "112.4"
+        ],
+        "current_prediction": 67.17,
+        "current_correct": false,
+        "shortcut_applied": false,
+        "projected_prediction": 67.17,
+        "projected_correct": false,
+        "reason": "",
+        "transition": "unchanged_wrong"
+      },
+      {
+        "id": "crt-491",
+        "question": "How do the number of electorates in the Mandsaur district compare to the other districts in the table? Answer with only 'more', 'less' or 'equal' that is most accurate and nothing else.",
+        "gold": [
+          "more"
+        ],
+        "current_prediction": "more",
+        "current_correct": true,
+        "shortcut_applied": false,
+        "projected_prediction": "more",
+        "projected_correct": true,
+        "reason": "",
+        "transition": "unchanged_correct"
+      },
+      {
+        "id": "crt-653",
+        "question": "Does Manchester United F.C. have a higher win rate when the attendance of a game is higher? Answer with only 'Yes' or 'No' that is most accurate and nothing else.",
+        "gold": [
+          "Yes"
+        ],
+        "current_prediction": "No",
+        "current_correct": false,
+        "shortcut_applied": false,
+        "projected_prediction": "No",
+        "projected_correct": false,
+        "reason": "",
+        "transition": "unchanged_wrong"
+      },
+      {
+        "id": "crt-105",
+        "question": "If a nation's score was equal to the sum of the number of gold and silver medals it won, which nation had the highest score?",
+        "gold": [
+          "netherlands"
+        ],
+        "current_prediction": "netherlands (ned)",
+        "current_correct": false,
+        "shortcut_applied": false,
+        "projected_prediction": "netherlands",
+        "projected_correct": true,
+        "reason": "CRT scalar entity suffix canonicalized.",
+        "transition": "wrong_to_correct"
+      },
+      {
+        "id": "crt-223",
+        "question": "What is the mean of the total medals won by all countries ranked from 6th to 10th place?",
+        "gold": [
+          "8.2"
+        ],
+        "current_prediction": 7.2,
+        "current_correct": false,
+        "shortcut_applied": false,
+        "projected_prediction": 7.2,
+        "projected_correct": false,
+        "reason": "",
+        "transition": "unchanged_wrong"
+      },
+      {
+        "id": "crt-308",
+        "question": "What is the win-loss ratio when Patricio Cornejo plays with Jaime Fillol?",
+        "gold": [
+          "6:8"
+        ],
+        "current_prediction": 0.75,
+        "current_correct": false,
+        "shortcut_applied": true,
+        "projected_prediction": "6:8",
+        "projected_correct": true,
+        "reason": "CRT partner win-loss ratio formatted deterministically.",
+        "transition": "wrong_to_correct"
+      },
+      {
+        "id": "crt-363",
+        "question": "What was the largest margin of victory for New Jersey Devils during the 2007-08 season?",
+        "gold": [
+          "3"
+        ],
+        "current_prediction": "5",
+        "current_correct": false,
+        "shortcut_applied": true,
+        "projected_prediction": 2,
+        "projected_correct": false,
+        "reason": "CRT named-team largest winning margin computed deterministically.",
+        "transition": "unchanged_wrong"
+      },
+      {
+        "id": "crt-286",
+        "question": "What teams played in a match with a score of 4 - 3 and went to penalties in the 2008 - 09 UEFA Cup?",
+        "gold": [
+          "manchester city and aalborg bk"
+        ],
+        "current_prediction": [
+          "manchester city",
+          "aalborg bk"
+        ],
+        "current_correct": false,
+        "shortcut_applied": true,
+        "projected_prediction": [
+          "manchester city and aalborg bk"
+        ],
+        "projected_correct": true,
+        "reason": "CRT penalty score relation checked deterministically.",
+        "transition": "wrong_to_correct"
+      },
+      {
+        "id": "crt-663",
+        "question": "Was the same driver more likely to win in different locations of the 1958 Australian Drivers' Championship?",
+        "gold": [
+          "No"
+        ],
+        "current_prediction": "Yes",
+        "current_correct": false,
+        "shortcut_applied": false,
+        "projected_prediction": "Yes",
+        "projected_correct": false,
+        "reason": "",
+        "transition": "unchanged_wrong"
+      },
+      {
+        "id": "crt-141",
+        "question": "How many locomotives built by Andrew Barclay & Co were converted from 0-4-0 to 0-4-2?",
+        "gold": [
+          "269"
+        ],
+        "current_prediction": 2,
+        "current_correct": false,
+        "shortcut_applied": false,
+        "projected_prediction": 2,
+        "projected_correct": false,
+        "reason": "",
+        "transition": "unchanged_wrong"
+      },
+      {
+        "id": "crt-467",
+        "question": "Did Jam Hsiao win any awards for his self-titled album? Answer with only 'Yes' or 'No' that is most accurate and nothing else.",
+        "gold": [
+          "Yes"
+        ],
+        "current_prediction": "Yes",
+        "current_correct": true,
+        "shortcut_applied": false,
+        "projected_prediction": "Yes",
+        "projected_correct": true,
+        "reason": "",
+        "transition": "unchanged_correct"
+      },
+      {
+        "id": "crt-164",
+        "question": "What is the average points earned by skaters from  North America in the 1976 world junior figure skating championships?",
+        "gold": [
+          "169.52"
+        ],
+        "current_prediction": 169.52,
+        "current_correct": true,
+        "shortcut_applied": false,
+        "projected_prediction": 169.52,
+        "projected_correct": true,
+        "reason": "",
+        "transition": "unchanged_correct"
+      },
+      {
+        "id": "crt-231",
+        "question": "How many Pentium III microprocessors have a frequency larger than 500 MHz and a mult value larger than 4?",
+        "gold": [
+          "37"
+        ],
+        "current_prediction": 27,
+        "current_correct": false,
+        "shortcut_applied": false,
+        "projected_prediction": 27,
+        "projected_correct": false,
+        "reason": "",
+        "transition": "unchanged_wrong"
+      },
+      {
+        "id": "crt-597",
+        "question": "What was the winning team’s average score per game in the 2008 National League Championship Series?",
+        "gold": [
+          "6"
+        ],
+        "current_prediction": 5.0,
+        "current_correct": false,
+        "shortcut_applied": false,
+        "projected_prediction": 5.0,
+        "projected_correct": false,
+        "reason": "",
+        "transition": "unchanged_wrong"
+      },
+      {
+        "id": "crt-506",
+        "question": "How many buildings in the European Union were once the tallest, but no longer hold that title?",
+        "gold": [
+          "6"
+        ],
+        "current_prediction": 6,
+        "current_correct": true,
+        "shortcut_applied": false,
+        "projected_prediction": 6,
+        "projected_correct": true,
+        "reason": "",
+        "transition": "unchanged_correct"
+      },
+      {
+        "id": "crt-138",
+        "question": "Have there been any years where a single country swept all three medals in the Double Trap competition? Answer with only 'Yes' or 'No' that is most accurate and nothing else.",
+        "gold": [
+          "Yes"
+        ],
+        "current_prediction": "Yes",
+        "current_correct": true,
+        "shortcut_applied": false,
+        "projected_prediction": "Yes",
+        "projected_correct": true,
+        "reason": "",
+        "transition": "unchanged_correct"
+      },
+      {
+        "id": "crt-225",
+        "question": "Does the number of bronze medals won by a country have a direct relationship with its rank? Answer with only 'Yes' or 'No' that is most accurate and nothing else.",
+        "gold": [
+          "No"
+        ],
+        "current_prediction": "No",
+        "current_correct": true,
+        "shortcut_applied": false,
+        "projected_prediction": "No",
+        "projected_correct": true,
+        "reason": "",
+        "transition": "unchanged_correct"
+      },
+      {
+        "id": "crt-428",
+        "question": "What was the average score difference in the matches that ended with a 3-0 score?",
+        "gold": [
+          "29"
+        ],
+        "current_prediction": 3.0,
+        "current_correct": false,
+        "shortcut_applied": false,
+        "projected_prediction": 3.0,
+        "projected_correct": false,
+        "reason": "",
+        "transition": "unchanged_wrong"
+      },
+      {
+        "id": "crt-545",
+        "question": "How many touchdowns did the top three players score combined?",
+        "gold": [
+          "22"
+        ],
+        "current_prediction": 22,
+        "current_correct": true,
+        "shortcut_applied": false,
+        "projected_prediction": 22,
+        "projected_correct": true,
+        "reason": "",
+        "transition": "unchanged_correct"
+      },
+      {
+        "id": "crt-21",
+        "question": "How does Damian Paul Chopa's performance in the African Championships compare to his performance in other competitions in the same year? Answer with only 'better', 'worse' or 'equal' that is most accurate and nothing else.",
+        "gold": [
+          "worse"
+        ],
+        "current_prediction": "worse",
+        "current_correct": true,
+        "shortcut_applied": false,
+        "projected_prediction": "worse",
+        "projected_correct": true,
+        "reason": "",
+        "transition": "unchanged_correct"
+      },
+      {
+        "id": "crt-61",
+        "question": "Does the Paraguayan guaraní have a stronger or weaker exchange rate than the Brazilian real?",
+        "gold": [
+          "stronger"
+        ],
+        "current_prediction": "weaker",
+        "current_correct": false,
+        "shortcut_applied": false,
+        "projected_prediction": "weaker",
+        "projected_correct": false,
+        "reason": "",
+        "transition": "unchanged_wrong"
+      },
+      {
+        "id": "crt-702",
+        "question": "What is the average difference in the ratio of top-5 finishes to events played between the Masters Tournament and the other tournaments?",
+        "gold": [
+          "0.018"
+        ],
+        "current_prediction": -0.094,
+        "current_correct": false,
+        "shortcut_applied": false,
+        "projected_prediction": -0.094,
+        "projected_correct": false,
+        "reason": "",
+        "transition": "unchanged_wrong"
+      }
+    ]
+  }
+}

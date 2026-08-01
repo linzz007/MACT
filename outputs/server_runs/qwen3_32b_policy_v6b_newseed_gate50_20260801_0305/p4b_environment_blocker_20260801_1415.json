@@ -1,0 +1,39 @@
+{
+  "timestamp_cst": "2026-08-01 14:15",
+  "scope": "P4b same-ID MACT Gate-50",
+  "status": "blocked_by_server_gpu_runtime",
+  "valid_p4b_mact_outputs": false,
+  "existing_valid_myagent_after_fix": {
+    "summary_json": "p4a_after_fix_gate50_summary.json",
+    "summary_md": "p4a_after_fix_gate50_summary.md",
+    "decision": "p4a_after_fix_pass",
+    "wtq_correct": "37/50",
+    "tabfact_correct": "45/50",
+    "crt_correct": "30/50",
+    "overall_correct": "112/150",
+    "weighted_token_ratio": 0.5533,
+    "failed_or_missing": "0/0"
+  },
+  "environment_failures": [
+    "8000 and 8001 endpoints returned connection refused",
+    "GPU 4,5,6,7 showed about 42GB memory used per card without visible compute PID",
+    "non-sudo gpu reset failed with insufficient permissions",
+    "sudo gpu reset failed because the driver reported devices in use by another client",
+    "GPU 0,1 and 2,3 fallback at gpu-memory-utilization=0.88 failed for insufficient free memory",
+    "GPU 0,1 at gpu-memory-utilization=0.68 failed because KV cache could not support max_model_len=8192",
+    "GPU 0,1 at gpu-memory-utilization=0.70 failed during CUDA graph capture with CUDA OOM"
+  ],
+  "invalid_outputs": [
+    "p4b_mact_shards/output/wtq/wtq_mact_shard00.jsonl.sandbox_network_failed_20260801_0500",
+    "p4b_mact_shards/output/wtq/wtq_mact_shard01.jsonl.sandbox_network_failed_20260801_0500",
+    "p4b_mact_shards/output/wtq/wtq_mact_shard00.jsonl.connection_refused_failed_20260801_0506",
+    "p4b_mact_shards/output/wtq/wtq_mact_shard01.jsonl.connection_refused_failed_20260801_0506"
+  ],
+  "verification": {
+    "test_myagent_pipeline": "184 passed",
+    "full_tests_external_permission": "330 passed",
+    "full_tests_sandbox_note": "3 local HTTPServer binding errors caused by network sandbox",
+    "process_check": "no visible vllm or experiment runner process"
+  },
+  "next_resume_step": "Start clean Qwen3-32B vLLM endpoints with max_model_len=8192, rerun P4b MACT shards from p4b_mact_shards/input, then run run_p4b_eval_compare.sh."
+}

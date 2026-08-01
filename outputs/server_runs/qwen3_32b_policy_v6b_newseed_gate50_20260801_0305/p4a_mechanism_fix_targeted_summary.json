@@ -1,0 +1,199 @@
+{
+  "summary": {
+    "run_dir": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305",
+    "output_root": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/myagent_fix_targeted",
+    "scope": "affected rows from offline projection wrong_to_correct ids; fresh Qwen3 runner execution",
+    "tabfact": {
+      "input_rows": 3,
+      "merged_rows": 3,
+      "eval_rows": 3,
+      "correct": 3,
+      "accuracy": 1.0,
+      "num_failed_exec": 0,
+      "num_missing_answer": 0,
+      "avg_total_tokens": 354.3333333333333,
+      "avg_elapsed_seconds": 1.2534479843258548,
+      "total_tokens": 1063,
+      "total_elapsed_seconds": 3.760343952977564
+    },
+    "crt": {
+      "input_rows": 9,
+      "merged_rows": 9,
+      "eval_rows": 9,
+      "correct": 9,
+      "accuracy": 1.0,
+      "num_failed_exec": 0,
+      "num_missing_answer": 0,
+      "avg_total_tokens": 4738.222222222223,
+      "avg_elapsed_seconds": 8.071853707673856,
+      "total_tokens": 42644,
+      "total_elapsed_seconds": 72.6466833690647
+    },
+    "overall": {
+      "input_rows": 12,
+      "merged_rows": 12,
+      "eval_rows": 12,
+      "correct": 12,
+      "rows": 12,
+      "num_failed_exec": 0,
+      "num_missing_answer": 0,
+      "total_tokens": 43707,
+      "total_elapsed_seconds": 76.40702732204227,
+      "accuracy": 1.0,
+      "avg_total_tokens": 3642.25,
+      "avg_elapsed_seconds": 6.367252276836855
+    }
+  },
+  "details": {
+    "tabfact": [
+      {
+        "id": "tabfact-test-7551",
+        "question": "the only player who be not from the united state be from scotland",
+        "prediction": "true",
+        "gold": [
+          "true"
+        ],
+        "correct": true,
+        "deterministic_shortcut_reason": "TabFact only-not-country claim checked deterministically.",
+        "total_tokens": 344,
+        "elapsed_seconds_total": 1.4950566359912045
+      },
+      {
+        "id": "tabfact-test-7952",
+        "question": "chelsea be the home team when crystal palace be the away team and norwich city be the home team when bradford city be the away team",
+        "prediction": "true",
+        "gold": [
+          "true"
+        ],
+        "correct": true,
+        "deterministic_shortcut_reason": "TabFact same-row cell mentions checked deterministically.",
+        "total_tokens": 378,
+        "elapsed_seconds_total": 1.193264472996816
+      },
+      {
+        "id": "tabfact-test-11907",
+        "question": "two shortswords be the external weapon with a falcon shield animal",
+        "prediction": "true",
+        "gold": [
+          "true"
+        ],
+        "correct": true,
+        "deterministic_shortcut_reason": "TabFact same-row cell mentions checked deterministically.",
+        "total_tokens": 341,
+        "elapsed_seconds_total": 1.0720228439895436
+      }
+    ],
+    "crt": [
+      {
+        "id": "crt-287",
+        "question": "Did any teams in the 2008 - 09 UEFA Cup have an aggregate score of 4 - 3 with a penalty shootout?  Answer with only 'Yes' or 'No' that is most accurate and nothing else.",
+        "prediction": "Yes",
+        "gold": [
+          "Yes"
+        ],
+        "correct": true,
+        "deterministic_shortcut_reason": "CRT penalty score relation checked deterministically.",
+        "total_tokens": 10130,
+        "elapsed_seconds_total": 13.586363130016252
+      },
+      {
+        "id": "crt-298",
+        "question": "What is the ratio of gold medals earned by the United States to the total medals earned by UK?",
+        "prediction": "3:2",
+        "gold": [
+          "3:2"
+        ],
+        "correct": true,
+        "deterministic_shortcut_reason": "CRT medal ratio computed deterministically.",
+        "total_tokens": 386,
+        "elapsed_seconds_total": 1.5701890460331924
+      },
+      {
+        "id": "crt-242",
+        "question": "What is the ratio of total points earned in the 2008 A season to total points earned in the 2009 C season for teams in the Mexican Primera División season?",
+        "prediction": 1.01,
+        "gold": [
+          "1.01"
+        ],
+        "correct": true,
+        "deterministic_shortcut_reason": "CRT total-points season ratio rounded deterministically.",
+        "total_tokens": 544,
+        "elapsed_seconds_total": 4.273758396971971
+      },
+      {
+        "id": "crt-704",
+        "question": "What is the average order of world number one golfers who have spent more than 40 weeks at the top?",
+        "prediction": 6.4,
+        "gold": [
+          "6.4"
+        ],
+        "correct": true,
+        "deterministic_shortcut_reason": "CRT threshold-filtered average rounded deterministically.",
+        "total_tokens": 12456,
+        "elapsed_seconds_total": 14.666616906994022
+      },
+      {
+        "id": "crt-232",
+        "question": "How much variation is there in the year established among the members of the Matariki Network of Universities?",
+        "prediction": 434,
+        "gold": [
+          "434"
+        ],
+        "correct": true,
+        "deterministic_shortcut_reason": "CRT year-established variation computed as range.",
+        "total_tokens": 385,
+        "elapsed_seconds_total": 1.1979353820206597
+      },
+      {
+        "id": "crt-299",
+        "question": "What is the probability that a nation will earn at least two gold medals in the 2012 Summer Olympics?",
+        "prediction": "12.5%",
+        "gold": [
+          "12.5%"
+        ],
+        "correct": true,
+        "deterministic_shortcut_reason": "CRT medal probability computed deterministically.",
+        "total_tokens": 8442,
+        "elapsed_seconds_total": 14.64991729898611
+      },
+      {
+        "id": "crt-105",
+        "question": "If a nation's score was equal to the sum of the number of gold and silver medals it won, which nation had the highest score?",
+        "prediction": "netherlands",
+        "gold": [
+          "netherlands"
+        ],
+        "correct": true,
+        "deterministic_shortcut_reason": "",
+        "total_tokens": 9568,
+        "elapsed_seconds_total": 19.834908696007915
+      },
+      {
+        "id": "crt-308",
+        "question": "What is the win-loss ratio when Patricio Cornejo plays with Jaime Fillol?",
+        "prediction": "6:8",
+        "gold": [
+          "6:8"
+        ],
+        "correct": true,
+        "deterministic_shortcut_reason": "CRT partner win-loss ratio formatted deterministically.",
+        "total_tokens": 332,
+        "elapsed_seconds_total": 1.1619171519996598
+      },
+      {
+        "id": "crt-286",
+        "question": "What teams played in a match with a score of 4 - 3 and went to penalties in the 2008 - 09 UEFA Cup?",
+        "prediction": [
+          "manchester city and aalborg bk"
+        ],
+        "gold": [
+          "manchester city and aalborg bk"
+        ],
+        "correct": true,
+        "deterministic_shortcut_reason": "CRT penalty score relation checked deterministically.",
+        "total_tokens": 401,
+        "elapsed_seconds_total": 1.7050773600349203
+      }
+    ]
+  }
+}
