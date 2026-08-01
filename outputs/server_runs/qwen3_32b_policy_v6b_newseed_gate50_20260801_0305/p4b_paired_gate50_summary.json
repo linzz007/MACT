@@ -1,0 +1,520 @@
+{
+  "datasets": {
+    "wtq": {
+      "myagent": {
+        "result_schema": "myagent",
+        "num_samples": 50,
+        "num_with_gold": 50,
+        "exact_match": 0.76,
+        "primary_accuracy": 0.74,
+        "accuracy_metric": "wtq_denotation_accuracy",
+        "num_failed_exec": 0,
+        "num_missing_answer": 0,
+        "num_em_mismatch": 13,
+        "num_multi_view_replan": 0,
+        "num_cross_path_mismatch": 0,
+        "route_distribution": {
+          "COMPLEX": 45,
+          "SIMPLE": 5
+        },
+        "difficulty_distribution": {
+          "medium": 38,
+          "easy": 12
+        },
+        "risk_distribution": {
+          "high": 47,
+          "medium": 2,
+          "light": 1
+        },
+        "risk_strata": {
+          "high": {
+            "count": 47,
+            "num_with_gold": 47,
+            "correct": 34,
+            "accuracy": 0.723404255319149,
+            "avg_total_tokens": 7060.531914893617,
+            "failure_count": 0
+          },
+          "light": {
+            "count": 1,
+            "num_with_gold": 1,
+            "correct": 1,
+            "accuracy": 1.0,
+            "avg_total_tokens": 2462.0,
+            "failure_count": 0
+          },
+          "medium": {
+            "count": 2,
+            "num_with_gold": 2,
+            "correct": 2,
+            "accuracy": 1.0,
+            "avg_total_tokens": 1922.0,
+            "failure_count": 0
+          }
+        },
+        "simple_lookup_success_rate": 0.0,
+        "multi_view_pass_rate": 0.0,
+        "alternative_exec_success_rate": 0.0,
+        "avg_llm_calls": 4.94,
+        "avg_total_tokens": 6763.02,
+        "avg_prompt_tokens": 6346.86,
+        "avg_completion_tokens": 416.16,
+        "token_measurement": "api_usage",
+        "avg_compression_ratio": 0.5573937372151658,
+        "avg_token_compression_ratio_est": 0.5569109297612159,
+        "avg_elapsed_seconds": 17.284565151501447,
+        "avg_total_tokens_est": 6271.1,
+        "avg_prompt_tokens_est": 5862.98,
+        "avg_completion_tokens_est": 408.12,
+        "correct": 37,
+        "wilson_95": [
+          0.6044657801100008,
+          0.8412862034863262
+        ]
+      },
+      "mact": {
+        "result_schema": "mact",
+        "num_samples": 50,
+        "num_with_gold": 50,
+        "exact_match": 0.86,
+        "primary_accuracy": 0.86,
+        "accuracy_metric": "wtq_denotation_accuracy",
+        "num_failed_exec": 0,
+        "num_missing_answer": 0,
+        "num_em_mismatch": 7,
+        "num_multi_view_replan": 0,
+        "num_cross_path_mismatch": 0,
+        "route_distribution": {},
+        "difficulty_distribution": {},
+        "risk_distribution": {
+          "unknown": 50
+        },
+        "risk_strata": {
+          "unknown": {
+            "count": 50,
+            "num_with_gold": 50,
+            "correct": 43,
+            "accuracy": 0.86,
+            "avg_total_tokens": 11309.5,
+            "failure_count": 0
+          }
+        },
+        "simple_lookup_success_rate": 0.0,
+        "multi_view_pass_rate": 0.0,
+        "alternative_exec_success_rate": 0.0,
+        "avg_llm_calls": 3.48,
+        "avg_total_tokens": 11309.5,
+        "avg_prompt_tokens": 8044.48,
+        "avg_completion_tokens": 3265.02,
+        "token_measurement": "api_usage",
+        "avg_compression_ratio": 1.0,
+        "avg_token_compression_ratio_est": 0.0,
+        "avg_elapsed_seconds": 119.74019096697565,
+        "avg_total_tokens_est": 10061.1,
+        "avg_prompt_tokens_est": 7030.0,
+        "avg_completion_tokens_est": 3031.1,
+        "correct": 43,
+        "wilson_95": [
+          0.738135428014719,
+          0.9304925473797714
+        ]
+      },
+      "paired": {
+        "both_correct": 34,
+        "myagent_only": 3,
+        "mact_only": 9,
+        "both_wrong": 4,
+        "exact_mcnemar_p": 0.14599609375
+      },
+      "token_ratio_myagent_to_mact": 0.5979946063044344,
+      "token_ratio_at_most_0_75": true,
+      "risk_accuracy_deltas": {}
+    },
+    "tabfact": {
+      "myagent": {
+        "result_schema": "myagent",
+        "num_samples": 50,
+        "num_with_gold": 50,
+        "exact_match": 0.9,
+        "primary_accuracy": 0.9,
+        "accuracy_metric": "tabfact_binary_accuracy",
+        "num_failed_exec": 0,
+        "num_missing_answer": 0,
+        "num_em_mismatch": 5,
+        "num_multi_view_replan": 0,
+        "num_cross_path_mismatch": 0,
+        "route_distribution": {
+          "COMPLEX": 50
+        },
+        "difficulty_distribution": {
+          "medium": 46,
+          "easy": 2,
+          "hard": 2
+        },
+        "risk_distribution": {
+          "high": 35,
+          "medium": 15
+        },
+        "risk_strata": {
+          "high": {
+            "count": 35,
+            "num_with_gold": 35,
+            "correct": 33,
+            "accuracy": 0.9428571428571428,
+            "avg_total_tokens": 2607.6285714285714,
+            "failure_count": 0
+          },
+          "medium": {
+            "count": 15,
+            "num_with_gold": 15,
+            "correct": 12,
+            "accuracy": 0.8,
+            "avg_total_tokens": 1611.9333333333334,
+            "failure_count": 0
+          }
+        },
+        "simple_lookup_success_rate": 0.0,
+        "multi_view_pass_rate": 0.0,
+        "alternative_exec_success_rate": 0.0,
+        "avg_llm_calls": 3.68,
+        "avg_total_tokens": 2308.92,
+        "avg_prompt_tokens": 2039.86,
+        "avg_completion_tokens": 269.06,
+        "token_measurement": "api_usage",
+        "avg_compression_ratio": 0.5511984126984127,
+        "avg_token_compression_ratio_est": 0.5473705936753137,
+        "avg_elapsed_seconds": 10.479730745921843,
+        "avg_total_tokens_est": 2177.34,
+        "avg_prompt_tokens_est": 1916.78,
+        "avg_completion_tokens_est": 260.56,
+        "correct": 45,
+        "wilson_95": [
+          0.7863950966521162,
+          0.956524876008429
+        ]
+      },
+      "mact": {
+        "result_schema": "mact",
+        "num_samples": 50,
+        "num_with_gold": 50,
+        "exact_match": 0.88,
+        "primary_accuracy": 0.88,
+        "accuracy_metric": "tabfact_binary_accuracy",
+        "num_failed_exec": 0,
+        "num_missing_answer": 0,
+        "num_em_mismatch": 6,
+        "num_multi_view_replan": 0,
+        "num_cross_path_mismatch": 0,
+        "route_distribution": {},
+        "difficulty_distribution": {},
+        "risk_distribution": {
+          "unknown": 50
+        },
+        "risk_strata": {
+          "unknown": {
+            "count": 50,
+            "num_with_gold": 50,
+            "correct": 44,
+            "accuracy": 0.88,
+            "avg_total_tokens": 10710.22,
+            "failure_count": 0
+          }
+        },
+        "simple_lookup_success_rate": 0.0,
+        "multi_view_pass_rate": 0.0,
+        "alternative_exec_success_rate": 0.0,
+        "avg_llm_calls": 3.28,
+        "avg_total_tokens": 10710.22,
+        "avg_prompt_tokens": 8120.42,
+        "avg_completion_tokens": 2589.8,
+        "token_measurement": "api_usage",
+        "avg_compression_ratio": 1.0,
+        "avg_token_compression_ratio_est": 0.0,
+        "avg_elapsed_seconds": 94.83856030110387,
+        "avg_total_tokens_est": 10080.64,
+        "avg_prompt_tokens_est": 7584.4,
+        "avg_completion_tokens_est": 2496.24,
+        "correct": 44,
+        "wilson_95": [
+          0.7619492111337642,
+          0.9438247628937535
+        ]
+      },
+      "paired": {
+        "both_correct": 41,
+        "myagent_only": 4,
+        "mact_only": 3,
+        "both_wrong": 2,
+        "exact_mcnemar_p": 1.0
+      },
+      "token_ratio_myagent_to_mact": 0.21558100580566975,
+      "token_ratio_at_most_0_75": true,
+      "risk_accuracy_deltas": {}
+    },
+    "crt": {
+      "myagent": {
+        "result_schema": "myagent",
+        "num_samples": 50,
+        "num_with_gold": 50,
+        "exact_match": 0.6,
+        "primary_accuracy": 0.6,
+        "accuracy_metric": "crt_normalized_accuracy",
+        "num_failed_exec": 0,
+        "num_missing_answer": 0,
+        "num_em_mismatch": 20,
+        "num_multi_view_replan": 0,
+        "num_cross_path_mismatch": 0,
+        "route_distribution": {
+          "COMPLEX": 49,
+          "SIMPLE": 1
+        },
+        "difficulty_distribution": {
+          "medium": 48,
+          "hard": 1,
+          "easy": 1
+        },
+        "risk_distribution": {
+          "high": 31,
+          "medium": 19
+        },
+        "risk_strata": {
+          "high": {
+            "count": 31,
+            "num_with_gold": 31,
+            "correct": 21,
+            "accuracy": 0.6774193548387096,
+            "avg_total_tokens": 14651.225806451614,
+            "failure_count": 0
+          },
+          "medium": {
+            "count": 19,
+            "num_with_gold": 19,
+            "correct": 9,
+            "accuracy": 0.47368421052631576,
+            "avg_total_tokens": 1947.5263157894738,
+            "failure_count": 0
+          }
+        },
+        "simple_lookup_success_rate": 0.0,
+        "multi_view_pass_rate": 0.0,
+        "alternative_exec_success_rate": 0.0,
+        "avg_llm_calls": 5.28,
+        "avg_total_tokens": 9823.82,
+        "avg_prompt_tokens": 9300.7,
+        "avg_completion_tokens": 523.12,
+        "token_measurement": "api_usage",
+        "avg_compression_ratio": 0.614451948051948,
+        "avg_token_compression_ratio_est": 0.6310641029841464,
+        "avg_elapsed_seconds": 21.993386777820998,
+        "avg_total_tokens_est": 9320.66,
+        "avg_prompt_tokens_est": 8812.96,
+        "avg_completion_tokens_est": 507.7,
+        "correct": 30,
+        "wilson_95": [
+          0.4618118910275937,
+          0.7239181021375425
+        ]
+      },
+      "mact": {
+        "result_schema": "mact",
+        "num_samples": 50,
+        "num_with_gold": 50,
+        "exact_match": 0.48,
+        "primary_accuracy": 0.48,
+        "accuracy_metric": "crt_normalized_accuracy",
+        "num_failed_exec": 0,
+        "num_missing_answer": 0,
+        "num_em_mismatch": 26,
+        "num_multi_view_replan": 0,
+        "num_cross_path_mismatch": 0,
+        "route_distribution": {},
+        "difficulty_distribution": {},
+        "risk_distribution": {
+          "unknown": 50
+        },
+        "risk_strata": {
+          "unknown": {
+            "count": 50,
+            "num_with_gold": 50,
+            "correct": 24,
+            "accuracy": 0.48,
+            "avg_total_tokens": 12691.66,
+            "failure_count": 0
+          }
+        },
+        "simple_lookup_success_rate": 0.0,
+        "multi_view_pass_rate": 0.0,
+        "alternative_exec_success_rate": 0.0,
+        "avg_llm_calls": 4.0,
+        "avg_total_tokens": 12691.66,
+        "avg_prompt_tokens": 8331.32,
+        "avg_completion_tokens": 4360.34,
+        "token_measurement": "api_usage",
+        "avg_compression_ratio": 1.0,
+        "avg_token_compression_ratio_est": 0.0,
+        "avg_elapsed_seconds": 159.11654391449645,
+        "avg_total_tokens_est": 11572.28,
+        "avg_prompt_tokens_est": 7490.04,
+        "avg_completion_tokens_est": 4082.24,
+        "correct": 24,
+        "wilson_95": [
+          0.3479691239550571,
+          0.6148848774119157
+        ]
+      },
+      "paired": {
+        "both_correct": 20,
+        "myagent_only": 10,
+        "mact_only": 4,
+        "both_wrong": 16,
+        "exact_mcnemar_p": 0.1795654296875
+      },
+      "token_ratio_myagent_to_mact": 0.774037438758996,
+      "token_ratio_at_most_0_75": false,
+      "risk_accuracy_deltas": {}
+    }
+  },
+  "overall": {
+    "myagent": {
+      "result_schema": "myagent",
+      "num_samples": 150,
+      "num_with_gold": 150,
+      "exact_match": 0.7533333333333333,
+      "primary_accuracy": 0.7466666666666667,
+      "accuracy_metric": "mixed_dataset_accuracy",
+      "num_failed_exec": 0,
+      "num_missing_answer": 0,
+      "num_em_mismatch": 38,
+      "num_multi_view_replan": 0,
+      "num_cross_path_mismatch": 0,
+      "route_distribution": {
+        "COMPLEX": 144,
+        "SIMPLE": 6
+      },
+      "difficulty_distribution": {
+        "medium": 132,
+        "easy": 15,
+        "hard": 3
+      },
+      "risk_distribution": {
+        "high": 113,
+        "medium": 36,
+        "light": 1
+      },
+      "risk_strata": {
+        "high": {
+          "count": 113,
+          "num_with_gold": 113,
+          "correct": 88,
+          "accuracy": 0.7787610619469026,
+          "avg_total_tokens": 7763.716814159292,
+          "failure_count": 0
+        },
+        "light": {
+          "count": 1,
+          "num_with_gold": 1,
+          "correct": 1,
+          "accuracy": 1.0,
+          "avg_total_tokens": 2462.0,
+          "failure_count": 0
+        },
+        "medium": {
+          "count": 36,
+          "num_with_gold": 36,
+          "correct": 23,
+          "accuracy": 0.6388888888888888,
+          "avg_total_tokens": 1806.2777777777778,
+          "failure_count": 0
+        }
+      },
+      "simple_lookup_success_rate": 0.0,
+      "multi_view_pass_rate": 0.0,
+      "alternative_exec_success_rate": 0.0,
+      "avg_llm_calls": 4.633333333333334,
+      "avg_total_tokens": 6298.586666666667,
+      "avg_prompt_tokens": 5895.806666666666,
+      "avg_completion_tokens": 402.78,
+      "token_measurement": "api_usage",
+      "avg_compression_ratio": 0.5743480326551755,
+      "avg_token_compression_ratio_est": 0.5784485421402253,
+      "avg_elapsed_seconds": 16.58589422508143,
+      "avg_total_tokens_est": 5923.033333333334,
+      "avg_prompt_tokens_est": 5530.906666666667,
+      "avg_completion_tokens_est": 392.12666666666667,
+      "correct": 112,
+      "wilson_95": [
+        0.6715044398939715,
+        0.809509798127474
+      ]
+    },
+    "mact": {
+      "result_schema": "mact",
+      "num_samples": 150,
+      "num_with_gold": 150,
+      "exact_match": 0.74,
+      "primary_accuracy": 0.74,
+      "accuracy_metric": "mixed_dataset_accuracy",
+      "num_failed_exec": 0,
+      "num_missing_answer": 0,
+      "num_em_mismatch": 39,
+      "num_multi_view_replan": 0,
+      "num_cross_path_mismatch": 0,
+      "route_distribution": {},
+      "difficulty_distribution": {},
+      "risk_distribution": {
+        "unknown": 150
+      },
+      "risk_strata": {
+        "unknown": {
+          "count": 150,
+          "num_with_gold": 150,
+          "correct": 111,
+          "accuracy": 0.74,
+          "avg_total_tokens": 11570.46,
+          "failure_count": 0
+        }
+      },
+      "simple_lookup_success_rate": 0.0,
+      "multi_view_pass_rate": 0.0,
+      "alternative_exec_success_rate": 0.0,
+      "avg_llm_calls": 3.5866666666666664,
+      "avg_total_tokens": 11570.46,
+      "avg_prompt_tokens": 8165.406666666667,
+      "avg_completion_tokens": 3405.0533333333333,
+      "token_measurement": "api_usage",
+      "avg_compression_ratio": 1.0,
+      "avg_token_compression_ratio_est": 0.0,
+      "avg_elapsed_seconds": 124.56509839419198,
+      "avg_total_tokens_est": 10571.34,
+      "avg_prompt_tokens_est": 7368.1466666666665,
+      "avg_completion_tokens_est": 3203.193333333333,
+      "correct": 111,
+      "wilson_95": [
+        0.6644342013432283,
+        0.8035796518668268
+      ]
+    },
+    "paired": {
+      "both_correct": 95,
+      "myagent_only": 17,
+      "mact_only": 16,
+      "both_wrong": 22,
+      "exact_mcnemar_p": 1.0
+    },
+    "token_ratio_myagent_to_mact": 0.5443678701336565,
+    "token_ratio_at_most_0_75": true,
+    "risk_accuracy_deltas": {}
+  },
+  "token_ratio_myagent_to_mact": 0.5443678701336565,
+  "risk_accuracy_deltas": {},
+  "myagent_execution_failure_rate": 0.0,
+  "datasets_myagent_at_least_mact": 2,
+  "acceptance_criteria": {
+    "overall_accuracy_at_least_mact": true,
+    "at_least_two_datasets_at_least_mact": true,
+    "token_ratio_at_most_0_75": true,
+    "execution_failure_rate_at_most_0_02": true,
+    "acceptance_selective_risk_collaboration": true
+  },
+  "accepted": true
+}

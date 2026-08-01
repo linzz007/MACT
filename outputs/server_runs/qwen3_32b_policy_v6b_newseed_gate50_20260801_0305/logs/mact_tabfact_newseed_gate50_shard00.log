@@ -1,0 +1,635 @@
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain/__init__.py:29: UserWarning: Importing Wikipedia from langchain root module is no longer supported. Please use langchain.docstore.Wikipedia instead.
+  warnings.warn(
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
+  warn_deprecated(
+==============current step===========
+Thought 1: The claim states that a player from the University of Southern California (USC) was drafted in a round lower than 5. To verify this, I need to check if any USC player in the table has a round number less than 5 (i.e., rounds 1-4).  
+Action 1: Retrieve[Retrieve all rows where school is "university of southern california".]  
+Observation 1: | round | name | position | school | signed |
+| 5.0 | john herbst | lhp | university of southern california | no twins - 1967 |
+
+==============current step===========
+Thought 1: The claim states that a player from the University of Southern California (USC) was drafted in a round lower than 5. To verify this, I need to check if any USC player in the table has a round number less than 5 (i.e., rounds 1-4).  
+Action 1: Retrieve[Retrieve all rows where school is "university of southern california".]  
+Observation 1: | round | name | position | school | signed |
+| 5.0 | john herbst | lhp | university of southern california | no twins - 1967 |
+Thought 2: The retrieved row shows that John Herbst from the University of Southern California was drafted in round 5.0, which is not lower than 5. Therefore, the claim is false.  
+Action 2: Finish[False]
+
+Finished Trial 1, Correct: 1, Incorrect: 0, Halted: 0
+
+=== sample 0 id=tabfact-test-11580 start ===
+=== sample 0 returncode=0 end ===
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain/__init__.py:29: UserWarning: Importing Wikipedia from langchain root module is no longer supported. Please use langchain.docstore.Wikipedia instead.
+  warnings.warn(
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
+  warn_deprecated(
+==============current step===========
+Thought 1: I need to verify if the athlete won a gold medal at the 2009 East Asian Games in Hong Kong, China. The position column indicates the result.  
+Action 1: Retrieve[Retrieve the row where year is 2009, competition is East Asian Games, and venue is Hong Kong, China.]  
+Observation 1: | year | competition | venue | position | notes |  
+| 2009 | east asian games | hong kong , china | 1st | 5000 m |  
+
+==============current step===========
+Thought 1: I need to verify if the athlete won a gold medal at the 2009 East Asian Games in Hong Kong, China. The position column indicates the result.  
+Action 1: Retrieve[Retrieve the row where year is 2009, competition is East Asian Games, and venue is Hong Kong, China.]  
+Observation 1: | year | competition | venue | position | notes |  
+| 2009 | east asian games | hong kong , china | 1st | 5000 m |  
+Thought 2: The retrieved row shows the athlete achieved 1st position in the 5000m event at the 2009 East Asian Games in Hong Kong, China. In track and field competitions, 1st position corresponds to a gold medal. The claim is therefore supported by the data.  
+Action 2: Finish[True]
+
+Finished Trial 1, Correct: 1, Incorrect: 0, Halted: 0
+
+=== sample 1 id=tabfact-test-11236 start ===
+=== sample 1 returncode=0 end ===
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain/__init__.py:29: UserWarning: Importing Wikipedia from langchain root module is no longer supported. Please use langchain.docstore.Wikipedia instead.
+  warnings.warn(
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
+  warn_deprecated(
+==============current step===========
+Thought 1: The context states that when the case is "loc", "ngalbeniya" means "we two". I need to verify this by checking the table's "loc" row under the "we two" column.  
+Action 1: Retrieve[Retrieve the value in the "loc" row and "we two" column.]  
+Observation 1: | we two |
+| ngalbeniya |
+
+==============current step===========
+Thought 1: The context states that when the case is "loc", "ngalbeniya" means "we two". I need to verify this by checking the table's "loc" row under the "we two" column.  
+Action 1: Retrieve[Retrieve the value in the "loc" row and "we two" column.]  
+Observation 1: | we two |
+| ngalbeniya |
+Thought 2: The retrieved value for the "loc" case under the "we two" column is "ngalbeniya", which directly matches the context's statement. This confirms the claim is accurate.  
+Action 2: Finish[True]
+
+Finished Trial 1, Correct: 1, Incorrect: 0, Halted: 0
+
+=== sample 2 id=tabfact-test-10031 start ===
+=== sample 2 returncode=0 end ===
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain/__init__.py:29: UserWarning: Importing Wikipedia from langchain root module is no longer supported. Please use langchain.docstore.Wikipedia instead.
+  warnings.warn(
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
+  warn_deprecated(
+==============current step===========
+Thought 1: The context states that all teams in the 1961 Victorian Football League season were from the United States. However, the table lists teams like Footscray, Fitzroy, Carlton, and others, which are historically Australian-based teams (e.g., Footscray is now the Western Bulldogs in the AFL). The venues (e.g., Western Oval, Princes Park) are also in Melbourne, Australia. This contradicts the context's claim.  
+Action 1: Retrieve[All team names and venues from the table]  
+Observation 1: | home team | away team | venue |
+| footscray | geelong | western oval |
+| fitzroy | south melbourne | brunswick street oval |
+| carlton | melbourne | princes park |
+| st kilda | north melbourne | junction oval |
+| richmond | hawthorn | punt road oval |
+| essendon | collingwood | windy hill |
+
+==============current step===========
+Thought 1: The context states that all teams in the 1961 Victorian Football League season were from the United States. However, the table lists teams like Footscray, Fitzroy, Carlton, and others, which are historically Australian-based teams (e.g., Footscray is now the Western Bulldogs in the AFL). The venues (e.g., Western Oval, Princes Park) are also in Melbourne, Australia. This contradicts the context's claim.  
+Action 1: Retrieve[All team names and venues from the table]  
+Observation 1: | home team | away team | venue |
+| footscray | geelong | western oval |
+| fitzroy | south melbourne | brunswick street oval |
+| carlton | melbourne | princes park |
+| st kilda | north melbourne | junction oval |
+| richmond | hawthorn | punt road oval |
+| essendon | collingwood | windy hill |
+Thought 2: The retrieved team names (Footscray, Fitzroy, Carlton, St Kilda, Richmond, Essendon, Geelong, South Melbourne, Melbourne, North Melbourne, Hawthorn, Collingwood) and venues (Western Oval, Brunswick Street Oval, Princes Park, Junction Oval, Punt Road Oval, Windy Hill) are all historically associated with Australian Rules football in Victoria, Australia. This directly contradicts the context's claim that "all the team be from the United States."  
+Action 2: Finish[False]
+
+Finished Trial 1, Correct: 1, Incorrect: 0, Halted: 0
+
+=== sample 3 id=tabfact-test-1783 start ===
+=== sample 3 returncode=0 end ===
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain/__init__.py:29: UserWarning: Importing Wikipedia from langchain root module is no longer supported. Please use langchain.docstore.Wikipedia instead.
+  warnings.warn(
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
+  warn_deprecated(
+==============current step===========
+Thought 1: I need to verify if all players not from the United States are from Scotland. First, I will retrieve all players and their countries from the table.
+Action 1: Retrieve[Retrieve all rows and their 'country' column values.]
+Observation 1: | country |
+| united states |
+| united states |
+| united states |
+| united states |
+| united states |
+| scotland united states |
+| united states |
+| scotland |
+| united states |
+| united states |
+| united states |
+
+==============current step===========
+Thought 1: I need to verify if all players not from the United States are from Scotland. First, I will retrieve all players and their countries from the table.
+Action 1: Retrieve[Retrieve all rows and their 'country' column values.]
+Observation 1: | country |
+| united states |
+| united states |
+| united states |
+| united states |
+| united states |
+| scotland united states |
+| united states |
+| scotland |
+| united states |
+| united states |
+| united states |
+
+==============current step===========
+Thought 1: I need to verify if all players not from the United States are from Scotland. First, I will retrieve all players and their countries from the table.
+Action 1: Retrieve[Retrieve all rows and their 'country' column values.]
+Observation 1: | country |
+| united states |
+| united states |
+| united states |
+| united states |
+| united states |
+| scotland united states |
+| united states |
+| scotland |
+| united states |
+| united states |
+| united states |
+
+Finished Trial 1, Correct: 1, Incorrect: 0, Halted: 1
+
+=== sample 4 id=tabfact-test-7551 start ===
+=== sample 4 returncode=0 end ===
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain/__init__.py:29: UserWarning: Importing Wikipedia from langchain root module is no longer supported. Please use langchain.docstore.Wikipedia instead.
+  warnings.warn(
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
+  warn_deprecated(
+==============current step===========
+Thought 1: I need to calculate the average win percentage for matches against Chennai Super Kings and Delhi Daredevils. First, retrieve their individual win percentages from the table.
+Action 1: Retrieve[Retrieve the win % of Chennai Super Kings and Delhi Daredevils.]
+Observation 1: | opposition | win % |
+| chennai super kings | 40.0 |
+| delhi daredevils | 60.0 |
+
+==============current step===========
+Thought 1: I need to calculate the average win percentage for matches against Chennai Super Kings and Delhi Daredevils. First, retrieve their individual win percentages from the table.
+Action 1: Retrieve[Retrieve the win % of Chennai Super Kings and Delhi Daredevils.]
+Observation 1: | opposition | win % |
+| chennai super kings | 40.0 |
+| delhi daredevils | 60.0 |
+Thought 2: Now calculate the average of the two win percentages (40.00% and 60.00%).
+Action 2: Calculate[(40.00 + 60.00)/2]
+Observation 2: (50.0, '')
+
+==============current step===========
+Thought 1: I need to calculate the average win percentage for matches against Chennai Super Kings and Delhi Daredevils. First, retrieve their individual win percentages from the table.
+Action 1: Retrieve[Retrieve the win % of Chennai Super Kings and Delhi Daredevils.]
+Observation 1: | opposition | win % |
+| chennai super kings | 40.0 |
+| delhi daredevils | 60.0 |
+Thought 2: Now calculate the average of the two win percentages (40.00% and 60.00%).
+Action 2: Calculate[(40.00 + 60.00)/2]
+Observation 2: (50.0, '')
+Thought 3: The average of 40.00% and 60.00% is indeed 50.00%, which matches the context's claim. Therefore, the statement is true.
+Action 3: Finish[True]
+
+Finished Trial 1, Correct: 1, Incorrect: 0, Halted: 0
+
+=== sample 5 id=tabfact-test-6825 start ===
+=== sample 5 returncode=0 end ===
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain/__init__.py:29: UserWarning: Importing Wikipedia from langchain root module is no longer supported. Please use langchain.docstore.Wikipedia instead.
+  warnings.warn(
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
+  warn_deprecated(
+==============current step===========
+Thought 1: I need to verify if Wildspitze, Großer Priel, and Mölltaler Polinik are all located in Austria as stated in the context. I will retrieve their location information from the table.
+Action 1: Retrieve[Retrieve the location of Wildspitze, Großer Priel, and Mölltaler Polinik from the table.]
+Observation 1: 
+- Wildspitze: Austria (row 4)
+- Großer Priel: Austria (row 25)
+- Mölltaler Polinik: Austria (row 33)
+
+==============current step===========
+Thought 1: I need to verify if Wildspitze, Großer Priel, and Mölltaler Polinik are all located in Austria as stated in the context. I will retrieve their location information from the table.
+Action 1: Retrieve[Retrieve the location of Wildspitze, Großer Priel, and Mölltaler Polinik from the table.]
+Observation 1: 
+- Wildspitze: Austria (row 4)
+- Großer Priel: Austria (row 25)
+- Mölltaler Polinik: Austria (row 33)
+Thought 2: All three peaks (Wildspitze, Großer Priel, and Mölltaler Polinik) are listed as located in Austria in the retrieved data. This matches the context's statement.
+Action 2: Finish[True]
+
+Finished Trial 1, Correct: 1, Incorrect: 0, Halted: 0
+
+=== sample 6 id=tabfact-test-4398 start ===
+=== sample 6 returncode=0 end ===
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain/__init__.py:29: UserWarning: Importing Wikipedia from langchain root module is no longer supported. Please use langchain.docstore.Wikipedia instead.
+  warnings.warn(
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
+  warn_deprecated(
+==============current step===========
+Thought 1: I need to verify if the Washington Wizards' record on November 3 is indeed 3-2 as stated in the context. I will retrieve the relevant row from the table for November 3 and check the record.
+Action 1: Retrieve[Retrieve the row where date is "november 3".]
+Observation 1: | game | date | team | score | high points | high rebounds | high assists | location attendance | record |
+| 5.0 | november 3 | washington wizards | w 102 - 90 (ot) | lebron james (27) | anderson varejao (10) | lebron james , mo williams (6) | quicken loans arena 20562 | 3 - 2 |
+
+==============current step===========
+Thought 1: I need to verify if the Washington Wizards' record on November 3 is indeed 3-2 as stated in the context. I will retrieve the relevant row from the table for November 3 and check the record.
+Action 1: Retrieve[Retrieve the row where date is "november 3".]
+Observation 1: | game | date | team | score | high points | high rebounds | high assists | location attendance | record |
+| 5.0 | november 3 | washington wizards | w 102 - 90 (ot) | lebron james (27) | anderson varejao (10) | lebron james , mo williams (6) | quicken loans arena 20562 | 3 - 2 |
+Thought 2: The retrieved row confirms that on November 3, the Washington Wizards' record is indeed 3-2 as stated in the context. The table data matches the claim.
+Action 2: Finish[True]
+
+Finished Trial 1, Correct: 1, Incorrect: 0, Halted: 0
+
+=== sample 7 id=tabfact-test-9625 start ===
+=== sample 7 returncode=0 end ===
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain/__init__.py:29: UserWarning: Importing Wikipedia from langchain root module is no longer supported. Please use langchain.docstore.Wikipedia instead.
+  warnings.warn(
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
+  warn_deprecated(
+==============current step===========
+Thought 1: I need to verify if Carlos Kirmayr won only 1 set against Dominique Bedel. From the table, the match against Dominique Bedel had a final score of "4-6, 6-7". The first number in each set represents Carlos's score. In the first set, he scored 4 games (lost 6-4). In the second set, he scored 6 games but lost the tiebreak (6-7). This means he did not win any sets. The context claims he won 1 set, which contradicts the table data.  
+Action 1: Retrieve[Retrieve the score in the final for the match against Dominique Bedel.]  
+Observation 1: | score in the final |
+| 4 - 6 , 6 - 7 |
+
+==============current step===========
+Thought 1: I need to verify if Carlos Kirmayr won only 1 set against Dominique Bedel. From the table, the match against Dominique Bedel had a final score of "4-6, 6-7". The first number in each set represents Carlos's score. In the first set, he scored 4 games (lost 6-4). In the second set, he scored 6 games but lost the tiebreak (6-7). This means he did not win any sets. The context claims he won 1 set, which contradicts the table data.  
+Action 1: Retrieve[Retrieve the score in the final for the match against Dominique Bedel.]  
+Observation 1: | score in the final |
+| 4 - 6 , 6 - 7 |
+Thought 2: The score "4-6, 6-7" indicates that Carlos Kirmayr lost both sets. In the first set, he scored 4 games (lost 6-4). In the second set, he scored 6 games but lost the tiebreak (6-7). Therefore, he did not win any sets against Dominique Bedel. The context's claim that he won 1 set is false.  
+Action 2: Finish[False]
+
+Finished Trial 1, Correct: 1, Incorrect: 0, Halted: 0
+
+=== sample 8 id=tabfact-test-2491 start ===
+=== sample 8 returncode=0 end ===
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain/__init__.py:29: UserWarning: Importing Wikipedia from langchain root module is no longer supported. Please use langchain.docstore.Wikipedia instead.
+  warnings.warn(
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
+  warn_deprecated(
+==============current step===========
+Thought 1: I need to verify if Ilir Meta was elected as a member of the Democratic Party of Albania and whether he was the first since Aleksandër Meksi. First, I will retrieve the political party of Ilir Meta and Aleksandër Meksi from the table.  
+Action 1: Retrieve[Retrieve the political party of Ilir Meta and Aleksandër Meksi from the table.]  
+Observation 1: | name | political party |
+| aleksandër meksi | democratic party of albania |
+| ilir meta | socialist party of albania |
+
+==============current step===========
+Thought 1: I need to verify if Ilir Meta was elected as a member of the Democratic Party of Albania and whether he was the first since Aleksandër Meksi. First, I will retrieve the political party of Ilir Meta and Aleksandër Meksi from the table.  
+Action 1: Retrieve[Retrieve the political party of Ilir Meta and Aleksandër Meksi from the table.]  
+Observation 1: | name | political party |
+| aleksandër meksi | democratic party of albania |
+| ilir meta | socialist party of albania |
+Thought 2: The observation shows that Ilir Meta belongs to the Socialist Party of Albania, while Aleksandër Meksi belonged to the Democratic Party of Albania. The claim states that Ilir Meta was elected as a member of the Democratic Party of Albania, which contradicts the table data. Additionally, Sali Berisha (from the Democratic Party) became Prime Minister in 2005, meaning there was a Democratic Party member after Meksi before Ilir Meta. Since Ilir Meta is not part of the Democratic Party, the claim is false.  
+Action 2: Finish[False]
+
+Finished Trial 1, Correct: 1, Incorrect: 0, Halted: 0
+
+=== sample 9 id=tabfact-test-136 start ===
+=== sample 9 returncode=0 end ===
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain/__init__.py:29: UserWarning: Importing Wikipedia from langchain root module is no longer supported. Please use langchain.docstore.Wikipedia instead.
+  warnings.warn(
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
+  warn_deprecated(
+==============current step===========
+Thought 1: I need to verify if Nike is the kit maker for Aston Villa. I will retrieve the kit maker information for Aston Villa from the table.
+Action 1: Retrieve[Retrieve the kit maker of Aston Villa.]
+Observation 1: | team | kit maker |
+| aston villa | nike |
+
+==============current step===========
+Thought 1: I need to verify if Nike is the kit maker for Aston Villa. I will retrieve the kit maker information for Aston Villa from the table.
+Action 1: Retrieve[Retrieve the kit maker of Aston Villa.]
+Observation 1: | team | kit maker |
+| aston villa | nike |
+Thought 2: The retrieved data shows that Aston Villa's kit maker is indeed Nike. Therefore, the statement in the context is correct.
+Action 2: Finish[True]
+
+Finished Trial 1, Correct: 1, Incorrect: 0, Halted: 0
+
+=== sample 10 id=tabfact-test-9157 start ===
+=== sample 10 returncode=0 end ===
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain/__init__.py:29: UserWarning: Importing Wikipedia from langchain root module is no longer supported. Please use langchain.docstore.Wikipedia instead.
+  warnings.warn(
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
+  warn_deprecated(
+==============current step===========
+Thought 1: I need to verify if Chelsea was the home team when Crystal Palace was the away team, and if Norwich City was the home team when Bradford City was the away team.  
+Action 1: Retrieve[Retrieve rows where home team is Chelsea and away team is Crystal Palace, and rows where home team is Norwich City and away team is Bradford City.]  
+Observation 1: | tie no | home team | score | away team | date |
+| 6.0 | norwich city | 1 - 2 | bradford city | 23 february 1976 |
+| 7.0 | chelsea | 2 - 3 | crystal palace | 14 february 1976 |
+
+==============current step===========
+Thought 1: I need to verify if Chelsea was the home team when Crystal Palace was the away team, and if Norwich City was the home team when Bradford City was the away team.  
+Action 1: Retrieve[Retrieve rows where home team is Chelsea and away team is Crystal Palace, and rows where home team is Norwich City and away team is Bradford City.]  
+Observation 1: | tie no | home team | score | away team | date |
+| 6.0 | norwich city | 1 - 2 | bradford city | 23 february 1976 |
+| 7.0 | chelsea | 2 - 3 | crystal palace | 14 february 1976 |
+Thought 2: The retrieved rows confirm that Chelsea was the home team against Crystal Palace (tie no 7) and Norwich City was the home team against Bradford City (tie no 6). Both conditions in the context are satisfied by the table data.  
+Action 2: Finish[True]
+
+Finished Trial 1, Correct: 1, Incorrect: 0, Halted: 0
+
+=== sample 11 id=tabfact-test-7952 start ===
+=== sample 11 returncode=0 end ===
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain/__init__.py:29: UserWarning: Importing Wikipedia from langchain root module is no longer supported. Please use langchain.docstore.Wikipedia instead.
+  warnings.warn(
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
+  warn_deprecated(
+==============current step===========
+Thought 1: I need to verify if the hometown of Cody Zeller in the table matches the context. The context states "cody zeller 's hometown be washington , in". I should retrieve the hometown value for Cody Zeller from the table.
+Action 1: Retrieve[Retrieve the hometown of Cody Zeller from the table.]
+Observation 1: | player | hometown |
+| cody zeller | washington , in |
+
+==============current step===========
+Thought 1: I need to verify if the hometown of Cody Zeller in the table matches the context. The context states "cody zeller 's hometown be washington , in". I should retrieve the hometown value for Cody Zeller from the table.
+Action 1: Retrieve[Retrieve the hometown of Cody Zeller from the table.]
+Observation 1: | player | hometown |
+| cody zeller | washington , in |
+Thought 2: The retrieved hometown for Cody Zeller is "washington , in", which matches the context's statement "cody zeller 's hometown be washington , in". Despite minor formatting differences (capitalization and spacing), the data is consistent. Therefore, the claim is true.
+Action 2: Finish[True]
+
+Finished Trial 1, Correct: 1, Incorrect: 0, Halted: 0
+
+=== sample 12 id=tabfact-test-9530 start ===
+=== sample 12 returncode=0 end ===
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain/__init__.py:29: UserWarning: Importing Wikipedia from langchain root module is no longer supported. Please use langchain.docstore.Wikipedia instead.
+  warnings.warn(
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
+  warn_deprecated(
+==============current step===========
+Thought 1: I need to verify the population of Santa Mesa district according to the table. The context claims it is 99,993, but the table might show a different value.
+Action 1: Retrieve[Retrieve the population (2010 census) of Santa Mesa from the table.]
+Observation 1: The table shows Santa Mesa's population as 99933.
+
+==============current step===========
+Thought 1: I need to verify the population of Santa Mesa district according to the table. The context claims it is 99,993, but the table might show a different value.
+Action 1: Retrieve[Retrieve the population (2010 census) of Santa Mesa from the table.]
+Observation 1: The table shows Santa Mesa's population as 99933.
+Thought 2: The context claims Santa Mesa's population is 99,993, but the table explicitly shows 99,933. This is a discrepancy of 60 people. Since the table provides the official 2010 census data, the context's claim is incorrect.
+Action 2: Finish[False]
+
+Finished Trial 1, Correct: 0, Incorrect: 1, Halted: 0
+
+=== sample 13 id=tabfact-test-11953 start ===
+=== sample 13 returncode=0 end ===
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain/__init__.py:29: UserWarning: Importing Wikipedia from langchain root module is no longer supported. Please use langchain.docstore.Wikipedia instead.
+  warnings.warn(
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
+  warn_deprecated(
+==============current step===========
+Thought 1: I need to verify if the album was only released as a CD in the United States, United Kingdom, and Ireland. I will check the "format (s)" column for entries in these regions.  
+Action 1: Retrieve[Retrieve the "format (s)" for rows where region is "united states", "united kingdom and ireland".]  
+Observation 1:  
+| region | format (s) |  
+| united states | lp |  
+| united states | cd , digital download |  
+| united kingdom and ireland | lp |  
+| united kingdom and ireland | cd , digital download |  
+
+==============current step===========
+Thought 1: I need to verify if the album was only released as a CD in the United States, United Kingdom, and Ireland. I will check the "format (s)" column for entries in these regions.  
+Action 1: Retrieve[Retrieve the "format (s)" for rows where region is "united states", "united kingdom and ireland".]  
+Observation 1:  
+| region | format (s) |  
+| united states | lp |  
+| united states | cd , digital download |  
+| united kingdom and ireland | lp |  
+| united kingdom and ireland | cd , digital download |  
+Thought 2: The retrieved data shows that in the United States and United Kingdom/Ireland, the album was released in formats including "lp" (vinyl) and "cd , digital download". The claim states it was "only" released as a CD, but the table explicitly lists "lp" as a format for these regions. This contradicts the claim.  
+Action 2: Finish[False]
+
+Finished Trial 1, Correct: 1, Incorrect: 0, Halted: 0
+
+=== sample 14 id=tabfact-test-3463 start ===
+=== sample 14 returncode=0 end ===
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain/__init__.py:29: UserWarning: Importing Wikipedia from langchain root module is no longer supported. Please use langchain.docstore.Wikipedia instead.
+  warnings.warn(
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
+  warn_deprecated(
+==============current step===========
+Thought 1: The claim states that Chen Yanchong is an easy person to beat. I need to verify this by checking the match outcomes against Chen Yanchong in the table.  
+Action 1: Retrieve[Retrieve the row where opponent is "chen yanchong".]  
+Observation 1: | outcome | date | tournament | surface | opponent | score |
+| winner | 3 march 2004 | mumbai | hard | chen yanchong | 6 - 4 6 - 4 |
+
+==============current step===========
+Thought 1: The claim states that Chen Yanchong is an easy person to beat. I need to verify this by checking the match outcomes against Chen Yanchong in the table.  
+Action 1: Retrieve[Retrieve the row where opponent is "chen yanchong".]  
+Observation 1: | outcome | date | tournament | surface | opponent | score |
+| winner | 3 march 2004 | mumbai | hard | chen yanchong | 6 - 4 6 - 4 |
+Thought 2: The retrieved row shows that the player won against Chen Yanchong with a score of 6-4, 6-4. This indicates a clear victory. However, the claim generalizes Chen Yanchong as "an easy person to beat," which requires more than one match to validate. Since the table only contains one match against Chen Yanchong, we can only confirm this single instance. The context does not provide additional matches against Chen Yanchong for further analysis.  
+Action 2: Finish[True]
+
+Finished Trial 1, Correct: 0, Incorrect: 1, Halted: 0
+
+=== sample 15 id=tabfact-test-10811 start ===
+=== sample 15 returncode=0 end ===
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain/__init__.py:29: UserWarning: Importing Wikipedia from langchain root module is no longer supported. Please use langchain.docstore.Wikipedia instead.
+  warnings.warn(
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
+  warn_deprecated(
+==============current step===========
+Thought 1: I need to retrieve the total medal counts for Sweden (SWE) and Austria (AUT) from the table to compare their total medal counts.
+Action 1: Retrieve[Retrieve the total medal count for Sweden (SWE) and Austria (AUT).]
+Observation 1: | nation | total |
+| sweden (swe) | 6.0 |
+| austria (aut) | 10.0 |
+
+==============current step===========
+Thought 1: I need to retrieve the total medal counts for Sweden (SWE) and Austria (AUT) from the table to compare their total medal counts.
+Action 1: Retrieve[Retrieve the total medal count for Sweden (SWE) and Austria (AUT).]
+Observation 1: | nation | total |
+| sweden (swe) | 6.0 |
+| austria (aut) | 10.0 |
+Thought 2: The total medal count for Sweden is 6 and for Austria is 10. Since 6 is less than 10, Sweden's total medal count is lower than Austria's. The claim states that Sweden placed higher than Austria in total medal count, which is false.
+Action 2: Finish[False]
+
+Finished Trial 1, Correct: 1, Incorrect: 0, Halted: 0
+
+=== sample 16 id=tabfact-test-208 start ===
+=== sample 16 returncode=0 end ===
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain/__init__.py:29: UserWarning: Importing Wikipedia from langchain root module is no longer supported. Please use langchain.docstore.Wikipedia instead.
+  warnings.warn(
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
+  warn_deprecated(
+==============current step===========
+Thought 1: I need to verify if Donna Caponi was a runner-up on August 3, 1969. First, I will retrieve the row corresponding to the date August 3, 1969.
+Action 1: Retrieve[Retrieve the row where date is aug 3 , 1969]
+Observation 1: | date | tournament | winning score | margin of victory | runner (s) - up |
+| aug 3 , 1969 | buckeye savings invitational | + 3 (71 + 72 + 70 = 213) | 3 strokes | judy rankin |
+
+==============current step===========
+Thought 1: I need to verify if Donna Caponi was a runner-up on August 3, 1969. First, I will retrieve the row corresponding to the date August 3, 1969.
+Action 1: Retrieve[Retrieve the row where date is aug 3 , 1969]
+Observation 1: | date | tournament | winning score | margin of victory | runner (s) - up |
+| aug 3 , 1969 | buckeye savings invitational | + 3 (71 + 72 + 70 = 213) | 3 strokes | judy rankin |
+Thought 2: The retrieved row shows that on August 3, 1969, the runner-up was Judy Rankin, not Donna Caponi. Therefore, the claim is false.
+Action 2: Finish[False]
+
+Finished Trial 1, Correct: 1, Incorrect: 0, Halted: 0
+
+=== sample 17 id=tabfact-test-10507 start ===
+=== sample 17 returncode=0 end ===
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain/__init__.py:29: UserWarning: Importing Wikipedia from langchain root module is no longer supported. Please use langchain.docstore.Wikipedia instead.
+  warnings.warn(
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
+  warn_deprecated(
+==============current step===========
+Thought 1: I need to verify how many players from the table were selected from the Quebec Major Junior Hockey League (QMJHL). The "college / junior / club team (league)" column indicates the league. I should retrieve all rows where the league is QMJHL.
+Action 1: Retrieve[Retrieve rows where the "college / junior / club team (league)" contains "qmjhl".]
+Observation 1: | round | player | position | nationality | college / junior / club team (league) |
+| 4.0 | rosario ruggeri | defense | canada | chicoutimi saguenéens ( qmjhl ) |
+| 7.0 | mathieu brunelle | left wing | canada | victoriaville tigres (qmjhl) |
+
+==============current step===========
+Thought 1: I need to verify how many players from the table were selected from the Quebec Major Junior Hockey League (QMJHL). The "college / junior / club team (league)" column indicates the league. I should retrieve all rows where the league is QMJHL.
+Action 1: Retrieve[Retrieve rows where the "college / junior / club team (league)" contains "qmjhl".]
+Observation 1: | round | player | position | nationality | college / junior / club team (league) |
+| 4.0 | rosario ruggeri | defense | canada | chicoutimi saguenéens ( qmjhl ) |
+| 7.0 | mathieu brunelle | left wing | canada | victoriaville tigres (qmjhl) |
+Thought 2: The retrieved rows show two players (Rosario Ruggeri and Mathieu Brunelle) from the QMJHL. The claim states that 2 of the Flyers' selections come from QMJHL, which matches the observation.  
+Action 2: Finish[True]
+
+Finished Trial 1, Correct: 1, Incorrect: 0, Halted: 0
+
+=== sample 18 id=tabfact-test-4127 start ===
+=== sample 18 returncode=0 end ===
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain/__init__.py:29: UserWarning: Importing Wikipedia from langchain root module is no longer supported. Please use langchain.docstore.Wikipedia instead.
+  warnings.warn(
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
+  warn_deprecated(
+==============current step===========
+Thought 1: I need to verify if the attendance for the game against Alabama is 80,079 as stated in the context. I will retrieve the row where the opponent is Alabama.
+Action 1: Retrieve[Retrieve the row where opponent is Alabama.]
+Observation 1: | date | opponent | site | result | attendance |
+| october 17 | alabama | legion field birmingham , al | l22 - 23 | 80079.0 |
+
+==============current step===========
+Thought 1: I need to verify if the attendance for the game against Alabama is 80,079 as stated in the context. I will retrieve the row where the opponent is Alabama.
+Action 1: Retrieve[Retrieve the row where opponent is Alabama.]
+Observation 1: | date | opponent | site | result | attendance |
+| october 17 | alabama | legion field birmingham , al | l22 - 23 | 80079.0 |
+Thought 2: The retrieved row shows that the attendance against Alabama on October 17 was indeed 80,079, which matches the context. The decimal in the observation (80079.0) is likely a formatting artifact and does not affect the numerical value. The claim is therefore accurate.
+Action 2: Finish[True]
+
+Finished Trial 1, Correct: 1, Incorrect: 0, Halted: 0
+
+=== sample 19 id=tabfact-test-8648 start ===
+=== sample 19 returncode=0 end ===
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain/__init__.py:29: UserWarning: Importing Wikipedia from langchain root module is no longer supported. Please use langchain.docstore.Wikipedia instead.
+  warnings.warn(
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
+  warn_deprecated(
+==============current step===========
+Thought 1: I need to verify if Blue Edwards plays as a guard according to the table. The context mentions "blue edward play guard," which likely refers to "Blue Edwards" in the table. I will retrieve the position of Blue Edwards from the table.
+Action 1: Retrieve[Retrieve the position of Blue Edwards from the table.]
+Observation 1: | player | no | nationality | position | years for jazz | school / club team |
+| blue edwards | 30 | united states | guard | 1989 - 92 , 1994 - 95 | east carolina |
+
+==============current step===========
+Thought 1: I need to verify if Blue Edwards plays as a guard according to the table. The context mentions "blue edward play guard," which likely refers to "Blue Edwards" in the table. I will retrieve the position of Blue Edwards from the table.
+Action 1: Retrieve[Retrieve the position of Blue Edwards from the table.]
+Observation 1: | player | no | nationality | position | years for jazz | school / club team |
+| blue edwards | 30 | united states | guard | 1989 - 92 , 1994 - 95 | east carolina |
+Thought 2: The retrieved data shows that Blue Edwards' position is "guard," which matches the context's statement. Therefore, the claim is true.
+Action 2: Finish[True]
+
+Finished Trial 1, Correct: 1, Incorrect: 0, Halted: 0
+
+=== sample 20 id=tabfact-test-11465 start ===
+=== sample 20 returncode=0 end ===
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain/__init__.py:29: UserWarning: Importing Wikipedia from langchain root module is no longer supported. Please use langchain.docstore.Wikipedia instead.
+  warnings.warn(
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
+  warn_deprecated(
+==============current step===========
+Thought 1: The context mentions "rashid budja , the assistant coach in 2007 - 2008 be promote." I need to verify if Rashid Budaj was promoted during the 2007-2008 season based on the table. The table lists "Rashid Budaj" as the coach for Al Tadamon during that season, but it does not explicitly state whether he was promoted from an assistant role. The table lacks historical role changes, so the claim cannot be confirmed.  
+Action 1: Retrieve[Retrieve the row where coach is "rashid budaj" and season is "2007 - 2008 season".]  
+Observation 1: | club | coach | city | stadium | 2007 - 2008 season |
+| al tadamon | rashid budaj | farwaniya | farwaniya stadium | 6th |
+
+==============current step===========
+Thought 1: The context mentions "rashid budja , the assistant coach in 2007 - 2008 be promote." I need to verify if Rashid Budaj was promoted during the 2007-2008 season based on the table. The table lists "Rashid Budaj" as the coach for Al Tadamon during that season, but it does not explicitly state whether he was promoted from an assistant role. The table lacks historical role changes, so the claim cannot be confirmed.  
+Action 1: Retrieve[Retrieve the row where coach is "rashid budaj" and season is "2007 - 2008 season".]  
+Observation 1: | club | coach | city | stadium | 2007 - 2008 season |
+| al tadamon | rashid budaj | farwaniya | farwaniya stadium | 6th |
+Thought 2: The table only shows Rashid Budaj as the coach for Al Tadamon during the 2007-2008 season but does not provide any information about his prior role (e.g., assistant coach) or promotion history. The claim cannot be verified from the table's data, as it lacks details about role changes or previous positions.  
+Action 2: Finish[False]
+
+Finished Trial 1, Correct: 1, Incorrect: 0, Halted: 0
+
+=== sample 21 id=tabfact-test-11612 start ===
+=== sample 21 returncode=0 end ===
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain/__init__.py:29: UserWarning: Importing Wikipedia from langchain root module is no longer supported. Please use langchain.docstore.Wikipedia instead.
+  warnings.warn(
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
+  warn_deprecated(
+==============current step===========
+Thought 1: I need to verify the medal counts for the Philippines (Phi) and Macau (Mac) to check if they have the same number of gold and silver medals, and if the Philippines has 4 more bronze medals.  
+Action 1: Retrieve[Retrieve the gold, silver, and bronze medals for the Philippines (Phi) and Macau (Mac).]  
+Observation 1:  
+| nation       | gold | silver | bronze |  
+| philippine (phi) | 1    | 5      | 8      |  
+| macau (mac)  | 1    | 5      | 4      |  
+
+==============current step===========
+Thought 1: I need to verify the medal counts for the Philippines (Phi) and Macau (Mac) to check if they have the same number of gold and silver medals, and if the Philippines has 4 more bronze medals.  
+Action 1: Retrieve[Retrieve the gold, silver, and bronze medals for the Philippines (Phi) and Macau (Mac).]  
+Observation 1:  
+| nation       | gold | silver | bronze |  
+| philippine (phi) | 1    | 5      | 8      |  
+| macau (mac)  | 1    | 5      | 4      |  
+Thought 2: The Philippines and Macau both have 1 gold and 5 silver medals. The Philippines has 8 bronze medals, while Macau has 4. The difference in bronze medals is 8 - 4 = 4, which matches the claim.  
+Action 2: Finish[True]
+
+Finished Trial 1, Correct: 1, Incorrect: 0, Halted: 0
+
+=== sample 22 id=tabfact-test-458 start ===
+=== sample 22 returncode=0 end ===
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain/__init__.py:29: UserWarning: Importing Wikipedia from langchain root module is no longer supported. Please use langchain.docstore.Wikipedia instead.
+  warnings.warn(
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
+  warn_deprecated(
+==============current step===========
+Thought 1: I need to verify if the Paul Brown Stadium game had an attendance of 65,677 as stated in the context. I will retrieve the row where the stadium is Paul Brown Stadium.
+Action 1: Retrieve[Retrieve the row where stadium is Paul Brown Stadium.]
+Observation 1: | week | date | opponent | result | stadium | record | attendance |
+| 12.0 | november 28 , 2004 | cincinnati bengals | l 48 - 58 | paul brown stadium | 3 - 8 | 65677.0 |
+
+==============current step===========
+Thought 1: I need to verify if the Paul Brown Stadium game had an attendance of 65,677 as stated in the context. I will retrieve the row where the stadium is Paul Brown Stadium.
+Action 1: Retrieve[Retrieve the row where stadium is Paul Brown Stadium.]
+Observation 1: | week | date | opponent | result | stadium | record | attendance |
+| 12.0 | november 28 , 2004 | cincinnati bengals | l 48 - 58 | paul brown stadium | 3 - 8 | 65677.0 |
+Thought 2: The retrieved row shows that the game at Paul Brown Stadium (Week 12) had an attendance of 65,677, which matches the context's statement. Therefore, the claim is true.
+Action 2: Finish[True]
+
+Finished Trial 1, Correct: 1, Incorrect: 0, Halted: 0
+
+=== sample 23 id=tabfact-test-9343 start ===
+=== sample 23 returncode=0 end ===
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain/__init__.py:29: UserWarning: Importing Wikipedia from langchain root module is no longer supported. Please use langchain.docstore.Wikipedia instead.
+  warnings.warn(
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
+  warn_deprecated(
+==============current step===========
+Thought 1: I need to verify the claim about the September 1 game against the Mets. The table's first row shows the game details: score 3-0, attendance 19196, and loss attributed to Hentgen (14-9). The context claims it was a win, but the "loss" column indicates Hentgen took the loss, which contradicts a win.  
+Action 1: Retrieve[Retrieve the row for September 1 against the Mets.]  
+Observation 1: | date | opponent | score | loss | attendance | record |
+| september 1 | mets | 3 - 0 | hentgen (14 - 9) | 19196.0 | 65 - 71 |
+
+==============current step===========
+Thought 1: I need to verify the claim about the September 1 game against the Mets. The table's first row shows the game details: score 3-0, attendance 19196, and loss attributed to Hentgen (14-9). The context claims it was a win, but the "loss" column indicates Hentgen took the loss, which contradicts a win.  
+Action 1: Retrieve[Retrieve the row for September 1 against the Mets.]  
+Observation 1: | date | opponent | score | loss | attendance | record |
+| september 1 | mets | 3 - 0 | hentgen (14 - 9) | 19196.0 | 65 - 71 |
+
+==============current step===========
+Thought 1: I need to verify the claim about the September 1 game against the Mets. The table's first row shows the game details: score 3-0, attendance 19196, and loss attributed to Hentgen (14-9). The context claims it was a win, but the "loss" column indicates Hentgen took the loss, which contradicts a win.  
+Action 1: Retrieve[Retrieve the row for September 1 against the Mets.]  
+Observation 1: | date | opponent | score | loss | attendance | record |
+| september 1 | mets | 3 - 0 | hentgen (14 - 9) | 19196.0 | 65 - 71 |
+
+Finished Trial 1, Correct: 0, Incorrect: 0, Halted: 1
+
+=== sample 24 id=tabfact-test-851 start ===
+=== sample 24 returncode=0 end ===
