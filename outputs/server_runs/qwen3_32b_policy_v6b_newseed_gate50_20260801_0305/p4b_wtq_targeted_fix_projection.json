@@ -1,0 +1,204 @@
+{
+  "run_dir": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305",
+  "scope": "offline WTQ targeted fix projection over saved P4b MyAgent merged rows; no model calls",
+  "source_rows": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/myagent_current/merged/wtq_qwen3-32b-local.jsonl",
+  "eval_module": "/home/ubuntu/lzz/MyAgent/code/evaluate_results.py",
+  "rows": 50,
+  "current_correct": 37,
+  "projected_correct": 46,
+  "current_accuracy": 0.74,
+  "projected_accuracy": 0.92,
+  "net_gain": 9,
+  "wrong_to_correct": 9,
+  "correct_to_wrong": 0,
+  "wrong_to_correct_ids": [
+    "nu-3537",
+    "nu-1108",
+    "nu-2825",
+    "nu-3905",
+    "nu-3317",
+    "nu-3990",
+    "nu-1478",
+    "nu-3320",
+    "nu-1825"
+  ],
+  "correct_to_wrong_ids": [],
+  "changed_rows": [
+    {
+      "id": "nu-3537",
+      "question": "how many years did the true american club make the playoff?",
+      "gold": [
+        "1"
+      ],
+      "old_prediction": 2,
+      "new_prediction": 1,
+      "old_correct": false,
+      "new_correct": true,
+      "reason": "WTQ playoff participation count checked deterministically."
+    },
+    {
+      "id": "nu-1108",
+      "question": "who came first john f. williams or william a. mann?",
+      "gold": [
+        "William A. Mann"
+      ],
+      "old_prediction": "MG William A. Mann",
+      "new_prediction": "William A. Mann",
+      "old_correct": false,
+      "new_correct": true,
+      "reason": "WTQ scalar canonicalized by targeted fix."
+    },
+    {
+      "id": "nu-2825",
+      "question": "what is the number of winners in the community division?",
+      "gold": [
+        "8"
+      ],
+      "old_prediction": "7",
+      "new_prediction": 8,
+      "old_correct": false,
+      "new_correct": true,
+      "reason": "WTQ requested column winner entries counted deterministically."
+    },
+    {
+      "id": "nu-3905",
+      "question": "who is the last person listed under slalom?",
+      "gold": [
+        "Ludwig Wolf"
+      ],
+      "old_prediction": "Ludwig Wolf Germany (GER)",
+      "new_prediction": "Ludwig Wolf",
+      "old_correct": false,
+      "new_correct": true,
+      "reason": "WTQ scalar canonicalized by targeted fix."
+    },
+    {
+      "id": "nu-3317",
+      "question": "total number of sponsors?",
+      "gold": [
+        "13"
+      ],
+      "old_prediction": 21,
+      "new_prediction": 13,
+      "old_correct": false,
+      "new_correct": true,
+      "reason": "WTQ unique sponsor names counted deterministically."
+    },
+    {
+      "id": "nu-3990",
+      "question": "which experiment number came directly before felix?",
+      "gold": [
+        "009"
+      ],
+      "old_prediction": "Pop",
+      "new_prediction": 9.0,
+      "old_correct": false,
+      "new_correct": true,
+      "reason": "WTQ directly-before adjacent row target selected deterministically."
+    },
+    {
+      "id": "nu-1478",
+      "question": "what is the number of times a game went into overtime between the eagles and giants?",
+      "gold": [
+        "2"
+      ],
+      "old_prediction": 0,
+      "new_prediction": 2,
+      "old_correct": false,
+      "new_correct": true,
+      "reason": "WTQ overtime marker rows counted deterministically."
+    },
+    {
+      "id": "nu-3320",
+      "question": "which person retired injured after three attempts in their event?",
+      "gold": [
+        "Yossef Romano"
+      ],
+      "old_prediction": "Esther Shahamorov",
+      "new_prediction": "Yossef Romano",
+      "old_correct": false,
+      "new_correct": true,
+      "reason": "WTQ retired-injured ordinal attempt row selected deterministically."
+    },
+    {
+      "id": "nu-1825",
+      "question": "what is the next stadium listed after parc des princes?",
+      "gold": [
+        "Stade Félix Bollaert"
+      ],
+      "old_prediction": 48712.0,
+      "new_prediction": "Stade Félix Bollaert",
+      "old_correct": false,
+      "new_correct": true,
+      "reason": "WTQ row-major listed-after value selected deterministically."
+    }
+  ],
+  "projected_eval_summary": {
+    "result_schema": "myagent",
+    "num_samples": 50,
+    "num_with_gold": 50,
+    "exact_match": 0.94,
+    "primary_accuracy": 0.92,
+    "accuracy_metric": "wtq_denotation_accuracy",
+    "num_failed_exec": 0,
+    "num_missing_answer": 0,
+    "num_em_mismatch": 4,
+    "num_multi_view_replan": 0,
+    "num_cross_path_mismatch": 0,
+    "route_distribution": {
+      "COMPLEX": 45,
+      "SIMPLE": 5
+    },
+    "difficulty_distribution": {
+      "medium": 38,
+      "easy": 12
+    },
+    "risk_distribution": {
+      "high": 47,
+      "medium": 2,
+      "light": 1
+    },
+    "risk_strata": {
+      "high": {
+        "count": 47,
+        "num_with_gold": 47,
+        "correct": 43,
+        "accuracy": 0.9148936170212766,
+        "avg_total_tokens": 7060.531914893617,
+        "failure_count": 0
+      },
+      "light": {
+        "count": 1,
+        "num_with_gold": 1,
+        "correct": 1,
+        "accuracy": 1.0,
+        "avg_total_tokens": 2462.0,
+        "failure_count": 0
+      },
+      "medium": {
+        "count": 2,
+        "num_with_gold": 2,
+        "correct": 2,
+        "accuracy": 1.0,
+        "avg_total_tokens": 1922.0,
+        "failure_count": 0
+      }
+    },
+    "simple_lookup_success_rate": 0.0,
+    "multi_view_pass_rate": 0.0,
+    "alternative_exec_success_rate": 0.0,
+    "avg_llm_calls": 4.94,
+    "avg_total_tokens": 6763.02,
+    "avg_prompt_tokens": 6346.86,
+    "avg_completion_tokens": 416.16,
+    "token_measurement": "api_usage",
+    "avg_compression_ratio": 0.5573937372151658,
+    "avg_token_compression_ratio_est": 0.5569109297612159,
+    "avg_elapsed_seconds": 17.284565151501447,
+    "avg_total_tokens_est": 6271.1,
+    "avg_prompt_tokens_est": 5862.98,
+    "avg_completion_tokens_est": 408.12
+  },
+  "projected_anomaly_count": 4,
+  "interpretation": "The targeted WTQ mechanisms recover 9 P4b errors without projected harm. This is not a fresh Qwen run; it is evidence that the E1 diagnosis maps to generic deterministic/canonicalization behavior worth validating with a targeted gate."
+}
