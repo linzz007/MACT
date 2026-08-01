@@ -45,6 +45,21 @@ curl -sS -H 'Authorization: Bearer local-vllm-key-change-me' http://127.0.0.1:80
 
 ## 3. 先跑 WTQ affected-slice fresh 验证
 
+推荐先使用带停机条件的队列入口：
+
+```bash
+export VLLM_ENDPOINTS=http://127.0.0.1:8000/v1
+bash /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/run_remaining_qwen3_patent_queue.sh --phase wtq --checkpoint
+```
+
+队列运行手册：
+
+```text
+/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/remaining_qwen3_queue_runbook_zh.md
+```
+
+下面是等价的手动执行方式：
+
 ```bash
 bash /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/run_myagent_wtq_targeted_fix_slice.sh
 ```
@@ -112,6 +127,16 @@ bash /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate
 ## 5. E3 multi-seed 准备入口
 
 WTQ affected-slice 和 P4b WTQ after-fix full50 有结论后，再启动 E3 Seed-C/Seed-D。不要直接扩 full200。
+
+推荐队列入口：
+
+```bash
+export VLLM_ENDPOINTS=http://127.0.0.1:8000/v1,http://127.0.0.1:8001/v1
+bash /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/run_remaining_qwen3_patent_queue.sh --phase seed_c --checkpoint
+bash /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/run_remaining_qwen3_patent_queue.sh --phase seed_d --checkpoint
+```
+
+下面是等价的手动执行方式：
 
 ```bash
 cd /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231

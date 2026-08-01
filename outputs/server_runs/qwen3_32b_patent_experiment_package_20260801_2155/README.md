@@ -24,6 +24,8 @@ claim_evidence_traceability_20260801_2248.json
 claim_evidence_traceability_20260801_2248_zh.md
 formal_result_tables_template_20260801_2252.json
 formal_result_tables_template_20260801_2252_zh.md
+run_remaining_qwen3_patent_queue.sh
+remaining_qwen3_queue_runbook_zh.md
 ```
 
 Current status:
@@ -45,5 +47,7 @@ Current status:
   mechanisms, evidence files, support strength, and remaining gaps.
 - The formal result-table template defines the exact fields and decision ledger
   to fill after each pending fresh/gate run.
+- The remaining-Qwen3 queue script now provides a guarded executable entry for
+  WTQ fresh closure and E3 Seed-C/Seed-D validation.
 - Fresh Qwen affected-slice validation is still pending because local vLLM
   endpoints are down and GPUs have residual memory without visible compute PIDs.

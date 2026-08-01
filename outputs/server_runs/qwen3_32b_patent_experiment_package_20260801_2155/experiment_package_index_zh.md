@@ -127,7 +127,29 @@ E3 multi-seed 准备包：
 
 该包已生成 Seed-C/Seed-D 各 WTQ/TabFact/CRT `50` 行输入，总计 `300` 行，并通过 `verify_multiseed_package.py` 校验。它只是准备包，不包含模型运行结果。
 
-## 8. 专家可复核路径
+## 8. 剩余 Qwen3 队列入口
+
+后续恢复服务后，优先使用带停机条件的队列脚本，而不是手工串起所有 runner：
+
+```text
+/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/run_remaining_qwen3_patent_queue.sh
+/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/remaining_qwen3_queue_runbook_zh.md
+```
+
+建议顺序：
+
+```bash
+export VLLM_ENDPOINTS=http://127.0.0.1:8000/v1
+bash /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/run_remaining_qwen3_patent_queue.sh --phase wtq --checkpoint
+
+export VLLM_ENDPOINTS=http://127.0.0.1:8000/v1,http://127.0.0.1:8001/v1
+bash /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/run_remaining_qwen3_patent_queue.sh --phase seed_c --checkpoint
+bash /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/run_remaining_qwen3_patent_queue.sh --phase seed_d --checkpoint
+```
+
+该脚本会在 WTQ targeted fresh 未通过时停止，不会启动 WTQ full50；也会在 Seed-C/D current-only 未通过时停止，不会启动 MACT paired。它不会自动扩大到 Gate-150 或 full200。
+
+## 9. 专家可复核路径
 
 唯一 PRD：
 

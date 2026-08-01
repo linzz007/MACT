@@ -162,10 +162,10 @@
       "C6"
     ]
   },
-  "formal_result_tables_template": {
-    "json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/formal_result_tables_template_20260801_2252.json",
-    "md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/formal_result_tables_template_20260801_2252_zh.md",
-    "required_fields": [
+    "formal_result_tables_template": {
+        "json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/formal_result_tables_template_20260801_2252.json",
+        "md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/formal_result_tables_template_20260801_2252_zh.md",
+        "required_fields": [
       "stage",
       "dataset",
       "input_rows",
@@ -190,10 +190,28 @@
       "E3 Seed-C paired Gate-50",
       "E3 Seed-D current-only Gate-50",
       "E3 Seed-D paired Gate-50",
-      "Additional model gate funnel"
-    ]
-  },
-  "current_prd": "/home/ubuntu/lzz/MyAgent/docs/server/server_codex_reports/current-qwen3-mact-experiment-prd.md",
+            "Additional model gate funnel"
+        ]
+    },
+    "remaining_qwen3_queue": {
+        "script": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/run_remaining_qwen3_patent_queue.sh",
+        "runbook_md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/remaining_qwen3_queue_runbook_zh.md",
+        "purpose": "Guarded executable queue for remaining Qwen3-32B patent-evidence validation after server recovery.",
+        "phases": [
+            "wtq",
+            "seed_c",
+            "seed_d",
+            "e3",
+            "all"
+        ],
+        "stop_rules": [
+            "WTQ targeted fresh must pass before P4b WTQ after-fix full50.",
+            "Seed-C/Seed-D MyAgent current-only Gate-50 must decide run_paired_mact before paired MACT baseline runs.",
+            "The queue does not automatically expand to Gate-150 or full200."
+        ],
+        "current_online_status": "pending_endpoint_recovery"
+    },
+    "current_prd": "/home/ubuntu/lzz/MyAgent/docs/server/server_codex_reports/current-qwen3-mact-experiment-prd.md",
   "formal_experiment_schedule": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/formal_experiment_schedule_zh.md",
   "remaining_work": [
     "Run fresh Qwen3 affected-slice validation for WTQ targeted fixes.",
