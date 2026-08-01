@@ -15,6 +15,7 @@ Files:
 ```text
 evidence_manifest.json
 experiment_package_index_zh.md
+formal_experiment_schedule_zh.md
 patent_disclosure_draft_zh.md
 next_validation_checklist_zh.md
 ```
