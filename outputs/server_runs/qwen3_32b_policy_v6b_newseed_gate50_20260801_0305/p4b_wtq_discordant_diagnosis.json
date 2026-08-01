@@ -1,0 +1,737 @@
+{
+  "run_dir": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305",
+  "method": {
+    "myagent_rows": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/myagent_current/merged/wtq_qwen3-32b-local.jsonl",
+    "mact_rows": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/mact/wtq_mact_newseed_gate50.jsonl",
+    "eval_module": "/home/ubuntu/lzz/MyAgent/code/evaluate_results.py",
+    "note": "Correctness is recomputed with the same WTQ denotation function used by experiment eval."
+  },
+  "confusion": {
+    "both_correct": 34,
+    "mact_only": 9,
+    "both_wrong": 4,
+    "myagent_only": 3
+  },
+  "categories": {
+    "conflict_gate_and_cell_semantics": 1,
+    "both_wrong_numeric_range_parsing": 1,
+    "myagent_strength_semantic_disambiguation": 1,
+    "entity_surface_contract": 2,
+    "myagent_strength_answer_contract": 1,
+    "both_wrong_location_alias": 1,
+    "count_semantics": 2,
+    "myagent_strength_temporal_neighbor": 1,
+    "answer_target_column": 1,
+    "domain_marker_parsing": 1,
+    "both_wrong_same_row_next_field": 1,
+    "ordinal_phrase_matching": 1,
+    "listed_after_shortcut_targeting": 1,
+    "both_wrong_multi_answer_contract": 1
+  },
+  "categories_by_group": {
+    "mact_only": {
+      "conflict_gate_and_cell_semantics": 1,
+      "entity_surface_contract": 2,
+      "count_semantics": 2,
+      "answer_target_column": 1,
+      "domain_marker_parsing": 1,
+      "ordinal_phrase_matching": 1,
+      "listed_after_shortcut_targeting": 1
+    },
+    "myagent_only": {
+      "myagent_strength_semantic_disambiguation": 1,
+      "myagent_strength_answer_contract": 1,
+      "myagent_strength_temporal_neighbor": 1
+    },
+    "both_wrong": {
+      "both_wrong_numeric_range_parsing": 1,
+      "both_wrong_location_alias": 1,
+      "both_wrong_same_row_next_field": 1,
+      "both_wrong_multi_answer_contract": 1
+    }
+  },
+  "mact_only_compression": {
+    "count": 9,
+    "avg_compression_ratio": 0.6364401031067698,
+    "full_context_count": 2
+  },
+  "records": [
+    {
+      "id": "nu-3537",
+      "group": "mact_only",
+      "question": "how many years did the true american club make the playoff?",
+      "gold": [
+        "1"
+      ],
+      "answer_canonical": [
+        "1.0"
+      ],
+      "myagent_prediction": 2,
+      "mact_prediction": "1",
+      "myagent_correct": false,
+      "mact_correct": true,
+      "category": "conflict_gate_and_cell_semantics",
+      "cause": "Code counted `Champion (no playoff)` as a playoff row. The thinking verifier found the correct count, but the conflict gate did not let that candidate take over.",
+      "next_action": "Add a generic WTQ playoff/no-playoff cell audit and allow high-confidence verifier override when a parenthetical negator contradicts the code path.",
+      "problem_tags": [
+        "count"
+      ],
+      "risk_level": "high",
+      "strong_verification_reason": "wtq_high_risk_denotation",
+      "deterministic_shortcut_applied": false,
+      "deterministic_shortcut_reason": "",
+      "selected_candidate": {
+        "name": null,
+        "raw_answer": null
+      },
+      "candidate_summary": "code=2; thinking_direct=1",
+      "compression": {
+        "original_rows": 15,
+        "compressed_rows": 15,
+        "original_cols": 6,
+        "compressed_cols": 3,
+        "compression_ratio": 0.5
+      },
+      "tokens": {
+        "myagent_total": 6569.0,
+        "mact_total": 15556.0
+      }
+    },
+    {
+      "id": "nu-2572",
+      "group": "both_wrong",
+      "question": "how many cars had a maximum velocity of at least 100 km/h?",
+      "gold": [
+        "17"
+      ],
+      "answer_canonical": [
+        "17.0"
+      ],
+      "myagent_prediction": "1",
+      "mact_prediction": "19.",
+      "myagent_correct": false,
+      "mact_correct": false,
+      "category": "both_wrong_numeric_range_parsing",
+      "cause": "Both systems mishandled speed thresholds/ranges such as `85 km/h-105 km/h`; MyAgent undercounted and MACT overcounted.",
+      "next_action": "Add range-aware numeric parsing for threshold count questions if WTQ stability remains a priority.",
+      "problem_tags": [
+        "count",
+        "superlative_order",
+        "negation_logic"
+      ],
+      "risk_level": "high",
+      "strong_verification_reason": "wtq_high_risk_denotation",
+      "deterministic_shortcut_applied": false,
+      "deterministic_shortcut_reason": "",
+      "selected_candidate": {
+        "name": null,
+        "raw_answer": null
+      },
+      "candidate_summary": "code='1'; thinking_direct=9",
+      "compression": {
+        "original_rows": 43,
+        "compressed_rows": 43,
+        "original_cols": 6,
+        "compressed_cols": 6,
+        "compression_ratio": 1.0
+      },
+      "tokens": {
+        "myagent_total": 16477.0,
+        "mact_total": 22765.0
+      }
+    },
+    {
+      "id": "nu-4296",
+      "group": "myagent_only",
+      "question": "what was the date of the first vessel that was acquired?",
+      "gold": [
+        "2001"
+      ],
+      "answer_canonical": [
+        "2001.0"
+      ],
+      "myagent_prediction": 2001,
+      "mact_prediction": "1998",
+      "myagent_correct": true,
+      "mact_correct": false,
+      "category": "myagent_strength_semantic_disambiguation",
+      "cause": "MyAgent used Notes semantics to distinguish acquired/ordered vessels and returned 2001; MACT took the minimum Date value, 1998, from a row that is not an acquisition answer under the gold label.",
+      "next_action": "Preserve this behavior as evidence that verifier/thinking fallback can correct naive min-date execution.",
+      "problem_tags": [
+        "superlative_order",
+        "temporal"
+      ],
+      "risk_level": "high",
+      "strong_verification_reason": "wtq_high_risk_denotation",
+      "deterministic_shortcut_applied": false,
+      "deterministic_shortcut_reason": "",
+      "selected_candidate": {
+        "name": "thinking_direct",
+        "raw_answer": 2001
+      },
+      "candidate_summary": "code=1998.0; thinking_direct=2001",
+      "compression": {
+        "original_rows": 17,
+        "compressed_rows": 17,
+        "original_cols": 5,
+        "compressed_cols": 3,
+        "compression_ratio": 0.6
+      },
+      "tokens": {
+        "myagent_total": 7610.0,
+        "mact_total": 10565.0
+      }
+    },
+    {
+      "id": "nu-1108",
+      "group": "mact_only",
+      "question": "who came first john f. williams or william a. mann?",
+      "gold": [
+        "William A. Mann"
+      ],
+      "answer_canonical": [
+        "William A. Mann"
+      ],
+      "myagent_prediction": "MG William A. Mann",
+      "mact_prediction": "William A. Mann",
+      "myagent_correct": false,
+      "mact_correct": true,
+      "category": "entity_surface_contract",
+      "cause": "MyAgent selected the right person but returned the table cell with military title prefix `MG`; WTQ gold expects the mentioned person surface `William A. Mann`.",
+      "next_action": "Add requested-entity surface canonicalization for rank/title prefixes when the question names the candidate entity without the prefix.",
+      "problem_tags": [
+        "superlative_order",
+        "negation_logic"
+      ],
+      "risk_level": "high",
+      "strong_verification_reason": "wtq_high_risk_denotation",
+      "deterministic_shortcut_applied": false,
+      "deterministic_shortcut_reason": "",
+      "selected_candidate": {
+        "name": "thinking_direct",
+        "raw_answer": "MG William A. Mann"
+      },
+      "candidate_summary": "code='One or both names not found in the table'; thinking_direct='MG William A. Mann'",
+      "compression": {
+        "original_rows": 41,
+        "compressed_rows": 41,
+        "original_cols": 5,
+        "compressed_cols": 3,
+        "compression_ratio": 0.6
+      },
+      "tokens": {
+        "myagent_total": 7839.0,
+        "mact_total": 10399.0
+      }
+    },
+    {
+      "id": "nu-2441",
+      "group": "myagent_only",
+      "question": "was there only one time when their wins and losses are the same?",
+      "gold": [
+        "no"
+      ],
+      "answer_canonical": [
+        "no"
+      ],
+      "myagent_prediction": "No",
+      "mact_prediction": "No, there were two instances (2009 and 2010) when wins and losses were the same.",
+      "myagent_correct": true,
+      "mact_correct": false,
+      "category": "myagent_strength_answer_contract",
+      "cause": "MyAgent returned the compact WTQ denotation `No`; MACT returned a full explanatory sentence that is semantically right but fails strict WTQ denotation matching.",
+      "next_action": "Use this as patent evidence for answer-shape checking and concise denotation enforcement.",
+      "problem_tags": [
+        "negation_logic"
+      ],
+      "risk_level": "high",
+      "strong_verification_reason": "wtq_high_risk_denotation",
+      "deterministic_shortcut_applied": false,
+      "deterministic_shortcut_reason": "",
+      "selected_candidate": {
+        "name": "thinking_direct",
+        "raw_answer": "No"
+      },
+      "candidate_summary": "code='No'; thinking_direct='No'",
+      "compression": {
+        "original_rows": 10,
+        "compressed_rows": 10,
+        "original_cols": 4,
+        "compressed_cols": 3,
+        "compression_ratio": 0.75
+      },
+      "tokens": {
+        "myagent_total": 4640.0,
+        "mact_total": 6949.0
+      }
+    },
+    {
+      "id": "nu-1104",
+      "group": "both_wrong",
+      "question": "how many robots are from the united states?",
+      "gold": [
+        "2"
+      ],
+      "answer_canonical": [
+        "2.0"
+      ],
+      "myagent_prediction": 1,
+      "mact_prediction": "3",
+      "myagent_correct": false,
+      "mact_correct": false,
+      "category": "both_wrong_location_alias",
+      "cause": "Both systems disagreed with gold on United States location matching; table contains United States plus city/state aliases such as Michigan and New Jersey.",
+      "next_action": "Treat country aliases and US state/city cells explicitly before country-count audits.",
+      "problem_tags": [
+        "count"
+      ],
+      "risk_level": "high",
+      "strong_verification_reason": "wtq_high_risk_denotation",
+      "deterministic_shortcut_applied": false,
+      "deterministic_shortcut_reason": "",
+      "selected_candidate": {
+        "name": "thinking_direct",
+        "raw_answer": 1
+      },
+      "candidate_summary": "code=1; thinking_direct=1",
+      "compression": {
+        "original_rows": 25,
+        "compressed_rows": 25,
+        "original_cols": 6,
+        "compressed_cols": 2,
+        "compression_ratio": 0.3333333333333333
+      },
+      "tokens": {
+        "myagent_total": 5852.0,
+        "mact_total": 9445.0
+      }
+    },
+    {
+      "id": "nu-2825",
+      "group": "mact_only",
+      "question": "what is the number of winners in the community division?",
+      "gold": [
+        "8"
+      ],
+      "answer_canonical": [
+        "8.0"
+      ],
+      "myagent_prediction": "7",
+      "mact_prediction": "8",
+      "myagent_correct": false,
+      "mact_correct": true,
+      "category": "count_semantics",
+      "cause": "Question asks the number of winners in a division. MyAgent interpreted this as distinct/non-empty winners and returned 7, while gold counts the 8 non-empty Community Division entries.",
+      "next_action": "Add a count-intent audit that separates row/cell occurrence count from distinct-value count for `number of winners in <column>` questions.",
+      "problem_tags": [
+        "count"
+      ],
+      "risk_level": "high",
+      "strong_verification_reason": "wtq_simple_crosscheck",
+      "deterministic_shortcut_applied": false,
+      "deterministic_shortcut_reason": "",
+      "selected_candidate": {
+        "name": "thinking_direct",
+        "raw_answer": "7"
+      },
+      "candidate_summary": "code='7'; thinking_direct='7'",
+      "compression": {
+        "original_rows": 13,
+        "compressed_rows": 12,
+        "original_cols": 6,
+        "compressed_cols": 5,
+        "compression_ratio": 0.7692307692307693
+      },
+      "tokens": {
+        "myagent_total": 4049.0,
+        "mact_total": 13408.0
+      }
+    },
+    {
+      "id": "nu-3905",
+      "group": "mact_only",
+      "question": "who is the last person listed under slalom?",
+      "gold": [
+        "Ludwig Wolf"
+      ],
+      "answer_canonical": [
+        "Ludwig Wolf"
+      ],
+      "myagent_prediction": "Ludwig Wolf Germany (GER)",
+      "mact_prediction": "Ludwig Wolf",
+      "myagent_correct": false,
+      "mact_correct": true,
+      "category": "entity_surface_contract",
+      "cause": "MyAgent identified the correct row but returned `Ludwig Wolf Germany (GER)` instead of the requested person name only.",
+      "next_action": "Add medal/person column answer cleanup that strips adjacent country suffixes when the question asks `who/person` rather than full medal cell text.",
+      "problem_tags": [
+        "superlative_order"
+      ],
+      "risk_level": "high",
+      "strong_verification_reason": "wtq_high_risk_denotation",
+      "deterministic_shortcut_applied": false,
+      "deterministic_shortcut_reason": "",
+      "selected_candidate": {
+        "name": "code",
+        "raw_answer": "Ludwig Wolf Germany (GER)"
+      },
+      "candidate_summary": "code='Ludwig Wolf Germany (GER)'; thinking_direct='Ludwig Wolf Germany (GER)'",
+      "compression": {
+        "original_rows": 34,
+        "compressed_rows": 34,
+        "original_cols": 5,
+        "compressed_cols": 2,
+        "compression_ratio": 0.4
+      },
+      "tokens": {
+        "myagent_total": 6300.0,
+        "mact_total": 10248.0
+      }
+    },
+    {
+      "id": "nu-3246",
+      "group": "myagent_only",
+      "question": "what building was designed after hvittrask studio and home?",
+      "gold": [
+        "Swedish Theatre"
+      ],
+      "answer_canonical": [
+        "Swedish Theatre"
+      ],
+      "myagent_prediction": "Swedish Theatre",
+      "mact_prediction": "Kleinhans Music Hall",
+      "myagent_correct": true,
+      "mact_correct": false,
+      "category": "myagent_strength_temporal_neighbor",
+      "cause": "MyAgent selected the immediately next designed building after Hvittrask Studio and Home; MACT selected a later building.",
+      "next_action": "Use this as evidence for row-neighbor temporal evidence retention under compressed routing.",
+      "problem_tags": [
+        "temporal",
+        "negation_logic"
+      ],
+      "risk_level": "high",
+      "strong_verification_reason": "wtq_high_risk_denotation",
+      "deterministic_shortcut_applied": false,
+      "deterministic_shortcut_reason": "",
+      "selected_candidate": {
+        "name": "code",
+        "raw_answer": "Swedish Theatre"
+      },
+      "candidate_summary": "code='Swedish Theatre'; thinking_direct='Swedish Theatre'",
+      "compression": {
+        "original_rows": 60,
+        "compressed_rows": 6,
+        "original_cols": 6,
+        "compressed_cols": 6,
+        "compression_ratio": 0.1
+      },
+      "tokens": {
+        "myagent_total": 9202.0,
+        "mact_total": 23027.0
+      }
+    },
+    {
+      "id": "nu-3317",
+      "group": "mact_only",
+      "question": "total number of sponsors?",
+      "gold": [
+        "13"
+      ],
+      "answer_canonical": [
+        "13.0"
+      ],
+      "myagent_prediction": 21,
+      "mact_prediction": "13.",
+      "myagent_correct": false,
+      "mact_correct": true,
+      "category": "count_semantics",
+      "cause": "MyAgent summed filled cells across sponsor columns and returned 21. Gold expects the main sponsor occurrence count used by WTQ for this table, 13.",
+      "next_action": "Add sponsor-count disambiguation: for open `total number of sponsors` questions prefer the primary sponsor column/row occurrence unless the question names multiple sponsor columns.",
+      "problem_tags": [
+        "count",
+        "arithmetic"
+      ],
+      "risk_level": "high",
+      "strong_verification_reason": "wtq_high_risk_denotation",
+      "deterministic_shortcut_applied": false,
+      "deterministic_shortcut_reason": "",
+      "selected_candidate": {
+        "name": "thinking_direct",
+        "raw_answer": 21
+      },
+      "candidate_summary": "code=21; thinking_direct=21",
+      "compression": {
+        "original_rows": 17,
+        "compressed_rows": 17,
+        "original_cols": 5,
+        "compressed_cols": 4,
+        "compression_ratio": 0.8
+      },
+      "tokens": {
+        "myagent_total": 5510.0,
+        "mact_total": 14647.0
+      }
+    },
+    {
+      "id": "nu-3990",
+      "group": "mact_only",
+      "question": "which experiment number came directly before felix?",
+      "gold": [
+        "009"
+      ],
+      "answer_canonical": [
+        "9.0"
+      ],
+      "myagent_prediction": "Pop",
+      "mact_prediction": "009",
+      "myagent_correct": false,
+      "mact_correct": true,
+      "category": "answer_target_column",
+      "cause": "MyAgent found the previous row before Felix but returned the previous row nickname `Pop`; the question asks for the experiment number, `009`.",
+      "next_action": "Strengthen answer-contract target-column detection for `which <column> number` questions before accepting row-neighbor shortcuts.",
+      "problem_tags": [
+        "temporal"
+      ],
+      "risk_level": "high",
+      "strong_verification_reason": "wtq_temporal_crosscheck",
+      "deterministic_shortcut_applied": false,
+      "deterministic_shortcut_reason": "",
+      "selected_candidate": {
+        "name": "code",
+        "raw_answer": "Pop"
+      },
+      "candidate_summary": "code='Pop'; thinking_direct='Pop'",
+      "compression": {
+        "original_rows": 98,
+        "compressed_rows": 21,
+        "original_cols": 5,
+        "compressed_cols": 5,
+        "compression_ratio": 0.21428571428571427
+      },
+      "tokens": {
+        "myagent_total": 10654.0,
+        "mact_total": 19453.0
+      }
+    },
+    {
+      "id": "nu-1478",
+      "group": "mact_only",
+      "question": "what is the number of times a game went into overtime between the eagles and giants?",
+      "gold": [
+        "2"
+      ],
+      "answer_canonical": [
+        "2.0"
+      ],
+      "myagent_prediction": 0,
+      "mact_prediction": "2",
+      "myagent_correct": false,
+      "mact_correct": true,
+      "category": "domain_marker_parsing",
+      "cause": "MyAgent treated overtime as tied final scores and returned 0. The table explicitly marks overtime with `(OT)` in the Result column.",
+      "next_action": "Add a generic sports-score marker audit for overtime/extra-time tokens such as `(OT)` before score-equality heuristics.",
+      "problem_tags": [
+        "count",
+        "temporal",
+        "negation_logic"
+      ],
+      "risk_level": "high",
+      "strong_verification_reason": "wtq_high_risk_denotation",
+      "deterministic_shortcut_applied": false,
+      "deterministic_shortcut_reason": "",
+      "selected_candidate": {
+        "name": "code",
+        "raw_answer": 0
+      },
+      "candidate_summary": "code=0; thinking_direct=0",
+      "compression": {
+        "original_rows": 23,
+        "compressed_rows": 23,
+        "original_cols": 6,
+        "compressed_cols": 6,
+        "compression_ratio": 1.0
+      },
+      "tokens": {
+        "myagent_total": 8084.0,
+        "mact_total": 9483.0
+      }
+    },
+    {
+      "id": "nu-66",
+      "group": "both_wrong",
+      "question": "what date is next listed after june 14, 2010.",
+      "gold": [
+        "December 6, 2010"
+      ],
+      "answer_canonical": [
+        "2010-12-06"
+      ],
+      "myagent_prediction": "September 6, 2010",
+      "mact_prediction": "September 6, 2010",
+      "myagent_correct": false,
+      "mact_correct": false,
+      "category": "both_wrong_same_row_next_field",
+      "cause": "Both systems returned the next row premiere date. Gold expects the next listed date after June 14, 2010 in row-major order, the same row's following finale date December 6, 2010.",
+      "next_action": "Clarify `next listed after` semantics: scan row-major cells after the matched cell, not only the next row.",
+      "problem_tags": [
+        "temporal"
+      ],
+      "risk_level": "high",
+      "strong_verification_reason": "wtq_simple_crosscheck",
+      "deterministic_shortcut_applied": false,
+      "deterministic_shortcut_reason": "",
+      "selected_candidate": {
+        "name": "thinking_direct",
+        "raw_answer": "September 6, 2010"
+      },
+      "candidate_summary": "code='September 6, 2010'; thinking_direct='September 6, 2010'",
+      "compression": {
+        "original_rows": 7,
+        "compressed_rows": 7,
+        "original_cols": 4,
+        "compressed_cols": 4,
+        "compression_ratio": 1.0
+      },
+      "tokens": {
+        "myagent_total": 4026.0,
+        "mact_total": 7161.0
+      }
+    },
+    {
+      "id": "nu-3320",
+      "group": "mact_only",
+      "question": "which person retired injured after three attempts in their event?",
+      "gold": [
+        "Yossef Romano"
+      ],
+      "answer_canonical": [
+        "Yossef Romano"
+      ],
+      "myagent_prediction": "Esther Shahamorov",
+      "mact_prediction": "Yossef Romano",
+      "myagent_correct": false,
+      "mact_correct": true,
+      "category": "ordinal_phrase_matching",
+      "cause": "MyAgent looked for literal `3 attempts` and missed `third attempt`; it then chose a different athlete.",
+      "next_action": "Normalize ordinal phrases (`third attempt`, `3rd attempt`, `three attempts`) in WTQ event/performance matching.",
+      "problem_tags": [
+        "temporal"
+      ],
+      "risk_level": "high",
+      "strong_verification_reason": "wtq_temporal_crosscheck",
+      "deterministic_shortcut_applied": false,
+      "deterministic_shortcut_reason": "",
+      "selected_candidate": {
+        "name": "code",
+        "raw_answer": "Esther Shahamorov"
+      },
+      "candidate_summary": "code='Esther Shahamorov'; thinking_direct='Esther Shahamorov'",
+      "compression": {
+        "original_rows": 18,
+        "compressed_rows": 18,
+        "original_cols": 5,
+        "compressed_cols": 5,
+        "compression_ratio": 1.0
+      },
+      "tokens": {
+        "myagent_total": 12293.0,
+        "mact_total": 9475.0
+      }
+    },
+    {
+      "id": "nu-1825",
+      "group": "mact_only",
+      "question": "what is the next stadium listed after parc des princes?",
+      "gold": [
+        "Stade Félix Bollaert"
+      ],
+      "answer_canonical": [
+        "Stade Félix Bollaert"
+      ],
+      "myagent_prediction": 48712.0,
+      "mact_prediction": "Stade Félix Bollaert",
+      "myagent_correct": false,
+      "mact_correct": true,
+      "category": "listed_after_shortcut_targeting",
+      "cause": "The row-major listed-after shortcut returned the current row Capacity value `48712` instead of the next row Stadium value.",
+      "next_action": "Fix listed-after shortcut column targeting: when the question asks for a column/entity after a named item, return the same requested column from the next row.",
+      "problem_tags": [
+        "temporal"
+      ],
+      "risk_level": "high",
+      "strong_verification_reason": "wtq_simple_crosscheck",
+      "deterministic_shortcut_applied": true,
+      "deterministic_shortcut_reason": "WTQ row-major listed-after value selected deterministically.",
+      "selected_candidate": {
+        "name": "code",
+        "raw_answer": 48712.0
+      },
+      "candidate_summary": "code=48712.0; thinking_direct='Stade Félix Bollaert'",
+      "compression": {
+        "original_rows": 27,
+        "compressed_rows": 12,
+        "original_cols": 7,
+        "compressed_cols": 7,
+        "compression_ratio": 0.4444444444444444
+      },
+      "tokens": {
+        "myagent_total": 5303.0,
+        "mact_total": 9523.0
+      }
+    },
+    {
+      "id": "nu-1775",
+      "group": "both_wrong",
+      "question": "which competitions did she compete in before the 2001 world championships?",
+      "gold": [
+        "World Youth Championships",
+        "World Junior Championships",
+        "European Junior Championships"
+      ],
+      "answer_canonical": [
+        "World Youth Championships",
+        "World Junior Championships",
+        "European Junior Championships"
+      ],
+      "myagent_prediction": [
+        "World Youth Championships",
+        "World Junior Championships"
+      ],
+      "mact_prediction": "World Youth Championships, World Junior Championships, European Junior Championships",
+      "myagent_correct": false,
+      "mact_correct": false,
+      "category": "both_wrong_multi_answer_contract",
+      "cause": "MyAgent omitted one competition and MACT emitted a comma-delimited sentence rather than a structured WTQ answer list.",
+      "next_action": "Strengthen list-answer arity enforcement and pre-event filtering for multi-answer temporal questions.",
+      "problem_tags": [
+        "temporal",
+        "list_entity"
+      ],
+      "risk_level": "high",
+      "strong_verification_reason": "wtq_temporal_crosscheck",
+      "deterministic_shortcut_applied": false,
+      "deterministic_shortcut_reason": "",
+      "selected_candidate": {
+        "name": null,
+        "raw_answer": null
+      },
+      "candidate_summary": "code=['World Youth Championships', 'World Junior Championships']; thinking_direct=['World Youth Championships', 'World Junior Championships', 'European Junior Championships']",
+      "compression": {
+        "original_rows": 15,
+        "compressed_rows": 14,
+        "original_cols": 5,
+        "compressed_cols": 5,
+        "compression_ratio": 0.9333333333333333
+      },
+      "tokens": {
+        "myagent_total": 7021.0,
+        "mact_total": 7995.0
+      }
+    }
+  ],
+  "conclusion": {
+    "primary_finding": "WTQ P4b loss is mainly semantic/answer-contract risk, not execution failure. All 9 MACT-only rows used high-risk MyAgent routing with strong verification, but several wrong answers came from target-column selection, surface normalization, count semantics, or conflict-gate rejection of a better candidate.",
+    "patent_implication": "This supports the patent framing that selective risk collaboration needs a bounded repel/override layer plus deterministic semantic audits. The next evidence should be targeted WTQ diagnostics and fine-grained ablation, not blind Gate-100/full200 expansion.",
+    "next_priority": "Run or implement targeted WTQ checks for listed-after target columns, experiment-number target selection, overtime marker parsing, entity surface cleanup, and verifier override on parenthetical negators."
+  }
+}
