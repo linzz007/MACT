@@ -1,0 +1,110 @@
+{
+  "package_name": "qwen3_32b_patent_experiment_package_20260801_2155",
+  "created_at_local": "2026-08-01 21:55 CST",
+  "purpose": "Expert/patent-facing evidence package for MyAgent selective risk collaboration / persuasion-back experiments against MACT.",
+  "commit_note": "Repository commit fields identify the evidence/code state used to build this draft package. Later package/PRD synchronization commits are recorded in git history after package creation.",
+  "repositories": {
+    "myagent": {
+      "path": "/home/ubuntu/lzz/MyAgent",
+      "branch": "codex/selective-risk-collaboration",
+      "commit": "a080844"
+    },
+    "mact": {
+      "path": "/home/ubuntu/lzz/MACT",
+      "branch": "main",
+      "commit": "a6d3162"
+    }
+  },
+  "primary_full200": {
+    "summary_json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_all200_acceptance_20260731_132611/qwen3_policy_v6b_all200_acceptance_summary.json",
+    "evidence_index_md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_all200_acceptance_20260731_132611/qwen3_policy_v6b_patent_evidence_index.md",
+    "aggregate": {
+      "rows": 600,
+      "myagent_correct": 489,
+      "mact_correct": 450,
+      "accuracy_delta_correct": 39,
+      "myagent_accuracy": 0.815,
+      "mact_accuracy": 0.75,
+      "token_ratio_myagent_to_mact": 0.5716697843909193,
+      "elapsed_ratio_myagent_to_mact": 0.1336948894409883,
+      "myagent_failures": 0,
+      "myagent_missing_answers": 0
+    },
+    "datasets": {
+      "wtq": {
+        "rows": 200,
+        "myagent_correct": 155,
+        "mact_correct": 148,
+        "token_ratio_myagent_to_mact": 0.6186721012406702,
+        "elapsed_ratio_myagent_to_mact": 0.14638308022742036
+      },
+      "tabfact": {
+        "rows": 200,
+        "myagent_correct": 194,
+        "mact_correct": 189,
+        "token_ratio_myagent_to_mact": 0.20143156223094733,
+        "elapsed_ratio_myagent_to_mact": 0.094572909965595
+      },
+      "crt": {
+        "rows": 200,
+        "myagent_correct": 140,
+        "mact_correct": 113,
+        "token_ratio_myagent_to_mact": 0.8461497027514084,
+        "elapsed_ratio_myagent_to_mact": 0.14945417162120136
+      }
+    }
+  },
+  "coarse_ablation": {
+    "summary_json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_coarse_ablation_gate50_20260801_0040/coarse_ablation_gate50_summary.json",
+    "summary_md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_coarse_ablation_gate50_20260801_0040/coarse_ablation_gate50_summary.md",
+    "scope_note": "Diagnostic Gate-50 disagreement slice; mechanism attribution evidence, not random-seed generalization."
+  },
+  "newseed_p4b": {
+    "summary_json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/p4b_paired_gate50_summary.json",
+    "summary_md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/p4b_paired_gate50_summary.md",
+    "overall": {
+      "rows": 150,
+      "myagent_correct": 112,
+      "mact_correct": 111,
+      "token_ratio_myagent_to_mact": 0.5444,
+      "accepted_existing_paired_gate": true
+    },
+    "wtq_risk": {
+      "myagent_correct": 37,
+      "mact_correct": 43,
+      "strict_all_dataset_newseed_goal_met": false
+    }
+  },
+  "wtq_e1_diagnosis": {
+    "script": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/analyze_wtq_p4b_discordants.py",
+    "json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/p4b_wtq_discordant_diagnosis.json",
+    "md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/p4b_wtq_discordant_diagnosis.md",
+    "pair_confusion": {
+      "both_correct": 34,
+      "myagent_only": 3,
+      "mact_only": 9,
+      "both_wrong": 4
+    }
+  },
+  "wtq_e2_targeted_projection": {
+    "script": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/project_wtq_targeted_fixes.py",
+    "json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/p4b_wtq_targeted_fix_projection.json",
+    "md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/p4b_wtq_targeted_fix_projection.md",
+    "affected_slice": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/input/wtq_p4b_targeted_fix_affected_slice.jsonl",
+    "fresh_runner": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/run_myagent_wtq_targeted_fix_slice.sh",
+    "current_correct": 37,
+    "projected_correct": 46,
+    "wrong_to_correct": 9,
+    "correct_to_wrong": 0,
+    "fresh_model_validation_status": "pending"
+  },
+  "current_prd": "/home/ubuntu/lzz/MyAgent/docs/server/server_codex_reports/current-qwen3-mact-experiment-prd.md",
+  "remaining_work": [
+    "Run fresh Qwen3 affected-slice validation for WTQ targeted fixes.",
+    "If affected-slice passes, rerun P4b WTQ after-fix full50.",
+    "Add fine-grained ablation switches if needed for verifier override/evidence retention.",
+    "Run at least two additional new-seed gates or one larger Gate-100/150.",
+    "Run at least one additional model through the gate funnel after server expansion or API key availability.",
+    "Finalize patent claims and formal experimental section after fresh validation."
+  ]
+}
