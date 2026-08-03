@@ -1,0 +1,61 @@
+{
+  "run_dir": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305",
+  "scope": "fresh Qwen WTQ targeted-fix affected-slice validation",
+  "paths": {
+    "input_jsonl": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/input/wtq_p4b_targeted_fix_affected_slice.jsonl",
+    "projection_json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/p4b_wtq_targeted_fix_projection.json",
+    "merged_jsonl": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/myagent_wtq_targeted_fix/merged/wtq_qwen3-32b-local.jsonl",
+    "eval_json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/myagent_wtq_targeted_fix/eval/wtq_qwen3-32b-local_eval.json"
+  },
+  "coverage": {
+    "expected_rows": 9,
+    "merged_rows": 9,
+    "eval_rows": 9,
+    "expected_ids": [
+      "nu-3537",
+      "nu-1108",
+      "nu-2825",
+      "nu-3905",
+      "nu-3317",
+      "nu-3990",
+      "nu-1478",
+      "nu-3320",
+      "nu-1825"
+    ],
+    "missing_output_ids": [],
+    "extra_output_ids": []
+  },
+  "projection": {
+    "targeted_ids": [
+      "nu-3537",
+      "nu-1108",
+      "nu-2825",
+      "nu-3905",
+      "nu-3317",
+      "nu-3990",
+      "nu-1478",
+      "nu-3320",
+      "nu-1825"
+    ],
+    "targeted_count": 9,
+    "full50_current_correct": 37,
+    "full50_projected_correct": 46,
+    "wrong_to_correct": 9,
+    "correct_to_wrong": 0
+  },
+  "fresh": {
+    "correct": 9,
+    "rows": 9,
+    "accuracy": 1.0,
+    "min_correct": 7,
+    "num_failed_exec": 0,
+    "num_missing_answer": 0,
+    "avg_total_tokens": 5437.333333333333,
+    "avg_elapsed_seconds": 8.977539869445739,
+    "fresh_wrong_ids": []
+  },
+  "decision": "pass",
+  "decision_reasons": [
+    "fresh_targeted_validation_passed"
+  ]
+}
