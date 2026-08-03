@@ -1,0 +1,142 @@
+{
+  "artifact_name": "e4_multimodel_gate_readiness_audit",
+  "generated_at_local": "2026-08-03 11:37:41 CST",
+  "purpose": "Decide whether E4 multi-model Gate-10/Gate-50 can start without rerunning known no-go models.",
+  "source_readiness_audit_json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_blind200_mact_full200_20260723/latest_experiment_readiness_audit.json",
+  "source_readiness_summary_md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_blind200_mact_full200_20260723/latest_expert_evidence_summary.md",
+  "model_roots": [
+    "/home/ubuntu/models",
+    "/home/ubuntu/.cache/huggingface",
+    "/data",
+    "/mnt"
+  ],
+  "decision": "no_candidate_wait",
+  "can_start_gate10_now": false,
+  "model_readiness": {
+    "local_models": [
+      "Qwen2.5-14B-Instruct-AWQ",
+      "Qwen2.5-3B-Instruct",
+      "Qwen3-14B-AWQ",
+      "Qwen3-32B"
+    ],
+    "local_model_paths": {
+      "Qwen2.5-14B-Instruct-AWQ": [
+        "/home/ubuntu/models/Qwen2.5-14B-Instruct-AWQ"
+      ],
+      "Qwen2.5-3B-Instruct": [
+        "/home/ubuntu/models/Qwen2.5-3B-Instruct"
+      ],
+      "Qwen3-14B-AWQ": [
+        "/home/ubuntu/models/Qwen3-14B-AWQ"
+      ],
+      "Qwen3-32B": [
+        "/home/ubuntu/.cache/huggingface/hub/models--Qwen--Qwen3-32B/snapshots/9216db5781bf21249d130ec9da846c4624c16137",
+        "/home/ubuntu/models/Qwen3-32B"
+      ]
+    },
+    "known_tested_local_models": [
+      "Qwen2.5-14B-AWQ",
+      "Qwen2.5-14B-Instruct-AWQ",
+      "Qwen2.5-3B-Instruct",
+      "Qwen3-14B-AWQ",
+      "Qwen3-32B"
+    ],
+    "untested_local_models": [],
+    "untested_local_model_paths": {},
+    "api_keys_present": [],
+    "api_env_files_checked": [
+      {
+        "path": "/home/ubuntu/lzz/MyAgent/configs/server/qwen25_3b_1gpu_local.env",
+        "present": true
+      },
+      {
+        "path": "/home/ubuntu/lzz/MyAgent/configs/server/qwen3_32b_2gpu_local.env",
+        "present": true
+      }
+    ],
+    "api_provider_profiles": {},
+    "can_start_new_experiment": false,
+    "next_action": "wait_for_new_model_or_api_key"
+  },
+  "runtime_snapshot": {
+    "gpu": {
+      "query": {
+        "args": [
+          "nvidia-smi",
+          "--query-gpu=index,memory.used,utilization.gpu",
+          "--format=csv,noheader,nounits"
+        ],
+        "returncode": 0,
+        "stdout": "0, 3, 0\n1, 3, 0\n2, 3, 0\n3, 3, 0\n4, 42013, 10\n5, 42007, 100\n6, 42015, 100\n7, 42011, 100",
+        "stderr": ""
+      },
+      "gpus": [
+        {
+          "index": 0,
+          "memory_used_mib": 3,
+          "utilization_gpu_percent": 0
+        },
+        {
+          "index": 1,
+          "memory_used_mib": 3,
+          "utilization_gpu_percent": 0
+        },
+        {
+          "index": 2,
+          "memory_used_mib": 3,
+          "utilization_gpu_percent": 0
+        },
+        {
+          "index": 3,
+          "memory_used_mib": 3,
+          "utilization_gpu_percent": 0
+        },
+        {
+          "index": 4,
+          "memory_used_mib": 42013,
+          "utilization_gpu_percent": 10
+        },
+        {
+          "index": 5,
+          "memory_used_mib": 42007,
+          "utilization_gpu_percent": 100
+        },
+        {
+          "index": 6,
+          "memory_used_mib": 42015,
+          "utilization_gpu_percent": 100
+        },
+        {
+          "index": 7,
+          "memory_used_mib": 42011,
+          "utilization_gpu_percent": 100
+        }
+      ],
+      "default_pool": "0,1 -> 8000; 2,3 -> 8001",
+      "default_pool_available_for_next_start": true,
+      "availability_rule": "All GPU 0-3 memory_used_mib <= 1024 and utilization <= 5."
+    },
+    "processes": {
+      "pattern": "[v]llm|[a]pi_server|[r]un_mact_one_by_one|[t]qa.py|[r]un_sharded_tqa|[r]un_seed_",
+      "matches": [],
+      "visible_runner_or_model_processes": 0,
+      "pgrep_returncode": 1
+    }
+  },
+  "policy": {
+    "do_not_rerun_known_no_go_models": true,
+    "known_tested_local_models": [
+      "Qwen2.5-14B-AWQ",
+      "Qwen2.5-14B-Instruct-AWQ",
+      "Qwen2.5-3B-Instruct",
+      "Qwen3-14B-AWQ",
+      "Qwen3-32B"
+    ],
+    "gate_funnel": "Gate-10 -> Gate-50 -> Gate-150 -> paired-200 only for candidates that pass each stage."
+  },
+  "next_actions": [
+    "If untested_local_model_paths becomes non-empty, run prepare_model_gate_run.py --readiness-audit <latest audit> and start Gate-10.",
+    "If an API key appears, generate an API gate run with prepare_model_gate_run.py --backend api and run healthcheck_services.sh before Gate-10.",
+    "If no candidates are present, keep E4 pending/no-candidate and do not consume GPU time on known no-go models."
+  ]
+}

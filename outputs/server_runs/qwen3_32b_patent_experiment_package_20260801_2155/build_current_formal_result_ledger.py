@@ -62,6 +62,8 @@ E3_RUN_DIR = Path(
 )
 E3_BOUNDARY_DIAGNOSIS_JSON = E3_RUN_DIR / "summary" / "seed_boundary_error_diagnosis.json"
 E3_BOUNDARY_DIAGNOSIS_MD = E3_RUN_DIR / "summary" / "seed_boundary_error_diagnosis.md"
+E4_READINESS_JSON = PACKAGE_DIR / "latest_e4_multimodel_gate_readiness_audit.json"
+E4_READINESS_MD = PACKAGE_DIR / "latest_e4_multimodel_gate_readiness_audit_zh.md"
 E3_SEEDS = ("seed_c", "seed_d")
 TASK_ORDER = ("wtq", "tabfact", "crt")
 
@@ -405,6 +407,7 @@ def completion_summary(completed: list[dict[str, Any]], pending: list[dict[str, 
             "E3 Seed-C current-only Gate-50 is a documented stability boundary: overall 114/150, decision stop_or_inspect.",
             "E3 Seed-D current-only Gate-50 is a second documented stability boundary: overall 98/150, decision stop_or_inspect.",
             "E3 Seed-C/Seed-D offline boundary diagnosis has explained the current-gate boundary as semantic accuracy stability, not runtime/tool failure or token-budget failure.",
+            "E4 latest readiness audit has completed with no untested local model path and no API provider profile, so no Gate-10 should be started yet.",
         ],
         "cannot_write_yet": [
             "A viable additional model gate has completed.",
@@ -564,6 +567,8 @@ def build_ledger() -> dict[str, Any]:
             },
             "e3_boundary_diagnosis_json": str(E3_BOUNDARY_DIAGNOSIS_JSON) if E3_BOUNDARY_DIAGNOSIS_JSON.exists() else None,
             "e3_boundary_diagnosis_md": str(E3_BOUNDARY_DIAGNOSIS_MD) if E3_BOUNDARY_DIAGNOSIS_MD.exists() else None,
+            "e4_multimodel_readiness_json": str(E4_READINESS_JSON) if E4_READINESS_JSON.exists() else None,
+            "e4_multimodel_readiness_md": str(E4_READINESS_MD) if E4_READINESS_MD.exists() else None,
             "formal_template": str(FORMAL_TEMPLATE),
             "latest_runtime_preflight": str(LATEST_PREFLIGHT),
         },
