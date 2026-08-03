@@ -230,10 +230,14 @@
     }
   },
   "completion_gap_audit": {
-    "json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/completion_gap_audit_20260801_2244.json",
-    "md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/completion_gap_audit_20260801_2244_zh.md",
+    "script": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/build_current_completion_gap_audit.py",
+    "latest_json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_completion_gap_audit_current.json",
+    "latest_md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_completion_gap_audit_current_zh.md",
+    "legacy_json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/completion_gap_audit_20260801_2244.json",
+    "legacy_md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/completion_gap_audit_20260801_2244_zh.md",
     "overall_completion_status": "active_not_complete",
-    "reason_not_complete": "The current patent experiment section has been consolidated as draft-ready evidence with explicit boundaries. At least one viable additional-model gate result remains missing; Seed-C/Seed-D boundary diagnosis is complete and latest E4 readiness audit found no new model/API candidate, so E4 remains pending/no-candidate."
+    "reason_not_complete": "The current patent experiment section has been consolidated as draft-ready evidence with explicit boundaries. At least one viable additional-model gate result remains missing; Seed-C/Seed-D boundary diagnosis is complete and latest E4 readiness audit found no new model/API candidate, so E4 remains pending/no-candidate.",
+    "latest_observed_at_local": "2026-08-03 12:06:11 CST"
   },
   "claim_evidence_traceability": {
     "json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/claim_evidence_traceability_20260801_2248.json",
@@ -334,16 +338,16 @@
     "latest_status": "pass",
     "latest_errors": 0,
     "latest_warnings": 1,
-    "latest_observed_at_local": "2026-08-03 11:59:00 CST"
+    "latest_observed_at_local": "2026-08-03 12:08:00 CST"
   },
   "package_checksums": {
     "script": "outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/build_patent_package_checksums.py",
     "latest_json": "outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_patent_package_checksums.json",
     "latest_md": "outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_patent_package_checksums_zh.md",
     "sha256sums": "outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/SHA256SUMS",
-    "latest_record_count": 187,
+    "latest_record_count": 196,
     "latest_missing_or_pending_reference_count": 0,
-    "latest_observed_at_local": "2026-08-03 11:59:15 CST"
+    "latest_observed_at_local": "2026-08-03 12:08:21 CST"
   },
   "current_prd": "/home/ubuntu/lzz/MyAgent/docs/server/server_codex_reports/current-qwen3-mact-experiment-prd.md",
   "formal_experiment_schedule": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/formal_experiment_schedule_zh.md",

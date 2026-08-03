@@ -206,8 +206,10 @@ bash /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_packa
 最新完成度审计：
 
 ```text
-/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/completion_gap_audit_20260801_2244_zh.md
+/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_completion_gap_audit_current_zh.md
 ```
+
+旧 `completion_gap_audit_20260801_2244_zh.md` 只保留为历史记录；当前缺口判断以 latest current audit 为准。
 
 权利要求-机制-证据可追踪矩阵：
 

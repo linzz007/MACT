@@ -29,6 +29,8 @@ E4_READINESS_JSON = PACKAGE_DIR / "latest_e4_multimodel_gate_readiness_audit.jso
 E4_READINESS_MD = PACKAGE_DIR / "latest_e4_multimodel_gate_readiness_audit_zh.md"
 CURRENT_PATENT_SECTION_JSON = PACKAGE_DIR / "latest_current_patent_experiment_section.json"
 CURRENT_PATENT_SECTION_MD = PACKAGE_DIR / "latest_current_patent_experiment_section_zh.md"
+CURRENT_COMPLETION_GAP_JSON = PACKAGE_DIR / "latest_completion_gap_audit_current.json"
+CURRENT_COMPLETION_GAP_MD = PACKAGE_DIR / "latest_completion_gap_audit_current_zh.md"
 
 
 def read_json(path: Path) -> dict[str, Any]:
@@ -153,6 +155,9 @@ def build_report() -> dict[str, Any]:
         "current_patent_experiment_section_json": CURRENT_PATENT_SECTION_JSON,
         "current_patent_experiment_section_md": CURRENT_PATENT_SECTION_MD,
         "current_patent_experiment_section_builder": PACKAGE_DIR / "build_current_patent_experiment_section.py",
+        "current_completion_gap_audit_json": CURRENT_COMPLETION_GAP_JSON,
+        "current_completion_gap_audit_md": CURRENT_COMPLETION_GAP_MD,
+        "current_completion_gap_audit_builder": PACKAGE_DIR / "build_current_completion_gap_audit.py",
     }.items():
         add_path_check(report, label, path)
 
@@ -294,6 +299,8 @@ def build_report() -> dict[str, Any]:
     e4_readiness = read_json(E4_READINESS_JSON)
     current_section_manifest = manifest["current_patent_experiment_section"]
     current_section = read_json(CURRENT_PATENT_SECTION_JSON)
+    completion_gap_manifest = manifest["completion_gap_audit"]
+    completion_gap = read_json(CURRENT_COMPLETION_GAP_JSON)
     check_equal(report, "manifest latest ledger path", manifest_ledger, str(LEDGER_PATH))
     check_equal(report, "manifest latest preflight path", manifest_preflight, str(PREFLIGHT_PATH))
     check_equal(report, "manifest E3 boundary json path", boundary_manifest["json"], str(E3_BOUNDARY_DIAGNOSIS_JSON))
@@ -343,6 +350,49 @@ def build_report() -> dict[str, Any]:
     )
     check_equal(
         report,
+        "manifest completion gap latest json path",
+        completion_gap_manifest["latest_json"],
+        str(CURRENT_COMPLETION_GAP_JSON),
+    )
+    check_equal(
+        report,
+        "manifest completion gap latest md path",
+        completion_gap_manifest["latest_md"],
+        str(CURRENT_COMPLETION_GAP_MD),
+    )
+    check_equal(
+        report,
+        "current completion gap overall status",
+        completion_gap["overall_completion_status"],
+        "active_not_complete",
+    )
+    requirements_by_id = {item["id"]: item for item in completion_gap["requirements"]}
+    requirement_status = {item_id: item["status"] for item_id, item in requirements_by_id.items()}
+    check_equal(report, "completion gap R3 status", requirement_status.get("R3"), "complete")
+    check_equal(
+        report,
+        "completion gap R4 status",
+        requirement_status.get("R4"),
+        "complete_boundary_not_stability_pass",
+    )
+    check_equal(report, "completion gap R5 status", requirement_status.get("R5"), "pending_no_candidate")
+    check_equal(
+        report,
+        "completion gap E4 decision",
+        requirements_by_id["R5"]["metrics"]["decision"],
+        "no_candidate_wait",
+    )
+    stale_completion_claims = [
+        "Seed-C/Seed-D boundary diagnosis and at least one viable multi-model gate result remain missing",
+        "WTQ fresh targeted run 未完成",
+        "fresh Qwen targeted run 尚未执行",
+    ]
+    completion_gap_md = CURRENT_COMPLETION_GAP_MD.read_text(encoding="utf-8")
+    for stale_text in stale_completion_claims:
+        if stale_text in completion_gap_md:
+            report["errors"].append(f"current completion gap audit contains stale text: {stale_text!r}")
+    check_equal(
+        report,
         "manifest online status",
         manifest["remaining_qwen3_queue"]["current_online_status"],
         latest_status,
@@ -353,6 +403,7 @@ def build_report() -> dict[str, Any]:
         "PRD runtime preflight": "latest_qwen3_runtime_preflight_zh.md",
         "PRD formal ledger": "latest_formal_result_ledger_current_zh.md",
         "PRD current patent section": "latest_current_patent_experiment_section_zh.md",
+        "PRD current completion gap audit": "latest_completion_gap_audit_current_zh.md",
         "PRD E3 boundary diagnosis": "seed_boundary_error_diagnosis.md",
         "PRD E4 readiness audit": "latest_e4_multimodel_gate_readiness_audit_zh.md",
         "PRD active status": "active_not_complete",

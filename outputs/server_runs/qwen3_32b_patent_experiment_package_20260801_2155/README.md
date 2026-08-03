@@ -20,6 +20,9 @@ patent_disclosure_draft_zh.md
 next_validation_checklist_zh.md
 completion_gap_audit_20260801_2244.json
 completion_gap_audit_20260801_2244_zh.md
+build_current_completion_gap_audit.py
+latest_completion_gap_audit_current.json
+latest_completion_gap_audit_current_zh.md
 claim_evidence_traceability_20260801_2248.json
 claim_evidence_traceability_20260801_2248_zh.md
 formal_result_tables_template_20260801_2252.json
@@ -60,9 +63,10 @@ Current status:
   token ratio vs MACT full200 reference `0.6096`, failures/missing `0/0`.
   Seed-D: WTQ `30/50`, TabFact `38/50`, CRT `30/50`, overall `98/150`,
   token ratio vs MACT full200 reference `0.5735`, failures/missing `0/0`.
-- The latest completion-gap audit records that the active goal is not complete:
-  Seed-C/Seed-D boundary inspection plus one viable multi-model gate remain
-  missing.
+- The latest current completion-gap audit records that the active goal is not
+  complete: Qwen3 full200 and P4b after-targeted are positive evidence, E3 is
+  boundary evidence, and E4 remains pending/no-candidate until a new local
+  model or API profile appears.
 - The claim-to-evidence traceability matrix maps six patent claim families to
   mechanisms, evidence files, support strength, and remaining gaps.
 - The formal result-table template defines the exact fields and decision ledger
