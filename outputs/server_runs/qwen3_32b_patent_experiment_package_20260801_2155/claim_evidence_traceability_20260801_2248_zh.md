@@ -1,23 +1,24 @@
 # 权利要求-机制-证据可追踪矩阵
 
 创建时间：2026-08-01 22:48 CST
+更新时间：2026-08-03 12:24 CST
 
 用途：把可写入专利的权利要求族，对齐到 MyAgent 机制、代码入口、实验数据和仍未闭合的风险。这个文件不是新 benchmark run，而是专利撰写用证据索引。
 
 ## 总体边界
 
-当前可强写的是 Qwen3-32B full200 阶段证据：MyAgent `489/600` vs MACT `450/600`，总体 token ratio `0.5717`，三数据集单项均超过 MACT。当前不能强写“多 seed / 多模型 / WTQ fresh 闭环已经完成”。
+当前可强写的是 Qwen3-32B full200 阶段证据：MyAgent `489/600` vs MACT `450/600`，总体 token ratio `0.5717`，三数据集单项均超过 MACT。WTQ targeted fresh 与 P4b after-targeted 闭环已经完成，可作为新 seed 风险修复证据。E3 Seed-C/D current-only 已完成并形成边界证据，但不能写成“多 seed 稳定超过 MACT”；E4 仍为 `no_candidate_wait`，不能写成多模型已验证。
 
 ## 权利要求族映射
 
 | ID | 权利要求族 | 可写技术点 | 当前证据强度 | 关键证据 | 缺口 |
 |---|---|---|---|---|---|
-| C1 | 风险分层的选择性协作 | 根据问题语义、表格结构、答案契约和执行信号估计风险，再选择轻量路径、确定性审计或强验证协作 | strong stage evidence | full200 `489/600 > 450/600`，token ratio `0.5717`，elapsed ratio `0.1337` | 多 seed / 多模型执行后才能写广义稳定性 |
+| C1 | 风险分层的选择性协作 | 根据问题语义、表格结构、答案契约和执行信号估计风险，再选择轻量路径、确定性审计或强验证协作 | strong stage evidence | full200 `489/600 > 450/600`，token ratio `0.5717`，elapsed ratio `0.1337`；P4b after-targeted `121/150 > 111/150` | E3 已给出边界而非稳定性正证据；多模型执行后才能写广义模型外延 |
 | C2 | 证据保留式表格压缩 | 对比较、时间、序数、计数、实体消歧等风险保留全局行、候选行、晚列和邻接行 | moderate-to-strong associative evidence | WTQ gain rows `16/25` tagged evidence_retention；TabFact gain rows `9/9` tagged evidence_retention；CRT current-only vs MACT `37/40` tagged evidence_retention | 若专利代理人要求因果证据，可补 `no_evidence_retention` 细粒度消融 |
-| C3 | 确定性语义审计 | 用结构化规则校验同行约束、列值计数、实体属性、数值差、时间差、overtime、listed-after 目标列、ordinal/cardinal 匹配 | strong mechanism evidence | `no_deterministic_shortcuts` overall `-15/150`；TabFact `-9/50` 且 token/current `1.4487x`；CRT `-7/50` | WTQ specific deterministic fixes 仍待 fresh targeted run |
-| C4 | 受控劝返 / verifier override | verifier 与原候选冲突时，只有置信度、答案契约、表格证据、冲突类型都满足条件才接管 | strong stage evidence with fresh gap | `no_strong_verification` overall `-8/150`，WTQ `-7/50`；WTQ `24/25` gain rows tagged strong_verification；P4b WTQ 投影 `37/50 -> 46/50` | 还要跑 WTQ 9-row targeted fresh 和 after-fix full50 |
+| C3 | 确定性语义审计 | 用结构化规则校验同行约束、列值计数、实体属性、数值差、时间差、overtime、listed-after 目标列、ordinal/cardinal 匹配 | strong mechanism evidence | `no_deterministic_shortcuts` overall `-15/150`；TabFact `-9/50` 且 token/current `1.4487x`；CRT `-7/50`；WTQ targeted fresh `9/9` | 如专利代理人需要更窄因果拆分，可选补 no-WTQ-deterministic 细粒度消融 |
+| C4 | 受控劝返 / verifier override | verifier 与原候选冲突时，只有置信度、答案契约、表格证据、冲突类型都满足条件才接管 | strong stage evidence with fresh closure | `no_strong_verification` overall `-8/150`，WTQ `-7/50`；WTQ `24/25` gain rows tagged strong_verification；P4b WTQ fresh `9/9`；after-targeted P4b `121/150 > 111/150` | 当前 WTQ fresh 缺口已闭合；若继续扩 seed 稳定性，先处理 E3 语义边界 |
 | C5 | 答案契约 enforcement | 将最终答案约束为标量、标签、实体、元组或列表，避免解释句、错列值、错表面形态 | strong stage evidence | full200 failed/missing `0/0`；P4b WTQ 诊断包含 MyAgent concise denotation 胜过 MACT explanatory answer 的样本 | 后续每个 seed/model 继续记录 failed/missing |
-| C6 | 预算感知实验漏斗 | Gate-10 -> Gate-50 -> Gate-150 -> paired-200，避免 no-go 模型直接 full run | process complete, execution pending | 历史非主模型 Gate-50 no-go 已保存；E3 Seed-C/Seed-D 已准备 current-only-before-paired 规则 | 还缺至少一个可行新模型/API 候选和 Seed-C/Seed-D 实跑 |
+| C6 | 预算感知实验漏斗 | Gate-10 -> Gate-50 -> Gate-150 -> paired-200，避免 no-go 模型直接 full run | process complete with seed boundary evidence, E4 pending | 历史非主模型 Gate-50 no-go 已保存；E3 Seed-C/D current-only 已按 gate 完成并停止，合计 `212/300`、failed/missing `0/0`、verification `pass` | 还缺至少一个可行新模型/API 候选；E3 当前只能作为边界证据 |
 
 ## 可以写入独立权利要求的主线
 
@@ -37,9 +38,9 @@
 |---|---|---|
 | 风险特征 | 计数、时间顺序、极值比较、否定表达、多实体约束、答案形态、压缩风险 | 已有机制描述和 full200/P4b 诊断 |
 | 压缩保留策略 | 全局行、候选行、晚列、邻接行、目标列 | 已有 attribution；可选补细粒度消融 |
-| 确定性审计 | 同行多条件、列值计数、实体属性、数值差、时间差、overtime、listed-after、ordinal/cardinal | coarse ablation 强支持 TabFact/CRT；WTQ fresh pending |
-| 劝返条件 | verifier 置信度、答案契约、候选相似度、表格证据、冲突类型 | WTQ strong verification 证据充分；fresh closure pending |
-| 预算控制 | 按风险触发高成本路径，按 gate 漏斗控制模型/样本扩展 | full200 token/elapsed 强支持；多模型执行 pending |
+| 确定性审计 | 同行多条件、列值计数、实体属性、数值差、时间差、overtime、listed-after、ordinal/cardinal | coarse ablation 强支持 TabFact/CRT；WTQ fresh `9/9` 已闭合 |
+| 劝返条件 | verifier 置信度、答案契约、候选相似度、表格证据、冲突类型 | WTQ strong verification 证据充分；P4b after-targeted 已闭合 |
+| 预算控制 | 按风险触发高成本路径，按 gate 漏斗控制模型/样本扩展 | full200 token/elapsed 强支持；E3 current-only gate 规则已执行；多模型 E4 仍待新候选 |
 
 ## 证据引用入口
 
@@ -55,7 +56,6 @@
 
 ## 下一步对权利要求最有价值的实验
 
-1. WTQ targeted fresh affected slice：直接补 C4 的 fresh 缺口。
-2. P4b WTQ after-fix full50：决定能否写“新 seed WTQ 风险已闭环”。
-3. Seed-C/Seed-D current-only 和 paired MACT：补 C1/C6 的稳定性证据。
-4. 新模型/API gate：补 C6 的模型外延证据。
+1. 新模型/API gate：补 C6 的模型外延证据；当前 E4 为 `no_candidate_wait`，不能重跑已知 no-go 模型冒充新证据。
+2. E3 语义边界优化：若继续追求多 seed 稳定性，应先处理 Seed-C/D 的语义错误类别，再决定是否需要 paired MACT。
+3. 细粒度消融：如专利代理人需要更窄因果证据，再补 no-WTQ-verifier-override、no-evidence-retention 或 no-specific-deterministic-audit 小样本消融。

@@ -1,6 +1,7 @@
 {
   "artifact_name": "qwen3_32b_claim_evidence_traceability_20260801_2248",
   "created_at_local": "2026-08-01 22:48 CST",
+  "last_updated_local": "2026-08-03 12:24:25 CST",
   "purpose": "Map patent claim families to implementation mechanisms, experimental evidence, and remaining validation gaps.",
   "scope_boundary": "This is a patent-writing traceability artifact. It does not add new benchmark results.",
   "claim_families": [
@@ -28,7 +29,7 @@
         }
       ],
       "current_support_level": "strong_stage_evidence",
-      "remaining_gap": "Multi-seed and multi-model execution remain needed before making broad stability/generalization claims."
+      "remaining_gap": "E3 Seed-C/Seed-D current-only boundary evidence is complete, but it is not stability-positive evidence. Multi-model execution remains needed before making broad model-externality claims."
     },
     {
       "id": "C2",
@@ -79,7 +80,7 @@
         }
       ],
       "current_support_level": "strong_mechanism_evidence",
-      "remaining_gap": "Fresh WTQ targeted run is still pending for WTQ-specific deterministic fixes."
+      "remaining_gap": "WTQ targeted fresh and P4b after-targeted validation are complete. Optional fine-grained deterministic-audit ablation may be added only if patent counsel needs narrower causal separation."
     },
     {
       "id": "C4",
@@ -106,10 +107,18 @@
         {
           "source": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/p4b_wtq_targeted_fix_projection.md",
           "evidence": "WTQ P4b offline projection 37/50 -> 46/50 with 9 wrong-to-correct and 0 projected harm."
+        },
+        {
+          "source": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/p4b_wtq_targeted_fresh_summary.json",
+          "evidence": "WTQ affected-slice fresh validation completed at 9/9 with merged/eval 9/9 and failures/missing 0/0."
+        },
+        {
+          "source": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/p4b_after_wtq_targeted_paired_summary.json",
+          "evidence": "After-targeted P4b Gate-50 completed with MyAgent 121/150 vs MACT 111/150, all three datasets above MACT, token ratio 0.5310, failures/missing 0/0."
         }
       ],
-      "current_support_level": "strong_stage_evidence_with_fresh_gap",
-      "remaining_gap": "Need WTQ targeted fresh affected-slice validation, then WTQ after-fix full50 if affected slice passes."
+      "current_support_level": "strong_stage_evidence_with_fresh_closure",
+      "remaining_gap": "No immediate WTQ fresh gap remains. Future work should target E3 semantic boundary categories if broader seed stability is required."
     },
     {
       "id": "C5",
@@ -162,10 +171,14 @@
         {
           "source": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/multiseed_gate50_manifest.json",
           "evidence": "Seed-C/Seed-D prepared with non-overlapping inputs and current-only-before-paired execution rule."
+        },
+        {
+          "source": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/summary/seed_boundary_error_diagnosis.json",
+          "evidence": "Seed-C and Seed-D current-only runs completed with 300 merged rows, 212/300 correct, weighted token ratio 0.5916, failures/missing 0/0, and row-level verification pass; both stopped before paired MACT under the gate rule."
         }
       ],
-      "current_support_level": "process_complete_execution_pending",
-      "remaining_gap": "Need at least one new viable model/API candidate and actual Seed-C/Seed-D execution."
+      "current_support_level": "process_complete_with_seed_boundary_evidence_e4_pending",
+      "remaining_gap": "Need at least one new viable model/API candidate for E4. Seed-C/Seed-D current-only execution is complete but remains boundary evidence, not stability-positive evidence."
     }
   ],
   "claim_strength_summary": {
@@ -180,9 +193,8 @@
       "C6"
     ],
     "requires_future_evidence_before_broad_claim": [
-      "WTQ targeted fresh closure",
-      "E3 Seed-C/Seed-D execution",
-      "At least one viable additional model/API gate result"
+      "At least one viable additional model/API gate result",
+      "Additional seed stability evidence only if the E3 semantic boundary is optimized or accepted under a narrower claim scope"
     ]
   }
 }

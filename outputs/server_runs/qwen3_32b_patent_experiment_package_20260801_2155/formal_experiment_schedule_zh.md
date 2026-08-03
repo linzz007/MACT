@@ -131,15 +131,16 @@ bash /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate
 /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/
 ```
 
-该目录已准备 Seed-C/Seed-D，各数据集 50 行输入、manifest、校验脚本、MyAgent runner、MACT runner 和 paired compare runner；模型执行仍 pending。
+该目录已准备并执行 Seed-C/Seed-D，各数据集 50 行输入、manifest、校验脚本、MyAgent runner、MACT runner 和 paired compare runner 均已保存。2026-08-03 已完成 current-only Gate-50：Seed-C `114/150`，Seed-D `98/150`，合计 `212/300`，weighted token ratio `0.5916`，failed/missing `0/0`，row-level verification `pass`。二者 decision 均为 `stop_or_inspect`，因此 paired MACT 按 gate 规则不继续消耗。
 
-执行顺序：
+执行状态：
 
-| stage | rows | estimated MyAgent tokens | purpose |
-|---|---:|---:|---|
-| Seed-C Gate-50 | 150 | ~976k | 新 seed 小样本总体稳定性 |
-| Seed-D Gate-50 | 150 | ~976k | 第二组新 seed 稳定性 |
-| Selected Gate-150 | 450 | ~2.93M | 只在前两组稳定后扩大 |
+| stage | rows | result | token ratio | decision | purpose |
+|---|---:|---:|---:|---|---|
+| Seed-C current-only Gate-50 | 150 | 114/150 | 0.6096 | `stop_or_inspect` | 新 seed 小样本边界诊断 |
+| Seed-D current-only Gate-50 | 150 | 98/150 | 0.5735 | `stop_or_inspect` | 第二组新 seed 边界诊断 |
+| Seed-C/D combined diagnosis | 300 | 212/300 | 0.5916 | `complete_boundary_evidence` | 说明边界来自语义准确率稳定性，不是 runtime/tool/token 问题 |
+| Selected Gate-150 | 450 | not started | n/a | `not_triggered` | 只有当前置 seed 形成稳定性正证据后才扩大 |
 
 判断：
 
@@ -147,6 +148,8 @@ bash /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate
 2. overall 必须稳定高于 MACT/Qwen reference，token 必须明显低于 MACT。
 3. 任何 seed 出现 failed/missing > 2%，先排查 runner/endpoint，不把该结果写成模型效果。
 4. 若 current-only summary 的 decision 是 `stop_or_inspect`，不跑 MACT baseline，先诊断该 seed 的 MyAgent 错误。
+
+当前结论：E3 已经完成，但它是适用边界证据，不是“多 seed 稳定超过 MACT”的正证据。若继续优化，应针对 `seed_boundary_error_diagnosis.json/md` 中的语义错误类别做小范围机制修复，再重新进入 current-only gate。
 
 ## E. 多模型 Gate
 
@@ -167,7 +170,7 @@ Gate-10 -> Gate-50 -> Gate-150 -> paired-200
 | Gate-150 | 未达到 paired-200 门槛，或只有单数据集偶然领先 |
 | paired-200 | 只给通过 Gate-150 的候选跑，不做全模型枚举 |
 
-当前本机除 Qwen3-32B 外的已知模型均为 no-go；最新 E4 readiness audit 为 `no_candidate_wait`，未发现未测本地模型/API profile/key。新增模型或 API key 出现后再启动 gate，默认使用空闲的 GPU `0,1 -> 8000` 与 `2,3 -> 8001`；GPU `4,5,6,7` 仍有负载或残留时不作为默认资源。
+当前本机除 Qwen3-32B 外的已知模型均为 no-go；最新 E4 readiness audit 为 `no_candidate_wait`，未发现未测本地模型/API profile/key。新增模型或 API key 出现后再启动 gate；本地模型启动前必须重跑 runtime preflight，只有确认 GPU pair 干净时才使用 `0,1 -> 8000` 与 `2,3 -> 8001` 的默认池。最新记录中 `0-3` 为无可见进程但驱动侧高显存/高利用状态，`4-7` 仍有约 `42GB/卡` 占用，因此不能直接启动在线实验。
 
 ## F. 正式收口
 

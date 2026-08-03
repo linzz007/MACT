@@ -158,6 +158,9 @@ def build_report() -> dict[str, Any]:
         "current_completion_gap_audit_json": CURRENT_COMPLETION_GAP_JSON,
         "current_completion_gap_audit_md": CURRENT_COMPLETION_GAP_MD,
         "current_completion_gap_audit_builder": PACKAGE_DIR / "build_current_completion_gap_audit.py",
+        "claim_evidence_traceability_json": PACKAGE_DIR / "claim_evidence_traceability_20260801_2248.json",
+        "claim_evidence_traceability_md": PACKAGE_DIR / "claim_evidence_traceability_20260801_2248_zh.md",
+        "formal_experiment_schedule": PACKAGE_DIR / "formal_experiment_schedule_zh.md",
     }.items():
         add_path_check(report, label, path)
 
@@ -403,6 +406,43 @@ def build_report() -> dict[str, Any]:
     for stale_text in stale_completion_claims:
         if stale_text in completion_gap_md:
             report["errors"].append(f"current completion gap audit contains stale text: {stale_text!r}")
+    claim_traceability_json = read_json(PACKAGE_DIR / "claim_evidence_traceability_20260801_2248.json")
+    claim_traceability_md = (PACKAGE_DIR / "claim_evidence_traceability_20260801_2248_zh.md").read_text(encoding="utf-8")
+    formal_schedule_text = (PACKAGE_DIR / "formal_experiment_schedule_zh.md").read_text(encoding="utf-8")
+    for stale_text in [
+        "WTQ fresh pending",
+        "fresh closure pending",
+        "还要跑 WTQ 9-row targeted fresh 和 after-fix full50",
+        "Fresh WTQ targeted run is still pending",
+        "Need WTQ targeted fresh affected-slice validation",
+        "actual Seed-C/Seed-D execution",
+        "模型执行仍 pending",
+        "Seed-C/Seed-D current-only 和 paired MACT",
+    ]:
+        if stale_text in claim_traceability_md:
+            report["errors"].append(f"claim traceability markdown contains stale text: {stale_text!r}")
+        if stale_text in json.dumps(claim_traceability_json, ensure_ascii=False):
+            report["errors"].append(f"claim traceability json contains stale text: {stale_text!r}")
+        if stale_text in formal_schedule_text:
+            report["errors"].append(f"formal experiment schedule contains stale text: {stale_text!r}")
+    check_contains(
+        report,
+        "claim traceability WTQ closure",
+        claim_traceability_md,
+        "WTQ targeted fresh 与 P4b after-targeted 闭环已经完成",
+    )
+    check_contains(
+        report,
+        "claim traceability E3 boundary",
+        claim_traceability_md,
+        "E3 Seed-C/D current-only 已完成并形成边界证据",
+    )
+    check_contains(
+        report,
+        "formal schedule E3 boundary",
+        formal_schedule_text,
+        "E3 已经完成，但它是适用边界证据",
+    )
     check_equal(
         report,
         "manifest online status",

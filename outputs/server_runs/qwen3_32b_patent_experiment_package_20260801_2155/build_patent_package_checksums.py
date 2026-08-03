@@ -152,7 +152,7 @@ def render_markdown(report: dict[str, Any]) -> str:
         "sha256sum -c MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/SHA256SUMS",
         "```",
         "",
-        "Missing or pending references are not checksum failures. They are expected for future WTQ fresh, E3, and multi-model outputs until those runs complete.",
+        "Missing or pending references are not checksum failures. They are expected only for explicitly future evidence such as E4 model/API gate results or optional follow-up seed-boundary work.",
         "",
         "## Missing Or Pending References",
         "",
