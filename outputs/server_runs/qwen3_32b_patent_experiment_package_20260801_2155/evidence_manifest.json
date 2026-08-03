@@ -100,21 +100,29 @@
     "affected_slice": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/input/wtq_p4b_targeted_fix_affected_slice.jsonl",
     "fresh_runner": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/run_myagent_wtq_targeted_fix_slice.sh",
     "fresh_summarizer": "/home/ubuntu/lzz/MyAgent/scripts/server/summarize_wtq_targeted_fresh.py",
-    "fresh_summary_json_pending_path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/p4b_wtq_targeted_fresh_summary.json",
-    "fresh_summary_md_pending_path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/p4b_wtq_targeted_fresh_summary.md",
+    "fresh_summary_json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/p4b_wtq_targeted_fresh_summary.json",
+    "fresh_summary_md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/p4b_wtq_targeted_fresh_summary.md",
     "fresh_preflight_json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/e2_wtq_targeted_fresh_preflight_20260801_2207.json",
     "fresh_preflight_md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/e2_wtq_targeted_fresh_preflight_20260801_2207.md",
     "after_targeted_full50_runner": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/run_myagent_wtq_after_targeted_fix_full50.sh",
     "after_targeted_compare_runner": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/run_p4b_after_wtq_targeted_eval_compare.sh",
-    "after_targeted_summary_json_pending_path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/p4b_after_wtq_targeted_paired_summary.json",
-    "after_targeted_summary_md_pending_path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/p4b_after_wtq_targeted_paired_summary.md",
+    "after_targeted_summary_json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/p4b_after_wtq_targeted_paired_summary.json",
+    "after_targeted_summary_md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/p4b_after_wtq_targeted_paired_summary.md",
     "after_targeted_automation_json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/e2_after_targeted_full50_automation_20260801_2217.json",
     "after_targeted_automation_md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/e2_after_targeted_full50_automation_20260801_2217.md",
     "current_correct": 37,
     "projected_correct": 46,
+    "fresh_correct": 9,
+    "fresh_rows": 9,
+    "after_targeted_myagent_correct": 46,
+    "after_targeted_mact_correct": 43,
+    "after_targeted_overall_myagent_correct": 121,
+    "after_targeted_overall_mact_correct": 111,
+    "after_targeted_token_ratio_myagent_to_mact": 0.5310333383460987,
     "wrong_to_correct": 9,
     "correct_to_wrong": 0,
-    "fresh_model_validation_status": "pending"
+    "fresh_model_validation_status": "pass",
+    "after_targeted_validation_status": "accepted_after_targeted_all_dataset_superiority"
   },
   "multiseed_e3_prepared": {
     "run_dir": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231",
@@ -132,13 +140,13 @@
     "prepared_input_rows": 300,
     "prepared_rows_per_seed": 150,
     "validation_status": "prepared_inputs_verified",
-    "model_execution_status": "pending_endpoint_gpu_recovery"
+    "model_execution_status": "pending_runtime_ready"
   },
   "completion_gap_audit": {
     "json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/completion_gap_audit_20260801_2244.json",
     "md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/completion_gap_audit_20260801_2244_zh.md",
     "overall_completion_status": "active_not_complete",
-    "reason_not_complete": "Fresh WTQ closure, multi-seed execution, and at least one viable multi-model gate result remain missing."
+    "reason_not_complete": "Multi-seed execution and at least one viable multi-model gate result remain missing."
   },
   "claim_evidence_traceability": {
     "json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/claim_evidence_traceability_20260801_2248.json",
@@ -215,9 +223,9 @@
             "Seed-C/Seed-D MyAgent current-only Gate-50 must decide run_paired_mact before paired MACT baseline runs.",
             "The queue does not automatically expand to Gate-150 or full200."
         ],
-        "current_online_status": "blocked_gpu_runtime_residual",
-        "latest_observed_at_local": "2026-08-01 23:19:45 CST",
-        "latest_observation": "Endpoints 8000/8001 were both connection refused; target GPUs 6/7 each showed about 42GB memory used and 100% utilization while nvidia-smi compute apps and pmon reported no process."
+        "current_online_status": "ready_existing_endpoint",
+        "latest_observed_at_local": "2026-08-03 09:32:03 CST",
+        "latest_observation": "Endpoints 8000/8001 are healthy with qwen3-32b-local when called with the local API key; GPU 0,1 serve port 8000 and GPU 2,3 serve port 8001. GPUs 6/7 still show about 42GB residual runtime usage but are not needed for the active 0-3 queue."
     },
     "package_consistency_audit": {
         "script": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/audit_patent_package_consistency.py",
@@ -226,8 +234,8 @@
         "purpose": "Verify that PRD, manifest, latest formal result ledger, latest runtime preflight, and key numeric claims remain consistent.",
         "latest_status": "pass",
         "latest_errors": 0,
-        "latest_warnings": 1,
-        "latest_observed_at_local": "2026-08-01 23:22:19 CST"
+        "latest_warnings": 0,
+        "latest_observed_at_local": "2026-08-03 09:53:30 CST"
     },
     "package_checksums": {
         "script": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/build_patent_package_checksums.py",
@@ -239,9 +247,7 @@
     "current_prd": "/home/ubuntu/lzz/MyAgent/docs/server/server_codex_reports/current-qwen3-mact-experiment-prd.md",
   "formal_experiment_schedule": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/formal_experiment_schedule_zh.md",
   "remaining_work": [
-    "Run fresh Qwen3 affected-slice validation for WTQ targeted fixes.",
-    "If affected-slice passes, rerun P4b WTQ after-fix full50.",
-    "Add fine-grained ablation switches if needed for verifier override/evidence retention.",
+        "Add fine-grained ablation switches if needed for verifier override/evidence retention.",
     "Run prepared E3 Seed-C/Seed-D Gate-50 current-only validations, then only run paired MACT baselines for seeds that pass current-only gate.",
     "Run at least one additional model through the gate funnel after server expansion or API key availability.",
     "Finalize patent claims and formal experimental section after fresh validation."

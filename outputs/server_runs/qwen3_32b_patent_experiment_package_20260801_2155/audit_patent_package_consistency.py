@@ -49,6 +49,20 @@ def check_equal(report: dict[str, Any], label: str, actual: Any, expected: Any) 
     report["checks"][label] = {"actual": actual, "expected": expected, "pass": actual == expected}
 
 
+def check_at_least(report: dict[str, Any], label: str, actual: int, minimum: int) -> None:
+    passed = actual >= minimum
+    if not passed:
+        report["errors"].append(f"{label}: expected at least {minimum!r}, got {actual!r}")
+    report["checks"][label] = {"actual": actual, "expected": f">={minimum}", "pass": passed}
+
+
+def check_at_most(report: dict[str, Any], label: str, actual: int, maximum: int) -> None:
+    passed = actual <= maximum
+    if not passed:
+        report["errors"].append(f"{label}: expected at most {maximum!r}, got {actual!r}")
+    report["checks"][label] = {"actual": actual, "expected": f"<={maximum}", "pass": passed}
+
+
 def check_contains(report: dict[str, Any], label: str, text: str, needle: str) -> None:
     passed = needle in text
     report["checks"][label] = {"needle": needle, "pass": passed}
@@ -134,13 +148,21 @@ def build_report() -> dict[str, Any]:
     preflight = read_json(PREFLIGHT_PATH)
     prd_text = PRD_PATH.read_text(encoding="utf-8")
 
-    check_equal(report, "ledger completed rows", len(ledger.get("completed_rows") or []), 8)
-    check_equal(report, "ledger pending rows", len(ledger.get("pending_rows") or []), 7)
+    completed_rows = ledger.get("completed_rows") or []
+    pending_rows = ledger.get("pending_rows") or []
+    check_at_least(report, "ledger completed rows", len(completed_rows), 13)
+    check_at_most(report, "ledger pending rows", len(pending_rows), 5)
     check_equal(report, "ledger overall status", ledger["completion_summary"]["overall_status"], "active_not_complete")
+    stale_pending = [
+        row["stage"]
+        for row in pending_rows
+        if row.get("status") == "needs_ledger_refresh_from_completed_evidence"
+    ]
+    check_equal(report, "stale completed evidence pending rows", stale_pending, [])
 
     aggregate_rows = [
         row
-        for row in ledger["completed_rows"]
+        for row in completed_rows
         if row["stage"] == "Qwen3-32B full200 anchor" and row["dataset"] == "aggregate"
     ]
     check_equal(report, "full200 aggregate row count", len(aggregate_rows), 1)
@@ -155,7 +177,7 @@ def build_report() -> dict[str, Any]:
 
     p4b_wtq_rows = [
         row
-        for row in ledger["completed_rows"]
+        for row in completed_rows
         if row["stage"] == "P4b new-seed paired Gate-50" and row["dataset"] == "wtq"
     ]
     check_equal(report, "P4b WTQ risk row count", len(p4b_wtq_rows), 1)
@@ -165,8 +187,42 @@ def build_report() -> dict[str, Any]:
         check_equal(report, "P4b WTQ MACT correct", p4b_wtq["mact_correct_or_reference"], 43)
         check_equal(report, "P4b WTQ decision", p4b_wtq["decision"], "complete_dataset_risk")
 
+    wtq_targeted_rows = [
+        row
+        for row in completed_rows
+        if row["stage"] == "WTQ targeted fresh affected slice" and row["dataset"] == "wtq"
+    ]
+    check_equal(report, "WTQ targeted fresh row count", len(wtq_targeted_rows), 1)
+    if wtq_targeted_rows:
+        wtq_targeted = wtq_targeted_rows[0]
+        check_equal(report, "WTQ targeted fresh MyAgent correct", wtq_targeted["myagent_correct"], 9)
+        check_equal(report, "WTQ targeted fresh failures", wtq_targeted["num_failed_exec"], 0)
+        check_equal(report, "WTQ targeted fresh missing", wtq_targeted["num_missing_answer"], 0)
+        check_equal(report, "WTQ targeted fresh decision", wtq_targeted["decision"], "pass")
+
+    p4b_after_rows = [
+        row
+        for row in completed_rows
+        if row["stage"] == "P4b WTQ after-fix full50" and row["dataset"] == "aggregate"
+    ]
+    check_equal(report, "P4b after-targeted aggregate row count", len(p4b_after_rows), 1)
+    if p4b_after_rows:
+        p4b_after = p4b_after_rows[0]
+        check_equal(report, "P4b after-targeted MyAgent correct", p4b_after["myagent_correct"], 121)
+        check_equal(report, "P4b after-targeted MACT correct", p4b_after["mact_correct_or_reference"], 111)
+        check_equal(report, "P4b after-targeted failures", p4b_after["num_failed_exec"], 0)
+        check_equal(report, "P4b after-targeted missing", p4b_after["num_missing_answer"], 0)
+        check_equal(
+            report,
+            "P4b after-targeted decision",
+            p4b_after["decision"],
+            "accepted_after_targeted_all_dataset_superiority",
+        )
+        if float(p4b_after["token_ratio"]) >= 0.75:
+            report["errors"].append(f"P4b after-targeted token ratio too high: {p4b_after['token_ratio']}")
+
     seed_pending = [
-        row for row in ledger["pending_rows"] if "Seed-" in row["stage"]
+        row for row in pending_rows if "Seed-" in row["stage"]
     ]
     check_equal(report, "E3 pending row count", len(seed_pending), 4)
     for row in seed_pending:

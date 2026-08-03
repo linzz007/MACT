@@ -34,6 +34,26 @@ P4B_SUMMARY_MD = Path(
     "qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/"
     "p4b_paired_gate50_summary.md"
 )
+P4B_WTQ_TARGETED_FRESH_SUMMARY = Path(
+    "/home/ubuntu/lzz/MACT/outputs/server_runs/"
+    "qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/"
+    "p4b_wtq_targeted_fresh_summary.json"
+)
+P4B_WTQ_TARGETED_FRESH_SUMMARY_MD = Path(
+    "/home/ubuntu/lzz/MACT/outputs/server_runs/"
+    "qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/"
+    "p4b_wtq_targeted_fresh_summary.md"
+)
+P4B_AFTER_TARGETED_SUMMARY = Path(
+    "/home/ubuntu/lzz/MACT/outputs/server_runs/"
+    "qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/"
+    "p4b_after_wtq_targeted_paired_summary.json"
+)
+P4B_AFTER_TARGETED_SUMMARY_MD = Path(
+    "/home/ubuntu/lzz/MACT/outputs/server_runs/"
+    "qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/"
+    "p4b_after_wtq_targeted_paired_summary.md"
+)
 FORMAL_TEMPLATE = PACKAGE_DIR / "formal_result_tables_template_20260801_2252.json"
 LATEST_PREFLIGHT = PACKAGE_DIR / "latest_qwen3_runtime_preflight.json"
 E3_RUN_DIR = Path(
@@ -129,7 +149,18 @@ def full200_rows(summary: dict[str, Any], *, mact_commit: str, myagent_commit: s
     return rows
 
 
-def p4b_rows(summary: dict[str, Any], *, mact_commit: str, myagent_commit: str) -> list[dict[str, Any]]:
+def p4b_rows(
+    summary: dict[str, Any],
+    *,
+    mact_commit: str,
+    myagent_commit: str,
+    stage: str,
+    evidence_json: Path,
+    evidence_md: Path,
+    row_status: str,
+    aggregate_status: str,
+    aggregate_decision: str,
+) -> list[dict[str, Any]]:
     rows: list[dict[str, Any]] = []
     for task in TASK_ORDER:
         item = summary["datasets"][task]
@@ -140,8 +171,8 @@ def p4b_rows(summary: dict[str, Any], *, mact_commit: str, myagent_commit: str) 
         mact_correct = correct_count(mact)
         rows.append(
             {
-                "stage": "P4b new-seed paired Gate-50",
-                "status": "complete_risk_evidence",
+                "stage": stage,
+                "status": row_status,
                 "dataset": task,
                 "input_rows": n,
                 "merged_rows": n,
@@ -155,8 +186,8 @@ def p4b_rows(summary: dict[str, Any], *, mact_commit: str, myagent_commit: str) 
                 "num_failed_exec": int(myagent["num_failed_exec"]),
                 "num_missing_answer": int(myagent["num_missing_answer"]),
                 "decision": "complete_dataset_superiority" if myagent_correct > mact_correct else "complete_dataset_risk",
-                "evidence_json": str(P4B_SUMMARY),
-                "evidence_md": str(P4B_SUMMARY_MD),
+                "evidence_json": str(evidence_json),
+                "evidence_md": str(evidence_md),
                 "git_commit": {"myagent": myagent_commit, "mact": mact_commit},
             }
         )
@@ -168,8 +199,8 @@ def p4b_rows(summary: dict[str, Any], *, mact_commit: str, myagent_commit: str) 
     mact_correct = correct_count(mact)
     rows.append(
         {
-            "stage": "P4b new-seed paired Gate-50",
-            "status": "complete_with_wtq_risk",
+            "stage": stage,
+            "status": aggregate_status,
             "dataset": "aggregate",
             "input_rows": n,
             "merged_rows": n,
@@ -182,18 +213,51 @@ def p4b_rows(summary: dict[str, Any], *, mact_commit: str, myagent_commit: str) 
             "avg_elapsed_seconds": float(myagent["avg_elapsed_seconds"]),
             "num_failed_exec": int(myagent["num_failed_exec"]),
             "num_missing_answer": int(myagent["num_missing_answer"]),
-            "decision": "accepted_existing_paired_gate_but_not_all_dataset_superiority",
-            "evidence_json": str(P4B_SUMMARY),
-            "evidence_md": str(P4B_SUMMARY_MD),
+            "decision": aggregate_decision,
+            "evidence_json": str(evidence_json),
+            "evidence_md": str(evidence_md),
             "git_commit": {"myagent": myagent_commit, "mact": mact_commit},
         }
     )
     return rows
 
 
-def pending_rows(template: dict[str, Any]) -> list[dict[str, Any]]:
+def targeted_fresh_rows(summary: dict[str, Any], *, mact_commit: str, myagent_commit: str) -> list[dict[str, Any]]:
+    coverage = summary["coverage"]
+    fresh = summary["fresh"]
+    min_correct = int(fresh["min_correct"])
+    correct = int(fresh["correct"])
+    return [
+        {
+            "stage": "WTQ targeted fresh affected slice",
+            "status": "complete" if summary["decision"] == "pass" else "complete_failed",
+            "dataset": "wtq",
+            "input_rows": int(coverage["expected_rows"]),
+            "merged_rows": int(coverage["merged_rows"]),
+            "eval_rows": int(coverage["eval_rows"]),
+            "myagent_correct": correct,
+            "mact_correct_or_reference": min_correct,
+            "accuracy_delta_correct": correct - min_correct,
+            "token_ratio": None,
+            "avg_total_tokens": float(fresh["avg_total_tokens"]),
+            "avg_elapsed_seconds": float(fresh["avg_elapsed_seconds"]),
+            "num_failed_exec": int(fresh["num_failed_exec"]),
+            "num_missing_answer": int(fresh["num_missing_answer"]),
+            "decision": summary["decision"],
+            "reference_label": "min_correct_threshold",
+            "fresh_wrong_ids": fresh.get("fresh_wrong_ids", []),
+            "evidence_json": str(P4B_WTQ_TARGETED_FRESH_SUMMARY),
+            "evidence_md": str(P4B_WTQ_TARGETED_FRESH_SUMMARY_MD),
+            "git_commit": {"myagent": myagent_commit, "mact": mact_commit},
+        }
+    ]
+
+
+def pending_rows(template: dict[str, Any], *, completed_stages: set[str]) -> list[dict[str, Any]]:
     rows: list[dict[str, Any]] = []
     for item in template["pending_experiment_rows"]:
+        if item["stage"] in completed_stages:
+            continue
         evidence_json = item.get("expected_evidence_json")
         evidence_md = item.get("expected_evidence_md")
         evidence_exists = bool(evidence_json and Path(evidence_json).exists())
@@ -241,9 +305,9 @@ def completion_summary(completed: list[dict[str, Any]], pending: list[dict[str, 
         "can_write_now": [
             "Qwen3-32B full200 stage: MyAgent beats MACT on WTQ, TabFact, and CRT with lower aggregate tokens.",
             "P4b new-seed Gate-50 supports overall/token evidence but exposes WTQ risk.",
+            "WTQ targeted fresh closure has completed, and P4b after-targeted Gate-50 shows all-dataset superiority.",
         ],
         "cannot_write_yet": [
-            "WTQ targeted fresh closure has completed.",
             "E3 Seed-C/Seed-D stability has run.",
             "A viable additional model gate has completed.",
             "The full patent experiment section is final.",
@@ -323,9 +387,41 @@ def build_ledger() -> dict[str, Any]:
     template = read_json(FORMAL_TEMPLATE)
     completed = [
         *full200_rows(read_json(FULL200_SUMMARY), mact_commit=mact_commit, myagent_commit=myagent_commit),
-        *p4b_rows(read_json(P4B_SUMMARY), mact_commit=mact_commit, myagent_commit=myagent_commit),
+        *p4b_rows(
+            read_json(P4B_SUMMARY),
+            mact_commit=mact_commit,
+            myagent_commit=myagent_commit,
+            stage="P4b new-seed paired Gate-50",
+            evidence_json=P4B_SUMMARY,
+            evidence_md=P4B_SUMMARY_MD,
+            row_status="complete_risk_evidence",
+            aggregate_status="complete_with_wtq_risk",
+            aggregate_decision="accepted_existing_paired_gate_but_not_all_dataset_superiority",
+        ),
     ]
-    pending = pending_rows(template)
+    if P4B_WTQ_TARGETED_FRESH_SUMMARY.exists():
+        completed.extend(
+            targeted_fresh_rows(
+                read_json(P4B_WTQ_TARGETED_FRESH_SUMMARY),
+                mact_commit=mact_commit,
+                myagent_commit=myagent_commit,
+            )
+        )
+    if P4B_AFTER_TARGETED_SUMMARY.exists():
+        completed.extend(
+            p4b_rows(
+                read_json(P4B_AFTER_TARGETED_SUMMARY),
+                mact_commit=mact_commit,
+                myagent_commit=myagent_commit,
+                stage="P4b WTQ after-fix full50",
+                evidence_json=P4B_AFTER_TARGETED_SUMMARY,
+                evidence_md=P4B_AFTER_TARGETED_SUMMARY_MD,
+                row_status="complete_after_targeted_evidence",
+                aggregate_status="complete_after_targeted_all_dataset_superiority",
+                aggregate_decision="accepted_after_targeted_all_dataset_superiority",
+            )
+        )
+    pending = pending_rows(template, completed_stages={row["stage"] for row in completed})
     return {
         "artifact_name": "qwen3_32b_current_formal_result_ledger",
         "generated_at_local": generated_at,
@@ -334,6 +430,8 @@ def build_ledger() -> dict[str, Any]:
         "source_files": {
             "full200_summary": str(FULL200_SUMMARY),
             "p4b_summary": str(P4B_SUMMARY),
+            "p4b_wtq_targeted_fresh_summary": str(P4B_WTQ_TARGETED_FRESH_SUMMARY),
+            "p4b_after_targeted_summary": str(P4B_AFTER_TARGETED_SUMMARY),
             "formal_template": str(FORMAL_TEMPLATE),
             "latest_runtime_preflight": str(LATEST_PREFLIGHT),
         },
