@@ -74,7 +74,11 @@ WTQ E2 targeted projection：
 |---|---:|---:|---:|---:|
 | P4b WTQ offline projection | 37/50 | 46/50 | +9 | 0 |
 
-该投影不能替代 fresh model run，但说明 E1 诊断出的 9 条 MACT-only WTQ 错误均可由通用机制覆盖，而非样本 ID 硬编码。
+该投影不能单独替代 fresh model run。2026-08-03 已完成 WTQ affected-slice fresh 验证，结果为 `9/9`，merged/eval `9/9`，failed/missing `0/0`；随后 P4b after-targeted full50 结果为 WTQ `46/50` vs MACT `43/50`，TabFact `45/50` vs MACT `44/50`，CRT `30/50` vs MACT `24/50`，overall `121/150` vs MACT `111/150`，overall token ratio `0.5310`。该证据说明 E1 诊断出的 WTQ 风险可以被通用机制闭环覆盖，而非样本 ID 硬编码。
+
+E3 Seed-C/Seed-D current-only Gate-50 也已执行并形成边界证据：Seed-C `114/150`，Seed-D `98/150`，合计 `212/300`，weighted token ratio `0.5916`，failed/missing `0/0`，但二者 decision 均为 `stop_or_inspect`，因此不能写成多 seed 稳定超过 MACT。
+
+E4 多模型 readiness audit 结果为 `no_candidate_wait`：当前只发现已测试/已 no-go 的本地模型，未发现未测本地模型或 API provider profile/key，因此不能写成多模型验证已完成。
 
 机制证据矩阵：
 
@@ -103,11 +107,10 @@ WTQ E2 targeted projection：
 
 ## 8. 后续需要补入的正式实验
 
-1. WTQ affected-slice fresh Qwen 验证：验证 E2 targeted fixes 是否在真实 runner 下复现 `9/9` 修正方向。
-2. P4b WTQ after-fix full50：若 affected-slice 通过，重跑同一批 WTQ 50 条，确认是否超过 MACT `43/50`。
-3. 多 seed 稳定性：补至少 2 组 Gate-50 或 1 组 Gate-100/150。
-4. 多模型验证：服务器扩容或 API key 可用后，至少让 1 个额外模型经过 gate 漏斗。
-5. 细粒度消融：根据需要补 verifier override、evidence retention、deterministic audit 的细粒度关闭开关。
+1. 多模型验证：新本地模型或 API key/provider profile 出现后，至少让 1 个额外模型经过 Gate-10 -> Gate-50 -> Gate-150 漏斗；当前 E4 为 `no_candidate_wait`。
+2. 多 seed 稳定性正证据：E3 已经完成两组 current-only 并给出边界，但还没有形成稳定超过 MACT 的 paired seed 证据；若继续优化，先处理 E3 语义边界。
+3. 细粒度消融：根据需要补 verifier override、evidence retention、deterministic audit 的细粒度关闭开关。
+4. 最终实验包收口：当前实验章节已经 consolidated，但 final closeout 需要多模型候选结果，或明确接受 E4 no-candidate 作为当前外延边界。
 
 ## 9. 当前写作边界
 
@@ -116,10 +119,11 @@ WTQ E2 targeted projection：
 - Qwen3-32B full200 阶段 MyAgent 三数据集均超过 MACT。
 - MyAgent 在该阶段显著降低 token 和耗时。
 - 机制由风险路由、证据保留、确定性审计、冲突劝返和预算控制组成。
-- P4b 暴露 WTQ 新 seed 风险，E1/E2 已完成诊断和离线 targeted projection。
+- P4b 原始结果暴露 WTQ 新 seed 风险；E1/E2 已完成诊断、fresh affected-slice `9/9` 和 after-targeted P4b `121/150` vs MACT `111/150`。
+- E3 Seed-C/Seed-D 可作为额外随机种子的适用边界证据。
 
 暂不写：
 
 - 多模型已全面验证。
 - 新 seed 三数据集已经全部稳定超过 MACT。
-- E2 WTQ targeted fixes 已经完成 fresh model run。
+- E3 Seed-C/D 已经证明多 seed 稳定超过 MACT。

@@ -233,7 +233,7 @@
     "json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/completion_gap_audit_20260801_2244.json",
     "md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/completion_gap_audit_20260801_2244_zh.md",
     "overall_completion_status": "active_not_complete",
-    "reason_not_complete": "At least one viable additional-model gate result and final patent experiment-section consolidation remain missing. Seed-C/Seed-D boundary diagnosis is complete; latest E4 readiness audit found no new model/API candidate, so E4 remains pending/no-candidate."
+    "reason_not_complete": "The current patent experiment section has been consolidated as draft-ready evidence with explicit boundaries. At least one viable additional-model gate result remains missing; Seed-C/Seed-D boundary diagnosis is complete and latest E4 readiness audit found no new model/API candidate, so E4 remains pending/no-candidate."
   },
   "claim_evidence_traceability": {
     "json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/claim_evidence_traceability_20260801_2248.json",
@@ -287,6 +287,22 @@
       "Additional model gate funnel"
     ]
   },
+  "current_patent_experiment_section": {
+    "script": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/build_current_patent_experiment_section.py",
+    "latest_json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_current_patent_experiment_section.json",
+    "latest_md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_current_patent_experiment_section_zh.md",
+    "purpose": "Current patent/expert-facing experiment section with supported claims, result tables, boundaries, and next-trigger rules.",
+    "status": "stage_patent_draft_ready_with_boundaries",
+    "positive_evidence": [
+      "Qwen3-32B full200: MyAgent 489/600 vs MACT 450/600, aggregate token ratio 0.5717, failed/missing 0/0.",
+      "P4b after-targeted Gate-50: MyAgent 121/150 vs MACT 111/150, all three datasets above MACT, aggregate token ratio 0.5310, failed/missing 0/0.",
+      "Mechanism matrix supports risk collaboration/persuasion-back, deterministic audit, evidence retention, and budget control."
+    ],
+    "boundary_evidence": [
+      "E3 Seed-C/Seed-D current-only Gate-50 is boundary evidence, not multi-seed stable superiority evidence.",
+      "E4 readiness audit is no_candidate_wait; no additional model/API result is available yet."
+    ]
+  },
   "remaining_qwen3_queue": {
     "script": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/run_remaining_qwen3_patent_queue.sh",
     "runbook_md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/remaining_qwen3_queue_runbook_zh.md",
@@ -318,23 +334,23 @@
     "latest_status": "pass",
     "latest_errors": 0,
     "latest_warnings": 1,
-    "latest_observed_at_local": "2026-08-03 11:43:02 CST"
+    "latest_observed_at_local": "2026-08-03 11:59:00 CST"
   },
   "package_checksums": {
     "script": "outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/build_patent_package_checksums.py",
     "latest_json": "outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_patent_package_checksums.json",
     "latest_md": "outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_patent_package_checksums_zh.md",
     "sha256sums": "outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/SHA256SUMS",
-    "latest_record_count": 155,
+    "latest_record_count": 187,
     "latest_missing_or_pending_reference_count": 0,
-    "latest_observed_at_local": "2026-08-03 11:29:37 CST"
+    "latest_observed_at_local": "2026-08-03 11:59:15 CST"
   },
   "current_prd": "/home/ubuntu/lzz/MyAgent/docs/server/server_codex_reports/current-qwen3-mact-experiment-prd.md",
   "formal_experiment_schedule": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/formal_experiment_schedule_zh.md",
   "remaining_work": [
     "Inspect Seed-C/Seed-D current-only boundary errors and record patent-facing applicability limits.",
     "Run at least one additional model through the gate funnel after server expansion or API key availability.",
-    "Finalize patent claims and formal experimental section after boundary inspection and multi-model evidence."
+    "Finalize patent claims and final experiment package closeout after an E4 candidate result or explicit acceptance of the no-candidate boundary."
   ],
   "multimodel_e4_readiness": {
     "script": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/build_e4_model_gate_readiness_audit.py",
@@ -355,7 +371,7 @@
     ],
     "default_gpu_pool_available_for_next_start": true,
     "visible_runner_or_model_processes": 0,
-    "latest_observed_at_local": "2026-08-03 11:37:41 CST",
+    "latest_observed_at_local": "2026-08-03 11:58:04 CST",
     "decision_note": "No Gate-10 should start until a new untested local model path or API provider profile appears. Known no-go local models should not be rerun."
   }
 }

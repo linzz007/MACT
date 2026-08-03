@@ -27,6 +27,8 @@ E3_BOUNDARY_DIAGNOSIS_JSON = Path(
 E3_BOUNDARY_DIAGNOSIS_MD = E3_BOUNDARY_DIAGNOSIS_JSON.with_suffix(".md")
 E4_READINESS_JSON = PACKAGE_DIR / "latest_e4_multimodel_gate_readiness_audit.json"
 E4_READINESS_MD = PACKAGE_DIR / "latest_e4_multimodel_gate_readiness_audit_zh.md"
+CURRENT_PATENT_SECTION_JSON = PACKAGE_DIR / "latest_current_patent_experiment_section.json"
+CURRENT_PATENT_SECTION_MD = PACKAGE_DIR / "latest_current_patent_experiment_section_zh.md"
 
 
 def read_json(path: Path) -> dict[str, Any]:
@@ -148,6 +150,9 @@ def build_report() -> dict[str, Any]:
         "e3_boundary_diagnosis_md": E3_BOUNDARY_DIAGNOSIS_MD,
         "e4_multimodel_readiness_json": E4_READINESS_JSON,
         "e4_multimodel_readiness_md": E4_READINESS_MD,
+        "current_patent_experiment_section_json": CURRENT_PATENT_SECTION_JSON,
+        "current_patent_experiment_section_md": CURRENT_PATENT_SECTION_MD,
+        "current_patent_experiment_section_builder": PACKAGE_DIR / "build_current_patent_experiment_section.py",
     }.items():
         add_path_check(report, label, path)
 
@@ -287,6 +292,8 @@ def build_report() -> dict[str, Any]:
     boundary_manifest = manifest["multiseed_e3_prepared"]["boundary_error_diagnosis"]
     e4_manifest = manifest["multimodel_e4_readiness"]
     e4_readiness = read_json(E4_READINESS_JSON)
+    current_section_manifest = manifest["current_patent_experiment_section"]
+    current_section = read_json(CURRENT_PATENT_SECTION_JSON)
     check_equal(report, "manifest latest ledger path", manifest_ledger, str(LEDGER_PATH))
     check_equal(report, "manifest latest preflight path", manifest_preflight, str(PREFLIGHT_PATH))
     check_equal(report, "manifest E3 boundary json path", boundary_manifest["json"], str(E3_BOUNDARY_DIAGNOSIS_JSON))
@@ -306,6 +313,36 @@ def build_report() -> dict[str, Any]:
     check_equal(report, "E4 API key count", len(e4_readiness["model_readiness"]["api_keys_present"]), 0)
     check_equal(
         report,
+        "manifest current patent section json path",
+        current_section_manifest["latest_json"],
+        str(CURRENT_PATENT_SECTION_JSON),
+    )
+    check_equal(
+        report,
+        "manifest current patent section md path",
+        current_section_manifest["latest_md"],
+        str(CURRENT_PATENT_SECTION_MD),
+    )
+    check_equal(
+        report,
+        "current patent section status",
+        current_section["write_status"]["current_status"],
+        "stage_patent_draft_ready_with_boundaries",
+    )
+    check_equal(
+        report,
+        "current patent section E4 decision",
+        current_section["e4_multimodel_gate"]["decision"],
+        "no_candidate_wait",
+    )
+    check_contains(
+        report,
+        "current patent section unsupported multi-model claim",
+        "\n".join(current_section["write_status"]["unsupported_claims"]),
+        "Do not claim multi-model validation is complete.",
+    )
+    check_equal(
+        report,
         "manifest online status",
         manifest["remaining_qwen3_queue"]["current_online_status"],
         latest_status,
@@ -315,6 +352,7 @@ def build_report() -> dict[str, Any]:
         "PRD queue script": "run_remaining_qwen3_patent_queue.sh",
         "PRD runtime preflight": "latest_qwen3_runtime_preflight_zh.md",
         "PRD formal ledger": "latest_formal_result_ledger_current_zh.md",
+        "PRD current patent section": "latest_current_patent_experiment_section_zh.md",
         "PRD E3 boundary diagnosis": "seed_boundary_error_diagnosis.md",
         "PRD E4 readiness audit": "latest_e4_multimodel_gate_readiness_audit_zh.md",
         "PRD active status": "active_not_complete",

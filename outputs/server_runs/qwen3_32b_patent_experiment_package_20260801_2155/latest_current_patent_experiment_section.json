@@ -1,0 +1,487 @@
+{
+  "artifact_name": "current_patent_experiment_section",
+  "generated_at_local": "2026-08-03 11:58:04 CST",
+  "purpose": "Current patent/expert-facing experiment section with explicit supported claims and boundaries.",
+  "scope_boundary": "This artifact synthesizes existing frozen evidence. It does not create new benchmark results and must not be read as final full official benchmark completion.",
+  "git_commits_at_generation": {
+    "myagent": "678ab98",
+    "mact": "aa5d648"
+  },
+  "evidence_paths": {
+    "full200_summary": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_all200_acceptance_20260731_132611/qwen3_policy_v6b_all200_acceptance_summary.json",
+    "full200_evidence_md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_all200_acceptance_20260731_132611/qwen3_policy_v6b_patent_evidence_index.md",
+    "p4b_original_summary": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/p4b_paired_gate50_summary.json",
+    "p4b_original_summary_md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/p4b_paired_gate50_summary.md",
+    "p4b_targeted_fresh_summary": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/p4b_wtq_targeted_fresh_summary.json",
+    "p4b_targeted_fresh_summary_md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/p4b_wtq_targeted_fresh_summary.md",
+    "p4b_after_targeted_summary": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/p4b_after_wtq_targeted_paired_summary.json",
+    "p4b_after_targeted_summary_md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/p4b_after_wtq_targeted_paired_summary.md",
+    "mechanism_matrix": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_patent_mechanism_evidence_20260801_2222/patent_mechanism_evidence_matrix.json",
+    "mechanism_matrix_md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_patent_mechanism_evidence_20260801_2222/patent_mechanism_evidence_matrix.md",
+    "e3_boundary_diagnosis": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/summary/seed_boundary_error_diagnosis.json",
+    "e3_boundary_diagnosis_md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/summary/seed_boundary_error_diagnosis.md",
+    "e4_readiness": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_e4_multimodel_gate_readiness_audit.json",
+    "e4_readiness_md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_e4_multimodel_gate_readiness_audit_zh.md",
+    "formal_ledger": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_formal_result_ledger_current.json",
+    "formal_ledger_md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_formal_result_ledger_current_zh.md"
+  },
+  "write_status": {
+    "current_status": "stage_patent_draft_ready_with_boundaries",
+    "supported_positive_claims": [
+      "On Qwen3-32B full200, MyAgent beats MACT on WTQ, TabFact, and CRT, with aggregate token ratio 0.5717 and zero MyAgent failures/missing answers.",
+      "After WTQ targeted fresh validation, P4b after-targeted Gate-50 beats MACT on all three datasets and aggregate, with aggregate token ratio 0.5310 and zero MyAgent failures/missing answers.",
+      "Mechanism evidence supports risk-stratified collaboration, controlled verifier override, deterministic semantic audit, evidence retention, and budget control as patent-facing mechanisms."
+    ],
+    "supported_boundary_claims": [
+      "P4b original new-seed Gate-50 exposed WTQ risk: MyAgent 37/50 vs MACT 43/50 before targeted fixes.",
+      "E3 Seed-C/Seed-D current-only Gate-50 are boundary evidence, not stable multi-seed superiority evidence; no same-seed paired MACT baseline was run because current-only gate decided stop_or_inspect.",
+      "E4 multi-model gate is blocked by no candidate: no untested local model path and no API provider profile/key are available."
+    ],
+    "unsupported_claims": [
+      "Do not claim multi-model validation is complete.",
+      "Do not claim multi-seed stable superiority over MACT is complete.",
+      "Do not claim full official dataset completion beyond the frozen full200/gate scopes."
+    ]
+  },
+  "full200_anchor": {
+    "decision": "accepted_qwen3_full200_all_dataset_superiority",
+    "aggregate_accuracy": {
+      "myagent": 0.815,
+      "mact": 0.75,
+      "delta": 0.06499999999999995
+    },
+    "aggregate_token_ratio": 0.5716697843909193,
+    "aggregate_elapsed_ratio": 0.1336948894409883,
+    "rows": [
+      {
+        "dataset": "wtq",
+        "input_rows": 200,
+        "merged_rows": 200,
+        "eval_rows": 200,
+        "myagent_correct": 155,
+        "mact_correct": 148,
+        "delta_correct": 7,
+        "token_ratio": 0.6186721012406702,
+        "elapsed_ratio": 0.14638308022742036,
+        "myagent_avg_tokens": 6501.025,
+        "myagent_avg_elapsed_seconds": 16.80141694454127,
+        "num_failed_exec": 0,
+        "num_missing_answer": 0
+      },
+      {
+        "dataset": "tabfact",
+        "input_rows": 200,
+        "merged_rows": 200,
+        "eval_rows": 200,
+        "myagent_correct": 194,
+        "mact_correct": 189,
+        "delta_correct": 5,
+        "token_ratio": 0.20143156223094733,
+        "elapsed_ratio": 0.094572909965595,
+        "myagent_avg_tokens": 2181.67,
+        "myagent_avg_elapsed_seconds": 9.75614469674154,
+        "num_failed_exec": 0,
+        "num_missing_answer": 0
+      },
+      {
+        "dataset": "crt",
+        "input_rows": 200,
+        "merged_rows": 200,
+        "eval_rows": 200,
+        "myagent_correct": 140,
+        "mact_correct": 113,
+        "delta_correct": 27,
+        "token_ratio": 0.8461497027514084,
+        "elapsed_ratio": 0.14945417162120136,
+        "myagent_avg_tokens": 10839.165,
+        "myagent_avg_elapsed_seconds": 24.462966608785354,
+        "num_failed_exec": 0,
+        "num_missing_answer": 0
+      },
+      {
+        "dataset": "aggregate",
+        "input_rows": 600,
+        "merged_rows": 600,
+        "eval_rows": 600,
+        "myagent_correct": 489,
+        "mact_correct": 450,
+        "delta_correct": 39,
+        "token_ratio": 0.5716697843909193,
+        "elapsed_ratio": 0.1336948894409883,
+        "myagent_avg_tokens": 6507.286666666667,
+        "myagent_avg_elapsed_seconds": 17.00684275002272,
+        "num_failed_exec": 0,
+        "num_missing_answer": 0
+      }
+    ]
+  },
+  "p4b_new_seed": {
+    "original_decision": "accepted_overall_but_wtq_risk",
+    "original_wtq": {
+      "myagent_correct": 37,
+      "mact_correct": 43,
+      "rows": 50
+    },
+    "targeted_fresh": {
+      "decision": "pass",
+      "correct": 9,
+      "rows": 9,
+      "merged_rows": 9,
+      "eval_rows": 9,
+      "num_failed_exec": 0,
+      "num_missing_answer": 0,
+      "avg_total_tokens": 5437.333333333333,
+      "avg_elapsed_seconds": 8.977539869445739
+    },
+    "after_targeted_decision": "accepted_after_targeted_all_dataset_superiority",
+    "after_targeted_rows": [
+      {
+        "dataset": "wtq",
+        "input_rows": 50,
+        "merged_rows": 50,
+        "eval_rows": 50,
+        "myagent_correct": 46,
+        "mact_correct": 43,
+        "delta_correct": 3,
+        "token_ratio": 0.5570679517220036,
+        "elapsed_ratio": null,
+        "myagent_avg_tokens": 6300.16,
+        "myagent_avg_elapsed_seconds": 14.513136571861105,
+        "num_failed_exec": 0,
+        "num_missing_answer": 0
+      },
+      {
+        "dataset": "tabfact",
+        "input_rows": 50,
+        "merged_rows": 50,
+        "eval_rows": 50,
+        "myagent_correct": 45,
+        "mact_correct": 44,
+        "delta_correct": 1,
+        "token_ratio": 0.21558100580566975,
+        "elapsed_ratio": null,
+        "myagent_avg_tokens": 2308.92,
+        "myagent_avg_elapsed_seconds": 10.479730745921843,
+        "num_failed_exec": 0,
+        "num_missing_answer": 0
+      },
+      {
+        "dataset": "crt",
+        "input_rows": 50,
+        "merged_rows": 50,
+        "eval_rows": 50,
+        "myagent_correct": 30,
+        "mact_correct": 24,
+        "delta_correct": 6,
+        "token_ratio": 0.774037438758996,
+        "elapsed_ratio": null,
+        "myagent_avg_tokens": 9823.82,
+        "myagent_avg_elapsed_seconds": 21.993386777820998,
+        "num_failed_exec": 0,
+        "num_missing_answer": 0
+      },
+      {
+        "dataset": "aggregate",
+        "input_rows": 150,
+        "merged_rows": 150,
+        "eval_rows": 150,
+        "myagent_correct": 121,
+        "mact_correct": 111,
+        "delta_correct": 10,
+        "token_ratio": 0.5310333383460987,
+        "elapsed_ratio": null,
+        "myagent_avg_tokens": 6144.3,
+        "myagent_avg_elapsed_seconds": 15.662084698534649,
+        "num_failed_exec": 0,
+        "num_missing_answer": 0
+      }
+    ]
+  },
+  "mechanism_evidence": {
+    "risk_collaboration_and_persuasion_back": {
+      "primary_evidence": [
+        "coarse_ablation.no_strong_verification: overall -8/150 vs current reference",
+        "coarse_ablation.no_strong_verification.wtq: -7/50 vs current reference",
+        "offline_attribution.wtq.gain_vs_old: 24/25 gain rows tagged strong_verification and 16/25 tagged evidence_retention"
+      ],
+      "boundary": "The coarse slice is diagnostic and disagreement-enriched; it supports mechanism contribution, not a random-seed generalization estimate."
+    },
+    "deterministic_audit": {
+      "primary_evidence": [
+        "coarse_ablation.no_deterministic_shortcuts: overall -15/150 vs current reference",
+        "coarse_ablation.no_deterministic_shortcuts.tabfact: -9/50 vs current reference and 1.4487x current tokens",
+        "coarse_ablation.no_deterministic_shortcuts.crt: -7/50 vs current reference",
+        "offline_attribution.tabfact.gain_vs_old: 8/9 gain rows tagged deterministic_audit"
+      ],
+      "boundary": "WTQ deterministic shortcuts are mixed on this coarse slice; the strongest deterministic-audit evidence is TabFact and CRT."
+    },
+    "evidence_retention": {
+      "primary_evidence": [
+        "offline_attribution.wtq.gain_vs_old: 16/25 gain rows tagged evidence_retention",
+        "offline_attribution.tabfact.gain_vs_old: 9/9 gain rows tagged evidence_retention",
+        "offline_attribution.crt.current_only_vs_mact: 37/40 current-only rows tagged evidence_retention"
+      ],
+      "boundary": "Evidence-retention attribution is associative unless followed by a fine-grained no_evidence_retention ablation."
+    },
+    "budget_control": {
+      "primary_evidence": [
+        "full200 aggregate token ratio current/MACT = 0.5717",
+        "full200 aggregate elapsed ratio current/MACT = 0.1337",
+        "coarse deterministic audit on TabFact improves accuracy while avoiding the high token path"
+      ],
+      "boundary": "CRT token savings are weaker than WTQ/TabFact; formal claims should use overall token reduction and per-dataset ratios."
+    }
+  },
+  "coarse_ablation_key_numbers": {
+    "no_strong_verification_delta_vs_current": -8,
+    "no_strong_verification_wtq_delta_vs_current": -7,
+    "no_deterministic_shortcuts_delta_vs_current": -15,
+    "no_deterministic_shortcuts_tabfact_delta_vs_current": -9,
+    "no_deterministic_shortcuts_crt_delta_vs_current": -7,
+    "no_deterministic_shortcuts_tabfact_token_ratio_vs_current": 1.4487126358083637
+  },
+  "e3_multiseed_boundary": {
+    "decision": "boundary_not_stable_superiority",
+    "seed_runs": [
+      {
+        "seed_label": "seed_c",
+        "decision": "stop_or_inspect",
+        "datasets": [
+          {
+            "dataset": "wtq",
+            "input_rows": 50,
+            "merged_rows": 50,
+            "eval_rows": 50,
+            "myagent_correct": 40,
+            "mact_correct": null,
+            "delta_correct": null,
+            "token_ratio_to_mact_full200_reference": 0.6013077617783733,
+            "myagent_avg_tokens": 6318.56,
+            "myagent_avg_elapsed_seconds": 15.247411251621088,
+            "num_failed_exec": 0,
+            "num_missing_answer": 0,
+            "passed_current_seed_gate": true
+          },
+          {
+            "dataset": "tabfact",
+            "input_rows": 50,
+            "merged_rows": 50,
+            "eval_rows": 50,
+            "myagent_correct": 44,
+            "mact_correct": null,
+            "delta_correct": null,
+            "token_ratio_to_mact_full200_reference": 0.2603698240900393,
+            "myagent_avg_tokens": 2820.02,
+            "myagent_avg_elapsed_seconds": 10.649377883299021,
+            "num_failed_exec": 0,
+            "num_missing_answer": 0,
+            "passed_current_seed_gate": false
+          },
+          {
+            "dataset": "crt",
+            "input_rows": 50,
+            "merged_rows": 50,
+            "eval_rows": 50,
+            "myagent_correct": 30,
+            "mact_correct": null,
+            "delta_correct": null,
+            "token_ratio_to_mact_full200_reference": 0.9117824884260207,
+            "myagent_avg_tokens": 11679.92,
+            "myagent_avg_elapsed_seconds": 25.32572420073906,
+            "num_failed_exec": 0,
+            "num_missing_answer": 0,
+            "passed_current_seed_gate": true
+          }
+        ],
+        "aggregate": {
+          "dataset": "aggregate",
+          "input_rows": 150,
+          "merged_rows": 150,
+          "eval_rows": 150,
+          "myagent_correct": 114,
+          "mact_correct": null,
+          "delta_correct": null,
+          "token_ratio_to_mact_full200_reference": 0.609640034624895,
+          "myagent_avg_tokens": 6939.5,
+          "myagent_avg_elapsed_seconds": 17.07417111188639,
+          "num_failed_exec": 0,
+          "num_missing_answer": 0,
+          "passed_current_seed_gate": false
+        }
+      },
+      {
+        "seed_label": "seed_d",
+        "decision": "stop_or_inspect",
+        "datasets": [
+          {
+            "dataset": "wtq",
+            "input_rows": 50,
+            "merged_rows": 50,
+            "eval_rows": 50,
+            "myagent_correct": 30,
+            "mact_correct": null,
+            "delta_correct": null,
+            "token_ratio_to_mact_full200_reference": 0.6328512575620739,
+            "myagent_avg_tokens": 6650.02,
+            "myagent_avg_elapsed_seconds": 17.539570273495045,
+            "num_failed_exec": 0,
+            "num_missing_answer": 0,
+            "passed_current_seed_gate": false
+          },
+          {
+            "dataset": "tabfact",
+            "input_rows": 50,
+            "merged_rows": 50,
+            "eval_rows": 50,
+            "myagent_correct": 38,
+            "mact_correct": null,
+            "delta_correct": null,
+            "token_ratio_to_mact_full200_reference": 0.26823072111311924,
+            "myagent_avg_tokens": 2905.16,
+            "myagent_avg_elapsed_seconds": 11.676838173017604,
+            "num_failed_exec": 0,
+            "num_missing_answer": 0,
+            "passed_current_seed_gate": false
+          },
+          {
+            "dataset": "crt",
+            "input_rows": 50,
+            "merged_rows": 50,
+            "eval_rows": 50,
+            "myagent_correct": 30,
+            "mact_correct": null,
+            "delta_correct": null,
+            "token_ratio_to_mact_full200_reference": 0.7828705498093869,
+            "myagent_avg_tokens": 10028.56,
+            "myagent_avg_elapsed_seconds": 27.38528565953835,
+            "num_failed_exec": 0,
+            "num_missing_answer": 0,
+            "passed_current_seed_gate": true
+          }
+        ],
+        "aggregate": {
+          "dataset": "aggregate",
+          "input_rows": 150,
+          "merged_rows": 150,
+          "eval_rows": 150,
+          "myagent_correct": 98,
+          "mact_correct": null,
+          "delta_correct": null,
+          "token_ratio_to_mact_full200_reference": 0.5734818517993583,
+          "myagent_avg_tokens": 6527.913333333333,
+          "myagent_avg_elapsed_seconds": 18.867231368683665,
+          "num_failed_exec": 0,
+          "num_missing_answer": 0,
+          "passed_current_seed_gate": false
+        }
+      }
+    ],
+    "aggregate_diagnosis": {
+      "rows": 300,
+      "correct": 212,
+      "wrong": 88,
+      "accuracy": 0.7066666666666667,
+      "failed": 0,
+      "missing": 0,
+      "weighted_token_ratio_to_mact_full200_reference": 0.5915609432121267,
+      "verification_status": "pass",
+      "verification_mismatches": [],
+      "wrong_category_top": {
+        "crt_multi_step_numeric_composition_boundary": 15,
+        "wtq_entity_lookup_or_row_selection_boundary": 11,
+        "wtq_numeric_aggregation_or_difference_boundary": 9,
+        "tabfact_temporal_order_boundary": 9,
+        "crt_span_or_universal_quantifier_boundary": 9,
+        "crt_table_reasoning_or_entity_boundary": 9,
+        "crt_percentage_complement_or_aggregation_boundary": 7,
+        "wtq_temporal_or_age_lookup_boundary": 5,
+        "wtq_rank_direction_or_ordinal_boundary": 5,
+        "tabfact_false_negative_entailment_boundary": 4,
+        "tabfact_false_positive_or_negation_boundary": 3,
+        "tabfact_numeric_count_or_comparison_boundary": 2
+      },
+      "wrong_problem_tags_top": {
+        "negation_logic": 40,
+        "superlative_order": 31,
+        "closed_choice": 29,
+        "temporal": 29,
+        "arithmetic": 28,
+        "count": 25,
+        "comparison": 17,
+        "unknown": 5,
+        "trend_correlation": 1,
+        "list_entity": 1
+      }
+    },
+    "boundary_findings": [
+      "Seed-C/Seed-D had 300 merged rows and zero failed execution or missing answers; the boundary is semantic answer correctness, not runtime/tool coverage.",
+      "Tokens remained below the frozen MACT full200 reference on every dataset and seed; the blocker is accuracy stability, not token budget.",
+      "Seed-C is near the current gate on TabFact and exactly at the CRT gate, while Seed-D exposes broader WTQ and TabFact instability.",
+      "Do not spend paired MACT runtime for these seeds until boundary categories are addressed or explicitly accepted as limitation evidence.",
+      "Patent-facing claim should use E3 as applicability-boundary evidence, not as multi-seed stable superiority evidence."
+    ],
+    "next_actions": [
+      "If continuing Qwen3 optimization, target reusable guards for WTQ rank-direction/temporal lookup, TabFact temporal/numeric entailment, and CRT percentage/aggregation categories.",
+      "If continuing experiment collection, keep E3 paired MACT marked not required and prioritize new-model Gate-10/Gate-50 only when a viable new model or API key exists.",
+      "For patent drafting, cite full200 and P4b after-targeted as positive evidence; cite this E3 diagnosis as boundary and future-improvement evidence."
+    ]
+  },
+  "e4_multimodel_gate": {
+    "decision": "no_candidate_wait",
+    "can_start_gate10_now": false,
+    "local_models_discovered": [
+      "Qwen2.5-14B-Instruct-AWQ",
+      "Qwen2.5-3B-Instruct",
+      "Qwen3-14B-AWQ",
+      "Qwen3-32B"
+    ],
+    "untested_local_models": [],
+    "api_keys_present": [],
+    "api_provider_profiles": {},
+    "default_gpu_pool": "0,1 -> 8000; 2,3 -> 8001",
+    "default_gpu_pool_available_for_next_start": true,
+    "visible_runner_or_model_processes": 0
+  },
+  "formal_experiment_status": [
+    {
+      "stage": "E0 full200 anchor",
+      "status": "complete",
+      "patent_use": "main positive evidence"
+    },
+    {
+      "stage": "E1 WTQ P4b risk diagnosis",
+      "status": "complete",
+      "patent_use": "risk and boundary diagnosis"
+    },
+    {
+      "stage": "E2 WTQ targeted fresh and after-targeted full50",
+      "status": "complete",
+      "patent_use": "targeted mechanism repair evidence"
+    },
+    {
+      "stage": "E3 multi-seed current-only boundary diagnosis",
+      "status": "complete_boundary_evidence",
+      "patent_use": "applicability boundary, not stability proof"
+    },
+    {
+      "stage": "E4 multi-model gate",
+      "status": "pending_no_candidate",
+      "patent_use": "future external validity evidence after new model/API appears"
+    },
+    {
+      "stage": "E5/E6 patent experiment section and disclosure draft",
+      "status": "current_section_consolidated",
+      "patent_use": "draft-ready with explicit unsupported claims"
+    },
+    {
+      "stage": "E7 final experiment package closeout",
+      "status": "pending",
+      "patent_use": "requires at least E4 candidate or explicit acceptance of no-candidate boundary"
+    }
+  ],
+  "next_trigger_rules": [
+    "If GPUs 0-3 remain free and a new candidate model/API appears, start Gate-10 on 0,1 and 2,3 through prepare_model_gate_run.py; do not consume 4-7 unless explicitly reassigned.",
+    "If no new model/API exists, do not rerun known no-go models; continue drafting with E4 marked pending/no-candidate.",
+    "If more Qwen optimization is requested, target E3 boundary categories instead of re-optimizing already-passing full200/P4b-after-targeted rows."
+  ]
+}

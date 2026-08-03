@@ -64,6 +64,8 @@ E3_BOUNDARY_DIAGNOSIS_JSON = E3_RUN_DIR / "summary" / "seed_boundary_error_diagn
 E3_BOUNDARY_DIAGNOSIS_MD = E3_RUN_DIR / "summary" / "seed_boundary_error_diagnosis.md"
 E4_READINESS_JSON = PACKAGE_DIR / "latest_e4_multimodel_gate_readiness_audit.json"
 E4_READINESS_MD = PACKAGE_DIR / "latest_e4_multimodel_gate_readiness_audit_zh.md"
+CURRENT_PATENT_SECTION_JSON = PACKAGE_DIR / "latest_current_patent_experiment_section.json"
+CURRENT_PATENT_SECTION_MD = PACKAGE_DIR / "latest_current_patent_experiment_section_zh.md"
 E3_SEEDS = ("seed_c", "seed_d")
 TASK_ORDER = ("wtq", "tabfact", "crt")
 
@@ -408,10 +410,11 @@ def completion_summary(completed: list[dict[str, Any]], pending: list[dict[str, 
             "E3 Seed-D current-only Gate-50 is a second documented stability boundary: overall 98/150, decision stop_or_inspect.",
             "E3 Seed-C/Seed-D offline boundary diagnosis has explained the current-gate boundary as semantic accuracy stability, not runtime/tool failure or token-budget failure.",
             "E4 latest readiness audit has completed with no untested local model path and no API provider profile, so no Gate-10 should be started yet.",
+            "The current patent experiment section has been consolidated as draft-ready evidence with explicit unsupported-claim boundaries.",
         ],
         "cannot_write_yet": [
             "A viable additional model gate has completed.",
-            "The full patent experiment section is final.",
+            "The final experiment package closeout has completed after either an E4 candidate result or explicit acceptance of the no-candidate boundary.",
         ],
     }
 
@@ -569,6 +572,12 @@ def build_ledger() -> dict[str, Any]:
             "e3_boundary_diagnosis_md": str(E3_BOUNDARY_DIAGNOSIS_MD) if E3_BOUNDARY_DIAGNOSIS_MD.exists() else None,
             "e4_multimodel_readiness_json": str(E4_READINESS_JSON) if E4_READINESS_JSON.exists() else None,
             "e4_multimodel_readiness_md": str(E4_READINESS_MD) if E4_READINESS_MD.exists() else None,
+            "current_patent_experiment_section_json": str(CURRENT_PATENT_SECTION_JSON)
+            if CURRENT_PATENT_SECTION_JSON.exists()
+            else None,
+            "current_patent_experiment_section_md": str(CURRENT_PATENT_SECTION_MD)
+            if CURRENT_PATENT_SECTION_MD.exists()
+            else None,
             "formal_template": str(FORMAL_TEMPLATE),
             "latest_runtime_preflight": str(LATEST_PREFLIGHT),
         },

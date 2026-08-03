@@ -2,6 +2,8 @@
 
 本文档用于把专利/专家所需实验拆成可停止、可复核、可逐步扩样的流程，避免把所有模型、所有样本一次性 full run。
 
+当前状态更新：A/B 已在 2026-08-03 完成。WTQ targeted fresh 为 `9/9`，P4b after-targeted full50 后总表为 MyAgent `121/150` vs MACT `111/150`，overall token ratio `0.5310`，failed/missing `0/0`，WTQ/TabFact/CRT 单项均超过 MACT。E3 Seed-C/D current-only 也已完成并形成边界诊断；E4 多模型 gate 最新状态为 `no_candidate_wait`。
+
 基线成本估计来自 Qwen3-32B full200 已冻结结果：
 
 | dataset | MyAgent avg tokens | MyAgent avg elapsed s | MACT avg tokens | MACT avg elapsed s |
@@ -13,7 +15,7 @@
 
 这些是单行平均值；实际 wall time 会受 endpoint 数量、GPU 状态、失败重试和 MACT runner 串并行影响。
 
-## A. 立即恢复项：WTQ Targeted Fresh
+## A. 已完成项：WTQ Targeted Fresh
 
 目的：验证 E2 targeted fixes 不是离线投影假象。
 
@@ -39,6 +41,8 @@ bash /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate
 | failed/missing | 0/0 |
 | correct | >= 7/9，优先目标 9/9 |
 
+当前结果：`9/9`，merged/eval `9/9`，failed/missing `0/0`，decision=`pass`。
+
 输出：
 
 ```text
@@ -46,9 +50,9 @@ bash /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate
 /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/p4b_wtq_targeted_fresh_summary.md
 ```
 
-停止规则：若低于 `7/9`，不扩 WTQ full50，先做 fresh wrong ids 诊断。
+停止规则：若未来重跑低于 `7/9`，不扩 WTQ full50，先做 fresh wrong ids 诊断。
 
-## B. WTQ After-Fix P4b Full50
+## B. 已完成项：WTQ After-Fix P4b Full50
 
 目的：在同一 P4b WTQ 新 seed 上验证 targeted fixes 后是否超过 MACT `43/50`。
 
@@ -84,7 +88,9 @@ bash /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate
 | token ratio vs MACT WTQ P4b | < 0.75，目标保持约 0.60 |
 | failed/missing | 0/0 |
 
-停止规则：若没有超过 `43/50`，先更新 WTQ 风险诊断，不进入更大新 seed。
+当前结果：WTQ `46/50` vs MACT `43/50`，token ratio `0.5571`，failed/missing `0/0`；P4b after-targeted aggregate MyAgent `121/150` vs MACT `111/150`，overall token ratio `0.5310`，三数据集单项均超过 MACT。
+
+停止规则：若未来重跑没有超过 `43/50`，先更新 WTQ 风险诊断，不进入更大新 seed。
 
 输出：
 
@@ -161,16 +167,16 @@ Gate-10 -> Gate-50 -> Gate-150 -> paired-200
 | Gate-150 | 未达到 paired-200 门槛，或只有单数据集偶然领先 |
 | paired-200 | 只给通过 Gate-150 的候选跑，不做全模型枚举 |
 
-当前本机除 Qwen3-32B 外的已知模型均为 no-go；新增模型或 API key 出现后再启动 gate。
+当前本机除 Qwen3-32B 外的已知模型均为 no-go；最新 E4 readiness audit 为 `no_candidate_wait`，未发现未测本地模型/API profile/key。新增模型或 API key 出现后再启动 gate，默认使用空闲的 GPU `0,1 -> 8000` 与 `2,3 -> 8001`；GPU `4,5,6,7` 仍有负载或残留时不作为默认资源。
 
 ## F. 正式收口
 
 收口条件：
 
 1. Qwen3-32B full200 主证据保持三数据集单项超过 MACT、token 明显低。
-2. WTQ targeted fresh 与 WTQ P4b after-fix full50 给出明确结论。
+2. WTQ targeted fresh 与 WTQ P4b after-fix full50 已给出明确结论。
 3. 至少 2 个机制模块有消融或离线归因证据。
-4. 至少 1 组额外 seed 或 1 个额外模型完成 gate 结论。
+4. 至少 1 组额外 seed 稳定性正证据或 1 个额外模型完成 gate 结论；当前 E3 是边界证据，E4 是 no-candidate。
 5. 所有新增结果有 JSON/MD、路径索引、失败/缺答案、token、耗时和 git 提交号。
 
 未满足 F 之前，当前目标保持 active，不写“正式实验完成”。

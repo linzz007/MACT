@@ -12,9 +12,9 @@
 
 不能写成最终结论：
 
-> 多模型、多 seed、fresh targeted 验证已经全部完成。
+> 多模型验证已经完成，或多 seed 已稳定超过 MACT。
 
-原因：P4b 新 seed Gate-50 虽然 overall 通过 existing paired gate，但 WTQ 单项原始结果是 MyAgent `37/50` vs MACT `43/50`。E1/E2 已经完成诊断和离线投影，但 fresh Qwen targeted run 尚未执行。
+原因：P4b 原始新 seed Gate-50 虽然 overall 通过 existing paired gate，但 WTQ 单项原始结果是 MyAgent `37/50` vs MACT `43/50`。E1/E2 已经完成诊断、fresh affected-slice `9/9` 和 after-targeted P4b full50；after-targeted 总表为 MyAgent `121/150` vs MACT `111/150`，三数据集单项均超过 MACT。E3 Seed-C/Seed-D current-only 已完成并形成稳定性边界诊断，不是多 seed 稳定通过证据；E4 readiness audit 为 `no_candidate_wait`，还没有额外模型/API 结果。
 
 ## 2. 主结果证据
 
@@ -102,7 +102,32 @@ E2 targeted fix 投影：
 
 投影结果：WTQ P4b 从 `37/50` 投影到 `46/50`，`wrong_to_correct=9`，`correct_to_wrong=0`。
 
-边界：这是 offline projection，不是 fresh model run。fresh 验证入口：
+fresh affected-slice 验证已经完成：
+
+```text
+/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/p4b_wtq_targeted_fresh_summary.json
+/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/p4b_wtq_targeted_fresh_summary.md
+```
+
+结果：`9/9`，merged/eval `9/9`，failed/missing `0/0`，decision=`pass`。
+
+P4b after-targeted full50 也已完成：
+
+```text
+/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/p4b_after_wtq_targeted_paired_summary.json
+/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/p4b_after_wtq_targeted_paired_summary.md
+```
+
+| dataset | MyAgent | MACT | delta | token ratio | failed/missing |
+|---|---:|---:|---:|---:|---:|
+| WTQ | 46/50 | 43/50 | +3 | 0.5571 | 0/0 |
+| TabFact | 45/50 | 44/50 | +1 | 0.2156 | 0/0 |
+| CRT | 30/50 | 24/50 | +6 | 0.7740 | 0/0 |
+| Overall | 121/150 | 111/150 | +10 | 0.5310 | 0/0 |
+
+保留的边界：E2 证明的是 P4b WTQ targeted 机制闭环和 after-targeted new-seed 小样本正证据，不等于多 seed 稳定性或多模型验证。
+
+fresh 验证输入和 runner 入口保留如下：
 
 ```text
 /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/input/wtq_p4b_targeted_fix_affected_slice.jsonl
@@ -113,19 +138,18 @@ E2 targeted fix 投影：
 
 | item | reason | next action |
 |---|---|---|
-| WTQ targeted fresh Qwen validation | endpoint 8000/8001 down，GPU 有 residual memory | 服务器清理/扩容后先跑 9-row affected slice |
-| P4b WTQ after-fix full50 | 需要 affected-slice fresh 先验证机制方向 | affected-slice 过后再重跑 WTQ full50 |
-| 多 seed 稳定性 | E3 Seed-C/Seed-D 输入和 runner 已准备，但尚未执行模型 | 服务器恢复后先跑 current-only Gate-50；通过后再跑同 ID MACT baseline |
-| 多模型 gate | 当前只有 Qwen3-32B 真正有效 | 新本地模型/API key 出现后按 Gate-10 -> Gate-50 -> Gate-150 执行 |
+| E3 多 seed 稳定性正证据 | Seed-C/Seed-D current-only 都已完成但 decision=`stop_or_inspect`，不能写成稳定超过 MACT | 把 E3 写成边界与适用条件；若继续优化，先处理 WTQ/TabFact/CRT 语义边界 |
+| 多模型 gate | 最新 E4 readiness audit 为 `no_candidate_wait`，没有 untested local model 或 API profile/key | 新本地模型/API key 出现后按 Gate-10 -> Gate-50 -> Gate-150 执行 |
 | 细粒度消融 | coarse 消融已有，但 verifier override/evidence retention 细粒度 causal 证据仍可增强 | 需要时新增开关并跑 targeted ablation |
+| 最终实验包收口 | 当前章节已 consolidated，但 E4 无候选导致最终外延证据仍缺 | 等 E4 candidate 或明确接受 no-candidate 边界后再做 final closeout |
 
-E3 multi-seed 准备包：
+E3 multi-seed 包：
 
 ```text
 /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/
 ```
 
-该包已生成 Seed-C/Seed-D 各 WTQ/TabFact/CRT `50` 行输入，总计 `300` 行，并通过 `verify_multiseed_package.py` 校验。它只是准备包，不包含模型运行结果。
+该包已生成并执行 Seed-C/Seed-D current-only Gate-50，各 WTQ/TabFact/CRT `50` 行，总计 `300` 行；Seed-C `114/150`、Seed-D `98/150`，合计 `212/300`，weighted token ratio `0.5916`，failed/missing `0/0`。离线边界诊断为 `verification_status=pass`。该包当前是适用边界证据，不是“多 seed 稳定超过 MACT”的正证据。
 
 ## 8. 剩余 Qwen3 队列入口
 
@@ -138,6 +162,8 @@ E3 multi-seed 准备包：
 /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_qwen3_runtime_preflight_zh.md
 /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/build_current_formal_result_ledger.py
 /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_formal_result_ledger_current_zh.md
+/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/build_current_patent_experiment_section.py
+/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_current_patent_experiment_section_zh.md
 /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/audit_patent_package_consistency.py
 /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_patent_package_consistency_audit_zh.md
 /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/build_patent_package_checksums.py
@@ -157,7 +183,7 @@ bash /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_packa
 
 该脚本会在 WTQ targeted fresh 未通过时停止，不会启动 WTQ full50；也会在 Seed-C/D current-only 未通过时停止，不会启动 MACT paired。它不会自动扩大到 Gate-150 或 full200。
 
-当前正式结果台账由 `build_current_formal_result_ledger.py` 从 frozen summary、P4b summary、模板和 latest preflight 生成，用于专家/专利材料填表；它不会把 pending 项写成 completed。
+当前正式结果台账由 `build_current_formal_result_ledger.py` 从 frozen summary、P4b summary、WTQ fresh/after-targeted、E3、E4、模板和 latest preflight 生成，用于专家/专利材料填表；它不会把 pending 项写成 completed。当前专利实验章节由 `build_current_patent_experiment_section.py` 生成，明确列出可写正证据和不能写的边界。
 
 `audit_patent_package_consistency.py` 用于检查 PRD、manifest、latest formal ledger、latest preflight 和关键数字是否一致。在线阻塞会记录为 warning；数字或路径不一致会记录为 error。
 
