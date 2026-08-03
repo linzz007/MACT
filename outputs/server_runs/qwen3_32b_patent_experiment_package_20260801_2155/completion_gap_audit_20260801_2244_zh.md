@@ -1,7 +1,7 @@
 # 专利实验完成度审计
 
 创建时间：2026-08-01 22:44 CST
-最后更新：2026-08-03 11:00 CST
+最后更新：2026-08-03 11:13 CST
 
 这个审计用于回答“当前距离能写完整专利实验材料还差什么”。它不是新的 benchmark run，而是把当前目标拆成可验证要求，并逐项标注证据、缺口和下一步。
 
@@ -13,17 +13,17 @@
 
 | item | result |
 |---|---|
-| `8000/v1/models` | healthy，返回 `qwen3-32b-local` |
-| `8001/v1/models` | healthy，返回 `qwen3-32b-local` |
-| GPU 0/1/2/3 显存 | `45815/45815/45839/45839 MiB` |
-| GPU 0/1/2/3 利用率 | `0%/0%/0%/0%`，当前为已加载但无请求状态 |
+| `8000/v1/models` | 已关闭，connection refused |
+| `8001/v1/models` | 已关闭，connection refused |
+| GPU 0/1/2/3 显存 | `3/3/3/3 MiB` |
+| GPU 0/1/2/3 利用率 | `0%/0%/0%/0%` |
 | GPU 6/7 显存 | 约 `42015/42011 MiB`，仍有残留 runtime |
-| `nvidia-smi --query-compute-apps` | 可见 4 个 vLLM worker，对应 GPU 0/1/2/3 |
-| `nvidia-smi pmon -c 1` | 可见 4 个 vLLM worker，对应 GPU 0/1/2/3 |
-| runner 进程扫描 | vLLM/API server 进程可见；未发现正在运行的 benchmark runner/tqa/run_sharded_tqa |
+| `nvidia-smi --query-compute-apps` | 无可见 compute PID |
+| `nvidia-smi pmon -c 1` | 无可见 compute PID |
+| runner 进程扫描 | 未发现 `vllm serve`、benchmark runner、`tqa.py`、`run_sharded_tqa` |
 | `fuser` | 未安装 |
 
-解释：Qwen3-32B online queue 当前可用 GPU `0,1,2,3` 运行；GPU `6,7` 仍有残留 runtime，但不影响当前 0-3 队列。Seed-C 与 Seed-D current-only 已在该 endpoint set 上完成，并都因 `decision=stop_or_inspect` 按 gate 停在 paired MACT 前。
+解释：Seed-C 与 Seed-D current-only 已在 GPU `0,1,2,3` endpoint set 上完成，并都因 `decision=stop_or_inspect` 按 gate 停在 paired MACT 前。按用户要求，本轮 Qwen3/vLLM/runner 进程已关闭；下一次在线实验必须先启动服务，再重跑 preflight。
 
 ## 要求逐项审计
 

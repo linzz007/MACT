@@ -71,16 +71,17 @@ Current status:
   already-completed WTQ closure and E3 Seed-C/Seed-D validation.
 - Runtime preflight records endpoint/GPU/process readiness before any queue run
   and blocks queue execution when target GPUs show residual runtime state.
-- Current runtime status is ready on GPU `0,1,2,3`: port `8000` serves GPU
-  `0,1`, port `8001` serves GPU `2,3`, and both endpoints return
-  `qwen3-32b-local` with the local API key. GPU `6,7` still show residual
-  runtime usage but are not required for the active queue. Latest recorded
-  preflight: `qwen3_runtime_preflight_20260803_095841.json/md`.
+- Final runtime status after sync is `start_service_required`: Qwen3 endpoints
+  `8000/8001` were closed after Seed-D, GPU `0,1,2,3` are back to about
+  `3 MiB/0%`, and no visible compute PID remains. GPU `6,7` still show
+  residual runtime usage but are not required for the active queue. Latest
+  recorded preflight: `qwen3_runtime_preflight_20260803_111318.json/md`.
 - The current formal-result ledger is generated from frozen JSON sources and
   keeps pending stages explicit rather than mixing them with completed results.
   Latest generated ledger is available through
   `latest_formal_result_ledger_current.json/md`.
-- The latest consistency audit passes with 0 errors and 0 warnings:
+- The latest consistency audit passes with 0 errors; warning count may be 1
+  while services are intentionally stopped after sync:
   see `latest_patent_package_consistency_audit.json/md`.
 - The checksum manifest lets a restored server verify that package files and
   existing referenced evidence files were recovered without corruption.

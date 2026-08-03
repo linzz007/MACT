@@ -1,24 +1,24 @@
 {
   "audit_name": "qwen3_32b_patent_experiment_completion_gap_audit_20260801_2244",
   "created_at_local": "2026-08-01 22:44 CST",
-  "last_updated_at_local": "2026-08-03 11:00 CST",
+  "last_updated_at_local": "2026-08-03 11:13 CST",
   "purpose": "Requirement-by-requirement audit for the active patent-facing MyAgent vs MACT experiment goal.",
   "repositories": {
     "myagent": {
       "path": "/home/ubuntu/lzz/MyAgent",
       "branch": "codex/selective-risk-collaboration",
-      "latest_commit_checked": "76237e4"
+      "latest_commit_checked": "da9a93f"
     },
     "mact": {
       "path": "/home/ubuntu/lzz/MACT",
       "branch": "main",
-      "latest_commit_checked": "cc9bb83"
+      "latest_commit_checked": "18c085d"
     }
   },
   "runtime_recheck": {
-    "checked_at_local": "2026-08-03 11:00 CST",
-    "port_8000_models": "healthy_qwen3-32b-local",
-    "port_8001_models": "healthy_qwen3-32b-local",
+    "checked_at_local": "2026-08-03 11:13 CST",
+    "port_8000_models": "closed_connection_refused_after_shutdown",
+    "port_8001_models": "closed_connection_refused_after_shutdown",
     "target_gpus": [
       0,
       1,
@@ -26,10 +26,10 @@
       3
     ],
     "gpu_0_1_2_3_memory_used_mib": [
-      45815,
-      45815,
-      45839,
-      45839
+      3,
+      3,
+      3,
+      3
     ],
     "gpu_0_1_2_3_utilization_percent": [
       0,
@@ -41,10 +41,10 @@
       42015,
       42011
     ],
-    "visible_compute_apps": 4,
+    "visible_compute_apps": 0,
     "visible_runner_processes": 0,
     "fuser_available": false,
-    "interpretation": "Qwen3-32B online queue is available on GPUs 0,1,2,3 through two vLLM endpoints. Seed-C and Seed-D current-only both completed on this endpoint set and stopped before paired MACT with decision=stop_or_inspect."
+    "interpretation": "All visible Qwen3/vLLM/benchmark runner processes were stopped after Seed-D and GitHub sync. GPUs 0,1,2,3 are clean; next online run must start vLLM and rerun preflight."
   },
   "requirements": [
     {
@@ -156,10 +156,10 @@
       "requirement": "All process/result context must be recorded in the single PRD and MACT artifacts, then pushed to GitHub.",
       "status": "complete_for_current_state",
       "evidence": [
-        "MyAgent 76237e4 pushed",
-        "MACT cc9bb83 local package refresh in progress before final push"
+        "MyAgent da9a93f pushed",
+        "MACT 18c085d pushed before final shutdown-state refresh"
       ],
-      "gap": "After this MACT package refresh is committed and pushed, continue the same sync rule for any boundary inspection or multi-model run."
+      "gap": "After this MACT shutdown-state refresh is committed and pushed, continue the same sync rule for any boundary inspection or multi-model run."
     }
   ],
   "current_next_actions": [

@@ -288,9 +288,9 @@
       "Seed-C/Seed-D MyAgent current-only Gate-50 must decide run_paired_mact before paired MACT baseline runs.",
       "The queue does not automatically expand to Gate-150 or full200."
     ],
-    "current_online_status": "ready_existing_endpoint",
-    "latest_observed_at_local": "2026-08-03 11:07 CST",
-    "latest_observation": "Endpoints 8000/8001 are healthy with qwen3-32b-local; GPU 0,1 serve port 8000 and GPU 2,3 serve port 8001. Seed-C and Seed-D current-only both completed on this endpoint set and stopped before paired MACT with decision=stop_or_inspect. Latest runtime preflight is qwen3_runtime_preflight_20260803_110737."
+    "current_online_status": "start_service_required",
+    "latest_observed_at_local": "2026-08-03 11:13 CST",
+    "latest_observation": "Final shutdown state: Qwen3 endpoints 8000/8001 are closed; GPU 0,1,2,3 are clean at about 3 MiB/0% with no visible compute PID. Next online run must start Qwen3 vLLM and rerun preflight. Latest runtime preflight is qwen3_runtime_preflight_20260803_111318."
   },
   "package_consistency_audit": {
     "script": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/audit_patent_package_consistency.py",
@@ -299,8 +299,8 @@
     "purpose": "Verify that PRD, manifest, latest formal result ledger, latest runtime preflight, and key numeric claims remain consistent.",
     "latest_status": "pass",
     "latest_errors": 0,
-    "latest_warnings": 0,
-    "latest_observed_at_local": "2026-08-03 11:08:11 CST"
+    "latest_warnings": 1,
+    "latest_observed_at_local": "2026-08-03 11:15:41 CST"
   },
   "package_checksums": {
     "script": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/build_patent_package_checksums.py",
