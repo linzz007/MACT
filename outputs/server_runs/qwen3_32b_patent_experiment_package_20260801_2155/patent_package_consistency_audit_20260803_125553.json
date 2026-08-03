@@ -1,5 +1,5 @@
 {
-  "generated_at_local": "2026-08-03 12:56:16 CST",
+  "generated_at_local": "2026-08-03 12:55:53 CST",
   "package_dir": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155",
   "git_heads": {
     "myagent": "8b3b0a1",
@@ -286,9 +286,9 @@
       "pass": true
     },
     "preflight generated_at matches ledger": {
-      "actual": "2026-08-03 12:52:07 CST",
+      "actual": "2026-08-03 12:45:08 CST",
       "expected": "2026-08-03 12:52:07 CST",
-      "pass": true
+      "pass": false
     },
     "manifest latest ledger path": {
       "actual": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_formal_result_ledger_current.json",
@@ -567,9 +567,11 @@
       "pass": true
     }
   },
-  "errors": [],
+  "errors": [
+    "preflight generated_at matches ledger: expected '2026-08-03 12:52:07 CST', got '2026-08-03 12:45:08 CST'"
+  ],
   "warnings": [
     "online experiments remain gated by runtime status: blocked_gpu_runtime_residual"
   ],
-  "overall_status": "pass"
+  "overall_status": "fail"
 }

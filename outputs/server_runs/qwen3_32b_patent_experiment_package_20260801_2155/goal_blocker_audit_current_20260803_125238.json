@@ -1,0 +1,88 @@
+{
+  "artifact_name": "goal_blocker_audit_current",
+  "generated_at_local": "2026-08-03 12:52:38 CST",
+  "goal_objective": "Complete the patent-facing MyAgent vs MACT evidence system by adding WTQ diagnostics, mechanism ablations, multi-seed stability evidence, multi-model gate evidence, formal experiment package, and patent disclosure draft, while keeping the PRD and MACT evidence package synchronized to GitHub.",
+  "current_goal_status_recommendation": "blocked_waiting_external_state",
+  "blocking_conditions": [
+    {
+      "id": "B1",
+      "name": "No viable E4 multi-model candidate",
+      "status": "still_present",
+      "latest_evidence": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_e4_multimodel_gate_readiness_audit.json",
+      "observed_at_local": "2026-08-03 12:52:07 CST",
+      "details": {
+        "decision": "no_candidate_wait",
+        "can_start_gate10_now": false,
+        "untested_local_models": [],
+        "api_keys_present": [],
+        "api_provider_profiles": {}
+      },
+      "resume_trigger": "A new untested local model path appears in the readiness audit, or a real API provider profile/key is added."
+    },
+    {
+      "id": "B2",
+      "name": "Default Qwen3 GPU pool is not a clean runtime",
+      "status": "still_present",
+      "latest_evidence": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_qwen3_runtime_preflight.json",
+      "observed_at_local": "2026-08-03 12:52:07 CST",
+      "details": {
+        "preflight_status": "blocked_gpu_runtime_residual",
+        "ready": false,
+        "healthy_endpoint_count": 0,
+        "target_gpu_ids": [0, 1, 2, 3],
+        "target_gpu_memory_used_mib": {
+          "0": 27803,
+          "1": 27951,
+          "2": 27889,
+          "3": 27861
+        },
+        "target_gpu_utilization_percent": {
+          "0": 95,
+          "1": 100,
+          "2": 100,
+          "3": 100
+        },
+        "compute_app_pids": []
+      },
+      "resume_trigger": "Server expansion, GPU runtime cleanup/reset, or an explicitly authorized clean GPU pair passes preflight."
+    }
+  ],
+  "already_completed_evidence": {
+    "full200_qwen3_anchor": {
+      "myagent_correct": 489,
+      "mact_correct": 450,
+      "rows": 600,
+      "token_ratio": 0.5717,
+      "failed_missing": "0/0",
+      "evidence": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_all200_acceptance_20260731_132611/qwen3_policy_v6b_all200_acceptance_summary.json"
+    },
+    "p4b_after_targeted": {
+      "myagent_correct": 121,
+      "mact_correct": 111,
+      "rows": 150,
+      "token_ratio": 0.5310,
+      "failed_missing": "0/0",
+      "evidence": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/p4b_after_wtq_targeted_paired_summary.json"
+    },
+    "e3_multiseed_boundary": {
+      "current_only_correct": 212,
+      "rows": 300,
+      "token_ratio_to_mact_full200_reference": 0.5916,
+      "failed_missing": "0/0",
+      "evidence": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/summary/seed_boundary_error_diagnosis.json"
+    }
+  },
+  "why_not_complete": [
+    "The full objective explicitly includes multi-model gate evidence.",
+    "The latest E4 readiness audit has no untested local model and no API provider profile/key.",
+    "The latest runtime preflight also says the default GPU pool is blocked by driver/runtime residuals without visible compute PIDs.",
+    "Continuing to rerun known no-go local models would not add valid patent evidence and would consume unstable GPU time."
+  ],
+  "next_start_sequence": [
+    "Restore both repos and read MyAgent/docs/server/server_codex_reports/current-qwen3-mact-experiment-prd.md section 0.",
+    "Run latest runtime preflight on the intended GPU pair.",
+    "Run latest E4 readiness audit.",
+    "If a new local/API model candidate exists and runtime is clean, generate an E4 Gate-10 run with prepare_model_gate_run.py.",
+    "Only after Gate-10 passes should the candidate expand to Gate-50, Gate-150, and paired-200."
+  ]
+}

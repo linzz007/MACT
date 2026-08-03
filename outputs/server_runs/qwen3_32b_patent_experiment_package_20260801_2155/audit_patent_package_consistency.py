@@ -32,6 +32,8 @@ CURRENT_PATENT_SECTION_MD = PACKAGE_DIR / "latest_current_patent_experiment_sect
 CURRENT_COMPLETION_GAP_JSON = PACKAGE_DIR / "latest_completion_gap_audit_current.json"
 CURRENT_COMPLETION_GAP_MD = PACKAGE_DIR / "latest_completion_gap_audit_current_zh.md"
 PATENT_DISCLOSURE_DRAFT_MD = PACKAGE_DIR / "patent_disclosure_draft_zh.md"
+GOAL_BLOCKER_AUDIT_JSON = PACKAGE_DIR / "latest_goal_blocker_audit_current.json"
+GOAL_BLOCKER_AUDIT_MD = PACKAGE_DIR / "latest_goal_blocker_audit_current_zh.md"
 
 
 def read_json(path: Path) -> dict[str, Any]:
@@ -163,6 +165,8 @@ def build_report() -> dict[str, Any]:
         "claim_evidence_traceability_md": PACKAGE_DIR / "claim_evidence_traceability_20260801_2248_zh.md",
         "formal_experiment_schedule": PACKAGE_DIR / "formal_experiment_schedule_zh.md",
         "patent_disclosure_draft": PATENT_DISCLOSURE_DRAFT_MD,
+        "goal_blocker_audit_json": GOAL_BLOCKER_AUDIT_JSON,
+        "goal_blocker_audit_md": GOAL_BLOCKER_AUDIT_MD,
     }.items():
         add_path_check(report, label, path)
 
@@ -306,6 +310,9 @@ def build_report() -> dict[str, Any]:
     current_section = read_json(CURRENT_PATENT_SECTION_JSON)
     completion_gap_manifest = manifest["completion_gap_audit"]
     completion_gap = read_json(CURRENT_COMPLETION_GAP_JSON)
+    goal_blocker_manifest = manifest["goal_blocker_audit"]
+    goal_blocker = read_json(GOAL_BLOCKER_AUDIT_JSON)
+    goal_blocker_md = GOAL_BLOCKER_AUDIT_MD.read_text(encoding="utf-8")
     check_equal(report, "manifest latest ledger path", manifest_ledger, str(LEDGER_PATH))
     check_equal(report, "manifest latest preflight path", manifest_preflight, str(PREFLIGHT_PATH))
     check_equal(report, "manifest E3 boundary json path", boundary_manifest["json"], str(E3_BOUNDARY_DIAGNOSIS_JSON))
@@ -399,6 +406,61 @@ def build_report() -> dict[str, Any]:
         completion_gap["runtime_recheck"]["default_gpu_pool_available_for_next_start"],
         e4_readiness["runtime_snapshot"]["gpu"]["default_pool_available_for_next_start"],
     )
+    check_equal(
+        report,
+        "manifest goal blocker latest json path",
+        goal_blocker_manifest["latest_json"],
+        str(GOAL_BLOCKER_AUDIT_JSON),
+    )
+    check_equal(
+        report,
+        "manifest goal blocker latest md path",
+        goal_blocker_manifest["latest_md"],
+        str(GOAL_BLOCKER_AUDIT_MD),
+    )
+    check_equal(
+        report,
+        "goal blocker status recommendation",
+        goal_blocker["current_goal_status_recommendation"],
+        "blocked_waiting_external_state",
+    )
+    blocker_names = [item["name"] for item in goal_blocker["blocking_conditions"]]
+    check_equal(
+        report,
+        "goal blocker names",
+        blocker_names,
+        ["No viable E4 multi-model candidate", "Default Qwen3 GPU pool is not a clean runtime"],
+    )
+    check_equal(
+        report,
+        "goal blocker E4 decision",
+        goal_blocker["blocking_conditions"][0]["details"]["decision"],
+        e4_readiness["decision"],
+    )
+    check_equal(
+        report,
+        "goal blocker E4 can start",
+        goal_blocker["blocking_conditions"][0]["details"]["can_start_gate10_now"],
+        e4_readiness["can_start_gate10_now"],
+    )
+    check_equal(
+        report,
+        "goal blocker runtime status",
+        goal_blocker["blocking_conditions"][1]["details"]["preflight_status"],
+        preflight["readiness"]["status"],
+    )
+    check_contains(
+        report,
+        "goal blocker no-candidate markdown",
+        goal_blocker_md,
+        "E4 没有可用多模型候选",
+    )
+    check_contains(
+        report,
+        "goal blocker runtime markdown",
+        goal_blocker_md,
+        "默认 Qwen3 GPU 池不干净",
+    )
     stale_completion_claims = [
         "Seed-C/Seed-D boundary diagnosis and at least one viable multi-model gate result remain missing",
         "WTQ fresh targeted run 未完成",
@@ -469,6 +531,7 @@ def build_report() -> dict[str, Any]:
         "PRD formal ledger": "latest_formal_result_ledger_current_zh.md",
         "PRD current patent section": "latest_current_patent_experiment_section_zh.md",
         "PRD current completion gap audit": "latest_completion_gap_audit_current_zh.md",
+        "PRD goal blocker audit": "latest_goal_blocker_audit_current_zh.md",
         "PRD E3 boundary diagnosis": "seed_boundary_error_diagnosis.md",
         "PRD E4 readiness audit": "latest_e4_multimodel_gate_readiness_audit_zh.md",
         "PRD active status": "active_not_complete",
