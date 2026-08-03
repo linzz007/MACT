@@ -60,6 +60,7 @@ E3_RUN_DIR = Path(
     "/home/ubuntu/lzz/MACT/outputs/server_runs/"
     "qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231"
 )
+E3_SEEDS = ("seed_c", "seed_d")
 TASK_ORDER = ("wtq", "tabfact", "crt")
 
 
@@ -253,7 +254,91 @@ def targeted_fresh_rows(summary: dict[str, Any], *, mact_commit: str, myagent_co
     ]
 
 
-def pending_rows(template: dict[str, Any], *, completed_stages: set[str]) -> list[dict[str, Any]]:
+def seed_stage_name(seed: str, suffix: str) -> str:
+    return f"E3 Seed-{seed.split('_', 1)[1].upper()} {suffix}"
+
+
+def e3_current_rows(summary: dict[str, Any], *, mact_commit: str, myagent_commit: str) -> list[dict[str, Any]]:
+    seed = summary["seed_label"]
+    stage = seed_stage_name(seed, "current-only Gate-50")
+    rows: list[dict[str, Any]] = []
+    failures = 0
+    missing = 0
+    for task in TASK_ORDER:
+        item = summary["datasets"][task]
+        failures += int(item["num_failed_exec"])
+        missing += int(item["num_missing_answer"])
+        rows.append(
+            {
+                "stage": stage,
+                "status": "complete_current_gate_pass"
+                if item["passed_current_seed_gate"]
+                else "complete_current_gate_inspect",
+                "dataset": task,
+                "input_rows": int(item["input_rows"]),
+                "merged_rows": int(item["merged_rows"]),
+                "eval_rows": int(item["eval_rows"]),
+                "myagent_correct": int(item["correct"]),
+                "mact_correct_or_reference": None,
+                "accuracy_delta_correct": None,
+                "token_ratio": float(item["token_ratio_to_mact_full200"]),
+                "avg_total_tokens": float(item["avg_total_tokens"]),
+                "avg_elapsed_seconds": float(item["avg_elapsed_seconds"]),
+                "num_failed_exec": int(item["num_failed_exec"]),
+                "num_missing_answer": int(item["num_missing_answer"]),
+                "decision": "current_seed_gate_pass"
+                if item["passed_current_seed_gate"]
+                else "current_seed_gate_inspect",
+                "reference_label": "current_gate_only_no_same_seed_mact",
+                "evidence_json": str(E3_RUN_DIR / "summary" / f"{seed}_myagent_gate50_summary.json"),
+                "evidence_md": str(E3_RUN_DIR / "summary" / f"{seed}_myagent_gate50_summary.md"),
+                "git_commit": {"myagent": myagent_commit, "mact": mact_commit},
+            }
+        )
+    overall = summary["overall"]
+    rows.append(
+        {
+            "stage": stage,
+            "status": "complete_current_only_gate_pass"
+            if summary["decision"] == "run_paired_mact"
+            else "complete_current_only_stop_or_inspect",
+            "dataset": "aggregate",
+            "input_rows": int(overall["rows"]),
+            "merged_rows": int(overall["rows"]),
+            "eval_rows": int(overall["rows"]),
+            "myagent_correct": int(overall["correct"]),
+            "mact_correct_or_reference": None,
+            "accuracy_delta_correct": None,
+            "token_ratio": float(overall["token_ratio_to_mact_full200_weighted"]),
+            "avg_total_tokens": float(overall["avg_total_tokens_weighted"]),
+            "avg_elapsed_seconds": float(overall["avg_elapsed_seconds_weighted"]),
+            "num_failed_exec": failures,
+            "num_missing_answer": missing,
+            "decision": summary["decision"],
+            "reference_label": "current_gate_only_no_same_seed_mact",
+            "evidence_json": str(E3_RUN_DIR / "summary" / f"{seed}_myagent_gate50_summary.json"),
+            "evidence_md": str(E3_RUN_DIR / "summary" / f"{seed}_myagent_gate50_summary.md"),
+            "git_commit": {"myagent": myagent_commit, "mact": mact_commit},
+        }
+    )
+    return rows
+
+
+def e3_current_decisions() -> dict[str, str]:
+    decisions: dict[str, str] = {}
+    for seed in E3_SEEDS:
+        path = E3_RUN_DIR / "summary" / f"{seed}_myagent_gate50_summary.json"
+        if path.exists():
+            decisions[seed] = read_json(path)["decision"]
+    return decisions
+
+
+def pending_rows(
+    template: dict[str, Any],
+    *,
+    completed_stages: set[str],
+    current_seed_decisions: dict[str, str],
+) -> list[dict[str, Any]]:
     rows: list[dict[str, Any]] = []
     for item in template["pending_experiment_rows"]:
         if item["stage"] in completed_stages:
@@ -272,22 +357,31 @@ def pending_rows(template: dict[str, Any], *, completed_stages: set[str]) -> lis
                 count_jsonl(E3_RUN_DIR / "input" / "seed_d" / f"{task}_seed_d_gate50.jsonl") or 0
                 for task in TASK_ORDER
             )
-        rows.append(
-            {
-                "stage": item["stage"],
-                "status": "needs_ledger_refresh_from_completed_evidence" if evidence_exists else item["status"],
-                "dataset": item["dataset"],
-                "input_rows_required": item["input_rows_required"],
-                "input_rows_observed": input_rows_observed,
-                "pass_condition": item["pass_condition"],
-                "runner": item["runner"],
-                "expected_evidence_json": evidence_json,
-                "expected_evidence_md": evidence_md,
-                "evidence_json_exists": evidence_exists,
-                "evidence_md_exists": bool(evidence_md and Path(evidence_md).exists()),
-                "if_fail": item["if_fail"],
-            }
-        )
+        status = "needs_ledger_refresh_from_completed_evidence" if evidence_exists else item["status"]
+        not_required_reason = None
+        for seed in E3_SEEDS:
+            if f"Seed-{seed.split('_', 1)[1].upper()} paired" in item["stage"]:
+                decision = current_seed_decisions.get(seed)
+                if decision and decision != "run_paired_mact":
+                    status = "not_required"
+                    not_required_reason = f"{seed} current-only decision={decision}"
+        row = {
+            "stage": item["stage"],
+            "status": status,
+            "dataset": item["dataset"],
+            "input_rows_required": item["input_rows_required"],
+            "input_rows_observed": input_rows_observed,
+            "pass_condition": item["pass_condition"],
+            "runner": item["runner"],
+            "expected_evidence_json": evidence_json,
+            "expected_evidence_md": evidence_md,
+            "evidence_json_exists": evidence_exists,
+            "evidence_md_exists": bool(evidence_md and Path(evidence_md).exists()),
+            "if_fail": item["if_fail"],
+        }
+        if not_required_reason:
+            row["not_required_reason"] = not_required_reason
+        rows.append(row)
     return rows
 
 
@@ -306,9 +400,10 @@ def completion_summary(completed: list[dict[str, Any]], pending: list[dict[str, 
             "Qwen3-32B full200 stage: MyAgent beats MACT on WTQ, TabFact, and CRT with lower aggregate tokens.",
             "P4b new-seed Gate-50 supports overall/token evidence but exposes WTQ risk.",
             "WTQ targeted fresh closure has completed, and P4b after-targeted Gate-50 shows all-dataset superiority.",
+            "E3 Seed-C current-only Gate-50 is a documented stability boundary: overall 114/150, decision stop_or_inspect.",
         ],
         "cannot_write_yet": [
-            "E3 Seed-C/Seed-D stability has run.",
+            "E3 Seed-D stability has run and/or Seed-C inspection has closed the observed TabFact boundary.",
             "A viable additional model gate has completed.",
             "The full patent experiment section is final.",
         ],
@@ -321,6 +416,18 @@ def render_number(value: Any, digits: int = 4) -> str:
     if isinstance(value, float):
         return f"{value:.{digits}f}"
     return str(value)
+
+
+def render_count(value: Any, rows: int) -> str:
+    if value is None:
+        return "n/a"
+    return f"{value}/{rows}"
+
+
+def render_delta(value: Any) -> str:
+    if value is None:
+        return "n/a"
+    return f"{int(value):+d}"
 
 
 def render_markdown(ledger: dict[str, Any]) -> str:
@@ -341,8 +448,8 @@ def render_markdown(ledger: dict[str, Any]) -> str:
             f"| {row['stage']} | {row['dataset']} | "
             f"{row['input_rows']}/{row['merged_rows']}/{row['eval_rows']} | "
             f"{row['myagent_correct']}/{row['eval_rows']} | "
-            f"{row['mact_correct_or_reference']}/{row['eval_rows']} | "
-            f"{row['accuracy_delta_correct']:+d} | {render_number(row['token_ratio'])} | "
+            f"{render_count(row['mact_correct_or_reference'], row['eval_rows'])} | "
+            f"{render_delta(row['accuracy_delta_correct'])} | {render_number(row['token_ratio'])} | "
             f"{render_number(row['avg_total_tokens'], 2)} | {render_number(row['avg_elapsed_seconds'], 2)} | "
             f"{row['num_failed_exec']}/{row['num_missing_answer']} | `{row['decision']}` |"
         )
@@ -421,7 +528,22 @@ def build_ledger() -> dict[str, Any]:
                 aggregate_decision="accepted_after_targeted_all_dataset_superiority",
             )
         )
-    pending = pending_rows(template, completed_stages={row["stage"] for row in completed})
+    for seed in E3_SEEDS:
+        current_summary = E3_RUN_DIR / "summary" / f"{seed}_myagent_gate50_summary.json"
+        if current_summary.exists():
+            completed.extend(
+                e3_current_rows(
+                    read_json(current_summary),
+                    mact_commit=mact_commit,
+                    myagent_commit=myagent_commit,
+                )
+            )
+    current_seed_decisions = e3_current_decisions()
+    pending = pending_rows(
+        template,
+        completed_stages={row["stage"] for row in completed},
+        current_seed_decisions=current_seed_decisions,
+    )
     return {
         "artifact_name": "qwen3_32b_current_formal_result_ledger",
         "generated_at_local": generated_at,
@@ -432,6 +554,11 @@ def build_ledger() -> dict[str, Any]:
             "p4b_summary": str(P4B_SUMMARY),
             "p4b_wtq_targeted_fresh_summary": str(P4B_WTQ_TARGETED_FRESH_SUMMARY),
             "p4b_after_targeted_summary": str(P4B_AFTER_TARGETED_SUMMARY),
+            "e3_current_summaries": {
+                seed: str(E3_RUN_DIR / "summary" / f"{seed}_myagent_gate50_summary.json")
+                for seed in E3_SEEDS
+                if (E3_RUN_DIR / "summary" / f"{seed}_myagent_gate50_summary.json").exists()
+            },
             "formal_template": str(FORMAL_TEMPLATE),
             "latest_runtime_preflight": str(LATEST_PREFLIGHT),
         },

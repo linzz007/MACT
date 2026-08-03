@@ -54,10 +54,13 @@ Current status:
   token ratio `0.5310`, failures/missing `0/0`.
 - The patent-facing mechanism evidence matrix now combines full200, coarse
   ablation, offline attribution evidence, and fresh WTQ closure.
-- E3 multi-seed Gate-50 inputs and runners are prepared for Seed-C/Seed-D; no
-  model rows have been run yet in that package.
+- E3 Seed-C current-only Gate-50 has run `150/150` rows and stopped before
+  paired MACT with `decision=stop_or_inspect`: WTQ `40/50`, TabFact `44/50`,
+  CRT `30/50`, overall `114/150`, token ratio vs MACT full200 reference
+  `0.6096`, failures/missing `0/0`.
 - The latest completion-gap audit records that the active goal is not complete:
-  multi-seed execution and one viable multi-model gate remain missing.
+  Seed-D execution and/or Seed-C inspection, plus one viable multi-model gate,
+  remain missing.
 - The claim-to-evidence traceability matrix maps six patent claim families to
   mechanisms, evidence files, support strength, and remaining gaps.
 - The formal result-table template defines the exact fields and decision ledger
@@ -70,12 +73,13 @@ Current status:
   `0,1`, port `8001` serves GPU `2,3`, and both endpoints return
   `qwen3-32b-local` with the local API key. GPU `6,7` still show residual
   runtime usage but are not required for the active queue. Latest recorded
-  preflight: `qwen3_runtime_preflight_20260803_093203.json/md`.
+  preflight: `qwen3_runtime_preflight_20260803_095841.json/md`.
 - The current formal-result ledger is generated from frozen JSON sources and
   keeps pending stages explicit rather than mixing them with completed results.
-  Latest generated ledger: `formal_result_ledger_current_20260803_094728.json/md`.
+  Latest generated ledger is available through
+  `latest_formal_result_ledger_current.json/md`.
 - The latest consistency audit passes with 0 errors and 0 warnings:
-  `patent_package_consistency_audit_20260803_094924.json/md`.
+  see `latest_patent_package_consistency_audit.json/md`.
 - The checksum manifest lets a restored server verify that package files and
   existing referenced evidence files were recovered without corruption.
   Use `latest_patent_package_checksums.json/md` and `SHA256SUMS`; the latest

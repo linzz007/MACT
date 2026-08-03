@@ -4,6 +4,21 @@
   "created_at_local": "2026-08-01 22:31 CST",
   "stage": "E3 multi-seed Gate-50 preparation",
   "purpose": "Additional random-seed stability validation for patent-facing MyAgent selective risk collaboration evidence.",
+  "execution_status": {
+    "last_updated_at_local": "2026-08-03 10:23 CST",
+    "seed_c_current_only": {
+      "status": "complete_stop_or_inspect",
+      "summary_json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/summary/seed_c_myagent_gate50_summary.json",
+      "summary_md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/summary/seed_c_myagent_gate50_summary.md",
+      "overall_correct": 114,
+      "overall_rows": 150,
+      "decision": "stop_or_inspect",
+      "paired_mact_status": "not_required_current_only_stop"
+    },
+    "seed_d_current_only": {
+      "status": "pending"
+    }
+  },
   "limit_per_dataset": 50,
   "seeds": {
     "seed_c": {

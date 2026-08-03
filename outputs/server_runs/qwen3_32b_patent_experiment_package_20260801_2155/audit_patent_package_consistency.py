@@ -221,10 +221,24 @@ def build_report() -> dict[str, Any]:
         if float(p4b_after["token_ratio"]) >= 0.75:
             report["errors"].append(f"P4b after-targeted token ratio too high: {p4b_after['token_ratio']}")
 
+    seed_c_current_rows = [
+        row
+        for row in completed_rows
+        if row["stage"] == "E3 Seed-C current-only Gate-50" and row["dataset"] == "aggregate"
+    ]
+    if seed_c_current_rows:
+        seed_c_current = seed_c_current_rows[0]
+        check_equal(report, "E3 Seed-C current row count", len(seed_c_current_rows), 1)
+        check_equal(report, "E3 Seed-C current MyAgent correct", seed_c_current["myagent_correct"], 114)
+        check_equal(report, "E3 Seed-C current failures", seed_c_current["num_failed_exec"], 0)
+        check_equal(report, "E3 Seed-C current missing", seed_c_current["num_missing_answer"], 0)
+        check_equal(report, "E3 Seed-C current decision", seed_c_current["decision"], "stop_or_inspect")
+
     seed_pending = [
         row for row in pending_rows if "Seed-" in row["stage"]
     ]
-    check_equal(report, "E3 pending row count", len(seed_pending), 4)
+    check_at_least(report, "E3 pending row count lower bound", len(seed_pending), 2)
+    check_at_most(report, "E3 pending row count upper bound", len(seed_pending), 4)
     for row in seed_pending:
         if row.get("input_rows_observed") != 150:
             report["errors"].append(

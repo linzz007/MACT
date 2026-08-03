@@ -1,6 +1,6 @@
 # Qwen3-32B Policy v6b E3 Multi-Seed Gate-50
 
-Status: inputs and runners prepared on 2026-08-01 22:31 CST. No model run was executed in this directory at creation time because `8000/8001` were unavailable and GPU `6,7` were occupied by non-visible runtime state.
+Status: inputs and runners prepared on 2026-08-01 22:31 CST. Seed-C current-only was executed on 2026-08-03 using the healthy GPU `0,1,2,3` Qwen3 endpoints and stopped before paired MACT with `decision=stop_or_inspect`.
 
 Purpose: add two additional random-seed Gate-50 validations for the patent-facing MyAgent selective risk collaboration evidence chain. This is not a new optimization pass and does not change MyAgent code.
 
@@ -18,6 +18,19 @@ Sampling excludes frozen full200 inputs, coarse diagnostic Gate-50 inputs, P4b n
 ```text
 /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/multiseed_gate50_manifest.json
 ```
+
+## Current Results
+
+Seed-C current-only summary:
+
+```text
+summary/seed_c_myagent_gate50_summary.json
+summary/seed_c_myagent_gate50_summary.md
+```
+
+Seed-C result: WTQ `40/50`, TabFact `44/50`, CRT `30/50`, overall `114/150`, token ratio vs MACT full200 reference `0.6096`, failures/missing `0/0`, decision `stop_or_inspect`. Under this gate, Seed-C paired MACT is not required; inspect MyAgent errors before spending baseline runtime.
+
+Seed-D remains pending.
 
 ## Run Order After Server Recovery
 
