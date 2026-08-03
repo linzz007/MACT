@@ -1,18 +1,18 @@
 # Patent Package Consistency Audit
 
-Generated: `2026-08-03 12:48:48 CST`
+Generated: `2026-08-03 12:45:38 CST`
 
 | item | value |
 |---|---|
-| overall status | `pass` |
-| errors | `0` |
+| overall status | `fail` |
+| errors | `1` |
 | warnings | `1` |
 | MyAgent HEAD | `253622b` |
 | MACT HEAD | `e0b137a` |
 
 ## Errors
 
-- none
+- manifest online status: expected 'blocked_gpu_runtime_residual', got 'start_service_required'
 
 ## Warnings
 
@@ -99,7 +99,7 @@ Generated: `2026-08-03 12:48:48 CST`
 | patent disclosure E3 boundary | `True` | `Combined | 300/300/300 | 212/300 | 0.5916 | 0/0 | `complete_boundary_evidence`` | `` |
 | patent disclosure E4 boundary | `True` | `E4 多模型 readiness audit 结果为 `no_candidate_wait`` | `` |
 | patent disclosure evidence paths | `True` | `latest_completion_gap_audit_current_zh.md` | `` |
-| manifest online status | `True` | `blocked_gpu_runtime_residual` | `blocked_gpu_runtime_residual` |
+| manifest online status | `False` | `start_service_required` | `blocked_gpu_runtime_residual` |
 | PRD queue script | `True` | `run_remaining_qwen3_patent_queue.sh` | `` |
 | PRD runtime preflight | `True` | `latest_qwen3_runtime_preflight_zh.md` | `` |
 | PRD formal ledger | `True` | `latest_formal_result_ledger_current_zh.md` | `` |

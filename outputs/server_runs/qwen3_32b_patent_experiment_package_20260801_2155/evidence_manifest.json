@@ -237,7 +237,7 @@
     "legacy_md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/completion_gap_audit_20260801_2244_zh.md",
     "overall_completion_status": "active_not_complete",
     "reason_not_complete": "The current patent experiment section has been consolidated as draft-ready evidence with explicit boundaries. At least one viable additional-model gate result remains missing; Seed-C/Seed-D boundary diagnosis is complete and latest E4 readiness audit found no new model/API candidate, so E4 remains pending/no-candidate.",
-    "latest_observed_at_local": "2026-08-03 12:12:49 CST"
+    "latest_observed_at_local": "2026-08-03 12:45:31 CST"
   },
   "claim_evidence_traceability": {
     "json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/claim_evidence_traceability_20260801_2248.json",
@@ -333,9 +333,9 @@
       "Seed-C/Seed-D MyAgent current-only Gate-50 must decide run_paired_mact before paired MACT baseline runs.",
       "The queue does not automatically expand to Gate-150 or full200."
     ],
-    "current_online_status": "start_service_required",
-    "latest_observed_at_local": "2026-08-03 12:18 CST",
-    "latest_observation": "Qwen3 endpoints 8000/8001 are closed and no visible model/runner process is present; nvidia-smi compute-app query and lsof on /dev/nvidia0-3 return no holders. However GPU 0,1,2,3 still show about 27GB each with high utilization and no visible PID, so the default pool is not safe to start. Next online run must rerun E4/runtime preflight and confirm a clean GPU pair before starting Qwen3 vLLM."
+    "current_online_status": "blocked_gpu_runtime_residual",
+    "latest_observed_at_local": "2026-08-03 12:45:08 CST",
+    "latest_observation": "Qwen3 endpoints 8000/8001 are closed and no visible model/runner process is present; nvidia-smi compute-app query returns no holders. However GPU 0,1,2,3 still show about 27.8GB each with high utilization and no visible PID, so the default pool is not safe to start. Next online run must rerun E4/runtime preflight and confirm a clean GPU pair before starting Qwen3 vLLM."
   },
   "package_consistency_audit": {
     "script": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/audit_patent_package_consistency.py",
@@ -345,16 +345,16 @@
     "latest_status": "pass",
     "latest_errors": 0,
     "latest_warnings": 1,
-    "latest_observed_at_local": "2026-08-03 12:33:35 CST"
+    "latest_observed_at_local": "2026-08-03 12:48:37 CST"
   },
   "package_checksums": {
     "script": "outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/build_patent_package_checksums.py",
     "latest_json": "outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_patent_package_checksums.json",
     "latest_md": "outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_patent_package_checksums_zh.md",
     "sha256sums": "outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/SHA256SUMS",
-    "latest_record_count": 236,
+    "latest_record_count": 250,
     "latest_missing_or_pending_reference_count": 0,
-    "latest_observed_at_local": "2026-08-03 12:41 CST"
+    "latest_observed_at_local": "2026-08-03 12:48:53 CST"
   },
   "current_prd": "/home/ubuntu/lzz/MyAgent/docs/server/server_codex_reports/current-qwen3-mact-experiment-prd.md",
   "formal_experiment_schedule": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/formal_experiment_schedule_zh.md",
@@ -382,7 +382,7 @@
     ],
     "default_gpu_pool_available_for_next_start": false,
     "visible_runner_or_model_processes": 0,
-    "latest_observed_at_local": "2026-08-03 12:18:37 CST",
+    "latest_observed_at_local": "2026-08-03 12:45:08 CST",
     "decision_note": "No Gate-10 should start until a new untested local model path or API provider profile appears. Known no-go local models should not be rerun."
   }
 }

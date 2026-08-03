@@ -1,9 +1,9 @@
 {
-  "generated_at_local": "2026-08-03 12:48:48 CST",
+  "generated_at_local": "2026-08-03 12:33:22 CST",
   "package_dir": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155",
   "git_heads": {
-    "myagent": "253622b",
-    "mact": "e0b137a"
+    "myagent": "5834603",
+    "mact": "ad8c1e1"
   },
   "path_checks": {
     "prd": {
@@ -273,13 +273,13 @@
       "pass": true
     },
     "preflight status matches ledger": {
-      "actual": "blocked_gpu_runtime_residual",
-      "expected": "blocked_gpu_runtime_residual",
+      "actual": "start_service_required",
+      "expected": "start_service_required",
       "pass": true
     },
     "preflight generated_at matches ledger": {
-      "actual": "2026-08-03 12:45:08 CST",
-      "expected": "2026-08-03 12:45:08 CST",
+      "actual": "2026-08-03 11:13:18 CST",
+      "expected": "2026-08-03 11:13:18 CST",
       "pass": true
     },
     "manifest latest ledger path": {
@@ -469,8 +469,8 @@
       "pass": true
     },
     "manifest online status": {
-      "actual": "blocked_gpu_runtime_residual",
-      "expected": "blocked_gpu_runtime_residual",
+      "actual": "start_service_required",
+      "expected": "start_service_required",
       "pass": true
     },
     "PRD queue script": {
@@ -508,7 +508,7 @@
   },
   "errors": [],
   "warnings": [
-    "online experiments remain gated by runtime status: blocked_gpu_runtime_residual"
+    "online experiments remain gated by runtime status: start_service_required"
   ],
   "overall_status": "pass"
 }

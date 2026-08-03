@@ -1,14 +1,14 @@
 # Patent Package Consistency Audit
 
-Generated: `2026-08-03 12:48:48 CST`
+Generated: `2026-08-03 12:33:35 CST`
 
 | item | value |
 |---|---|
 | overall status | `pass` |
 | errors | `0` |
 | warnings | `1` |
-| MyAgent HEAD | `253622b` |
-| MACT HEAD | `e0b137a` |
+| MyAgent HEAD | `5834603` |
+| MACT HEAD | `ad8c1e1` |
 
 ## Errors
 
@@ -16,7 +16,7 @@ Generated: `2026-08-03 12:48:48 CST`
 
 ## Warnings
 
-- online experiments remain gated by runtime status: blocked_gpu_runtime_residual
+- online experiments remain gated by runtime status: start_service_required
 
 ## Key Checks
 
@@ -58,8 +58,8 @@ Generated: `2026-08-03 12:48:48 CST`
 | E3 Seed-D current decision | `True` | `stop_or_inspect` | `stop_or_inspect` |
 | E3 pending row count lower bound | `True` | `2` | `>=2` |
 | E3 pending row count upper bound | `True` | `2` | `<=4` |
-| preflight status matches ledger | `True` | `blocked_gpu_runtime_residual` | `blocked_gpu_runtime_residual` |
-| preflight generated_at matches ledger | `True` | `2026-08-03 12:45:08 CST` | `2026-08-03 12:45:08 CST` |
+| preflight status matches ledger | `True` | `start_service_required` | `start_service_required` |
+| preflight generated_at matches ledger | `True` | `2026-08-03 11:13:18 CST` | `2026-08-03 11:13:18 CST` |
 | manifest latest ledger path | `True` | `/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_formal_result_ledger_current.json` | `/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_formal_result_ledger_current.json` |
 | manifest latest preflight path | `True` | `/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_qwen3_runtime_preflight.json` | `/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_qwen3_runtime_preflight.json` |
 | manifest E3 boundary json path | `True` | `/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/summary/seed_boundary_error_diagnosis.json` | `/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/summary/seed_boundary_error_diagnosis.json` |
@@ -99,7 +99,7 @@ Generated: `2026-08-03 12:48:48 CST`
 | patent disclosure E3 boundary | `True` | `Combined | 300/300/300 | 212/300 | 0.5916 | 0/0 | `complete_boundary_evidence`` | `` |
 | patent disclosure E4 boundary | `True` | `E4 多模型 readiness audit 结果为 `no_candidate_wait`` | `` |
 | patent disclosure evidence paths | `True` | `latest_completion_gap_audit_current_zh.md` | `` |
-| manifest online status | `True` | `blocked_gpu_runtime_residual` | `blocked_gpu_runtime_residual` |
+| manifest online status | `True` | `start_service_required` | `start_service_required` |
 | PRD queue script | `True` | `run_remaining_qwen3_patent_queue.sh` | `` |
 | PRD runtime preflight | `True` | `latest_qwen3_runtime_preflight_zh.md` | `` |
 | PRD formal ledger | `True` | `latest_formal_result_ledger_current_zh.md` | `` |

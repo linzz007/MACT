@@ -1,5 +1,5 @@
 {
-  "generated_at_local": "2026-08-03 12:48:48 CST",
+  "generated_at_local": "2026-08-03 12:45:38 CST",
   "package_dir": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155",
   "git_heads": {
     "myagent": "253622b",
@@ -469,9 +469,9 @@
       "pass": true
     },
     "manifest online status": {
-      "actual": "blocked_gpu_runtime_residual",
+      "actual": "start_service_required",
       "expected": "blocked_gpu_runtime_residual",
-      "pass": true
+      "pass": false
     },
     "PRD queue script": {
       "needle": "run_remaining_qwen3_patent_queue.sh",
@@ -506,9 +506,11 @@
       "pass": true
     }
   },
-  "errors": [],
+  "errors": [
+    "manifest online status: expected 'blocked_gpu_runtime_residual', got 'start_service_required'"
+  ],
   "warnings": [
     "online experiments remain gated by runtime status: blocked_gpu_runtime_residual"
   ],
-  "overall_status": "pass"
+  "overall_status": "fail"
 }
