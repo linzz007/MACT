@@ -60,6 +60,8 @@ E3_RUN_DIR = Path(
     "/home/ubuntu/lzz/MACT/outputs/server_runs/"
     "qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231"
 )
+E3_BOUNDARY_DIAGNOSIS_JSON = E3_RUN_DIR / "summary" / "seed_boundary_error_diagnosis.json"
+E3_BOUNDARY_DIAGNOSIS_MD = E3_RUN_DIR / "summary" / "seed_boundary_error_diagnosis.md"
 E3_SEEDS = ("seed_c", "seed_d")
 TASK_ORDER = ("wtq", "tabfact", "crt")
 
@@ -402,9 +404,9 @@ def completion_summary(completed: list[dict[str, Any]], pending: list[dict[str, 
             "WTQ targeted fresh closure has completed, and P4b after-targeted Gate-50 shows all-dataset superiority.",
             "E3 Seed-C current-only Gate-50 is a documented stability boundary: overall 114/150, decision stop_or_inspect.",
             "E3 Seed-D current-only Gate-50 is a second documented stability boundary: overall 98/150, decision stop_or_inspect.",
+            "E3 Seed-C/Seed-D offline boundary diagnosis has explained the current-gate boundary as semantic accuracy stability, not runtime/tool failure or token-budget failure.",
         ],
         "cannot_write_yet": [
-            "E3 Seed-C/Seed-D error inspection has explained the observed current-gate boundaries.",
             "A viable additional model gate has completed.",
             "The full patent experiment section is final.",
         ],
@@ -560,6 +562,8 @@ def build_ledger() -> dict[str, Any]:
                 for seed in E3_SEEDS
                 if (E3_RUN_DIR / "summary" / f"{seed}_myagent_gate50_summary.json").exists()
             },
+            "e3_boundary_diagnosis_json": str(E3_BOUNDARY_DIAGNOSIS_JSON) if E3_BOUNDARY_DIAGNOSIS_JSON.exists() else None,
+            "e3_boundary_diagnosis_md": str(E3_BOUNDARY_DIAGNOSIS_MD) if E3_BOUNDARY_DIAGNOSIS_MD.exists() else None,
             "formal_template": str(FORMAL_TEMPLATE),
             "latest_runtime_preflight": str(LATEST_PREFLIGHT),
         },

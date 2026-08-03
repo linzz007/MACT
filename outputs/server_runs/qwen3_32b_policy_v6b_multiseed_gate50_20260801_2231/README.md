@@ -1,6 +1,6 @@
 # Qwen3-32B Policy v6b E3 Multi-Seed Gate-50
 
-Status: inputs and runners prepared on 2026-08-01 22:31 CST. Seed-C and Seed-D current-only were executed on 2026-08-03 using the healthy GPU `0,1,2,3` Qwen3 endpoints. Both stopped before paired MACT with `decision=stop_or_inspect`.
+Status: inputs and runners prepared on 2026-08-01 22:31 CST. Seed-C and Seed-D current-only were executed on 2026-08-03 using the healthy GPU `0,1,2,3` Qwen3 endpoints. Both stopped before paired MACT with `decision=stop_or_inspect`. Offline boundary diagnosis completed on 2026-08-03 11:25 CST.
 
 Purpose: add two additional random-seed Gate-50 validations for the patent-facing MyAgent selective risk collaboration evidence chain. This is not a new optimization pass and does not change MyAgent code.
 
@@ -38,6 +38,16 @@ summary/seed_d_myagent_gate50_summary.md
 ```
 
 Seed-D result: WTQ `30/50`, TabFact `38/50`, CRT `30/50`, overall `98/150`, token ratio vs MACT full200 reference `0.5735`, failures/missing `0/0`, decision `stop_or_inspect`. Under this gate, Seed-D paired MACT is not required. This is boundary evidence, not a multi-seed stability pass.
+
+Boundary diagnosis:
+
+```text
+analyze_seed_boundary_errors.py
+summary/seed_boundary_error_diagnosis.json
+summary/seed_boundary_error_diagnosis.md
+```
+
+Diagnosis result: row-level evaluator recomputation matches both summaries (`300` rows, `212` correct, `88` wrong, verification `pass`). There are no failed executions or missing answers. The weighted token ratio vs MACT full200 reference is `0.5916`, so the E3 blocker is semantic accuracy stability rather than runtime/tool failure or token budget. The dominant wrong-row categories are CRT multi-step numeric composition, WTQ entity lookup/row selection, WTQ numeric aggregation, TabFact temporal order, and CRT span/universal quantifier boundaries.
 
 ## Run Order After Server Recovery
 

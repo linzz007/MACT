@@ -19,6 +19,12 @@ PRD_PATH = MYAGENT_ROOT / "docs/server/server_codex_reports/current-qwen3-mact-e
 MANIFEST_PATH = PACKAGE_DIR / "evidence_manifest.json"
 LEDGER_PATH = PACKAGE_DIR / "latest_formal_result_ledger_current.json"
 PREFLIGHT_PATH = PACKAGE_DIR / "latest_qwen3_runtime_preflight.json"
+E3_BOUNDARY_DIAGNOSIS_JSON = Path(
+    "/home/ubuntu/lzz/MACT/outputs/server_runs/"
+    "qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/"
+    "summary/seed_boundary_error_diagnosis.json"
+)
+E3_BOUNDARY_DIAGNOSIS_MD = E3_BOUNDARY_DIAGNOSIS_JSON.with_suffix(".md")
 
 
 def read_json(path: Path) -> dict[str, Any]:
@@ -136,6 +142,8 @@ def build_report() -> dict[str, Any]:
         "queue_script": PACKAGE_DIR / "run_remaining_qwen3_patent_queue.sh",
         "runtime_preflight_script": PACKAGE_DIR / "preflight_qwen3_runtime.py",
         "formal_ledger_builder": PACKAGE_DIR / "build_current_formal_result_ledger.py",
+        "e3_boundary_diagnosis_json": E3_BOUNDARY_DIAGNOSIS_JSON,
+        "e3_boundary_diagnosis_md": E3_BOUNDARY_DIAGNOSIS_MD,
     }.items():
         add_path_check(report, label, path)
 
@@ -272,8 +280,17 @@ def build_report() -> dict[str, Any]:
 
     manifest_ledger = manifest["formal_result_tables_template"]["latest_current_ledger_json"]
     manifest_preflight = manifest["remaining_qwen3_queue"]["latest_runtime_preflight_json"]
+    boundary_manifest = manifest["multiseed_e3_prepared"]["boundary_error_diagnosis"]
     check_equal(report, "manifest latest ledger path", manifest_ledger, str(LEDGER_PATH))
     check_equal(report, "manifest latest preflight path", manifest_preflight, str(PREFLIGHT_PATH))
+    check_equal(report, "manifest E3 boundary json path", boundary_manifest["json"], str(E3_BOUNDARY_DIAGNOSIS_JSON))
+    check_equal(report, "manifest E3 boundary md path", boundary_manifest["md"], str(E3_BOUNDARY_DIAGNOSIS_MD))
+    check_equal(report, "manifest E3 boundary status", boundary_manifest["status"], "complete_offline_diagnosis")
+    check_equal(report, "manifest E3 boundary rows", boundary_manifest["aggregate"]["rows"], 300)
+    check_equal(report, "manifest E3 boundary correct", boundary_manifest["aggregate"]["correct"], 212)
+    check_equal(report, "manifest E3 boundary failed", boundary_manifest["aggregate"]["failed"], 0)
+    check_equal(report, "manifest E3 boundary missing", boundary_manifest["aggregate"]["missing"], 0)
+    check_equal(report, "manifest E3 boundary verification", boundary_manifest["aggregate"]["verification_status"], "pass")
     check_equal(
         report,
         "manifest online status",
@@ -285,6 +302,7 @@ def build_report() -> dict[str, Any]:
         "PRD queue script": "run_remaining_qwen3_patent_queue.sh",
         "PRD runtime preflight": "latest_qwen3_runtime_preflight_zh.md",
         "PRD formal ledger": "latest_formal_result_ledger_current_zh.md",
+        "PRD E3 boundary diagnosis": "seed_boundary_error_diagnosis.md",
         "PRD active status": "active_not_complete",
     }.items():
         check_contains(report, label, prd_text, needle)

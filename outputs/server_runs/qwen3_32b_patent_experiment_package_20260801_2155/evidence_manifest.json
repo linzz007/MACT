@@ -140,7 +140,7 @@
     "prepared_input_rows": 300,
     "prepared_rows_per_seed": 150,
     "validation_status": "prepared_inputs_verified",
-    "model_execution_status": "seed_c_seed_d_current_only_stop_or_inspect",
+    "model_execution_status": "seed_c_seed_d_current_only_stop_or_inspect_boundary_diagnosed",
     "seed_c_current_summary_json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/summary/seed_c_myagent_gate50_summary.json",
     "seed_c_current_summary_md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/summary/seed_c_myagent_gate50_summary.md",
     "seed_c_current": {
@@ -209,13 +209,31 @@
         "tabfact": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/myagent_current/seed_d/eval/tabfact_qwen3-32b-local_eval.json",
         "crt": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/myagent_current/seed_d/eval/crt_qwen3-32b-local_eval.json"
       }
+    },
+    "boundary_error_diagnosis": {
+      "script": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/analyze_seed_boundary_errors.py",
+      "json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/summary/seed_boundary_error_diagnosis.json",
+      "md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/summary/seed_boundary_error_diagnosis.md",
+      "status": "complete_offline_diagnosis",
+      "scope_note": "Offline evaluator-based diagnosis only; no new model run and no paired MACT runtime consumed.",
+      "aggregate": {
+        "rows": 300,
+        "correct": 212,
+        "wrong": 88,
+        "accuracy": 0.7066666666666667,
+        "weighted_token_ratio_to_mact_full200_reference": 0.5915609432121267,
+        "failed": 0,
+        "missing": 0,
+        "verification_status": "pass"
+      },
+      "decision_note": "E3 remains boundary evidence rather than multi-seed stable superiority evidence; paired MACT remains not_required_current_only_stop."
     }
   },
   "completion_gap_audit": {
     "json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/completion_gap_audit_20260801_2244.json",
     "md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/completion_gap_audit_20260801_2244_zh.md",
     "overall_completion_status": "active_not_complete",
-    "reason_not_complete": "Seed-C/Seed-D boundary inspection plus at least one viable multi-model gate result remain missing."
+    "reason_not_complete": "At least one viable additional-model gate result and final patent experiment-section consolidation remain missing. Seed-C/Seed-D boundary diagnosis is now complete and recorded as limitation evidence."
   },
   "claim_evidence_traceability": {
     "json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/claim_evidence_traceability_20260801_2248.json",
@@ -300,14 +318,16 @@
     "latest_status": "pass",
     "latest_errors": 0,
     "latest_warnings": 1,
-    "latest_observed_at_local": "2026-08-03 11:15:41 CST"
+    "latest_observed_at_local": "2026-08-03 11:32:43 CST"
   },
   "package_checksums": {
-    "script": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/build_patent_package_checksums.py",
-    "sha256sums": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/SHA256SUMS",
-    "latest_json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_patent_package_checksums.json",
-    "latest_md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_patent_package_checksums_zh.md",
-    "purpose": "Verify package-file and existing evidence-file integrity after server cleanup or migration."
+    "script": "outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/build_patent_package_checksums.py",
+    "latest_json": "outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_patent_package_checksums.json",
+    "latest_md": "outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_patent_package_checksums_zh.md",
+    "sha256sums": "outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/SHA256SUMS",
+    "latest_record_count": 155,
+    "latest_missing_or_pending_reference_count": 0,
+    "latest_observed_at_local": "2026-08-03 11:29:37 CST"
   },
   "current_prd": "/home/ubuntu/lzz/MyAgent/docs/server/server_codex_reports/current-qwen3-mact-experiment-prd.md",
   "formal_experiment_schedule": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/formal_experiment_schedule_zh.md",
