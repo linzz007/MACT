@@ -1,6 +1,6 @@
 # 当前专利实验章节收口稿
 
-生成时间：`2026-08-03 12:18:43 CST`
+生成时间：`2026-08-03 12:10:04 CST`
 
 本文档用于回答：当前哪些实验结果可以写进专家/专利材料，哪些结论必须保留边界。它只汇总已有 frozen 证据，不新增 benchmark 结果。
 
@@ -9,7 +9,7 @@
 - Qwen3-32B full200：MyAgent `489/600`，MACT `450/600`，delta `+39`，整体 token ratio `0.5717`，整体耗时 ratio `0.1337`。
 - P4b after-targeted Gate-50：MyAgent `121/150`，MACT `111/150`，三数据集单项均超过 MACT，整体 token ratio `0.5310`。
 - E3 Seed-C/D：current-only 合计 `212/300`，token ratio `0.5916`，failed/missing `0/0`，但 decision 仍是 boundary，不是多 seed 稳定性达标。
-- E4 多模型 gate：`no_candidate_wait`，无 untested local model、无 API provider profile/key；默认下一次启动池为 `0,1 -> 8000; 2,3 -> 8001`，当前可用状态为 `False`。
+- E4 多模型 gate：`no_candidate_wait`，无 untested local model、无 API provider profile/key；0-3 卡作为默认下一次启动池 `0,1 -> 8000; 2,3 -> 8001`。
 
 ## 2. 可以写入的正证据
 
@@ -93,7 +93,7 @@ E3 诊断结论：
 
 ## 6. 下一步触发规则
 
-- If a new candidate model/API appears, rerun runtime preflight first and start Gate-10 only on a clean GPU pair, with 0,1 -> 8000 and 2,3 -> 8001 used only when the default pool is actually available; do not consume 4-7 unless explicitly reassigned.
+- If GPUs 0-3 remain free and a new candidate model/API appears, start Gate-10 on 0,1 and 2,3 through prepare_model_gate_run.py; do not consume 4-7 unless explicitly reassigned.
 - If no new model/API exists, do not rerun known no-go models; continue drafting with E4 marked pending/no-candidate.
 - If more Qwen optimization is requested, target E3 boundary categories instead of re-optimizing already-passing full200/P4b-after-targeted rows.
 

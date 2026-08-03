@@ -308,7 +308,7 @@ def build_audit() -> dict[str, Any]:
             "visible_runner_or_model_processes": runtime["processes"][
                 "visible_runner_or_model_processes"
             ],
-            "interpretation": "GPU 0-3 are the default pool for the next model start; no E4 run should start without a new model/API candidate.",
+            "interpretation": "GPU 0-3 are the default pool configuration, but this audit records whether that pool is actually clean. No E4 run should start without both a new model/API candidate and a clean GPU pair.",
         },
         "requirements": requirements,
         "current_next_actions": [

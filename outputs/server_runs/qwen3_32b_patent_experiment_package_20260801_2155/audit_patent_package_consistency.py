@@ -315,6 +315,12 @@ def build_report() -> dict[str, Any]:
     check_equal(report, "manifest E4 readiness md path", e4_manifest["latest_md"], str(E4_READINESS_MD))
     check_equal(report, "manifest E4 readiness status", e4_manifest["status"], e4_readiness["decision"])
     check_equal(report, "manifest E4 can start gate10", e4_manifest["can_start_gate10_now"], e4_readiness["can_start_gate10_now"])
+    check_equal(
+        report,
+        "manifest E4 default GPU pool availability",
+        e4_manifest["default_gpu_pool_available_for_next_start"],
+        e4_readiness["runtime_snapshot"]["gpu"]["default_pool_available_for_next_start"],
+    )
     check_equal(report, "E4 readiness decision", e4_readiness["decision"], "no_candidate_wait")
     check_equal(report, "E4 untested local model count", len(e4_readiness["model_readiness"]["untested_local_models"]), 0)
     check_equal(report, "E4 API key count", len(e4_readiness["model_readiness"]["api_keys_present"]), 0)
@@ -381,6 +387,12 @@ def build_report() -> dict[str, Any]:
         "completion gap E4 decision",
         requirements_by_id["R5"]["metrics"]["decision"],
         "no_candidate_wait",
+    )
+    check_equal(
+        report,
+        "completion gap default GPU pool availability",
+        completion_gap["runtime_recheck"]["default_gpu_pool_available_for_next_start"],
+        e4_readiness["runtime_snapshot"]["gpu"]["default_pool_available_for_next_start"],
     )
     stale_completion_claims = [
         "Seed-C/Seed-D boundary diagnosis and at least one viable multi-model gate result remain missing",

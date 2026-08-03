@@ -1,13 +1,13 @@
 # Patent Package Consistency Audit
 
-Generated: `2026-08-03 12:19:31 CST`
+Generated: `2026-08-03 12:12:58 CST`
 
 | item | value |
 |---|---|
 | overall status | `pass` |
 | errors | `0` |
 | warnings | `1` |
-| MyAgent HEAD | `ac562ff` |
+| MyAgent HEAD | `bb4e3d3` |
 | MACT HEAD | `24efb3b` |
 
 ## Errors
@@ -74,7 +74,6 @@ Generated: `2026-08-03 12:19:31 CST`
 | manifest E4 readiness md path | `True` | `/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_e4_multimodel_gate_readiness_audit_zh.md` | `/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_e4_multimodel_gate_readiness_audit_zh.md` |
 | manifest E4 readiness status | `True` | `no_candidate_wait` | `no_candidate_wait` |
 | manifest E4 can start gate10 | `True` | `False` | `False` |
-| manifest E4 default GPU pool availability | `True` | `False` | `False` |
 | E4 readiness decision | `True` | `no_candidate_wait` | `no_candidate_wait` |
 | E4 untested local model count | `True` | `0` | `0` |
 | E4 API key count | `True` | `0` | `0` |
@@ -90,7 +89,6 @@ Generated: `2026-08-03 12:19:31 CST`
 | completion gap R4 status | `True` | `complete_boundary_not_stability_pass` | `complete_boundary_not_stability_pass` |
 | completion gap R5 status | `True` | `pending_no_candidate` | `pending_no_candidate` |
 | completion gap E4 decision | `True` | `no_candidate_wait` | `no_candidate_wait` |
-| completion gap default GPU pool availability | `True` | `False` | `False` |
 | manifest online status | `True` | `start_service_required` | `start_service_required` |
 | PRD queue script | `True` | `run_remaining_qwen3_patent_queue.sh` | `` |
 | PRD runtime preflight | `True` | `latest_qwen3_runtime_preflight_zh.md` | `` |

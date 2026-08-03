@@ -1,6 +1,6 @@
 # E4 Multi-Model Gate Readiness Audit
 
-Generated: `2026-08-03 12:18:37 CST`
+Generated: `2026-08-03 12:10:04 CST`
 
 Decision: `no_candidate_wait`.
 
@@ -32,14 +32,14 @@ Decision: `no_candidate_wait`.
 
 | GPU | memory MiB | util % |
 |---:|---:|---:|
-| 0 | 27801 | 100 |
-| 1 | 27843 | 88 |
-| 2 | 27887 | 85 |
-| 3 | 27861 | 97 |
-| 4 | 42013 | 0 |
-| 5 | 42007 | 0 |
-| 6 | 42015 | 0 |
-| 7 | 42011 | 57 |
+| 0 | 27403 | 81 |
+| 1 | 27667 | 100 |
+| 2 | 27315 | 75 |
+| 3 | 27377 | 82 |
+| 4 | 42013 | 100 |
+| 5 | 42007 | 100 |
+| 6 | 42015 | 10 |
+| 7 | 42011 | 100 |
 
 Visible model/runner processes: `0`.
 

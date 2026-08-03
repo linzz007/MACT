@@ -1,6 +1,6 @@
 # 当前专利实验完成度审计
 
-生成时间：`2026-08-03 12:18:51 CST`
+生成时间：`2026-08-03 12:10:04 CST`
 
 本文档用于回答：当前距离完整专利实验材料还差什么。它从 current/latest 证据自动汇总，不新增 benchmark 结果。
 
@@ -13,21 +13,21 @@
 | item | result |
 |---|---|
 | source | `/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_e4_multimodel_gate_readiness_audit.json` |
-| checked at | `2026-08-03 12:18:37 CST` |
+| checked at | `2026-08-03 12:10:04 CST` |
 | default GPU pool | `0,1 -> 8000; 2,3 -> 8001` |
 | default pool available | `False` |
 | visible model/runner processes | `0` |
 
 | GPU | memory MiB | util % |
 |---:|---:|---:|
-| 0 | 27801 | 100 |
-| 1 | 27843 | 88 |
-| 2 | 27887 | 85 |
-| 3 | 27861 | 97 |
-| 4 | 42013 | 0 |
-| 5 | 42007 | 0 |
-| 6 | 42015 | 0 |
-| 7 | 42011 | 57 |
+| 0 | 27403 | 81 |
+| 1 | 27667 | 100 |
+| 2 | 27315 | 75 |
+| 3 | 27377 | 82 |
+| 4 | 42013 | 100 |
+| 5 | 42007 | 100 |
+| 6 | 42015 | 10 |
+| 7 | 42011 | 100 |
 
 ## 要求逐项审计
 

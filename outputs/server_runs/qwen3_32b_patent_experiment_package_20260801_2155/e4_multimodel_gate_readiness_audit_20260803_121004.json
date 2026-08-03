@@ -1,6 +1,6 @@
 {
   "artifact_name": "e4_multimodel_gate_readiness_audit",
-  "generated_at_local": "2026-08-03 12:18:37 CST",
+  "generated_at_local": "2026-08-03 12:10:04 CST",
   "purpose": "Decide whether E4 multi-model Gate-10/Gate-50 can start without rerunning known no-go models.",
   "source_readiness_audit_json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_blind200_mact_full200_20260723/latest_experiment_readiness_audit.json",
   "source_readiness_summary_md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_blind200_mact_full200_20260723/latest_expert_evidence_summary.md",
@@ -67,49 +67,49 @@
           "--format=csv,noheader,nounits"
         ],
         "returncode": 0,
-        "stdout": "0, 27801, 100\n1, 27843, 88\n2, 27887, 85\n3, 27861, 97\n4, 42013, 0\n5, 42007, 0\n6, 42015, 0\n7, 42011, 57",
+        "stdout": "0, 27403, 81\n1, 27667, 100\n2, 27315, 75\n3, 27377, 82\n4, 42013, 100\n5, 42007, 100\n6, 42015, 10\n7, 42011, 100",
         "stderr": ""
       },
       "gpus": [
         {
           "index": 0,
-          "memory_used_mib": 27801,
-          "utilization_gpu_percent": 100
+          "memory_used_mib": 27403,
+          "utilization_gpu_percent": 81
         },
         {
           "index": 1,
-          "memory_used_mib": 27843,
-          "utilization_gpu_percent": 88
+          "memory_used_mib": 27667,
+          "utilization_gpu_percent": 100
         },
         {
           "index": 2,
-          "memory_used_mib": 27887,
-          "utilization_gpu_percent": 85
+          "memory_used_mib": 27315,
+          "utilization_gpu_percent": 75
         },
         {
           "index": 3,
-          "memory_used_mib": 27861,
-          "utilization_gpu_percent": 97
+          "memory_used_mib": 27377,
+          "utilization_gpu_percent": 82
         },
         {
           "index": 4,
           "memory_used_mib": 42013,
-          "utilization_gpu_percent": 0
+          "utilization_gpu_percent": 100
         },
         {
           "index": 5,
           "memory_used_mib": 42007,
-          "utilization_gpu_percent": 0
+          "utilization_gpu_percent": 100
         },
         {
           "index": 6,
           "memory_used_mib": 42015,
-          "utilization_gpu_percent": 0
+          "utilization_gpu_percent": 10
         },
         {
           "index": 7,
           "memory_used_mib": 42011,
-          "utilization_gpu_percent": 57
+          "utilization_gpu_percent": 100
         }
       ],
       "default_pool": "0,1 -> 8000; 2,3 -> 8001",

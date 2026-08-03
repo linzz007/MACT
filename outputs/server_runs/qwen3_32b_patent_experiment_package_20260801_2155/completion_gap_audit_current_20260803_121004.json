@@ -1,13 +1,13 @@
 {
   "audit_name": "current_completion_gap_audit",
-  "generated_at_local": "2026-08-03 12:18:51 CST",
+  "generated_at_local": "2026-08-03 12:10:04 CST",
   "purpose": "Requirement-by-requirement audit for the active patent-facing MyAgent vs MACT experiment goal.",
   "scope_boundary": "This audit compiles current evidence and gaps; it does not create new benchmark results.",
   "repositories": {
     "myagent": {
       "path": "/home/ubuntu/lzz/MyAgent",
       "branch": "codex/selective-risk-collaboration",
-      "head_at_generation": "ac562ff"
+      "head_at_generation": "bb4e3d3"
     },
     "mact": {
       "path": "/home/ubuntu/lzz/MACT",
@@ -17,53 +17,53 @@
   },
   "runtime_recheck": {
     "source": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_e4_multimodel_gate_readiness_audit.json",
-    "checked_at_local": "2026-08-03 12:18:37 CST",
+    "checked_at_local": "2026-08-03 12:10:04 CST",
     "default_gpu_pool": "0,1 -> 8000; 2,3 -> 8001",
     "default_gpu_pool_available_for_next_start": false,
     "gpus": [
       {
         "index": 0,
-        "memory_used_mib": 27801,
-        "utilization_gpu_percent": 100
+        "memory_used_mib": 27403,
+        "utilization_gpu_percent": 81
       },
       {
         "index": 1,
-        "memory_used_mib": 27843,
-        "utilization_gpu_percent": 88
+        "memory_used_mib": 27667,
+        "utilization_gpu_percent": 100
       },
       {
         "index": 2,
-        "memory_used_mib": 27887,
-        "utilization_gpu_percent": 85
+        "memory_used_mib": 27315,
+        "utilization_gpu_percent": 75
       },
       {
         "index": 3,
-        "memory_used_mib": 27861,
-        "utilization_gpu_percent": 97
+        "memory_used_mib": 27377,
+        "utilization_gpu_percent": 82
       },
       {
         "index": 4,
         "memory_used_mib": 42013,
-        "utilization_gpu_percent": 0
+        "utilization_gpu_percent": 100
       },
       {
         "index": 5,
         "memory_used_mib": 42007,
-        "utilization_gpu_percent": 0
+        "utilization_gpu_percent": 100
       },
       {
         "index": 6,
         "memory_used_mib": 42015,
-        "utilization_gpu_percent": 0
+        "utilization_gpu_percent": 10
       },
       {
         "index": 7,
         "memory_used_mib": 42011,
-        "utilization_gpu_percent": 57
+        "utilization_gpu_percent": 100
       }
     ],
     "visible_runner_or_model_processes": 0,
-    "interpretation": "GPU 0-3 are the default pool configuration, but this audit records whether that pool is actually clean. No E4 run should start without both a new model/API candidate and a clean GPU pair."
+    "interpretation": "GPU 0-3 are the default pool for the next model start; no E4 run should start without a new model/API candidate."
   },
   "requirements": [
     {
@@ -1597,11 +1597,11 @@
         "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/SHA256SUMS"
       ],
       "metrics": {
-        "myagent_head_at_generation": "ac562ff",
+        "myagent_head_at_generation": "bb4e3d3",
         "mact_head_at_generation": "24efb3b",
         "consistency_audit_status": "pass",
         "consistency_audit_errors": 0,
-        "checksum_records": 216
+        "checksum_records": 196
       },
       "gap": "This generated audit itself must be committed and pushed after generation; final proof is git local/remote HEAD equality."
     }

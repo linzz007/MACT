@@ -1,10 +1,10 @@
 {
   "artifact_name": "current_patent_experiment_section",
-  "generated_at_local": "2026-08-03 12:18:43 CST",
+  "generated_at_local": "2026-08-03 12:12:37 CST",
   "purpose": "Current patent/expert-facing experiment section with explicit supported claims and boundaries.",
   "scope_boundary": "This artifact synthesizes existing frozen evidence. It does not create new benchmark results and must not be read as final full official benchmark completion.",
   "git_commits_at_generation": {
-    "myagent": "ac562ff",
+    "myagent": "bb4e3d3",
     "mact": "24efb3b"
   },
   "evidence_paths": {
@@ -480,7 +480,7 @@
     }
   ],
   "next_trigger_rules": [
-    "If a new candidate model/API appears, rerun runtime preflight first and start Gate-10 only on a clean GPU pair, with 0,1 -> 8000 and 2,3 -> 8001 used only when the default pool is actually available; do not consume 4-7 unless explicitly reassigned.",
+    "If GPUs 0-3 remain free and a new candidate model/API appears, start Gate-10 on 0,1 and 2,3 through prepare_model_gate_run.py; do not consume 4-7 unless explicitly reassigned.",
     "If no new model/API exists, do not rerun known no-go models; continue drafting with E4 marked pending/no-candidate.",
     "If more Qwen optimization is requested, target E3 boundary categories instead of re-optimizing already-passing full200/P4b-after-targeted rows."
   ]
