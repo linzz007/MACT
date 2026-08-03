@@ -1,6 +1,6 @@
 # Qwen3-32B Policy v6b E3 Multi-Seed Gate-50
 
-Status: inputs and runners prepared on 2026-08-01 22:31 CST. Seed-C current-only was executed on 2026-08-03 using the healthy GPU `0,1,2,3` Qwen3 endpoints and stopped before paired MACT with `decision=stop_or_inspect`.
+Status: inputs and runners prepared on 2026-08-01 22:31 CST. Seed-C and Seed-D current-only were executed on 2026-08-03 using the healthy GPU `0,1,2,3` Qwen3 endpoints. Both stopped before paired MACT with `decision=stop_or_inspect`.
 
 Purpose: add two additional random-seed Gate-50 validations for the patent-facing MyAgent selective risk collaboration evidence chain. This is not a new optimization pass and does not change MyAgent code.
 
@@ -30,7 +30,14 @@ summary/seed_c_myagent_gate50_summary.md
 
 Seed-C result: WTQ `40/50`, TabFact `44/50`, CRT `30/50`, overall `114/150`, token ratio vs MACT full200 reference `0.6096`, failures/missing `0/0`, decision `stop_or_inspect`. Under this gate, Seed-C paired MACT is not required; inspect MyAgent errors before spending baseline runtime.
 
-Seed-D remains pending.
+Seed-D current-only summary:
+
+```text
+summary/seed_d_myagent_gate50_summary.json
+summary/seed_d_myagent_gate50_summary.md
+```
+
+Seed-D result: WTQ `30/50`, TabFact `38/50`, CRT `30/50`, overall `98/150`, token ratio vs MACT full200 reference `0.5735`, failures/missing `0/0`, decision `stop_or_inspect`. Under this gate, Seed-D paired MACT is not required. This is boundary evidence, not a multi-seed stability pass.
 
 ## Run Order After Server Recovery
 

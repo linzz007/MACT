@@ -1,32 +1,50 @@
 {
   "audit_name": "qwen3_32b_patent_experiment_completion_gap_audit_20260801_2244",
   "created_at_local": "2026-08-01 22:44 CST",
-  "last_updated_at_local": "2026-08-03 10:23 CST",
+  "last_updated_at_local": "2026-08-03 11:00 CST",
   "purpose": "Requirement-by-requirement audit for the active patent-facing MyAgent vs MACT experiment goal.",
   "repositories": {
     "myagent": {
       "path": "/home/ubuntu/lzz/MyAgent",
       "branch": "codex/selective-risk-collaboration",
-      "latest_commit_checked": "a542340"
+      "latest_commit_checked": "76237e4"
     },
     "mact": {
       "path": "/home/ubuntu/lzz/MACT",
       "branch": "main",
-      "latest_commit_checked": "ca965c3"
+      "latest_commit_checked": "cc9bb83"
     }
   },
   "runtime_recheck": {
-    "checked_at_local": "2026-08-03 09:58 CST",
+    "checked_at_local": "2026-08-03 11:00 CST",
     "port_8000_models": "healthy_qwen3-32b-local",
     "port_8001_models": "healthy_qwen3-32b-local",
-    "target_gpus": [0, 1, 2, 3],
-    "gpu_0_1_2_3_memory_used_mib": [45815, 45815, 45839, 45839],
-    "gpu_0_1_2_3_utilization_percent": [0, 0, 0, 0],
-    "gpu_6_7_memory_used_mib": [42011, 42005],
+    "target_gpus": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "gpu_0_1_2_3_memory_used_mib": [
+      45815,
+      45815,
+      45839,
+      45839
+    ],
+    "gpu_0_1_2_3_utilization_percent": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "gpu_6_7_memory_used_mib": [
+      42015,
+      42011
+    ],
     "visible_compute_apps": 4,
     "visible_runner_processes": 0,
     "fuser_available": false,
-    "interpretation": "Qwen3-32B online queue is available on GPUs 0,1,2,3 through two vLLM endpoints. Seed-C current-only completed on this endpoint set and stopped before paired MACT with decision=stop_or_inspect."
+    "interpretation": "Qwen3-32B online queue is available on GPUs 0,1,2,3 through two vLLM endpoints. Seed-C and Seed-D current-only both completed on this endpoint set and stopped before paired MACT with decision=stop_or_inspect."
   },
   "requirements": [
     {
@@ -75,19 +93,40 @@
     {
       "id": "R4",
       "requirement": "Multi-seed stability evidence must show the effect is not tied to one frozen full200 or one P4b seed.",
-      "status": "seed_c_complete_boundary_seed_d_pending",
+      "status": "complete_boundary_not_stability_pass",
       "evidence": [
-        "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/README.md",
-        "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/multiseed_gate50_manifest.json",
-        "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/input_generation_summary.md",
-        "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/summary/seed_c_myagent_gate50_summary.json"
+        "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/summary/seed_c_myagent_gate50_summary.json",
+        "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/summary/seed_c_myagent_gate50_summary.md",
+        "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/summary/seed_d_myagent_gate50_summary.json",
+        "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/summary/seed_d_myagent_gate50_summary.md"
       ],
       "prepared_rows": 300,
       "seed_c_current_result": "WTQ 40/50, TabFact 44/50, CRT 30/50, overall 114/150, token ratio vs MACT full200 reference 0.6096, failed/missing 0/0, decision=stop_or_inspect. Seed-C paired MACT is not required under the gate.",
       "next_required_evidence": [
         "summary/seed_d_myagent_gate50_summary.json",
         "summary/seed_d_paired_gate50_summary.json if current-only gate passes"
-      ]
+      ],
+      "metrics": {
+        "seed_c": {
+          "wtq": "40/50",
+          "tabfact": "44/50",
+          "crt": "30/50",
+          "overall": "114/150",
+          "token_ratio": 0.609640034624895,
+          "failed_missing": "0/0",
+          "decision": "stop_or_inspect"
+        },
+        "seed_d": {
+          "wtq": "30/50",
+          "tabfact": "38/50",
+          "crt": "30/50",
+          "overall": "98/150",
+          "token_ratio": 0.5734818517993583,
+          "failed_missing": "0/0",
+          "decision": "stop_or_inspect"
+        }
+      },
+      "gap": "Seed-C/Seed-D show current-only stability boundaries rather than a stability pass. Paired MACT is not required under the gate; inspect boundary errors and use additional model/seed evidence before claiming broad stability."
     },
     {
       "id": "R5",
@@ -110,23 +149,24 @@
         "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/patent_disclosure_draft_zh.md",
         "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/formal_experiment_schedule_zh.md"
       ],
-      "gap": "Final claims and formal experiment section should be updated after Seed-D/Seed-C-inspect and R5 evidence."
+      "gap": "Seed-C/Seed-D boundary inspection and R5 multi-model evidence should be folded into final experiment tables and claim support."
     },
     {
       "id": "R7",
       "requirement": "All process/result context must be recorded in the single PRD and MACT artifacts, then pushed to GitHub.",
       "status": "complete_for_current_state",
       "evidence": [
-        "/home/ubuntu/lzz/MyAgent/docs/server/server_codex_reports/current-qwen3-mact-experiment-prd.md",
-        "MyAgent commit a542340 pushed to origin/codex/selective-risk-collaboration",
-        "MACT current checkpoint commits through ca965c3 pushed to origin/main; Seed-C package refresh commit pending in current working tree"
-      ]
+        "MyAgent 76237e4 pushed",
+        "MACT cc9bb83 local package refresh in progress before final push"
+      ],
+      "gap": "After this MACT package refresh is committed and pushed, continue the same sync rule for any boundary inspection or multi-model run."
     }
   ],
   "current_next_actions": [
-    "Inspect Seed-C TabFact boundary or run E3 Seed-D current-only Gate-50 on the healthy 0-3 Qwen3 endpoints; run paired MACT only for seeds that pass current-only gate.",
-    "When a viable new model/API candidate appears, run the prepared gate funnel rather than full200 immediately."
+    "Inspect Seed-C/Seed-D current-only boundary errors and summarize patent-facing applicability limits.",
+    "Only run paired MACT for future seeds whose current-only decision is run_paired_mact.",
+    "When a new model/API candidate appears, run Gate-10 -> Gate-50 -> Gate-150 -> paired-200; do not directly full200."
   ],
   "overall_completion_status": "active_not_complete",
-  "reason_not_complete": "Seed-D execution and/or Seed-C inspection, plus at least one viable multi-model gate result, remain missing."
+  "reason_not_complete": "Seed-C/Seed-D are completed as boundary evidence, not stability-pass evidence; at least one viable multi-model gate and final experiment-table integration remain missing."
 }

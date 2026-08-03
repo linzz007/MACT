@@ -1,6 +1,6 @@
 # Qwen3 Runtime Preflight
 
-Generated: `2026-08-03 11:07:37 CST`
+Generated: `2026-08-03 10:34:37 CST`
 
 | item | value |
 |---|---|
@@ -25,10 +25,10 @@ Generated: `2026-08-03 11:07:37 CST`
 | 1 | 45815 | 49140 | 0 | NVIDIA GeForce RTX 4090 |
 | 2 | 45839 | 49140 | 0 | NVIDIA GeForce RTX 4090 |
 | 3 | 45839 | 49140 | 0 | NVIDIA GeForce RTX 4090 |
-| 4 | 42013 | 49140 | 10 | NVIDIA GeForce RTX 4090 |
-| 5 | 42007 | 49140 | 100 | NVIDIA GeForce RTX 4090 |
-| 6 | 42015 | 49140 | 100 | NVIDIA GeForce RTX 4090 |
-| 7 | 42011 | 49140 | 100 | NVIDIA GeForce RTX 4090 |
+| 4 | 42009 | 49140 | 11 | NVIDIA GeForce RTX 4090 |
+| 5 | 42003 | 49140 | 99 | NVIDIA GeForce RTX 4090 |
+| 6 | 42013 | 49140 | 100 | NVIDIA GeForce RTX 4090 |
+| 7 | 42007 | 49140 | 100 | NVIDIA GeForce RTX 4090 |
 
 ## GPU Process Evidence
 

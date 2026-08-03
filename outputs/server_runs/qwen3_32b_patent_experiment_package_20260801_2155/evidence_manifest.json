@@ -140,7 +140,7 @@
     "prepared_input_rows": 300,
     "prepared_rows_per_seed": 150,
     "validation_status": "prepared_inputs_verified",
-    "model_execution_status": "seed_c_current_only_stop_or_inspect",
+    "model_execution_status": "seed_c_seed_d_current_only_stop_or_inspect",
     "seed_c_current_summary_json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/summary/seed_c_myagent_gate50_summary.json",
     "seed_c_current_summary_md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/summary/seed_c_myagent_gate50_summary.md",
     "seed_c_current": {
@@ -171,15 +171,51 @@
         "wtq": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/myagent_current/seed_c/eval/wtq_qwen3-32b-local_eval.json",
         "tabfact": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/myagent_current/seed_c/eval/tabfact_qwen3-32b-local_eval.json",
         "crt": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/myagent_current/seed_c/eval/crt_qwen3-32b-local_eval.json"
-      }
+      },
+      "avg_total_tokens_weighted": 6939.5,
+      "avg_elapsed_seconds_weighted": 17.07417111188639
     },
-    "seed_d_execution_status": "pending_runtime_ready"
+    "seed_d_execution_status": "complete_stop_or_inspect",
+    "seed_d_current_summary_json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/summary/seed_d_myagent_gate50_summary.json",
+    "seed_d_current_summary_md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/summary/seed_d_myagent_gate50_summary.md",
+    "seed_d_current": {
+      "decision": "stop_or_inspect",
+      "overall_correct": 98,
+      "overall_rows": 150,
+      "token_ratio_to_mact_full200_weighted": 0.5734818517993583,
+      "avg_total_tokens_weighted": 6527.913333333333,
+      "avg_elapsed_seconds_weighted": 18.867231368683665,
+      "failed": 0,
+      "missing": 0,
+      "wtq_correct": 30,
+      "tabfact_correct": 38,
+      "crt_correct": 30,
+      "paired_mact_status": "not_required_current_only_stop",
+      "raw_outputs": {
+        "wtq_shard00": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/myagent_current/seed_d/raw/wtq/wtq_shard00_out.jsonl",
+        "wtq_shard01": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/myagent_current/seed_d/raw/wtq/wtq_shard01_out.jsonl",
+        "tabfact_shard00": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/myagent_current/seed_d/raw/tabfact/tabfact_shard00_out.jsonl",
+        "tabfact_shard01": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/myagent_current/seed_d/raw/tabfact/tabfact_shard01_out.jsonl",
+        "crt_shard00": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/myagent_current/seed_d/raw/crt/crt_shard00_out.jsonl",
+        "crt_shard01": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/myagent_current/seed_d/raw/crt/crt_shard01_out.jsonl"
+      },
+      "merged_outputs": {
+        "wtq": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/myagent_current/seed_d/merged/wtq_qwen3-32b-local.jsonl",
+        "tabfact": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/myagent_current/seed_d/merged/tabfact_qwen3-32b-local.jsonl",
+        "crt": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/myagent_current/seed_d/merged/crt_qwen3-32b-local.jsonl"
+      },
+      "eval_outputs": {
+        "wtq": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/myagent_current/seed_d/eval/wtq_qwen3-32b-local_eval.json",
+        "tabfact": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/myagent_current/seed_d/eval/tabfact_qwen3-32b-local_eval.json",
+        "crt": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/myagent_current/seed_d/eval/crt_qwen3-32b-local_eval.json"
+      }
+    }
   },
   "completion_gap_audit": {
     "json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/completion_gap_audit_20260801_2244.json",
     "md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/completion_gap_audit_20260801_2244_zh.md",
     "overall_completion_status": "active_not_complete",
-    "reason_not_complete": "Seed-D execution and/or Seed-C inspection, plus at least one viable multi-model gate result, remain missing."
+    "reason_not_complete": "Seed-C/Seed-D boundary inspection plus at least one viable multi-model gate result remain missing."
   },
   "claim_evidence_traceability": {
     "json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/claim_evidence_traceability_20260801_2248.json",
@@ -203,13 +239,13 @@
       "C6"
     ]
   },
-    "formal_result_tables_template": {
-        "json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/formal_result_tables_template_20260801_2252.json",
-        "md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/formal_result_tables_template_20260801_2252_zh.md",
-        "current_ledger_builder": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/build_current_formal_result_ledger.py",
-        "latest_current_ledger_json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_formal_result_ledger_current.json",
-        "latest_current_ledger_md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_formal_result_ledger_current_zh.md",
-        "required_fields": [
+  "formal_result_tables_template": {
+    "json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/formal_result_tables_template_20260801_2252.json",
+    "md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/formal_result_tables_template_20260801_2252_zh.md",
+    "current_ledger_builder": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/build_current_formal_result_ledger.py",
+    "latest_current_ledger_json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_formal_result_ledger_current.json",
+    "latest_current_ledger_md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_formal_result_ledger_current_zh.md",
+    "required_fields": [
       "stage",
       "dataset",
       "input_rows",
@@ -228,61 +264,56 @@
       "git_commit"
     ],
     "pending_rows": [
-      "WTQ targeted fresh affected slice",
-      "P4b WTQ after-fix full50",
-      "E3 Seed-C current-only Gate-50",
       "E3 Seed-C paired Gate-50",
-      "E3 Seed-D current-only Gate-50",
       "E3 Seed-D paired Gate-50",
-            "Additional model gate funnel"
-        ]
-    },
-    "remaining_qwen3_queue": {
-        "script": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/run_remaining_qwen3_patent_queue.sh",
-        "runbook_md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/remaining_qwen3_queue_runbook_zh.md",
-        "runtime_preflight_script": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/preflight_qwen3_runtime.py",
-        "latest_runtime_preflight_json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_qwen3_runtime_preflight.json",
-        "latest_runtime_preflight_md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_qwen3_runtime_preflight_zh.md",
-        "purpose": "Guarded executable queue for remaining Qwen3-32B patent-evidence validation after server recovery.",
-        "phases": [
-            "wtq",
-            "seed_c",
-            "seed_d",
-            "e3",
-            "all"
-        ],
-        "stop_rules": [
-            "WTQ targeted fresh must pass before P4b WTQ after-fix full50.",
-            "Seed-C/Seed-D MyAgent current-only Gate-50 must decide run_paired_mact before paired MACT baseline runs.",
-            "The queue does not automatically expand to Gate-150 or full200."
-        ],
-        "current_online_status": "ready_existing_endpoint",
-        "latest_observed_at_local": "2026-08-03 09:58:41 CST",
-        "latest_observation": "Endpoints 8000/8001 are healthy with qwen3-32b-local when called with the local API key; GPU 0,1 serve port 8000 and GPU 2,3 serve port 8001. Seed-C current-only completed on this endpoint set and stopped before paired MACT with decision=stop_or_inspect."
-    },
-    "package_consistency_audit": {
-        "script": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/audit_patent_package_consistency.py",
-        "latest_json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_patent_package_consistency_audit.json",
-        "latest_md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_patent_package_consistency_audit_zh.md",
-        "purpose": "Verify that PRD, manifest, latest formal result ledger, latest runtime preflight, and key numeric claims remain consistent.",
-        "latest_status": "pass",
-        "latest_errors": 0,
-        "latest_warnings": 0,
-        "latest_observed_at_local": "2026-08-03 10:30:21 CST"
-    },
-    "package_checksums": {
-        "script": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/build_patent_package_checksums.py",
-        "sha256sums": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/SHA256SUMS",
-        "latest_json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_patent_package_checksums.json",
-        "latest_md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_patent_package_checksums_zh.md",
-        "purpose": "Verify package-file and existing evidence-file integrity after server cleanup or migration."
-    },
-    "current_prd": "/home/ubuntu/lzz/MyAgent/docs/server/server_codex_reports/current-qwen3-mact-experiment-prd.md",
+      "Additional model gate funnel"
+    ]
+  },
+  "remaining_qwen3_queue": {
+    "script": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/run_remaining_qwen3_patent_queue.sh",
+    "runbook_md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/remaining_qwen3_queue_runbook_zh.md",
+    "runtime_preflight_script": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/preflight_qwen3_runtime.py",
+    "latest_runtime_preflight_json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_qwen3_runtime_preflight.json",
+    "latest_runtime_preflight_md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_qwen3_runtime_preflight_zh.md",
+    "purpose": "Guarded executable queue for remaining Qwen3-32B patent-evidence validation after server recovery.",
+    "phases": [
+      "wtq",
+      "seed_c",
+      "seed_d",
+      "e3",
+      "all"
+    ],
+    "stop_rules": [
+      "WTQ targeted fresh must pass before P4b WTQ after-fix full50.",
+      "Seed-C/Seed-D MyAgent current-only Gate-50 must decide run_paired_mact before paired MACT baseline runs.",
+      "The queue does not automatically expand to Gate-150 or full200."
+    ],
+    "current_online_status": "ready_existing_endpoint",
+    "latest_observed_at_local": "2026-08-03 11:07 CST",
+    "latest_observation": "Endpoints 8000/8001 are healthy with qwen3-32b-local; GPU 0,1 serve port 8000 and GPU 2,3 serve port 8001. Seed-C and Seed-D current-only both completed on this endpoint set and stopped before paired MACT with decision=stop_or_inspect. Latest runtime preflight is qwen3_runtime_preflight_20260803_110737."
+  },
+  "package_consistency_audit": {
+    "script": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/audit_patent_package_consistency.py",
+    "latest_json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_patent_package_consistency_audit.json",
+    "latest_md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_patent_package_consistency_audit_zh.md",
+    "purpose": "Verify that PRD, manifest, latest formal result ledger, latest runtime preflight, and key numeric claims remain consistent.",
+    "latest_status": "pass",
+    "latest_errors": 0,
+    "latest_warnings": 0,
+    "latest_observed_at_local": "2026-08-03 11:08:11 CST"
+  },
+  "package_checksums": {
+    "script": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/build_patent_package_checksums.py",
+    "sha256sums": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/SHA256SUMS",
+    "latest_json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_patent_package_checksums.json",
+    "latest_md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_patent_package_checksums_zh.md",
+    "purpose": "Verify package-file and existing evidence-file integrity after server cleanup or migration."
+  },
+  "current_prd": "/home/ubuntu/lzz/MyAgent/docs/server/server_codex_reports/current-qwen3-mact-experiment-prd.md",
   "formal_experiment_schedule": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/formal_experiment_schedule_zh.md",
   "remaining_work": [
-        "Add fine-grained ablation switches if needed for verifier override/evidence retention.",
-        "Inspect Seed-C TabFact boundary or run prepared E3 Seed-D Gate-50 current-only validation; only run paired MACT baselines for seeds that pass current-only gate.",
-        "Run at least one additional model through the gate funnel after server expansion or API key availability.",
-        "Finalize patent claims and formal experimental section after Seed-D/Seed-C-inspect and multi-model evidence."
+    "Inspect Seed-C/Seed-D current-only boundary errors and record patent-facing applicability limits.",
+    "Run at least one additional model through the gate funnel after server expansion or API key availability.",
+    "Finalize patent claims and formal experimental section after boundary inspection and multi-model evidence."
   ]
 }

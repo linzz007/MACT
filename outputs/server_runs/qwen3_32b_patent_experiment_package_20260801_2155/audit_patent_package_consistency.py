@@ -234,6 +234,19 @@ def build_report() -> dict[str, Any]:
         check_equal(report, "E3 Seed-C current missing", seed_c_current["num_missing_answer"], 0)
         check_equal(report, "E3 Seed-C current decision", seed_c_current["decision"], "stop_or_inspect")
 
+    seed_d_current_rows = [
+        row
+        for row in completed_rows
+        if row["stage"] == "E3 Seed-D current-only Gate-50" and row["dataset"] == "aggregate"
+    ]
+    if seed_d_current_rows:
+        seed_d_current = seed_d_current_rows[0]
+        check_equal(report, "E3 Seed-D current row count", len(seed_d_current_rows), 1)
+        check_equal(report, "E3 Seed-D current MyAgent correct", seed_d_current["myagent_correct"], 98)
+        check_equal(report, "E3 Seed-D current failures", seed_d_current["num_failed_exec"], 0)
+        check_equal(report, "E3 Seed-D current missing", seed_d_current["num_missing_answer"], 0)
+        check_equal(report, "E3 Seed-D current decision", seed_d_current["decision"], "stop_or_inspect")
+
     seed_pending = [
         row for row in pending_rows if "Seed-" in row["stage"]
     ]

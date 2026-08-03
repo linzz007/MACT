@@ -54,13 +54,15 @@ Current status:
   token ratio `0.5310`, failures/missing `0/0`.
 - The patent-facing mechanism evidence matrix now combines full200, coarse
   ablation, offline attribution evidence, and fresh WTQ closure.
-- E3 Seed-C current-only Gate-50 has run `150/150` rows and stopped before
-  paired MACT with `decision=stop_or_inspect`: WTQ `40/50`, TabFact `44/50`,
-  CRT `30/50`, overall `114/150`, token ratio vs MACT full200 reference
-  `0.6096`, failures/missing `0/0`.
+- E3 Seed-C and Seed-D current-only Gate-50 have both run `150/150` rows and
+  stopped before paired MACT with `decision=stop_or_inspect`.
+  Seed-C: WTQ `40/50`, TabFact `44/50`, CRT `30/50`, overall `114/150`,
+  token ratio vs MACT full200 reference `0.6096`, failures/missing `0/0`.
+  Seed-D: WTQ `30/50`, TabFact `38/50`, CRT `30/50`, overall `98/150`,
+  token ratio vs MACT full200 reference `0.5735`, failures/missing `0/0`.
 - The latest completion-gap audit records that the active goal is not complete:
-  Seed-D execution and/or Seed-C inspection, plus one viable multi-model gate,
-  remain missing.
+  Seed-C/Seed-D boundary inspection plus one viable multi-model gate remain
+  missing.
 - The claim-to-evidence traceability matrix maps six patent claim families to
   mechanisms, evidence files, support strength, and remaining gaps.
 - The formal result-table template defines the exact fields and decision ledger
