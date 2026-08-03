@@ -1,14 +1,14 @@
 # Patent Package Consistency Audit
 
-Generated: `2026-08-03 12:27:52 CST`
+Generated: `2026-08-03 12:33:35 CST`
 
 | item | value |
 |---|---|
 | overall status | `pass` |
 | errors | `0` |
 | warnings | `1` |
-| MyAgent HEAD | `cc3d6b0` |
-| MACT HEAD | `d6f59c5` |
+| MyAgent HEAD | `5834603` |
+| MACT HEAD | `ad8c1e1` |
 
 ## Errors
 
@@ -94,6 +94,11 @@ Generated: `2026-08-03 12:27:52 CST`
 | claim traceability WTQ closure | `True` | `WTQ targeted fresh 与 P4b after-targeted 闭环已经完成` | `` |
 | claim traceability E3 boundary | `True` | `E3 Seed-C/D current-only 已完成并形成边界证据` | `` |
 | formal schedule E3 boundary | `True` | `E3 已经完成，但它是适用边界证据` | `` |
+| patent disclosure full200 | `True` | `Aggregate | 600/600/600 | 489/600 | 450/600 | +39 | 0.5717 | 0/0` | `` |
+| patent disclosure P4b closure | `True` | `Overall | 150/150/150 | 121/150 | 111/150 | +10 | 0.5310 | 0/0` | `` |
+| patent disclosure E3 boundary | `True` | `Combined | 300/300/300 | 212/300 | 0.5916 | 0/0 | `complete_boundary_evidence`` | `` |
+| patent disclosure E4 boundary | `True` | `E4 多模型 readiness audit 结果为 `no_candidate_wait`` | `` |
+| patent disclosure evidence paths | `True` | `latest_completion_gap_audit_current_zh.md` | `` |
 | manifest online status | `True` | `start_service_required` | `start_service_required` |
 | PRD queue script | `True` | `run_remaining_qwen3_patent_queue.sh` | `` |
 | PRD runtime preflight | `True` | `latest_qwen3_runtime_preflight_zh.md` | `` |

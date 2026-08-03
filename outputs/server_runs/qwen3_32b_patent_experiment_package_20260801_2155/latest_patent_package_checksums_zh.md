@@ -1,12 +1,12 @@
 # Patent Package Checksums
 
-Generated: `2026-08-03 12:28:17 CST`
+Generated: `2026-08-03 12:39:37 CST`
 
 | item | value |
 |---|---:|
-| checksum records | 232 |
-| package files | 163 |
-| manifest reference files | 96 |
+| checksum records | 236 |
+| package files | 167 |
+| manifest reference files | 97 |
 | missing or pending references | 0 |
 
 Verify from workspace root:

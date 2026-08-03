@@ -31,6 +31,7 @@ CURRENT_PATENT_SECTION_JSON = PACKAGE_DIR / "latest_current_patent_experiment_se
 CURRENT_PATENT_SECTION_MD = PACKAGE_DIR / "latest_current_patent_experiment_section_zh.md"
 CURRENT_COMPLETION_GAP_JSON = PACKAGE_DIR / "latest_completion_gap_audit_current.json"
 CURRENT_COMPLETION_GAP_MD = PACKAGE_DIR / "latest_completion_gap_audit_current_zh.md"
+PATENT_DISCLOSURE_DRAFT_MD = PACKAGE_DIR / "patent_disclosure_draft_zh.md"
 
 
 def read_json(path: Path) -> dict[str, Any]:
@@ -161,6 +162,7 @@ def build_report() -> dict[str, Any]:
         "claim_evidence_traceability_json": PACKAGE_DIR / "claim_evidence_traceability_20260801_2248.json",
         "claim_evidence_traceability_md": PACKAGE_DIR / "claim_evidence_traceability_20260801_2248_zh.md",
         "formal_experiment_schedule": PACKAGE_DIR / "formal_experiment_schedule_zh.md",
+        "patent_disclosure_draft": PATENT_DISCLOSURE_DRAFT_MD,
     }.items():
         add_path_check(report, label, path)
 
@@ -409,6 +411,7 @@ def build_report() -> dict[str, Any]:
     claim_traceability_json = read_json(PACKAGE_DIR / "claim_evidence_traceability_20260801_2248.json")
     claim_traceability_md = (PACKAGE_DIR / "claim_evidence_traceability_20260801_2248_zh.md").read_text(encoding="utf-8")
     formal_schedule_text = (PACKAGE_DIR / "formal_experiment_schedule_zh.md").read_text(encoding="utf-8")
+    patent_disclosure_text = PATENT_DISCLOSURE_DRAFT_MD.read_text(encoding="utf-8")
     for stale_text in [
         "WTQ fresh pending",
         "fresh closure pending",
@@ -425,6 +428,8 @@ def build_report() -> dict[str, Any]:
             report["errors"].append(f"claim traceability json contains stale text: {stale_text!r}")
         if stale_text in formal_schedule_text:
             report["errors"].append(f"formal experiment schedule contains stale text: {stale_text!r}")
+        if stale_text in patent_disclosure_text:
+            report["errors"].append(f"patent disclosure draft contains stale text: {stale_text!r}")
     check_contains(
         report,
         "claim traceability WTQ closure",
@@ -443,6 +448,14 @@ def build_report() -> dict[str, Any]:
         formal_schedule_text,
         "E3 已经完成，但它是适用边界证据",
     )
+    for label, needle in {
+        "patent disclosure full200": "Aggregate | 600/600/600 | 489/600 | 450/600 | +39 | 0.5717 | 0/0",
+        "patent disclosure P4b closure": "Overall | 150/150/150 | 121/150 | 111/150 | +10 | 0.5310 | 0/0",
+        "patent disclosure E3 boundary": "Combined | 300/300/300 | 212/300 | 0.5916 | 0/0 | `complete_boundary_evidence`",
+        "patent disclosure E4 boundary": "E4 多模型 readiness audit 结果为 `no_candidate_wait`",
+        "patent disclosure evidence paths": "latest_completion_gap_audit_current_zh.md",
+    }.items():
+        check_contains(report, label, patent_disclosure_text, needle)
     check_equal(
         report,
         "manifest online status",

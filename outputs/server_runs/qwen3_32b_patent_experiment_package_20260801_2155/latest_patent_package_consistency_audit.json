@@ -1,9 +1,9 @@
 {
-  "generated_at_local": "2026-08-03 12:27:52 CST",
+  "generated_at_local": "2026-08-03 12:33:35 CST",
   "package_dir": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155",
   "git_heads": {
-    "myagent": "cc3d6b0",
-    "mact": "d6f59c5"
+    "myagent": "5834603",
+    "mact": "ad8c1e1"
   },
   "path_checks": {
     "prd": {
@@ -84,6 +84,10 @@
     },
     "formal_experiment_schedule": {
       "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/formal_experiment_schedule_zh.md",
+      "exists": true
+    },
+    "patent_disclosure_draft": {
+      "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/patent_disclosure_draft_zh.md",
       "exists": true
     }
   },
@@ -442,6 +446,26 @@
     },
     "formal schedule E3 boundary": {
       "needle": "E3 已经完成，但它是适用边界证据",
+      "pass": true
+    },
+    "patent disclosure full200": {
+      "needle": "Aggregate | 600/600/600 | 489/600 | 450/600 | +39 | 0.5717 | 0/0",
+      "pass": true
+    },
+    "patent disclosure P4b closure": {
+      "needle": "Overall | 150/150/150 | 121/150 | 111/150 | +10 | 0.5310 | 0/0",
+      "pass": true
+    },
+    "patent disclosure E3 boundary": {
+      "needle": "Combined | 300/300/300 | 212/300 | 0.5916 | 0/0 | `complete_boundary_evidence`",
+      "pass": true
+    },
+    "patent disclosure E4 boundary": {
+      "needle": "E4 多模型 readiness audit 结果为 `no_candidate_wait`",
+      "pass": true
+    },
+    "patent disclosure evidence paths": {
+      "needle": "latest_completion_gap_audit_current_zh.md",
       "pass": true
     },
     "manifest online status": {
