@@ -2,7 +2,7 @@
 
 标题建议：一种面向表格问答和表格事实验证任务的选择性风险协作与劝返方法、装置、设备及存储介质。
 
-更新时间：2026-08-04 23:03 CST
+更新时间：2026-08-04 23:52 CST
 
 ## 1. 技术领域
 
@@ -236,7 +236,7 @@ S5 final combined 结果如下：
 
 ### 实施例十一：多模型 Gate Readiness
 
-E4 多模型 readiness audit 结果为 `no_candidate_wait`：当前只发现已测试/已 no-go 的本地模型，未发现未测本地模型或 API provider profile/key，因此不能写成多模型验证已完成。
+2026-08-04 23:52 最新 E4 多模型 readiness audit 结果为 `no_candidate_wait`：当前只发现已测试/已 no-go 的本地模型，local models `4`、untested local models `0`，未发现未测本地模型或 API provider profile/key，API keys/provider profiles 为 `0/0`，因此不能写成多模型验证已完成。证据文件为 `/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/e4_multimodel_gate_readiness_audit_20260804_235201_zh.md`。
 
 机制证据矩阵：
 
@@ -273,7 +273,7 @@ E4 多模型 readiness audit 结果为 `no_candidate_wait`：当前只发现已�
 
 ## 8. 后续需要补入或明确保留边界的正式实验
 
-1. 多模型验证：新本地模型或 API key/provider profile 出现后，至少让 1 个额外模型经过 Gate-10 -> Gate-50 -> Gate-150 漏斗；当前 E4 为 `no_candidate_wait`。
+1. 多模型验证：新本地模型或 API key/provider profile 出现后，至少让 1 个额外模型经过 Gate-10 -> Gate-50 -> Gate-150 漏斗；当前 2026-08-04 23:52 E4 为 `no_candidate_wait`。
 2. 多 seed paired 正证据：E3 已经完成两组 current-only、离线边界诊断、`max_replan=5` budget probe、semantic-boundary plan、S2 after-guard fresh、S3 after-guard current-only rerun、v6c boundary-fresh current-only candidate、S4 同 ID paired MACT 和 S5 CRT tie-breaker。S5 overall 为 MyAgent `232/300` vs MACT `223/300`，token ratio `0.5662`，WTQ/TabFact/CRT 三项均严格超过 MACT；当前不再缺 CRT tie-breaker。
 3. 细粒度消融：当前 fine-grained mechanism audit 已完成，可用于 Qwen3 专利草稿；只有在专利代理人要求更窄因果拆分时，再补 standalone no-evidence-retention、no-WTQ-verifier-override 或 no-specific-deterministic-audit 小样本开关。
 4. 最终实验包收口：当前实验章节已经 consolidated，但 final closeout 需要多模型候选结果，或明确接受 E4 no-candidate 作为当前外延边界。

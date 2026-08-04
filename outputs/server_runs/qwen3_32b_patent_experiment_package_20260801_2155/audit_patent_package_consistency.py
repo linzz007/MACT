@@ -74,6 +74,8 @@ FINE_GRAINED_MECHANISM_AUDIT_JSON = Path(
 FINE_GRAINED_MECHANISM_AUDIT_MD = FINE_GRAINED_MECHANISM_AUDIT_JSON.with_suffix(".md")
 E4_READINESS_JSON = PACKAGE_DIR / "latest_e4_multimodel_gate_readiness_audit.json"
 E4_READINESS_MD = PACKAGE_DIR / "latest_e4_multimodel_gate_readiness_audit_zh.md"
+E4_READINESS_STAMPED_JSON = PACKAGE_DIR / "e4_multimodel_gate_readiness_audit_20260804_235201.json"
+E4_READINESS_STAMPED_MD = PACKAGE_DIR / "e4_multimodel_gate_readiness_audit_20260804_235201_zh.md"
 CURRENT_PATENT_SECTION_JSON = PACKAGE_DIR / "latest_current_patent_experiment_section.json"
 CURRENT_PATENT_SECTION_MD = PACKAGE_DIR / "latest_current_patent_experiment_section_zh.md"
 CURRENT_COMPLETION_GAP_JSON = PACKAGE_DIR / "latest_completion_gap_audit_current.json"
@@ -662,6 +664,18 @@ def build_report() -> dict[str, Any]:
     )
     check_equal(report, "manifest E4 readiness json path", e4_manifest["latest_json"], str(E4_READINESS_JSON))
     check_equal(report, "manifest E4 readiness md path", e4_manifest["latest_md"], str(E4_READINESS_MD))
+    check_equal(
+        report,
+        "manifest E4 timestamped json path",
+        e4_manifest["latest_timestamped_json"],
+        str(E4_READINESS_STAMPED_JSON),
+    )
+    check_equal(
+        report,
+        "manifest E4 timestamped md path",
+        e4_manifest["latest_timestamped_md"],
+        str(E4_READINESS_STAMPED_MD),
+    )
     check_equal(report, "manifest E4 readiness status", e4_manifest["status"], e4_readiness["decision"])
     check_equal(report, "manifest E4 can start gate10", e4_manifest["can_start_gate10_now"], e4_readiness["can_start_gate10_now"])
     check_equal(
@@ -673,6 +687,12 @@ def build_report() -> dict[str, Any]:
     check_equal(report, "E4 readiness decision", e4_readiness["decision"], "no_candidate_wait")
     check_equal(report, "E4 untested local model count", len(e4_readiness["model_readiness"]["untested_local_models"]), 0)
     check_equal(report, "E4 API key count", len(e4_readiness["model_readiness"]["api_keys_present"]), 0)
+    check_equal(
+        report,
+        "E4 visible resident process count",
+        e4_readiness["runtime_snapshot"]["processes"]["visible_runner_or_model_processes"],
+        2,
+    )
     check_equal(
         report,
         "manifest current patent section json path",
@@ -696,6 +716,12 @@ def build_report() -> dict[str, Any]:
         "current patent section E4 decision",
         current_section["e4_multimodel_gate"]["decision"],
         "no_candidate_wait",
+    )
+    check_equal(
+        report,
+        "current patent section E4 timestamped json",
+        current_section["evidence_paths"]["e4_readiness_latest_timestamped_json"],
+        str(E4_READINESS_STAMPED_JSON),
     )
     check_equal(
         report,
@@ -1041,7 +1067,7 @@ def build_report() -> dict[str, Any]:
         "patent disclosure E3 boundary fresh": "Combined | 300/300/300 | 229/300 | 0.5794 | 0/0 | `boundary_fresh_pass_run_paired_mact_candidate`",
         "patent disclosure E3 S5 final": "Overall | 300 | 232/300 | 223/300 | +9 | 0.5662 | MyAgent 0/0; MACT 4/4",
         "patent disclosure fine audit": "细粒度机制消融审计",
-        "patent disclosure E4 boundary": "E4 多模型 readiness audit 结果为 `no_candidate_wait`",
+        "patent disclosure E4 boundary": "2026-08-04 23:52 最新 E4 多模型 readiness audit 结果为 `no_candidate_wait`",
         "patent disclosure evidence paths": "latest_completion_gap_audit_current_zh.md",
     }.items():
         check_contains(report, label, patent_disclosure_text, needle)
@@ -1068,6 +1094,7 @@ def build_report() -> dict[str, Any]:
         "PRD E3 S5 strict pass": "s5_strict_all_dataset_pass",
         "PRD fine-grained mechanism audit": "fine_grained_mechanism_ablation_audit.md",
         "PRD E4 readiness audit": "latest_e4_multimodel_gate_readiness_audit_zh.md",
+        "PRD E4 timestamped readiness audit": "e4_multimodel_gate_readiness_audit_20260804_235201_zh.md",
         "PRD active status": "qwen3_strict_goal_complete_e4_pending",
     }.items():
         check_contains(report, label, prd_text, needle)

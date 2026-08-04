@@ -2,7 +2,7 @@
   "package_name": "qwen3_32b_patent_experiment_package_20260801_2155",
   "created_at_local": "2026-08-01 21:55 CST",
   "purpose": "Expert/patent-facing evidence package for MyAgent selective risk collaboration / persuasion-back experiments against MACT.",
-  "commit_note": "2026-08-04 S5 CRT tie-breaker and fine-grained mechanism audit completed; Qwen3 strict all-dataset target passed. This manifest is included in the repository sync for this update; use git log on the pushed branches for final commit SHAs.",
+  "commit_note": "2026-08-04 23:52 E4 readiness rechecked after Qwen3 strict/fine-mechanism sync; no new model/API candidate. This manifest is included in the repository sync for this update.",
   "repositories": {
     "myagent": {
       "path": "/home/ubuntu/lzz/MyAgent",
@@ -501,13 +501,13 @@
     "legacy_json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/completion_gap_audit_20260801_2244.json",
     "legacy_md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/completion_gap_audit_20260801_2244_zh.md",
     "overall_completion_status": "qwen3_strict_goal_complete_e4_pending",
-    "reason_not_complete": "Qwen3 strong strict paired multi-seed target and current-scope mechanism audit are complete. Remaining open work is E4 external model/API evidence and final closeout acceptance.",
-    "latest_observed_at_local": "2026-08-04 23:36:00 CST"
+    "reason_not_complete": "Qwen3 strong strict paired multi-seed target and current-scope mechanism audit are complete. Latest E4 readiness remains no_candidate_wait, so external model/API evidence and final closeout acceptance remain open.",
+    "latest_observed_at_local": "2026-08-04 23:52:01 CST"
   },
   "claim_evidence_traceability": {
     "json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/claim_evidence_traceability_20260801_2248.json",
     "md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/claim_evidence_traceability_20260801_2248_zh.md",
-    "last_updated_at_local": "2026-08-04 23:36 CST",
+    "last_updated_at_local": "2026-08-04 23:52 CST",
     "current_note": "Qwen3 strict all-dataset S5 and fine-grained mechanism audit are complete. E4 remains pending/no-candidate; standalone evidence-retention causal isolation remains optional if requested.",
     "claim_families": [
       "Risk-stratified selective collaboration",
@@ -530,7 +530,7 @@
   },
   "patent_disclosure_draft": {
     "md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/patent_disclosure_draft_zh.md",
-    "last_updated_at_local": "2026-08-04 23:36 CST",
+    "last_updated_at_local": "2026-08-04 23:52 CST",
     "current_note": "The disclosure draft now includes current full200, P4b closure, E3 multi-seed path through S5 strict pass, E4 no-candidate, and fine-grained mechanism audit evidence with explicit evidence-retention boundary."
   },
   "formal_result_tables_template": {
@@ -589,7 +589,9 @@
       "E3 Seed-C/Seed-D early current-only and S3 runs are historical boundary evidence; the boundary was later closed by v6c boundary fresh, S4 paired MACT, and S5 CRT tie-breaker.",
       "E3 S4 paired MACT is historical strict-boundary evidence: existing paired criteria passed, but CRT tied before S5.",
       "Standalone no-evidence-retention causal isolation has not been run; evidence-retention should be cited as attribution plus fresh no-harm/guard support."
-    ]
+    ],
+    "last_updated_at_local": "2026-08-04 23:52 CST",
+    "current_note": "Qwen3 S5 strict pass and fine-grained mechanism audit are complete. Latest E4 readiness recheck at 2026-08-04 23:52 still has no untested local model or API provider profile/key."
   },
   "remaining_qwen3_queue": {
     "script": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/run_remaining_qwen3_patent_queue.sh",
@@ -611,8 +613,8 @@
       "The queue does not automatically expand to Gate-150 or full200."
     ],
     "current_online_status": "ready_existing_endpoint",
-    "latest_observed_at_local": "2026-08-04 10:49:03 CST",
-    "latest_observation": "Two Qwen3-32B vLLM endpoints are healthy and intentionally kept resident: GPU 2,3 -> http://127.0.0.1:8000/v1 with compute app PIDs 158938/158939, and GPU 0,1 -> http://127.0.0.1:8001/v1 with compute app PIDs 161909/161910. Served model is qwen3-32b-local on both endpoints. Runtime preflight qwen3_runtime_preflight_20260804_104903.json/md is ready_existing_endpoint. Do not stop or free these services unless switching models."
+    "latest_observed_at_local": "2026-08-04 23:52:01 CST",
+    "latest_observation": "Two Qwen3-32B vLLM endpoints remain healthy and intentionally resident: GPU 2,3 -> http://127.0.0.1:8000/v1 and GPU 0,1 -> http://127.0.0.1:8001/v1. Served model is qwen3-32b-local on both endpoints. Do not stop or free these services unless switching models."
   },
   "package_consistency_audit": {
     "script": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/audit_patent_package_consistency.py",
@@ -669,9 +671,53 @@
       "Qwen3-32B"
     ],
     "default_gpu_pool_available_for_next_start": false,
-    "visible_runner_or_model_processes": 0,
-    "latest_observed_at_local": "2026-08-03 12:45:08 CST",
-    "decision_note": "No Gate-10 should start until a new untested local model path or API provider profile appears. Known no-go local models should not be rerun."
+    "visible_runner_or_model_processes": 2,
+    "latest_observed_at_local": "2026-08-04 23:52:01 CST",
+    "decision_note": "No Gate-10 should start until a new untested local model path or API provider profile appears. Known no-go local models should not be rerun.",
+    "latest_timestamped_json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/e4_multimodel_gate_readiness_audit_20260804_235201.json",
+    "latest_timestamped_md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/e4_multimodel_gate_readiness_audit_20260804_235201_zh.md",
+    "gpu_snapshot": [
+      {
+        "index": 0,
+        "memory_used_mib": 45815,
+        "utilization_gpu_percent": 0
+      },
+      {
+        "index": 1,
+        "memory_used_mib": 45815,
+        "utilization_gpu_percent": 0
+      },
+      {
+        "index": 2,
+        "memory_used_mib": 45839,
+        "utilization_gpu_percent": 0
+      },
+      {
+        "index": 3,
+        "memory_used_mib": 45839,
+        "utilization_gpu_percent": 0
+      },
+      {
+        "index": 4,
+        "memory_used_mib": 42031,
+        "utilization_gpu_percent": 0
+      },
+      {
+        "index": 5,
+        "memory_used_mib": 42031,
+        "utilization_gpu_percent": 0
+      },
+      {
+        "index": 6,
+        "memory_used_mib": 42031,
+        "utilization_gpu_percent": 0
+      },
+      {
+        "index": 7,
+        "memory_used_mib": 42031,
+        "utilization_gpu_percent": 0
+      }
+    ]
   },
   "e3_s5_crt_tiebreaker": {
     "run_dir": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6c_e3_s5_crt_tiebreaker_diag_20260804_2225",

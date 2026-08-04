@@ -1,13 +1,13 @@
 # 权利要求-机制-证据可追踪矩阵
 
 创建时间：2026-08-01 22:48 CST
-更新时间：2026-08-04 23:36 CST
+更新时间：2026-08-04 23:52 CST
 
 用途：把可写入专利的权利要求族，对齐到 MyAgent 机制、代码入口、实验数据和仍未闭合的风险。这个文件不是新 benchmark run，而是专利撰写用证据索引。
 
 ## 总体边界
 
-当前可强写的是 Qwen3-32B full200 阶段证据：MyAgent `489/600` vs MACT `450/600`，总体 token ratio `0.5717`，三数据集单项均超过 MACT。WTQ targeted fresh 与 P4b after-targeted 闭环已经完成，可作为新 seed 风险修复证据。E3 Seed-C/D current-only 已完成并形成边界证据；E3 max_replan=5 probe 恢复代表错题 `4/12`，可写成预算敏感性和 adaptive replan 机制证据；E3 semantic-boundary plan 已把零恢复类别转成 P0 语义 guard 与 affected-slice fresh 漏斗，且 S2 after-guard fresh 已通过 `8/12` representative recovery 与 `18/18` no-harm gate。S3 after-guard current-only rerun 暴露 Seed-D WTQ/TabFact 边界：combined `215/300`、token ratio `0.5866`、failed/missing `0/0`。v6c boundary-fresh current-only 候选已完成：Seed-D `111/150`，combined `229/300`、token ratio `0.5794`、failed/missing `0/0`、decision `boundary_fresh_pass_run_paired_mact_candidate`。S4 paired MACT 已完成 existing criteria pass：overall MyAgent `229/300` vs MACT `223/300`，token ratio `0.5700`，WTQ/TabFact 严格超过 MACT，CRT 持平。S5 CRT tie-breaker 已闭合 strong strict 目标：overall MyAgent `232/300` vs MACT `223/300`，token ratio `0.5662`，overall failed/missing MyAgent `0/0`、MACT `4/4`，WTQ/TabFact/CRT 三项均严格超过 MACT。fine-grained mechanism audit 已完成，decision=`fine_grained_mechanism_evidence_ready_for_qwen3_patent_scope_with_evidence_retention_boundary_and_e4_pending`。E4 仍为 `no_candidate_wait`，不能写成多模型已验证。
+当前可强写的是 Qwen3-32B full200 阶段证据：MyAgent `489/600` vs MACT `450/600`，总体 token ratio `0.5717`，三数据集单项均超过 MACT。WTQ targeted fresh 与 P4b after-targeted 闭环已经完成，可作为新 seed 风险修复证据。E3 Seed-C/D current-only 已完成并形成边界证据；E3 max_replan=5 probe 恢复代表错题 `4/12`，可写成预算敏感性和 adaptive replan 机制证据；E3 semantic-boundary plan 已把零恢复类别转成 P0 语义 guard 与 affected-slice fresh 漏斗，且 S2 after-guard fresh 已通过 `8/12` representative recovery 与 `18/18` no-harm gate。S3 after-guard current-only rerun 暴露 Seed-D WTQ/TabFact 边界：combined `215/300`、token ratio `0.5866`、failed/missing `0/0`。v6c boundary-fresh current-only 候选已完成：Seed-D `111/150`，combined `229/300`、token ratio `0.5794`、failed/missing `0/0`、decision `boundary_fresh_pass_run_paired_mact_candidate`。S4 paired MACT 已完成 existing criteria pass：overall MyAgent `229/300` vs MACT `223/300`，token ratio `0.5700`，WTQ/TabFact 严格超过 MACT，CRT 持平。S5 CRT tie-breaker 已闭合 strong strict 目标：overall MyAgent `232/300` vs MACT `223/300`，token ratio `0.5662`，overall failed/missing MyAgent `0/0`、MACT `4/4`，WTQ/TabFact/CRT 三项均严格超过 MACT。fine-grained mechanism audit 已完成，decision=`fine_grained_mechanism_evidence_ready_for_qwen3_patent_scope_with_evidence_retention_boundary_and_e4_pending`。2026-08-04 23:52 E4 readiness 仍为 `no_candidate_wait`，local models `4`、untested local models `0`、API keys/provider profiles `0/0`，不能写成多模型已验证。
 
 ## 权利要求族映射
 
@@ -64,6 +64,6 @@
 
 ## 下一步对权利要求最有价值的实验
 
-1. 新模型/API gate：补 C6 的模型外延证据；当前 E4 为 `no_candidate_wait`，不能重跑已知 no-go 模型冒充新证据。
+1. 新模型/API gate：补 C6 的模型外延证据；当前 2026-08-04 23:52 E4 为 `no_candidate_wait`，不能重跑已知 no-go 模型冒充新证据。
 2. Qwen3 机制证据细化：S2 affected-slice fresh、S3/S4/S5 和 fine-grained mechanism audit 已完成，current Qwen3 strong all-dataset strict 已达成。若专利代理人要求更窄因果证据，下一步只补 standalone no-evidence-retention、no-WTQ-verifier-override 或 no-specific-deterministic-audit 小样本消融。
 3. 细粒度消融：当前可写到“机制证据已足够支撑 Qwen3 专利范围，evidence-retention 带边界”；不要把 standalone no-evidence-retention 写成已完成。

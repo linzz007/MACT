@@ -1,6 +1,6 @@
 # Current Formal Result Ledger
 
-Generated: `2026-08-04 23:03:00 CST`
+Generated: `2026-08-04 23:52:01 CST`
 
 Overall status: `qwen3_strict_goal_complete_e4_pending`.
 
@@ -74,8 +74,8 @@ Recommendation: Use the queue script with the healthy endpoint list.
 - P4b new-seed Gate-50 supports overall/token evidence and its WTQ risk has been closed by targeted fresh validation.
 - E3 S5 final paired multi-seed result passes the current strong strict target: WTQ/TabFact/CRT all strictly exceed MACT, overall 232/300 vs 223/300, token ratio 0.5662, MyAgent failed/missing 0/0.
 - S4 remains useful as historical boundary evidence: existing paired criteria passed, but CRT tied before the S5 answer-contract fix.
-- E4 latest readiness audit has completed with no untested local model path and no API provider profile, so no Gate-10 should be started yet.
-- The current patent experiment section, completion audit, claim matrix, and patent disclosure draft have been updated with S5 evidence.
+- E4 latest readiness audit has completed at 2026-08-04 23:52 with no untested local model path and no API provider profile/key, so no Gate-10 should be started yet.
+- The current patent experiment section, completion audit, claim matrix, and patent disclosure draft have been updated with S5 and latest E4 no-candidate evidence.
 - The fine-grained mechanism audit has completed for current Qwen3 patent scope; it is evidence synthesis, not a new benchmark row.
 
 ## Claims Not Supported Yet
