@@ -43,6 +43,12 @@ E3_GUARD_VALIDATION_AFTER_GUARD_JSON = Path(
     "summary/e3_guard_validation_after_guard_summary.json"
 )
 E3_GUARD_VALIDATION_AFTER_GUARD_MD = E3_GUARD_VALIDATION_AFTER_GUARD_JSON.with_suffix(".md")
+E3_S3_CURRENT_COMBINED_JSON = Path(
+    "/home/ubuntu/lzz/MACT/outputs/server_runs/"
+    "qwen3_32b_policy_v6b_e3_s3_current_rerun_after_guard_20260804_1425/"
+    "summary/e3_s3_current_combined_summary.json"
+)
+E3_S3_CURRENT_COMBINED_MD = E3_S3_CURRENT_COMBINED_JSON.with_suffix(".md")
 E4_READINESS_JSON = PACKAGE_DIR / "latest_e4_multimodel_gate_readiness_audit.json"
 E4_READINESS_MD = PACKAGE_DIR / "latest_e4_multimodel_gate_readiness_audit_zh.md"
 CURRENT_PATENT_SECTION_JSON = PACKAGE_DIR / "latest_current_patent_experiment_section.json"
@@ -177,6 +183,8 @@ def build_report() -> dict[str, Any]:
         "e3_guard_validation_input_plan_md": E3_GUARD_VALIDATION_INPUT_PLAN_MD,
         "e3_guard_validation_after_guard_json": E3_GUARD_VALIDATION_AFTER_GUARD_JSON,
         "e3_guard_validation_after_guard_md": E3_GUARD_VALIDATION_AFTER_GUARD_MD,
+        "e3_s3_current_combined_json": E3_S3_CURRENT_COMBINED_JSON,
+        "e3_s3_current_combined_md": E3_S3_CURRENT_COMBINED_MD,
         "e4_multimodel_readiness_json": E4_READINESS_JSON,
         "e4_multimodel_readiness_md": E4_READINESS_MD,
         "current_patent_experiment_section_json": CURRENT_PATENT_SECTION_JSON,
@@ -331,6 +339,7 @@ def build_report() -> dict[str, Any]:
     semantic_boundary_manifest = manifest["e3_semantic_boundary_plan"]
     guard_validation_manifest = manifest["e3_guard_validation_inputs"]
     guard_validation_after_manifest = manifest["e3_guard_validation_after_guard"]
+    s3_current_manifest = manifest["e3_s3_current_after_guard"]
     e4_manifest = manifest["multimodel_e4_readiness"]
     e4_readiness = read_json(E4_READINESS_JSON)
     current_section_manifest = manifest["current_patent_experiment_section"]
@@ -461,6 +470,43 @@ def build_report() -> dict[str, Any]:
         guard_validation_after_manifest["aggregate"]["missing"],
         guard_validation_after["aggregate"]["missing"],
     )
+    s3_current = read_json(E3_S3_CURRENT_COMBINED_JSON)
+    check_equal(
+        report,
+        "manifest E3 S3 json path",
+        s3_current_manifest["summary_json"],
+        str(E3_S3_CURRENT_COMBINED_JSON),
+    )
+    check_equal(
+        report,
+        "manifest E3 S3 md path",
+        s3_current_manifest["summary_md"],
+        str(E3_S3_CURRENT_COMBINED_MD),
+    )
+    check_equal(
+        report,
+        "manifest E3 S3 decision",
+        s3_current_manifest["decision"],
+        s3_current["decision"],
+    )
+    check_equal(
+        report,
+        "manifest E3 S3 paired next",
+        s3_current_manifest["paired_mact_next"],
+        s3_current["paired_mact_next"],
+    )
+    check_equal(
+        report,
+        "manifest E3 S3 correct",
+        s3_current_manifest["overall"]["correct"],
+        s3_current["overall"]["correct"],
+    )
+    check_equal(
+        report,
+        "manifest E3 S3 failed",
+        s3_current_manifest["overall"]["failed"],
+        s3_current["overall"]["failed"],
+    )
     check_equal(report, "manifest E4 readiness json path", e4_manifest["latest_json"], str(E4_READINESS_JSON))
     check_equal(report, "manifest E4 readiness md path", e4_manifest["latest_md"], str(E4_READINESS_MD))
     check_equal(report, "manifest E4 readiness status", e4_manifest["status"], e4_readiness["decision"])
@@ -525,6 +571,18 @@ def build_report() -> dict[str, Any]:
             "no_harm_correct"
         ],
         18,
+    )
+    check_equal(
+        report,
+        "current patent section E3 S3 decision",
+        current_section["e3_multiseed_boundary"]["s3_current_after_guard"]["decision"],
+        "s3_stop_or_inspect_boundary_remains",
+    )
+    check_equal(
+        report,
+        "current patent section E3 S3 correct",
+        current_section["e3_multiseed_boundary"]["s3_current_after_guard"]["overall"]["correct"],
+        215,
     )
     check_contains(
         report,
@@ -605,6 +663,18 @@ def build_report() -> dict[str, Any]:
             "no_harm_correct"
         ],
         18,
+    )
+    check_equal(
+        report,
+        "completion gap S3 decision",
+        requirements_by_id["R4"]["metrics"]["s3_current_after_guard"]["decision"],
+        "s3_stop_or_inspect_boundary_remains",
+    )
+    check_equal(
+        report,
+        "completion gap S3 correct",
+        requirements_by_id["R4"]["metrics"]["s3_current_after_guard"]["overall"]["correct"],
+        215,
     )
     check_equal(
         report,
@@ -726,6 +796,7 @@ def build_report() -> dict[str, Any]:
         "patent disclosure full200": "Aggregate | 600/600/600 | 489/600 | 450/600 | +39 | 0.5717 | 0/0",
         "patent disclosure P4b closure": "Overall | 150/150/150 | 121/150 | 111/150 | +10 | 0.5310 | 0/0",
         "patent disclosure E3 boundary": "Combined | 300/300/300 | 212/300 | 0.5916 | 0/0 | `complete_boundary_evidence`",
+        "patent disclosure E3 S3 boundary": "Combined | 300/300/300 | 215/300 | 0.5866 | 0/0 | `s3_stop_or_inspect_boundary_remains`",
         "patent disclosure E4 boundary": "E4 多模型 readiness audit 结果为 `no_candidate_wait`",
         "patent disclosure evidence paths": "latest_completion_gap_audit_current_zh.md",
     }.items():
@@ -748,6 +819,7 @@ def build_report() -> dict[str, Any]:
         "PRD E3 semantic boundary plan": "e3_semantic_boundary_plan.md",
         "PRD E3 guard validation input plan": "e3_guard_validation_input_plan.md",
         "PRD E3 guard validation after guard": "after_guard_passes_s2_gate",
+        "PRD E3 S3 current after guard": "s3_stop_or_inspect_boundary_remains",
         "PRD E4 readiness audit": "latest_e4_multimodel_gate_readiness_audit_zh.md",
         "PRD active status": "active_not_complete",
     }.items():

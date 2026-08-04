@@ -2,7 +2,7 @@
 
 本文档用于把专利/专家所需实验拆成可停止、可复核、可逐步扩样的流程，避免把所有模型、所有样本一次性 full run。
 
-当前状态更新：A/B 已在 2026-08-03 完成。WTQ targeted fresh 为 `9/9`，P4b after-targeted full50 后总表为 MyAgent `121/150` vs MACT `111/150`，overall token ratio `0.5310`，failed/missing `0/0`，WTQ/TabFact/CRT 单项均超过 MACT。E3 Seed-C/D current-only 也已完成并形成边界诊断；2026-08-04 E3 S2 after-guard fresh 已通过，representative recovered `8/12`，no-harm `18/18`，failed/missing `0/0`，weighted token ratio `0.6104`；E4 多模型 gate 最新状态为 `no_candidate_wait`。
+当前状态更新：A/B 已在 2026-08-03 完成。WTQ targeted fresh 为 `9/9`，P4b after-targeted full50 后总表为 MyAgent `121/150` vs MACT `111/150`，overall token ratio `0.5310`，failed/missing `0/0`，WTQ/TabFact/CRT 单项均超过 MACT。E3 Seed-C/D current-only 也已完成并形成边界诊断；2026-08-04 E3 S2 after-guard fresh 已通过，representative recovered `8/12`，no-harm `18/18`，failed/missing `0/0`，weighted token ratio `0.6104`；S3 after-guard current-only 复跑已完成，Seed-C `118/150` 过 gate，Seed-D `97/150` 且 WTQ/TabFact 未过 gate，combined `215/300`、token ratio `0.5866`、failed/missing `0/0`，decision=`s3_stop_or_inspect_boundary_remains`；E4 多模型 gate 最新状态为 `no_candidate_wait`。
 
 基线成本估计来自 Qwen3-32B full200 已冻结结果：
 
@@ -141,6 +141,9 @@ bash /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate
 | Seed-D current-only Gate-50 | 150 | 98/150 | 0.5735 | `stop_or_inspect` | 第二组新 seed 边界诊断 |
 | Seed-C/D combined diagnosis | 300 | 212/300 | 0.5916 | `complete_boundary_evidence` | 说明边界来自语义准确率稳定性，不是 runtime/tool/token 问题 |
 | S2 after-guard affected slice | 30 | recovered 8/12; no-harm 18/18 | 0.6104 | `after_guard_passes_s2_gate` | 证明 P0/P1 gold-free guard 小样本机制门槛通过 |
+| S3 after-guard Seed-C current-only | 150 | 118/150 | 0.6073 | `s3_seed_pass_run_paired_mact_candidate` | 当前 guard 迁移到 Seed-C |
+| S3 after-guard Seed-D current-only | 150 | 97/150 | 0.5659 | `s3_seed_stop_or_inspect` | WTQ/TabFact 仍未过 gate |
+| S3 after-guard combined | 300 | 215/300 | 0.5866 | `s3_stop_or_inspect_boundary_remains` | 不启动 paired MACT，先诊断 Seed-D |
 | Selected Gate-150 | 450 | not started | n/a | `not_triggered` | 只有当前置 seed 形成稳定性正证据后才扩大 |
 
 判断：
@@ -150,7 +153,7 @@ bash /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate
 3. 任何 seed 出现 failed/missing > 2%，先排查 runner/endpoint，不把该结果写成模型效果。
 4. 若 current-only summary 的 decision 是 `stop_or_inspect`，不跑 MACT baseline，先诊断该 seed 的 MyAgent 错误。
 
-当前结论：旧 E3 Seed-C/D current-only 是适用边界证据，不是“多 seed 稳定超过 MACT”的正证据；S2 after-guard fresh 已证明当前 P0/P1 gold-free guard 在 affected-slice/no-harm 小样本上通过。若继续优化，下一步是 S3 Seed-C/D current-only rerun，再按 gate 决定是否需要 paired MACT。
+当前结论：旧 E3 Seed-C/D current-only 是适用边界证据，不是“多 seed 稳定超过 MACT”的正证据；S2 after-guard fresh 已证明当前 P0/P1 gold-free guard 在 affected-slice/no-harm 小样本上通过。S3 Seed-C/D current-only 已复跑，但只通过 Seed-C，Seed-D WTQ/TabFact 未过 gate；因此不启动 paired MACT，下一步是 Seed-D WTQ/TabFact 边界诊断和小规模 fresh 验证。
 
 ## E. 多模型 Gate
 
@@ -180,7 +183,7 @@ Gate-10 -> Gate-50 -> Gate-150 -> paired-200
 1. Qwen3-32B full200 主证据保持三数据集单项超过 MACT、token 明显低。
 2. WTQ targeted fresh 与 WTQ P4b after-fix full50 已给出明确结论。
 3. 至少 2 个机制模块有消融或离线归因证据。
-4. 至少 1 组额外 seed 稳定性正证据或 1 个额外模型完成 gate 结论；当前 E3 S2 是 targeted mechanism gate pass，仍需 S3 Seed-C/D current-only 复跑，E4 是 no-candidate。
+4. 至少 1 组额外 seed 稳定性正证据或 1 个额外模型完成 gate 结论；当前 E3 S2 是 targeted mechanism gate pass，S3 只通过 Seed-C、Seed-D WTQ/TabFact 仍未过，E4 是 no-candidate。
 5. 所有新增结果有 JSON/MD、路径索引、失败/缺答案、token、耗时和 git 提交号。
 
 未满足 F 之前，当前目标保持 active，不写“正式实验完成”。

@@ -68,6 +68,12 @@ E3_GUARD_VALIDATION_AFTER_GUARD_SUMMARY = Path(
     "summary/e3_guard_validation_after_guard_summary.json"
 )
 E3_GUARD_VALIDATION_AFTER_GUARD_SUMMARY_MD = E3_GUARD_VALIDATION_AFTER_GUARD_SUMMARY.with_suffix(".md")
+E3_S3_CURRENT_COMBINED_SUMMARY = Path(
+    "/home/ubuntu/lzz/MACT/outputs/server_runs/"
+    "qwen3_32b_policy_v6b_e3_s3_current_rerun_after_guard_20260804_1425/"
+    "summary/e3_s3_current_combined_summary.json"
+)
+E3_S3_CURRENT_COMBINED_SUMMARY_MD = E3_S3_CURRENT_COMBINED_SUMMARY.with_suffix(".md")
 E4_READINESS = PACKAGE_DIR / "latest_e4_multimodel_gate_readiness_audit.json"
 E4_READINESS_MD = PACKAGE_DIR / "latest_e4_multimodel_gate_readiness_audit_zh.md"
 FORMAL_LEDGER = PACKAGE_DIR / "latest_formal_result_ledger_current.json"
@@ -266,6 +272,11 @@ def build_section() -> dict[str, Any]:
         if E3_GUARD_VALIDATION_AFTER_GUARD_SUMMARY.exists()
         else None
     )
+    e3_s3_current = (
+        read_json(E3_S3_CURRENT_COMBINED_SUMMARY)
+        if E3_S3_CURRENT_COMBINED_SUMMARY.exists()
+        else None
+    )
     e4 = read_json(E4_READINESS)
     e3_seeds = [
         e3_seed_table(read_json(E3_RUN_DIR / "summary" / f"{seed}_myagent_gate50_summary.json"))
@@ -306,6 +317,12 @@ def build_section() -> dict[str, Any]:
             "e3_guard_validation_after_guard_summary_md": str(E3_GUARD_VALIDATION_AFTER_GUARD_SUMMARY_MD)
             if e3_guard_validation_after
             else "",
+            "e3_s3_current_combined_summary": str(E3_S3_CURRENT_COMBINED_SUMMARY)
+            if e3_s3_current
+            else "",
+            "e3_s3_current_combined_summary_md": str(E3_S3_CURRENT_COMBINED_SUMMARY_MD)
+            if e3_s3_current
+            else "",
             "e4_readiness": str(E4_READINESS),
             "e4_readiness_md": str(E4_READINESS_MD),
             "formal_ledger": str(FORMAL_LEDGER),
@@ -325,6 +342,7 @@ def build_section() -> dict[str, Any]:
                 "E3 max_replan=5 boundary probe recovered only a minority of representative wrong rows, so it supports adaptive budgeting for selected categories but not E3 stability closure.",
                 "E3 semantic-boundary plan defined P0/P1 targeted guard work and blocked full reruns until affected-slice validation passed.",
                 "E3 S2 after-guard fresh validation is a targeted affected-slice pass, not a Seed-C/D multi-seed stability pass.",
+                "E3 S3 after-guard current-only rerun remains boundary evidence: Seed-C passed but Seed-D missed WTQ and TabFact gates, so paired MACT was not started.",
                 "E4 multi-model gate is blocked by no candidate: no untested local model path and no API provider profile/key are available.",
             ],
             "unsupported_claims": [
@@ -436,6 +454,22 @@ def build_section() -> dict[str, Any]:
                 "category_results": e3_guard_validation_after["category_results"],
                 "guard_change_scope": e3_guard_validation_after["guard_change_scope"],
             },
+            "s3_current_after_guard": None
+            if not e3_s3_current
+            else {
+                "decision": e3_s3_current["decision"],
+                "paired_mact_next": e3_s3_current["paired_mact_next"],
+                "overall": e3_s3_current["overall"],
+                "seeds": [
+                    {
+                        "seed_label": item["seed_label"],
+                        "decision": item["decision"],
+                        "overall": item["overall"],
+                        "datasets": item["datasets"],
+                    }
+                    for item in e3_s3_current["seeds"]
+                ],
+            },
         },
         "e4_multimodel_gate": {
             "decision": e4["decision"],
@@ -494,6 +528,11 @@ def build_section() -> dict[str, Any]:
                 "patent_use": "targeted semantic guard fresh evidence, not multi-seed stability proof",
             },
             {
+                "stage": "E3 S3 current-only after-guard rerun",
+                "status": "complete_boundary_not_stability_pass",
+                "patent_use": "Seed-C passes but Seed-D remains below WTQ/TabFact gates; not paired MACT evidence",
+            },
+            {
                 "stage": "E4 multi-model gate",
                 "status": "pending_no_candidate",
                 "patent_use": "future external validity evidence after new model/API appears",
@@ -512,7 +551,7 @@ def build_section() -> dict[str, Any]:
         "next_trigger_rules": [
             "If a new candidate model/API appears, rerun runtime preflight first and start Gate-10 only on a clean GPU pair, with 0,1 -> 8000 and 2,3 -> 8001 used only when the default pool is actually available; do not consume 4-7 unless explicitly reassigned.",
             "If no new model/API exists, do not rerun known no-go models; continue drafting with E4 marked pending/no-candidate.",
-            "S2 after-guard fresh has passed; next Qwen optimization step is S3 E3 Seed-C/D current-only rerun with the current guards, not another affected-slice loop unless S3 exposes new regressions.",
+            "S3 after-guard current-only has completed and did not pass both seeds; do not start paired MACT from this result. Next Qwen3 work should diagnose Seed-D WTQ/TabFact boundary rows before any broader rerun.",
         ],
     }
 
@@ -582,6 +621,7 @@ def render_markdown(report: dict[str, Any]) -> str:
     e3_semantic_plan = e3.get("semantic_boundary_plan")
     e3_guard_validation = e3.get("guard_validation_inputs")
     e3_guard_validation_after = e3.get("guard_validation_after_guard")
+    e3_s3_current = e3.get("s3_current_after_guard")
     e4 = report["e4_multimodel_gate"]
     coarse = report["coarse_ablation_key_numbers"]
     lines = [
@@ -624,6 +664,13 @@ def render_markdown(report: dict[str, Any]) -> str:
             if e3_guard_validation_after
             else []
         ),
+        *(
+            [
+                f"- E3 S3 after-guard current-only：combined `{e3_s3_current['overall']['correct']}/{e3_s3_current['overall']['rows']}`，weighted token ratio `{e3_s3_current['overall']['token_ratio_to_mact_full200_weighted']:.4f}`，failed/missing `{e3_s3_current['overall']['failed']}/{e3_s3_current['overall']['missing']}`，decision `{e3_s3_current['decision']}`；Seed-C 通过，Seed-D 未过 WTQ/TabFact gate。"
+            ]
+            if e3_s3_current
+            else []
+        ),
         f"- E4 多模型 gate：`{e4['decision']}`，无 untested local model、无 API provider profile/key；默认下一次启动池为 `{e4['default_gpu_pool']}`，当前可用状态为 `{e4['default_gpu_pool_available_for_next_start']}`。",
         "",
         "## 2. 可以写入的正证据",
@@ -652,6 +699,7 @@ def render_markdown(report: dict[str, Any]) -> str:
         "- E3 max_replan=5 probe 只恢复少数代表错题；TabFact temporal/numeric 对预算敏感，但 CRT 与 WTQ entity 边界仍需要语义 guard。",
         "- E3 semantic-boundary plan 已转化为 S2 targeted guard fresh 验证，但不是稳定性通过结果。",
         "- E3 S2 after-guard fresh 是 affected-slice 机制验证通过，不是 Seed-C/D current-only 或 paired MACT 通过。",
+        "- E3 S3 after-guard current-only 不能写成多 seed 稳定超过 MACT；Seed-D WTQ 和 TabFact 未过当前 gate，paired MACT 未启动。",
         "- E4 不能写成多模型已验证；当前只是 readiness audit，结论是没有可启动候选。",
         "- 不能把 full200/gate 结果写成全量官方测试集完成。",
         "",
@@ -720,6 +768,27 @@ def render_markdown(report: dict[str, Any]) -> str:
                     "",
                 ]
                 if e3_guard_validation_after
+                else []
+            ),
+            *(
+                [
+                    "E3 S3 after-guard current-only rerun：",
+                    "",
+                    f"- combined decision: `{e3_s3_current['decision']}`",
+                    f"- paired MACT next: `{e3_s3_current['paired_mact_next']}`",
+                    f"- combined: `{e3_s3_current['overall']['correct']}/{e3_s3_current['overall']['rows']}`, weighted token ratio `{e3_s3_current['overall']['token_ratio_to_mact_full200_weighted']:.4f}`, failed/missing `{e3_s3_current['overall']['failed']}/{e3_s3_current['overall']['missing']}`",
+                    "",
+                    "| seed | correct | token ratio | failed/missing | decision |",
+                    "|---|---:|---:|---:|---|",
+                    *[
+                        f"| {item['seed_label']} | {item['overall']['correct']}/{item['overall']['rows']} | {item['overall']['token_ratio_to_mact_full200_weighted']:.4f} | {item['overall']['failed']}/{item['overall']['missing']} | `{item['decision']}` |"
+                        for item in e3_s3_current["seeds"]
+                    ],
+                    "",
+                    "Seed-D remaining misses mean this is boundary evidence, not a stability closure.",
+                    "",
+                ]
+                if e3_s3_current
                 else []
             ),
             "## 5. 正式实验表状态",

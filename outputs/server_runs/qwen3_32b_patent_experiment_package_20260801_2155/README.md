@@ -82,12 +82,19 @@ Current status:
   `/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_guard_validation_after_guard_20260804_1203/`.
   It recovered `8/12` representative wrong rows, preserved `18/18` no-harm
   rows, had failures/missing `0/0`, and weighted token ratio `0.6104`.
-  This is targeted mechanism evidence; the next Qwen3 evidence step is S3
-  Seed-C/D current-only rerun, not paired MACT yet.
+  This is targeted mechanism evidence, not a multi-seed stability pass.
+- The E3 S3 after-guard current-only rerun is complete at
+  `/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_s3_current_rerun_after_guard_20260804_1425/`.
+  Seed-C passed with `118/150`, token ratio `0.6073`, failed/missing `0/0`.
+  Seed-D stopped for inspect with `97/150`, token ratio `0.5659`,
+  failed/missing `0/0`; WTQ `28/50` and TabFact `39/50` were below the S3
+  gates. Combined result is `215/300`, token ratio `0.5866`, failed/missing
+  `0/0`, decision `s3_stop_or_inspect_boundary_remains`. Paired MACT was not
+  started.
 - The latest current completion-gap audit records that the active goal is not
   complete: Qwen3 full200, P4b after-targeted, and E3 S2 after-guard fresh are
-  positive evidence, while E3 stability and E4 remain pending until Seed-C/D
-  current-only rerun and a new local model or API profile appear.
+  positive evidence; S3 still leaves Seed-D WTQ/TabFact boundary gaps, and E4
+  remains pending until a new local model or API profile appears.
 - The claim-to-evidence traceability matrix maps six patent claim families to
   mechanisms, evidence files, support strength, and remaining gaps.
 - The formal result-table template defines the exact fields and decision ledger

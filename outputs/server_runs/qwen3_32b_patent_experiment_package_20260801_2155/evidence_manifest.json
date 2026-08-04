@@ -393,6 +393,56 @@
       }
     }
   },
+  "e3_s3_current_after_guard": {
+    "run_dir": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_s3_current_rerun_after_guard_20260804_1425",
+    "readme": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_s3_current_rerun_after_guard_20260804_1425/README.md",
+    "runner": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_s3_current_rerun_after_guard_20260804_1425/run_s3_current.sh",
+    "summarizer": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_s3_current_rerun_after_guard_20260804_1425/summarize_s3_current.py",
+    "summary_json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_s3_current_rerun_after_guard_20260804_1425/summary/e3_s3_current_combined_summary.json",
+    "summary_md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_s3_current_rerun_after_guard_20260804_1425/summary/e3_s3_current_combined_summary.md",
+    "seed_c_summary_json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_s3_current_rerun_after_guard_20260804_1425/summary/seed_c_s3_current_summary.json",
+    "seed_c_summary_md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_s3_current_rerun_after_guard_20260804_1425/summary/seed_c_s3_current_summary.md",
+    "seed_d_summary_json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_s3_current_rerun_after_guard_20260804_1425/summary/seed_d_s3_current_summary.json",
+    "seed_d_summary_md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_s3_current_rerun_after_guard_20260804_1425/summary/seed_d_s3_current_summary.md",
+    "source_multiseed_run": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231",
+    "scope_note": "Fresh S3 current-only rerun on Seed-C/D after S2 guards. Seed-C passed but Seed-D missed WTQ and TabFact gates; this is boundary evidence, not multi-seed stability closure.",
+    "decision": "s3_stop_or_inspect_boundary_remains",
+    "paired_mact_next": false,
+    "overall": {
+      "rows": 300,
+      "correct": 215,
+      "accuracy": 0.7166666666666667,
+      "avg_total_tokens_weighted": 6677.01,
+      "token_ratio_to_mact_full200_weighted": 0.5865801005246445,
+      "avg_elapsed_seconds_weighted": 17.59105679924367,
+      "failed": 0,
+      "missing": 0
+    },
+    "seeds": {
+      "seed_c": {
+        "decision": "s3_seed_pass_run_paired_mact_candidate",
+        "overall_correct": 118,
+        "overall_rows": 150,
+        "token_ratio_to_mact_full200_weighted": 0.6072551805566455,
+        "failed": 0,
+        "missing": 0,
+        "wtq_correct": 40,
+        "tabfact_correct": 46,
+        "crt_correct": 32
+      },
+      "seed_d": {
+        "decision": "s3_seed_stop_or_inspect",
+        "overall_correct": 97,
+        "overall_rows": 150,
+        "token_ratio_to_mact_full200_weighted": 0.5659050204926434,
+        "failed": 0,
+        "missing": 0,
+        "wtq_correct": 28,
+        "tabfact_correct": 39,
+        "crt_correct": 30
+      }
+    }
+  },
   "completion_gap_audit": {
     "script": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/build_current_completion_gap_audit.py",
     "latest_json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_completion_gap_audit_current.json",
@@ -400,14 +450,14 @@
     "legacy_json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/completion_gap_audit_20260801_2244.json",
     "legacy_md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/completion_gap_audit_20260801_2244_zh.md",
     "overall_completion_status": "active_not_complete",
-    "reason_not_complete": "The current patent experiment section has been consolidated as draft-ready evidence with explicit boundaries. E3 S2 after-guard fresh passed the affected-slice gate, but Seed-C/D current-only rerun and at least one viable additional-model gate result remain missing; latest E4 readiness audit found no new model/API candidate, so E4 remains pending/no-candidate.",
-    "latest_observed_at_local": "2026-08-04 12:18 CST"
+    "reason_not_complete": "The current patent experiment section has been consolidated as draft-ready evidence with explicit boundaries. E3 S3 current-only after-guard rerun completed, but only Seed-C passed and Seed-D still missed WTQ/TabFact gates; latest E4 readiness audit found no new model/API candidate, so E4 remains pending/no-candidate.",
+    "latest_observed_at_local": "2026-08-04 15:13 CST"
   },
   "claim_evidence_traceability": {
     "json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/claim_evidence_traceability_20260801_2248.json",
     "md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/claim_evidence_traceability_20260801_2248_zh.md",
-    "last_updated_at_local": "2026-08-04 12:18 CST",
-    "current_note": "WTQ targeted fresh and P4b after-targeted closure are complete. E3 Seed-C/D current-only execution, max_replan=5 budget probe, semantic-boundary plan, and S2 after-guard fresh are complete as boundary/mechanism evidence. E4 remains pending/no-candidate.",
+    "last_updated_at_local": "2026-08-04 15:13 CST",
+    "current_note": "WTQ targeted fresh and P4b after-targeted closure are complete. E3 Seed-C/D current-only execution, max_replan=5 budget probe, semantic-boundary plan, S2 after-guard fresh, and S3 after-guard current-only rerun are complete as boundary/mechanism evidence. S3 only passed Seed-C; Seed-D still missed WTQ/TabFact gates. E4 remains pending/no-candidate.",
     "claim_families": [
       "Risk-stratified selective collaboration",
       "Evidence-retention table compression",
@@ -477,7 +527,8 @@
     "boundary_evidence": [
       "E3 Seed-C/Seed-D current-only Gate-50 is boundary evidence, not multi-seed stable superiority evidence.",
       "E3 max_replan=5 budget probe recovered 4/12 representative wrong rows and supports adaptive-budget sensitivity, not stability closure.",
-      "E3 S2 after-guard fresh is a targeted affected-slice mechanism pass, not a Seed-C/D multi-seed stability pass; next Qwen3 evidence step is S3 current-only rerun.",
+      "E3 S2 after-guard fresh is a targeted affected-slice mechanism pass, not a Seed-C/D multi-seed stability pass.",
+      "E3 S3 after-guard current-only rerun is complete but remains boundary evidence: Seed-C passed, Seed-D missed WTQ/TabFact gates, and paired MACT was not started.",
       "E4 readiness audit is no_candidate_wait; no additional model/API result is available yet."
     ]
   },
@@ -512,19 +563,19 @@
     "latest_status": "pass",
     "latest_errors": 0,
     "latest_warnings": 0,
-    "latest_observed_at_local": "2026-08-04 14:16:56 CST"
+    "latest_observed_at_local": "2026-08-04 15:24:51 CST"
   },
   "package_checksums": {
     "script": "outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/build_patent_package_checksums.py",
     "latest_json": "outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_patent_package_checksums.json",
     "latest_md": "outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_patent_package_checksums_zh.md",
     "sha256sums": "outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/SHA256SUMS",
-    "latest_numbers_source": "Read latest_patent_package_checksums.json; record_count changes whenever this package or referenced evidence files change."
+    "latest_numbers_source": "Read latest_patent_package_checksums.json for the current record_count; missing_or_pending_reference_count should remain 0 after S3 synchronization."
   },
   "current_prd": "/home/ubuntu/lzz/MyAgent/docs/server/server_codex_reports/current-qwen3-mact-experiment-prd.md",
   "formal_experiment_schedule": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/formal_experiment_schedule_zh.md",
   "remaining_work": [
-    "Use the completed S2 after-guard fresh pass to run S3 Seed-C/D current-only rerun before any paired MACT runtime.",
+    "Diagnose Seed-D WTQ/TabFact S3 boundary rows before any paired MACT runtime.",
     "Run at least one additional model through the gate funnel after server expansion or API key availability.",
     "Finalize patent claims and final experiment package closeout after an E4 candidate result or explicit acceptance of the no-candidate boundary."
   ],
