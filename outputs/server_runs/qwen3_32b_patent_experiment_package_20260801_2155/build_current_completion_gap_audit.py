@@ -64,6 +64,11 @@ E3_S3_CURRENT_COMBINED_SUMMARY = Path(
     "qwen3_32b_policy_v6b_e3_s3_current_rerun_after_guard_20260804_1425/"
     "summary/e3_s3_current_combined_summary.json"
 )
+E3_BOUNDARY_FRESH_COMBINED_SUMMARY = Path(
+    "/home/ubuntu/lzz/MACT/outputs/server_runs/"
+    "qwen3_32b_policy_v6c_seed_d_boundary_fresh_20260804_1549/"
+    "summary/e3_boundary_fresh_combined_summary.json"
+)
 E4_READINESS = PACKAGE_DIR / "latest_e4_multimodel_gate_readiness_audit.json"
 FORMAL_LEDGER = PACKAGE_DIR / "latest_formal_result_ledger_current.json"
 CURRENT_PATENT_SECTION = PACKAGE_DIR / "latest_current_patent_experiment_section.json"
@@ -287,6 +292,27 @@ def e3_s3_current_metrics(path: Path) -> dict[str, Any] | None:
     }
 
 
+def e3_boundary_fresh_metrics(path: Path) -> dict[str, Any] | None:
+    if not path.exists():
+        return None
+    summary = read_json(path)
+    return {
+        "decision": summary["decision"],
+        "paired_mact_next": summary["paired_mact_next"],
+        "overall": summary["overall"],
+        "limitations": summary["limitations"],
+        "seeds": {
+            item["seed_label"]: {
+                "decision": item["decision"],
+                "overall": item["overall"],
+                "datasets": item["datasets"],
+                "evidence_mode": item.get("evidence_mode", "mixed"),
+            }
+            for item in summary["seeds"]
+        },
+    }
+
+
 def build_audit() -> dict[str, Any]:
     generated_at = dt.datetime.now().astimezone().strftime("%Y-%m-%d %H:%M:%S %Z")
     full = read_json(FULL200_SUMMARY)
@@ -322,6 +348,9 @@ def build_audit() -> dict[str, Any]:
     e3_s3_current = e3_s3_current_metrics(E3_S3_CURRENT_COMBINED_SUMMARY)
     if e3_s3_current:
         e3_current["s3_current_after_guard"] = e3_s3_current
+    e3_boundary_fresh_current = e3_boundary_fresh_metrics(E3_BOUNDARY_FRESH_COMBINED_SUMMARY)
+    if e3_boundary_fresh_current:
+        e3_current["boundary_fresh_current_candidate"] = e3_boundary_fresh_current
 
     requirements = [
         {
@@ -365,7 +394,9 @@ def build_audit() -> dict[str, Any]:
         {
             "id": "R4",
             "requirement": "Multi-seed work explains whether the effect is stable beyond the frozen full200 and P4b seed.",
-            "status": "complete_boundary_not_stability_pass",
+            "status": "current_only_candidate_paired_pending"
+            if e3_boundary_fresh_current
+            else "complete_boundary_not_stability_pass",
             "evidence": [
                 str(E3_BOUNDARY_DIAGNOSIS),
                 str(E3_BOUNDARY_DIAGNOSIS.with_suffix(".md")),
@@ -409,9 +440,19 @@ def build_audit() -> dict[str, Any]:
                 ]
                 if e3_s3_current
                 else []
+            )
+            + (
+                [
+                    str(E3_BOUNDARY_FRESH_COMBINED_SUMMARY),
+                    str(E3_BOUNDARY_FRESH_COMBINED_SUMMARY.with_suffix(".md")),
+                ]
+                if e3_boundary_fresh_current
+                else []
             ),
             "metrics": e3_current,
-            "gap": "Seed-C/Seed-D remain boundary evidence, not multi-seed stable superiority evidence. S2 after-guard fresh passed, but S3 current-only rerun only passed Seed-C; Seed-D still missed WTQ and TabFact gates, so paired MACT is not justified until Seed-D boundary rows are diagnosed and rerun.",
+            "gap": "E3 v6c boundary-fresh current-only candidate reaches paired_mact_next=true, but same-seed paired MACT is not yet run. Seed-C is inherited from S3 and Seed-D CRT is inherited from S3, so strict freshness can optionally be improved by rerunning full v6c S3 before S4."
+            if e3_boundary_fresh_current
+            else "Seed-C/Seed-D remain boundary evidence, not multi-seed stable superiority evidence. S2 after-guard fresh passed, but S3 current-only rerun only passed Seed-C; Seed-D still missed WTQ and TabFact gates, so paired MACT is not justified until Seed-D boundary rows are diagnosed and rerun.",
         },
         {
             "id": "R5",
@@ -504,10 +545,10 @@ def build_audit() -> dict[str, Any]:
         "current_next_actions": [
             "Do not rerun known no-go models. Wait for a new local model path or API provider profile/key before E4 Gate-10.",
             "Use latest_current_patent_experiment_section_zh.md for current expert/patent discussion, with E3 and E4 boundaries explicitly preserved.",
-            "S3 after-guard current-only has completed and did not pass both seeds; the next Qwen3 optimization step is Seed-D WTQ/TabFact boundary diagnosis before any paired MACT runtime.",
+            "Run S4 paired MACT for the v6c boundary-fresh current-only candidate, or first run a strict full v6c S3 current-only rerun if all current-only rows must be same-code fresh.",
         ],
         "overall_completion_status": completion_summary["overall_status"],
-        "reason_not_complete": "Current Qwen3 full200, P4b after-targeted, and E3 S2 after-guard fresh evidence are positive. S3 Seed-C/D current-only rerun completed, but only Seed-C passed; Seed-D missed WTQ and TabFact gates, so E3 remains boundary evidence and paired MACT is not justified yet. E4 has no candidate, so model-externality evidence and final closeout remain pending.",
+        "reason_not_complete": "Current Qwen3 full200, P4b after-targeted, E3 S2 after-guard fresh, and E3 v6c boundary-fresh current-only evidence are positive. S4 paired MACT has not run yet, and E4 has no candidate, so paired multi-seed confirmation, model-externality evidence, and final closeout remain pending.",
         "can_write_now": completion_summary["can_write_now"],
         "cannot_write_yet": completion_summary["cannot_write_yet"],
     }
@@ -528,6 +569,7 @@ def render_markdown(report: dict[str, Any]) -> str:
     r4_guard_validation = r4.get("guard_validation_input_plan")
     r4_guard_validation_after = r4.get("guard_validation_after_guard")
     r4_s3_current = r4.get("s3_current_after_guard")
+    r4_boundary_fresh = r4.get("boundary_fresh_current_candidate")
     runtime = report["runtime_recheck"]
     lines = [
         "# 当前专利实验完成度审计",
@@ -538,7 +580,7 @@ def render_markdown(report: dict[str, Any]) -> str:
         "",
         "## 当前结论",
         "",
-        f"当前目标状态：`{report['overall_completion_status']}`。Qwen3-32B full200、P4b after-targeted 与 E3 S2 after-guard fresh 已是正证据；S3 Seed-C/D current-only 已完成但仅 Seed-C 通过、Seed-D WTQ/TabFact 未过，E3 仍是边界证据；E4 状态为 `pending_no_candidate`，artifact decision 为 `no_candidate_wait`，尚无额外模型/API 候选。",
+        f"当前目标状态：`{report['overall_completion_status']}`。Qwen3-32B full200、P4b after-targeted、E3 S2 after-guard fresh 与 E3 v6c boundary-fresh current-only candidate 已是正证据；S4 paired MACT 尚未运行，E4 状态为 `pending_no_candidate`，artifact decision 为 `no_candidate_wait`，尚无额外模型/API 候选。",
         "",
         "## 环境复核",
         "",
@@ -604,6 +646,10 @@ def render_markdown(report: dict[str, Any]) -> str:
     if r4_s3_current:
         lines.append(
             f"| E3 S3 after-guard current-only | combined `{r4_s3_current['overall']['correct']}/{r4_s3_current['overall']['rows']}`, weighted token ratio `{r4_s3_current['overall']['token_ratio_to_mact_full200_weighted']:.4f}`, failed/missing `{r4_s3_current['overall']['failed']}/{r4_s3_current['overall']['missing']}`, decision `{r4_s3_current['decision']}`, paired MACT next `{r4_s3_current['paired_mact_next']}` |"
+        )
+    if r4_boundary_fresh:
+        lines.append(
+            f"| E3 v6c boundary-fresh current-only | combined `{r4_boundary_fresh['overall']['correct']}/{r4_boundary_fresh['overall']['rows']}`, weighted token ratio `{r4_boundary_fresh['overall']['token_ratio_to_mact_full200_weighted']:.4f}`, failed/missing `{r4_boundary_fresh['overall']['failed']}/{r4_boundary_fresh['overall']['missing']}`, decision `{r4_boundary_fresh['decision']}`, paired MACT next `{r4_boundary_fresh['paired_mact_next']}` |"
         )
     lines.extend(
         [

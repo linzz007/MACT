@@ -68,6 +68,16 @@ E3_S3_RUN_DIR = Path(
 )
 E3_S3_COMBINED_JSON = E3_S3_RUN_DIR / "summary" / "e3_s3_current_combined_summary.json"
 E3_S3_COMBINED_MD = E3_S3_RUN_DIR / "summary" / "e3_s3_current_combined_summary.md"
+E3_BOUNDARY_FRESH_RUN_DIR = Path(
+    "/home/ubuntu/lzz/MACT/outputs/server_runs/"
+    "qwen3_32b_policy_v6c_seed_d_boundary_fresh_20260804_1549"
+)
+E3_BOUNDARY_FRESH_COMBINED_JSON = (
+    E3_BOUNDARY_FRESH_RUN_DIR / "summary" / "e3_boundary_fresh_combined_summary.json"
+)
+E3_BOUNDARY_FRESH_COMBINED_MD = (
+    E3_BOUNDARY_FRESH_RUN_DIR / "summary" / "e3_boundary_fresh_combined_summary.md"
+)
 E4_READINESS_JSON = PACKAGE_DIR / "latest_e4_multimodel_gate_readiness_audit.json"
 E4_READINESS_MD = PACKAGE_DIR / "latest_e4_multimodel_gate_readiness_audit_zh.md"
 CURRENT_PATENT_SECTION_JSON = PACKAGE_DIR / "latest_current_patent_experiment_section.json"
@@ -337,6 +347,11 @@ def e3_current_rows(summary: dict[str, Any], *, mact_commit: str, myagent_commit
 
 
 def e3_current_decisions() -> dict[str, str]:
+    if E3_BOUNDARY_FRESH_COMBINED_JSON.exists():
+        latest = read_json(E3_BOUNDARY_FRESH_COMBINED_JSON)
+        if latest.get("paired_mact_next"):
+            return {seed: "run_paired_mact" for seed in E3_SEEDS}
+
     decisions: dict[str, str] = {}
     for seed in E3_SEEDS:
         path = E3_RUN_DIR / "summary" / f"{seed}_myagent_gate50_summary.json"
@@ -440,6 +455,102 @@ def e3_s3_combined_row(combined: dict[str, Any], *, mact_commit: str, myagent_co
     ]
 
 
+def e3_boundary_fresh_rows(
+    combined: dict[str, Any], *, mact_commit: str, myagent_commit: str
+) -> list[dict[str, Any]]:
+    rows: list[dict[str, Any]] = []
+    for seed_summary in combined["seeds"]:
+        seed = seed_summary["seed_label"]
+        stage = seed_stage_name(seed, "v6c boundary-fresh current-only candidate")
+        evidence_json = (
+            E3_BOUNDARY_FRESH_RUN_DIR / "summary" / "seed_d_boundary_fresh_summary.json"
+            if seed == "seed_d"
+            else E3_S3_RUN_DIR / "summary" / "seed_c_s3_current_summary.json"
+        )
+        evidence_md = evidence_json.with_suffix(".md")
+        failures = 0
+        missing = 0
+        for task in TASK_ORDER:
+            item = seed_summary["datasets"][task]
+            failures += int(item["num_failed_exec"])
+            missing += int(item["num_missing_answer"])
+            rows.append(
+                {
+                    "stage": stage,
+                    "status": "complete_boundary_fresh_current_gate_pass",
+                    "dataset": task,
+                    "input_rows": int(item["input_rows"]),
+                    "merged_rows": int(item["merged_rows"]),
+                    "eval_rows": int(item["eval_rows"]),
+                    "myagent_correct": int(item["correct"]),
+                    "mact_correct_or_reference": None,
+                    "accuracy_delta_correct": None,
+                    "token_ratio": float(item["token_ratio_to_mact_full200"]),
+                    "avg_total_tokens": float(item["avg_total_tokens"]),
+                    "avg_elapsed_seconds": float(item["avg_elapsed_seconds"]),
+                    "num_failed_exec": int(item["num_failed_exec"]),
+                    "num_missing_answer": int(item["num_missing_answer"]),
+                    "decision": "boundary_fresh_current_seed_gate_pass",
+                    "reference_label": "boundary_fresh_current_gate_only_no_same_seed_mact",
+                    "evidence_json": str(evidence_json),
+                    "evidence_md": str(evidence_md),
+                    "evidence_mode": item.get("evidence_mode", seed_summary.get("evidence_mode", "")),
+                    "git_commit": {"myagent": myagent_commit, "mact": mact_commit},
+                }
+            )
+        overall = seed_summary["overall"]
+        rows.append(
+            {
+                "stage": stage,
+                "status": "complete_boundary_fresh_current_only_candidate",
+                "dataset": "aggregate",
+                "input_rows": int(overall["rows"]),
+                "merged_rows": int(overall["rows"]),
+                "eval_rows": int(overall["rows"]),
+                "myagent_correct": int(overall["correct"]),
+                "mact_correct_or_reference": None,
+                "accuracy_delta_correct": None,
+                "token_ratio": float(overall["token_ratio_to_mact_full200_weighted"]),
+                "avg_total_tokens": float(overall["avg_total_tokens_weighted"]),
+                "avg_elapsed_seconds": float(overall["avg_elapsed_seconds_weighted"]),
+                "num_failed_exec": failures,
+                "num_missing_answer": missing,
+                "decision": seed_summary["decision"],
+                "reference_label": "boundary_fresh_current_gate_only_no_same_seed_mact",
+                "evidence_json": str(evidence_json),
+                "evidence_md": str(evidence_md),
+                "evidence_mode": seed_summary.get("evidence_mode", "mixed"),
+                "git_commit": {"myagent": myagent_commit, "mact": mact_commit},
+            }
+        )
+    overall = combined["overall"]
+    rows.append(
+        {
+            "stage": "E3 v6c boundary-fresh current-only combined candidate",
+            "status": "complete_boundary_fresh_current_only_candidate",
+            "dataset": "aggregate",
+            "input_rows": int(overall["rows"]),
+            "merged_rows": int(overall["rows"]),
+            "eval_rows": int(overall["rows"]),
+            "myagent_correct": int(overall["correct"]),
+            "mact_correct_or_reference": None,
+            "accuracy_delta_correct": None,
+            "token_ratio": float(overall["token_ratio_to_mact_full200_weighted"]),
+            "avg_total_tokens": float(overall["avg_total_tokens_weighted"]),
+            "avg_elapsed_seconds": float(overall["avg_elapsed_seconds_weighted"]),
+            "num_failed_exec": int(overall["failed"]),
+            "num_missing_answer": int(overall["missing"]),
+            "decision": combined["decision"],
+            "reference_label": "boundary_fresh_current_gate_only_no_same_seed_mact",
+            "evidence_json": str(E3_BOUNDARY_FRESH_COMBINED_JSON),
+            "evidence_md": str(E3_BOUNDARY_FRESH_COMBINED_MD),
+            "limitations": combined.get("limitations", []),
+            "git_commit": {"myagent": myagent_commit, "mact": mact_commit},
+        }
+    )
+    return rows
+
+
 def pending_rows(
     template: dict[str, Any],
     *,
@@ -510,11 +621,13 @@ def completion_summary(completed: list[dict[str, Any]], pending: list[dict[str, 
             "E3 Seed-C current-only Gate-50 is a documented stability boundary: overall 114/150, decision stop_or_inspect.",
             "E3 Seed-D current-only Gate-50 is a second documented stability boundary: overall 98/150, decision stop_or_inspect.",
             "E3 S3 after-guard current-only rerun has completed: Seed-C passes, Seed-D remains inspect, combined 215/300 with weighted token ratio 0.5866 and failed/missing 0/0.",
+            "E3 v6c boundary-fresh current-only candidate has completed: Seed-C inherited 118/150, Seed-D fresh/inherited 111/150, combined 229/300 with weighted token ratio 0.5794 and failed/missing 0/0; paired MACT is the next evidence step.",
             "E3 Seed-C/Seed-D offline boundary diagnosis has explained the current-gate boundary as semantic accuracy stability, not runtime/tool failure or token-budget failure.",
             "E4 latest readiness audit has completed with no untested local model path and no API provider profile, so no Gate-10 should be started yet.",
             "The current patent experiment section has been consolidated as draft-ready evidence with explicit unsupported-claim boundaries.",
         ],
         "cannot_write_yet": [
+            "S4 paired MACT for the E3 v6c boundary-fresh candidate has completed.",
             "A viable additional model gate has completed.",
             "The final experiment package closeout has completed after either an E4 candidate result or explicit acceptance of the no-candidate boundary.",
         ],
@@ -666,6 +779,14 @@ def build_ledger() -> dict[str, Any]:
                 myagent_commit=myagent_commit,
             )
         )
+    if E3_BOUNDARY_FRESH_COMBINED_JSON.exists():
+        completed.extend(
+            e3_boundary_fresh_rows(
+                read_json(E3_BOUNDARY_FRESH_COMBINED_JSON),
+                mact_commit=mact_commit,
+                myagent_commit=myagent_commit,
+            )
+        )
     current_seed_decisions = e3_current_decisions()
     pending = pending_rows(
         template,
@@ -691,6 +812,12 @@ def build_ledger() -> dict[str, Any]:
             "e3_boundary_diagnosis_md": str(E3_BOUNDARY_DIAGNOSIS_MD) if E3_BOUNDARY_DIAGNOSIS_MD.exists() else None,
             "e3_s3_current_combined_json": str(E3_S3_COMBINED_JSON) if E3_S3_COMBINED_JSON.exists() else None,
             "e3_s3_current_combined_md": str(E3_S3_COMBINED_MD) if E3_S3_COMBINED_MD.exists() else None,
+            "e3_boundary_fresh_combined_json": str(E3_BOUNDARY_FRESH_COMBINED_JSON)
+            if E3_BOUNDARY_FRESH_COMBINED_JSON.exists()
+            else None,
+            "e3_boundary_fresh_combined_md": str(E3_BOUNDARY_FRESH_COMBINED_MD)
+            if E3_BOUNDARY_FRESH_COMBINED_MD.exists()
+            else None,
             "e4_multimodel_readiness_json": str(E4_READINESS_JSON) if E4_READINESS_JSON.exists() else None,
             "e4_multimodel_readiness_md": str(E4_READINESS_MD) if E4_READINESS_MD.exists() else None,
             "current_patent_experiment_section_json": str(CURRENT_PATENT_SECTION_JSON)

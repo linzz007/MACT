@@ -61,3 +61,27 @@ summary/seed_d_s3_current_summary.md
 summary/e3_s3_current_combined_summary.json
 summary/e3_s3_current_combined_summary.md
 ```
+
+Follow-up artifacts created after this S3 stop decision:
+
+```text
+analyze_seed_d_wtq_tabfact_boundary.py
+summary/seed_d_wtq_tabfact_after_guard_boundary_diagnosis.json
+summary/seed_d_wtq_tabfact_after_guard_boundary_diagnosis.md
+input/seed_d_wtq_tabfact_boundary_repair/
+project_seed_d_boundary_shortcuts.py
+summary/seed_d_wtq_tabfact_boundary_shortcut_projection.json
+summary/seed_d_wtq_tabfact_boundary_shortcut_projection.md
+```
+
+Follow-up result: the v6c deterministic boundary shortcuts projected Seed-D
+WTQ/TabFact from `67/100` to `81/100` with projected harm `0`, so a bounded
+fresh rerun was started in:
+
+```text
+/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6c_seed_d_boundary_fresh_20260804_1549/
+```
+
+That fresh rerun verifies Seed-D WTQ `36/50` and TabFact `45/50`, both passing
+their current gates with failed/missing `0/0`. The S3 files above remain the
+original S3 result and should not be overwritten.

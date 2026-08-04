@@ -7,7 +7,7 @@
 
 ## 总体边界
 
-当前可强写的是 Qwen3-32B full200 阶段证据：MyAgent `489/600` vs MACT `450/600`，总体 token ratio `0.5717`，三数据集单项均超过 MACT。WTQ targeted fresh 与 P4b after-targeted 闭环已经完成，可作为新 seed 风险修复证据。E3 Seed-C/D current-only 已完成并形成边界证据；E3 max_replan=5 probe 恢复代表错题 `4/12`，可写成预算敏感性和 adaptive replan 机制证据；E3 semantic-boundary plan 已把零恢复类别转成 P0 语义 guard 与 affected-slice fresh 漏斗，且 S2 after-guard fresh 已通过 `8/12` representative recovery 与 `18/18` no-harm gate。S3 after-guard current-only rerun 已完成：Seed-C `118/150` 过 gate，Seed-D `97/150` 且 WTQ/TabFact 未过 gate，combined `215/300`、token ratio `0.5866`、failed/missing `0/0`。因此它仍不能写成“多 seed 稳定超过 MACT”；E4 仍为 `no_candidate_wait`，不能写成多模型已验证。
+当前可强写的是 Qwen3-32B full200 阶段证据：MyAgent `489/600` vs MACT `450/600`，总体 token ratio `0.5717`，三数据集单项均超过 MACT。WTQ targeted fresh 与 P4b after-targeted 闭环已经完成，可作为新 seed 风险修复证据。E3 Seed-C/D current-only 已完成并形成边界证据；E3 max_replan=5 probe 恢复代表错题 `4/12`，可写成预算敏感性和 adaptive replan 机制证据；E3 semantic-boundary plan 已把零恢复类别转成 P0 语义 guard 与 affected-slice fresh 漏斗，且 S2 after-guard fresh 已通过 `8/12` representative recovery 与 `18/18` no-harm gate。S3 after-guard current-only rerun 暴露 Seed-D WTQ/TabFact 边界：combined `215/300`、token ratio `0.5866`、failed/missing `0/0`。v6c boundary-fresh current-only 候选已完成：Seed-D `111/150`，combined `229/300`、token ratio `0.5794`、failed/missing `0/0`、decision `boundary_fresh_pass_run_paired_mact_candidate`。因此当前可以写成“S4 paired MACT 候选已形成”，但仍不能写成“paired MACT 已超过”；E4 仍为 `no_candidate_wait`，不能写成多模型已验证。
 
 ## 权利要求族映射
 
@@ -16,9 +16,9 @@
 | C1 | 风险分层的选择性协作 | 根据问题语义、表格结构、答案契约和执行信号估计风险，再选择轻量路径、确定性审计或强验证协作 | strong stage evidence | full200 `489/600 > 450/600`，token ratio `0.5717`，elapsed ratio `0.1337`；P4b after-targeted `121/150 > 111/150`；E3 budget probe 显示部分类别可由更高 replan 预算恢复；E3 S2 after-guard fresh `8/12` representative recovered、`18/18` no-harm | E3 已给出 targeted mechanism 正证据和边界，但还不是稳定性正证据；多模型执行后才能写广义模型外延 |
 | C2 | 证据保留式表格压缩 | 对比较、时间、序数、计数、实体消歧等风险保留全局行、候选行、晚列和邻接行 | moderate-to-strong associative evidence | WTQ gain rows `16/25` tagged evidence_retention；TabFact gain rows `9/9` tagged evidence_retention；CRT current-only vs MACT `37/40` tagged evidence_retention | 若专利代理人要求因果证据，可补 `no_evidence_retention` 细粒度消融 |
 | C3 | 确定性语义审计 | 用结构化规则校验同行约束、列值计数、实体属性、数值差、时间差、overtime、listed-after 目标列、ordinal/cardinal 匹配 | strong mechanism evidence | `no_deterministic_shortcuts` overall `-15/150`；TabFact `-9/50` 且 token/current `1.4487x`；CRT `-7/50`；WTQ targeted fresh `9/9`；E3 S2 after-guard fresh 覆盖 WTQ 多条件 lookup、TabFact 同队编号关系、CRT outlier/top-k/percentage guard | 如专利代理人需要更窄因果拆分，可选补 no-WTQ-deterministic 细粒度消融 |
-| C4 | 受控劝返 / verifier override | verifier 与原候选冲突时，只有置信度、答案契约、表格证据、冲突类型都满足条件才接管 | strong stage evidence with fresh closure | `no_strong_verification` overall `-8/150`，WTQ `-7/50`；WTQ `24/25` gain rows tagged strong_verification；P4b WTQ fresh `9/9`；after-targeted P4b `121/150 > 111/150`；E3 semantic-boundary plan 和 S2 after-guard fresh 给出 P0/P1 guard 漏斗闭环；S3 Seed-C 过 gate 但 Seed-D WTQ/TabFact 仍未过 | 当前 WTQ fresh 与 E3 S2 affected-slice 缺口已闭合；S3 暴露 Seed-D WTQ/TabFact 泛化边界，下一步是边界诊断而非 paired MACT |
+| C4 | 受控劝返 / verifier override | verifier 与原候选冲突时，只有置信度、答案契约、表格证据、冲突类型都满足条件才接管 | strong stage evidence with fresh closure | `no_strong_verification` overall `-8/150`，WTQ `-7/50`；WTQ `24/25` gain rows tagged strong_verification；P4b WTQ fresh `9/9`；after-targeted P4b `121/150 > 111/150`；E3 semantic-boundary plan 和 S2 after-guard fresh 给出 P0/P1 guard 漏斗闭环；v6c boundary-fresh current-only combined `229/300` | 当前 WTQ fresh 与 E3 S2 affected-slice 缺口已闭合；v6c 已形成 S4 paired MACT 候选，但 paired MACT 尚未运行 |
 | C5 | 答案契约 enforcement | 将最终答案约束为标量、标签、实体、元组或列表，避免解释句、错列值、错表面形态 | strong stage evidence | full200 failed/missing `0/0`；P4b WTQ 诊断包含 MyAgent concise denotation 胜过 MACT explanatory answer 的样本 | 后续每个 seed/model 继续记录 failed/missing |
-| C6 | 预算感知实验漏斗 | Gate-10 -> Gate-50 -> Gate-150 -> paired-200，避免 no-go 模型直接 full run；对预算敏感类别可自适应提高 replan，上限不能无差别放大 | process complete with seed boundary evidence, E4 pending | 历史非主模型 Gate-50 no-go 已保存；E3 Seed-C/D current-only 已按 gate 完成并停止，合计 `212/300`、failed/missing `0/0`、verification `pass`；E3 max_replan=5 probe 恢复 `4/12`，failed/missing `0/0`；E3 semantic-boundary plan 决定先过 S1/S2 再进入 E3 rerun；S2 after-guard fresh 已通过 `after_guard_passes_s2_gate`；S3 after-guard current-only combined `215/300`、token ratio `0.5866`、failed/missing `0/0`，但 decision 为 `s3_stop_or_inspect_boundary_remains` | 还缺至少一个可行新模型/API 候选；E3 仍不能写作稳定性正证据，下一步是 Seed-D WTQ/TabFact 边界诊断 |
+| C6 | 预算感知实验漏斗 | Gate-10 -> Gate-50 -> Gate-150 -> paired-200，避免 no-go 模型直接 full run；对预算敏感类别可自适应提高 replan，上限不能无差别放大 | process complete with seed boundary evidence, E4 pending | 历史非主模型 Gate-50 no-go 已保存；E3 Seed-C/D current-only 已按 gate 完成并停止，合计 `212/300`、failed/missing `0/0`、verification `pass`；E3 max_replan=5 probe 恢复 `4/12`，failed/missing `0/0`；E3 semantic-boundary plan 决定先过 S1/S2 再进入 E3 rerun；S2 after-guard fresh 已通过 `after_guard_passes_s2_gate`；S3 after-guard current-only combined `215/300` 暴露边界；v6c boundary-fresh combined `229/300`、token ratio `0.5794`、failed/missing `0/0`，decision 为 `boundary_fresh_pass_run_paired_mact_candidate` | 还缺至少一个可行新模型/API 候选；E3 还缺 S4 paired MACT，不能写作 paired 稳定性正证据 |
 
 ## 可以写入独立权利要求的主线
 
@@ -40,7 +40,7 @@
 | 压缩保留策略 | 全局行、候选行、晚列、邻接行、目标列 | 已有 attribution；可选补细粒度消融 |
 | 确定性审计 | 同行多条件、列值计数、实体属性、数值差、时间差、overtime、listed-after、ordinal/cardinal | coarse ablation 强支持 TabFact/CRT；WTQ fresh `9/9` 已闭合；E3 S2 after-guard fresh 恢复 `8/12` 且 no-harm `18/18` |
 | 劝返条件 | verifier 置信度、答案契约、候选相似度、表格证据、冲突类型 | WTQ strong verification 证据充分；P4b after-targeted 已闭合 |
-| 预算控制 | 按风险触发高成本路径，按 gate 漏斗控制模型/样本扩展；对预算敏感类别执行 adaptive replan | full200 token/elapsed 强支持；E3 current-only gate 规则已执行；E3 max_replan=5 probe 恢复 `4/12`，说明预算只应类别化触发；E3 semantic-boundary plan 把零恢复类别转入 guard 漏斗；S2 after-guard fresh 已通过；S3 after-guard current-only 显示 Seed-C 通过、Seed-D 未过，不启动 paired MACT；多模型 E4 仍待新候选 |
+| 预算控制 | 按风险触发高成本路径，按 gate 漏斗控制模型/样本扩展；对预算敏感类别执行 adaptive replan | full200 token/elapsed 强支持；E3 current-only gate 规则已执行；E3 max_replan=5 probe 恢复 `4/12`，说明预算只应类别化触发；E3 semantic-boundary plan 把零恢复类别转入 guard 漏斗；S2 after-guard fresh 已通过；S3 after-guard current-only 显示 Seed-D 边界；v6c boundary-fresh 已形成 paired MACT 候选；多模型 E4 仍待新候选 |
 
 ## 证据引用入口
 
@@ -61,5 +61,5 @@
 ## 下一步对权利要求最有价值的实验
 
 1. 新模型/API gate：补 C6 的模型外延证据；当前 E4 为 `no_candidate_wait`，不能重跑已知 no-go 模型冒充新证据。
-2. E3 语义边界优化：S2 affected-slice fresh 已通过，S3 Seed-C/D current-only 已复跑但只通过 Seed-C。若继续追求多 seed 稳定性，下一步应诊断 Seed-D WTQ/TabFact 边界，再小规模 fresh 验证后决定是否重跑 S3。
+2. E3 语义边界优化：S2 affected-slice fresh 已通过，S3 Seed-C/D current-only 已复跑并暴露 Seed-D WTQ/TabFact 边界；v6c boundary-fresh 已形成 paired MACT 候选。若继续追求多 seed paired 稳定性，下一步应跑 S4 paired MACT，或先补完整 v6c S3 current-only fresh。
 3. 细粒度消融：如专利代理人需要更窄因果证据，再补 no-WTQ-verifier-override、no-evidence-retention 或 no-specific-deterministic-audit 小样本消融。

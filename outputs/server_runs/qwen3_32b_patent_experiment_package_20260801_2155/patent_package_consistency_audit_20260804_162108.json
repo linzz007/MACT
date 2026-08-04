@@ -1,0 +1,905 @@
+{
+  "generated_at_local": "2026-08-04 16:21:08 CST",
+  "package_dir": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155",
+  "git_heads": {
+    "myagent": "161b5b9",
+    "mact": "f477bb3"
+  },
+  "path_checks": {
+    "prd": {
+      "path": "/home/ubuntu/lzz/MyAgent/docs/server/server_codex_reports/current-qwen3-mact-experiment-prd.md",
+      "exists": true
+    },
+    "manifest": {
+      "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/evidence_manifest.json",
+      "exists": true
+    },
+    "latest_formal_result_ledger": {
+      "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_formal_result_ledger_current.json",
+      "exists": true
+    },
+    "latest_runtime_preflight": {
+      "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_qwen3_runtime_preflight.json",
+      "exists": true
+    },
+    "queue_script": {
+      "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/run_remaining_qwen3_patent_queue.sh",
+      "exists": true
+    },
+    "runtime_preflight_script": {
+      "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/preflight_qwen3_runtime.py",
+      "exists": true
+    },
+    "formal_ledger_builder": {
+      "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/build_current_formal_result_ledger.py",
+      "exists": true
+    },
+    "e3_boundary_diagnosis_json": {
+      "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/summary/seed_boundary_error_diagnosis.json",
+      "exists": true
+    },
+    "e3_boundary_diagnosis_md": {
+      "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/summary/seed_boundary_error_diagnosis.md",
+      "exists": true
+    },
+    "e3_semantic_boundary_plan_json": {
+      "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_semantic_boundary_plan_20260804_1110/summary/e3_semantic_boundary_plan.json",
+      "exists": true
+    },
+    "e3_semantic_boundary_plan_md": {
+      "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_semantic_boundary_plan_20260804_1110/summary/e3_semantic_boundary_plan.md",
+      "exists": true
+    },
+    "e3_guard_validation_input_plan_json": {
+      "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_guard_validation_inputs_20260804_1128/summary/e3_guard_validation_input_plan.json",
+      "exists": true
+    },
+    "e3_guard_validation_input_plan_md": {
+      "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_guard_validation_inputs_20260804_1128/summary/e3_guard_validation_input_plan.md",
+      "exists": true
+    },
+    "e3_guard_validation_after_guard_json": {
+      "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_guard_validation_after_guard_20260804_1203/summary/e3_guard_validation_after_guard_summary.json",
+      "exists": true
+    },
+    "e3_guard_validation_after_guard_md": {
+      "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_guard_validation_after_guard_20260804_1203/summary/e3_guard_validation_after_guard_summary.md",
+      "exists": true
+    },
+    "e3_s3_current_combined_json": {
+      "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_s3_current_rerun_after_guard_20260804_1425/summary/e3_s3_current_combined_summary.json",
+      "exists": true
+    },
+    "e3_s3_current_combined_md": {
+      "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_s3_current_rerun_after_guard_20260804_1425/summary/e3_s3_current_combined_summary.md",
+      "exists": true
+    },
+    "e3_boundary_fresh_combined_json": {
+      "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6c_seed_d_boundary_fresh_20260804_1549/summary/e3_boundary_fresh_combined_summary.json",
+      "exists": true
+    },
+    "e3_boundary_fresh_combined_md": {
+      "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6c_seed_d_boundary_fresh_20260804_1549/summary/e3_boundary_fresh_combined_summary.md",
+      "exists": true
+    },
+    "e4_multimodel_readiness_json": {
+      "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_e4_multimodel_gate_readiness_audit.json",
+      "exists": true
+    },
+    "e4_multimodel_readiness_md": {
+      "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_e4_multimodel_gate_readiness_audit_zh.md",
+      "exists": true
+    },
+    "current_patent_experiment_section_json": {
+      "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_current_patent_experiment_section.json",
+      "exists": true
+    },
+    "current_patent_experiment_section_md": {
+      "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_current_patent_experiment_section_zh.md",
+      "exists": true
+    },
+    "current_patent_experiment_section_builder": {
+      "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/build_current_patent_experiment_section.py",
+      "exists": true
+    },
+    "current_completion_gap_audit_json": {
+      "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_completion_gap_audit_current.json",
+      "exists": true
+    },
+    "current_completion_gap_audit_md": {
+      "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_completion_gap_audit_current_zh.md",
+      "exists": true
+    },
+    "current_completion_gap_audit_builder": {
+      "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/build_current_completion_gap_audit.py",
+      "exists": true
+    },
+    "claim_evidence_traceability_json": {
+      "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/claim_evidence_traceability_20260801_2248.json",
+      "exists": true
+    },
+    "claim_evidence_traceability_md": {
+      "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/claim_evidence_traceability_20260801_2248_zh.md",
+      "exists": true
+    },
+    "formal_experiment_schedule": {
+      "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/formal_experiment_schedule_zh.md",
+      "exists": true
+    },
+    "patent_disclosure_draft": {
+      "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/patent_disclosure_draft_zh.md",
+      "exists": true
+    },
+    "goal_blocker_audit_json": {
+      "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_goal_blocker_audit_current.json",
+      "exists": true
+    },
+    "goal_blocker_audit_md": {
+      "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_goal_blocker_audit_current_zh.md",
+      "exists": true
+    }
+  },
+  "checks": {
+    "ledger completed rows": {
+      "actual": 39,
+      "expected": ">=13",
+      "pass": true
+    },
+    "ledger pending rows": {
+      "actual": 3,
+      "expected": "<=5",
+      "pass": true
+    },
+    "ledger overall status": {
+      "actual": "active_not_complete",
+      "expected": "active_not_complete",
+      "pass": true
+    },
+    "stale completed evidence pending rows": {
+      "actual": [],
+      "expected": [],
+      "pass": true
+    },
+    "full200 aggregate row count": {
+      "actual": 1,
+      "expected": 1,
+      "pass": true
+    },
+    "full200 myagent correct": {
+      "actual": 489,
+      "expected": 489,
+      "pass": true
+    },
+    "full200 mact correct": {
+      "actual": 450,
+      "expected": 450,
+      "pass": true
+    },
+    "full200 failures": {
+      "actual": 0,
+      "expected": 0,
+      "pass": true
+    },
+    "full200 missing": {
+      "actual": 0,
+      "expected": 0,
+      "pass": true
+    },
+    "P4b WTQ risk row count": {
+      "actual": 1,
+      "expected": 1,
+      "pass": true
+    },
+    "P4b WTQ MyAgent correct": {
+      "actual": 37,
+      "expected": 37,
+      "pass": true
+    },
+    "P4b WTQ MACT correct": {
+      "actual": 43,
+      "expected": 43,
+      "pass": true
+    },
+    "P4b WTQ decision": {
+      "actual": "complete_dataset_risk",
+      "expected": "complete_dataset_risk",
+      "pass": true
+    },
+    "WTQ targeted fresh row count": {
+      "actual": 1,
+      "expected": 1,
+      "pass": true
+    },
+    "WTQ targeted fresh MyAgent correct": {
+      "actual": 9,
+      "expected": 9,
+      "pass": true
+    },
+    "WTQ targeted fresh failures": {
+      "actual": 0,
+      "expected": 0,
+      "pass": true
+    },
+    "WTQ targeted fresh missing": {
+      "actual": 0,
+      "expected": 0,
+      "pass": true
+    },
+    "WTQ targeted fresh decision": {
+      "actual": "pass",
+      "expected": "pass",
+      "pass": true
+    },
+    "P4b after-targeted aggregate row count": {
+      "actual": 1,
+      "expected": 1,
+      "pass": true
+    },
+    "P4b after-targeted MyAgent correct": {
+      "actual": 121,
+      "expected": 121,
+      "pass": true
+    },
+    "P4b after-targeted MACT correct": {
+      "actual": 111,
+      "expected": 111,
+      "pass": true
+    },
+    "P4b after-targeted failures": {
+      "actual": 0,
+      "expected": 0,
+      "pass": true
+    },
+    "P4b after-targeted missing": {
+      "actual": 0,
+      "expected": 0,
+      "pass": true
+    },
+    "P4b after-targeted decision": {
+      "actual": "accepted_after_targeted_all_dataset_superiority",
+      "expected": "accepted_after_targeted_all_dataset_superiority",
+      "pass": true
+    },
+    "E3 Seed-C current row count": {
+      "actual": 1,
+      "expected": 1,
+      "pass": true
+    },
+    "E3 Seed-C current MyAgent correct": {
+      "actual": 114,
+      "expected": 114,
+      "pass": true
+    },
+    "E3 Seed-C current failures": {
+      "actual": 0,
+      "expected": 0,
+      "pass": true
+    },
+    "E3 Seed-C current missing": {
+      "actual": 0,
+      "expected": 0,
+      "pass": true
+    },
+    "E3 Seed-C current decision": {
+      "actual": "stop_or_inspect",
+      "expected": "stop_or_inspect",
+      "pass": true
+    },
+    "E3 Seed-D current row count": {
+      "actual": 1,
+      "expected": 1,
+      "pass": true
+    },
+    "E3 Seed-D current MyAgent correct": {
+      "actual": 98,
+      "expected": 98,
+      "pass": true
+    },
+    "E3 Seed-D current failures": {
+      "actual": 0,
+      "expected": 0,
+      "pass": true
+    },
+    "E3 Seed-D current missing": {
+      "actual": 0,
+      "expected": 0,
+      "pass": true
+    },
+    "E3 Seed-D current decision": {
+      "actual": "stop_or_inspect",
+      "expected": "stop_or_inspect",
+      "pass": true
+    },
+    "E3 pending row count lower bound": {
+      "actual": 2,
+      "expected": ">=2",
+      "pass": true
+    },
+    "E3 pending row count upper bound": {
+      "actual": 2,
+      "expected": "<=4",
+      "pass": true
+    },
+    "E3 boundary-fresh aggregate row count": {
+      "actual": 1,
+      "expected": 1,
+      "pass": true
+    },
+    "E3 boundary-fresh MyAgent correct": {
+      "actual": 229,
+      "expected": 229,
+      "pass": true
+    },
+    "E3 boundary-fresh failures": {
+      "actual": 0,
+      "expected": 0,
+      "pass": true
+    },
+    "E3 boundary-fresh missing": {
+      "actual": 0,
+      "expected": 0,
+      "pass": true
+    },
+    "E3 boundary-fresh decision": {
+      "actual": "boundary_fresh_pass_run_paired_mact_candidate",
+      "expected": "boundary_fresh_pass_run_paired_mact_candidate",
+      "pass": true
+    },
+    "preflight status matches ledger": {
+      "actual": "ready_existing_endpoint",
+      "expected": "ready_existing_endpoint",
+      "pass": true
+    },
+    "preflight generated_at matches ledger": {
+      "actual": "2026-08-04 10:49:03 CST",
+      "expected": "2026-08-04 10:49:03 CST",
+      "pass": true
+    },
+    "manifest latest ledger path": {
+      "actual": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_formal_result_ledger_current.json",
+      "expected": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_formal_result_ledger_current.json",
+      "pass": true
+    },
+    "manifest latest preflight path": {
+      "actual": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_qwen3_runtime_preflight.json",
+      "expected": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_qwen3_runtime_preflight.json",
+      "pass": true
+    },
+    "manifest E3 boundary json path": {
+      "actual": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/summary/seed_boundary_error_diagnosis.json",
+      "expected": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/summary/seed_boundary_error_diagnosis.json",
+      "pass": true
+    },
+    "manifest E3 boundary md path": {
+      "actual": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/summary/seed_boundary_error_diagnosis.md",
+      "expected": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/summary/seed_boundary_error_diagnosis.md",
+      "pass": true
+    },
+    "manifest E3 boundary status": {
+      "actual": "complete_offline_diagnosis",
+      "expected": "complete_offline_diagnosis",
+      "pass": true
+    },
+    "manifest E3 boundary rows": {
+      "actual": 300,
+      "expected": 300,
+      "pass": true
+    },
+    "manifest E3 boundary correct": {
+      "actual": 212,
+      "expected": 212,
+      "pass": true
+    },
+    "manifest E3 boundary failed": {
+      "actual": 0,
+      "expected": 0,
+      "pass": true
+    },
+    "manifest E3 boundary missing": {
+      "actual": 0,
+      "expected": 0,
+      "pass": true
+    },
+    "manifest E3 boundary verification": {
+      "actual": "pass",
+      "expected": "pass",
+      "pass": true
+    },
+    "manifest E3 semantic plan json path": {
+      "actual": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_semantic_boundary_plan_20260804_1110/summary/e3_semantic_boundary_plan.json",
+      "expected": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_semantic_boundary_plan_20260804_1110/summary/e3_semantic_boundary_plan.json",
+      "pass": true
+    },
+    "manifest E3 semantic plan md path": {
+      "actual": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_semantic_boundary_plan_20260804_1110/summary/e3_semantic_boundary_plan.md",
+      "expected": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_semantic_boundary_plan_20260804_1110/summary/e3_semantic_boundary_plan.md",
+      "pass": true
+    },
+    "manifest E3 semantic plan decision": {
+      "actual": "do_not_rerun_full200_or_paired_mact_until_targeted_guards_pass",
+      "expected": "do_not_rerun_full200_or_paired_mact_until_targeted_guards_pass",
+      "pass": true
+    },
+    "manifest E3 semantic plan high-priority count": {
+      "actual": 8,
+      "expected": 8,
+      "pass": true
+    },
+    "manifest E3 guard validation json path": {
+      "actual": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_guard_validation_inputs_20260804_1128/summary/e3_guard_validation_input_plan.json",
+      "expected": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_guard_validation_inputs_20260804_1128/summary/e3_guard_validation_input_plan.json",
+      "pass": true
+    },
+    "manifest E3 guard validation md path": {
+      "actual": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_guard_validation_inputs_20260804_1128/summary/e3_guard_validation_input_plan.md",
+      "expected": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_guard_validation_inputs_20260804_1128/summary/e3_guard_validation_input_plan.md",
+      "pass": true
+    },
+    "manifest E3 guard validation decision": {
+      "actual": "ready_for_guard_implementation_not_model_run",
+      "expected": "ready_for_guard_implementation_not_model_run",
+      "pass": true
+    },
+    "manifest E3 guard validation total rows": {
+      "actual": 30,
+      "expected": 30,
+      "pass": true
+    },
+    "manifest E3 guard validation representative rows": {
+      "actual": 12,
+      "expected": 12,
+      "pass": true
+    },
+    "manifest E3 guard validation no-harm rows": {
+      "actual": 18,
+      "expected": 18,
+      "pass": true
+    },
+    "manifest E3 after-guard json path": {
+      "actual": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_guard_validation_after_guard_20260804_1203/summary/e3_guard_validation_after_guard_summary.json",
+      "expected": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_guard_validation_after_guard_20260804_1203/summary/e3_guard_validation_after_guard_summary.json",
+      "pass": true
+    },
+    "manifest E3 after-guard md path": {
+      "actual": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_guard_validation_after_guard_20260804_1203/summary/e3_guard_validation_after_guard_summary.md",
+      "expected": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_guard_validation_after_guard_20260804_1203/summary/e3_guard_validation_after_guard_summary.md",
+      "pass": true
+    },
+    "manifest E3 after-guard decision": {
+      "actual": "after_guard_passes_s2_gate",
+      "expected": "after_guard_passes_s2_gate",
+      "pass": true
+    },
+    "manifest E3 after-guard rows": {
+      "actual": 30,
+      "expected": 30,
+      "pass": true
+    },
+    "manifest E3 after-guard representative recovered": {
+      "actual": 8,
+      "expected": 8,
+      "pass": true
+    },
+    "manifest E3 after-guard no-harm correct": {
+      "actual": 18,
+      "expected": 18,
+      "pass": true
+    },
+    "manifest E3 after-guard failed": {
+      "actual": 0,
+      "expected": 0,
+      "pass": true
+    },
+    "manifest E3 after-guard missing": {
+      "actual": 0,
+      "expected": 0,
+      "pass": true
+    },
+    "manifest E3 S3 json path": {
+      "actual": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_s3_current_rerun_after_guard_20260804_1425/summary/e3_s3_current_combined_summary.json",
+      "expected": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_s3_current_rerun_after_guard_20260804_1425/summary/e3_s3_current_combined_summary.json",
+      "pass": true
+    },
+    "manifest E3 S3 md path": {
+      "actual": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_s3_current_rerun_after_guard_20260804_1425/summary/e3_s3_current_combined_summary.md",
+      "expected": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_s3_current_rerun_after_guard_20260804_1425/summary/e3_s3_current_combined_summary.md",
+      "pass": true
+    },
+    "manifest E3 S3 decision": {
+      "actual": "s3_stop_or_inspect_boundary_remains",
+      "expected": "s3_stop_or_inspect_boundary_remains",
+      "pass": true
+    },
+    "manifest E3 S3 paired next": {
+      "actual": false,
+      "expected": false,
+      "pass": true
+    },
+    "manifest E3 S3 correct": {
+      "actual": 215,
+      "expected": 215,
+      "pass": true
+    },
+    "manifest E3 S3 failed": {
+      "actual": 0,
+      "expected": 0,
+      "pass": true
+    },
+    "manifest E3 boundary-fresh json path": {
+      "actual": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6c_seed_d_boundary_fresh_20260804_1549/summary/e3_boundary_fresh_combined_summary.json",
+      "expected": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6c_seed_d_boundary_fresh_20260804_1549/summary/e3_boundary_fresh_combined_summary.json",
+      "pass": true
+    },
+    "manifest E3 boundary-fresh md path": {
+      "actual": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6c_seed_d_boundary_fresh_20260804_1549/summary/e3_boundary_fresh_combined_summary.md",
+      "expected": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6c_seed_d_boundary_fresh_20260804_1549/summary/e3_boundary_fresh_combined_summary.md",
+      "pass": true
+    },
+    "manifest E3 boundary-fresh decision": {
+      "actual": "boundary_fresh_pass_run_paired_mact_candidate",
+      "expected": "boundary_fresh_pass_run_paired_mact_candidate",
+      "pass": true
+    },
+    "manifest E3 boundary-fresh paired next": {
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    "manifest E3 boundary-fresh correct": {
+      "actual": 229,
+      "expected": 229,
+      "pass": true
+    },
+    "manifest E4 readiness json path": {
+      "actual": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_e4_multimodel_gate_readiness_audit.json",
+      "expected": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_e4_multimodel_gate_readiness_audit.json",
+      "pass": true
+    },
+    "manifest E4 readiness md path": {
+      "actual": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_e4_multimodel_gate_readiness_audit_zh.md",
+      "expected": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_e4_multimodel_gate_readiness_audit_zh.md",
+      "pass": true
+    },
+    "manifest E4 readiness status": {
+      "actual": "no_candidate_wait",
+      "expected": "no_candidate_wait",
+      "pass": true
+    },
+    "manifest E4 can start gate10": {
+      "actual": false,
+      "expected": false,
+      "pass": true
+    },
+    "manifest E4 default GPU pool availability": {
+      "actual": false,
+      "expected": false,
+      "pass": true
+    },
+    "E4 readiness decision": {
+      "actual": "no_candidate_wait",
+      "expected": "no_candidate_wait",
+      "pass": true
+    },
+    "E4 untested local model count": {
+      "actual": 0,
+      "expected": 0,
+      "pass": true
+    },
+    "E4 API key count": {
+      "actual": 0,
+      "expected": 0,
+      "pass": true
+    },
+    "manifest current patent section json path": {
+      "actual": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_current_patent_experiment_section.json",
+      "expected": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_current_patent_experiment_section.json",
+      "pass": true
+    },
+    "manifest current patent section md path": {
+      "actual": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_current_patent_experiment_section_zh.md",
+      "expected": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_current_patent_experiment_section_zh.md",
+      "pass": true
+    },
+    "current patent section status": {
+      "actual": "stage_patent_draft_ready_with_boundaries",
+      "expected": "stage_patent_draft_ready_with_boundaries",
+      "pass": true
+    },
+    "current patent section E4 decision": {
+      "actual": "no_candidate_wait",
+      "expected": "no_candidate_wait",
+      "pass": true
+    },
+    "current patent section E3 guard validation rows": {
+      "actual": 30,
+      "expected": 30,
+      "pass": true
+    },
+    "current patent section E3 after-guard decision": {
+      "actual": "after_guard_passes_s2_gate",
+      "expected": "after_guard_passes_s2_gate",
+      "pass": true
+    },
+    "current patent section E3 after-guard recovered": {
+      "actual": 8,
+      "expected": 8,
+      "pass": true
+    },
+    "current patent section E3 after-guard no-harm": {
+      "actual": 18,
+      "expected": 18,
+      "pass": true
+    },
+    "current patent section E3 S3 decision": {
+      "actual": "s3_stop_or_inspect_boundary_remains",
+      "expected": "s3_stop_or_inspect_boundary_remains",
+      "pass": true
+    },
+    "current patent section E3 S3 correct": {
+      "actual": 215,
+      "expected": 215,
+      "pass": true
+    },
+    "current patent section E3 boundary-fresh decision": {
+      "actual": "boundary_fresh_pass_run_paired_mact_candidate",
+      "expected": "boundary_fresh_pass_run_paired_mact_candidate",
+      "pass": true
+    },
+    "current patent section E3 boundary-fresh correct": {
+      "actual": 229,
+      "expected": 229,
+      "pass": true
+    },
+    "current patent section unsupported multi-model claim": {
+      "needle": "Do not claim multi-model validation is complete.",
+      "pass": true
+    },
+    "manifest completion gap latest json path": {
+      "actual": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_completion_gap_audit_current.json",
+      "expected": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_completion_gap_audit_current.json",
+      "pass": true
+    },
+    "manifest completion gap latest md path": {
+      "actual": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_completion_gap_audit_current_zh.md",
+      "expected": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_completion_gap_audit_current_zh.md",
+      "pass": true
+    },
+    "current completion gap overall status": {
+      "actual": "active_not_complete",
+      "expected": "active_not_complete",
+      "pass": true
+    },
+    "completion gap R3 status": {
+      "actual": "complete",
+      "expected": "complete",
+      "pass": true
+    },
+    "completion gap R4 status": {
+      "actual": "current_only_candidate_paired_pending",
+      "expected": "current_only_candidate_paired_pending",
+      "pass": true
+    },
+    "completion gap R5 status": {
+      "actual": "pending_no_candidate",
+      "expected": "pending_no_candidate",
+      "pass": true
+    },
+    "completion gap E4 decision": {
+      "actual": "no_candidate_wait",
+      "expected": "no_candidate_wait",
+      "pass": true
+    },
+    "completion gap semantic plan decision": {
+      "actual": "do_not_rerun_full200_or_paired_mact_until_targeted_guards_pass",
+      "expected": "do_not_rerun_full200_or_paired_mact_until_targeted_guards_pass",
+      "pass": true
+    },
+    "completion gap guard validation decision": {
+      "actual": "ready_for_guard_implementation_not_model_run",
+      "expected": "ready_for_guard_implementation_not_model_run",
+      "pass": true
+    },
+    "completion gap guard validation rows": {
+      "actual": 30,
+      "expected": 30,
+      "pass": true
+    },
+    "completion gap after-guard decision": {
+      "actual": "after_guard_passes_s2_gate",
+      "expected": "after_guard_passes_s2_gate",
+      "pass": true
+    },
+    "completion gap after-guard recovered": {
+      "actual": 8,
+      "expected": 8,
+      "pass": true
+    },
+    "completion gap after-guard no-harm": {
+      "actual": 18,
+      "expected": 18,
+      "pass": true
+    },
+    "completion gap S3 decision": {
+      "actual": "s3_stop_or_inspect_boundary_remains",
+      "expected": "s3_stop_or_inspect_boundary_remains",
+      "pass": true
+    },
+    "completion gap S3 correct": {
+      "actual": 215,
+      "expected": 215,
+      "pass": true
+    },
+    "completion gap boundary-fresh decision": {
+      "actual": "boundary_fresh_pass_run_paired_mact_candidate",
+      "expected": "boundary_fresh_pass_run_paired_mact_candidate",
+      "pass": true
+    },
+    "completion gap boundary-fresh correct": {
+      "actual": 229,
+      "expected": 229,
+      "pass": true
+    },
+    "completion gap default GPU pool availability": {
+      "actual": false,
+      "expected": false,
+      "pass": true
+    },
+    "manifest goal blocker latest json path": {
+      "actual": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_goal_blocker_audit_current.json",
+      "expected": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_goal_blocker_audit_current.json",
+      "pass": true
+    },
+    "manifest goal blocker latest md path": {
+      "actual": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_goal_blocker_audit_current_zh.md",
+      "expected": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_goal_blocker_audit_current_zh.md",
+      "pass": true
+    },
+    "goal blocker status recommendation": {
+      "actual": "blocked_waiting_external_state",
+      "expected": "blocked_waiting_external_state",
+      "pass": true
+    },
+    "goal blocker names": {
+      "actual": [
+        "No viable E4 multi-model candidate",
+        "Qwen3 runtime readiness"
+      ],
+      "expected": [
+        "No viable E4 multi-model candidate",
+        "Qwen3 runtime readiness"
+      ],
+      "pass": true
+    },
+    "goal blocker E4 decision": {
+      "actual": "no_candidate_wait",
+      "expected": "no_candidate_wait",
+      "pass": true
+    },
+    "goal blocker E4 can start": {
+      "actual": false,
+      "expected": false,
+      "pass": true
+    },
+    "goal blocker runtime status": {
+      "actual": "ready_existing_endpoint",
+      "expected": "ready_existing_endpoint",
+      "pass": true
+    },
+    "goal blocker no-candidate markdown": {
+      "needle": "E4 没有可用多模型候选",
+      "pass": true
+    },
+    "goal blocker runtime markdown": {
+      "needle": "Qwen3 runtime 已恢复",
+      "pass": true
+    },
+    "claim traceability WTQ closure": {
+      "needle": "WTQ targeted fresh 与 P4b after-targeted 闭环已经完成",
+      "pass": true
+    },
+    "claim traceability E3 boundary": {
+      "needle": "E3 Seed-C/D current-only 已完成并形成边界证据",
+      "pass": true
+    },
+    "claim traceability E3 semantic plan": {
+      "needle": "E3 semantic-boundary plan",
+      "pass": true
+    },
+    "formal schedule E3 boundary": {
+      "needle": "S2 after-guard fresh 已证明当前 P0/P1 gold-free guard",
+      "pass": true
+    },
+    "patent disclosure full200": {
+      "needle": "Aggregate | 600/600/600 | 489/600 | 450/600 | +39 | 0.5717 | 0/0",
+      "pass": true
+    },
+    "patent disclosure P4b closure": {
+      "needle": "Overall | 150/150/150 | 121/150 | 111/150 | +10 | 0.5310 | 0/0",
+      "pass": true
+    },
+    "patent disclosure E3 boundary": {
+      "needle": "Combined | 300/300/300 | 212/300 | 0.5916 | 0/0 | `complete_boundary_evidence`",
+      "pass": true
+    },
+    "patent disclosure E3 S3 boundary": {
+      "needle": "Combined | 300/300/300 | 215/300 | 0.5866 | 0/0 | `s3_stop_or_inspect_boundary_remains`",
+      "pass": true
+    },
+    "patent disclosure E3 boundary fresh": {
+      "needle": "Combined | 300/300/300 | 229/300 | 0.5794 | 0/0 | `boundary_fresh_pass_run_paired_mact_candidate`",
+      "pass": true
+    },
+    "patent disclosure E4 boundary": {
+      "needle": "E4 多模型 readiness audit 结果为 `no_candidate_wait`",
+      "pass": true
+    },
+    "patent disclosure evidence paths": {
+      "needle": "latest_completion_gap_audit_current_zh.md",
+      "pass": true
+    },
+    "manifest online status": {
+      "actual": "ready_existing_endpoint",
+      "expected": "ready_existing_endpoint",
+      "pass": true
+    },
+    "PRD queue script": {
+      "needle": "run_remaining_qwen3_patent_queue.sh",
+      "pass": true
+    },
+    "PRD runtime preflight": {
+      "needle": "latest_qwen3_runtime_preflight_zh.md",
+      "pass": true
+    },
+    "PRD formal ledger": {
+      "needle": "latest_formal_result_ledger_current_zh.md",
+      "pass": true
+    },
+    "PRD current patent section": {
+      "needle": "latest_current_patent_experiment_section_zh.md",
+      "pass": true
+    },
+    "PRD current completion gap audit": {
+      "needle": "latest_completion_gap_audit_current_zh.md",
+      "pass": true
+    },
+    "PRD goal blocker audit": {
+      "needle": "latest_goal_blocker_audit_current_zh.md",
+      "pass": true
+    },
+    "PRD E3 boundary diagnosis": {
+      "needle": "seed_boundary_error_diagnosis.md",
+      "pass": true
+    },
+    "PRD E3 semantic boundary plan": {
+      "needle": "e3_semantic_boundary_plan.md",
+      "pass": true
+    },
+    "PRD E3 guard validation input plan": {
+      "needle": "e3_guard_validation_input_plan.md",
+      "pass": true
+    },
+    "PRD E3 guard validation after guard": {
+      "needle": "after_guard_passes_s2_gate",
+      "pass": true
+    },
+    "PRD E3 S3 current after guard": {
+      "needle": "s3_stop_or_inspect_boundary_remains",
+      "pass": true
+    },
+    "PRD E3 boundary fresh": {
+      "needle": "boundary_fresh_pass_run_paired_mact_candidate",
+      "pass": true
+    },
+    "PRD E4 readiness audit": {
+      "needle": "latest_e4_multimodel_gate_readiness_audit_zh.md",
+      "pass": true
+    },
+    "PRD active status": {
+      "needle": "active_not_complete",
+      "pass": true
+    }
+  },
+  "errors": [],
+  "warnings": [],
+  "overall_status": "pass"
+}

@@ -1,0 +1,23 @@
+{
+  "generated_at_local": "2026-08-04 15:33:53 CST",
+  "source_report": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_s3_current_rerun_after_guard_20260804_1425/summary/seed_d_wtq_tabfact_after_guard_boundary_diagnosis.json",
+  "warning": "seed_d_boundary_metadata is for audit only and must not be passed to the model prompt.",
+  "datasets": {
+    "wtq": {
+      "wrong_or_regressed": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_s3_current_rerun_after_guard_20260804_1425/input/seed_d_wtq_tabfact_boundary_repair/wtq_seed_d_after_guard_wrong.jsonl",
+      "no_harm_correct": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_s3_current_rerun_after_guard_20260804_1425/input/seed_d_wtq_tabfact_boundary_repair/wtq_seed_d_after_guard_no_harm_correct.jsonl",
+      "priority_probe": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_s3_current_rerun_after_guard_20260804_1425/input/seed_d_wtq_tabfact_boundary_repair/wtq_seed_d_after_guard_priority_probe.jsonl"
+    },
+    "tabfact": {
+      "wrong_or_regressed": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_s3_current_rerun_after_guard_20260804_1425/input/seed_d_wtq_tabfact_boundary_repair/tabfact_seed_d_after_guard_wrong.jsonl",
+      "no_harm_correct": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_s3_current_rerun_after_guard_20260804_1425/input/seed_d_wtq_tabfact_boundary_repair/tabfact_seed_d_after_guard_no_harm_correct.jsonl",
+      "priority_probe": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_s3_current_rerun_after_guard_20260804_1425/input/seed_d_wtq_tabfact_boundary_repair/tabfact_seed_d_after_guard_priority_probe.jsonl"
+    }
+  },
+  "gate": {
+    "wtq_after_guard_correct": 28,
+    "wtq_threshold_correct": 35,
+    "tabfact_after_guard_correct": 39,
+    "tabfact_threshold_correct": 45
+  }
+}

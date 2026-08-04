@@ -1,7 +1,7 @@
 {
   "artifact_name": "qwen3_32b_claim_evidence_traceability_20260801_2248",
   "created_at_local": "2026-08-01 22:48 CST",
-  "last_updated_local": "2026-08-04 15:13:00 CST",
+    "last_updated_local": "2026-08-04 16:08:00 CST",
   "purpose": "Map patent claim families to implementation mechanisms, experimental evidence, and remaining validation gaps.",
   "scope_boundary": "This is a patent-writing traceability artifact. It does not add new benchmark results.",
   "claim_families": [
@@ -41,11 +41,11 @@
         },
         {
           "source": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_s3_current_rerun_after_guard_20260804_1425/summary/e3_s3_current_combined_summary.md",
-          "evidence": "E3 S3 after-guard current-only rerun completed with combined 215/300, weighted token ratio 0.5866, failures/missing 0/0. Seed-C passed, but Seed-D missed WTQ/TabFact gates, so paired MACT was not started."
+          "evidence": "E3 S3 after-guard current-only rerun exposed the Seed-D WTQ/TabFact boundary with combined 215/300. The v6c boundary-fresh current-only candidate then reached combined 229/300, weighted token ratio 0.5794, failures/missing 0/0, and decision boundary_fresh_pass_run_paired_mact_candidate."
         }
       ],
       "current_support_level": "strong_stage_evidence",
-      "remaining_gap": "E3 Seed-C/Seed-D current-only boundary evidence, budget probe, semantic-boundary plan, S2 after-guard fresh, and S3 current-only rerun are complete, but S3 still leaves Seed-D WTQ/TabFact below gate. Multi-model execution remains needed before making broad model-externality claims."
+      "remaining_gap": "E3 Seed-C/Seed-D current-only boundary evidence, budget probe, semantic-boundary plan, S2 after-guard fresh, S3 current-only rerun, and v6c boundary-fresh candidate are complete. S4 paired MACT and multi-model execution remain needed before making paired-seed or broad model-externality claims."
     },
     {
       "id": "C2",
@@ -104,11 +104,11 @@
         },
         {
           "source": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_s3_current_rerun_after_guard_20260804_1425/summary/e3_s3_current_combined_summary.md",
-          "evidence": "S3 after-guard current-only rerun shows the semantic guards transfer to Seed-C, but Seed-D WTQ/TabFact remain boundary categories."
+          "evidence": "S3 after-guard current-only rerun shows the semantic guards transfer to Seed-C and exposes Seed-D WTQ/TabFact boundary categories; v6c boundary-fresh then moves Seed-D to 111/150 and combined to 229/300."
         }
       ],
       "current_support_level": "strong_mechanism_evidence",
-      "remaining_gap": "WTQ targeted fresh, P4b after-targeted validation, E3 S2 after-guard validation, and S3 current-only rerun are complete. Seed-D WTQ/TabFact remain below gate, so optional fine-grained deterministic-audit or boundary diagnosis should focus there."
+      "remaining_gap": "WTQ targeted fresh, P4b after-targeted validation, E3 S2 after-guard validation, S3 current-only rerun, and v6c boundary-fresh current-only candidate are complete. S4 paired MACT remains pending."
     },
     {
       "id": "C4",
@@ -154,11 +154,11 @@
         },
         {
           "source": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_s3_current_rerun_after_guard_20260804_1425/summary/e3_s3_current_combined_summary.md",
-          "evidence": "S3 after-guard current-only rerun passed Seed-C but stopped on Seed-D WTQ/TabFact; this supports bounded funnel control rather than starting paired MACT prematurely."
+          "evidence": "S3 after-guard current-only rerun passed Seed-C but stopped on Seed-D WTQ/TabFact; v6c boundary-fresh subsequently satisfied the current-only trigger for S4 paired MACT, which supports bounded funnel control."
         }
       ],
       "current_support_level": "strong_stage_evidence_with_fresh_closure",
-      "remaining_gap": "No immediate WTQ fresh or S2 affected-slice gap remains. S3 current-only has run; future work should diagnose Seed-D WTQ/TabFact before broader seed stability or paired MACT claims."
+      "remaining_gap": "No immediate WTQ fresh, S2 affected-slice, or Seed-D boundary-fresh current-only gap remains. Future work should run S4 paired MACT before broader seed stability claims."
     },
     {
       "id": "C5",
@@ -230,11 +230,11 @@
         },
         {
           "source": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_s3_current_rerun_after_guard_20260804_1425/summary/e3_s3_current_combined_summary.json",
-          "evidence": "S3 current-only after-guard completed: Seed-C 118/150 pass, Seed-D 97/150 inspect, combined 215/300, weighted token ratio 0.5866, failures/missing 0/0, decision s3_stop_or_inspect_boundary_remains."
+          "evidence": "S3 current-only after-guard completed as historical boundary evidence: Seed-C 118/150 pass, Seed-D 97/150 inspect, combined 215/300, weighted token ratio 0.5866, failures/missing 0/0. v6c boundary-fresh current-only candidate reached combined 229/300, token ratio 0.5794, failures/missing 0/0, decision boundary_fresh_pass_run_paired_mact_candidate."
         }
       ],
       "current_support_level": "process_complete_with_seed_boundary_evidence_e4_pending",
-      "remaining_gap": "Need at least one new viable model/API candidate for E4. Seed-C/Seed-D current-only execution, budget probe, semantic-boundary plan, S2 after-guard fresh, and S3 rerun are complete but remain boundary/mechanism evidence because Seed-D WTQ/TabFact missed S3 gates."
+      "remaining_gap": "Need at least one new viable model/API candidate for E4. Seed-C/Seed-D current-only execution, budget probe, semantic-boundary plan, S2 after-guard fresh, S3 rerun, and v6c boundary-fresh candidate are complete, but S4 paired MACT is still pending."
     }
   ],
   "claim_strength_summary": {
@@ -250,7 +250,7 @@
     ],
     "requires_future_evidence_before_broad_claim": [
       "At least one viable additional model/API gate result",
-      "Additional seed stability evidence only after Seed-D WTQ/TabFact boundary diagnosis and a new S3 pass, or if the boundary is accepted under a narrower claim scope; the current max_replan=5 probe supports adaptive budgeting for selected categories but not blanket budget expansion"
+      "Additional seed paired evidence via S4 paired MACT for the v6c boundary-fresh candidate, or a strict full v6c S3 current-only rerun first if all rows must be same-code fresh; the current max_replan=5 probe supports adaptive budgeting for selected categories but not blanket budget expansion"
     ]
   }
 }

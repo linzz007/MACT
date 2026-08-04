@@ -74,6 +74,12 @@ E3_S3_CURRENT_COMBINED_SUMMARY = Path(
     "summary/e3_s3_current_combined_summary.json"
 )
 E3_S3_CURRENT_COMBINED_SUMMARY_MD = E3_S3_CURRENT_COMBINED_SUMMARY.with_suffix(".md")
+E3_BOUNDARY_FRESH_COMBINED_SUMMARY = Path(
+    "/home/ubuntu/lzz/MACT/outputs/server_runs/"
+    "qwen3_32b_policy_v6c_seed_d_boundary_fresh_20260804_1549/"
+    "summary/e3_boundary_fresh_combined_summary.json"
+)
+E3_BOUNDARY_FRESH_COMBINED_SUMMARY_MD = E3_BOUNDARY_FRESH_COMBINED_SUMMARY.with_suffix(".md")
 E4_READINESS = PACKAGE_DIR / "latest_e4_multimodel_gate_readiness_audit.json"
 E4_READINESS_MD = PACKAGE_DIR / "latest_e4_multimodel_gate_readiness_audit_zh.md"
 FORMAL_LEDGER = PACKAGE_DIR / "latest_formal_result_ledger_current.json"
@@ -277,6 +283,11 @@ def build_section() -> dict[str, Any]:
         if E3_S3_CURRENT_COMBINED_SUMMARY.exists()
         else None
     )
+    e3_boundary_fresh = (
+        read_json(E3_BOUNDARY_FRESH_COMBINED_SUMMARY)
+        if E3_BOUNDARY_FRESH_COMBINED_SUMMARY.exists()
+        else None
+    )
     e4 = read_json(E4_READINESS)
     e3_seeds = [
         e3_seed_table(read_json(E3_RUN_DIR / "summary" / f"{seed}_myagent_gate50_summary.json"))
@@ -323,6 +334,12 @@ def build_section() -> dict[str, Any]:
             "e3_s3_current_combined_summary_md": str(E3_S3_CURRENT_COMBINED_SUMMARY_MD)
             if e3_s3_current
             else "",
+            "e3_boundary_fresh_combined_summary": str(E3_BOUNDARY_FRESH_COMBINED_SUMMARY)
+            if e3_boundary_fresh
+            else "",
+            "e3_boundary_fresh_combined_summary_md": str(E3_BOUNDARY_FRESH_COMBINED_SUMMARY_MD)
+            if e3_boundary_fresh
+            else "",
             "e4_readiness": str(E4_READINESS),
             "e4_readiness_md": str(E4_READINESS_MD),
             "formal_ledger": str(FORMAL_LEDGER),
@@ -335,6 +352,7 @@ def build_section() -> dict[str, Any]:
                 "After WTQ targeted fresh validation, P4b after-targeted Gate-50 beats MACT on all three datasets and aggregate, with aggregate token ratio 0.5310 and zero MyAgent failures/missing answers.",
                 "Mechanism evidence supports risk-stratified collaboration, controlled verifier override, deterministic semantic audit, evidence retention, and budget control as patent-facing mechanisms.",
                 "E3 S2 after-guard fresh validation passes the affected-slice gate: 8/12 representative wrong rows recovered, 18/18 no-harm rows retained, failed/missing 0/0, weighted token ratio 0.6104.",
+                "E3 v6c boundary-fresh current-only candidate passes the current gate: Seed-C inherited 118/150, Seed-D fresh/inherited 111/150, combined 229/300, token ratio 0.5794, failed/missing 0/0.",
             ],
             "supported_boundary_claims": [
                 "P4b original new-seed Gate-50 exposed WTQ risk: MyAgent 37/50 vs MACT 43/50 before targeted fixes.",
@@ -342,7 +360,8 @@ def build_section() -> dict[str, Any]:
                 "E3 max_replan=5 boundary probe recovered only a minority of representative wrong rows, so it supports adaptive budgeting for selected categories but not E3 stability closure.",
                 "E3 semantic-boundary plan defined P0/P1 targeted guard work and blocked full reruns until affected-slice validation passed.",
                 "E3 S2 after-guard fresh validation is a targeted affected-slice pass, not a Seed-C/D multi-seed stability pass.",
-                "E3 S3 after-guard current-only rerun remains boundary evidence: Seed-C passed but Seed-D missed WTQ and TabFact gates, so paired MACT was not started.",
+                "E3 S3 after-guard current-only rerun remains historical boundary evidence: Seed-C passed but Seed-D missed WTQ and TabFact gates before v6c boundary shortcuts.",
+                "E3 v6c boundary-fresh candidate is still current-only evidence: Seed-C is inherited from S3, Seed-D CRT is inherited from S3, and same-seed paired MACT is not yet run.",
                 "E4 multi-model gate is blocked by no candidate: no untested local model path and no API provider profile/key are available.",
             ],
             "unsupported_claims": [
@@ -405,7 +424,9 @@ def build_section() -> dict[str, Any]:
             ]["per_dataset"]["tabfact"]["token_ratio_vs_current"],
         },
         "e3_multiseed_boundary": {
-            "decision": "boundary_not_stable_superiority",
+            "decision": "current_only_candidate_paired_pending"
+            if e3_boundary_fresh
+            else "boundary_not_stable_superiority",
             "seed_runs": e3_seeds,
             "aggregate_diagnosis": e3_boundary["aggregate"],
             "boundary_findings": e3_boundary["boundary_findings"],
@@ -470,6 +491,24 @@ def build_section() -> dict[str, Any]:
                     for item in e3_s3_current["seeds"]
                 ],
             },
+            "boundary_fresh_current_candidate": None
+            if not e3_boundary_fresh
+            else {
+                "decision": e3_boundary_fresh["decision"],
+                "paired_mact_next": e3_boundary_fresh["paired_mact_next"],
+                "overall": e3_boundary_fresh["overall"],
+                "limitations": e3_boundary_fresh["limitations"],
+                "seeds": [
+                    {
+                        "seed_label": item["seed_label"],
+                        "decision": item["decision"],
+                        "overall": item["overall"],
+                        "datasets": item["datasets"],
+                        "evidence_mode": item.get("evidence_mode", "mixed"),
+                    }
+                    for item in e3_boundary_fresh["seeds"]
+                ],
+            },
         },
         "e4_multimodel_gate": {
             "decision": e4["decision"],
@@ -529,8 +568,13 @@ def build_section() -> dict[str, Any]:
             },
             {
                 "stage": "E3 S3 current-only after-guard rerun",
-                "status": "complete_boundary_not_stability_pass",
-                "patent_use": "Seed-C passes but Seed-D remains below WTQ/TabFact gates; not paired MACT evidence",
+                "status": "complete_historical_boundary",
+                "patent_use": "Seed-C passed but Seed-D remained below WTQ/TabFact gates before v6c; historical boundary evidence",
+            },
+            {
+                "stage": "E3 v6c boundary-fresh current-only candidate",
+                "status": "complete_current_only_candidate_paired_pending",
+                "patent_use": "Seed-C/D current-only candidate reaches paired MACT trigger; not paired MACT evidence yet",
             },
             {
                 "stage": "E4 multi-model gate",
@@ -551,7 +595,7 @@ def build_section() -> dict[str, Any]:
         "next_trigger_rules": [
             "If a new candidate model/API appears, rerun runtime preflight first and start Gate-10 only on a clean GPU pair, with 0,1 -> 8000 and 2,3 -> 8001 used only when the default pool is actually available; do not consume 4-7 unless explicitly reassigned.",
             "If no new model/API exists, do not rerun known no-go models; continue drafting with E4 marked pending/no-candidate.",
-            "S3 after-guard current-only has completed and did not pass both seeds; do not start paired MACT from this result. Next Qwen3 work should diagnose Seed-D WTQ/TabFact boundary rows before any broader rerun.",
+            "The v6c boundary-fresh current-only candidate has completed and reaches paired_mact_next=true. Next Qwen3 work should run S4 paired MACT, or first run a strict full v6c S3 current-only rerun if all rows must be same-code fresh.",
         ],
     }
 
@@ -622,6 +666,7 @@ def render_markdown(report: dict[str, Any]) -> str:
     e3_guard_validation = e3.get("guard_validation_inputs")
     e3_guard_validation_after = e3.get("guard_validation_after_guard")
     e3_s3_current = e3.get("s3_current_after_guard")
+    e3_boundary_fresh = e3.get("boundary_fresh_current_candidate")
     e4 = report["e4_multimodel_gate"]
     coarse = report["coarse_ablation_key_numbers"]
     lines = [
@@ -671,6 +716,13 @@ def render_markdown(report: dict[str, Any]) -> str:
             if e3_s3_current
             else []
         ),
+        *(
+            [
+                f"- E3 v6c boundary-fresh current-only：combined `{e3_boundary_fresh['overall']['correct']}/{e3_boundary_fresh['overall']['rows']}`，weighted token ratio `{e3_boundary_fresh['overall']['token_ratio_to_mact_full200_weighted']:.4f}`，failed/missing `{e3_boundary_fresh['overall']['failed']}/{e3_boundary_fresh['overall']['missing']}`，decision `{e3_boundary_fresh['decision']}`，paired_mact_next `{e3_boundary_fresh['paired_mact_next']}`。"
+            ]
+            if e3_boundary_fresh
+            else []
+        ),
         f"- E4 多模型 gate：`{e4['decision']}`，无 untested local model、无 API provider profile/key；默认下一次启动池为 `{e4['default_gpu_pool']}`，当前可用状态为 `{e4['default_gpu_pool_available_for_next_start']}`。",
         "",
         "## 2. 可以写入的正证据",
@@ -695,11 +747,12 @@ def render_markdown(report: dict[str, Any]) -> str:
         "## 4. 必须保留的边界",
         "",
         "- P4b 原始结果不能写成新 seed 三数据集全部超过 MACT；WTQ 原始结果低于 MACT，after-targeted 结果才恢复单项优势。",
-        "- E3 Seed-C/D current-only 不能写成多 seed 稳定超过 MACT；它们没有同 seed paired MACT，且 decision 为 `stop_or_inspect`。",
+        "- 原始 E3 Seed-C/D current-only 不能写成多 seed 稳定超过 MACT；它们没有同 seed paired MACT，且 decision 为 `stop_or_inspect`。",
         "- E3 max_replan=5 probe 只恢复少数代表错题；TabFact temporal/numeric 对预算敏感，但 CRT 与 WTQ entity 边界仍需要语义 guard。",
         "- E3 semantic-boundary plan 已转化为 S2 targeted guard fresh 验证，但不是稳定性通过结果。",
         "- E3 S2 after-guard fresh 是 affected-slice 机制验证通过，不是 Seed-C/D current-only 或 paired MACT 通过。",
-        "- E3 S3 after-guard current-only 不能写成多 seed 稳定超过 MACT；Seed-D WTQ 和 TabFact 未过当前 gate，paired MACT 未启动。",
+        "- E3 S3 after-guard current-only 是历史边界证据；v6c boundary fresh 已修复 Seed-D WTQ/TabFact gate，但同 seed paired MACT 仍未启动。",
+        "- E3 v6c boundary-fresh current-only 可以写成 paired MACT 候选，不可以写成 paired MACT 已超过。",
         "- E4 不能写成多模型已验证；当前只是 readiness audit，结论是没有可启动候选。",
         "- 不能把 full200/gate 结果写成全量官方测试集完成。",
         "",
@@ -789,6 +842,27 @@ def render_markdown(report: dict[str, Any]) -> str:
                     "",
                 ]
                 if e3_s3_current
+                else []
+            ),
+            *(
+                [
+                    "E3 v6c boundary-fresh current-only candidate：",
+                    "",
+                    f"- combined decision: `{e3_boundary_fresh['decision']}`",
+                    f"- paired MACT next: `{e3_boundary_fresh['paired_mact_next']}`",
+                    f"- combined: `{e3_boundary_fresh['overall']['correct']}/{e3_boundary_fresh['overall']['rows']}`, weighted token ratio `{e3_boundary_fresh['overall']['token_ratio_to_mact_full200_weighted']:.4f}`, failed/missing `{e3_boundary_fresh['overall']['failed']}/{e3_boundary_fresh['overall']['missing']}`",
+                    "",
+                    "| seed | evidence | correct | token ratio | failed/missing | decision |",
+                    "|---|---|---:|---:|---:|---|",
+                    *[
+                        f"| {item['seed_label']} | {item.get('evidence_mode', 'mixed')} | {item['overall']['correct']}/{item['overall']['rows']} | {item['overall']['token_ratio_to_mact_full200_weighted']:.4f} | {item['overall']['failed']}/{item['overall']['missing']} | `{item['decision']}` |"
+                        for item in e3_boundary_fresh["seeds"]
+                    ],
+                    "",
+                    "Limitations: " + "; ".join(e3_boundary_fresh.get("limitations", [])) + ".",
+                    "",
+                ]
+                if e3_boundary_fresh
                 else []
             ),
             "## 5. 正式实验表状态",

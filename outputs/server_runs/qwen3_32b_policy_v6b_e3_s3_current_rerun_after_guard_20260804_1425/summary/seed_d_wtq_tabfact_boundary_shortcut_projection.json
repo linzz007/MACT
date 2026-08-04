@@ -1,0 +1,249 @@
+{
+  "artifact_name": "seed_d_wtq_tabfact_boundary_shortcut_projection",
+  "generated_at_local": "2026-08-04 15:48:51 CST",
+  "scope": "Offline no-model projection of current deterministic shortcuts on completed Seed-D S3 WTQ/TabFact rows.",
+  "run_dir": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_s3_current_rerun_after_guard_20260804_1425",
+  "git_commits_at_generation": {
+    "myagent": "161b5b9",
+    "mact": "f477bb3"
+  },
+  "datasets": {
+    "wtq": {
+      "dataset": "wtq",
+      "merged_path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_s3_current_rerun_after_guard_20260804_1425/myagent_s3_after_guard/seed_d/merged/wtq_qwen3-32b-local.jsonl",
+      "rows": 50,
+      "old_correct": 28,
+      "projected_correct": 36,
+      "delta_correct": 8,
+      "threshold_correct": 35,
+      "passes_projected_gate": true,
+      "triggered": 11,
+      "recovered": 8,
+      "harmed": 0,
+      "projected_rows": [
+        {
+          "id": "nu-3512",
+          "old_correct": false,
+          "projected_correct": true,
+          "projected_value": 2,
+          "shortcut_reason": "WTQ rank gap computed as an absolute position difference.",
+          "gold": [
+            "2"
+          ],
+          "question_or_statement": "how many ranks about lord high treasurer is the lord high steward?"
+        },
+        {
+          "id": "nu-4157",
+          "old_correct": false,
+          "projected_correct": false,
+          "projected_value": "1979-80",
+          "shortcut_reason": "WTQ last requested table-column value selected deterministically.",
+          "gold": [
+            "8"
+          ],
+          "question_or_statement": "in total, how many players with a last name starting with the letter f play on the jazz?"
+        },
+        {
+          "id": "nu-762",
+          "old_correct": false,
+          "projected_correct": true,
+          "projected_value": [
+            "Keflavík",
+            "Leiftur"
+          ],
+          "shortcut_reason": "WTQ explicit metric-value entity list returned deterministically.",
+          "gold": [
+            "Keflavík",
+            "Leiftur"
+          ],
+          "question_or_statement": "only 2 teams had 7 draws, who were they?"
+        },
+        {
+          "id": "nu-240",
+          "old_correct": false,
+          "projected_correct": false,
+          "projected_value": "Train Station Bus Terminal",
+          "shortcut_reason": "WTQ last requested table-column value selected deterministically.",
+          "gold": [
+            "Bus Terminal"
+          ],
+          "question_or_statement": "what is the name of the last destination listed on this chart?"
+        },
+        {
+          "id": "nu-1283",
+          "old_correct": false,
+          "projected_correct": true,
+          "projected_value": "118",
+          "shortcut_reason": "WTQ column-header number selected from the column containing the requested year.",
+          "gold": [
+            "118"
+          ],
+          "question_or_statement": "what is the series number of the only eclipse in 1993?"
+        },
+        {
+          "id": "nu-3127",
+          "old_correct": false,
+          "projected_correct": true,
+          "projected_value": "Erben Wennemars",
+          "shortcut_reason": "WTQ blank rank prefixes inferred from row order.",
+          "gold": [
+            "Erben Wennemars"
+          ],
+          "question_or_statement": "shani davis is ranked number one, but who is ranked number three?"
+        },
+        {
+          "id": "nu-1566",
+          "old_correct": false,
+          "projected_correct": true,
+          "projected_value": 4,
+          "shortcut_reason": "WTQ consecutive month run counted deterministically.",
+          "gold": [
+            "4"
+          ],
+          "question_or_statement": "how many consecutive seasons premiered in october?"
+        },
+        {
+          "id": "nu-2972",
+          "old_correct": false,
+          "projected_correct": true,
+          "projected_value": "1 year",
+          "shortcut_reason": "WTQ named year-span duration computed deterministically.",
+          "gold": [
+            "1 year"
+          ],
+          "question_or_statement": "how long did derek fisher's career last?"
+        },
+        {
+          "id": "nu-1816",
+          "old_correct": false,
+          "projected_correct": true,
+          "projected_value": "canada",
+          "shortcut_reason": "WTQ absent explicit option selected from table coverage.",
+          "gold": [
+            "Canada"
+          ],
+          "question_or_statement": "which of the following countries did melissa morrison not compete at; france, japan, monaco, orcanada?"
+        },
+        {
+          "id": "nu-2188",
+          "old_correct": false,
+          "projected_correct": true,
+          "projected_value": 1,
+          "shortcut_reason": "WTQ threshold-qualified rows counted deterministically.",
+          "gold": [
+            "1"
+          ],
+          "question_or_statement": "how many reactors only have a gross capacity of 1000 or below?"
+        }
+      ]
+    },
+    "tabfact": {
+      "dataset": "tabfact",
+      "merged_path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_s3_current_rerun_after_guard_20260804_1425/myagent_s3_after_guard/seed_d/merged/tabfact_qwen3-32b-local.jsonl",
+      "rows": 50,
+      "old_correct": 39,
+      "projected_correct": 45,
+      "delta_correct": 6,
+      "threshold_correct": 45,
+      "passes_projected_gate": true,
+      "triggered": 11,
+      "recovered": 6,
+      "harmed": 0,
+      "projected_rows": [
+        {
+          "id": "tabfact-test-10076",
+          "old_correct": false,
+          "projected_correct": true,
+          "projected_value": "false",
+          "shortcut_reason": "TabFact aircraft and call-sign identity checked with strict same-row matching.",
+          "gold": [
+            "false"
+          ],
+          "question_or_statement": "capt richard s ritchie fly a f - 4e 67 - 0362 and have the call sign paula 01"
+        },
+        {
+          "id": "tabfact-test-6363",
+          "old_correct": false,
+          "projected_correct": true,
+          "projected_value": "false",
+          "shortcut_reason": "TabFact lowest-attendance week set checked deterministically.",
+          "gold": [
+            "false"
+          ],
+          "question_or_statement": "during the 1982 denver broncos season , week 1 , 2 and 10 be play with the lowest attendance at the mile high stadium"
+        },
+        {
+          "id": "tabfact-test-1327",
+          "old_correct": false,
+          "projected_correct": true,
+          "projected_value": "false",
+          "shortcut_reason": "TabFact entity score-sum comparison checked deterministically.",
+          "gold": [
+            "false"
+          ],
+          "question_or_statement": "jack fleck score less point that harvie ward in the 1955 u.s. open (golf) us open"
+        },
+        {
+          "id": "tabfact-test-1868",
+          "old_correct": false,
+          "projected_correct": true,
+          "projected_value": "true",
+          "shortcut_reason": "TabFact replay count in requested month checked deterministically.",
+          "gold": [
+            "true"
+          ],
+          "question_or_statement": "3 match be replay in january 1976"
+        },
+        {
+          "id": "tabfact-test-11960",
+          "old_correct": false,
+          "projected_correct": true,
+          "projected_value": "true",
+          "shortcut_reason": "TabFact same-row metric value under a condition checked deterministically.",
+          "gold": [
+            "true"
+          ],
+          "question_or_statement": "the total number of point in the year with 7 assist be 39"
+        },
+        {
+          "id": "tabfact-test-4106",
+          "old_correct": false,
+          "projected_correct": false,
+          "projected_value": "false",
+          "shortcut_reason": "TabFact replay home-team win relation checked deterministically.",
+          "gold": [
+            "true"
+          ],
+          "question_or_statement": "both of the game that have to be replay , due to the first match tying , be ultimately win by the home team"
+        },
+        {
+          "id": "tabfact-test-140",
+          "old_correct": false,
+          "projected_correct": true,
+          "projected_value": "true",
+          "shortcut_reason": "TabFact entity tenure containment checked deterministically.",
+          "gold": [
+            "true"
+          ],
+          "question_or_statement": "adrian dantley be on the team the entire time that brad davis be"
+        }
+      ]
+    }
+  },
+  "aggregate": {
+    "rows": 100,
+    "old_correct": 67,
+    "projected_correct": 81,
+    "delta_correct": 14,
+    "threshold_correct": 80,
+    "passes_projected_gate": true,
+    "recovered": 14,
+    "harmed": 0,
+    "decision": "run_seed_d_wtq_tabfact_fresh_rerun"
+  },
+  "interpretation": [
+    "This projection uses gold labels only after deterministic answers are computed, for evaluator recomputation; gold is not part of any shortcut input.",
+    "The result is not a fresh model run and must not be cited as final Seed-D accuracy.",
+    "Because both WTQ and TabFact pass projected gates with zero projected harm, the next step is a bounded fresh rerun on the same Seed-D WTQ/TabFact full50 inputs."
+  ]
+}
