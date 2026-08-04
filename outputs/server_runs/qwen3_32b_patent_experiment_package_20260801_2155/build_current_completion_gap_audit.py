@@ -49,6 +49,11 @@ E3_SEMANTIC_BOUNDARY_PLAN = Path(
     "qwen3_32b_policy_v6b_e3_semantic_boundary_plan_20260804_1110/"
     "summary/e3_semantic_boundary_plan.json"
 )
+E3_GUARD_VALIDATION_INPUT_PLAN = Path(
+    "/home/ubuntu/lzz/MACT/outputs/server_runs/"
+    "qwen3_32b_policy_v6b_e3_guard_validation_inputs_20260804_1128/"
+    "summary/e3_guard_validation_input_plan.json"
+)
 E4_READINESS = PACKAGE_DIR / "latest_e4_multimodel_gate_readiness_audit.json"
 FORMAL_LEDGER = PACKAGE_DIR / "latest_formal_result_ledger_current.json"
 CURRENT_PATENT_SECTION = PACKAGE_DIR / "latest_current_patent_experiment_section.json"
@@ -221,6 +226,24 @@ def e3_semantic_boundary_plan_metrics(path: Path) -> dict[str, Any] | None:
     }
 
 
+def e3_guard_validation_input_metrics(path: Path) -> dict[str, Any] | None:
+    if not path.exists():
+        return None
+    plan = read_json(path)
+    return {
+        "decision": plan["validation_decision"],
+        "scope": plan["scope"],
+        "total_rows": plan["total_rows"],
+        "dataset_counts": plan["dataset_counts"],
+        "role_counts": plan["role_counts"],
+        "gate_targets": plan["gate_targets"],
+        "representative_wrong_budget_probe_recovered": plan[
+            "representative_wrong_budget_probe_recovered"
+        ],
+        "no_harm_proxy_counts": plan["no_harm_proxy_counts"],
+    }
+
+
 def build_audit() -> dict[str, Any]:
     generated_at = dt.datetime.now().astimezone().strftime("%Y-%m-%d %H:%M:%S %Z")
     full = read_json(FULL200_SUMMARY)
@@ -245,6 +268,9 @@ def build_audit() -> dict[str, Any]:
     e3_semantic_plan_current = e3_semantic_boundary_plan_metrics(E3_SEMANTIC_BOUNDARY_PLAN)
     if e3_semantic_plan_current:
         e3_current["semantic_boundary_plan"] = e3_semantic_plan_current
+    e3_guard_validation_current = e3_guard_validation_input_metrics(E3_GUARD_VALIDATION_INPUT_PLAN)
+    if e3_guard_validation_current:
+        e3_current["guard_validation_input_plan"] = e3_guard_validation_current
 
     requirements = [
         {
@@ -308,9 +334,17 @@ def build_audit() -> dict[str, Any]:
                 ]
                 if e3_semantic_plan_current
                 else []
+            )
+            + (
+                [
+                    str(E3_GUARD_VALIDATION_INPUT_PLAN),
+                    str(E3_GUARD_VALIDATION_INPUT_PLAN.with_suffix(".md")),
+                ]
+                if e3_guard_validation_current
+                else []
             ),
             "metrics": e3_current,
-            "gap": "Seed-C/Seed-D are boundary evidence, not multi-seed stable superiority evidence. The max_replan=5 probe recovered a minority of representative wrong rows, and the semantic-boundary plan now defines targeted guard work before any paired MACT runtime.",
+            "gap": "Seed-C/Seed-D are boundary evidence, not multi-seed stable superiority evidence. The max_replan=5 probe recovered a minority of representative wrong rows, the semantic-boundary plan defines targeted guard work, and the S2 guard-validation input package is prepared before any paired MACT runtime.",
         },
         {
             "id": "R5",
@@ -403,10 +437,10 @@ def build_audit() -> dict[str, Any]:
         "current_next_actions": [
             "Do not rerun known no-go models. Wait for a new local model path or API provider profile/key before E4 Gate-10.",
             "Use latest_current_patent_experiment_section_zh.md for current expert/patent discussion, with E3 and E4 boundaries explicitly preserved.",
-            "If further Qwen3 optimization is requested, start from the E3 semantic-boundary plan: implement P0/P1 gold-free guards, run affected-slice fresh validation, then rerun E3 current-only only if the small gate passes.",
+            "If further Qwen3 optimization is requested, start from the E3 semantic-boundary plan and S2 guard-validation input package: implement P0/P1 gold-free guards, run affected-slice fresh validation, then rerun E3 current-only only if the small gate passes.",
         ],
         "overall_completion_status": completion_summary["overall_status"],
-        "reason_not_complete": "Current Qwen3 full200 and P4b after-targeted evidence are positive; E3 is boundary evidence; E4 has no candidate, so model-externality evidence and final closeout remain pending.",
+        "reason_not_complete": "Current Qwen3 full200 and P4b after-targeted evidence are positive; E3 is boundary evidence with S2 validation inputs prepared but not freshly run; E4 has no candidate, so model-externality evidence and final closeout remain pending.",
         "can_write_now": completion_summary["can_write_now"],
         "cannot_write_yet": completion_summary["cannot_write_yet"],
     }
@@ -424,6 +458,7 @@ def render_markdown(report: dict[str, Any]) -> str:
     r5 = req_by_id["R5"]["metrics"]
     r4_probe = r4.get("budget_probe_max_replan5")
     r4_semantic_plan = r4.get("semantic_boundary_plan")
+    r4_guard_validation = r4.get("guard_validation_input_plan")
     runtime = report["runtime_recheck"]
     lines = [
         "# 当前专利实验完成度审计",
@@ -434,7 +469,7 @@ def render_markdown(report: dict[str, Any]) -> str:
         "",
         "## 当前结论",
         "",
-        f"当前目标状态：`{report['overall_completion_status']}`。Qwen3-32B full200 和 P4b after-targeted 已是正证据；E3 Seed-C/D 是边界证据，并已补 E3 semantic-boundary plan；E4 状态为 `pending_no_candidate`，artifact decision 为 `no_candidate_wait`，尚无额外模型/API 候选。",
+        f"当前目标状态：`{report['overall_completion_status']}`。Qwen3-32B full200 和 P4b after-targeted 已是正证据；E3 Seed-C/D 是边界证据，并已补 E3 semantic-boundary plan 和 S2 guard-validation input package；E4 状态为 `pending_no_candidate`，artifact decision 为 `no_candidate_wait`，尚无额外模型/API 候选。",
         "",
         "## 环境复核",
         "",
@@ -488,6 +523,10 @@ def render_markdown(report: dict[str, Any]) -> str:
     if r4_semantic_plan:
         lines.append(
             f"| E3 semantic-boundary plan | decision `{r4_semantic_plan['decision']}`, high-priority work items `{r4_semantic_plan['high_priority_work_item_count']}`, zero-recovery categories `{len(r4_semantic_plan['zero_recovery_probe_categories'])}`, next ladder `{', '.join(r4_semantic_plan['next_ladder_stages'])}` |"
+        )
+    if r4_guard_validation:
+        lines.append(
+            f"| E3 S2 guard-validation input package | decision `{r4_guard_validation['decision']}`, rows `{r4_guard_validation['total_rows']}`, dataset counts `{r4_guard_validation['dataset_counts']}`, role counts `{r4_guard_validation['role_counts']}`, future gate recover `{r4_guard_validation['gate_targets']['representative_wrong_recovery_min']}/12` and no-harm `{r4_guard_validation['gate_targets']['no_harm_correct_min']}/18` |"
         )
     lines.extend(
         [

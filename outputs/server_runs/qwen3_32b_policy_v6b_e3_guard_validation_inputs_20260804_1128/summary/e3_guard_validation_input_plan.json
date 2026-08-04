@@ -1,0 +1,389 @@
+{
+  "artifact_name": "e3_guard_validation_input_plan",
+  "generated_at_local": "2026-08-04 11:32:04 CST",
+  "run_dir": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_guard_validation_inputs_20260804_1128",
+  "scope": "Input/package artifact only. It does not run models or change benchmark results.",
+  "source_multiseed_run": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231",
+  "source_budget_probe_summary": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_boundary_budget_probe_20260804_1035/summary/e3_boundary_budget_probe_summary.json",
+  "source_semantic_boundary_plan": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_semantic_boundary_plan_20260804_1110/summary/e3_semantic_boundary_plan.json",
+  "upstream_decision": "do_not_rerun_full200_or_paired_mact_until_targeted_guards_pass",
+  "validation_decision": "ready_for_guard_implementation_not_model_run",
+  "total_rows": 30,
+  "dataset_counts": {
+    "wtq": 10,
+    "tabfact": 8,
+    "crt": 12
+  },
+  "role_counts": {
+    "representative_wrong": 12,
+    "no_harm_correct": 18
+  },
+  "category_counts": {
+    "wtq_entity_lookup_or_row_selection_boundary": 4,
+    "wtq_temporal_or_age_lookup_boundary": 4,
+    "crt_multi_step_numeric_composition_boundary": 4,
+    "crt_span_or_universal_quantifier_boundary": 4,
+    "tabfact_temporal_order_boundary": 3,
+    "wtq_numeric_aggregation_or_difference_boundary": 2,
+    "tabfact_numeric_count_or_comparison_boundary": 2,
+    "tabfact_binary_entailment_boundary": 2,
+    "crt_percentage_complement_or_aggregation_boundary": 2,
+    "crt_table_reasoning_or_entity_boundary": 2,
+    "tabfact_false_negative_entailment_boundary": 1
+  },
+  "no_harm_proxy_counts": {
+    "tabfact_false_negative_entailment_boundary": 2
+  },
+  "duplicate_source_keys": [],
+  "representative_wrong_budget_probe_recovered": 4,
+  "representative_wrong_budget_probe_zero_recovery_keys": [
+    "seed_c/wtq/nu-2577",
+    "seed_d/wtq/nu-3380",
+    "seed_c/wtq/nu-1456",
+    "seed_c/tabfact/tabfact-test-9637",
+    "seed_c/crt/crt-325",
+    "seed_d/crt/crt-121",
+    "seed_c/crt/crt-0",
+    "seed_d/crt/crt-303"
+  ],
+  "gate_targets": {
+    "representative_wrong_recovery_min": 7,
+    "representative_wrong_recovery_note": "Future guard fresh run should recover at least 7/12 representative wrong rows; max_replan=5 alone recovered 4/12.",
+    "no_harm_correct_min": 18,
+    "failed_missing_max": 0,
+    "token_ratio_to_mact_full200_max": 1.0,
+    "rerun_escalation": "Only run S3 E3 current-only rerun or paired MACT if this S2 affected slice passes."
+  },
+  "row_index": [
+    {
+      "source_key": "seed_c/wtq/nu-2577",
+      "dataset": "wtq",
+      "id": "nu-2577",
+      "slice_role": "representative_wrong",
+      "category": "wtq_entity_lookup_or_row_selection_boundary",
+      "priority": "P0",
+      "source_correct": false,
+      "max_replan5_recovered": false,
+      "no_harm_proxy_for": null
+    },
+    {
+      "source_key": "seed_d/wtq/nu-3380",
+      "dataset": "wtq",
+      "id": "nu-3380",
+      "slice_role": "representative_wrong",
+      "category": "wtq_entity_lookup_or_row_selection_boundary",
+      "priority": "P0",
+      "source_correct": false,
+      "max_replan5_recovered": false,
+      "no_harm_proxy_for": null
+    },
+    {
+      "source_key": "seed_c/wtq/nu-1456",
+      "dataset": "wtq",
+      "id": "nu-1456",
+      "slice_role": "representative_wrong",
+      "category": "wtq_temporal_or_age_lookup_boundary",
+      "priority": "P1",
+      "source_correct": false,
+      "max_replan5_recovered": false,
+      "no_harm_proxy_for": null
+    },
+    {
+      "source_key": "seed_d/wtq/nu-515",
+      "dataset": "wtq",
+      "id": "nu-515",
+      "slice_role": "representative_wrong",
+      "category": "wtq_temporal_or_age_lookup_boundary",
+      "priority": "P1",
+      "source_correct": false,
+      "max_replan5_recovered": true,
+      "no_harm_proxy_for": null
+    },
+    {
+      "source_key": "seed_c/wtq/nu-125",
+      "dataset": "wtq",
+      "id": "nu-125",
+      "slice_role": "no_harm_correct",
+      "category": "wtq_entity_lookup_or_row_selection_boundary",
+      "priority": "P0",
+      "source_correct": true,
+      "max_replan5_recovered": null,
+      "no_harm_proxy_for": null
+    },
+    {
+      "source_key": "seed_c/wtq/nu-1715",
+      "dataset": "wtq",
+      "id": "nu-1715",
+      "slice_role": "no_harm_correct",
+      "category": "wtq_entity_lookup_or_row_selection_boundary",
+      "priority": "P0",
+      "source_correct": true,
+      "max_replan5_recovered": null,
+      "no_harm_proxy_for": null
+    },
+    {
+      "source_key": "seed_c/wtq/nu-1073",
+      "dataset": "wtq",
+      "id": "nu-1073",
+      "slice_role": "no_harm_correct",
+      "category": "wtq_numeric_aggregation_or_difference_boundary",
+      "priority": "P1",
+      "source_correct": true,
+      "max_replan5_recovered": null,
+      "no_harm_proxy_for": null
+    },
+    {
+      "source_key": "seed_c/wtq/nu-120",
+      "dataset": "wtq",
+      "id": "nu-120",
+      "slice_role": "no_harm_correct",
+      "category": "wtq_numeric_aggregation_or_difference_boundary",
+      "priority": "P1",
+      "source_correct": true,
+      "max_replan5_recovered": null,
+      "no_harm_proxy_for": null
+    },
+    {
+      "source_key": "seed_c/wtq/nu-1239",
+      "dataset": "wtq",
+      "id": "nu-1239",
+      "slice_role": "no_harm_correct",
+      "category": "wtq_temporal_or_age_lookup_boundary",
+      "priority": "P1",
+      "source_correct": true,
+      "max_replan5_recovered": null,
+      "no_harm_proxy_for": null
+    },
+    {
+      "source_key": "seed_c/wtq/nu-2307",
+      "dataset": "wtq",
+      "id": "nu-2307",
+      "slice_role": "no_harm_correct",
+      "category": "wtq_temporal_or_age_lookup_boundary",
+      "priority": "P1",
+      "source_correct": true,
+      "max_replan5_recovered": null,
+      "no_harm_proxy_for": null
+    },
+    {
+      "source_key": "seed_c/tabfact/tabfact-test-9637",
+      "dataset": "tabfact",
+      "id": "tabfact-test-9637",
+      "slice_role": "representative_wrong",
+      "category": "tabfact_false_negative_entailment_boundary",
+      "priority": "P0",
+      "source_correct": false,
+      "max_replan5_recovered": false,
+      "no_harm_proxy_for": null
+    },
+    {
+      "source_key": "seed_d/tabfact/tabfact-test-1383",
+      "dataset": "tabfact",
+      "id": "tabfact-test-1383",
+      "slice_role": "representative_wrong",
+      "category": "tabfact_numeric_count_or_comparison_boundary",
+      "priority": "P2",
+      "source_correct": false,
+      "max_replan5_recovered": true,
+      "no_harm_proxy_for": null
+    },
+    {
+      "source_key": "seed_c/tabfact/tabfact-test-8555",
+      "dataset": "tabfact",
+      "id": "tabfact-test-8555",
+      "slice_role": "representative_wrong",
+      "category": "tabfact_temporal_order_boundary",
+      "priority": "P2",
+      "source_correct": false,
+      "max_replan5_recovered": true,
+      "no_harm_proxy_for": null
+    },
+    {
+      "source_key": "seed_d/tabfact/tabfact-test-12194",
+      "dataset": "tabfact",
+      "id": "tabfact-test-12194",
+      "slice_role": "representative_wrong",
+      "category": "tabfact_temporal_order_boundary",
+      "priority": "P2",
+      "source_correct": false,
+      "max_replan5_recovered": true,
+      "no_harm_proxy_for": null
+    },
+    {
+      "source_key": "seed_c/tabfact/tabfact-test-11195",
+      "dataset": "tabfact",
+      "id": "tabfact-test-11195",
+      "slice_role": "no_harm_correct",
+      "category": "tabfact_binary_entailment_boundary",
+      "priority": "P0",
+      "source_correct": true,
+      "max_replan5_recovered": null,
+      "no_harm_proxy_for": "tabfact_false_negative_entailment_boundary"
+    },
+    {
+      "source_key": "seed_c/tabfact/tabfact-test-12164",
+      "dataset": "tabfact",
+      "id": "tabfact-test-12164",
+      "slice_role": "no_harm_correct",
+      "category": "tabfact_binary_entailment_boundary",
+      "priority": "P0",
+      "source_correct": true,
+      "max_replan5_recovered": null,
+      "no_harm_proxy_for": "tabfact_false_negative_entailment_boundary"
+    },
+    {
+      "source_key": "seed_c/tabfact/tabfact-test-1701",
+      "dataset": "tabfact",
+      "id": "tabfact-test-1701",
+      "slice_role": "no_harm_correct",
+      "category": "tabfact_numeric_count_or_comparison_boundary",
+      "priority": "P2",
+      "source_correct": true,
+      "max_replan5_recovered": null,
+      "no_harm_proxy_for": null
+    },
+    {
+      "source_key": "seed_c/tabfact/tabfact-test-1270",
+      "dataset": "tabfact",
+      "id": "tabfact-test-1270",
+      "slice_role": "no_harm_correct",
+      "category": "tabfact_temporal_order_boundary",
+      "priority": "P2",
+      "source_correct": true,
+      "max_replan5_recovered": null,
+      "no_harm_proxy_for": null
+    },
+    {
+      "source_key": "seed_c/crt/crt-325",
+      "dataset": "crt",
+      "id": "crt-325",
+      "slice_role": "representative_wrong",
+      "category": "crt_multi_step_numeric_composition_boundary",
+      "priority": "P0",
+      "source_correct": false,
+      "max_replan5_recovered": false,
+      "no_harm_proxy_for": null
+    },
+    {
+      "source_key": "seed_d/crt/crt-121",
+      "dataset": "crt",
+      "id": "crt-121",
+      "slice_role": "representative_wrong",
+      "category": "crt_multi_step_numeric_composition_boundary",
+      "priority": "P0",
+      "source_correct": false,
+      "max_replan5_recovered": false,
+      "no_harm_proxy_for": null
+    },
+    {
+      "source_key": "seed_c/crt/crt-0",
+      "dataset": "crt",
+      "id": "crt-0",
+      "slice_role": "representative_wrong",
+      "category": "crt_span_or_universal_quantifier_boundary",
+      "priority": "P0",
+      "source_correct": false,
+      "max_replan5_recovered": false,
+      "no_harm_proxy_for": null
+    },
+    {
+      "source_key": "seed_d/crt/crt-303",
+      "dataset": "crt",
+      "id": "crt-303",
+      "slice_role": "representative_wrong",
+      "category": "crt_span_or_universal_quantifier_boundary",
+      "priority": "P0",
+      "source_correct": false,
+      "max_replan5_recovered": false,
+      "no_harm_proxy_for": null
+    },
+    {
+      "source_key": "seed_c/crt/crt-208",
+      "dataset": "crt",
+      "id": "crt-208",
+      "slice_role": "no_harm_correct",
+      "category": "crt_multi_step_numeric_composition_boundary",
+      "priority": "P0",
+      "source_correct": true,
+      "max_replan5_recovered": null,
+      "no_harm_proxy_for": null
+    },
+    {
+      "source_key": "seed_c/crt/crt-324",
+      "dataset": "crt",
+      "id": "crt-324",
+      "slice_role": "no_harm_correct",
+      "category": "crt_multi_step_numeric_composition_boundary",
+      "priority": "P0",
+      "source_correct": true,
+      "max_replan5_recovered": null,
+      "no_harm_proxy_for": null
+    },
+    {
+      "source_key": "seed_c/crt/crt-14",
+      "dataset": "crt",
+      "id": "crt-14",
+      "slice_role": "no_harm_correct",
+      "category": "crt_span_or_universal_quantifier_boundary",
+      "priority": "P0",
+      "source_correct": true,
+      "max_replan5_recovered": null,
+      "no_harm_proxy_for": null
+    },
+    {
+      "source_key": "seed_c/crt/crt-184",
+      "dataset": "crt",
+      "id": "crt-184",
+      "slice_role": "no_harm_correct",
+      "category": "crt_span_or_universal_quantifier_boundary",
+      "priority": "P0",
+      "source_correct": true,
+      "max_replan5_recovered": null,
+      "no_harm_proxy_for": null
+    },
+    {
+      "source_key": "seed_c/crt/crt-102",
+      "dataset": "crt",
+      "id": "crt-102",
+      "slice_role": "no_harm_correct",
+      "category": "crt_percentage_complement_or_aggregation_boundary",
+      "priority": "P1",
+      "source_correct": true,
+      "max_replan5_recovered": null,
+      "no_harm_proxy_for": null
+    },
+    {
+      "source_key": "seed_c/crt/crt-107",
+      "dataset": "crt",
+      "id": "crt-107",
+      "slice_role": "no_harm_correct",
+      "category": "crt_percentage_complement_or_aggregation_boundary",
+      "priority": "P1",
+      "source_correct": true,
+      "max_replan5_recovered": null,
+      "no_harm_proxy_for": null
+    },
+    {
+      "source_key": "seed_c/crt/crt-195",
+      "dataset": "crt",
+      "id": "crt-195",
+      "slice_role": "no_harm_correct",
+      "category": "crt_table_reasoning_or_entity_boundary",
+      "priority": "P1",
+      "source_correct": true,
+      "max_replan5_recovered": null,
+      "no_harm_proxy_for": null
+    },
+    {
+      "source_key": "seed_c/crt/crt-352",
+      "dataset": "crt",
+      "id": "crt-352",
+      "slice_role": "no_harm_correct",
+      "category": "crt_table_reasoning_or_entity_boundary",
+      "priority": "P1",
+      "source_correct": true,
+      "max_replan5_recovered": null,
+      "no_harm_proxy_for": null
+    }
+  ]
+}

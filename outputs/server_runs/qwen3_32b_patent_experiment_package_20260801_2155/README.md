@@ -74,6 +74,12 @@ Current status:
   `do_not_rerun_full200_or_paired_mact_until_targeted_guards_pass`.
   Evidence:
   `/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_semantic_boundary_plan_20260804_1110/summary/e3_semantic_boundary_plan.md`.
+- The E3 S2 guard-validation input package is now prepared at
+  `/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_guard_validation_inputs_20260804_1128/`.
+  It contains `30` rows: `12` representative wrong rows and `18` no-harm
+  correct rows, split WTQ/TabFact/CRT as `10/8/12`. This is an input package,
+  not a model-run result; the future S2 fresh gate is recover at least `7/12`
+  representative wrong rows while preserving `18/18` no-harm rows.
 - The latest current completion-gap audit records that the active goal is not
   complete: Qwen3 full200 and P4b after-targeted are positive evidence, E3 is
   boundary evidence, and E4 remains pending/no-candidate until a new local

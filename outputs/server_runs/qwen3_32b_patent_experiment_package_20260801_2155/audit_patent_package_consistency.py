@@ -31,6 +31,12 @@ E3_SEMANTIC_BOUNDARY_PLAN_JSON = Path(
     "summary/e3_semantic_boundary_plan.json"
 )
 E3_SEMANTIC_BOUNDARY_PLAN_MD = E3_SEMANTIC_BOUNDARY_PLAN_JSON.with_suffix(".md")
+E3_GUARD_VALIDATION_INPUT_PLAN_JSON = Path(
+    "/home/ubuntu/lzz/MACT/outputs/server_runs/"
+    "qwen3_32b_policy_v6b_e3_guard_validation_inputs_20260804_1128/"
+    "summary/e3_guard_validation_input_plan.json"
+)
+E3_GUARD_VALIDATION_INPUT_PLAN_MD = E3_GUARD_VALIDATION_INPUT_PLAN_JSON.with_suffix(".md")
 E4_READINESS_JSON = PACKAGE_DIR / "latest_e4_multimodel_gate_readiness_audit.json"
 E4_READINESS_MD = PACKAGE_DIR / "latest_e4_multimodel_gate_readiness_audit_zh.md"
 CURRENT_PATENT_SECTION_JSON = PACKAGE_DIR / "latest_current_patent_experiment_section.json"
@@ -161,6 +167,8 @@ def build_report() -> dict[str, Any]:
         "e3_boundary_diagnosis_md": E3_BOUNDARY_DIAGNOSIS_MD,
         "e3_semantic_boundary_plan_json": E3_SEMANTIC_BOUNDARY_PLAN_JSON,
         "e3_semantic_boundary_plan_md": E3_SEMANTIC_BOUNDARY_PLAN_MD,
+        "e3_guard_validation_input_plan_json": E3_GUARD_VALIDATION_INPUT_PLAN_JSON,
+        "e3_guard_validation_input_plan_md": E3_GUARD_VALIDATION_INPUT_PLAN_MD,
         "e4_multimodel_readiness_json": E4_READINESS_JSON,
         "e4_multimodel_readiness_md": E4_READINESS_MD,
         "current_patent_experiment_section_json": CURRENT_PATENT_SECTION_JSON,
@@ -313,6 +321,7 @@ def build_report() -> dict[str, Any]:
     manifest_preflight = manifest["remaining_qwen3_queue"]["latest_runtime_preflight_json"]
     boundary_manifest = manifest["multiseed_e3_prepared"]["boundary_error_diagnosis"]
     semantic_boundary_manifest = manifest["e3_semantic_boundary_plan"]
+    guard_validation_manifest = manifest["e3_guard_validation_inputs"]
     e4_manifest = manifest["multimodel_e4_readiness"]
     e4_readiness = read_json(E4_READINESS_JSON)
     current_section_manifest = manifest["current_patent_experiment_section"]
@@ -357,6 +366,43 @@ def build_report() -> dict[str, Any]:
         semantic_boundary_manifest["high_priority_work_item_count"],
         len(semantic_plan["high_priority_work_items"]),
     )
+    guard_validation = read_json(E3_GUARD_VALIDATION_INPUT_PLAN_JSON)
+    check_equal(
+        report,
+        "manifest E3 guard validation json path",
+        guard_validation_manifest["summary_json"],
+        str(E3_GUARD_VALIDATION_INPUT_PLAN_JSON),
+    )
+    check_equal(
+        report,
+        "manifest E3 guard validation md path",
+        guard_validation_manifest["summary_md"],
+        str(E3_GUARD_VALIDATION_INPUT_PLAN_MD),
+    )
+    check_equal(
+        report,
+        "manifest E3 guard validation decision",
+        guard_validation_manifest["decision"],
+        guard_validation["validation_decision"],
+    )
+    check_equal(
+        report,
+        "manifest E3 guard validation total rows",
+        guard_validation_manifest["total_rows"],
+        guard_validation["total_rows"],
+    )
+    check_equal(
+        report,
+        "manifest E3 guard validation representative rows",
+        guard_validation_manifest["role_counts"]["representative_wrong"],
+        guard_validation["role_counts"]["representative_wrong"],
+    )
+    check_equal(
+        report,
+        "manifest E3 guard validation no-harm rows",
+        guard_validation_manifest["role_counts"]["no_harm_correct"],
+        guard_validation["role_counts"]["no_harm_correct"],
+    )
     check_equal(report, "manifest E4 readiness json path", e4_manifest["latest_json"], str(E4_READINESS_JSON))
     check_equal(report, "manifest E4 readiness md path", e4_manifest["latest_md"], str(E4_READINESS_MD))
     check_equal(report, "manifest E4 readiness status", e4_manifest["status"], e4_readiness["decision"])
@@ -393,6 +439,12 @@ def build_report() -> dict[str, Any]:
         "current patent section E4 decision",
         current_section["e4_multimodel_gate"]["decision"],
         "no_candidate_wait",
+    )
+    check_equal(
+        report,
+        "current patent section E3 guard validation rows",
+        current_section["e3_multiseed_boundary"]["guard_validation_inputs"]["total_rows"],
+        30,
     )
     check_contains(
         report,
@@ -439,6 +491,18 @@ def build_report() -> dict[str, Any]:
         "completion gap semantic plan decision",
         requirements_by_id["R4"]["metrics"]["semantic_boundary_plan"]["decision"],
         "do_not_rerun_full200_or_paired_mact_until_targeted_guards_pass",
+    )
+    check_equal(
+        report,
+        "completion gap guard validation decision",
+        requirements_by_id["R4"]["metrics"]["guard_validation_input_plan"]["decision"],
+        "ready_for_guard_implementation_not_model_run",
+    )
+    check_equal(
+        report,
+        "completion gap guard validation rows",
+        requirements_by_id["R4"]["metrics"]["guard_validation_input_plan"]["total_rows"],
+        30,
     )
     check_equal(
         report,
@@ -580,6 +644,7 @@ def build_report() -> dict[str, Any]:
         "PRD goal blocker audit": "latest_goal_blocker_audit_current_zh.md",
         "PRD E3 boundary diagnosis": "seed_boundary_error_diagnosis.md",
         "PRD E3 semantic boundary plan": "e3_semantic_boundary_plan.md",
+        "PRD E3 guard validation input plan": "e3_guard_validation_input_plan.md",
         "PRD E4 readiness audit": "latest_e4_multimodel_gate_readiness_audit_zh.md",
         "PRD active status": "active_not_complete",
     }.items():

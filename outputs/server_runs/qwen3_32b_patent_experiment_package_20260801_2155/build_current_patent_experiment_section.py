@@ -56,6 +56,12 @@ E3_SEMANTIC_BOUNDARY_PLAN = Path(
     "summary/e3_semantic_boundary_plan.json"
 )
 E3_SEMANTIC_BOUNDARY_PLAN_MD = E3_SEMANTIC_BOUNDARY_PLAN.with_suffix(".md")
+E3_GUARD_VALIDATION_INPUT_PLAN = Path(
+    "/home/ubuntu/lzz/MACT/outputs/server_runs/"
+    "qwen3_32b_policy_v6b_e3_guard_validation_inputs_20260804_1128/"
+    "summary/e3_guard_validation_input_plan.json"
+)
+E3_GUARD_VALIDATION_INPUT_PLAN_MD = E3_GUARD_VALIDATION_INPUT_PLAN.with_suffix(".md")
 E4_READINESS = PACKAGE_DIR / "latest_e4_multimodel_gate_readiness_audit.json"
 E4_READINESS_MD = PACKAGE_DIR / "latest_e4_multimodel_gate_readiness_audit_zh.md"
 FORMAL_LEDGER = PACKAGE_DIR / "latest_formal_result_ledger_current.json"
@@ -246,6 +252,9 @@ def build_section() -> dict[str, Any]:
     e3_semantic_plan = (
         read_json(E3_SEMANTIC_BOUNDARY_PLAN) if E3_SEMANTIC_BOUNDARY_PLAN.exists() else None
     )
+    e3_guard_validation = (
+        read_json(E3_GUARD_VALIDATION_INPUT_PLAN) if E3_GUARD_VALIDATION_INPUT_PLAN.exists() else None
+    )
     e4 = read_json(E4_READINESS)
     e3_seeds = [
         e3_seed_table(read_json(E3_RUN_DIR / "summary" / f"{seed}_myagent_gate50_summary.json"))
@@ -278,6 +287,8 @@ def build_section() -> dict[str, Any]:
             "e3_budget_probe_summary_md": str(E3_BUDGET_PROBE_SUMMARY_MD) if e3_budget_probe else "",
             "e3_semantic_boundary_plan": str(E3_SEMANTIC_BOUNDARY_PLAN) if e3_semantic_plan else "",
             "e3_semantic_boundary_plan_md": str(E3_SEMANTIC_BOUNDARY_PLAN_MD) if e3_semantic_plan else "",
+            "e3_guard_validation_input_plan": str(E3_GUARD_VALIDATION_INPUT_PLAN) if e3_guard_validation else "",
+            "e3_guard_validation_input_plan_md": str(E3_GUARD_VALIDATION_INPUT_PLAN_MD) if e3_guard_validation else "",
             "e4_readiness": str(E4_READINESS),
             "e4_readiness_md": str(E4_READINESS_MD),
             "formal_ledger": str(FORMAL_LEDGER),
@@ -295,6 +306,7 @@ def build_section() -> dict[str, Any]:
                 "E3 Seed-C/Seed-D current-only Gate-50 are boundary evidence, not stable multi-seed superiority evidence; no same-seed paired MACT baseline was run because current-only gate decided stop_or_inspect.",
                 "E3 max_replan=5 boundary probe recovered only a minority of representative wrong rows, so it supports adaptive budgeting for selected categories but not E3 stability closure.",
                 "E3 semantic-boundary plan defines P0/P1 targeted guard work and blocks full reruns until affected-slice validation passes.",
+                "E3 guard-validation input package prepares the S2 affected-slice/no-harm rows, but it is not a model-run result or stability pass.",
                 "E4 multi-model gate is blocked by no candidate: no untested local model path and no API provider profile/key are available.",
             ],
             "unsupported_claims": [
@@ -382,6 +394,20 @@ def build_section() -> dict[str, Any]:
                     item["stage"] for item in e3_semantic_plan["recommended_next_experiment_ladder"]
                 ],
             },
+            "guard_validation_inputs": None
+            if not e3_guard_validation
+            else {
+                "decision": e3_guard_validation["validation_decision"],
+                "scope": e3_guard_validation["scope"],
+                "total_rows": e3_guard_validation["total_rows"],
+                "dataset_counts": e3_guard_validation["dataset_counts"],
+                "role_counts": e3_guard_validation["role_counts"],
+                "gate_targets": e3_guard_validation["gate_targets"],
+                "representative_wrong_budget_probe_recovered": e3_guard_validation[
+                    "representative_wrong_budget_probe_recovered"
+                ],
+                "no_harm_proxy_counts": e3_guard_validation["no_harm_proxy_counts"],
+            },
         },
         "e4_multimodel_gate": {
             "decision": e4["decision"],
@@ -430,6 +456,11 @@ def build_section() -> dict[str, Any]:
                 "patent_use": "targeted guard and affected-slice validation ladder",
             },
             {
+                "stage": "E3 S2 guard-validation input package",
+                "status": "complete_input_package_not_model_result",
+                "patent_use": "pre-registered affected-slice/no-harm validation target",
+            },
+            {
                 "stage": "E4 multi-model gate",
                 "status": "pending_no_candidate",
                 "patent_use": "future external validity evidence after new model/API appears",
@@ -448,7 +479,7 @@ def build_section() -> dict[str, Any]:
         "next_trigger_rules": [
             "If a new candidate model/API appears, rerun runtime preflight first and start Gate-10 only on a clean GPU pair, with 0,1 -> 8000 and 2,3 -> 8001 used only when the default pool is actually available; do not consume 4-7 unless explicitly reassigned.",
             "If no new model/API exists, do not rerun known no-go models; continue drafting with E4 marked pending/no-candidate.",
-            "If more Qwen optimization is requested, follow the E3 semantic-boundary plan: implement P0/P1 gold-free semantic guards, run affected-slice fresh validation, then rerun E3 current-only only if the small gate passes.",
+            "If more Qwen optimization is requested, follow the E3 semantic-boundary plan and the S2 guard-validation input package: implement P0/P1 gold-free semantic guards, run affected-slice fresh validation, then rerun E3 current-only only if the small gate passes.",
         ],
     }
 
@@ -516,6 +547,7 @@ def render_markdown(report: dict[str, Any]) -> str:
     e3 = report["e3_multiseed_boundary"]
     e3_probe = e3.get("budget_probe_max_replan5")
     e3_semantic_plan = e3.get("semantic_boundary_plan")
+    e3_guard_validation = e3.get("guard_validation_inputs")
     e4 = report["e4_multimodel_gate"]
     coarse = report["coarse_ablation_key_numbers"]
     lines = [
@@ -542,6 +574,13 @@ def render_markdown(report: dict[str, Any]) -> str:
                 f"- E3 semantic-boundary plan：decision `{e3_semantic_plan['decision']}`，P0/P1 high-priority items `{e3_semantic_plan['high_priority_work_item_count']}`；后续先做 targeted guards 和 affected-slice fresh，不直接 rerun full200 或 paired MACT。"
             ]
             if e3_semantic_plan
+            else []
+        ),
+        *(
+            [
+                f"- E3 S2 guard-validation input package：已准备 `{e3_guard_validation['total_rows']}` 行，其中代表错题 `{e3_guard_validation['role_counts']['representative_wrong']}` 行、no-harm 正确行 `{e3_guard_validation['role_counts']['no_harm_correct']}` 行；decision `{e3_guard_validation['decision']}`，这是输入/验证计划，不是 fresh run 结果。"
+            ]
+            if e3_guard_validation
             else []
         ),
         f"- E4 多模型 gate：`{e4['decision']}`，无 untested local model、无 API provider profile/key；默认下一次启动池为 `{e4['default_gpu_pool']}`，当前可用状态为 `{e4['default_gpu_pool_available_for_next_start']}`。",
@@ -571,6 +610,7 @@ def render_markdown(report: dict[str, Any]) -> str:
         "- E3 Seed-C/D current-only 不能写成多 seed 稳定超过 MACT；它们没有同 seed paired MACT，且 decision 为 `stop_or_inspect`。",
         "- E3 max_replan=5 probe 只恢复少数代表错题；TabFact temporal/numeric 对预算敏感，但 CRT 与 WTQ entity 边界仍需要语义 guard。",
         "- E3 semantic-boundary plan 是下一步机制实验路线，不是稳定性通过结果。",
+        "- E3 S2 guard-validation input package 只是预注册 affected-slice/no-harm 验证目标，不是 fresh run 或稳定性通过结果。",
         "- E4 不能写成多模型已验证；当前只是 readiness audit，结论是没有可启动候选。",
         "- 不能把 full200/gate 结果写成全量官方测试集完成。",
         "",
@@ -610,6 +650,20 @@ def render_markdown(report: dict[str, Any]) -> str:
                     "",
                 ]
                 if e3_semantic_plan
+                else []
+            ),
+            *(
+                [
+                    "E3 S2 guard-validation input package：",
+                    "",
+                    f"- decision: `{e3_guard_validation['decision']}`",
+                    f"- total rows: `{e3_guard_validation['total_rows']}`",
+                    f"- dataset counts: `{e3_guard_validation['dataset_counts']}`",
+                    f"- role counts: `{e3_guard_validation['role_counts']}`",
+                    f"- future S2 gate: recover at least `{e3_guard_validation['gate_targets']['representative_wrong_recovery_min']}/12` representative wrong rows and keep `{e3_guard_validation['gate_targets']['no_harm_correct_min']}/18` no-harm rows correct",
+                    "",
+                ]
+                if e3_guard_validation
                 else []
             ),
             "## 5. 正式实验表状态",

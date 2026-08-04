@@ -167,6 +167,14 @@ E3 semantic-boundary plan：
 
 该计划不是新 benchmark run，而是把 E3 diagnosis 与 budget probe 合并成后续执行漏斗。当前 decision 为 `do_not_rerun_full200_or_paired_mact_until_targeted_guards_pass`；P0 类别包括 CRT multi-step numeric composition、WTQ entity lookup/row selection、CRT span/universal quantifier 和 TabFact false-negative entailment，均属于 budget probe 零恢复类别。下一步顺序是 S1 gold-free guard 设计/单测、S2 12 条代表错题加 no-harm affected-slice fresh、S3 仅在 S2 通过后重跑 E3 current-only、S4 仅在 Seed-C/D current-only 都过 gate 后才跑 paired MACT。
 
+E3 S2 guard-validation input package：
+
+```text
+/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_guard_validation_inputs_20260804_1128/summary/e3_guard_validation_input_plan.md
+```
+
+该包是后续 semantic guard 的预注册验证输入，不是 fresh run 结果。它包含 `30` 行：`12` 条代表错题和 `18` 条 no-harm 正确行；WTQ/TabFact/CRT 分别 `10/8/12` 行。未来 S2 fresh gate 的最低目标是恢复至少 `7/12` 代表错题，同时保持 `18/18` no-harm 行正确，failed/missing 仍为 `0`。只有 S2 通过后才考虑 S3 E3 current-only rerun。
+
 ## 8. 剩余 Qwen3 队列入口
 
 当前已恢复两个 Qwen3-32B endpoint：GPU `2,3` -> `http://127.0.0.1:8000/v1`，GPU `0,1` -> `http://127.0.0.1:8001/v1`，served model 均为 `qwen3-32b-local`。按用户要求，这两个服务保持常驻，不主动释放显存。后续若要继续小规模 sanity、消融或队列验证，优先使用带停机条件的队列脚本，而不是手工串起所有 runner：

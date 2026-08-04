@@ -302,6 +302,35 @@
       "S4_paired_mact_or_boundary_closeout"
     ]
   },
+  "e3_guard_validation_inputs": {
+    "run_dir": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_guard_validation_inputs_20260804_1128",
+    "readme": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_guard_validation_inputs_20260804_1128/README.md",
+    "builder": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_guard_validation_inputs_20260804_1128/build_guard_validation_inputs.py",
+    "test": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_guard_validation_inputs_20260804_1128/tests/test_build_guard_validation_inputs.py",
+    "input_manifest": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_guard_validation_inputs_20260804_1128/input/input_manifest.json",
+    "summary_json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_guard_validation_inputs_20260804_1128/summary/e3_guard_validation_input_plan.json",
+    "summary_md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_guard_validation_inputs_20260804_1128/summary/e3_guard_validation_input_plan.md",
+    "source_multiseed_run": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231",
+    "source_budget_probe_summary": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_boundary_budget_probe_20260804_1035/summary/e3_boundary_budget_probe_summary.json",
+    "source_semantic_boundary_plan": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_semantic_boundary_plan_20260804_1110/summary/e3_semantic_boundary_plan.json",
+    "scope_note": "Input/package artifact only: prepares S2 affected-slice/no-harm rows for future guard validation; not a model run or benchmark result.",
+    "decision": "ready_for_guard_implementation_not_model_run",
+    "total_rows": 30,
+    "dataset_counts": {
+      "wtq": 10,
+      "tabfact": 8,
+      "crt": 12
+    },
+    "role_counts": {
+      "representative_wrong": 12,
+      "no_harm_correct": 18
+    },
+    "future_gate_targets": {
+      "representative_wrong_recovery_min": 7,
+      "no_harm_correct_min": 18,
+      "failed_missing_max": 0
+    }
+  },
   "completion_gap_audit": {
     "script": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/build_current_completion_gap_audit.py",
     "latest_json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_completion_gap_audit_current.json",
@@ -385,6 +414,7 @@
     "boundary_evidence": [
       "E3 Seed-C/Seed-D current-only Gate-50 is boundary evidence, not multi-seed stable superiority evidence.",
       "E3 max_replan=5 budget probe recovered 4/12 representative wrong rows and supports adaptive-budget sensitivity, not stability closure.",
+      "E3 S2 guard-validation input package prepares 30 affected-slice/no-harm rows but is not a model-run result.",
       "E4 readiness audit is no_candidate_wait; no additional model/API result is available yet."
     ]
   },
