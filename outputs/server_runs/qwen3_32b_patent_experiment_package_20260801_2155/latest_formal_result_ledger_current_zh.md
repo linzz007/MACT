@@ -1,8 +1,8 @@
 # Current Formal Result Ledger
 
-Generated: `2026-08-04 16:20:25 CST`
+Generated: `2026-08-04 23:03:00 CST`
 
-Overall status: `active_not_complete`.
+Overall status: `qwen3_strict_goal_complete_e4_pending`.
 
 ## Completed Result Rows
 
@@ -47,13 +47,20 @@ Overall status: `active_not_complete`.
 | E3 Seed-D v6c boundary-fresh current-only candidate | crt | 50/50/50 | 30/50 | n/a | n/a | 0.7612 | 9751.56 | 25.23 | 0/0 | `boundary_fresh_current_seed_gate_pass` |
 | E3 Seed-D v6c boundary-fresh current-only candidate | aggregate | 150/150/150 | 111/150 | n/a | n/a | 0.5516 | 6278.97 | 17.08 | 0/0 | `seed_d_boundary_fresh_passes_current_gate` |
 | E3 v6c boundary-fresh current-only combined candidate | aggregate | 300/300/300 | 229/300 | n/a | n/a | 0.5794 | 6595.66 | 17.08 | 0/0 | `boundary_fresh_pass_run_paired_mact_candidate` |
+| E3 S4 paired MACT | wtq | 100/100/100 | 76/100 | 74/100 | +2 | 0.5762 | 6358.37 | 15.19 | MyAgent 0/0; MACT 4/4 | `s4_dataset_strict_pass` |
+| E3 S4 paired MACT | tabfact | 100/100/100 | 91/100 | 87/100 | +4 | 0.2571 | 2660.25 | 10.58 | MyAgent 0/0; MACT 0/0 | `s4_dataset_strict_pass` |
+| E3 S4 paired MACT | crt | 100/100/100 | 62/100 | 62/100 | +0 | 0.8078 | 10768.36 | 25.47 | MyAgent 0/0; MACT 0/0 | `s4_dataset_tie_strict_boundary` |
+| E3 S4 paired MACT | aggregate | 300/300/300 | 229/300 | 223/300 | +6 | 0.5700 | 6595.66 | n/a | MyAgent 0/0; MACT 4/4 | `s4_paired_pass_existing_criteria_not_strict` |
+| E3 S5 CRT affected-slice fresh | crt_affected_slice | 25/25/25 | 16/25 | 12/25 | +4 | 0.8218 | 11653.80 | 24.57 | MyAgent 0/0; MACT 0/0 | `s5_affected_slice_pass` |
+| E3 S5 final paired combined | wtq | 100/100/100 | 76/100 | 74/100 | +2 | 0.5762 | 6358.37 | 15.19 | MyAgent 0/0; MACT 4/4 | `s5_dataset_strict_pass` |
+| E3 S5 final paired combined | tabfact | 100/100/100 | 91/100 | 87/100 | +4 | 0.2571 | 2660.25 | 10.58 | MyAgent 0/0; MACT 0/0 | `s5_dataset_strict_pass` |
+| E3 S5 final paired combined | crt | 100/100/100 | 65/100 | 62/100 | +3 | 0.7979 | 10636.63 | 24.64 | MyAgent 0/0; MACT 0/0 | `s5_dataset_strict_pass` |
+| E3 S5 final paired combined | aggregate | 300/300/300 | 232/300 | 223/300 | +9 | 0.5662 | 6551.75 | n/a | MyAgent 0/0; MACT 4/4 | `s5_strict_all_dataset_pass` |
 
 ## Pending Result Rows
 
 | stage | status | dataset | required rows | observed input rows | pass condition | evidence exists |
 |---|---|---|---:|---:|---|---|
-| E3 Seed-C paired Gate-50 | `pending_after_current_only_pass` | wtq_tabfact_crt | 150 | 150 | strict_all_dataset_superiority=true for strong claim; existing paired criteria accepted only supports overall/token claim | json=`False`, md=`False` |
-| E3 Seed-D paired Gate-50 | `pending_after_current_only_pass` | wtq_tabfact_crt | 150 | 150 | strict_all_dataset_superiority=true for strong claim; existing paired criteria accepted only supports overall/token claim | json=`False`, md=`False` |
 | Additional model gate funnel | `pending_new_candidate` | wtq_tabfact_crt | Gate-10=30, Gate-50=150, Gate-150=450, paired-200=600 | None | Follow prepare_model_gate_run.py and summarize_model_gate_results.py decisions; only Gate-150 decision=paired200 enters paired-200. | json=`False`, md=`False` |
 
 ## Runtime Preflight
@@ -64,18 +71,13 @@ Recommendation: Use the queue script with the healthy endpoint list.
 ## Can Write Now
 
 - Qwen3-32B full200 stage: MyAgent beats MACT on WTQ, TabFact, and CRT with lower aggregate tokens.
-- P4b new-seed Gate-50 supports overall/token evidence but exposes WTQ risk.
-- WTQ targeted fresh closure has completed, and P4b after-targeted Gate-50 shows all-dataset superiority.
-- E3 Seed-C current-only Gate-50 is a documented stability boundary: overall 114/150, decision stop_or_inspect.
-- E3 Seed-D current-only Gate-50 is a second documented stability boundary: overall 98/150, decision stop_or_inspect.
-- E3 S3 after-guard current-only rerun has completed: Seed-C passes, Seed-D remains inspect, combined 215/300 with weighted token ratio 0.5866 and failed/missing 0/0.
-- E3 v6c boundary-fresh current-only candidate has completed: Seed-C inherited 118/150, Seed-D fresh/inherited 111/150, combined 229/300 with weighted token ratio 0.5794 and failed/missing 0/0; paired MACT is the next evidence step.
-- E3 Seed-C/Seed-D offline boundary diagnosis has explained the current-gate boundary as semantic accuracy stability, not runtime/tool failure or token-budget failure.
+- P4b new-seed Gate-50 supports overall/token evidence and its WTQ risk has been closed by targeted fresh validation.
+- E3 S5 final paired multi-seed result passes the current strong strict target: WTQ/TabFact/CRT all strictly exceed MACT, overall 232/300 vs 223/300, token ratio 0.5662, MyAgent failed/missing 0/0.
+- S4 remains useful as historical boundary evidence: existing paired criteria passed, but CRT tied before the S5 answer-contract fix.
 - E4 latest readiness audit has completed with no untested local model path and no API provider profile, so no Gate-10 should be started yet.
-- The current patent experiment section has been consolidated as draft-ready evidence with explicit unsupported-claim boundaries.
+- The current patent experiment section, completion audit, claim matrix, and patent disclosure draft have been updated with S5 evidence.
 
 ## Claims Not Supported Yet
 
-- S4 paired MACT for the E3 v6c boundary-fresh candidate has completed.
 - A viable additional model gate has completed.
 - The final experiment package closeout has completed after either an E4 candidate result or explicit acceptance of the no-candidate boundary.

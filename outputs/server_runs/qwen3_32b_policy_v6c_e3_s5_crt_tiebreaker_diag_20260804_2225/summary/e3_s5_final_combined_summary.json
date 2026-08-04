@@ -1,0 +1,74 @@
+{
+  "artifact_name": "e3_s5_final_qwen3_myagent_vs_mact",
+  "run_dir": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6c_e3_s5_crt_tiebreaker_diag_20260804_2225",
+  "s4_source_summary": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6c_e3_s4_paired_mact_20260804_1626/summary/e3_s4_paired_combined_summary.json",
+  "datasets": {
+    "wtq": {
+      "rows": 100,
+      "myagent_correct": 76,
+      "mact_correct": 74,
+      "delta_correct": 2,
+      "myagent_avg_total_tokens": 6358.37,
+      "mact_avg_total_tokens": 11034.94,
+      "token_ratio_myagent_to_mact": 0.5762034048214126,
+      "myagent_failed": 0,
+      "mact_failed": 4,
+      "myagent_missing": 0,
+      "mact_missing": 4,
+      "strictly_above_mact": true,
+      "source": "s4_paired_combined_summary"
+    },
+    "tabfact": {
+      "rows": 100,
+      "myagent_correct": 91,
+      "mact_correct": 87,
+      "delta_correct": 4,
+      "myagent_avg_total_tokens": 2660.25,
+      "mact_avg_total_tokens": 10347.37,
+      "token_ratio_myagent_to_mact": 0.25709431478723577,
+      "myagent_failed": 0,
+      "mact_failed": 0,
+      "myagent_missing": 0,
+      "mact_missing": 0,
+      "strictly_above_mact": true,
+      "source": "s4_paired_combined_summary"
+    },
+    "crt": {
+      "rows": 100,
+      "myagent_correct": 65,
+      "mact_correct": 62,
+      "delta_correct": 3,
+      "myagent_avg_total_tokens": 10636.63,
+      "mact_avg_total_tokens": 13330.39,
+      "token_ratio_myagent_to_mact": 0.7979233915886932,
+      "myagent_failed": 0,
+      "mact_failed": 0,
+      "myagent_missing": 0,
+      "mact_missing": 0,
+      "strictly_above_mact": true,
+      "paired_counts": {
+        "both_correct": 53,
+        "myagent_only": 12,
+        "mact_only": 9,
+        "both_wrong": 26
+      },
+      "source": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6c_e3_s5_crt_tiebreaker_diag_20260804_2225/myagent_s5_crt_paired100_full_rerun/merged/crt_qwen3-32b-local.jsonl"
+    }
+  },
+  "overall": {
+    "rows": 300,
+    "myagent_correct": 232,
+    "mact_correct": 223,
+    "delta_correct": 9,
+    "myagent_avg_total_tokens": 6551.75,
+    "mact_avg_total_tokens": 11570.9,
+    "token_ratio_myagent_to_mact": 0.5662264819504101,
+    "myagent_failed": 0,
+    "mact_failed": 4,
+    "myagent_missing": 0,
+    "mact_missing": 4
+  },
+  "strict_all_dataset_superiority": true,
+  "accepted_existing_paired_criteria": true,
+  "decision": "s5_strict_all_dataset_pass"
+}

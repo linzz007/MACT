@@ -2,7 +2,7 @@
 
 本文档用于把专利/专家所需实验拆成可停止、可复核、可逐步扩样的流程，避免把所有模型、所有样本一次性 full run。
 
-当前状态更新：A/B 已在 2026-08-03 完成。WTQ targeted fresh 为 `9/9`，P4b after-targeted full50 后总表为 MyAgent `121/150` vs MACT `111/150`，overall token ratio `0.5310`，failed/missing `0/0`，WTQ/TabFact/CRT 单项均超过 MACT。E3 Seed-C/D current-only 也已完成并形成边界诊断；2026-08-04 E3 S2 after-guard fresh 已通过，representative recovered `8/12`，no-harm `18/18`，failed/missing `0/0`，weighted token ratio `0.6104`；S3 after-guard current-only 复跑已完成并暴露 Seed-D WTQ/TabFact 边界：combined `215/300`、token ratio `0.5866`。随后 v6c boundary-fresh current-only 候选完成：Seed-C inherited `118/150`，Seed-D fresh/inherited `111/150`，combined `229/300`、token ratio `0.5794`、failed/missing `0/0`，decision=`boundary_fresh_pass_run_paired_mact_candidate`；E4 多模型 gate 最新状态为 `no_candidate_wait`。
+当前状态更新：A/B 已在 2026-08-03 完成。WTQ targeted fresh 为 `9/9`，P4b after-targeted full50 后总表为 MyAgent `121/150` vs MACT `111/150`，overall token ratio `0.5310`，failed/missing `0/0`，WTQ/TabFact/CRT 单项均超过 MACT。E3 Seed-C/D current-only、S2 after-guard fresh、S3 after-guard current-only、v6c boundary-fresh current-only、S4 paired MACT 和 S5 CRT tie-breaker 已形成完整递进证据。S5 final 为 MyAgent `232/300` vs MACT `223/300`，overall token ratio `0.5662`，overall failed/missing MyAgent `0/0`、MACT `4/4`，WTQ/TabFact/CRT 三项均严格超过 MACT，decision=`s5_strict_all_dataset_pass`；E4 多模型 gate 最新状态为 `no_candidate_wait`。
 
 基线成本估计来自 Qwen3-32B full200 已冻结结果：
 
@@ -146,7 +146,9 @@ bash /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate
 | S3 after-guard combined | 300 | 215/300 | 0.5866 | `s3_stop_or_inspect_boundary_remains` | 历史边界：不从该结果启动 paired MACT |
 | v6c boundary-fresh Seed-D | 150 | 111/150 | 0.5516 | `seed_d_boundary_fresh_passes_current_gate` | WTQ/TabFact fresh 过 gate；CRT 继承 S3 |
 | v6c boundary-fresh combined | 300 | 229/300 | 0.5794 | `boundary_fresh_pass_run_paired_mact_candidate` | 进入 S4 paired MACT 候选；非 paired 结果 |
-| Selected Gate-150 | 450 | not started | n/a | `not_triggered` | 只有当前置 seed 形成稳定性正证据后才扩大 |
+| S4 paired MACT combined | 300 | 229/300 vs 223/300 | 0.5700 | `s4_paired_pass_existing_criteria_not_strict` | existing criteria pass；CRT tie 是历史 strict boundary |
+| S5 CRT tie-breaker final | 300 | 232/300 vs 223/300 | 0.5662 | `s5_strict_all_dataset_pass` | WTQ/TabFact/CRT 三项均严格超过 MACT |
+| Selected Gate-150 | 450 | not started | n/a | `not_triggered` | 当前 Qwen3 strict 目标已完成；只有新模型/API 候选进入 E4 漏斗 |
 
 判断：
 
@@ -155,7 +157,7 @@ bash /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate
 3. 任何 seed 出现 failed/missing > 2%，先排查 runner/endpoint，不把该结果写成模型效果。
 4. 若 current-only summary 的 decision 是 `stop_or_inspect`，不跑 MACT baseline，先诊断该 seed 的 MyAgent 错误。
 
-当前结论：旧 E3 Seed-C/D current-only 与 S3 after-guard 是适用边界证据，不是“多 seed paired 超过 MACT”的正证据；S2 after-guard fresh 已证明当前 P0/P1 gold-free guard 在 affected-slice/no-harm 小样本上通过。v6c boundary-fresh current-only 已把 combined 推进到 paired MACT 候选，下一步是 S4 同 ID paired MACT；若要求严格 freshness，可先补完整 v6c S3 current-only rerun。
+当前结论：旧 E3 Seed-C/D current-only 与 S3 after-guard 是适用边界证据；v6c boundary-fresh current-only 将 combined 推进到 S4 paired MACT；S4 通过 existing paired criteria 但 CRT 持平；S5 CRT tie-breaker 已闭合该边界。当前 Qwen3 paired 多 seed 口径可以写成 WTQ/TabFact/CRT 三项均严格超过 MACT，且整体 token 明显更低。
 
 ## E. 多模型 Gate
 
@@ -185,7 +187,7 @@ Gate-10 -> Gate-50 -> Gate-150 -> paired-200
 1. Qwen3-32B full200 主证据保持三数据集单项超过 MACT、token 明显低。
 2. WTQ targeted fresh 与 WTQ P4b after-fix full50 已给出明确结论。
 3. 至少 2 个机制模块有消融或离线归因证据。
-4. 至少 1 组额外 seed paired 正证据或 1 个额外模型完成 gate 结论；当前 E3 v6c boundary-fresh 是 current-only paired 候选，S4 paired MACT 尚未跑，E4 是 no-candidate。
+4. 至少 1 组额外 seed paired 正证据或 1 个额外模型完成 gate 结论；当前 E3 S5 已给出额外 seed paired 正证据，E4 是 no-candidate。
 5. 所有新增结果有 JSON/MD、路径索引、失败/缺答案、token、耗时和 git 提交号。
 
 未满足 F 之前，当前目标保持 active，不写“正式实验完成”。

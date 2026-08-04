@@ -2,7 +2,7 @@
 
 标题建议：一种面向表格问答和表格事实验证任务的选择性风险协作与劝返方法、装置、设备及存储介质。
 
-更新时间：2026-08-04 15:13 CST
+更新时间：2026-08-04 23:03 CST
 
 ## 1. 技术领域
 
@@ -203,9 +203,38 @@ Seed-D 分项为 WTQ primary denotation `36/50`、TabFact `45/50`、CRT `30/50`�
 | CRT combined | 100 | 62/100 | 62/100 | +0 | 0.8078 | MyAgent 0/0; MACT 0/0 |
 | Overall | 300 | 229/300 | 223/300 | +6 | 0.5700 | MyAgent 0/0; MACT 4/4 |
 
-该实施例可以写成：Qwen3-32B + MyAgent 在 S4 paired Gate-50 多 seed 汇总上 overall 超过 MACT，WTQ/TabFact 单项严格超过 MACT，且 token 显著低于 MACT。该实施例不能写成“WTQ/TabFact/CRT 三项全部严格超过 MACT”，因为 CRT combined 为 `62/100` vs `62/100` 持平。后续若要满足最严格 strong patent-seed claim，应只对 CRT 做 tie-breaker 诊断和 affected-slice/no-harm fresh，而不是继续刷 TabFact 或直接扩 full200。
+该实施例可以写成：Qwen3-32B + MyAgent 在 S4 paired Gate-50 多 seed 汇总上 overall 超过 MACT，WTQ/TabFact 单项严格超过 MACT，且 token 显著低于 MACT。该实施例本身不能写成“WTQ/TabFact/CRT 三项全部严格超过 MACT”，因为 CRT combined 为 `62/100` vs `62/100` 持平；该历史边界随后由实施例十的 S5 CRT tie-breaker 闭合。
 
-### 实施例十：多模型 Gate Readiness
+### 实施例十：E3 S5 CRT tie-breaker 与 paired strict pass
+
+在实施例九发现 CRT 持平后，只针对 CRT 的答案契约边界做 gold-free 诊断和验证，不修改 evaluator、gold、样本 ID 或 MACT baseline。新增机制为 CRT scalar canonicalization：对 `difference` 问题中的负数数值答案规整为非负差值；对 country/nation 问题中的国家代码答案展开为国家名。
+
+结果目录：
+
+```text
+/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6c_e3_s5_crt_tiebreaker_diag_20260804_2225/summary/e3_s5_final_combined_summary.md
+```
+
+验证漏斗如下：
+
+| scope | result |
+|---|---|
+| CRT canonicalizer replay | old MyAgent CRT100 `62/100` projected to `64/100`; no correct-to-wrong flips |
+| affected-slice fresh | new MyAgent `16/25` vs old MyAgent `12/25` vs MACT `12/25`; failed/missing `0/0` |
+| CRT100 full fresh | MyAgent `65/100` vs MACT `62/100`; token ratio `0.7979`; failed/missing `0/0` |
+
+S5 final combined 结果如下：
+
+| scope | rows | MyAgent | MACT | delta | token ratio | failed/missing |
+|---|---:|---:|---:|---:|---:|---:|
+| WTQ combined | 100 | 76/100 | 74/100 | +2 | 0.5762 | MyAgent 0/0; MACT 4/4 |
+| TabFact combined | 100 | 91/100 | 87/100 | +4 | 0.2571 | MyAgent 0/0; MACT 0/0 |
+| CRT combined | 100 | 65/100 | 62/100 | +3 | 0.7979 | MyAgent 0/0; MACT 0/0 |
+| Overall | 300 | 232/300 | 223/300 | +9 | 0.5662 | MyAgent 0/0; MACT 4/4 |
+
+该实施例可以写成：在当前 Qwen3-32B paired Gate-50 多 seed 口径下，MyAgent 在 WTQ、TabFact、CRT 三个数据集均严格超过 MACT，同时整体 token 约为 MACT 的 `56.62%`。边界是：CRT 单项 token ratio 仍为 `0.7979`，低于 MACT 但不满足 `0.75` 的单项 token 强约束；多模型外延仍需实施例十一之后的新候选验证。
+
+### 实施例十一：多模型 Gate Readiness
 
 E4 多模型 readiness audit 结果为 `no_candidate_wait`：当前只发现已测试/已 no-go 的本地模型，未发现未测本地模型或 API provider profile/key，因此不能写成多模型验证已完成。
 
@@ -237,7 +266,7 @@ E4 多模型 readiness audit 结果为 `no_candidate_wait`：当前只发现已�
 ## 8. 后续需要补入或明确保留边界的正式实验
 
 1. 多模型验证：新本地模型或 API key/provider profile 出现后，至少让 1 个额外模型经过 Gate-10 -> Gate-50 -> Gate-150 漏斗；当前 E4 为 `no_candidate_wait`。
-2. 多 seed paired 正证据：E3 已经完成两组 current-only、离线边界诊断、`max_replan=5` budget probe、semantic-boundary plan、S2 after-guard fresh、S3 after-guard current-only rerun、v6c boundary-fresh current-only candidate 和 S4 同 ID paired MACT。S4 overall 为 MyAgent `229/300` vs MACT `223/300`，token ratio `0.5700`，WTQ/TabFact 严格超过 MACT，但 CRT `62/100` vs `62/100` 持平；下一步缺口是 CRT tie-breaker，而不是 S4 未运行。
+2. 多 seed paired 正证据：E3 已经完成两组 current-only、离线边界诊断、`max_replan=5` budget probe、semantic-boundary plan、S2 after-guard fresh、S3 after-guard current-only rerun、v6c boundary-fresh current-only candidate、S4 同 ID paired MACT 和 S5 CRT tie-breaker。S5 overall 为 MyAgent `232/300` vs MACT `223/300`，token ratio `0.5662`，WTQ/TabFact/CRT 三项均严格超过 MACT；当前不再缺 CRT tie-breaker。
 3. 细粒度消融：根据需要补 verifier override、evidence retention、deterministic audit 的细粒度关闭开关。
 4. 最终实验包收口：当前实验章节已经 consolidated，但 final closeout 需要多模型候选结果，或明确接受 E4 no-candidate 作为当前外延边界。
 
@@ -255,6 +284,9 @@ E4 多模型 readiness audit 结果为 `no_candidate_wait`：当前只发现已�
 /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_guard_validation_after_guard_20260804_1203/summary/e3_guard_validation_after_guard_summary.json
 /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_s3_current_rerun_after_guard_20260804_1425/summary/e3_s3_current_combined_summary.json
 /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6c_seed_d_boundary_fresh_20260804_1549/summary/e3_boundary_fresh_combined_summary.json
+/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6c_e3_s5_crt_tiebreaker_diag_20260804_2225/summary/e3_s5_final_combined_summary.json
+/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6c_e3_s5_crt_tiebreaker_diag_20260804_2225/summary/s5_crt_canonicalizer_replay_summary.json
+/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6c_e3_s5_crt_tiebreaker_diag_20260804_2225/summary/s5_affected_slice_real_rerun_summary.json
 /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_e4_multimodel_gate_readiness_audit.json
 /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_current_patent_experiment_section_zh.md
 /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_completion_gap_audit_current_zh.md
@@ -273,11 +305,10 @@ E4 多模型 readiness audit 结果为 `no_candidate_wait`：当前只发现已�
 - E3 semantic-boundary plan 与 S2 after-guard fresh 可写成机制实验漏斗：P0/P1 语义 guard 已在 `30` 行 affected-slice/no-harm 包上通过 `8/12` recovery 和 `18/18` no-harm gate；S3 after-guard current-only 已完成并暴露 Seed-D WTQ/TabFact 边界。
 - E3 v6c boundary-fresh current-only 可写成 paired MACT 候选证据：combined `229/300`、token ratio `0.5794`、failed/missing `0/0`、decision `boundary_fresh_pass_run_paired_mact_candidate`。
 - E3 S4 paired MACT 可写成 existing criteria 正证据：overall `229/300 > 223/300`，token ratio `0.5700`，WTQ/TabFact 严格超过 MACT，MyAgent failed/missing `0/0`。
+- E3 S5 CRT tie-breaker 可写成当前 Qwen3 paired 多 seed strong strict 正证据：overall `232/300 > 223/300`，token ratio `0.5662`，WTQ/TabFact/CRT 三项均严格超过 MACT，MyAgent failed/missing `0/0`。
 
 暂不写：
 
 - 多模型已全面验证。
-- 新 seed 三数据集已经全部稳定超过 MACT。
-- E3 Seed-C/D 已经证明 WTQ/TabFact/CRT 全部严格超过 MACT。
-- E3 S4 paired MACT 已经满足 strong patent strict；实际只是 existing criteria pass，CRT 持平。
+- E3 S4 单独已经满足 strong patent strict；实际 S4 只是 existing criteria pass，CRT 持平，strong strict 结论必须引用 S5。
 - blanket 增加 replan 预算可以解决所有 E3 边界。

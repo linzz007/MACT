@@ -55,6 +55,17 @@ E3_BOUNDARY_FRESH_COMBINED_JSON = Path(
     "summary/e3_boundary_fresh_combined_summary.json"
 )
 E3_BOUNDARY_FRESH_COMBINED_MD = E3_BOUNDARY_FRESH_COMBINED_JSON.with_suffix(".md")
+E3_S5_FINAL_SUMMARY_JSON = Path(
+    "/home/ubuntu/lzz/MACT/outputs/server_runs/"
+    "qwen3_32b_policy_v6c_e3_s5_crt_tiebreaker_diag_20260804_2225/"
+    "summary/e3_s5_final_combined_summary.json"
+)
+E3_S5_FINAL_SUMMARY_MD = E3_S5_FINAL_SUMMARY_JSON.with_suffix(".md")
+E3_S5_AFFECTED_SLICE_JSON = Path(
+    "/home/ubuntu/lzz/MACT/outputs/server_runs/"
+    "qwen3_32b_policy_v6c_e3_s5_crt_tiebreaker_diag_20260804_2225/"
+    "summary/s5_affected_slice_real_rerun_summary.json"
+)
 E4_READINESS_JSON = PACKAGE_DIR / "latest_e4_multimodel_gate_readiness_audit.json"
 E4_READINESS_MD = PACKAGE_DIR / "latest_e4_multimodel_gate_readiness_audit_zh.md"
 CURRENT_PATENT_SECTION_JSON = PACKAGE_DIR / "latest_current_patent_experiment_section.json"
@@ -193,6 +204,9 @@ def build_report() -> dict[str, Any]:
         "e3_s3_current_combined_md": E3_S3_CURRENT_COMBINED_MD,
         "e3_boundary_fresh_combined_json": E3_BOUNDARY_FRESH_COMBINED_JSON,
         "e3_boundary_fresh_combined_md": E3_BOUNDARY_FRESH_COMBINED_MD,
+        "e3_s5_final_summary_json": E3_S5_FINAL_SUMMARY_JSON,
+        "e3_s5_final_summary_md": E3_S5_FINAL_SUMMARY_MD,
+        "e3_s5_affected_slice_json": E3_S5_AFFECTED_SLICE_JSON,
         "e4_multimodel_readiness_json": E4_READINESS_JSON,
         "e4_multimodel_readiness_md": E4_READINESS_MD,
         "current_patent_experiment_section_json": CURRENT_PATENT_SECTION_JSON,
@@ -223,7 +237,12 @@ def build_report() -> dict[str, Any]:
     pending_rows = ledger.get("pending_rows") or []
     check_at_least(report, "ledger completed rows", len(completed_rows), 13)
     check_at_most(report, "ledger pending rows", len(pending_rows), 5)
-    check_equal(report, "ledger overall status", ledger["completion_summary"]["overall_status"], "active_not_complete")
+    check_equal(
+        report,
+        "ledger overall status",
+        ledger["completion_summary"]["overall_status"],
+        "qwen3_strict_goal_complete_e4_pending",
+    )
     stale_pending = [
         row["stage"]
         for row in pending_rows
@@ -318,16 +337,8 @@ def build_report() -> dict[str, Any]:
         check_equal(report, "E3 Seed-D current missing", seed_d_current["num_missing_answer"], 0)
         check_equal(report, "E3 Seed-D current decision", seed_d_current["decision"], "stop_or_inspect")
 
-    seed_pending = [
-        row for row in pending_rows if "Seed-" in row["stage"]
-    ]
-    check_at_least(report, "E3 pending row count lower bound", len(seed_pending), 2)
-    check_at_most(report, "E3 pending row count upper bound", len(seed_pending), 4)
-    for row in seed_pending:
-        if row.get("input_rows_observed") != 150:
-            report["errors"].append(
-                f"{row['stage']} observed input rows expected 150, got {row.get('input_rows_observed')!r}"
-            )
+    seed_pending = [row for row in pending_rows if "Seed-" in row["stage"]]
+    check_equal(report, "E3 pending seed rows after S5", seed_pending, [])
 
     boundary_fresh_rows = [
         row
@@ -347,6 +358,23 @@ def build_report() -> dict[str, Any]:
             boundary_fresh["decision"],
             "boundary_fresh_pass_run_paired_mact_candidate",
         )
+
+    s5_final_rows = [
+        row
+        for row in completed_rows
+        if row["stage"] == "E3 S5 final paired combined"
+        and row["dataset"] == "aggregate"
+    ]
+    check_equal(report, "E3 S5 final aggregate row count", len(s5_final_rows), 1)
+    if s5_final_rows:
+        s5_final = s5_final_rows[0]
+        check_equal(report, "E3 S5 final MyAgent correct", s5_final["myagent_correct"], 232)
+        check_equal(report, "E3 S5 final MACT correct", s5_final["mact_correct_or_reference"], 223)
+        check_equal(report, "E3 S5 final failures", s5_final["num_failed_exec"], 0)
+        check_equal(report, "E3 S5 final missing", s5_final["num_missing_answer"], 0)
+        check_equal(report, "E3 S5 final MACT failures", s5_final.get("mact_num_failed_exec"), 4)
+        check_equal(report, "E3 S5 final MACT missing", s5_final.get("mact_num_missing_answer"), 4)
+        check_equal(report, "E3 S5 final decision", s5_final["decision"], "s5_strict_all_dataset_pass")
 
     latest_status = preflight["readiness"]["status"]
     ledger_status = ledger["latest_runtime_preflight"]["readiness"]["status"]
@@ -368,6 +396,7 @@ def build_report() -> dict[str, Any]:
     guard_validation_after_manifest = manifest["e3_guard_validation_after_guard"]
     s3_current_manifest = manifest["e3_s3_current_after_guard"]
     boundary_fresh_manifest = manifest["e3_boundary_fresh_current_candidate"]
+    s5_manifest = manifest["e3_s5_crt_tiebreaker"]
     e4_manifest = manifest["multimodel_e4_readiness"]
     e4_readiness = read_json(E4_READINESS_JSON)
     current_section_manifest = manifest["current_patent_experiment_section"]
@@ -566,6 +595,13 @@ def build_report() -> dict[str, Any]:
         boundary_fresh_manifest["overall"]["correct"],
         boundary_fresh_summary["overall"]["correct"],
     )
+    s5_summary = read_json(E3_S5_FINAL_SUMMARY_JSON)
+    check_equal(report, "manifest E3 S5 json path", s5_manifest["final_summary_json"], str(E3_S5_FINAL_SUMMARY_JSON))
+    check_equal(report, "manifest E3 S5 md path", s5_manifest["final_summary_md"], str(E3_S5_FINAL_SUMMARY_MD))
+    check_equal(report, "manifest E3 S5 decision", s5_manifest["decision"], s5_summary["decision"])
+    check_equal(report, "manifest E3 S5 MyAgent correct", s5_manifest["overall"]["myagent_correct"], 232)
+    check_equal(report, "manifest E3 S5 MACT correct", s5_manifest["overall"]["mact_correct"], 223)
+    check_equal(report, "manifest E3 S5 strict all", s5_manifest["strict_all_dataset_superiority"], True)
     check_equal(report, "manifest E4 readiness json path", e4_manifest["latest_json"], str(E4_READINESS_JSON))
     check_equal(report, "manifest E4 readiness md path", e4_manifest["latest_md"], str(E4_READINESS_MD))
     check_equal(report, "manifest E4 readiness status", e4_manifest["status"], e4_readiness["decision"])
@@ -595,7 +631,7 @@ def build_report() -> dict[str, Any]:
         report,
         "current patent section status",
         current_section["write_status"]["current_status"],
-        "stage_patent_draft_ready_with_boundaries",
+        "s5_strict_all_dataset_pass",
     )
     check_equal(
         report,
@@ -657,6 +693,18 @@ def build_report() -> dict[str, Any]:
         ],
         229,
     )
+    check_equal(
+        report,
+        "current patent section E3 S5 decision",
+        current_section["e3_multiseed_boundary"]["s5_final_paired_combined"]["decision"],
+        "s5_strict_all_dataset_pass",
+    )
+    check_equal(
+        report,
+        "current patent section E3 S5 MyAgent correct",
+        current_section["e3_multiseed_boundary"]["s5_final_paired_combined"]["overall"]["myagent_correct"],
+        232,
+    )
     check_contains(
         report,
         "current patent section unsupported multi-model claim",
@@ -679,7 +727,7 @@ def build_report() -> dict[str, Any]:
         report,
         "current completion gap overall status",
         completion_gap["overall_completion_status"],
-        "active_not_complete",
+        "qwen3_strict_goal_complete_e4_pending",
     )
     requirements_by_id = {item["id"]: item for item in completion_gap["requirements"]}
     requirement_status = {item_id: item["status"] for item_id, item in requirements_by_id.items()}
@@ -688,7 +736,7 @@ def build_report() -> dict[str, Any]:
         report,
         "completion gap R4 status",
         requirement_status.get("R4"),
-        "current_only_candidate_paired_pending",
+        "complete_strict_all_dataset_pass",
     )
     check_equal(report, "completion gap R5 status", requirement_status.get("R5"), "pending_no_candidate")
     check_equal(
@@ -762,6 +810,18 @@ def build_report() -> dict[str, Any]:
             "correct"
         ],
         229,
+    )
+    check_equal(
+        report,
+        "completion gap S5 decision",
+        requirements_by_id["R4"]["metrics"]["s5_final_paired_combined"]["decision"],
+        "s5_strict_all_dataset_pass",
+    )
+    check_equal(
+        report,
+        "completion gap S5 MyAgent correct",
+        requirements_by_id["R4"]["metrics"]["s5_final_paired_combined"]["overall"]["myagent_correct"],
+        232,
     )
     check_equal(
         report,
@@ -877,7 +937,7 @@ def build_report() -> dict[str, Any]:
         report,
         "formal schedule E3 boundary",
         formal_schedule_text,
-        "S2 after-guard fresh 已证明当前 P0/P1 gold-free guard",
+        "S5 CRT tie-breaker 已闭合该边界",
     )
     for label, needle in {
         "patent disclosure full200": "Aggregate | 600/600/600 | 489/600 | 450/600 | +39 | 0.5717 | 0/0",
@@ -885,6 +945,7 @@ def build_report() -> dict[str, Any]:
         "patent disclosure E3 boundary": "Combined | 300/300/300 | 212/300 | 0.5916 | 0/0 | `complete_boundary_evidence`",
         "patent disclosure E3 S3 boundary": "Combined | 300/300/300 | 215/300 | 0.5866 | 0/0 | `s3_stop_or_inspect_boundary_remains`",
         "patent disclosure E3 boundary fresh": "Combined | 300/300/300 | 229/300 | 0.5794 | 0/0 | `boundary_fresh_pass_run_paired_mact_candidate`",
+        "patent disclosure E3 S5 final": "Overall | 300 | 232/300 | 223/300 | +9 | 0.5662 | MyAgent 0/0; MACT 4/4",
         "patent disclosure E4 boundary": "E4 多模型 readiness audit 结果为 `no_candidate_wait`",
         "patent disclosure evidence paths": "latest_completion_gap_audit_current_zh.md",
     }.items():
@@ -909,8 +970,9 @@ def build_report() -> dict[str, Any]:
         "PRD E3 guard validation after guard": "after_guard_passes_s2_gate",
         "PRD E3 S3 current after guard": "s3_stop_or_inspect_boundary_remains",
         "PRD E3 boundary fresh": "boundary_fresh_pass_run_paired_mact_candidate",
+        "PRD E3 S5 strict pass": "s5_strict_all_dataset_pass",
         "PRD E4 readiness audit": "latest_e4_multimodel_gate_readiness_audit_zh.md",
-        "PRD active status": "active_not_complete",
+        "PRD active status": "qwen3_strict_goal_complete_e4_pending",
     }.items():
         check_contains(report, label, prd_text, needle)
 

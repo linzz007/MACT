@@ -1,0 +1,139 @@
+{
+  "run_dir": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6c_e3_s5_crt_tiebreaker_diag_20260804_2225",
+  "seeds": {
+    "seed_c": {
+      "rows": 50,
+      "myagent_correct": 32,
+      "mact_correct": 32,
+      "paired_counts": {
+        "both_correct": 26,
+        "myagent_only": 6,
+        "mact_only": 6,
+        "both_wrong": 12
+      },
+      "myagent_avg_total_tokens": 11785.16,
+      "mact_avg_total_tokens": 13347.08,
+      "token_ratio_myagent_to_mact": 0.882976651072744,
+      "flips": [],
+      "patched_myagent_path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6c_e3_s5_crt_tiebreaker_diag_20260804_2225/patched_myagent/seed_c/crt_qwen3-32b-local_s5_canonicalizer_replay.jsonl"
+    },
+    "seed_d": {
+      "rows": 50,
+      "myagent_correct": 32,
+      "mact_correct": 30,
+      "paired_counts": {
+        "both_correct": 26,
+        "myagent_only": 6,
+        "mact_only": 4,
+        "both_wrong": 14
+      },
+      "myagent_avg_total_tokens": 9751.56,
+      "mact_avg_total_tokens": 13313.7,
+      "token_ratio_myagent_to_mact": 0.7324455260370896,
+      "flips": [
+        {
+          "seed": "seed_d",
+          "id": "crt-136",
+          "question": "What is the most common country represented among gold medal winners in the Double Trap competition?",
+          "gold_answer": [
+            "Finland and italy."
+          ],
+          "original_final_value": "ita",
+          "patched_final_value": "Italy",
+          "original_correct": false,
+          "patched_correct": false,
+          "mact_correct": false,
+          "mact_pred_answer": "answer"
+        },
+        {
+          "seed": "seed_d",
+          "id": "crt-139",
+          "question": "What is the most common country of origin for medalists in the Double Trap competition?",
+          "gold_answer": [
+            "china"
+          ],
+          "original_final_value": "chn",
+          "patched_final_value": "China",
+          "original_correct": false,
+          "patched_correct": true,
+          "mact_correct": true,
+          "mact_pred_answer": "China."
+        },
+        {
+          "seed": "seed_d",
+          "id": "crt-373",
+          "question": "What is the average score difference between the winner and runner-up of the 1994 open championship?",
+          "gold_answer": [
+            "1"
+          ],
+          "original_final_value": -1.0,
+          "patched_final_value": 1,
+          "original_correct": false,
+          "patched_correct": true,
+          "mact_correct": true,
+          "mact_pred_answer": "1."
+        }
+      ],
+      "patched_myagent_path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6c_e3_s5_crt_tiebreaker_diag_20260804_2225/patched_myagent/seed_d/crt_qwen3-32b-local_s5_canonicalizer_replay.jsonl"
+    }
+  },
+  "overall": {
+    "rows": 100,
+    "myagent_correct": 64,
+    "mact_correct": 62,
+    "delta_correct": 2,
+    "paired_counts": {
+      "both_correct": 52,
+      "myagent_only": 12,
+      "mact_only": 10,
+      "both_wrong": 26
+    },
+    "myagent_avg_total_tokens": 10768.36,
+    "mact_avg_total_tokens": 13330.39,
+    "token_ratio_myagent_to_mact": 0.8078053230250578,
+    "flips": [
+      {
+        "seed": "seed_d",
+        "id": "crt-136",
+        "question": "What is the most common country represented among gold medal winners in the Double Trap competition?",
+        "gold_answer": [
+          "Finland and italy."
+        ],
+        "original_final_value": "ita",
+        "patched_final_value": "Italy",
+        "original_correct": false,
+        "patched_correct": false,
+        "mact_correct": false,
+        "mact_pred_answer": "answer"
+      },
+      {
+        "seed": "seed_d",
+        "id": "crt-139",
+        "question": "What is the most common country of origin for medalists in the Double Trap competition?",
+        "gold_answer": [
+          "china"
+        ],
+        "original_final_value": "chn",
+        "patched_final_value": "China",
+        "original_correct": false,
+        "patched_correct": true,
+        "mact_correct": true,
+        "mact_pred_answer": "China."
+      },
+      {
+        "seed": "seed_d",
+        "id": "crt-373",
+        "question": "What is the average score difference between the winner and runner-up of the 1994 open championship?",
+        "gold_answer": [
+          "1"
+        ],
+        "original_final_value": -1.0,
+        "patched_final_value": 1,
+        "original_correct": false,
+        "patched_correct": true,
+        "mact_correct": true,
+        "mact_pred_answer": "1."
+      }
+    ]
+  }
+}

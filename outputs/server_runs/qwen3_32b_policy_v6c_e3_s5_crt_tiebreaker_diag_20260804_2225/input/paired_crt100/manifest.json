@@ -1,0 +1,20 @@
+{
+  "run_dir": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6c_e3_s5_crt_tiebreaker_diag_20260804_2225",
+  "selection_rule": "seed_c CRT gate50 followed by seed_d CRT gate50 from the frozen E3 source input",
+  "seeds": {
+    "seed_c": {
+      "source_path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/input/seed_c/crt_seed_c_gate50.jsonl",
+      "rows": 50,
+      "first_id": "crt-672",
+      "last_id": "crt-481"
+    },
+    "seed_d": {
+      "source_path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/input/seed_d/crt_seed_d_gate50.jsonl",
+      "rows": 50,
+      "first_id": "crt-69",
+      "last_id": "crt-199"
+    }
+  },
+  "combined_output_path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6c_e3_s5_crt_tiebreaker_diag_20260804_2225/input/paired_crt100/crt_s5_paired100_seed_c_seed_d.jsonl",
+  "combined_rows": 100
+}

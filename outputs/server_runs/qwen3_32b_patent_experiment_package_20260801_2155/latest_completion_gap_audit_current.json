@@ -1,6 +1,6 @@
 {
   "audit_name": "current_completion_gap_audit",
-  "generated_at_local": "2026-08-04 16:20:38 CST",
+  "generated_at_local": "2026-08-04 23:03:00 CST",
   "purpose": "Requirement-by-requirement audit for the active patent-facing MyAgent vs MACT experiment goal.",
   "scope_boundary": "This audit compiles current evidence and gaps; it does not create new benchmark results.",
   "repositories": {
@@ -198,7 +198,7 @@
     {
       "id": "R4",
       "requirement": "Multi-seed work explains whether the effect is stable beyond the frozen full200 and P4b seed.",
-      "status": "current_only_candidate_paired_pending",
+      "status": "complete_strict_all_dataset_pass",
       "evidence": [
         "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/summary/seed_boundary_error_diagnosis.json",
         "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/summary/seed_boundary_error_diagnosis.md",
@@ -213,7 +213,13 @@
         "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_s3_current_rerun_after_guard_20260804_1425/summary/e3_s3_current_combined_summary.json",
         "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_s3_current_rerun_after_guard_20260804_1425/summary/e3_s3_current_combined_summary.md",
         "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6c_seed_d_boundary_fresh_20260804_1549/summary/e3_boundary_fresh_combined_summary.json",
-        "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6c_seed_d_boundary_fresh_20260804_1549/summary/e3_boundary_fresh_combined_summary.md"
+        "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6c_seed_d_boundary_fresh_20260804_1549/summary/e3_boundary_fresh_combined_summary.md",
+        "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6c_e3_s4_paired_mact_20260804_1626/summary/e3_s4_paired_combined_summary.json",
+        "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6c_e3_s4_paired_mact_20260804_1626/summary/e3_s4_paired_combined_summary.md",
+        "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6c_e3_s5_crt_tiebreaker_diag_20260804_2225/summary/e3_s5_final_combined_summary.json",
+        "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6c_e3_s5_crt_tiebreaker_diag_20260804_2225/summary/e3_s5_final_combined_summary.md",
+        "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6c_e3_s5_crt_tiebreaker_diag_20260804_2225/summary/s5_crt_canonicalizer_replay_summary.json",
+        "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6c_e3_s5_crt_tiebreaker_diag_20260804_2225/summary/s5_affected_slice_real_rerun_summary.json"
       ],
       "metrics": {
         "aggregate": {
@@ -2242,9 +2248,159 @@
               "evidence_mode": "mixed"
             }
           }
+        },
+        "s4_paired_mact": {
+          "artifact_name": "e3_s4_paired_mact_combined_summary",
+          "run_dir": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6c_e3_s4_paired_mact_20260804_1626",
+          "candidate_source": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6c_seed_d_boundary_fresh_20260804_1549/summary/e3_boundary_fresh_combined_summary.json",
+          "seeds": {
+            "seed_c": {
+              "summary_json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6c_e3_s4_paired_mact_20260804_1626/summary/seed_c_paired_gate50_summary.json",
+              "accepted": true,
+              "strict_all_dataset_superiority": false,
+              "overall_myagent_correct": 118,
+              "overall_mact_correct": 118,
+              "overall_rows": 150,
+              "token_ratio_myagent_to_mact": 0.6252520659761587
+            },
+            "seed_d": {
+              "summary_json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6c_e3_s4_paired_mact_20260804_1626/summary/seed_d_paired_gate50_summary.json",
+              "accepted": true,
+              "strict_all_dataset_superiority": false,
+              "overall_myagent_correct": 111,
+              "overall_mact_correct": 105,
+              "overall_rows": 150,
+              "token_ratio_myagent_to_mact": 0.5195027617605106
+            }
+          },
+          "datasets": {
+            "wtq": {
+              "rows": 100,
+              "myagent_correct": 76,
+              "mact_correct": 74,
+              "delta_correct": 2,
+              "token_ratio_myagent_to_mact": 0.5762034048214126,
+              "myagent_avg_total_tokens": 6358.37,
+              "mact_avg_total_tokens": 11034.94,
+              "strictly_above_mact": true,
+              "at_least_mact": true
+            },
+            "tabfact": {
+              "rows": 100,
+              "myagent_correct": 91,
+              "mact_correct": 87,
+              "delta_correct": 4,
+              "token_ratio_myagent_to_mact": 0.25709431478723577,
+              "myagent_avg_total_tokens": 2660.25,
+              "mact_avg_total_tokens": 10347.37,
+              "strictly_above_mact": true,
+              "at_least_mact": true
+            },
+            "crt": {
+              "rows": 100,
+              "myagent_correct": 62,
+              "mact_correct": 62,
+              "delta_correct": 0,
+              "token_ratio_myagent_to_mact": 0.8078053230250578,
+              "myagent_avg_total_tokens": 10768.36,
+              "mact_avg_total_tokens": 13330.39,
+              "strictly_above_mact": false,
+              "at_least_mact": true
+            }
+          },
+          "overall": {
+            "rows": 300,
+            "myagent_correct": 229,
+            "mact_correct": 223,
+            "delta_correct": 6,
+            "token_ratio_myagent_to_mact": 0.5700213466541064,
+            "myagent_avg_total_tokens": 6595.66,
+            "mact_avg_total_tokens": 11570.9,
+            "myagent_failed": 0,
+            "mact_failed": 4,
+            "myagent_missing": 0,
+            "mact_missing": 4
+          },
+          "accepted_existing_paired_criteria": true,
+          "strict_all_dataset_superiority": false,
+          "decision": "s4_paired_pass_existing_criteria_not_strict"
+        },
+        "s5_final_paired_combined": {
+          "artifact_name": "e3_s5_final_qwen3_myagent_vs_mact",
+          "run_dir": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6c_e3_s5_crt_tiebreaker_diag_20260804_2225",
+          "s4_source_summary": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6c_e3_s4_paired_mact_20260804_1626/summary/e3_s4_paired_combined_summary.json",
+          "datasets": {
+            "wtq": {
+              "rows": 100,
+              "myagent_correct": 76,
+              "mact_correct": 74,
+              "delta_correct": 2,
+              "myagent_avg_total_tokens": 6358.37,
+              "mact_avg_total_tokens": 11034.94,
+              "token_ratio_myagent_to_mact": 0.5762034048214126,
+              "myagent_failed": 0,
+              "mact_failed": 4,
+              "myagent_missing": 0,
+              "mact_missing": 4,
+              "strictly_above_mact": true,
+              "source": "s4_paired_combined_summary"
+            },
+            "tabfact": {
+              "rows": 100,
+              "myagent_correct": 91,
+              "mact_correct": 87,
+              "delta_correct": 4,
+              "myagent_avg_total_tokens": 2660.25,
+              "mact_avg_total_tokens": 10347.37,
+              "token_ratio_myagent_to_mact": 0.25709431478723577,
+              "myagent_failed": 0,
+              "mact_failed": 0,
+              "myagent_missing": 0,
+              "mact_missing": 0,
+              "strictly_above_mact": true,
+              "source": "s4_paired_combined_summary"
+            },
+            "crt": {
+              "rows": 100,
+              "myagent_correct": 65,
+              "mact_correct": 62,
+              "delta_correct": 3,
+              "myagent_avg_total_tokens": 10636.63,
+              "mact_avg_total_tokens": 13330.39,
+              "token_ratio_myagent_to_mact": 0.7979233915886932,
+              "myagent_failed": 0,
+              "mact_failed": 0,
+              "myagent_missing": 0,
+              "mact_missing": 0,
+              "strictly_above_mact": true,
+              "paired_counts": {
+                "both_correct": 53,
+                "myagent_only": 12,
+                "mact_only": 9,
+                "both_wrong": 26
+              },
+              "source": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6c_e3_s5_crt_tiebreaker_diag_20260804_2225/myagent_s5_crt_paired100_full_rerun/merged/crt_qwen3-32b-local.jsonl"
+            }
+          },
+          "overall": {
+            "rows": 300,
+            "myagent_correct": 232,
+            "mact_correct": 223,
+            "delta_correct": 9,
+            "myagent_avg_total_tokens": 6551.75,
+            "mact_avg_total_tokens": 11570.9,
+            "token_ratio_myagent_to_mact": 0.5662264819504101,
+            "myagent_failed": 0,
+            "mact_failed": 4,
+            "myagent_missing": 0,
+            "mact_missing": 4
+          },
+          "strict_all_dataset_superiority": true,
+          "accepted_existing_paired_criteria": true,
+          "decision": "s5_strict_all_dataset_pass"
         }
       },
-      "gap": "E3 v6c boundary-fresh current-only candidate reaches paired_mact_next=true, but same-seed paired MACT is not yet run. Seed-C is inherited from S3 and Seed-D CRT is inherited from S3, so strict freshness can optionally be improved by rerunning full v6c S3 before S4."
+      "gap": "Qwen3 paired multi-seed strict target is complete. Remaining gap is E4 external model evidence and optional fine-grained mechanism ablation, not CRT tie-breaker."
     },
     {
       "id": "R5",
@@ -2280,25 +2436,27 @@
           "After WTQ targeted fresh validation, P4b after-targeted Gate-50 beats MACT on all three datasets and aggregate, with aggregate token ratio 0.5310 and zero MyAgent failures/missing answers.",
           "Mechanism evidence supports risk-stratified collaboration, controlled verifier override, deterministic semantic audit, evidence retention, and budget control as patent-facing mechanisms.",
           "E3 S2 after-guard fresh validation passes the affected-slice gate: 8/12 representative wrong rows recovered, 18/18 no-harm rows retained, failed/missing 0/0, weighted token ratio 0.6104.",
-          "E3 v6c boundary-fresh current-only candidate passes the current gate: Seed-C inherited 118/150, Seed-D fresh/inherited 111/150, combined 229/300, token ratio 0.5794, failed/missing 0/0."
+          "E3 v6c boundary-fresh current-only candidate passes the current gate: Seed-C inherited 118/150, Seed-D fresh/inherited 111/150, combined 229/300, token ratio 0.5794, failed/missing 0/0.",
+          "E3 S4 paired MACT passes existing paired criteria: overall MyAgent 229/300 vs MACT 223/300, token ratio 0.5700; WTQ/TabFact strictly exceed MACT, CRT ties.",
+          "E3 S5 CRT tie-breaker passes the current Qwen3 strong strict target: WTQ 76/100 > 74/100, TabFact 91/100 > 87/100, CRT 65/100 > 62/100, overall 232/300 > 223/300, token ratio 0.5662, MyAgent failed/missing 0/0."
         ],
         "supported_boundary_claims": [
           "P4b original new-seed Gate-50 exposed WTQ risk: MyAgent 37/50 vs MACT 43/50 before targeted fixes.",
-          "E3 Seed-C/Seed-D current-only Gate-50 are boundary evidence, not stable multi-seed superiority evidence; no same-seed paired MACT baseline was run because current-only gate decided stop_or_inspect.",
           "E3 max_replan=5 boundary probe recovered only a minority of representative wrong rows, so it supports adaptive budgeting for selected categories but not E3 stability closure.",
           "E3 semantic-boundary plan defined P0/P1 targeted guard work and blocked full reruns until affected-slice validation passed.",
           "E3 S2 after-guard fresh validation is a targeted affected-slice pass, not a Seed-C/D multi-seed stability pass.",
           "E3 S3 after-guard current-only rerun remains historical boundary evidence: Seed-C passed but Seed-D missed WTQ and TabFact gates before v6c boundary shortcuts.",
-          "E3 v6c boundary-fresh candidate is still current-only evidence: Seed-C is inherited from S3, Seed-D CRT is inherited from S3, and same-seed paired MACT is not yet run.",
-          "E4 multi-model gate is blocked by no candidate: no untested local model path and no API provider profile/key are available."
+          "E4 multi-model gate is blocked by no candidate: no untested local model path and no API provider profile/key are available.",
+          "E3 Seed-C/Seed-D early current-only and S3 runs are historical boundary evidence; the boundary was later closed by v6c boundary fresh, S4 paired MACT, and S5 CRT tie-breaker.",
+          "E3 S4 paired MACT is historical strict-boundary evidence: existing paired criteria passed, but CRT tied before S5."
         ],
         "unsupported_claims": [
           "Do not claim multi-model validation is complete.",
-          "Do not claim multi-seed stable superiority over MACT is complete.",
-          "Do not claim full official dataset completion beyond the frozen full200/gate scopes."
+          "Do not claim full official dataset completion beyond the frozen full200/gate scopes.",
+          "Do not cite S4 alone for all-dataset strict superiority; cite S5 for the strict Qwen3 paired multi-seed claim."
         ],
-        "formal_ledger_completed_rows": 39,
-        "formal_ledger_pending_rows": 3
+        "formal_ledger_completed_rows": 48,
+        "formal_ledger_pending_rows": 1
       },
       "gap": "Final closeout still needs an E4 candidate result or explicit acceptance of the no-candidate boundary."
     },
@@ -2323,26 +2481,20 @@
   ],
   "current_next_actions": [
     "Do not rerun known no-go models. Wait for a new local model path or API provider profile/key before E4 Gate-10.",
-    "Use latest_current_patent_experiment_section_zh.md for current expert/patent discussion, with E3 and E4 boundaries explicitly preserved.",
-    "Run S4 paired MACT for the v6c boundary-fresh current-only candidate, or first run a strict full v6c S3 current-only rerun if all current-only rows must be same-code fresh."
+    "Use latest_current_patent_experiment_section_zh.md and patent_disclosure_draft_zh.md for current expert/patent discussion, with S5 strict pass and E4 boundaries explicitly preserved.",
+    "Optionally run small fine-grained verifier/evidence-retention/deterministic-audit ablations if the patent drafting process needs narrower causal evidence."
   ],
-  "overall_completion_status": "active_not_complete",
-  "reason_not_complete": "Current Qwen3 full200, P4b after-targeted, E3 S2 after-guard fresh, and E3 v6c boundary-fresh current-only evidence are positive. S4 paired MACT has not run yet, and E4 has no candidate, so paired multi-seed confirmation, model-externality evidence, and final closeout remain pending.",
+  "overall_completion_status": "qwen3_strict_goal_complete_e4_pending",
+  "reason_not_complete": "Qwen3 strong strict paired multi-seed target is complete via S5. Remaining open work is E4 external model/API evidence, optional fine-grained mechanism ablations, and final closeout acceptance.",
   "can_write_now": [
     "Qwen3-32B full200 stage: MyAgent beats MACT on WTQ, TabFact, and CRT with lower aggregate tokens.",
-    "P4b new-seed Gate-50 supports overall/token evidence but exposes WTQ risk.",
-    "WTQ targeted fresh closure has completed, and P4b after-targeted Gate-50 shows all-dataset superiority.",
-    "E3 Seed-C current-only Gate-50 is a documented stability boundary: overall 114/150, decision stop_or_inspect.",
-    "E3 Seed-D current-only Gate-50 is a second documented stability boundary: overall 98/150, decision stop_or_inspect.",
-    "E3 S3 after-guard current-only rerun has completed: Seed-C passes, Seed-D remains inspect, combined 215/300 with weighted token ratio 0.5866 and failed/missing 0/0.",
-    "E3 v6c boundary-fresh current-only candidate has completed: Seed-C inherited 118/150, Seed-D fresh/inherited 111/150, combined 229/300 with weighted token ratio 0.5794 and failed/missing 0/0; paired MACT is the next evidence step.",
-    "E3 Seed-C/Seed-D offline boundary diagnosis has explained the current-gate boundary as semantic accuracy stability, not runtime/tool failure or token-budget failure.",
-    "E4 latest readiness audit has completed with no untested local model path and no API provider profile, so no Gate-10 should be started yet.",
-    "The current patent experiment section has been consolidated as draft-ready evidence with explicit unsupported-claim boundaries."
+    "P4b new-seed Gate-50 supports overall/token evidence and WTQ risk has been closed by targeted fresh validation.",
+    "E3 S5 final paired multi-seed result passes the current strong strict target: WTQ/TabFact/CRT all strictly exceed MACT, overall 232/300 vs 223/300, token ratio 0.5662, MyAgent failed/missing 0/0.",
+    "E4 latest readiness audit has completed with no untested local model path and no API provider profile, so no Gate-10 should be started yet."
   ],
   "cannot_write_yet": [
-    "S4 paired MACT for the E3 v6c boundary-fresh candidate has completed.",
     "A viable additional model gate has completed.",
-    "The final experiment package closeout has completed after either an E4 candidate result or explicit acceptance of the no-candidate boundary."
+    "The final experiment package closeout has completed after either an E4 candidate result or explicit acceptance of the no-candidate boundary.",
+    "S4 alone demonstrates all-dataset strict superiority; the strict claim must cite S5."
   ]
 }

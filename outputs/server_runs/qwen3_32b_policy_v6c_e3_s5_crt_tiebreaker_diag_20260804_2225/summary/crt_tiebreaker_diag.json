@@ -1,0 +1,56 @@
+{
+  "run_dir": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6c_e3_s5_crt_tiebreaker_diag_20260804_2225",
+  "seeds": {
+    "seed_c": {
+      "myagent_path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_s3_current_rerun_after_guard_20260804_1425/myagent_s3_after_guard/seed_c/merged/crt_qwen3-32b-local.jsonl",
+      "mact_path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6c_e3_s4_paired_mact_20260804_1626/mact/seed_c/crt_mact_seed_c_gate50.jsonl",
+      "rows": 50,
+      "myagent_correct": 32,
+      "mact_correct": 32,
+      "paired_counts": {
+        "both_correct": 26,
+        "myagent_only": 6,
+        "mact_only": 6,
+        "both_wrong": 12
+      },
+      "myagent_avg_total_tokens": 11785.16,
+      "mact_avg_total_tokens": 13347.08,
+      "token_ratio_myagent_to_mact": 0.882976651072744,
+      "myagent_avg_elapsed_seconds": 25.716813283145893,
+      "mact_avg_elapsed_seconds": 169.63104682366597
+    },
+    "seed_d": {
+      "myagent_path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_s3_current_rerun_after_guard_20260804_1425/myagent_s3_after_guard/seed_d/merged/crt_qwen3-32b-local.jsonl",
+      "mact_path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6c_e3_s4_paired_mact_20260804_1626/mact/seed_d/crt_mact_seed_d_gate50.jsonl",
+      "rows": 50,
+      "myagent_correct": 30,
+      "mact_correct": 30,
+      "paired_counts": {
+        "both_correct": 24,
+        "myagent_only": 6,
+        "mact_only": 6,
+        "both_wrong": 14
+      },
+      "myagent_avg_total_tokens": 9751.56,
+      "mact_avg_total_tokens": 13313.7,
+      "token_ratio_myagent_to_mact": 0.7324455260370896,
+      "myagent_avg_elapsed_seconds": 25.233163710841907,
+      "mact_avg_elapsed_seconds": 177.42333811246093
+    }
+  },
+  "overall": {
+    "rows": 100,
+    "myagent_correct": 62,
+    "mact_correct": 62,
+    "delta_correct": 0,
+    "paired_counts": {
+      "both_correct": 50,
+      "myagent_only": 12,
+      "mact_only": 12,
+      "both_wrong": 26
+    },
+    "myagent_avg_total_tokens": 10768.36,
+    "mact_avg_total_tokens": 13330.39,
+    "token_ratio_myagent_to_mact": 0.8078053230250578
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "run_dir": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6c_e3_s5_crt_tiebreaker_diag_20260804_2225",
+  "selection_rule": "all mact_only + all myagent_only + replay-normalized changed ids",
+  "seeds": {
+    "seed_c": {
+      "source_path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/input/seed_c/crt_seed_c_gate50.jsonl",
+      "output_path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6c_e3_s5_crt_tiebreaker_diag_20260804_2225/input/affected_slice/seed_c/crt_seed_c_s5_affected.jsonl",
+      "ids": [
+        "crt-191",
+        "crt-320",
+        "crt-324",
+        "crt-325",
+        "crt-33",
+        "crt-339",
+        "crt-405",
+        "crt-458",
+        "crt-481",
+        "crt-64",
+        "crt-66",
+        "crt-97"
+      ],
+      "rows": 12
+    },
+    "seed_d": {
+      "source_path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/input/seed_d/crt_seed_d_gate50.jsonl",
+      "output_path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6c_e3_s5_crt_tiebreaker_diag_20260804_2225/input/affected_slice/seed_d/crt_seed_d_s5_affected.jsonl",
+      "ids": [
+        "crt-121",
+        "crt-136",
+        "crt-139",
+        "crt-36",
+        "crt-373",
+        "crt-408",
+        "crt-486",
+        "crt-495",
+        "crt-556",
+        "crt-624",
+        "crt-629",
+        "crt-69",
+        "crt-8"
+      ],
+      "rows": 13
+    }
+  },
+  "combined_output_path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6c_e3_s5_crt_tiebreaker_diag_20260804_2225/input/affected_slice/crt_s5_affected_all.jsonl",
+  "combined_rows": 25
+}

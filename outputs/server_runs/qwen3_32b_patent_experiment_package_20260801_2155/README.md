@@ -4,8 +4,9 @@ Created: 2026-08-01 21:55 CST
 
 This directory is the current expert/patent-facing experiment package for the
 MyAgent selective risk collaboration / persuasion-back work. It indexes frozen
-Qwen3-32B evidence, P4b new-seed diagnosis, WTQ targeted-fix closure, and the
-remaining multi-seed / multi-model validation work.
+Qwen3-32B evidence, P4b new-seed diagnosis, WTQ targeted-fix closure, E3 S5
+multi-seed paired strict-pass evidence, and the remaining multi-model validation
+work.
 
 This is not a new benchmark run. All numeric claims point to frozen artifacts in
 `MACT/outputs/server_runs/` and the current MyAgent PRD.
@@ -91,10 +92,20 @@ Current status:
   gates. Combined result is `215/300`, token ratio `0.5866`, failed/missing
   `0/0`, decision `s3_stop_or_inspect_boundary_remains`. Paired MACT was not
   started.
-- The latest current completion-gap audit records that the active goal is not
-  complete: Qwen3 full200, P4b after-targeted, and E3 S2 after-guard fresh are
-  positive evidence; S3 still leaves Seed-D WTQ/TabFact boundary gaps, and E4
-  remains pending until a new local model or API profile appears.
+- The S4 paired MACT run passed existing paired criteria but exposed a CRT tie:
+  overall MyAgent `229/300` vs MACT `223/300`, token ratio `0.5700`; WTQ and
+  TabFact strictly exceeded MACT, while CRT was `62/100` vs `62/100`.
+- The S5 CRT tie-breaker is complete at
+  `/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6c_e3_s5_crt_tiebreaker_diag_20260804_2225/`.
+  It adds gold-free CRT scalar canonicalization and validates it through replay,
+  affected-slice fresh, and CRT100 full fresh. Final S5 combined result:
+  MyAgent `232/300` vs MACT `223/300`, token ratio `0.5662`, overall
+  failed/missing MyAgent `0/0`, MACT `4/4`, WTQ/TabFact/CRT all strictly exceed
+  MACT.
+- The latest current completion-gap audit records status
+  `qwen3_strict_goal_complete_e4_pending`: current Qwen3 strict all-dataset
+  target is complete, while E4 remains pending until a new local model or API
+  profile appears.
 - The claim-to-evidence traceability matrix maps six patent claim families to
   mechanisms, evidence files, support strength, and remaining gaps.
 - The formal result-table template defines the exact fields and decision ledger
@@ -112,7 +123,8 @@ Current status:
 - The current formal-result ledger is generated from frozen JSON sources and
   keeps pending stages explicit rather than mixing them with completed results.
   Latest generated ledger is available through
-  `latest_formal_result_ledger_current.json/md`.
+  `latest_formal_result_ledger_current.json/md`; it now contains `48` completed
+  rows and `1` pending row for the additional model gate.
 - The latest consistency audit passes with 0 errors and 0 warnings:
   see `latest_patent_package_consistency_audit.json/md`.
 - The checksum manifest lets a restored server verify that package files and
