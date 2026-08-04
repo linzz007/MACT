@@ -14,7 +14,7 @@
 
 > 多模型验证已经完成，或多 seed 已稳定超过 MACT。
 
-原因：P4b 原始新 seed Gate-50 虽然 overall 通过 existing paired gate，但 WTQ 单项原始结果是 MyAgent `37/50` vs MACT `43/50`。E1/E2 已经完成诊断、fresh affected-slice `9/9` 和 after-targeted P4b full50；after-targeted 总表为 MyAgent `121/150` vs MACT `111/150`，三数据集单项均超过 MACT。E3 Seed-C/Seed-D current-only 已完成并形成稳定性边界诊断，不是多 seed 稳定通过证据；E3 max_replan=5 budget probe 恢复 `4/12` 代表错题，可写成 adaptive budget 机制证据，但不足以关闭 E3 稳定性；E4 readiness audit 为 `no_candidate_wait`，还没有额外模型/API 结果。
+原因：P4b 原始新 seed Gate-50 虽然 overall 通过 existing paired gate，但 WTQ 单项原始结果是 MyAgent `37/50` vs MACT `43/50`。E1/E2 已经完成诊断、fresh affected-slice `9/9` 和 after-targeted P4b full50；after-targeted 总表为 MyAgent `121/150` vs MACT `111/150`，三数据集单项均超过 MACT。E3 Seed-C/Seed-D current-only 已完成并形成稳定性边界诊断，不是多 seed 稳定通过证据；E3 max_replan=5 budget probe 恢复 `4/12` 代表错题，可写成 adaptive budget 机制证据，但不足以关闭 E3 稳定性；最新 E3 semantic-boundary plan 已把未恢复类别转成 P0/P1 语义 guard 与 affected-slice 验证漏斗，当前判定仍是先做 targeted guards，不直接跑 paired MACT；E4 readiness audit 为 `no_candidate_wait`，还没有额外模型/API 结果。
 
 ## 2. 主结果证据
 
@@ -158,6 +158,14 @@ E3 max_replan=5 budget probe：
 ```
 
 该 probe 对 E3 代表错题执行 `max_replan=5` 复跑，原始 `max_replan=3` 代表错题均错，复跑恢复 `4/12`，failed/missing `0/0`，avg tokens `12444.9 -> 13136.1`。分项为 WTQ `1/4`、TabFact `3/4`、CRT `0/4`。结论是 `mixed_budget_sensitivity_not_enough_for_e3_stability`：TabFact temporal/numeric 和部分 WTQ temporal 可用 adaptive budget 解释，CRT 与 WTQ entity 仍需 semantic guard。
+
+E3 semantic-boundary plan：
+
+```text
+/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_semantic_boundary_plan_20260804_1110/summary/e3_semantic_boundary_plan.md
+```
+
+该计划不是新 benchmark run，而是把 E3 diagnosis 与 budget probe 合并成后续执行漏斗。当前 decision 为 `do_not_rerun_full200_or_paired_mact_until_targeted_guards_pass`；P0 类别包括 CRT multi-step numeric composition、WTQ entity lookup/row selection、CRT span/universal quantifier 和 TabFact false-negative entailment，均属于 budget probe 零恢复类别。下一步顺序是 S1 gold-free guard 设计/单测、S2 12 条代表错题加 no-harm affected-slice fresh、S3 仅在 S2 通过后重跑 E3 current-only、S4 仅在 Seed-C/D current-only 都过 gate 后才跑 paired MACT。
 
 ## 8. 剩余 Qwen3 队列入口
 

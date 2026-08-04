@@ -50,6 +50,12 @@ E3_BUDGET_PROBE_SUMMARY = Path(
     "summary/e3_boundary_budget_probe_summary.json"
 )
 E3_BUDGET_PROBE_SUMMARY_MD = E3_BUDGET_PROBE_SUMMARY.with_suffix(".md")
+E3_SEMANTIC_BOUNDARY_PLAN = Path(
+    "/home/ubuntu/lzz/MACT/outputs/server_runs/"
+    "qwen3_32b_policy_v6b_e3_semantic_boundary_plan_20260804_1110/"
+    "summary/e3_semantic_boundary_plan.json"
+)
+E3_SEMANTIC_BOUNDARY_PLAN_MD = E3_SEMANTIC_BOUNDARY_PLAN.with_suffix(".md")
 E4_READINESS = PACKAGE_DIR / "latest_e4_multimodel_gate_readiness_audit.json"
 E4_READINESS_MD = PACKAGE_DIR / "latest_e4_multimodel_gate_readiness_audit_zh.md"
 FORMAL_LEDGER = PACKAGE_DIR / "latest_formal_result_ledger_current.json"
@@ -237,6 +243,9 @@ def build_section() -> dict[str, Any]:
     mechanism = read_json(MECHANISM_MATRIX)
     e3_boundary = read_json(E3_BOUNDARY_DIAGNOSIS)
     e3_budget_probe = read_json(E3_BUDGET_PROBE_SUMMARY) if E3_BUDGET_PROBE_SUMMARY.exists() else None
+    e3_semantic_plan = (
+        read_json(E3_SEMANTIC_BOUNDARY_PLAN) if E3_SEMANTIC_BOUNDARY_PLAN.exists() else None
+    )
     e4 = read_json(E4_READINESS)
     e3_seeds = [
         e3_seed_table(read_json(E3_RUN_DIR / "summary" / f"{seed}_myagent_gate50_summary.json"))
@@ -267,6 +276,8 @@ def build_section() -> dict[str, Any]:
             "e3_boundary_diagnosis_md": str(E3_BOUNDARY_DIAGNOSIS_MD),
             "e3_budget_probe_summary": str(E3_BUDGET_PROBE_SUMMARY) if e3_budget_probe else "",
             "e3_budget_probe_summary_md": str(E3_BUDGET_PROBE_SUMMARY_MD) if e3_budget_probe else "",
+            "e3_semantic_boundary_plan": str(E3_SEMANTIC_BOUNDARY_PLAN) if e3_semantic_plan else "",
+            "e3_semantic_boundary_plan_md": str(E3_SEMANTIC_BOUNDARY_PLAN_MD) if e3_semantic_plan else "",
             "e4_readiness": str(E4_READINESS),
             "e4_readiness_md": str(E4_READINESS_MD),
             "formal_ledger": str(FORMAL_LEDGER),
@@ -283,6 +294,7 @@ def build_section() -> dict[str, Any]:
                 "P4b original new-seed Gate-50 exposed WTQ risk: MyAgent 37/50 vs MACT 43/50 before targeted fixes.",
                 "E3 Seed-C/Seed-D current-only Gate-50 are boundary evidence, not stable multi-seed superiority evidence; no same-seed paired MACT baseline was run because current-only gate decided stop_or_inspect.",
                 "E3 max_replan=5 boundary probe recovered only a minority of representative wrong rows, so it supports adaptive budgeting for selected categories but not E3 stability closure.",
+                "E3 semantic-boundary plan defines P0/P1 targeted guard work and blocks full reruns until affected-slice validation passes.",
                 "E4 multi-model gate is blocked by no candidate: no untested local model path and no API provider profile/key are available.",
             ],
             "unsupported_claims": [
@@ -358,6 +370,18 @@ def build_section() -> dict[str, Any]:
                 "aggregate": e3_budget_probe["aggregate"],
                 "datasets": e3_budget_probe["datasets"],
             },
+            "semantic_boundary_plan": None
+            if not e3_semantic_plan
+            else {
+                "decision": e3_semantic_plan["current_decision"],
+                "scope": e3_semantic_plan["scope"],
+                "evidence_snapshot": e3_semantic_plan["evidence_snapshot"],
+                "seed_gate_gap": e3_semantic_plan["seed_gate_gap"],
+                "high_priority_work_item_count": len(e3_semantic_plan["high_priority_work_items"]),
+                "next_ladder_stages": [
+                    item["stage"] for item in e3_semantic_plan["recommended_next_experiment_ladder"]
+                ],
+            },
         },
         "e4_multimodel_gate": {
             "decision": e4["decision"],
@@ -401,6 +425,11 @@ def build_section() -> dict[str, Any]:
                 "patent_use": "adaptive budget sensitivity and remaining semantic-boundary evidence",
             },
             {
+                "stage": "E3 semantic-boundary plan",
+                "status": "complete_planning_evidence",
+                "patent_use": "targeted guard and affected-slice validation ladder",
+            },
+            {
                 "stage": "E4 multi-model gate",
                 "status": "pending_no_candidate",
                 "patent_use": "future external validity evidence after new model/API appears",
@@ -419,7 +448,7 @@ def build_section() -> dict[str, Any]:
         "next_trigger_rules": [
             "If a new candidate model/API appears, rerun runtime preflight first and start Gate-10 only on a clean GPU pair, with 0,1 -> 8000 and 2,3 -> 8001 used only when the default pool is actually available; do not consume 4-7 unless explicitly reassigned.",
             "If no new model/API exists, do not rerun known no-go models; continue drafting with E4 marked pending/no-candidate.",
-            "If more Qwen optimization is requested, use the E3 max_replan=5 probe to route TabFact temporal/numeric cases toward adaptive budgeting and CRT/WTQ entity cases toward semantic guards, instead of re-optimizing already-passing full200/P4b-after-targeted rows.",
+            "If more Qwen optimization is requested, follow the E3 semantic-boundary plan: implement P0/P1 gold-free semantic guards, run affected-slice fresh validation, then rerun E3 current-only only if the small gate passes.",
         ],
     }
 
@@ -486,6 +515,7 @@ def render_markdown(report: dict[str, Any]) -> str:
     p4b = report["p4b_new_seed"]
     e3 = report["e3_multiseed_boundary"]
     e3_probe = e3.get("budget_probe_max_replan5")
+    e3_semantic_plan = e3.get("semantic_boundary_plan")
     e4 = report["e4_multimodel_gate"]
     coarse = report["coarse_ablation_key_numbers"]
     lines = [
@@ -505,6 +535,13 @@ def render_markdown(report: dict[str, Any]) -> str:
                 f"- E3 max_replan=5 probe：12 条代表错题恢复 `{e3_probe['aggregate']['recovered']}/{e3_probe['aggregate']['rows']}`，decision `{e3_probe['decision']}`，failed/missing `{e3_probe['aggregate']['failed']}/{e3_probe['aggregate']['missing']}`；可写成 adaptive budget 机制证据，不能写成稳定性闭环。"
             ]
             if e3_probe
+            else []
+        ),
+        *(
+            [
+                f"- E3 semantic-boundary plan：decision `{e3_semantic_plan['decision']}`，P0/P1 high-priority items `{e3_semantic_plan['high_priority_work_item_count']}`；后续先做 targeted guards 和 affected-slice fresh，不直接 rerun full200 或 paired MACT。"
+            ]
+            if e3_semantic_plan
             else []
         ),
         f"- E4 多模型 gate：`{e4['decision']}`，无 untested local model、无 API provider profile/key；默认下一次启动池为 `{e4['default_gpu_pool']}`，当前可用状态为 `{e4['default_gpu_pool_available_for_next_start']}`。",
@@ -533,6 +570,7 @@ def render_markdown(report: dict[str, Any]) -> str:
         "- P4b 原始结果不能写成新 seed 三数据集全部超过 MACT；WTQ 原始结果低于 MACT，after-targeted 结果才恢复单项优势。",
         "- E3 Seed-C/D current-only 不能写成多 seed 稳定超过 MACT；它们没有同 seed paired MACT，且 decision 为 `stop_or_inspect`。",
         "- E3 max_replan=5 probe 只恢复少数代表错题；TabFact temporal/numeric 对预算敏感，但 CRT 与 WTQ entity 边界仍需要语义 guard。",
+        "- E3 semantic-boundary plan 是下一步机制实验路线，不是稳定性通过结果。",
         "- E4 不能写成多模型已验证；当前只是 readiness audit，结论是没有可启动候选。",
         "- 不能把 full200/gate 结果写成全量官方测试集完成。",
         "",
@@ -561,6 +599,19 @@ def render_markdown(report: dict[str, Any]) -> str:
             "",
             *render_e3_budget_probe_table(e3_probe),
             "",
+            *(
+                [
+                    "E3 semantic-boundary plan：",
+                    "",
+                    f"- decision: `{e3_semantic_plan['decision']}`",
+                    f"- high-priority work items: `{e3_semantic_plan['high_priority_work_item_count']}`",
+                    f"- zero-recovery categories: `{', '.join(e3_semantic_plan['evidence_snapshot']['zero_recovery_probe_categories'])}`",
+                    f"- next ladder: `{', '.join(e3_semantic_plan['next_ladder_stages'])}`",
+                    "",
+                ]
+                if e3_semantic_plan
+                else []
+            ),
             "## 5. 正式实验表状态",
             "",
             "| stage | status | patent use |",

@@ -68,6 +68,12 @@ Current status:
   `mixed_budget_sensitivity_not_enough_for_e3_stability`: adaptive budgeting is
   useful for selected categories, but E3 remains boundary evidence rather than
   multi-seed stability closure.
+- The E3 semantic-boundary plan converts the budget probe into a concrete
+  next-step ladder. It marks four zero-recovery probe categories as P0 semantic
+  guard work and keeps the decision
+  `do_not_rerun_full200_or_paired_mact_until_targeted_guards_pass`.
+  Evidence:
+  `/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_semantic_boundary_plan_20260804_1110/summary/e3_semantic_boundary_plan.md`.
 - The latest current completion-gap audit records that the active goal is not
   complete: Qwen3 full200 and P4b after-targeted are positive evidence, E3 is
   boundary evidence, and E4 remains pending/no-candidate until a new local

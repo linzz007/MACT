@@ -1,7 +1,7 @@
 {
   "artifact_name": "qwen3_32b_claim_evidence_traceability_20260801_2248",
   "created_at_local": "2026-08-01 22:48 CST",
-  "last_updated_local": "2026-08-04 10:58:00 CST",
+  "last_updated_local": "2026-08-04 11:16:00 CST",
   "purpose": "Map patent claim families to implementation mechanisms, experimental evidence, and remaining validation gaps.",
   "scope_boundary": "This is a patent-writing traceability artifact. It does not add new benchmark results.",
   "claim_families": [
@@ -27,13 +27,17 @@
           "source": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_patent_mechanism_evidence_20260801_2222/patent_mechanism_evidence_matrix.md",
           "evidence": "Mechanism matrix ties full200 performance to risk collaboration and budget control."
         },
-        {
-          "source": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_boundary_budget_probe_20260804_1035/summary/e3_boundary_budget_probe_summary.md",
-          "evidence": "E3 max_replan=5 probe recovered 4/12 representative wrong rows with failures/missing 0/0, showing budget sensitivity for selected categories but not E3 stability closure."
-        }
-      ],
-      "current_support_level": "strong_stage_evidence",
-      "remaining_gap": "E3 Seed-C/Seed-D current-only boundary evidence and budget probe are complete, but they are not stability-positive evidence. Multi-model execution remains needed before making broad model-externality claims."
+                {
+                    "source": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_boundary_budget_probe_20260804_1035/summary/e3_boundary_budget_probe_summary.md",
+                    "evidence": "E3 max_replan=5 probe recovered 4/12 representative wrong rows with failures/missing 0/0, showing budget sensitivity for selected categories but not E3 stability closure."
+                },
+                {
+                    "source": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_semantic_boundary_plan_20260804_1110/summary/e3_semantic_boundary_plan.md",
+                    "evidence": "E3 semantic-boundary plan separates budget-sensitive categories from zero-recovery semantic-guard categories and blocks full reruns until targeted guards pass affected-slice validation."
+                }
+            ],
+            "current_support_level": "strong_stage_evidence",
+            "remaining_gap": "E3 Seed-C/Seed-D current-only boundary evidence, budget probe, and semantic-boundary plan are complete, but they are not stability-positive evidence. Multi-model execution remains needed before making broad model-externality claims."
     },
     {
       "id": "C2",
@@ -78,13 +82,17 @@
           "source": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_coarse_ablation_gate50_20260801_0040/coarse_ablation_gate50_summary.md",
           "evidence": "no_deterministic_shortcuts drops overall by 15/150; TabFact by 9/50; CRT by 7/50; TabFact token/current becomes 1.4487x."
         },
-        {
-          "source": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_all200_acceptance_20260731_132611/qwen3_policy_v6b_all200_acceptance_summary.json",
-          "evidence": "TabFact full200 MyAgent 194/200 vs MACT 189/200 with token ratio 0.2014."
-        }
-      ],
-      "current_support_level": "strong_mechanism_evidence",
-      "remaining_gap": "WTQ targeted fresh and P4b after-targeted validation are complete. Optional fine-grained deterministic-audit ablation may be added only if patent counsel needs narrower causal separation."
+                {
+                    "source": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_all200_acceptance_20260731_132611/qwen3_policy_v6b_all200_acceptance_summary.json",
+                    "evidence": "TabFact full200 MyAgent 194/200 vs MACT 189/200 with token ratio 0.2014."
+                },
+                {
+                    "source": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_semantic_boundary_plan_20260804_1110/summary/e3_semantic_boundary_plan.md",
+                    "evidence": "P0 semantic-guard backlog identifies CRT numeric composition, CRT span/universal quantifier, WTQ entity lookup, and TabFact false-negative entailment as zero-recovery categories after budget probe."
+                }
+            ],
+            "current_support_level": "strong_mechanism_evidence",
+            "remaining_gap": "WTQ targeted fresh and P4b after-targeted validation are complete. E3 P0 semantic guards remain future work before claiming seed stability; optional fine-grained deterministic-audit ablation may be added only if patent counsel needs narrower causal separation."
     },
     {
       "id": "C4",
@@ -116,13 +124,17 @@
           "source": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/p4b_wtq_targeted_fresh_summary.json",
           "evidence": "WTQ affected-slice fresh validation completed at 9/9 with merged/eval 9/9 and failures/missing 0/0."
         },
-        {
-          "source": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/p4b_after_wtq_targeted_paired_summary.json",
-          "evidence": "After-targeted P4b Gate-50 completed with MyAgent 121/150 vs MACT 111/150, all three datasets above MACT, token ratio 0.5310, failures/missing 0/0."
-        }
-      ],
-      "current_support_level": "strong_stage_evidence_with_fresh_closure",
-      "remaining_gap": "No immediate WTQ fresh gap remains. Future work should target E3 semantic boundary categories if broader seed stability is required."
+                {
+                    "source": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/p4b_after_wtq_targeted_paired_summary.json",
+                    "evidence": "After-targeted P4b Gate-50 completed with MyAgent 121/150 vs MACT 111/150, all three datasets above MACT, token ratio 0.5310, failures/missing 0/0."
+                },
+                {
+                    "source": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_semantic_boundary_plan_20260804_1110/summary/e3_semantic_boundary_plan.md",
+                    "evidence": "The next controlled-override work should follow the P0/P1 guard ladder before any new E3 paired MACT runtime."
+                }
+            ],
+            "current_support_level": "strong_stage_evidence_with_fresh_closure",
+            "remaining_gap": "No immediate WTQ fresh gap remains. Future work should target the E3 semantic-boundary plan if broader seed stability is required."
     },
     {
       "id": "C5",
@@ -180,13 +192,17 @@
           "source": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/summary/seed_boundary_error_diagnosis.json",
           "evidence": "Seed-C and Seed-D current-only runs completed with 300 merged rows, 212/300 correct, weighted token ratio 0.5916, failures/missing 0/0, and row-level verification pass; both stopped before paired MACT under the gate rule."
         },
-        {
-          "source": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_boundary_budget_probe_20260804_1035/summary/e3_boundary_budget_probe_summary.json",
-          "evidence": "E3 max_replan=5 probe recovered 4/12 representative wrong rows; WTQ recovered 1/4, TabFact 3/4, CRT 0/4. Decision is mixed_budget_sensitivity_not_enough_for_e3_stability."
-        }
-      ],
-      "current_support_level": "process_complete_with_seed_boundary_evidence_e4_pending",
-      "remaining_gap": "Need at least one new viable model/API candidate for E4. Seed-C/Seed-D current-only execution and budget probe are complete but remain boundary/mechanism evidence, not stability-positive evidence."
+                {
+                    "source": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_boundary_budget_probe_20260804_1035/summary/e3_boundary_budget_probe_summary.json",
+                    "evidence": "E3 max_replan=5 probe recovered 4/12 representative wrong rows; WTQ recovered 1/4, TabFact 3/4, CRT 0/4. Decision is mixed_budget_sensitivity_not_enough_for_e3_stability."
+                },
+                {
+                    "source": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_semantic_boundary_plan_20260804_1110/summary/e3_semantic_boundary_plan.json",
+                    "evidence": "Decision do_not_rerun_full200_or_paired_mact_until_targeted_guards_pass; ladder is S1 design/unit, S2 affected-slice fresh, S3 E3 current-only rerun, S4 paired MACT or boundary closeout."
+                }
+            ],
+            "current_support_level": "process_complete_with_seed_boundary_evidence_e4_pending",
+            "remaining_gap": "Need at least one new viable model/API candidate for E4. Seed-C/Seed-D current-only execution, budget probe, and semantic-boundary plan are complete but remain boundary/mechanism evidence, not stability-positive evidence."
     }
   ],
   "claim_strength_summary": {
@@ -202,7 +218,7 @@
     ],
     "requires_future_evidence_before_broad_claim": [
       "At least one viable additional model/API gate result",
-      "Additional seed stability evidence only if the E3 semantic boundary is optimized or accepted under a narrower claim scope; the current max_replan=5 probe supports adaptive budgeting for selected categories but not blanket budget expansion"
+            "Additional seed stability evidence only if the E3 semantic-boundary plan's P0/P1 guards pass affected-slice and current-only gates, or if the boundary is accepted under a narrower claim scope; the current max_replan=5 probe supports adaptive budgeting for selected categories but not blanket budget expansion"
     ]
   }
 }

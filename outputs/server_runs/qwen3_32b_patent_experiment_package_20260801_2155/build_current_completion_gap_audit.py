@@ -44,6 +44,11 @@ E3_BUDGET_PROBE_SUMMARY = Path(
     "qwen3_32b_policy_v6b_e3_boundary_budget_probe_20260804_1035/"
     "summary/e3_boundary_budget_probe_summary.json"
 )
+E3_SEMANTIC_BOUNDARY_PLAN = Path(
+    "/home/ubuntu/lzz/MACT/outputs/server_runs/"
+    "qwen3_32b_policy_v6b_e3_semantic_boundary_plan_20260804_1110/"
+    "summary/e3_semantic_boundary_plan.json"
+)
 E4_READINESS = PACKAGE_DIR / "latest_e4_multimodel_gate_readiness_audit.json"
 FORMAL_LEDGER = PACKAGE_DIR / "latest_formal_result_ledger_current.json"
 CURRENT_PATENT_SECTION = PACKAGE_DIR / "latest_current_patent_experiment_section.json"
@@ -198,6 +203,24 @@ def e3_budget_probe_metrics(path: Path) -> dict[str, Any] | None:
     }
 
 
+def e3_semantic_boundary_plan_metrics(path: Path) -> dict[str, Any] | None:
+    if not path.exists():
+        return None
+    plan = read_json(path)
+    snapshot = plan["evidence_snapshot"]
+    return {
+        "decision": plan["current_decision"],
+        "scope": plan["scope"],
+        "zero_recovery_probe_categories": snapshot["zero_recovery_probe_categories"],
+        "budget_sensitive_categories": snapshot["budget_sensitive_categories"],
+        "high_priority_work_item_count": len(plan["high_priority_work_items"]),
+        "seed_gate_gap": plan["seed_gate_gap"],
+        "next_ladder_stages": [
+            item["stage"] for item in plan["recommended_next_experiment_ladder"]
+        ],
+    }
+
+
 def build_audit() -> dict[str, Any]:
     generated_at = dt.datetime.now().astimezone().strftime("%Y-%m-%d %H:%M:%S %Z")
     full = read_json(FULL200_SUMMARY)
@@ -219,6 +242,9 @@ def build_audit() -> dict[str, Any]:
     e3_probe_current = e3_budget_probe_metrics(E3_BUDGET_PROBE_SUMMARY)
     if e3_probe_current:
         e3_current["budget_probe_max_replan5"] = e3_probe_current
+    e3_semantic_plan_current = e3_semantic_boundary_plan_metrics(E3_SEMANTIC_BOUNDARY_PLAN)
+    if e3_semantic_plan_current:
+        e3_current["semantic_boundary_plan"] = e3_semantic_plan_current
 
     requirements = [
         {
@@ -274,9 +300,17 @@ def build_audit() -> dict[str, Any]:
                 ]
                 if e3_probe_current
                 else []
+            )
+            + (
+                [
+                    str(E3_SEMANTIC_BOUNDARY_PLAN),
+                    str(E3_SEMANTIC_BOUNDARY_PLAN.with_suffix(".md")),
+                ]
+                if e3_semantic_plan_current
+                else []
             ),
             "metrics": e3_current,
-            "gap": "Seed-C/Seed-D are boundary evidence, not multi-seed stable superiority evidence. The max_replan=5 probe recovered a minority of representative wrong rows, so adaptive budgeting is useful for selected categories but does not close E3 stability.",
+            "gap": "Seed-C/Seed-D are boundary evidence, not multi-seed stable superiority evidence. The max_replan=5 probe recovered a minority of representative wrong rows, and the semantic-boundary plan now defines targeted guard work before any paired MACT runtime.",
         },
         {
             "id": "R5",
@@ -369,7 +403,7 @@ def build_audit() -> dict[str, Any]:
         "current_next_actions": [
             "Do not rerun known no-go models. Wait for a new local model path or API provider profile/key before E4 Gate-10.",
             "Use latest_current_patent_experiment_section_zh.md for current expert/patent discussion, with E3 and E4 boundaries explicitly preserved.",
-            "If further Qwen3 optimization is requested, use the E3 max_replan=5 probe to separate adaptive-budget categories from semantic-guard categories, instead of re-optimizing the passing full200/P4b-after-targeted anchors.",
+            "If further Qwen3 optimization is requested, start from the E3 semantic-boundary plan: implement P0/P1 gold-free guards, run affected-slice fresh validation, then rerun E3 current-only only if the small gate passes.",
         ],
         "overall_completion_status": completion_summary["overall_status"],
         "reason_not_complete": "Current Qwen3 full200 and P4b after-targeted evidence are positive; E3 is boundary evidence; E4 has no candidate, so model-externality evidence and final closeout remain pending.",
@@ -389,6 +423,7 @@ def render_markdown(report: dict[str, Any]) -> str:
     r4 = req_by_id["R4"]["metrics"]
     r5 = req_by_id["R5"]["metrics"]
     r4_probe = r4.get("budget_probe_max_replan5")
+    r4_semantic_plan = r4.get("semantic_boundary_plan")
     runtime = report["runtime_recheck"]
     lines = [
         "# 当前专利实验完成度审计",
@@ -399,7 +434,7 @@ def render_markdown(report: dict[str, Any]) -> str:
         "",
         "## 当前结论",
         "",
-        f"当前目标状态：`{report['overall_completion_status']}`。Qwen3-32B full200 和 P4b after-targeted 已是正证据；E3 Seed-C/D 是边界证据；E4 状态为 `pending_no_candidate`，artifact decision 为 `no_candidate_wait`，尚无额外模型/API 候选。",
+        f"当前目标状态：`{report['overall_completion_status']}`。Qwen3-32B full200 和 P4b after-targeted 已是正证据；E3 Seed-C/D 是边界证据，并已补 E3 semantic-boundary plan；E4 状态为 `pending_no_candidate`，artifact decision 为 `no_candidate_wait`，尚无额外模型/API 候选。",
         "",
         "## 环境复核",
         "",
@@ -449,6 +484,10 @@ def render_markdown(report: dict[str, Any]) -> str:
     if r4_probe:
         lines.append(
             f"| E3 max_replan=5 boundary probe | recovered `{r4_probe['recovered']}/{r4_probe['rows']}` original wrong rows, decision `{r4_probe['decision']}`, failed/missing `{r4_probe['failed']}/{r4_probe['missing']}`, avg tokens `{r4_probe['avg_original_total_tokens']:.1f}->{r4_probe['avg_replan5_total_tokens']:.1f}` |"
+        )
+    if r4_semantic_plan:
+        lines.append(
+            f"| E3 semantic-boundary plan | decision `{r4_semantic_plan['decision']}`, high-priority work items `{r4_semantic_plan['high_priority_work_item_count']}`, zero-recovery categories `{len(r4_semantic_plan['zero_recovery_probe_categories'])}`, next ladder `{', '.join(r4_semantic_plan['next_ladder_stages'])}` |"
         )
     lines.extend(
         [

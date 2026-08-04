@@ -278,6 +278,30 @@
       }
     }
   },
+  "e3_semantic_boundary_plan": {
+    "run_dir": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_semantic_boundary_plan_20260804_1110",
+    "readme": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_semantic_boundary_plan_20260804_1110/README.md",
+    "builder": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_semantic_boundary_plan_20260804_1110/build_semantic_boundary_plan.py",
+    "summary_json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_semantic_boundary_plan_20260804_1110/summary/e3_semantic_boundary_plan.json",
+    "summary_md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_semantic_boundary_plan_20260804_1110/summary/e3_semantic_boundary_plan.md",
+    "source_diagnosis_json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/summary/seed_boundary_error_diagnosis.json",
+    "source_budget_probe_json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_boundary_budget_probe_20260804_1035/summary/e3_boundary_budget_probe_summary.json",
+    "scope_note": "Planning artifact only: separates adaptive-budget categories from semantic-guard backlog before any further E3 rerun.",
+    "decision": "do_not_rerun_full200_or_paired_mact_until_targeted_guards_pass",
+    "high_priority_work_item_count": 8,
+    "zero_recovery_probe_categories": [
+      "crt_multi_step_numeric_composition_boundary",
+      "wtq_entity_lookup_or_row_selection_boundary",
+      "crt_span_or_universal_quantifier_boundary",
+      "tabfact_false_negative_entailment_boundary"
+    ],
+    "next_ladder": [
+      "S1_design_and_unit",
+      "S2_affected_slice_fresh",
+      "S3_e3_current_only_rerun",
+      "S4_paired_mact_or_boundary_closeout"
+    ]
+  },
   "completion_gap_audit": {
     "script": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/build_current_completion_gap_audit.py",
     "latest_json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_completion_gap_audit_current.json",

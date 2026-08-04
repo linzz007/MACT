@@ -25,6 +25,12 @@ E3_BOUNDARY_DIAGNOSIS_JSON = Path(
     "summary/seed_boundary_error_diagnosis.json"
 )
 E3_BOUNDARY_DIAGNOSIS_MD = E3_BOUNDARY_DIAGNOSIS_JSON.with_suffix(".md")
+E3_SEMANTIC_BOUNDARY_PLAN_JSON = Path(
+    "/home/ubuntu/lzz/MACT/outputs/server_runs/"
+    "qwen3_32b_policy_v6b_e3_semantic_boundary_plan_20260804_1110/"
+    "summary/e3_semantic_boundary_plan.json"
+)
+E3_SEMANTIC_BOUNDARY_PLAN_MD = E3_SEMANTIC_BOUNDARY_PLAN_JSON.with_suffix(".md")
 E4_READINESS_JSON = PACKAGE_DIR / "latest_e4_multimodel_gate_readiness_audit.json"
 E4_READINESS_MD = PACKAGE_DIR / "latest_e4_multimodel_gate_readiness_audit_zh.md"
 CURRENT_PATENT_SECTION_JSON = PACKAGE_DIR / "latest_current_patent_experiment_section.json"
@@ -153,6 +159,8 @@ def build_report() -> dict[str, Any]:
         "formal_ledger_builder": PACKAGE_DIR / "build_current_formal_result_ledger.py",
         "e3_boundary_diagnosis_json": E3_BOUNDARY_DIAGNOSIS_JSON,
         "e3_boundary_diagnosis_md": E3_BOUNDARY_DIAGNOSIS_MD,
+        "e3_semantic_boundary_plan_json": E3_SEMANTIC_BOUNDARY_PLAN_JSON,
+        "e3_semantic_boundary_plan_md": E3_SEMANTIC_BOUNDARY_PLAN_MD,
         "e4_multimodel_readiness_json": E4_READINESS_JSON,
         "e4_multimodel_readiness_md": E4_READINESS_MD,
         "current_patent_experiment_section_json": CURRENT_PATENT_SECTION_JSON,
@@ -304,6 +312,7 @@ def build_report() -> dict[str, Any]:
     manifest_ledger = manifest["formal_result_tables_template"]["latest_current_ledger_json"]
     manifest_preflight = manifest["remaining_qwen3_queue"]["latest_runtime_preflight_json"]
     boundary_manifest = manifest["multiseed_e3_prepared"]["boundary_error_diagnosis"]
+    semantic_boundary_manifest = manifest["e3_semantic_boundary_plan"]
     e4_manifest = manifest["multimodel_e4_readiness"]
     e4_readiness = read_json(E4_READINESS_JSON)
     current_section_manifest = manifest["current_patent_experiment_section"]
@@ -323,6 +332,31 @@ def build_report() -> dict[str, Any]:
     check_equal(report, "manifest E3 boundary failed", boundary_manifest["aggregate"]["failed"], 0)
     check_equal(report, "manifest E3 boundary missing", boundary_manifest["aggregate"]["missing"], 0)
     check_equal(report, "manifest E3 boundary verification", boundary_manifest["aggregate"]["verification_status"], "pass")
+    semantic_plan = read_json(E3_SEMANTIC_BOUNDARY_PLAN_JSON)
+    check_equal(
+        report,
+        "manifest E3 semantic plan json path",
+        semantic_boundary_manifest["summary_json"],
+        str(E3_SEMANTIC_BOUNDARY_PLAN_JSON),
+    )
+    check_equal(
+        report,
+        "manifest E3 semantic plan md path",
+        semantic_boundary_manifest["summary_md"],
+        str(E3_SEMANTIC_BOUNDARY_PLAN_MD),
+    )
+    check_equal(
+        report,
+        "manifest E3 semantic plan decision",
+        semantic_boundary_manifest["decision"],
+        semantic_plan["current_decision"],
+    )
+    check_equal(
+        report,
+        "manifest E3 semantic plan high-priority count",
+        semantic_boundary_manifest["high_priority_work_item_count"],
+        len(semantic_plan["high_priority_work_items"]),
+    )
     check_equal(report, "manifest E4 readiness json path", e4_manifest["latest_json"], str(E4_READINESS_JSON))
     check_equal(report, "manifest E4 readiness md path", e4_manifest["latest_md"], str(E4_READINESS_MD))
     check_equal(report, "manifest E4 readiness status", e4_manifest["status"], e4_readiness["decision"])
@@ -399,6 +433,12 @@ def build_report() -> dict[str, Any]:
         "completion gap E4 decision",
         requirements_by_id["R5"]["metrics"]["decision"],
         "no_candidate_wait",
+    )
+    check_equal(
+        report,
+        "completion gap semantic plan decision",
+        requirements_by_id["R4"]["metrics"]["semantic_boundary_plan"]["decision"],
+        "do_not_rerun_full200_or_paired_mact_until_targeted_guards_pass",
     )
     check_equal(
         report,
@@ -506,6 +546,12 @@ def build_report() -> dict[str, Any]:
     )
     check_contains(
         report,
+        "claim traceability E3 semantic plan",
+        claim_traceability_md,
+        "E3 semantic-boundary plan",
+    )
+    check_contains(
+        report,
         "formal schedule E3 boundary",
         formal_schedule_text,
         "E3 已经完成，但它是适用边界证据",
@@ -533,6 +579,7 @@ def build_report() -> dict[str, Any]:
         "PRD current completion gap audit": "latest_completion_gap_audit_current_zh.md",
         "PRD goal blocker audit": "latest_goal_blocker_audit_current_zh.md",
         "PRD E3 boundary diagnosis": "seed_boundary_error_diagnosis.md",
+        "PRD E3 semantic boundary plan": "e3_semantic_boundary_plan.md",
         "PRD E4 readiness audit": "latest_e4_multimodel_gate_readiness_audit_zh.md",
         "PRD active status": "active_not_complete",
     }.items():
