@@ -1,0 +1,76 @@
+{
+  "artifact_name": "e3_s4_paired_mact_combined_summary",
+  "run_dir": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6c_e3_s4_paired_mact_20260804_1626",
+  "candidate_source": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6c_seed_d_boundary_fresh_20260804_1549/summary/e3_boundary_fresh_combined_summary.json",
+  "seeds": {
+    "seed_c": {
+      "summary_json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6c_e3_s4_paired_mact_20260804_1626/summary/seed_c_paired_gate50_summary.json",
+      "accepted": true,
+      "strict_all_dataset_superiority": false,
+      "overall_myagent_correct": 118,
+      "overall_mact_correct": 118,
+      "overall_rows": 150,
+      "token_ratio_myagent_to_mact": 0.6252520659761587
+    },
+    "seed_d": {
+      "summary_json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6c_e3_s4_paired_mact_20260804_1626/summary/seed_d_paired_gate50_summary.json",
+      "accepted": true,
+      "strict_all_dataset_superiority": false,
+      "overall_myagent_correct": 111,
+      "overall_mact_correct": 105,
+      "overall_rows": 150,
+      "token_ratio_myagent_to_mact": 0.5195027617605106
+    }
+  },
+  "datasets": {
+    "wtq": {
+      "rows": 100,
+      "myagent_correct": 76,
+      "mact_correct": 74,
+      "delta_correct": 2,
+      "token_ratio_myagent_to_mact": 0.5762034048214126,
+      "myagent_avg_total_tokens": 6358.37,
+      "mact_avg_total_tokens": 11034.94,
+      "strictly_above_mact": true,
+      "at_least_mact": true
+    },
+    "tabfact": {
+      "rows": 100,
+      "myagent_correct": 91,
+      "mact_correct": 87,
+      "delta_correct": 4,
+      "token_ratio_myagent_to_mact": 0.25709431478723577,
+      "myagent_avg_total_tokens": 2660.25,
+      "mact_avg_total_tokens": 10347.37,
+      "strictly_above_mact": true,
+      "at_least_mact": true
+    },
+    "crt": {
+      "rows": 100,
+      "myagent_correct": 62,
+      "mact_correct": 62,
+      "delta_correct": 0,
+      "token_ratio_myagent_to_mact": 0.8078053230250578,
+      "myagent_avg_total_tokens": 10768.36,
+      "mact_avg_total_tokens": 13330.39,
+      "strictly_above_mact": false,
+      "at_least_mact": true
+    }
+  },
+  "overall": {
+    "rows": 300,
+    "myagent_correct": 229,
+    "mact_correct": 223,
+    "delta_correct": 6,
+    "token_ratio_myagent_to_mact": 0.5700213466541064,
+    "myagent_avg_total_tokens": 6595.66,
+    "mact_avg_total_tokens": 11570.9,
+    "myagent_failed": 0,
+    "mact_failed": 4,
+    "myagent_missing": 0,
+    "mact_missing": 4
+  },
+  "accepted_existing_paired_criteria": true,
+  "strict_all_dataset_superiority": false,
+  "decision": "s4_paired_pass_existing_criteria_not_strict"
+}

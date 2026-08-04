@@ -83,8 +83,18 @@ Checkpoint at `2026-08-04 21:22 CST`:
 - `seed_d/crt` is running on `http://127.0.0.1:8000/v1`, output `33/50`, `0` current rows have `exec_error`.
 - Continue `seed_d/crt`. After it reaches `50/50`, run `python outputs/server_runs/qwen3_32b_policy_v6c_e3_s4_paired_mact_20260804_1626/summarize_s4_paired.py`.
 
+Final result at `2026-08-04 22:14 CST`:
+
+- All six MACT outputs completed `50/50`.
+- Combined: MyAgent `229/300` vs MACT `223/300`, token ratio `0.5700`.
+- WTQ: MyAgent `76/100` vs MACT `74/100`, token ratio `0.5762`.
+- TabFact: MyAgent `91/100` vs MACT `87/100`, token ratio `0.2571`.
+- CRT: MyAgent `62/100` vs MACT `62/100`, token ratio `0.8078`.
+- MyAgent failed/missing: `0/0`; MACT failed/missing: `4/4`.
+- Decision: `s4_paired_pass_existing_criteria_not_strict`.
+
 Acceptance language:
 
 - Strong patent-seed claim requires MyAgent strictly above MACT on WTQ, TabFact, and CRT for each paired seed, with token ratio materially below MACT and failed/missing `0/0`.
 - Existing paired criterion is weaker: overall accuracy at least MACT, at least two datasets at least MACT, token ratio <= `0.75`, and execution failure rate <= `2%`.
-- Until this run is complete, E3 remains `current_only_candidate_paired_pending`.
+- This run passes the existing paired criterion, but it does not satisfy the strong patent-seed claim because CRT is tied rather than strictly above MACT.

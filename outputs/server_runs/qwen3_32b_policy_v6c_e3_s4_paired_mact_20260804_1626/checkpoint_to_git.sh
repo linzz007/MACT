@@ -11,7 +11,8 @@ git add -f \
   "$RUN_DIR/run_mact_dataset.sh" \
   "$RUN_DIR/summarize_s4_paired.py" \
   "$RUN_DIR/checkpoint_to_git.sh" \
-  "$RUN_DIR"/progress_snapshot_*.md
+  "$RUN_DIR"/progress_snapshot_*.md \
+  "$RUN_DIR"/s4_final_result_*.md
 
 if [[ -d "$RUN_DIR/mact" ]]; then
   git add -f "$RUN_DIR/mact"
