@@ -77,13 +77,17 @@ Current status:
 - The E3 S2 guard-validation input package is now prepared at
   `/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_guard_validation_inputs_20260804_1128/`.
   It contains `30` rows: `12` representative wrong rows and `18` no-harm
-  correct rows, split WTQ/TabFact/CRT as `10/8/12`. This is an input package,
-  not a model-run result; the future S2 fresh gate is recover at least `7/12`
-  representative wrong rows while preserving `18/18` no-harm rows.
+  correct rows, split WTQ/TabFact/CRT as `10/8/12`.
+- The E3 S2 after-guard fresh run passed the affected-slice gate at
+  `/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_guard_validation_after_guard_20260804_1203/`.
+  It recovered `8/12` representative wrong rows, preserved `18/18` no-harm
+  rows, had failures/missing `0/0`, and weighted token ratio `0.6104`.
+  This is targeted mechanism evidence; the next Qwen3 evidence step is S3
+  Seed-C/D current-only rerun, not paired MACT yet.
 - The latest current completion-gap audit records that the active goal is not
-  complete: Qwen3 full200 and P4b after-targeted are positive evidence, E3 is
-  boundary evidence, and E4 remains pending/no-candidate until a new local
-  model or API profile appears.
+  complete: Qwen3 full200, P4b after-targeted, and E3 S2 after-guard fresh are
+  positive evidence, while E3 stability and E4 remain pending until Seed-C/D
+  current-only rerun and a new local model or API profile appear.
 - The claim-to-evidence traceability matrix maps six patent claim families to
   mechanisms, evidence files, support strength, and remaining gaps.
 - The formal result-table template defines the exact fields and decision ledger
@@ -102,8 +106,7 @@ Current status:
   keeps pending stages explicit rather than mixing them with completed results.
   Latest generated ledger is available through
   `latest_formal_result_ledger_current.json/md`.
-- The latest consistency audit passes with 0 errors; warning count may be 1
-  while services are intentionally stopped after sync:
+- The latest consistency audit passes with 0 errors and 0 warnings:
   see `latest_patent_package_consistency_audit.json/md`.
 - The checksum manifest lets a restored server verify that package files and
   existing referenced evidence files were recovered without corruption.

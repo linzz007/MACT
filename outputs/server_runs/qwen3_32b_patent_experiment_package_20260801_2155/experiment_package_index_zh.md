@@ -14,7 +14,7 @@
 
 > 多模型验证已经完成，或多 seed 已稳定超过 MACT。
 
-原因：P4b 原始新 seed Gate-50 虽然 overall 通过 existing paired gate，但 WTQ 单项原始结果是 MyAgent `37/50` vs MACT `43/50`。E1/E2 已经完成诊断、fresh affected-slice `9/9` 和 after-targeted P4b full50；after-targeted 总表为 MyAgent `121/150` vs MACT `111/150`，三数据集单项均超过 MACT。E3 Seed-C/Seed-D current-only 已完成并形成稳定性边界诊断，不是多 seed 稳定通过证据；E3 max_replan=5 budget probe 恢复 `4/12` 代表错题，可写成 adaptive budget 机制证据，但不足以关闭 E3 稳定性；最新 E3 semantic-boundary plan 已把未恢复类别转成 P0/P1 语义 guard 与 affected-slice 验证漏斗，当前判定仍是先做 targeted guards，不直接跑 paired MACT；E4 readiness audit 为 `no_candidate_wait`，还没有额外模型/API 结果。
+原因：P4b 原始新 seed Gate-50 虽然 overall 通过 existing paired gate，但 WTQ 单项原始结果是 MyAgent `37/50` vs MACT `43/50`。E1/E2 已经完成诊断、fresh affected-slice `9/9` 和 after-targeted P4b full50；after-targeted 总表为 MyAgent `121/150` vs MACT `111/150`，三数据集单项均超过 MACT。E3 Seed-C/Seed-D current-only 已完成并形成稳定性边界诊断，不是多 seed 稳定通过证据；E3 max_replan=5 budget probe 恢复 `4/12` 代表错题，可写成 adaptive budget 机制证据；E3 semantic-boundary plan 已把未恢复类别转成 P0/P1 语义 guard 与 affected-slice 验证漏斗，且 S2 after-guard fresh 已通过 `8/12` representative recovery 与 `18/18` no-harm gate。当前下一步是 S3 Seed-C/D current-only 复跑，仍不能直接写成多 seed 稳定超过 MACT；E4 readiness audit 为 `no_candidate_wait`，还没有额外模型/API 结果。
 
 ## 2. 主结果证据
 
@@ -138,7 +138,7 @@ fresh 验证输入和 runner 入口保留如下：
 
 | item | reason | next action |
 |---|---|---|
-| E3 多 seed 稳定性正证据 | Seed-C/Seed-D current-only 都已完成但 decision=`stop_or_inspect`，不能写成稳定超过 MACT | 把 E3 写成边界与适用条件；若继续优化，先处理 WTQ/TabFact/CRT 语义边界 |
+| E3 多 seed 稳定性正证据 | 旧 Seed-C/Seed-D current-only 都已完成但 decision=`stop_or_inspect`；S2 after-guard fresh 已通过，但还没有 Seed-C/D 复跑正证据 | 进入 S3：用当前 guard 重跑 Seed-C/D current-only，再按 gate 决定是否需要 paired MACT |
 | 多模型 gate | 最新 E4 readiness audit 为 `no_candidate_wait`，没有 untested local model 或 API profile/key | 新本地模型/API key 出现后按 Gate-10 -> Gate-50 -> Gate-150 执行 |
 | 细粒度消融 | coarse 消融已有，但 verifier override/evidence retention 细粒度 causal 证据仍可增强 | 需要时新增开关并跑 targeted ablation |
 | 最终实验包收口 | 当前章节已 consolidated，但 E4 无候选导致最终外延证据仍缺 | 等 E4 candidate 或明确接受 no-candidate 边界后再做 final closeout |
@@ -165,7 +165,7 @@ E3 semantic-boundary plan：
 /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_semantic_boundary_plan_20260804_1110/summary/e3_semantic_boundary_plan.md
 ```
 
-该计划不是新 benchmark run，而是把 E3 diagnosis 与 budget probe 合并成后续执行漏斗。当前 decision 为 `do_not_rerun_full200_or_paired_mact_until_targeted_guards_pass`；P0 类别包括 CRT multi-step numeric composition、WTQ entity lookup/row selection、CRT span/universal quantifier 和 TabFact false-negative entailment，均属于 budget probe 零恢复类别。下一步顺序是 S1 gold-free guard 设计/单测、S2 12 条代表错题加 no-harm affected-slice fresh、S3 仅在 S2 通过后重跑 E3 current-only、S4 仅在 Seed-C/D current-only 都过 gate 后才跑 paired MACT。
+该计划不是新 benchmark run，而是把 E3 diagnosis 与 budget probe 合并成后续执行漏斗。当前 decision 为 `do_not_rerun_full200_or_paired_mact_until_targeted_guards_pass`；P0 类别包括 CRT multi-step numeric composition、WTQ entity lookup/row selection、CRT span/universal quantifier 和 TabFact false-negative entailment，均属于 budget probe 零恢复类别。S1/S2 已完成，S2 after-guard fresh 已通过；下一步是 S3 重跑 E3 current-only，S4 仅在 Seed-C/D current-only 都过 gate 后才跑 paired MACT。
 
 E3 S2 guard-validation input package：
 
@@ -173,7 +173,15 @@ E3 S2 guard-validation input package：
 /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_guard_validation_inputs_20260804_1128/summary/e3_guard_validation_input_plan.md
 ```
 
-该包是后续 semantic guard 的预注册验证输入，不是 fresh run 结果。它包含 `30` 行：`12` 条代表错题和 `18` 条 no-harm 正确行；WTQ/TabFact/CRT 分别 `10/8/12` 行。未来 S2 fresh gate 的最低目标是恢复至少 `7/12` 代表错题，同时保持 `18/18` no-harm 行正确，failed/missing 仍为 `0`。只有 S2 通过后才考虑 S3 E3 current-only rerun。
+该包是 semantic guard 的预注册验证输入。它包含 `30` 行：`12` 条代表错题和 `18` 条 no-harm 正确行；WTQ/TabFact/CRT 分别 `10/8/12` 行。S2 fresh gate 的最低目标是恢复至少 `7/12` 代表错题，同时保持 `18/18` no-harm 行正确，failed/missing 为 `0`。
+
+E3 S2 after-guard fresh：
+
+```text
+/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_guard_validation_after_guard_20260804_1203/summary/e3_guard_validation_after_guard_summary.md
+```
+
+2026-08-04 已用当前 gold-free semantic guards 跑完该 `30` 行 affected-slice/no-harm 包，decision=`after_guard_passes_s2_gate`。总体结果：representative recovered `8/12`，no-harm correct `18/18`，failed/missing `0/0`，weighted token ratio vs MACT full200 `0.6104`。分项为 WTQ `2/4` representative recovered、`6/6` no-harm；TabFact `4/4` recovered、`4/4` no-harm；CRT `2/4` recovered、`8/8` no-harm。结论：S2 已通过，下一步是 S3 Seed-C/D current-only rerun；这仍是 targeted mechanism gate，不是多 seed 稳定性正证据。
 
 ## 8. 剩余 Qwen3 队列入口
 

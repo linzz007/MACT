@@ -1,12 +1,12 @@
 {
   "artifact_name": "qwen3_32b_patent_package_checksums",
-  "generated_at_local": "2026-08-04 11:38:57 CST",
+  "generated_at_local": "2026-08-04 14:22:07 CST",
   "package_dir": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155",
   "workspace_root": "/home/ubuntu/lzz",
   "scope_boundary": "Checksums cover package files plus existing manifest-referenced files. Pending future evidence paths are reported separately and are not checksum failures.",
-  "record_count": 336,
-  "package_file_count": 252,
-  "manifest_reference_file_count": 116,
+  "record_count": 347,
+  "package_file_count": 258,
+  "manifest_reference_file_count": 121,
   "missing_or_pending_reference_count": 0,
   "records": [
     {
@@ -24,22 +24,22 @@
       "source": "manifest_reference"
     },
     {
-      "sha256": "fe010eec6df0911dff8d2a0a887288387c805a259b7bb2ac7eef104c4ca4f740",
-      "bytes": 5960,
+      "sha256": "2adcfe3c782591fdd120c29c092cb6f8e23c6e5f41df14b5cf2e1ec1df431bfb",
+      "bytes": 6218,
       "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/README.md",
       "workspace_relative_path": "MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/README.md",
       "source": "package"
     },
     {
-      "sha256": "ee38867d637ee9651b9682f61a857ebcd18f2f32184ad030f9be0ea5e7e927fd",
-      "bytes": 30661,
+      "sha256": "b897a2a279729471e0cfc001d01deefdc85221ee721bcd1118801ea5ff8beba9",
+      "bytes": 34442,
       "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/audit_patent_package_consistency.py",
       "workspace_relative_path": "MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/audit_patent_package_consistency.py",
       "source": "package"
     },
     {
-      "sha256": "b2f9de8d123450bc61dc72da232f17923e91830066b471098c618e77cebc17e6",
-      "bytes": 28514,
+      "sha256": "944b72fde7f9bc2f942cf6704f1fa218028450e02a3c09214bf3fc4434d1c070",
+      "bytes": 30381,
       "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/build_current_completion_gap_audit.py",
       "workspace_relative_path": "MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/build_current_completion_gap_audit.py",
       "source": "package"
@@ -52,8 +52,8 @@
       "source": "package"
     },
     {
-      "sha256": "39c86068e6efe7cf3cc8fdd938a36bbd6e1e186d0fcdb0f769bfc2f5a68bc9ea",
-      "bytes": 37416,
+      "sha256": "283e822a62a03ea847d0292a12ddb5898a1d25801a96588ce147df3b6fd9c0aa",
+      "bytes": 41075,
       "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/build_current_patent_experiment_section.py",
       "workspace_relative_path": "MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/build_current_patent_experiment_section.py",
       "source": "package"
@@ -73,15 +73,15 @@
       "source": "package"
     },
     {
-      "sha256": "696ca632bbf32b9174b50f9cdc92e90c3417f8f602c9101e4d8634d39af018d5",
-      "bytes": 14619,
+      "sha256": "7cfeb5fef92293c196db32695dc476d5f1b11245d22a2f7fcd24c78d507123f6",
+      "bytes": 16329,
       "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/claim_evidence_traceability_20260801_2248.json",
       "workspace_relative_path": "MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/claim_evidence_traceability_20260801_2248.json",
       "source": "package"
     },
     {
-      "sha256": "d8d32904e7f15e0ebf1c5ae5fbe58ce782d904ee7e9dc2a0318b5a59e960effd",
-      "bytes": 7678,
+      "sha256": "7e980948de6c3d16cdb0752e10f3793d1863cf399f6c51e4a23ce77e1cc3e832",
+      "bytes": 8285,
       "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/claim_evidence_traceability_20260801_2248_zh.md",
       "workspace_relative_path": "MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/claim_evidence_traceability_20260801_2248_zh.md",
       "source": "package"
@@ -283,6 +283,20 @@
       "source": "package"
     },
     {
+      "sha256": "2f72bc75ca1a9da3832e80991ee3ca2e9581c2f469959a8f3a59b44f4b031d6d",
+      "bytes": 363914,
+      "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/completion_gap_audit_current_20260804_141637.json",
+      "workspace_relative_path": "MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/completion_gap_audit_current_20260804_141637.json",
+      "source": "package"
+    },
+    {
+      "sha256": "fa679a48758cd54e5d5d5e941e7f45904d55605645942fa9c450f32dcecde927",
+      "bytes": 10169,
+      "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/completion_gap_audit_current_20260804_141637_zh.md",
+      "workspace_relative_path": "MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/completion_gap_audit_current_20260804_141637_zh.md",
+      "source": "package"
+    },
+    {
       "sha256": "3b40108a38093a1a3e3edfb601a5bb9691e7f6bc266058d1f484f06d7ab72dd6",
       "bytes": 21210,
       "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/current_patent_experiment_section_20260803_115241.json",
@@ -451,6 +465,20 @@
       "source": "package"
     },
     {
+      "sha256": "d6770202a8d64ae826c5cc6dd501b03c198d778b8101fac6b17a67aea3475753",
+      "bytes": 37634,
+      "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/current_patent_experiment_section_20260804_141637.json",
+      "workspace_relative_path": "MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/current_patent_experiment_section_20260804_141637.json",
+      "source": "package"
+    },
+    {
+      "sha256": "518e726db38be05c2eb9449f984991b1498cb33a99b2d67162263e0f9c4e59c6",
+      "bytes": 13957,
+      "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/current_patent_experiment_section_20260804_141637_zh.md",
+      "workspace_relative_path": "MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/current_patent_experiment_section_20260804_141637_zh.md",
+      "source": "package"
+    },
+    {
       "sha256": "3c2c2a24e0075cde8f7c52ad16b354216f9449b2bd8449645ad95d6d0f36564c",
       "bytes": 4578,
       "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/e4_multimodel_gate_readiness_audit_20260803_113741.json",
@@ -563,22 +591,22 @@
       "source": "package"
     },
     {
-      "sha256": "81f32648f2c71aca20746a81dbe5b5e0b0dc062caa7def94df02ae776d7d32bb",
-      "bytes": 34999,
+      "sha256": "6a8c33a0c0bb11f6d59207fcf2455996a94d1d63da4ba54ed2fa7b1146af0901",
+      "bytes": 38124,
       "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/evidence_manifest.json",
       "workspace_relative_path": "MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/evidence_manifest.json",
       "source": "package"
     },
     {
-      "sha256": "d04c1f6f0e34c391e57dad8ef768d818ceda039a3510e58145fc5c0f2b1240b1",
-      "bytes": 15573,
+      "sha256": "b840d1947ce1309a8233964d99d194c4796d28a76527980b298cf8036561bc12",
+      "bytes": 16320,
       "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/experiment_package_index_zh.md",
       "workspace_relative_path": "MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/experiment_package_index_zh.md",
       "source": "package"
     },
     {
-      "sha256": "a78f4794c9e122418eba8d001856b55923c0a86fddaa352776429cec8136a550",
-      "bytes": 8799,
+      "sha256": "5c4116dc53e23feb91f5bc943096c122f737b58b2f4e54ad6d39c555b8648950",
+      "bytes": 9301,
       "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/formal_experiment_schedule_zh.md",
       "workspace_relative_path": "MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/formal_experiment_schedule_zh.md",
       "source": "package"
@@ -906,29 +934,29 @@
       "source": "package"
     },
     {
-      "sha256": "20accad2bdf29356d2bb78bee3c184da580bdca0179b5429c60aade8e287a076",
-      "bytes": 357240,
+      "sha256": "2f72bc75ca1a9da3832e80991ee3ca2e9581c2f469959a8f3a59b44f4b031d6d",
+      "bytes": 363914,
       "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_completion_gap_audit_current.json",
       "workspace_relative_path": "MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_completion_gap_audit_current.json",
       "source": "package"
     },
     {
-      "sha256": "fcb95230d97a0ce881ec8dfbd50aae8e167f07839c2202b88d5980a716ebeaf0",
-      "bytes": 9861,
+      "sha256": "fa679a48758cd54e5d5d5e941e7f45904d55605645942fa9c450f32dcecde927",
+      "bytes": 10169,
       "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_completion_gap_audit_current_zh.md",
       "workspace_relative_path": "MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_completion_gap_audit_current_zh.md",
       "source": "package"
     },
     {
-      "sha256": "b91c0835b5ca66914dd9b679472180019b035be842767047feea2b5d29beeb12",
-      "bytes": 31288,
+      "sha256": "d6770202a8d64ae826c5cc6dd501b03c198d778b8101fac6b17a67aea3475753",
+      "bytes": 37634,
       "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_current_patent_experiment_section.json",
       "workspace_relative_path": "MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_current_patent_experiment_section.json",
       "source": "package"
     },
     {
-      "sha256": "8a49fb4f3ce9b83284e0d83750e780905e1654472bcf7a73e57525a2b24807d0",
-      "bytes": 12857,
+      "sha256": "518e726db38be05c2eb9449f984991b1498cb33a99b2d67162263e0f9c4e59c6",
+      "bytes": 13957,
       "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_current_patent_experiment_section_zh.md",
       "workspace_relative_path": "MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_current_patent_experiment_section_zh.md",
       "source": "package"
@@ -976,15 +1004,15 @@
       "source": "package"
     },
     {
-      "sha256": "e4068ae6e61634508afb91684ca1e673ae0ebbfafb97d400ad4a0859da15f45c",
-      "bytes": 24661,
+      "sha256": "fe9580da4f1be970ca1c2b905fef795422622e1392039fa8a1461516a5c6a617",
+      "bytes": 27686,
       "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_patent_package_consistency_audit.json",
       "workspace_relative_path": "MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_patent_package_consistency_audit.json",
       "source": "package"
     },
     {
-      "sha256": "e6f7fbbe044d6f0afb5190c9c06c1ac7d81cff8df908dabba698a54d2e0da1f6",
-      "bytes": 13413,
+      "sha256": "53b5c76b79987d9bbfc4e3eb9ee3cda89b70c43b6596a68550181981fba30b91",
+      "bytes": 15184,
       "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_patent_package_consistency_audit_zh.md",
       "workspace_relative_path": "MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_patent_package_consistency_audit_zh.md",
       "source": "package"
@@ -1011,8 +1039,8 @@
       "source": "package"
     },
     {
-      "sha256": "25496cbd6a2a68785b9f926db1a1033275813ecf102c4b6f6621d53757287398",
-      "bytes": 15727,
+      "sha256": "0d6917816b0afc72cfac1bfce43a9919eed954e0f1c3ddf173988cb13361df50",
+      "bytes": 17239,
       "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/patent_disclosure_draft_zh.md",
       "workspace_relative_path": "MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/patent_disclosure_draft_zh.md",
       "source": "package"
@@ -1494,6 +1522,20 @@
       "source": "package"
     },
     {
+      "sha256": "fe9580da4f1be970ca1c2b905fef795422622e1392039fa8a1461516a5c6a617",
+      "bytes": 27686,
+      "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/patent_package_consistency_audit_20260804_142033.json",
+      "workspace_relative_path": "MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/patent_package_consistency_audit_20260804_142033.json",
+      "source": "package"
+    },
+    {
+      "sha256": "53b5c76b79987d9bbfc4e3eb9ee3cda89b70c43b6596a68550181981fba30b91",
+      "bytes": 15184,
+      "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/patent_package_consistency_audit_20260804_142033_zh.md",
+      "workspace_relative_path": "MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/patent_package_consistency_audit_20260804_142033_zh.md",
+      "source": "package"
+    },
+    {
       "sha256": "bd65cec7951139a4fa178ff9114082f567ae2dfb3f09178eea2f36bae8461f3c",
       "bytes": 10512,
       "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/preflight_qwen3_runtime.py",
@@ -1848,6 +1890,41 @@
       "bytes": 3485,
       "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_boundary_budget_probe_20260804_1035/summary/e3_boundary_budget_probe_summary.md",
       "workspace_relative_path": "MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_boundary_budget_probe_20260804_1035/summary/e3_boundary_budget_probe_summary.md",
+      "source": "manifest_reference"
+    },
+    {
+      "sha256": "026b8f22b8dadfc99931f4b8b6f906e6c881b70f8bd0af103b75586cadd7fc02",
+      "bytes": 677,
+      "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_guard_validation_after_guard_20260804_1203/README.md",
+      "workspace_relative_path": "MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_guard_validation_after_guard_20260804_1203/README.md",
+      "source": "manifest_reference"
+    },
+    {
+      "sha256": "e45da5d8a52ca305701d381c513a95824e3c059c957e355d9777b0d2371799ed",
+      "bytes": 1476,
+      "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_guard_validation_after_guard_20260804_1203/run_after_guard.sh",
+      "workspace_relative_path": "MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_guard_validation_after_guard_20260804_1203/run_after_guard.sh",
+      "source": "manifest_reference"
+    },
+    {
+      "sha256": "65b79555a1e5552efd1664baa490ae4fe4bc724bf49088a07c23ad4e4e35af0a",
+      "bytes": 2782,
+      "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_guard_validation_after_guard_20260804_1203/summarize_after_guard.py",
+      "workspace_relative_path": "MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_guard_validation_after_guard_20260804_1203/summarize_after_guard.py",
+      "source": "manifest_reference"
+    },
+    {
+      "sha256": "d39a67fad135fa92cd232e14577a1fbe3a3ae05a51a70c4081fd9217055c082f",
+      "bytes": 30952,
+      "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_guard_validation_after_guard_20260804_1203/summary/e3_guard_validation_after_guard_summary.json",
+      "workspace_relative_path": "MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_guard_validation_after_guard_20260804_1203/summary/e3_guard_validation_after_guard_summary.json",
+      "source": "manifest_reference"
+    },
+    {
+      "sha256": "f78e847c7321af753111b53f01c774fb72a2684593557b1f947307bb28be7685",
+      "bytes": 2473,
+      "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_guard_validation_after_guard_20260804_1203/summary/e3_guard_validation_after_guard_summary.md",
+      "workspace_relative_path": "MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_guard_validation_after_guard_20260804_1203/summary/e3_guard_validation_after_guard_summary.md",
       "source": "manifest_reference"
     },
     {
@@ -2348,8 +2425,8 @@
       "source": "manifest_reference"
     },
     {
-      "sha256": "1d3d6de442b202e68286ca6ba2a1e7da53e0501159e56a9626f85e931f03b025",
-      "bytes": 185033,
+      "sha256": "33d1f842dd87dbffda86274f759ccba1a6531c99ce1716ea8a3f3b84374e2ba0",
+      "bytes": 188544,
       "path": "/home/ubuntu/lzz/MyAgent/docs/server/server_codex_reports/current-qwen3-mact-experiment-prd.md",
       "workspace_relative_path": "MyAgent/docs/server/server_codex_reports/current-qwen3-mact-experiment-prd.md",
       "source": "manifest_reference"

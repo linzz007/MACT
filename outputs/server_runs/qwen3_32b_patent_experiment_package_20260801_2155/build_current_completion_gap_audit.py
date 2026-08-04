@@ -54,6 +54,11 @@ E3_GUARD_VALIDATION_INPUT_PLAN = Path(
     "qwen3_32b_policy_v6b_e3_guard_validation_inputs_20260804_1128/"
     "summary/e3_guard_validation_input_plan.json"
 )
+E3_GUARD_VALIDATION_AFTER_GUARD_SUMMARY = Path(
+    "/home/ubuntu/lzz/MACT/outputs/server_runs/"
+    "qwen3_32b_policy_v6b_e3_guard_validation_after_guard_20260804_1203/"
+    "summary/e3_guard_validation_after_guard_summary.json"
+)
 E4_READINESS = PACKAGE_DIR / "latest_e4_multimodel_gate_readiness_audit.json"
 FORMAL_LEDGER = PACKAGE_DIR / "latest_formal_result_ledger_current.json"
 CURRENT_PATENT_SECTION = PACKAGE_DIR / "latest_current_patent_experiment_section.json"
@@ -244,6 +249,20 @@ def e3_guard_validation_input_metrics(path: Path) -> dict[str, Any] | None:
     }
 
 
+def e3_guard_validation_after_guard_metrics(path: Path) -> dict[str, Any] | None:
+    if not path.exists():
+        return None
+    summary = read_json(path)
+    return {
+        "decision": summary["decision"],
+        "scope": summary["scope"],
+        "aggregate": summary["aggregate"],
+        "datasets": summary["datasets"],
+        "category_results": summary["category_results"],
+        "guard_change_scope": summary["guard_change_scope"],
+    }
+
+
 def build_audit() -> dict[str, Any]:
     generated_at = dt.datetime.now().astimezone().strftime("%Y-%m-%d %H:%M:%S %Z")
     full = read_json(FULL200_SUMMARY)
@@ -271,6 +290,11 @@ def build_audit() -> dict[str, Any]:
     e3_guard_validation_current = e3_guard_validation_input_metrics(E3_GUARD_VALIDATION_INPUT_PLAN)
     if e3_guard_validation_current:
         e3_current["guard_validation_input_plan"] = e3_guard_validation_current
+    e3_guard_validation_after_current = e3_guard_validation_after_guard_metrics(
+        E3_GUARD_VALIDATION_AFTER_GUARD_SUMMARY
+    )
+    if e3_guard_validation_after_current:
+        e3_current["guard_validation_after_guard"] = e3_guard_validation_after_current
 
     requirements = [
         {
@@ -342,9 +366,17 @@ def build_audit() -> dict[str, Any]:
                 ]
                 if e3_guard_validation_current
                 else []
+            )
+            + (
+                [
+                    str(E3_GUARD_VALIDATION_AFTER_GUARD_SUMMARY),
+                    str(E3_GUARD_VALIDATION_AFTER_GUARD_SUMMARY.with_suffix(".md")),
+                ]
+                if e3_guard_validation_after_current
+                else []
             ),
             "metrics": e3_current,
-            "gap": "Seed-C/Seed-D are boundary evidence, not multi-seed stable superiority evidence. The max_replan=5 probe recovered a minority of representative wrong rows, the semantic-boundary plan defines targeted guard work, and the S2 guard-validation input package is prepared before any paired MACT runtime.",
+            "gap": "Seed-C/Seed-D are boundary evidence, not multi-seed stable superiority evidence. S2 after-guard fresh passed the affected-slice gate, so the next gap is S3 current-only rerun on Seed-C/D before any paired MACT runtime.",
         },
         {
             "id": "R5",
@@ -437,10 +469,10 @@ def build_audit() -> dict[str, Any]:
         "current_next_actions": [
             "Do not rerun known no-go models. Wait for a new local model path or API provider profile/key before E4 Gate-10.",
             "Use latest_current_patent_experiment_section_zh.md for current expert/patent discussion, with E3 and E4 boundaries explicitly preserved.",
-            "If further Qwen3 optimization is requested, start from the E3 semantic-boundary plan and S2 guard-validation input package: implement P0/P1 gold-free guards, run affected-slice fresh validation, then rerun E3 current-only only if the small gate passes.",
+            "S2 after-guard fresh has passed; the next Qwen3 optimization evidence step is S3 Seed-C/Seed-D current-only rerun before any paired MACT runtime.",
         ],
         "overall_completion_status": completion_summary["overall_status"],
-        "reason_not_complete": "Current Qwen3 full200 and P4b after-targeted evidence are positive; E3 is boundary evidence with S2 validation inputs prepared but not freshly run; E4 has no candidate, so model-externality evidence and final closeout remain pending.",
+        "reason_not_complete": "Current Qwen3 full200, P4b after-targeted, and E3 S2 after-guard fresh evidence are positive; E3 still needs Seed-C/D current-only rerun to move from affected-slice guard evidence toward multi-seed stability; E4 has no candidate, so model-externality evidence and final closeout remain pending.",
         "can_write_now": completion_summary["can_write_now"],
         "cannot_write_yet": completion_summary["cannot_write_yet"],
     }
@@ -459,6 +491,7 @@ def render_markdown(report: dict[str, Any]) -> str:
     r4_probe = r4.get("budget_probe_max_replan5")
     r4_semantic_plan = r4.get("semantic_boundary_plan")
     r4_guard_validation = r4.get("guard_validation_input_plan")
+    r4_guard_validation_after = r4.get("guard_validation_after_guard")
     runtime = report["runtime_recheck"]
     lines = [
         "# 当前专利实验完成度审计",
@@ -469,7 +502,7 @@ def render_markdown(report: dict[str, Any]) -> str:
         "",
         "## 当前结论",
         "",
-        f"当前目标状态：`{report['overall_completion_status']}`。Qwen3-32B full200 和 P4b after-targeted 已是正证据；E3 Seed-C/D 是边界证据，并已补 E3 semantic-boundary plan 和 S2 guard-validation input package；E4 状态为 `pending_no_candidate`，artifact decision 为 `no_candidate_wait`，尚无额外模型/API 候选。",
+        f"当前目标状态：`{report['overall_completion_status']}`。Qwen3-32B full200、P4b after-targeted 与 E3 S2 after-guard fresh 已是正证据；E3 Seed-C/D 仍是边界证据，下一步应做 S3 current-only 复跑；E4 状态为 `pending_no_candidate`，artifact decision 为 `no_candidate_wait`，尚无额外模型/API 候选。",
         "",
         "## 环境复核",
         "",
@@ -526,7 +559,11 @@ def render_markdown(report: dict[str, Any]) -> str:
         )
     if r4_guard_validation:
         lines.append(
-            f"| E3 S2 guard-validation input package | decision `{r4_guard_validation['decision']}`, rows `{r4_guard_validation['total_rows']}`, dataset counts `{r4_guard_validation['dataset_counts']}`, role counts `{r4_guard_validation['role_counts']}`, future gate recover `{r4_guard_validation['gate_targets']['representative_wrong_recovery_min']}/12` and no-harm `{r4_guard_validation['gate_targets']['no_harm_correct_min']}/18` |"
+            f"| E3 S2 guard-validation input package | decision `{r4_guard_validation['decision']}`, rows `{r4_guard_validation['total_rows']}`, dataset counts `{r4_guard_validation['dataset_counts']}`, role counts `{r4_guard_validation['role_counts']}`, registered gate target recover `{r4_guard_validation['gate_targets']['representative_wrong_recovery_min']}/12` and no-harm `{r4_guard_validation['gate_targets']['no_harm_correct_min']}/18` |"
+        )
+    if r4_guard_validation_after:
+        lines.append(
+            f"| E3 S2 after-guard fresh | decision `{r4_guard_validation_after['decision']}`, recovered `{r4_guard_validation_after['aggregate']['representative_recovered']}/{r4_guard_validation_after['aggregate']['representative_total']}`, no-harm `{r4_guard_validation_after['aggregate']['no_harm_correct']}/{r4_guard_validation_after['aggregate']['no_harm_total']}`, failed/missing `{r4_guard_validation_after['aggregate']['failed']}/{r4_guard_validation_after['aggregate']['missing']}`, weighted token ratio `{r4_guard_validation_after['aggregate']['token_ratio_to_mact_full200_weighted']:.4f}` |"
         )
     lines.extend(
         [

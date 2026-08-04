@@ -37,6 +37,12 @@ E3_GUARD_VALIDATION_INPUT_PLAN_JSON = Path(
     "summary/e3_guard_validation_input_plan.json"
 )
 E3_GUARD_VALIDATION_INPUT_PLAN_MD = E3_GUARD_VALIDATION_INPUT_PLAN_JSON.with_suffix(".md")
+E3_GUARD_VALIDATION_AFTER_GUARD_JSON = Path(
+    "/home/ubuntu/lzz/MACT/outputs/server_runs/"
+    "qwen3_32b_policy_v6b_e3_guard_validation_after_guard_20260804_1203/"
+    "summary/e3_guard_validation_after_guard_summary.json"
+)
+E3_GUARD_VALIDATION_AFTER_GUARD_MD = E3_GUARD_VALIDATION_AFTER_GUARD_JSON.with_suffix(".md")
 E4_READINESS_JSON = PACKAGE_DIR / "latest_e4_multimodel_gate_readiness_audit.json"
 E4_READINESS_MD = PACKAGE_DIR / "latest_e4_multimodel_gate_readiness_audit_zh.md"
 CURRENT_PATENT_SECTION_JSON = PACKAGE_DIR / "latest_current_patent_experiment_section.json"
@@ -169,6 +175,8 @@ def build_report() -> dict[str, Any]:
         "e3_semantic_boundary_plan_md": E3_SEMANTIC_BOUNDARY_PLAN_MD,
         "e3_guard_validation_input_plan_json": E3_GUARD_VALIDATION_INPUT_PLAN_JSON,
         "e3_guard_validation_input_plan_md": E3_GUARD_VALIDATION_INPUT_PLAN_MD,
+        "e3_guard_validation_after_guard_json": E3_GUARD_VALIDATION_AFTER_GUARD_JSON,
+        "e3_guard_validation_after_guard_md": E3_GUARD_VALIDATION_AFTER_GUARD_MD,
         "e4_multimodel_readiness_json": E4_READINESS_JSON,
         "e4_multimodel_readiness_md": E4_READINESS_MD,
         "current_patent_experiment_section_json": CURRENT_PATENT_SECTION_JSON,
@@ -322,6 +330,7 @@ def build_report() -> dict[str, Any]:
     boundary_manifest = manifest["multiseed_e3_prepared"]["boundary_error_diagnosis"]
     semantic_boundary_manifest = manifest["e3_semantic_boundary_plan"]
     guard_validation_manifest = manifest["e3_guard_validation_inputs"]
+    guard_validation_after_manifest = manifest["e3_guard_validation_after_guard"]
     e4_manifest = manifest["multimodel_e4_readiness"]
     e4_readiness = read_json(E4_READINESS_JSON)
     current_section_manifest = manifest["current_patent_experiment_section"]
@@ -403,6 +412,55 @@ def build_report() -> dict[str, Any]:
         guard_validation_manifest["role_counts"]["no_harm_correct"],
         guard_validation["role_counts"]["no_harm_correct"],
     )
+    guard_validation_after = read_json(E3_GUARD_VALIDATION_AFTER_GUARD_JSON)
+    check_equal(
+        report,
+        "manifest E3 after-guard json path",
+        guard_validation_after_manifest["summary_json"],
+        str(E3_GUARD_VALIDATION_AFTER_GUARD_JSON),
+    )
+    check_equal(
+        report,
+        "manifest E3 after-guard md path",
+        guard_validation_after_manifest["summary_md"],
+        str(E3_GUARD_VALIDATION_AFTER_GUARD_MD),
+    )
+    check_equal(
+        report,
+        "manifest E3 after-guard decision",
+        guard_validation_after_manifest["decision"],
+        guard_validation_after["decision"],
+    )
+    check_equal(
+        report,
+        "manifest E3 after-guard rows",
+        guard_validation_after_manifest["aggregate"]["rows"],
+        guard_validation_after["aggregate"]["rows"],
+    )
+    check_equal(
+        report,
+        "manifest E3 after-guard representative recovered",
+        guard_validation_after_manifest["aggregate"]["representative_recovered"],
+        guard_validation_after["aggregate"]["representative_recovered"],
+    )
+    check_equal(
+        report,
+        "manifest E3 after-guard no-harm correct",
+        guard_validation_after_manifest["aggregate"]["no_harm_correct"],
+        guard_validation_after["aggregate"]["no_harm_correct"],
+    )
+    check_equal(
+        report,
+        "manifest E3 after-guard failed",
+        guard_validation_after_manifest["aggregate"]["failed"],
+        guard_validation_after["aggregate"]["failed"],
+    )
+    check_equal(
+        report,
+        "manifest E3 after-guard missing",
+        guard_validation_after_manifest["aggregate"]["missing"],
+        guard_validation_after["aggregate"]["missing"],
+    )
     check_equal(report, "manifest E4 readiness json path", e4_manifest["latest_json"], str(E4_READINESS_JSON))
     check_equal(report, "manifest E4 readiness md path", e4_manifest["latest_md"], str(E4_READINESS_MD))
     check_equal(report, "manifest E4 readiness status", e4_manifest["status"], e4_readiness["decision"])
@@ -445,6 +503,28 @@ def build_report() -> dict[str, Any]:
         "current patent section E3 guard validation rows",
         current_section["e3_multiseed_boundary"]["guard_validation_inputs"]["total_rows"],
         30,
+    )
+    check_equal(
+        report,
+        "current patent section E3 after-guard decision",
+        current_section["e3_multiseed_boundary"]["guard_validation_after_guard"]["decision"],
+        "after_guard_passes_s2_gate",
+    )
+    check_equal(
+        report,
+        "current patent section E3 after-guard recovered",
+        current_section["e3_multiseed_boundary"]["guard_validation_after_guard"]["aggregate"][
+            "representative_recovered"
+        ],
+        8,
+    )
+    check_equal(
+        report,
+        "current patent section E3 after-guard no-harm",
+        current_section["e3_multiseed_boundary"]["guard_validation_after_guard"]["aggregate"][
+            "no_harm_correct"
+        ],
+        18,
     )
     check_contains(
         report,
@@ -503,6 +583,28 @@ def build_report() -> dict[str, Any]:
         "completion gap guard validation rows",
         requirements_by_id["R4"]["metrics"]["guard_validation_input_plan"]["total_rows"],
         30,
+    )
+    check_equal(
+        report,
+        "completion gap after-guard decision",
+        requirements_by_id["R4"]["metrics"]["guard_validation_after_guard"]["decision"],
+        "after_guard_passes_s2_gate",
+    )
+    check_equal(
+        report,
+        "completion gap after-guard recovered",
+        requirements_by_id["R4"]["metrics"]["guard_validation_after_guard"]["aggregate"][
+            "representative_recovered"
+        ],
+        8,
+    )
+    check_equal(
+        report,
+        "completion gap after-guard no-harm",
+        requirements_by_id["R4"]["metrics"]["guard_validation_after_guard"]["aggregate"][
+            "no_harm_correct"
+        ],
+        18,
     )
     check_equal(
         report,
@@ -618,7 +720,7 @@ def build_report() -> dict[str, Any]:
         report,
         "formal schedule E3 boundary",
         formal_schedule_text,
-        "E3 已经完成，但它是适用边界证据",
+        "S2 after-guard fresh 已证明当前 P0/P1 gold-free guard",
     )
     for label, needle in {
         "patent disclosure full200": "Aggregate | 600/600/600 | 489/600 | 450/600 | +39 | 0.5717 | 0/0",
@@ -645,6 +747,7 @@ def build_report() -> dict[str, Any]:
         "PRD E3 boundary diagnosis": "seed_boundary_error_diagnosis.md",
         "PRD E3 semantic boundary plan": "e3_semantic_boundary_plan.md",
         "PRD E3 guard validation input plan": "e3_guard_validation_input_plan.md",
+        "PRD E3 guard validation after guard": "after_guard_passes_s2_gate",
         "PRD E4 readiness audit": "latest_e4_multimodel_gate_readiness_audit_zh.md",
         "PRD active status": "active_not_complete",
     }.items():

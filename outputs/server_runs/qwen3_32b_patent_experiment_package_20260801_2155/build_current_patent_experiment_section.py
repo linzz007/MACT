@@ -62,6 +62,12 @@ E3_GUARD_VALIDATION_INPUT_PLAN = Path(
     "summary/e3_guard_validation_input_plan.json"
 )
 E3_GUARD_VALIDATION_INPUT_PLAN_MD = E3_GUARD_VALIDATION_INPUT_PLAN.with_suffix(".md")
+E3_GUARD_VALIDATION_AFTER_GUARD_SUMMARY = Path(
+    "/home/ubuntu/lzz/MACT/outputs/server_runs/"
+    "qwen3_32b_policy_v6b_e3_guard_validation_after_guard_20260804_1203/"
+    "summary/e3_guard_validation_after_guard_summary.json"
+)
+E3_GUARD_VALIDATION_AFTER_GUARD_SUMMARY_MD = E3_GUARD_VALIDATION_AFTER_GUARD_SUMMARY.with_suffix(".md")
 E4_READINESS = PACKAGE_DIR / "latest_e4_multimodel_gate_readiness_audit.json"
 E4_READINESS_MD = PACKAGE_DIR / "latest_e4_multimodel_gate_readiness_audit_zh.md"
 FORMAL_LEDGER = PACKAGE_DIR / "latest_formal_result_ledger_current.json"
@@ -255,6 +261,11 @@ def build_section() -> dict[str, Any]:
     e3_guard_validation = (
         read_json(E3_GUARD_VALIDATION_INPUT_PLAN) if E3_GUARD_VALIDATION_INPUT_PLAN.exists() else None
     )
+    e3_guard_validation_after = (
+        read_json(E3_GUARD_VALIDATION_AFTER_GUARD_SUMMARY)
+        if E3_GUARD_VALIDATION_AFTER_GUARD_SUMMARY.exists()
+        else None
+    )
     e4 = read_json(E4_READINESS)
     e3_seeds = [
         e3_seed_table(read_json(E3_RUN_DIR / "summary" / f"{seed}_myagent_gate50_summary.json"))
@@ -289,6 +300,12 @@ def build_section() -> dict[str, Any]:
             "e3_semantic_boundary_plan_md": str(E3_SEMANTIC_BOUNDARY_PLAN_MD) if e3_semantic_plan else "",
             "e3_guard_validation_input_plan": str(E3_GUARD_VALIDATION_INPUT_PLAN) if e3_guard_validation else "",
             "e3_guard_validation_input_plan_md": str(E3_GUARD_VALIDATION_INPUT_PLAN_MD) if e3_guard_validation else "",
+            "e3_guard_validation_after_guard_summary": str(E3_GUARD_VALIDATION_AFTER_GUARD_SUMMARY)
+            if e3_guard_validation_after
+            else "",
+            "e3_guard_validation_after_guard_summary_md": str(E3_GUARD_VALIDATION_AFTER_GUARD_SUMMARY_MD)
+            if e3_guard_validation_after
+            else "",
             "e4_readiness": str(E4_READINESS),
             "e4_readiness_md": str(E4_READINESS_MD),
             "formal_ledger": str(FORMAL_LEDGER),
@@ -300,13 +317,14 @@ def build_section() -> dict[str, Any]:
                 "On Qwen3-32B full200, MyAgent beats MACT on WTQ, TabFact, and CRT, with aggregate token ratio 0.5717 and zero MyAgent failures/missing answers.",
                 "After WTQ targeted fresh validation, P4b after-targeted Gate-50 beats MACT on all three datasets and aggregate, with aggregate token ratio 0.5310 and zero MyAgent failures/missing answers.",
                 "Mechanism evidence supports risk-stratified collaboration, controlled verifier override, deterministic semantic audit, evidence retention, and budget control as patent-facing mechanisms.",
+                "E3 S2 after-guard fresh validation passes the affected-slice gate: 8/12 representative wrong rows recovered, 18/18 no-harm rows retained, failed/missing 0/0, weighted token ratio 0.6104.",
             ],
             "supported_boundary_claims": [
                 "P4b original new-seed Gate-50 exposed WTQ risk: MyAgent 37/50 vs MACT 43/50 before targeted fixes.",
                 "E3 Seed-C/Seed-D current-only Gate-50 are boundary evidence, not stable multi-seed superiority evidence; no same-seed paired MACT baseline was run because current-only gate decided stop_or_inspect.",
                 "E3 max_replan=5 boundary probe recovered only a minority of representative wrong rows, so it supports adaptive budgeting for selected categories but not E3 stability closure.",
-                "E3 semantic-boundary plan defines P0/P1 targeted guard work and blocks full reruns until affected-slice validation passes.",
-                "E3 guard-validation input package prepares the S2 affected-slice/no-harm rows, but it is not a model-run result or stability pass.",
+                "E3 semantic-boundary plan defined P0/P1 targeted guard work and blocked full reruns until affected-slice validation passed.",
+                "E3 S2 after-guard fresh validation is a targeted affected-slice pass, not a Seed-C/D multi-seed stability pass.",
                 "E4 multi-model gate is blocked by no candidate: no untested local model path and no API provider profile/key are available.",
             ],
             "unsupported_claims": [
@@ -408,6 +426,16 @@ def build_section() -> dict[str, Any]:
                 ],
                 "no_harm_proxy_counts": e3_guard_validation["no_harm_proxy_counts"],
             },
+            "guard_validation_after_guard": None
+            if not e3_guard_validation_after
+            else {
+                "decision": e3_guard_validation_after["decision"],
+                "scope": e3_guard_validation_after["scope"],
+                "aggregate": e3_guard_validation_after["aggregate"],
+                "datasets": e3_guard_validation_after["datasets"],
+                "category_results": e3_guard_validation_after["category_results"],
+                "guard_change_scope": e3_guard_validation_after["guard_change_scope"],
+            },
         },
         "e4_multimodel_gate": {
             "decision": e4["decision"],
@@ -461,6 +489,11 @@ def build_section() -> dict[str, Any]:
                 "patent_use": "pre-registered affected-slice/no-harm validation target",
             },
             {
+                "stage": "E3 S2 after-guard fresh validation",
+                "status": "complete_mechanism_gate_pass",
+                "patent_use": "targeted semantic guard fresh evidence, not multi-seed stability proof",
+            },
+            {
                 "stage": "E4 multi-model gate",
                 "status": "pending_no_candidate",
                 "patent_use": "future external validity evidence after new model/API appears",
@@ -479,7 +512,7 @@ def build_section() -> dict[str, Any]:
         "next_trigger_rules": [
             "If a new candidate model/API appears, rerun runtime preflight first and start Gate-10 only on a clean GPU pair, with 0,1 -> 8000 and 2,3 -> 8001 used only when the default pool is actually available; do not consume 4-7 unless explicitly reassigned.",
             "If no new model/API exists, do not rerun known no-go models; continue drafting with E4 marked pending/no-candidate.",
-            "If more Qwen optimization is requested, follow the E3 semantic-boundary plan and the S2 guard-validation input package: implement P0/P1 gold-free semantic guards, run affected-slice fresh validation, then rerun E3 current-only only if the small gate passes.",
+            "S2 after-guard fresh has passed; next Qwen optimization step is S3 E3 Seed-C/D current-only rerun with the current guards, not another affected-slice loop unless S3 exposes new regressions.",
         ],
     }
 
@@ -548,6 +581,7 @@ def render_markdown(report: dict[str, Any]) -> str:
     e3_probe = e3.get("budget_probe_max_replan5")
     e3_semantic_plan = e3.get("semantic_boundary_plan")
     e3_guard_validation = e3.get("guard_validation_inputs")
+    e3_guard_validation_after = e3.get("guard_validation_after_guard")
     e4 = report["e4_multimodel_gate"]
     coarse = report["coarse_ablation_key_numbers"]
     lines = [
@@ -583,6 +617,13 @@ def render_markdown(report: dict[str, Any]) -> str:
             if e3_guard_validation
             else []
         ),
+        *(
+            [
+                f"- E3 S2 after-guard fresh：representative recovered `{e3_guard_validation_after['aggregate']['representative_recovered']}/{e3_guard_validation_after['aggregate']['representative_total']}`，no-harm `{e3_guard_validation_after['aggregate']['no_harm_correct']}/{e3_guard_validation_after['aggregate']['no_harm_total']}`，failed/missing `{e3_guard_validation_after['aggregate']['failed']}/{e3_guard_validation_after['aggregate']['missing']}`，weighted token ratio `{e3_guard_validation_after['aggregate']['token_ratio_to_mact_full200_weighted']:.4f}`，decision `{e3_guard_validation_after['decision']}`。"
+            ]
+            if e3_guard_validation_after
+            else []
+        ),
         f"- E4 多模型 gate：`{e4['decision']}`，无 untested local model、无 API provider profile/key；默认下一次启动池为 `{e4['default_gpu_pool']}`，当前可用状态为 `{e4['default_gpu_pool_available_for_next_start']}`。",
         "",
         "## 2. 可以写入的正证据",
@@ -609,8 +650,8 @@ def render_markdown(report: dict[str, Any]) -> str:
         "- P4b 原始结果不能写成新 seed 三数据集全部超过 MACT；WTQ 原始结果低于 MACT，after-targeted 结果才恢复单项优势。",
         "- E3 Seed-C/D current-only 不能写成多 seed 稳定超过 MACT；它们没有同 seed paired MACT，且 decision 为 `stop_or_inspect`。",
         "- E3 max_replan=5 probe 只恢复少数代表错题；TabFact temporal/numeric 对预算敏感，但 CRT 与 WTQ entity 边界仍需要语义 guard。",
-        "- E3 semantic-boundary plan 是下一步机制实验路线，不是稳定性通过结果。",
-        "- E3 S2 guard-validation input package 只是预注册 affected-slice/no-harm 验证目标，不是 fresh run 或稳定性通过结果。",
+        "- E3 semantic-boundary plan 已转化为 S2 targeted guard fresh 验证，但不是稳定性通过结果。",
+        "- E3 S2 after-guard fresh 是 affected-slice 机制验证通过，不是 Seed-C/D current-only 或 paired MACT 通过。",
         "- E4 不能写成多模型已验证；当前只是 readiness audit，结论是没有可启动候选。",
         "- 不能把 full200/gate 结果写成全量官方测试集完成。",
         "",
@@ -660,10 +701,25 @@ def render_markdown(report: dict[str, Any]) -> str:
                     f"- total rows: `{e3_guard_validation['total_rows']}`",
                     f"- dataset counts: `{e3_guard_validation['dataset_counts']}`",
                     f"- role counts: `{e3_guard_validation['role_counts']}`",
-                    f"- future S2 gate: recover at least `{e3_guard_validation['gate_targets']['representative_wrong_recovery_min']}/12` representative wrong rows and keep `{e3_guard_validation['gate_targets']['no_harm_correct_min']}/18` no-harm rows correct",
+                    f"- registered S2 gate target: recover at least `{e3_guard_validation['gate_targets']['representative_wrong_recovery_min']}/12` representative wrong rows and keep `{e3_guard_validation['gate_targets']['no_harm_correct_min']}/18` no-harm rows correct",
                     "",
                 ]
                 if e3_guard_validation
+                else []
+            ),
+            *(
+                [
+                    "E3 S2 after-guard fresh：",
+                    "",
+                    f"- decision: `{e3_guard_validation_after['decision']}`",
+                    f"- representative recovered: `{e3_guard_validation_after['aggregate']['representative_recovered']}/{e3_guard_validation_after['aggregate']['representative_total']}`",
+                    f"- no-harm correct: `{e3_guard_validation_after['aggregate']['no_harm_correct']}/{e3_guard_validation_after['aggregate']['no_harm_total']}`",
+                    f"- failed/missing: `{e3_guard_validation_after['aggregate']['failed']}/{e3_guard_validation_after['aggregate']['missing']}`",
+                    f"- weighted token ratio vs MACT full200: `{e3_guard_validation_after['aggregate']['token_ratio_to_mact_full200_weighted']:.4f}`",
+                    f"- guard scope: `{', '.join(e3_guard_validation_after['guard_change_scope'])}`",
+                    "",
+                ]
+                if e3_guard_validation_after
                 else []
             ),
             "## 5. 正式实验表状态",
