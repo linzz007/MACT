@@ -153,7 +153,7 @@ E3 multi-seed 包：
 
 ## 8. 剩余 Qwen3 队列入口
 
-后续恢复服务后，优先使用带停机条件的队列脚本，而不是手工串起所有 runner：
+当前已恢复一个 Qwen3-32B 单实例服务：GPU `2,3` -> `http://127.0.0.1:8000/v1`，served model 为 `qwen3-32b-local`。按用户要求，该服务保持常驻，不主动释放显存。后续若要继续小规模 sanity、消融或队列验证，优先使用带停机条件的队列脚本，而不是手工串起所有 runner：
 
 ```text
 /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/run_remaining_qwen3_patent_queue.sh
@@ -176,12 +176,12 @@ E3 multi-seed 包：
 export VLLM_ENDPOINTS=http://127.0.0.1:8000/v1
 bash /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/run_remaining_qwen3_patent_queue.sh --phase wtq --checkpoint
 
-export VLLM_ENDPOINTS=http://127.0.0.1:8000/v1,http://127.0.0.1:8001/v1
+export VLLM_ENDPOINTS=http://127.0.0.1:8000/v1
 bash /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/run_remaining_qwen3_patent_queue.sh --phase seed_c --checkpoint
 bash /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/run_remaining_qwen3_patent_queue.sh --phase seed_d --checkpoint
 ```
 
-该脚本会在 WTQ targeted fresh 未通过时停止，不会启动 WTQ full50；也会在 Seed-C/D current-only 未通过时停止，不会启动 MACT paired。它不会自动扩大到 Gate-150 或 full200。
+该脚本会在 WTQ targeted fresh 未通过时停止，不会启动 WTQ full50；也会在 Seed-C/D current-only 未通过时停止，不会启动 MACT paired。它不会自动扩大到 Gate-150 或 full200。若需要恢复双 endpoint 并行，再另行启动第二个干净 GPU pair 并把 `VLLM_ENDPOINTS` 扩为两个地址。
 
 当前正式结果台账由 `build_current_formal_result_ledger.py` 从 frozen summary、P4b summary、WTQ fresh/after-targeted、E3、E4、模板和 latest preflight 生成，用于专家/专利材料填表；它不会把 pending 项写成 completed。当前专利实验章节由 `build_current_patent_experiment_section.py` 生成，明确列出可写正证据和不能写的边界。
 

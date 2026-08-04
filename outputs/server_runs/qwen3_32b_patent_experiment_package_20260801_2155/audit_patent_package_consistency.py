@@ -429,7 +429,7 @@ def build_report() -> dict[str, Any]:
         report,
         "goal blocker names",
         blocker_names,
-        ["No viable E4 multi-model candidate", "Default Qwen3 GPU pool is not a clean runtime"],
+        ["No viable E4 multi-model candidate", "Qwen3 runtime readiness"],
     )
     check_equal(
         report,
@@ -459,7 +459,7 @@ def build_report() -> dict[str, Any]:
         report,
         "goal blocker runtime markdown",
         goal_blocker_md,
-        "默认 Qwen3 GPU 池不干净",
+        "Qwen3 runtime 已恢复",
     )
     stale_completion_claims = [
         "Seed-C/Seed-D boundary diagnosis and at least one viable multi-model gate result remain missing",

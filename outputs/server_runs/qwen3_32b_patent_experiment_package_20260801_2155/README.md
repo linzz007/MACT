@@ -75,11 +75,11 @@ Current status:
   already-completed WTQ closure and E3 Seed-C/Seed-D validation.
 - Runtime preflight records endpoint/GPU/process readiness before any queue run
   and blocks queue execution when target GPUs show residual runtime state.
-- Final runtime status after sync is `start_service_required`: Qwen3 endpoints
-  `8000/8001` were closed after Seed-D, GPU `0,1,2,3` are back to about
-  `3 MiB/0%`, and no visible compute PID remains. GPU `6,7` still show
-  residual runtime usage but are not required for the active queue. Latest
-  recorded preflight: `qwen3_runtime_preflight_20260803_111318.json/md`.
+- Current runtime status after 2026-08-04 recovery is `ready_existing_endpoint`:
+  one Qwen3-32B vLLM service is intentionally kept resident on GPU `2,3` at
+  `http://127.0.0.1:8000/v1`, served model `qwen3-32b-local`. Latest recorded
+  preflight: `qwen3_runtime_preflight_20260804_102526.json/md`. Do not stop the
+  service unless switching models or explicitly freeing GPU memory.
 - The current formal-result ledger is generated from frozen JSON sources and
   keeps pending stages explicit rather than mixing them with completed results.
   Latest generated ledger is available through

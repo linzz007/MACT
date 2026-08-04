@@ -28,22 +28,23 @@ MyAgent a080844 feat: add wtq targeted semantic fixes
 MACT a6d3162 results: add wtq targeted fix projection
 ```
 
-## 2. 启动 Qwen3-32B 服务
+## 2. Qwen3-32B 服务状态
 
-优先按用户指定资源使用 GPU `6,7`。如果 6/7 不可用，先记录 GPU 状态，不要静默换口径。
+2026-08-04 10:25 CST 当前状态：已按用户要求启动并保留一个 Qwen3-32B 服务，GPU `2,3` -> `http://127.0.0.1:8000/v1`，served model 为 `qwen3-32b-local`。不要停止该服务或释放显存，除非需要快速切换模型。GPU `0,1` 不作为默认新增服务资源，因为 `0` 卡复现无可见 PID 高占用。
 
-先跑 runtime preflight；该命令会把 endpoint、GPU、可见进程和推荐动作写到 MACT 专利实验包：
+继续执行前先跑 runtime preflight；该命令会把 endpoint、GPU、可见进程和推荐动作写到 MACT 专利实验包：
 
 ```bash
-python /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/preflight_qwen3_runtime.py
+python /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/preflight_qwen3_runtime.py \
+  --endpoints http://127.0.0.1:8000/v1 \
+  --target-gpus 2,3
 cat /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_qwen3_runtime_preflight_zh.md
 ```
 
-若输出 `blocked_gpu_runtime_residual`，不要启动模型；先等服务器清理/扩容，或由用户明确授权改用其他 GPU。
+若输出 `ready_existing_endpoint`，直接使用 `VLLM_ENDPOINTS=http://127.0.0.1:8000/v1` 继续；若输出 `blocked_gpu_runtime_residual`，不要重复启动模型，先定位已有服务或驱动残留。
 
 ```bash
-cd /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305
-bash start_qwen3_67_service.sh
+export VLLM_ENDPOINTS=http://127.0.0.1:8000/v1
 ```
 
 健康检查：

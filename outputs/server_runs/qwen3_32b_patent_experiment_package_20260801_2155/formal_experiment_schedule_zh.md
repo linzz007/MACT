@@ -170,7 +170,7 @@ Gate-10 -> Gate-50 -> Gate-150 -> paired-200
 | Gate-150 | 未达到 paired-200 门槛，或只有单数据集偶然领先 |
 | paired-200 | 只给通过 Gate-150 的候选跑，不做全模型枚举 |
 
-当前本机除 Qwen3-32B 外的已知模型均为 no-go；最新 E4 readiness audit 为 `no_candidate_wait`，未发现未测本地模型/API profile/key。新增模型或 API key 出现后再启动 gate；本地模型启动前必须重跑 runtime preflight，只有确认 GPU pair 干净时才使用 `0,1 -> 8000` 与 `2,3 -> 8001` 的默认池。最新记录中 `0-3` 为无可见进程但驱动侧高显存/高利用状态，`4-7` 仍有约 `42GB/卡` 占用，因此不能直接启动在线实验。
+当前本机除 Qwen3-32B 外的已知模型均为 no-go；最新 E4 readiness audit 为 `no_candidate_wait`，未发现未测本地模型/API profile/key。2026-08-04 已恢复一个 Qwen3-32B 单实例服务：GPU `2,3` -> `http://127.0.0.1:8000/v1`，runtime preflight 为 `ready_existing_endpoint`。新增模型或 API key 出现后再启动 gate；本地模型启动前仍必须重跑 runtime preflight，只有确认 GPU pair 干净时才启动新服务。当前 `4-7` 仍有约 `42GB/卡` 占用，不作为默认资源。
 
 ## F. 正式收口
 

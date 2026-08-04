@@ -333,9 +333,9 @@
       "Seed-C/Seed-D MyAgent current-only Gate-50 must decide run_paired_mact before paired MACT baseline runs.",
       "The queue does not automatically expand to Gate-150 or full200."
     ],
-    "current_online_status": "blocked_gpu_runtime_residual",
-    "latest_observed_at_local": "2026-08-03 12:45:08 CST",
-    "latest_observation": "Qwen3 endpoints 8000/8001 are closed and no visible model/runner process is present; nvidia-smi compute-app query returns no holders. However GPU 0,1,2,3 still show about 27.8GB each with high utilization and no visible PID, so the default pool is not safe to start. Next online run must rerun E4/runtime preflight and confirm a clean GPU pair before starting Qwen3 vLLM."
+    "current_online_status": "ready_existing_endpoint",
+    "latest_observed_at_local": "2026-08-04 10:25:26 CST",
+    "latest_observation": "One Qwen3-32B vLLM endpoint is healthy and intentionally kept resident: GPU 2,3 -> http://127.0.0.1:8000/v1, served model qwen3-32b-local. Runtime preflight qwen3_runtime_preflight_20260804_102526.json/md is ready_existing_endpoint with compute app PIDs 158938 and 158939. GPU 0 later showed high memory/utilization with no visible compute PID, so do not use 0,1 as a default second endpoint pair. Do not stop or free the Qwen3 service unless switching models."
   },
   "package_consistency_audit": {
     "script": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/audit_patent_package_consistency.py",
@@ -344,17 +344,17 @@
     "purpose": "Verify that PRD, manifest, latest formal result ledger, latest runtime preflight, and key numeric claims remain consistent.",
     "latest_status": "pass",
     "latest_errors": 0,
-    "latest_warnings": 1,
-    "latest_observed_at_local": "2026-08-03 12:56:16 CST"
+    "latest_warnings": 0,
+    "latest_observed_at_local": "2026-08-04 10:24:29 CST"
   },
   "package_checksums": {
     "script": "outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/build_patent_package_checksums.py",
     "latest_json": "outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_patent_package_checksums.json",
     "latest_md": "outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_patent_package_checksums_zh.md",
     "sha256sums": "outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/SHA256SUMS",
-    "latest_record_count": 268,
+    "latest_record_count": 287,
     "latest_missing_or_pending_reference_count": 0,
-    "latest_observed_at_local": "2026-08-03 12:58:58 CST"
+    "latest_observed_at_local": "2026-08-04 10:28:31 CST"
   },
   "current_prd": "/home/ubuntu/lzz/MyAgent/docs/server/server_codex_reports/current-qwen3-mact-experiment-prd.md",
   "formal_experiment_schedule": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/formal_experiment_schedule_zh.md",

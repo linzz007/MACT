@@ -1,5 +1,5 @@
 {
-  "generated_at_local": "2026-08-04 10:25:26 CST",
+  "generated_at_local": "2026-08-04 10:19:52 CST",
   "package_dir": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155",
   "inputs": {
     "endpoints": [
@@ -17,21 +17,21 @@
       "healthy": true,
       "returncode": 0,
       "stderr": "",
-      "stdout_preview": "{\"object\":\"list\",\"data\":[{\"id\":\"qwen3-32b-local\",\"object\":\"model\",\"created\":1785810326,\"owned_by\":\"vllm\",\"root\":\"/home/ubuntu/models/Qwen3-32B\",\"parent\":null,\"max_model_len\":8192,\"permission\":[{\"id\":\"modelperm-8d2a970a3e4b7823\",\"object\":\"model_permission\",\"created\":1785810326,\"allow_create_engine\":false,\"allow_sampling\":true,\"allow_logprobs\":true,\"allow_search_indices\":false,\"allow_view\":true,\"allow_fine_tuning\":false,\"organization\":\"*\",\"group\":null,\"is_blocking\":false}]}]}"
+      "stdout_preview": "{\"object\":\"list\",\"data\":[{\"id\":\"qwen3-32b-local\",\"object\":\"model\",\"created\":1785809992,\"owned_by\":\"vllm\",\"root\":\"/home/ubuntu/models/Qwen3-32B\",\"parent\":null,\"max_model_len\":8192,\"permission\":[{\"id\":\"modelperm-b429c8c2aa18cc1d\",\"object\":\"model_permission\",\"created\":1785809992,\"allow_create_engine\":false,\"allow_sampling\":true,\"allow_logprobs\":true,\"allow_search_indices\":false,\"allow_view\":true,\"allow_fine_tuning\":false,\"organization\":\"*\",\"group\":null,\"is_blocking\":false}]}]}"
     }
   ],
   "gpus": [
     {
       "index": 0,
       "name": "NVIDIA GeForce RTX 4090",
-      "memory_used_mib": 45728,
+      "memory_used_mib": 0,
       "memory_total_mib": 49140,
-      "utilization_gpu_percent": 99
+      "utilization_gpu_percent": 0
     },
     {
       "index": 1,
       "name": "NVIDIA GeForce RTX 4090",
-      "memory_used_mib": 25395,
+      "memory_used_mib": 0,
       "memory_total_mib": 49140,
       "utilization_gpu_percent": 0
     },
@@ -100,7 +100,7 @@
         "--format=csv,noheader,nounits"
       ],
       "returncode": 0,
-      "stdout": "0, NVIDIA GeForce RTX 4090, 45728, 49140, 99\n1, NVIDIA GeForce RTX 4090, 25395, 49140, 0\n2, NVIDIA GeForce RTX 4090, 45839, 49140, 0\n3, NVIDIA GeForce RTX 4090, 45839, 49140, 0\n4, NVIDIA GeForce RTX 4090, 42031, 49140, 11\n5, NVIDIA GeForce RTX 4090, 42031, 49140, 100\n6, NVIDIA GeForce RTX 4090, 42031, 49140, 100\n7, NVIDIA GeForce RTX 4090, 42031, 49140, 100\n",
+      "stdout": "0, NVIDIA GeForce RTX 4090, 0, 49140, 0\n1, NVIDIA GeForce RTX 4090, 0, 49140, 0\n2, NVIDIA GeForce RTX 4090, 45839, 49140, 0\n3, NVIDIA GeForce RTX 4090, 45839, 49140, 0\n4, NVIDIA GeForce RTX 4090, 42031, 49140, 11\n5, NVIDIA GeForce RTX 4090, 42031, 49140, 100\n6, NVIDIA GeForce RTX 4090, 42031, 49140, 100\n7, NVIDIA GeForce RTX 4090, 42031, 49140, 100\n",
       "stderr": "",
       "timeout": false
     },
@@ -123,7 +123,7 @@
         "1"
       ],
       "returncode": 0,
-      "stdout": "# gpu         pid   type     sm    mem    enc    dec    jpg    ofa    command \n# Idx           #    C/G      %      %      %      %      %      %    name \n    0          -     -      -      -      -      -      -      -    -              \n    1          -     -      -      -      -      -      -      -    -              \n    2     158938     C      -      -      -      -      -      -    VLLM::Worker_TP\n    3     158939     C      -      -      -      -      -      -    VLLM::Worker_TP\n    4          -     -      -      -      -      -      -      -    -              \n    5          -     -      -      -      -      -      -      -    -              \n    6          -     -      -      -      -      -      -      -    -              \n    7          -     -      -      -      -      -      -      -    -              \n",
+      "stdout": "# gpu         pid   type     sm    mem    enc    dec    jpg    ofa    command \n# Idx           #    C/G      %      %      %      %      %      %    name \n    0          -     -      -      -      -      -      -      -    -              \n    1          -     -      -      -      -      -      -      -    -              \n    2     158938     C     27     29      -      -      -      -    VLLM::Worker_TP\n    3     158939     C     27     29      -      -      -      -    VLLM::Worker_TP\n    4          -     -      -      -      -      -      -      -    -              \n    5          -     -      -      -      -      -      -      -    -              \n    6          -     -      -      -      -      -      -      -    -              \n    7          -     -      -      -      -      -      -      -    -              \n",
       "stderr": "",
       "timeout": false
     },
@@ -134,7 +134,7 @@
         "ps -eo pid,ppid,user,stat,etime,%cpu,%mem,cmd | rg 'vllm|api_server|run_sharded_tqa|run_mact|run_remaining_qwen3|Qwen3|qwen' || true"
       ],
       "returncode": 0,
-      "stdout": " 158380       1 ubuntu   Ssl        08:13  8.2  0.1 /home/ubuntu/miniconda3/envs/lzz-agent/bin/python /home/ubuntu/miniconda3/envs/lzz-agent/bin/vllm serve /home/ubuntu/models/Qwen3-32B --host 0.0.0.0 --port 8000 --api-key local-vllm-key-change-me --served-model-name qwen3-32b-local --tensor-parallel-size 2 --max-model-len 8192 --gpu-memory-utilization 0.88 --dtype auto --trust-remote-code\n 159834  152279 ubuntu   Ss         00:01  0.0  0.0 /bin/bash -lc python preflight_qwen3_runtime.py --endpoints http://127.0.0.1:8000/v1 --target-gpus 2,3 && python build_e4_model_gate_readiness_audit.py\n 159836  159834 ubuntu   S          00:01  4.7  0.0 python preflight_qwen3_runtime.py --endpoints http://127.0.0.1:8000/v1 --target-gpus 2,3\n 159855  159836 ubuntu   S          00:00  0.0  0.0 bash -lc ps -eo pid,ppid,user,stat,etime,%cpu,%mem,cmd | rg 'vllm|api_server|run_sharded_tqa|run_mact|run_remaining_qwen3|Qwen3|qwen' || true\n 159858  159855 ubuntu   S          00:00  0.0  0.0 rg vllm|api_server|run_sharded_tqa|run_mact|run_remaining_qwen3|Qwen3|qwen\n",
+      "stdout": " 158380       1 ubuntu   Ssl        02:38 25.4  0.1 /home/ubuntu/miniconda3/envs/lzz-agent/bin/python /home/ubuntu/miniconda3/envs/lzz-agent/bin/vllm serve /home/ubuntu/models/Qwen3-32B --host 0.0.0.0 --port 8000 --api-key local-vllm-key-change-me --served-model-name qwen3-32b-local --tensor-parallel-size 2 --max-model-len 8192 --gpu-memory-utilization 0.88 --dtype auto --trust-remote-code\n 159350  152279 ubuntu   Ss         00:01  8.3  0.0 python preflight_qwen3_runtime.py --endpoints http://127.0.0.1:8000/v1 --target-gpus 2,3\n 159367  159350 ubuntu   S          00:00  0.0  0.0 bash -lc ps -eo pid,ppid,user,stat,etime,%cpu,%mem,cmd | rg 'vllm|api_server|run_sharded_tqa|run_mact|run_remaining_qwen3|Qwen3|qwen' || true\n 159370  159367 ubuntu   S    441077234-00:18:40 0.0  0.0 rg vllm|api_server|run_sharded_tqa|run_mact|run_remaining_qwen3|Qwen3|qwen\n",
       "stderr": "",
       "timeout": false
     }
