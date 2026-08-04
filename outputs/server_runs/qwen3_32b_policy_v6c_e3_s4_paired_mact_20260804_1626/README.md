@@ -55,6 +55,14 @@ Checkpoint at `2026-08-04 17:55 CST`:
 - `seed_d/wtq` is running on `http://127.0.0.1:8000/v1`, output `1/50`.
 - `seed_d/tabfact` and `seed_d/crt` are pending.
 
+Checkpoint at `2026-08-04 18:52 CST`:
+
+- `seed_c/wtq` completed `50/50`; `3` rows have MACT `exec_error`/`mact_error`.
+- `seed_c/tabfact` completed `50/50`; `0` rows have `exec_error`.
+- `seed_c/crt` is running on `http://127.0.0.1:8001/v1`, output `23/50`.
+- `seed_d/wtq` is running on `http://127.0.0.1:8000/v1`, output `26/50`; `1` row has `exec_error`.
+- `seed_d/tabfact` and `seed_d/crt` are pending. Prefer starting `seed_d/crt` first when `8000` becomes free.
+
 Acceptance language:
 
 - Strong patent-seed claim requires MyAgent strictly above MACT on WTQ, TabFact, and CRT for each paired seed, with token ratio materially below MACT and failed/missing `0/0`.
