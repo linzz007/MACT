@@ -47,6 +47,14 @@ Current checkpoint at `2026-08-04 16:38 CST`:
 - `seed_c/crt`, `seed_d/wtq`, `seed_d/tabfact`, and `seed_d/crt` are pending.
 - TabFact is mapped to MACT internal task `scitab` by `run_mact_dataset.sh`; output filenames remain `tabfact_*`.
 
+Checkpoint at `2026-08-04 17:55 CST`:
+
+- `seed_c/wtq` completed `50/50`; `3` rows have MACT `exec_error`/`mact_error` under the old `--max-tokens 2048` context口径.
+- `seed_c/tabfact` completed `50/50`; `0` rows have `exec_error`.
+- `seed_c/crt` is running on `http://127.0.0.1:8001/v1`, output `4/50`.
+- `seed_d/wtq` is running on `http://127.0.0.1:8000/v1`, output `1/50`.
+- `seed_d/tabfact` and `seed_d/crt` are pending.
+
 Acceptance language:
 
 - Strong patent-seed claim requires MyAgent strictly above MACT on WTQ, TabFact, and CRT for each paired seed, with token ratio materially below MACT and failed/missing `0/0`.
