@@ -2,6 +2,8 @@
 
 生成时间：`2026-08-04 16:20:32 CST`
 
+手工增量更新：`2026-08-04 22:14:48 CST`。S4 paired MACT 已完成：overall MyAgent `229/300` vs MACT `223/300`，token ratio `0.5700`，MyAgent failed/missing `0/0`，MACT failed/missing `4/4`，decision `s4_paired_pass_existing_criteria_not_strict`。WTQ `76/100 > 74/100`、TabFact `91/100 > 87/100`，CRT `62/100 = 62/100`。因此可以写成“paired Gate-50 多 seed 总体超过 MACT 且 token 更低”，不能写成“WTQ/TabFact/CRT 全部严格超过 MACT”；下一步是 CRT tie-breaker affected-slice/no-harm fresh。
+
 本文档用于回答：当前哪些实验结果可以写进专家/专利材料，哪些结论必须保留边界。它只汇总已有 frozen 证据，不新增 benchmark 结果。
 
 ## 1. 当前总判断
@@ -15,6 +17,7 @@
 - E3 S2 after-guard fresh：representative recovered `8/12`，no-harm `18/18`，failed/missing `0/0`，weighted token ratio `0.6104`，decision `after_guard_passes_s2_gate`。
 - E3 S3 after-guard current-only：combined `215/300`，weighted token ratio `0.5866`，failed/missing `0/0`，decision `s3_stop_or_inspect_boundary_remains`；Seed-C 通过，Seed-D 未过 WTQ/TabFact gate。
 - E3 v6c boundary-fresh current-only：combined `229/300`，weighted token ratio `0.5794`，failed/missing `0/0`，decision `boundary_fresh_pass_run_paired_mact_candidate`，paired_mact_next `True`。
+- E3 S4 paired MACT：combined MyAgent `229/300` vs MACT `223/300`，token ratio `0.5700`，failed/missing MyAgent `0/0`、MACT `4/4`；existing paired criteria 通过，但 strong patent strict 未过，因为 CRT 持平。
 - E4 多模型 gate：`no_candidate_wait`，无 untested local model、无 API provider profile/key；默认下一次启动池为 `0,1 -> 8000; 2,3 -> 8001`，当前可用状态为 `False`。
 
 ## 2. 可以写入的正证据
@@ -53,8 +56,8 @@ P4b 原始 WTQ 风险为 MyAgent `37/50` vs MACT `43/50`。WTQ affected-slice fr
 - E3 max_replan=5 probe 只恢复少数代表错题；TabFact temporal/numeric 对预算敏感，但 CRT 与 WTQ entity 边界仍需要语义 guard。
 - E3 semantic-boundary plan 已转化为 S2 targeted guard fresh 验证，但不是稳定性通过结果。
 - E3 S2 after-guard fresh 是 affected-slice 机制验证通过，不是 Seed-C/D current-only 或 paired MACT 通过。
-- E3 S3 after-guard current-only 是历史边界证据；v6c boundary fresh 已修复 Seed-D WTQ/TabFact gate，但同 seed paired MACT 仍未启动。
-- E3 v6c boundary-fresh current-only 可以写成 paired MACT 候选，不可以写成 paired MACT 已超过。
+- E3 S3 after-guard current-only 是历史边界证据；v6c boundary fresh 已修复 Seed-D WTQ/TabFact gate，并已进入 S4 paired MACT。
+- E3 v6c boundary-fresh current-only 可以写成 paired MACT 候选；S4 paired MACT 可以写成 existing criteria pass，不可以写成全部数据集严格超过，因为 CRT 持平。
 - E4 不能写成多模型已验证；当前只是 readiness audit，结论是没有可启动候选。
 - 不能把 full200/gate 结果写成全量官方测试集完成。
 
@@ -162,7 +165,8 @@ Limitations: Seed-D WTQ and TabFact are fresh v6c reruns.; Seed-D CRT is inherit
 | E3 S2 guard-validation input package | `complete_input_package_not_model_result` | pre-registered affected-slice/no-harm validation target |
 | E3 S2 after-guard fresh validation | `complete_mechanism_gate_pass` | targeted semantic guard fresh evidence, not multi-seed stability proof |
 | E3 S3 current-only after-guard rerun | `complete_historical_boundary` | Seed-C passed but Seed-D remained below WTQ/TabFact gates before v6c; historical boundary evidence |
-| E3 v6c boundary-fresh current-only candidate | `complete_current_only_candidate_paired_pending` | Seed-C/D current-only candidate reaches paired MACT trigger; not paired MACT evidence yet |
+| E3 v6c boundary-fresh current-only candidate | `complete_current_only_candidate` | Seed-C/D current-only candidate reached paired MACT trigger |
+| E3 S4 paired MACT | `complete_existing_pass_strict_boundary` | Overall and WTQ/TabFact exceed MACT with lower tokens; CRT ties MACT, so strong all-dataset strict claim remains pending |
 | E4 multi-model gate | `pending_no_candidate` | future external validity evidence after new model/API appears |
 | E5/E6 patent experiment section and disclosure draft | `current_section_consolidated` | draft-ready with explicit unsupported claims |
 | E7 final experiment package closeout | `pending` | requires at least E4 candidate or explicit acceptance of no-candidate boundary |
@@ -171,7 +175,7 @@ Limitations: Seed-D WTQ and TabFact are fresh v6c reruns.; Seed-D CRT is inherit
 
 - If a new candidate model/API appears, rerun runtime preflight first and start Gate-10 only on a clean GPU pair, with 0,1 -> 8000 and 2,3 -> 8001 used only when the default pool is actually available; do not consume 4-7 unless explicitly reassigned.
 - If no new model/API exists, do not rerun known no-go models; continue drafting with E4 marked pending/no-candidate.
-- The v6c boundary-fresh current-only candidate has completed and reaches paired_mact_next=true. Next Qwen3 work should run S4 paired MACT, or first run a strict full v6c S3 current-only rerun if all rows must be same-code fresh.
+- The v6c S4 paired MACT run has completed. Next Qwen3 work should run a CRT tie-breaker diagnosis and affected-slice/no-harm fresh validation before any broader rerun.
 
 ## 7. 关键证据路径
 

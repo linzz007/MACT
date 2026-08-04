@@ -184,9 +184,28 @@ Seed-C 分项为 WTQ `40/50`、TabFact `46/50`、CRT `32/50`，全部过 S3 gate
 | Seed-D | 150/150/150 | 111/150 | 0.5516 | 0/0 | `seed_d_boundary_fresh_passes_current_gate` |
 | Combined | 300/300/300 | 229/300 | 0.5794 | 0/0 | `boundary_fresh_pass_run_paired_mact_candidate` |
 
-Seed-D 分项为 WTQ primary denotation `36/50`、TabFact `45/50`、CRT `30/50`，三项均达到 current gate。WTQ 同一 eval 的 exact match 为 `34/50`，正式表格必须注明 WTQ 使用 primary denotation 口径。该实施例可以写成“v6c 语义边界 shortcut 将 Seed-D 从 stop_or_inspect 推进到 paired MACT 候选”，但不能写成 paired MACT 已超过 MACT，因为 Seed-C 继承 S3，Seed-D CRT 继承 S3，S4 paired MACT 尚未运行。
+Seed-D 分项为 WTQ primary denotation `36/50`、TabFact `45/50`、CRT `30/50`，三项均达到 current gate。WTQ 同一 eval 的 exact match 为 `34/50`，正式表格必须注明 WTQ 使用 primary denotation 口径。该实施例可以写成“v6c 语义边界 shortcut 将 Seed-D 从 stop_or_inspect 推进到 paired MACT 候选”；paired MACT 的实际结果见实施例九。
 
-### 实施例九：多模型 Gate Readiness
+### 实施例九：E3 S4 paired MACT 多 seed 对齐验证
+
+在实施例八触发 paired_mact_next 后，使用相同 Seed-C/D Gate-50 input 运行同 ID MACT baseline。结果目录：
+
+```text
+/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6c_e3_s4_paired_mact_20260804_1626/summary/e3_s4_paired_combined_summary.md
+```
+
+结果如下：
+
+| scope | rows | MyAgent | MACT | delta | token ratio | failed/missing |
+|---|---:|---:|---:|---:|---:|---:|
+| WTQ combined | 100 | 76/100 | 74/100 | +2 | 0.5762 | MyAgent 0/0; MACT 4/4 |
+| TabFact combined | 100 | 91/100 | 87/100 | +4 | 0.2571 | MyAgent 0/0; MACT 0/0 |
+| CRT combined | 100 | 62/100 | 62/100 | +0 | 0.8078 | MyAgent 0/0; MACT 0/0 |
+| Overall | 300 | 229/300 | 223/300 | +6 | 0.5700 | MyAgent 0/0; MACT 4/4 |
+
+该实施例可以写成：Qwen3-32B + MyAgent 在 S4 paired Gate-50 多 seed 汇总上 overall 超过 MACT，WTQ/TabFact 单项严格超过 MACT，且 token 显著低于 MACT。该实施例不能写成“WTQ/TabFact/CRT 三项全部严格超过 MACT”，因为 CRT combined 为 `62/100` vs `62/100` 持平。后续若要满足最严格 strong patent-seed claim，应只对 CRT 做 tie-breaker 诊断和 affected-slice/no-harm fresh，而不是继续刷 TabFact 或直接扩 full200。
+
+### 实施例十：多模型 Gate Readiness
 
 E4 多模型 readiness audit 结果为 `no_candidate_wait`：当前只发现已测试/已 no-go 的本地模型，未发现未测本地模型或 API provider profile/key，因此不能写成多模型验证已完成。
 
@@ -218,7 +237,7 @@ E4 多模型 readiness audit 结果为 `no_candidate_wait`：当前只发现已�
 ## 8. 后续需要补入或明确保留边界的正式实验
 
 1. 多模型验证：新本地模型或 API key/provider profile 出现后，至少让 1 个额外模型经过 Gate-10 -> Gate-50 -> Gate-150 漏斗；当前 E4 为 `no_candidate_wait`。
-2. 多 seed paired 正证据：E3 已经完成两组 current-only、离线边界诊断、`max_replan=5` budget probe、semantic-boundary plan、S2 after-guard fresh、S3 after-guard current-only rerun 和 v6c boundary-fresh current-only candidate。当前 combined 为 `229/300`、token ratio `0.5794`、failed/missing `0/0`，已经达到 paired MACT 候选；下一步缺口是 S4 同 ID paired MACT，或先补完整 v6c S3 current-only rerun以满足更严格 freshness。
+2. 多 seed paired 正证据：E3 已经完成两组 current-only、离线边界诊断、`max_replan=5` budget probe、semantic-boundary plan、S2 after-guard fresh、S3 after-guard current-only rerun、v6c boundary-fresh current-only candidate 和 S4 同 ID paired MACT。S4 overall 为 MyAgent `229/300` vs MACT `223/300`，token ratio `0.5700`，WTQ/TabFact 严格超过 MACT，但 CRT `62/100` vs `62/100` 持平；下一步缺口是 CRT tie-breaker，而不是 S4 未运行。
 3. 细粒度消融：根据需要补 verifier override、evidence retention、deterministic audit 的细粒度关闭开关。
 4. 最终实验包收口：当前实验章节已经 consolidated，但 final closeout 需要多模型候选结果，或明确接受 E4 no-candidate 作为当前外延边界。
 
@@ -253,11 +272,12 @@ E4 多模型 readiness audit 结果为 `no_candidate_wait`：当前只发现已�
 - E3 max_replan=5 probe 可写成预算敏感性和 adaptive replan 机制证据：代表错题恢复 `4/12`，failed/missing `0/0`，但不能写成 E3 稳定性闭环。
 - E3 semantic-boundary plan 与 S2 after-guard fresh 可写成机制实验漏斗：P0/P1 语义 guard 已在 `30` 行 affected-slice/no-harm 包上通过 `8/12` recovery 和 `18/18` no-harm gate；S3 after-guard current-only 已完成并暴露 Seed-D WTQ/TabFact 边界。
 - E3 v6c boundary-fresh current-only 可写成 paired MACT 候选证据：combined `229/300`、token ratio `0.5794`、failed/missing `0/0`、decision `boundary_fresh_pass_run_paired_mact_candidate`。
+- E3 S4 paired MACT 可写成 existing criteria 正证据：overall `229/300 > 223/300`，token ratio `0.5700`，WTQ/TabFact 严格超过 MACT，MyAgent failed/missing `0/0`。
 
 暂不写：
 
 - 多模型已全面验证。
 - 新 seed 三数据集已经全部稳定超过 MACT。
-- E3 Seed-C/D 已经证明 paired MACT 稳定超过 MACT。
-- E3 v6c boundary-fresh 已经完成 paired MACT；实际只是 current-only candidate，S4 paired MACT 尚未运行。
+- E3 Seed-C/D 已经证明 WTQ/TabFact/CRT 全部严格超过 MACT。
+- E3 S4 paired MACT 已经满足 strong patent strict；实际只是 existing criteria pass，CRT 持平。
 - blanket 增加 replan 预算可以解决所有 E3 边界。
