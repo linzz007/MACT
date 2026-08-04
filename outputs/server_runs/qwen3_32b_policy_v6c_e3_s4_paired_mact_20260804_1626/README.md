@@ -63,6 +63,16 @@ Checkpoint at `2026-08-04 18:52 CST`:
 - `seed_d/wtq` is running on `http://127.0.0.1:8000/v1`, output `26/50`; `1` row has `exec_error`.
 - `seed_d/tabfact` and `seed_d/crt` are pending. Prefer starting `seed_d/crt` first when `8000` becomes free.
 
+Checkpoint at `2026-08-04 20:08 CST`:
+
+- `seed_c/wtq` completed `50/50`; `3` rows have MACT `exec_error`/`mact_error`: `nu-1073`, `nu-2047`, `nu-575`.
+- `seed_c/tabfact` completed `50/50`; `0` rows have `exec_error`.
+- `seed_c/crt` completed `50/50`; `0` rows have `exec_error`.
+- `seed_d/wtq` completed `50/50`; `1` row has MACT `exec_error`/`mact_error`: `nu-3573`.
+- `seed_d/crt` is running on `http://127.0.0.1:8000/v1`, output `8/50`, `0` current rows have `exec_error`.
+- `seed_d/tabfact` is running on `http://127.0.0.1:8001/v1`, output `2/50`, `0` current rows have `exec_error`.
+- Continue these two sessions. After both reach `50/50`, run `python outputs/server_runs/qwen3_32b_policy_v6c_e3_s4_paired_mact_20260804_1626/summarize_s4_paired.py`.
+
 Acceptance language:
 
 - Strong patent-seed claim requires MyAgent strictly above MACT on WTQ, TabFact, and CRT for each paired seed, with token ratio materially below MACT and failed/missing `0/0`.
