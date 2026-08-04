@@ -1,0 +1,178 @@
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain/__init__.py:29: UserWarning: Importing Wikipedia from langchain root module is no longer supported. Please use langchain.docstore.Wikipedia instead.
+  warnings.warn(
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
+  warn_deprecated(
+==============current step===========
+Thought 1: I need to verify if Bremen and Culver Community are in different IHSAA classes. To do this, I will retrieve their respective IHSAA class entries from the table.
+Action 1: Retrieve[Retrieve the "ihsaa class" values for Bremen and Culver Community.]
+Observation 1: | school (ihsaa id) | ihsaa class |
+| bremen | aa |
+| culver community | a |
+
+==============current step===========
+Thought 1: I need to verify if Bremen and Culver Community are in different IHSAA classes. To do this, I will retrieve their respective IHSAA class entries from the table.
+Action 1: Retrieve[Retrieve the "ihsaa class" values for Bremen and Culver Community.]
+Observation 1: | school (ihsaa id) | ihsaa class |
+| bremen | aa |
+| culver community | a |
+Thought 2: Bremen's IHSAA class is "aa" and Culver Community's IHSAA class is "a". Since these classifications are different, the claim is true.
+Action 2: Finish[True]
+
+Finished Trial 1, Correct: 1, Incorrect: 0, Halted: 0
+
+=== sample 0 id=tabfact-test-6497 start ===
+=== sample 0 returncode=0 end ===
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain/__init__.py:29: UserWarning: Importing Wikipedia from langchain root module is no longer supported. Please use langchain.docstore.Wikipedia instead.
+  warnings.warn(
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
+  warn_deprecated(
+==============current step===========
+Thought 1: I need to verify if the game with attendance 73528 was indeed played on November 24, 2002. To do this, I will retrieve the row where attendance is 73528 and check its date.
+Action 1: Retrieve[Retrieve the row where attendance is 73528.]
+Observation 1: | week | date | opponent | result | attendance |
+| 17.0 | december 29 , 2002 | cleveland browns | l 24 - 16 | 73528.0 |
+
+==============current step===========
+Thought 1: I need to verify if the game with attendance 73528 was indeed played on November 24, 2002. To do this, I will retrieve the row where attendance is 73528 and check its date.
+Action 1: Retrieve[Retrieve the row where attendance is 73528.]
+Observation 1: | week | date | opponent | result | attendance |
+| 17.0 | december 29 , 2002 | cleveland browns | l 24 - 16 | 73528.0 |
+Thought 2: The retrieved row shows that the game with attendance 73528 was played on December 29, 2002, not November 24, 2002 as claimed in the context. Therefore, the statement is false.
+Action 2: Finish[False]
+
+Finished Trial 1, Correct: 1, Incorrect: 0, Halted: 0
+
+=== sample 1 id=tabfact-test-12071 start ===
+=== sample 1 returncode=0 end ===
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain/__init__.py:29: UserWarning: Importing Wikipedia from langchain root module is no longer supported. Please use langchain.docstore.Wikipedia instead.
+  warnings.warn(
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
+  warn_deprecated(
+==============current step===========
+Thought 1: I need to verify if Goran Dragic has the most high assists in any game before April 9. The games before April 9 are games 76, 77, 78, and 79. I will retrieve the "high assists" column for these games to check if Goran Dragic is listed as the top assist leader in any of them.
+Action 1: Retrieve[Retrieve the "high assists" column for games with date before April 9 (i.e., games 76, 77, 78, 79).]
+Observation 1: 
+- Game 76 (April 1): high assists: Luis Scola (6)
+- Game 77 (April 3): high assists: Kyle Lowry (8)
+- Game 78 (April 5): high assists: Kyle Lowry (9)
+- Game 79 (April 6): high assists: Courtney Lee, Kyle Lowry (6)
+
+==============current step===========
+Thought 1: I need to verify if Goran Dragic has the most high assists in any game before April 9. The games before April 9 are games 76, 77, 78, and 79. I will retrieve the "high assists" column for these games to check if Goran Dragic is listed as the top assist leader in any of them.
+Action 1: Retrieve[Retrieve the "high assists" column for games with date before April 9 (i.e., games 76, 77, 78, 79).]
+Observation 1: 
+- Game 76 (April 1): high assists: Luis Scola (6)
+- Game 77 (April 3): high assists: Kyle Lowry (8)
+- Game 78 (April 5): high assists: Kyle Lowry (9)
+- Game 79 (April 6): high assists: Courtney Lee, Kyle Lowry (6)
+Thought 2: In the retrieved data for games before April 9, the "high assists" are attributed to Luis Scola, Kyle Lowry, and Courtney Lee. Goran Dragic is not listed as the top assist leader in any of these games. Therefore, the statement is true.
+Action 2: Finish[True]
+
+Finished Trial 1, Correct: 1, Incorrect: 0, Halted: 0
+
+=== sample 2 id=tabfact-test-7354 start ===
+=== sample 2 returncode=0 end ===
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain/__init__.py:29: UserWarning: Importing Wikipedia from langchain root module is no longer supported. Please use langchain.docstore.Wikipedia instead.
+  warnings.warn(
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
+  warn_deprecated(
+==============current step===========
+Thought 1: The context states that the Flyers lost the 22nd game to the Los Angeles Kings. I need to verify this against the table. The table's record after game 22 is 15-4-3, which implies a loss (since losses increased from 3 to 4). However, the score in the table for game 22 is listed as "4 - 2". If the Flyers are the team in question, a loss would require their score to be 2 and the Kings' 4. The table's score format is ambiguous, but the record confirms a loss. 
+Action 1: Retrieve[Retrieve the record and score for game 22.]
+Observation 1: | record | score |
+| 15 - 4 - 3 | 4 - 2 |
+
+==============current step===========
+Thought 1: The context states that the Flyers lost the 22nd game to the Los Angeles Kings. I need to verify this against the table. The table's record after game 22 is 15-4-3, which implies a loss (since losses increased from 3 to 4). However, the score in the table for game 22 is listed as "4 - 2". If the Flyers are the team in question, a loss would require their score to be 2 and the Kings' 4. The table's score format is ambiguous, but the record confirms a loss. 
+Action 1: Retrieve[Retrieve the record and score for game 22.]
+Observation 1: | record | score |
+| 15 - 4 - 3 | 4 - 2 |
+
+==============current step===========
+Thought 1: The context states that the Flyers lost the 22nd game to the Los Angeles Kings. I need to verify this against the table. The table's record after game 22 is 15-4-3, which implies a loss (since losses increased from 3 to 4). However, the score in the table for game 22 is listed as "4 - 2". If the Flyers are the team in question, a loss would require their score to be 2 and the Kings' 4. The table's score format is ambiguous, but the record confirms a loss. 
+Action 1: Retrieve[Retrieve the record and score for game 22.]
+Observation 1: | record | score |
+| 15 - 4 - 3 | 4 - 2 |
+Thought 2: The record after game 22 is 15-4-3, confirming a loss (losses increased from 3 to 4). The score "4-2" aligns with this if the Flyers scored 2 and the Kings 4. Even if the score format is ambiguous, the record definitively shows a loss. The context claims the Flyers lost game 22 to the Kings, which matches the table's data.  
+Action 2: Finish[True]
+
+Finished Trial 1, Correct: 1, Incorrect: 0, Halted: 0
+
+=== sample 3 id=tabfact-test-1270 start ===
+=== sample 3 returncode=0 end ===
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain/__init__.py:29: UserWarning: Importing Wikipedia from langchain root module is no longer supported. Please use langchain.docstore.Wikipedia instead.
+  warnings.warn(
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
+  warn_deprecated(
+==============current step===========
+Thought 1: I need to verify the context's claims about 2008: total races (31), pole positions (7), and wins (6). I will retrieve the 2008 rows and sum the relevant columns.
+Action 1: Retrieve[Retrieve all rows where season is 2008.]
+Observation 1: | season | series | team | races | wins | poles | f / laps | podiums | points | position |
+| 2008.0 | british formula renault 2.0 | fortec motorsport | 20.0 | 1.0 | 2.0 | 0.0 | 4.0 | 292.0 | 7th |
+| 2008.0 | formula renault 2.0 nec | fortec motorsport | 3.0 | 0.0 | 0.0 | 0.0 | 0.0 | 38.0 | 25th |
+| 2008.0 | british formula renault 2.0 winter series | fortec motorsport | 4.0 | 2.0 | 3.0 | 4.0 | 3.0 | 116.0 | 1st |
+| 2008.0 | portuguese formula renault 2.0 winter series | fortec motorsport | 4.0 | 3.0 | 2.0 | 2.0 | 4.0 | 60.0 | 1st |
+
+==============current step===========
+Thought 1: I need to verify the context's claims about 2008: total races (31), pole positions (7), and wins (6). I will retrieve the 2008 rows and sum the relevant columns.
+Action 1: Retrieve[Retrieve all rows where season is 2008.]
+Observation 1: | season | series | team | races | wins | poles | f / laps | podiums | points | position |
+| 2008.0 | british formula renault 2.0 | fortec motorsport | 20.0 | 1.0 | 2.0 | 0.0 | 4.0 | 292.0 | 7th |
+| 2008.0 | formula renault 2.0 nec | fortec motorsport | 3.0 | 0.0 | 0.0 | 0.0 | 0.0 | 38.0 | 25th |
+| 2008.0 | british formula renault 2.0 winter series | fortec motorsport | 4.0 | 2.0 | 3.0 | 4.0 | 3.0 | 116.0 | 1st |
+| 2008.0 | portuguese formula renault 2.0 winter series | fortec motorsport | 4.0 | 3.0 | 2.0 | 2.0 | 4.0 | 60.0 | 1st |
+Thought 2: Sum the "races" column for 2008: 20 + 3 + 4 + 4 = 31. This matches the context's claim of 31 races. Next, sum the "poles" column: 2 + 0 + 3 + 2 = 7. This matches the context's claim of 7 pole positions. Finally, sum the "wins" column: 1 + 0 + 2 + 3 = 6. This matches the context's claim of 6 wins. All claims are verified.  
+Action 2: Finish[True]
+
+Finished Trial 1, Correct: 1, Incorrect: 0, Halted: 0
+
+=== sample 4 id=tabfact-test-1583 start ===
+=== sample 4 returncode=0 end ===
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain/__init__.py:29: UserWarning: Importing Wikipedia from langchain root module is no longer supported. Please use langchain.docstore.Wikipedia instead.
+  warnings.warn(
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
+  warn_deprecated(
+==============current step===========
+Thought 1: I need to verify if there exists a player in the table with "played" = 2 and "100 +" = 36, and check if their "high checkout" is 115.  
+Action 1: Retrieve[Retrieve rows where "played" = 2 and "100 +" = 36.]  
+Observation 1: | player | played | legs won | legs lost | lwat | 100 + | 140 + | 180s | high checkout | 3 - dart average |
+| wayne mardle | 2.0 | 16.0 | 14.0 | 6.0 | 36.0 | 22.0 | 4.0 | 115.0 | 87.27 |
+
+==============current step===========
+Thought 1: I need to verify if there exists a player in the table with "played" = 2 and "100 +" = 36, and check if their "high checkout" is 115.  
+Action 1: Retrieve[Retrieve rows where "played" = 2 and "100 +" = 36.]  
+Observation 1: | player | played | legs won | legs lost | lwat | 100 + | 140 + | 180s | high checkout | 3 - dart average |
+| wayne mardle | 2.0 | 16.0 | 14.0 | 6.0 | 36.0 | 22.0 | 4.0 | 115.0 | 87.27 |
+Thought 2: The retrieved row shows that Wayne Mardle has "played" = 2, "100 +" = 36, and "high checkout" = 115. This matches the claim exactly.  
+Action 2: Finish[True]
+
+Finished Trial 1, Correct: 1, Incorrect: 0, Halted: 0
+
+=== sample 5 id=tabfact-test-12497 start ===
+=== sample 5 returncode=0 end ===
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain/__init__.py:29: UserWarning: Importing Wikipedia from langchain root module is no longer supported. Please use langchain.docstore.Wikipedia instead.
+  warnings.warn(
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
+  warn_deprecated(
+==============current step===========
+Thought 1: I need to verify if William Ivey Long won the 2005 Drama Desk Award for Outstanding Choreography. From the table, I should retrieve the winner of that specific category.
+Action 1: Retrieve[Retrieve the nominee and result for Drama Desk Award in the category of Outstanding Choreography in 2005.]
+Observation 1: | nominee | result |
+| jerry mitchell | won |
+
+==============current step===========
+Thought 1: I need to verify if William Ivey Long won the 2005 Drama Desk Award for Outstanding Choreography. From the table, I should retrieve the winner of that specific category.
+Action 1: Retrieve[Retrieve the nominee and result for Drama Desk Award in the category of Outstanding Choreography in 2005.]
+Observation 1: | nominee | result |
+| jerry mitchell | won |
+Thought 2: The retrieved data shows that Jerry Mitchell won the 2005 Drama Desk Award for Outstanding Choreography. William Ivey Long was not the recipient of this award. Therefore, the claim that the award did not go to William Ivey Long is true.  
+Action 2: Finish[True]
+
+Finished Trial 1, Correct: 1, Incorrect: 0, Halted: 0
+
+=== sample 6 id=tabfact-test-237 start ===
+=== sample 6 returncode=0 end ===
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain/__init__.py:29: UserWarning: Importing Wikipedia from langchain root module is no longer supported. Please use langchain.docstore.Wikipedia instead.
+  warnings.warn(
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
+  warn_deprecated(
