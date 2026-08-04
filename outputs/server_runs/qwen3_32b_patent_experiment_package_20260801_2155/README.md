@@ -5,8 +5,8 @@ Created: 2026-08-01 21:55 CST
 This directory is the current expert/patent-facing experiment package for the
 MyAgent selective risk collaboration / persuasion-back work. It indexes frozen
 Qwen3-32B evidence, P4b new-seed diagnosis, WTQ targeted-fix closure, E3 S5
-multi-seed paired strict-pass evidence, and the remaining multi-model validation
-work.
+multi-seed paired strict-pass evidence, fine-grained mechanism audit, and the
+remaining multi-model validation work.
 
 This is not a new benchmark run. All numeric claims point to frozen artifacts in
 `MACT/outputs/server_runs/` and the current MyAgent PRD.
@@ -56,7 +56,7 @@ Current status:
 - 2026-08-03 fresh Qwen affected-slice validation passed `9/9`; the P4b
   after-targeted paired Gate-50 summary is MyAgent `121/150` vs MACT `111/150`,
   token ratio `0.5310`, failures/missing `0/0`.
-- The patent-facing mechanism evidence matrix now combines full200, coarse
+- The patent-facing mechanism evidence matrix combines full200, coarse
   ablation, offline attribution evidence, and fresh WTQ closure.
 - E3 Seed-C and Seed-D current-only Gate-50 have both run `150/150` rows and
   stopped before paired MACT with `decision=stop_or_inspect`.
@@ -102,12 +102,20 @@ Current status:
   MyAgent `232/300` vs MACT `223/300`, token ratio `0.5662`, overall
   failed/missing MyAgent `0/0`, MACT `4/4`, WTQ/TabFact/CRT all strictly exceed
   MACT.
+- The fine-grained mechanism ablation audit is complete at
+  `/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6c_e3_fine_grained_mechanism_ablation_audit_20260804_2333/`.
+  It starts no model run and consolidates frozen coarse ablation, S2
+  before/after fresh, and S5 replay/fresh evidence. Decision:
+  `fine_grained_mechanism_evidence_ready_for_qwen3_patent_scope_with_evidence_retention_boundary_and_e4_pending`.
+  Evidence-retention is marked as supporting evidence with an explicit
+  standalone-ablation boundary.
 - The latest current completion-gap audit records status
   `qwen3_strict_goal_complete_e4_pending`: current Qwen3 strict all-dataset
-  target is complete, while E4 remains pending until a new local model or API
-  profile appears.
+  target and current-scope mechanism audit are complete, while E4 remains
+  pending until a new local model or API profile appears.
 - The claim-to-evidence traceability matrix maps six patent claim families to
-  mechanisms, evidence files, support strength, and remaining gaps.
+  mechanisms, evidence files, support strength, and remaining gaps, including
+  the new fine-grained mechanism audit.
 - The formal result-table template defines the exact fields and decision ledger
   to fill after each pending fresh/gate run.
 - The remaining-Qwen3 queue script now provides a guarded executable entry for

@@ -109,6 +109,14 @@ bash /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate
 /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_coarse_ablation_gate50_20260801_0040/
 ```
 
+已完成当前 Qwen3 专利范围的 fine-grained mechanism audit：
+
+```text
+/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6c_e3_fine_grained_mechanism_ablation_audit_20260804_2333/summary/fine_grained_mechanism_ablation_audit.md
+```
+
+当前审计结论：`no_strong_verification` 相对 current `-8/150`，`no_deterministic_shortcuts` 相对 current `-15/150`；S2 guard fresh 从 representative recovered `4/12` 到 `8/12`，no-harm `17/18` 到 `18/18`；S5 CRT scalar canonicalization replay/fresh 支撑 CRT strict pass。decision=`fine_grained_mechanism_evidence_ready_for_qwen3_patent_scope_with_evidence_retention_boundary_and_e4_pending`。
+
 补强顺序：
 
 | order | ablation | sample policy | stop rule |
@@ -116,10 +124,10 @@ bash /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate
 | 1 | current vs legacy | 已有 Gate-50 / frozen artifacts | 只整理，不重跑 |
 | 2 | no strong verification | 已有 Gate-50 / frozen artifacts | 若贡献清晰，不扩 full200 |
 | 3 | no deterministic shortcuts | 已有 Gate-50 / frozen artifacts | 若贡献清晰，不扩 full200 |
-| 4 | no WTQ verifier override | 只在 WTQ discordant / targeted slice 上新增细粒度开关 | 若收益小或不稳定，不扩样 |
-| 5 | no evidence retention | 只在 WTQ high-risk slice 上新增细粒度开关 | 若收益小或不稳定，不扩样 |
+| 4 | no WTQ verifier override | 仅在专利代理人要求更窄因果拆分时新增细粒度开关 | 若收益小或不稳定，不扩样 |
+| 5 | no evidence retention | 仅在专利代理人要求 standalone evidence-retention 因果证据时新增细粒度开关 | 若收益小或不稳定，不扩样 |
 
-原则：机制消融优先使用 frozen raw/eval 和小样本 targeted slice；只有能明确支持专利权利要求的消融才扩大到 Gate-50。
+原则：机制消融优先使用 frozen raw/eval 和小样本 targeted slice；当前 fine-grained audit 已足够支撑 Qwen3 专利草稿。后续只有能明确补强权利要求窄因果边界的开关才扩大到 Gate-50。
 
 ## D. 多 Seed 稳定性
 

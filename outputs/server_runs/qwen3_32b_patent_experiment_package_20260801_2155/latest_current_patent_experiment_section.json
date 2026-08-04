@@ -1,11 +1,11 @@
 {
   "artifact_name": "current_patent_experiment_section",
-  "generated_at_local": "2026-08-04 23:03:00 CST",
+  "generated_at_local": "2026-08-04 23:36:00 CST",
   "purpose": "Current patent/expert-facing experiment section with explicit supported claims and boundaries.",
   "scope_boundary": "This artifact synthesizes existing frozen evidence. It does not create new benchmark results and must not be read as final full official benchmark completion.",
   "git_commits_at_generation": {
-    "myagent": "161b5b9",
-    "mact": "f477bb3"
+    "myagent": "839a21b",
+    "mact": "a16c646"
   },
   "evidence_paths": {
     "full200_summary": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_all200_acceptance_20260731_132611/qwen3_policy_v6b_all200_acceptance_summary.json",
@@ -39,7 +39,9 @@
     "e3_s5_final_summary": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6c_e3_s5_crt_tiebreaker_diag_20260804_2225/summary/e3_s5_final_combined_summary.json",
     "e3_s5_final_summary_md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6c_e3_s5_crt_tiebreaker_diag_20260804_2225/summary/e3_s5_final_combined_summary.md",
     "e3_s5_affected_slice_summary": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6c_e3_s5_crt_tiebreaker_diag_20260804_2225/summary/s5_affected_slice_real_rerun_summary.json",
-    "e3_s5_canonicalizer_replay_summary": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6c_e3_s5_crt_tiebreaker_diag_20260804_2225/summary/s5_crt_canonicalizer_replay_summary.json"
+    "e3_s5_canonicalizer_replay_summary": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6c_e3_s5_crt_tiebreaker_diag_20260804_2225/summary/s5_crt_canonicalizer_replay_summary.json",
+    "fine_grained_mechanism_ablation_audit": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6c_e3_fine_grained_mechanism_ablation_audit_20260804_2333/summary/fine_grained_mechanism_ablation_audit.json",
+    "fine_grained_mechanism_ablation_audit_md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6c_e3_fine_grained_mechanism_ablation_audit_20260804_2333/summary/fine_grained_mechanism_ablation_audit.md"
   },
   "write_status": {
     "current_status": "s5_strict_all_dataset_pass",
@@ -50,7 +52,8 @@
       "E3 S2 after-guard fresh validation passes the affected-slice gate: 8/12 representative wrong rows recovered, 18/18 no-harm rows retained, failed/missing 0/0, weighted token ratio 0.6104.",
       "E3 v6c boundary-fresh current-only candidate passes the current gate: Seed-C inherited 118/150, Seed-D fresh/inherited 111/150, combined 229/300, token ratio 0.5794, failed/missing 0/0.",
       "E3 S4 paired MACT passes existing paired criteria: overall MyAgent 229/300 vs MACT 223/300, token ratio 0.5700; WTQ/TabFact strictly exceed MACT, CRT ties.",
-      "E3 S5 CRT tie-breaker passes the current Qwen3 strong strict target: WTQ 76/100 > 74/100, TabFact 91/100 > 87/100, CRT 65/100 > 62/100, overall 232/300 > 223/300, token ratio 0.5662, MyAgent failed/missing 0/0."
+      "E3 S5 CRT tie-breaker passes the current Qwen3 strong strict target: WTQ 76/100 > 74/100, TabFact 91/100 > 87/100, CRT 65/100 > 62/100, overall 232/300 > 223/300, token ratio 0.5662, MyAgent failed/missing 0/0.",
+      "Fine-grained mechanism audit is complete for the current Qwen3 patent scope: no_strong_verification drops 8/150, no_deterministic_shortcuts drops 15/150, S2 guard recovery improves 4/12 to 8/12 with no-harm 17/18 to 18/18, and S5 CRT scalar canonicalization closes CRT strict pass."
     ],
     "supported_boundary_claims": [
       "P4b original new-seed Gate-50 exposed WTQ risk: MyAgent 37/50 vs MACT 43/50 before targeted fixes.",
@@ -60,12 +63,14 @@
       "E3 S3 after-guard current-only rerun remains historical boundary evidence: Seed-C passed but Seed-D missed WTQ and TabFact gates before v6c boundary shortcuts.",
       "E4 multi-model gate is blocked by no candidate: no untested local model path and no API provider profile/key are available.",
       "E3 Seed-C/Seed-D early current-only and S3 runs are historical boundary evidence; the boundary was later closed by v6c boundary fresh, S4 paired MACT, and S5 CRT tie-breaker.",
-      "E3 S4 paired MACT is historical strict-boundary evidence: existing paired criteria passed, but CRT tied before S5."
+      "E3 S4 paired MACT is historical strict-boundary evidence: existing paired criteria passed, but CRT tied before S5.",
+      "Evidence-retention has attribution plus fresh no-harm/guard support, but no standalone no-evidence-retention causal ablation has been run."
     ],
     "unsupported_claims": [
       "Do not claim multi-model validation is complete.",
       "Do not claim full official dataset completion beyond the frozen full200/gate scopes.",
-      "Do not cite S4 alone for all-dataset strict superiority; cite S5 for the strict Qwen3 paired multi-seed claim."
+      "Do not cite S4 alone for all-dataset strict superiority; cite S5 for the strict Qwen3 paired multi-seed claim.",
+      "Do not claim standalone no-evidence-retention causal isolation has completed."
     ]
   },
   "full200_anchor": {

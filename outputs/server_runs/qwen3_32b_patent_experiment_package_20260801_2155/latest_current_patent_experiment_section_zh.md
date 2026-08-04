@@ -2,7 +2,7 @@
 
 生成时间：`2026-08-04 16:20:32 CST`
 
-手工增量更新：`2026-08-04 23:03:00 CST`。S5 CRT tie-breaker 已完成：在不改 evaluator、gold 或样本 ID 的前提下，MyAgent 增加 gold-free CRT scalar canonicalization，将负数 `difference` 标量规整为非负差值，并将 country/nation 问题中的国家代码展开为国家名。S5 final 合并结果为 overall MyAgent `232/300` vs MACT `223/300`，token ratio `0.5662`，overall failed/missing 为 MyAgent `0/0`、MACT `4/4`，decision `s5_strict_all_dataset_pass`。WTQ `76/100 > 74/100`、TabFact `91/100 > 87/100`、CRT `65/100 > 62/100`。因此当前可以写成“Qwen3-32B + MyAgent 在 paired Gate-50 多 seed 的 WTQ/TabFact/CRT 三项均严格超过 MACT，且总体 token 明显更低”；多模型验证仍 pending。
+手工增量更新：`2026-08-04 23:36:00 CST`。S5 CRT tie-breaker 已完成：在不改 evaluator、gold 或样本 ID 的前提下，MyAgent 增加 gold-free CRT scalar canonicalization，将负数 `difference` 标量规整为非负差值，并将 country/nation 问题中的国家代码展开为国家名。S5 final 合并结果为 overall MyAgent `232/300` vs MACT `223/300`，token ratio `0.5662`，overall failed/missing 为 MyAgent `0/0`、MACT `4/4`，decision `s5_strict_all_dataset_pass`。WTQ `76/100 > 74/100`、TabFact `91/100 > 87/100`、CRT `65/100 > 62/100`。新增 fine-grained mechanism ablation audit，decision=`fine_grained_mechanism_evidence_ready_for_qwen3_patent_scope_with_evidence_retention_boundary_and_e4_pending`，将 coarse ablation、S2 before/after fresh 与 S5 canonicalizer replay/fresh 串成机制证据。当前可以写成“Qwen3-32B + MyAgent 在 paired Gate-50 多 seed 的 WTQ/TabFact/CRT 三项均严格超过 MACT，且总体 token 明显更低”；多模型验证仍 pending。
 
 本文档用于回答：当前哪些实验结果可以写进专家/专利材料，哪些结论必须保留边界。它只汇总已有 frozen 证据，不新增 benchmark 结果。
 
@@ -19,6 +19,7 @@
 - E3 v6c boundary-fresh current-only：combined `229/300`，weighted token ratio `0.5794`，failed/missing `0/0`，decision `boundary_fresh_pass_run_paired_mact_candidate`，paired_mact_next `True`。
 - E3 S4 paired MACT（历史边界）：combined MyAgent `229/300` vs MACT `223/300`，token ratio `0.5700`，failed/missing MyAgent `0/0`、MACT `4/4`；existing paired criteria 通过，但 S4 单独的 strong patent strict 未过，因为 CRT 持平。
 - E3 S5 CRT tie-breaker：current-code CRT100 fresh `65/100` vs MACT `62/100`，S5 final combined MyAgent `232/300` vs MACT `223/300`，token ratio `0.5662`，overall failed/missing MyAgent `0/0`、MACT `4/4`；WTQ/TabFact/CRT 三项均严格超过 MACT，decision `s5_strict_all_dataset_pass`。
+- E3 fine-grained mechanism ablation audit：`no_strong_verification` 相对 current `-8/150` 且 WTQ `-7/50`；`no_deterministic_shortcuts` 相对 current `-15/150`，TabFact `-9/50`、CRT `-7/50`；S2 guard fresh 从 `4/12` representative recovered 到 `8/12`，no-harm `17/18` 到 `18/18`；S5 canonicalizer replay `64/100 > 62/100`，full CRT100 fresh `65/100 > 62/100`。decision=`fine_grained_mechanism_evidence_ready_for_qwen3_patent_scope_with_evidence_retention_boundary_and_e4_pending`。
 - E4 多模型 gate：`no_candidate_wait`，无 untested local model、无 API provider profile/key；默认下一次启动池为 `0,1 -> 8000; 2,3 -> 8001`，当前可用状态为 `False`。
 
 ## 2. 可以写入的正证据
@@ -49,6 +50,7 @@ P4b 原始 WTQ 风险为 MyAgent `37/50` vs MACT `43/50`。WTQ affected-slice fr
 - deterministic audit：关闭 deterministic shortcuts 后 overall 相对 current `-15/150`，TabFact `-9/50`，CRT `-7/50`。
 - TabFact deterministic audit 同时节省预算：no_deterministic_shortcuts 的 TabFact token 为 current 的 `1.4487x`。
 - 机制矩阵：`/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_patent_mechanism_evidence_20260801_2222/patent_mechanism_evidence_matrix.md`。
+- 细粒度机制消融审计：`/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6c_e3_fine_grained_mechanism_ablation_audit_20260804_2333/summary/fine_grained_mechanism_ablation_audit.md`。该审计不启动新模型，结论是 risk collaboration / persuasion-back、deterministic audit、CRT scalar canonicalization 和 budget control 已达到当前 Qwen3 专利撰写可用状态；evidence retention 可作为 supporting evidence，但没有 standalone no-evidence-retention 因果开关。
 
 ## 4. 必须保留的边界
 
@@ -59,6 +61,7 @@ P4b 原始 WTQ 风险为 MyAgent `37/50` vs MACT `43/50`。WTQ affected-slice fr
 - E3 S2 after-guard fresh 是 affected-slice 机制验证通过，不是 Seed-C/D current-only 或 paired MACT 通过。
 - E3 S3 after-guard current-only 是历史边界证据；v6c boundary fresh 已修复 Seed-D WTQ/TabFact gate，并已进入 S4 paired MACT。
 - E3 v6c boundary-fresh current-only 可以写成 paired MACT 候选；S4 paired MACT 是历史 strict boundary；S5 CRT tie-breaker 已闭合该边界，可以写成当前 Qwen3 paired 多 seed 三数据集均严格超过 MACT。
+- fine-grained mechanism audit 不能写成“所有细粒度开关都已独立因果验证”；其中 evidence-retention 仍是 attribution + fresh no-harm/guard 支持。
 - E4 不能写成多模型已验证；当前只是 readiness audit，结论是没有可启动候选。
 - 不能把 full200/gate 结果写成全量官方测试集完成。
 
@@ -169,6 +172,7 @@ Limitations: Seed-D WTQ and TabFact are fresh v6c reruns.; Seed-D CRT is inherit
 | E3 v6c boundary-fresh current-only candidate | `complete_current_only_candidate` | Seed-C/D current-only candidate reached paired MACT trigger |
 | E3 S4 paired MACT | `complete_existing_pass_strict_boundary` | Overall and WTQ/TabFact exceed MACT with lower tokens; CRT ties MACT, so this is historical strict-boundary evidence |
 | E3 S5 CRT tie-breaker | `complete_strict_all_dataset_pass` | Current Qwen3 paired multi-seed result: WTQ/TabFact/CRT all strictly exceed MACT, overall `232/300 > 223/300`, token ratio `0.5662` |
+| E3 fine-grained mechanism ablation audit | `complete_for_current_qwen3_patent_scope` | Mechanism evidence ready for drafting, with standalone evidence-retention ablation explicitly marked optional/boundary |
 | E4 multi-model gate | `pending_no_candidate` | future external validity evidence after new model/API appears |
 | E5/E6 patent experiment section and disclosure draft | `current_section_consolidated` | draft-ready with explicit unsupported claims |
 | E7 final experiment package closeout | `pending` | requires at least E4 candidate or explicit acceptance of no-candidate boundary |
@@ -177,7 +181,7 @@ Limitations: Seed-D WTQ and TabFact are fresh v6c reruns.; Seed-D CRT is inherit
 
 - If a new candidate model/API appears, rerun runtime preflight first and start Gate-10 only on a clean GPU pair, with 0,1 -> 8000 and 2,3 -> 8001 used only when the default pool is actually available; do not consume 4-7 unless explicitly reassigned.
 - If no new model/API exists, do not rerun known no-go models; continue drafting with E4 marked pending/no-candidate.
-- The v6c S5 CRT tie-breaker has completed and closes the Qwen3 strict all-dataset target. Next Qwen3 work should update the formal patent package, optionally add fine-grained mechanism ablations, and wait for a genuinely new model/API candidate before E4 Gate-10.
+- The v6c S5 CRT tie-breaker and fine-grained mechanism audit have completed. Next Qwen3 work should wait for a genuinely new model/API candidate before E4 Gate-10, unless patent counsel specifically asks for standalone no-evidence-retention or no-WTQ-verifier-override switch evidence.
 
 ## 7. 关键证据路径
 

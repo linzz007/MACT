@@ -246,6 +246,14 @@ E4 多模型 readiness audit 结果为 `no_candidate_wait`：当前只发现已�
 
 该矩阵将 full200 主结果、coarse Gate-50 消融和 offline attribution 合并为专利可引用证据。当前可写的机制证据包括：关闭 strong verification 在 diagnostic slice 上 overall `-8/150`，其中 WTQ `-7/50`；关闭 deterministic shortcuts overall `-15/150`，其中 TabFact `-9/50` 且 token 为 current 的 `1.4487x`，CRT `-7/50`；offline attribution 中 WTQ gain rows `24/25` 带 strong-verification tag，TabFact gain rows `8/9` 带 deterministic-audit tag。
 
+细粒度机制消融审计：
+
+```text
+/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6c_e3_fine_grained_mechanism_ablation_audit_20260804_2333/summary/fine_grained_mechanism_ablation_audit.md
+```
+
+该审计不启动新模型，而是汇总冻结 artifact：`no_strong_verification` 相对 current `-8/150`、WTQ `-7/50`；`no_deterministic_shortcuts` 相对 current `-15/150`、TabFact `-9/50`、CRT `-7/50`；S2 guard fresh 从 representative recovered `4/12` 提升到 `8/12`，no-harm 从 `17/18` 到 `18/18`；S5 CRT scalar canonicalization replay `64/100 > 62/100`，full CRT100 fresh `65/100 > 62/100`。因此 risk collaboration / persuasion-back、deterministic audit、CRT scalar canonicalization 和 budget control 可以作为当前 Qwen3 专利范围内的可写机制证据；evidence-retention 可写为 attribution + fresh no-harm/guard supporting evidence，但还不能写成 standalone no-evidence-retention 因果消融已完成。
+
 ## 7. 权利要求草案方向
 
 权利要求与实验证据的逐项映射见：
@@ -267,7 +275,7 @@ E4 多模型 readiness audit 结果为 `no_candidate_wait`：当前只发现已�
 
 1. 多模型验证：新本地模型或 API key/provider profile 出现后，至少让 1 个额外模型经过 Gate-10 -> Gate-50 -> Gate-150 漏斗；当前 E4 为 `no_candidate_wait`。
 2. 多 seed paired 正证据：E3 已经完成两组 current-only、离线边界诊断、`max_replan=5` budget probe、semantic-boundary plan、S2 after-guard fresh、S3 after-guard current-only rerun、v6c boundary-fresh current-only candidate、S4 同 ID paired MACT 和 S5 CRT tie-breaker。S5 overall 为 MyAgent `232/300` vs MACT `223/300`，token ratio `0.5662`，WTQ/TabFact/CRT 三项均严格超过 MACT；当前不再缺 CRT tie-breaker。
-3. 细粒度消融：根据需要补 verifier override、evidence retention、deterministic audit 的细粒度关闭开关。
+3. 细粒度消融：当前 fine-grained mechanism audit 已完成，可用于 Qwen3 专利草稿；只有在专利代理人要求更窄因果拆分时，再补 standalone no-evidence-retention、no-WTQ-verifier-override 或 no-specific-deterministic-audit 小样本开关。
 4. 最终实验包收口：当前实验章节已经 consolidated，但 final closeout 需要多模型候选结果，或明确接受 E4 no-candidate 作为当前外延边界。
 
 ## 8.1 证据路径索引
@@ -306,6 +314,7 @@ E4 多模型 readiness audit 结果为 `no_candidate_wait`：当前只发现已�
 - E3 v6c boundary-fresh current-only 可写成 paired MACT 候选证据：combined `229/300`、token ratio `0.5794`、failed/missing `0/0`、decision `boundary_fresh_pass_run_paired_mact_candidate`。
 - E3 S4 paired MACT 可写成 existing criteria 正证据：overall `229/300 > 223/300`，token ratio `0.5700`，WTQ/TabFact 严格超过 MACT，MyAgent failed/missing `0/0`。
 - E3 S5 CRT tie-breaker 可写成当前 Qwen3 paired 多 seed strong strict 正证据：overall `232/300 > 223/300`，token ratio `0.5662`，WTQ/TabFact/CRT 三项均严格超过 MACT，MyAgent failed/missing `0/0`。
+- 细粒度机制消融审计可写成当前 Qwen3 专利范围的机制收口证据：risk collaboration / persuasion-back、deterministic audit、CRT scalar canonicalization 和 budget control 均有 run-based/fresh/replay 支持；evidence-retention 仍需带边界。
 
 暂不写：
 

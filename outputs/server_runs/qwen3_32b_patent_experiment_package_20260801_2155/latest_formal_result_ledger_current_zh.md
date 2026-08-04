@@ -76,8 +76,10 @@ Recommendation: Use the queue script with the healthy endpoint list.
 - S4 remains useful as historical boundary evidence: existing paired criteria passed, but CRT tied before the S5 answer-contract fix.
 - E4 latest readiness audit has completed with no untested local model path and no API provider profile, so no Gate-10 should be started yet.
 - The current patent experiment section, completion audit, claim matrix, and patent disclosure draft have been updated with S5 evidence.
+- The fine-grained mechanism audit has completed for current Qwen3 patent scope; it is evidence synthesis, not a new benchmark row.
 
 ## Claims Not Supported Yet
 
 - A viable additional model gate has completed.
+- A standalone no-evidence-retention causal ablation has completed.
 - The final experiment package closeout has completed after either an E4 candidate result or explicit acceptance of the no-candidate boundary.

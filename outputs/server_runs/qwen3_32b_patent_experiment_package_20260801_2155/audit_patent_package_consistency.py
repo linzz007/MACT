@@ -66,6 +66,12 @@ E3_S5_AFFECTED_SLICE_JSON = Path(
     "qwen3_32b_policy_v6c_e3_s5_crt_tiebreaker_diag_20260804_2225/"
     "summary/s5_affected_slice_real_rerun_summary.json"
 )
+FINE_GRAINED_MECHANISM_AUDIT_JSON = Path(
+    "/home/ubuntu/lzz/MACT/outputs/server_runs/"
+    "qwen3_32b_policy_v6c_e3_fine_grained_mechanism_ablation_audit_20260804_2333/"
+    "summary/fine_grained_mechanism_ablation_audit.json"
+)
+FINE_GRAINED_MECHANISM_AUDIT_MD = FINE_GRAINED_MECHANISM_AUDIT_JSON.with_suffix(".md")
 E4_READINESS_JSON = PACKAGE_DIR / "latest_e4_multimodel_gate_readiness_audit.json"
 E4_READINESS_MD = PACKAGE_DIR / "latest_e4_multimodel_gate_readiness_audit_zh.md"
 CURRENT_PATENT_SECTION_JSON = PACKAGE_DIR / "latest_current_patent_experiment_section.json"
@@ -207,6 +213,8 @@ def build_report() -> dict[str, Any]:
         "e3_s5_final_summary_json": E3_S5_FINAL_SUMMARY_JSON,
         "e3_s5_final_summary_md": E3_S5_FINAL_SUMMARY_MD,
         "e3_s5_affected_slice_json": E3_S5_AFFECTED_SLICE_JSON,
+        "fine_grained_mechanism_audit_json": FINE_GRAINED_MECHANISM_AUDIT_JSON,
+        "fine_grained_mechanism_audit_md": FINE_GRAINED_MECHANISM_AUDIT_MD,
         "e4_multimodel_readiness_json": E4_READINESS_JSON,
         "e4_multimodel_readiness_md": E4_READINESS_MD,
         "current_patent_experiment_section_json": CURRENT_PATENT_SECTION_JSON,
@@ -397,6 +405,8 @@ def build_report() -> dict[str, Any]:
     s3_current_manifest = manifest["e3_s3_current_after_guard"]
     boundary_fresh_manifest = manifest["e3_boundary_fresh_current_candidate"]
     s5_manifest = manifest["e3_s5_crt_tiebreaker"]
+    fine_manifest = manifest["fine_grained_mechanism_ablation_audit"]
+    fine_audit = read_json(FINE_GRAINED_MECHANISM_AUDIT_JSON)
     e4_manifest = manifest["multimodel_e4_readiness"]
     e4_readiness = read_json(E4_READINESS_JSON)
     current_section_manifest = manifest["current_patent_experiment_section"]
@@ -602,6 +612,54 @@ def build_report() -> dict[str, Any]:
     check_equal(report, "manifest E3 S5 MyAgent correct", s5_manifest["overall"]["myagent_correct"], 232)
     check_equal(report, "manifest E3 S5 MACT correct", s5_manifest["overall"]["mact_correct"], 223)
     check_equal(report, "manifest E3 S5 strict all", s5_manifest["strict_all_dataset_superiority"], True)
+    check_equal(
+        report,
+        "manifest fine-grained audit json path",
+        fine_manifest["json"],
+        str(FINE_GRAINED_MECHANISM_AUDIT_JSON),
+    )
+    check_equal(
+        report,
+        "manifest fine-grained audit md path",
+        fine_manifest["md"],
+        str(FINE_GRAINED_MECHANISM_AUDIT_MD),
+    )
+    check_equal(
+        report,
+        "manifest fine-grained audit decision",
+        fine_manifest["decision"],
+        fine_audit["decision"],
+    )
+    check_equal(
+        report,
+        "fine audit no-strong delta",
+        fine_audit["coarse_ablation"]["no_strong_verification"]["delta_vs_current"],
+        -8,
+    )
+    check_equal(
+        report,
+        "fine audit no-deterministic delta",
+        fine_audit["coarse_ablation"]["no_deterministic_shortcuts"]["delta_vs_current"],
+        -15,
+    )
+    check_equal(
+        report,
+        "fine audit S2 representative recovery delta",
+        fine_audit["s2_guard_fresh_delta"]["representative_recovery_delta"],
+        4,
+    )
+    check_equal(
+        report,
+        "fine audit S2 no-harm delta",
+        fine_audit["s2_guard_fresh_delta"]["no_harm_delta"],
+        1,
+    )
+    check_equal(
+        report,
+        "fine audit S5 full CRT delta",
+        fine_audit["s5_crt_scalar_canonicalization"]["full_crt_delta_correct"],
+        3,
+    )
     check_equal(report, "manifest E4 readiness json path", e4_manifest["latest_json"], str(E4_READINESS_JSON))
     check_equal(report, "manifest E4 readiness md path", e4_manifest["latest_md"], str(E4_READINESS_MD))
     check_equal(report, "manifest E4 readiness status", e4_manifest["status"], e4_readiness["decision"])
@@ -705,6 +763,12 @@ def build_report() -> dict[str, Any]:
         current_section["e3_multiseed_boundary"]["s5_final_paired_combined"]["overall"]["myagent_correct"],
         232,
     )
+    check_equal(
+        report,
+        "current patent section fine audit path",
+        current_section["evidence_paths"]["fine_grained_mechanism_ablation_audit"],
+        str(FINE_GRAINED_MECHANISM_AUDIT_JSON),
+    )
     check_contains(
         report,
         "current patent section unsupported multi-model claim",
@@ -731,6 +795,12 @@ def build_report() -> dict[str, Any]:
     )
     requirements_by_id = {item["id"]: item for item in completion_gap["requirements"]}
     requirement_status = {item_id: item["status"] for item_id, item in requirements_by_id.items()}
+    check_equal(
+        report,
+        "completion gap R2 status",
+        requirement_status.get("R2"),
+        "complete_for_current_qwen3_patent_scope_with_boundary",
+    )
     check_equal(report, "completion gap R3 status", requirement_status.get("R3"), "complete")
     check_equal(
         report,
@@ -822,6 +892,18 @@ def build_report() -> dict[str, Any]:
         "completion gap S5 MyAgent correct",
         requirements_by_id["R4"]["metrics"]["s5_final_paired_combined"]["overall"]["myagent_correct"],
         232,
+    )
+    check_equal(
+        report,
+        "completion gap fine audit decision",
+        requirements_by_id["R2"]["metrics"]["fine_grained_decision"],
+        fine_audit["decision"],
+    )
+    check_equal(
+        report,
+        "completion gap fine audit S2 recovery delta",
+        requirements_by_id["R2"]["metrics"]["s2_guard_representative_recovery_delta"],
+        4,
     )
     check_equal(
         report,
@@ -935,9 +1017,21 @@ def build_report() -> dict[str, Any]:
     )
     check_contains(
         report,
+        "claim traceability fine audit",
+        claim_traceability_md,
+        "fine-grained mechanism audit 已完成",
+    )
+    check_contains(
+        report,
         "formal schedule E3 boundary",
         formal_schedule_text,
         "S5 CRT tie-breaker 已闭合该边界",
+    )
+    check_contains(
+        report,
+        "formal schedule fine audit",
+        formal_schedule_text,
+        "fine-grained mechanism audit",
     )
     for label, needle in {
         "patent disclosure full200": "Aggregate | 600/600/600 | 489/600 | 450/600 | +39 | 0.5717 | 0/0",
@@ -946,6 +1040,7 @@ def build_report() -> dict[str, Any]:
         "patent disclosure E3 S3 boundary": "Combined | 300/300/300 | 215/300 | 0.5866 | 0/0 | `s3_stop_or_inspect_boundary_remains`",
         "patent disclosure E3 boundary fresh": "Combined | 300/300/300 | 229/300 | 0.5794 | 0/0 | `boundary_fresh_pass_run_paired_mact_candidate`",
         "patent disclosure E3 S5 final": "Overall | 300 | 232/300 | 223/300 | +9 | 0.5662 | MyAgent 0/0; MACT 4/4",
+        "patent disclosure fine audit": "细粒度机制消融审计",
         "patent disclosure E4 boundary": "E4 多模型 readiness audit 结果为 `no_candidate_wait`",
         "patent disclosure evidence paths": "latest_completion_gap_audit_current_zh.md",
     }.items():
@@ -971,6 +1066,7 @@ def build_report() -> dict[str, Any]:
         "PRD E3 S3 current after guard": "s3_stop_or_inspect_boundary_remains",
         "PRD E3 boundary fresh": "boundary_fresh_pass_run_paired_mact_candidate",
         "PRD E3 S5 strict pass": "s5_strict_all_dataset_pass",
+        "PRD fine-grained mechanism audit": "fine_grained_mechanism_ablation_audit.md",
         "PRD E4 readiness audit": "latest_e4_multimodel_gate_readiness_audit_zh.md",
         "PRD active status": "qwen3_strict_goal_complete_e4_pending",
     }.items():
