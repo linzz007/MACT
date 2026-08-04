@@ -74,8 +74,6 @@ FINE_GRAINED_MECHANISM_AUDIT_JSON = Path(
 FINE_GRAINED_MECHANISM_AUDIT_MD = FINE_GRAINED_MECHANISM_AUDIT_JSON.with_suffix(".md")
 E4_READINESS_JSON = PACKAGE_DIR / "latest_e4_multimodel_gate_readiness_audit.json"
 E4_READINESS_MD = PACKAGE_DIR / "latest_e4_multimodel_gate_readiness_audit_zh.md"
-E4_READINESS_STAMPED_JSON = PACKAGE_DIR / "e4_multimodel_gate_readiness_audit_20260804_235201.json"
-E4_READINESS_STAMPED_MD = PACKAGE_DIR / "e4_multimodel_gate_readiness_audit_20260804_235201_zh.md"
 CURRENT_PATENT_SECTION_JSON = PACKAGE_DIR / "latest_current_patent_experiment_section.json"
 CURRENT_PATENT_SECTION_MD = PACKAGE_DIR / "latest_current_patent_experiment_section_zh.md"
 CURRENT_COMPLETION_GAP_JSON = PACKAGE_DIR / "latest_completion_gap_audit_current.json"
@@ -87,6 +85,17 @@ GOAL_BLOCKER_AUDIT_MD = PACKAGE_DIR / "latest_goal_blocker_audit_current_zh.md"
 
 def read_json(path: Path) -> dict[str, Any]:
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+def e4_timestamped_paths(e4_readiness: dict[str, Any]) -> tuple[Path, Path, str]:
+    generated_at = e4_readiness["generated_at_local"]
+    local_dt = dt.datetime.strptime(generated_at.rsplit(" ", 1)[0], "%Y-%m-%d %H:%M:%S")
+    stamp = local_dt.strftime("%Y%m%d_%H%M%S")
+    return (
+        PACKAGE_DIR / f"e4_multimodel_gate_readiness_audit_{stamp}.json",
+        PACKAGE_DIR / f"e4_multimodel_gate_readiness_audit_{stamp}_zh.md",
+        local_dt.strftime("%Y-%m-%d %H:%M"),
+    )
 
 
 def git_commit(repo: Path) -> str:
@@ -411,6 +420,7 @@ def build_report() -> dict[str, Any]:
     fine_audit = read_json(FINE_GRAINED_MECHANISM_AUDIT_JSON)
     e4_manifest = manifest["multimodel_e4_readiness"]
     e4_readiness = read_json(E4_READINESS_JSON)
+    e4_stamped_json, e4_stamped_md, e4_generated_label = e4_timestamped_paths(e4_readiness)
     current_section_manifest = manifest["current_patent_experiment_section"]
     current_section = read_json(CURRENT_PATENT_SECTION_JSON)
     completion_gap_manifest = manifest["completion_gap_audit"]
@@ -668,13 +678,13 @@ def build_report() -> dict[str, Any]:
         report,
         "manifest E4 timestamped json path",
         e4_manifest["latest_timestamped_json"],
-        str(E4_READINESS_STAMPED_JSON),
+        str(e4_stamped_json),
     )
     check_equal(
         report,
         "manifest E4 timestamped md path",
         e4_manifest["latest_timestamped_md"],
-        str(E4_READINESS_STAMPED_MD),
+        str(e4_stamped_md),
     )
     check_equal(report, "manifest E4 readiness status", e4_manifest["status"], e4_readiness["decision"])
     check_equal(report, "manifest E4 can start gate10", e4_manifest["can_start_gate10_now"], e4_readiness["can_start_gate10_now"])
@@ -721,7 +731,7 @@ def build_report() -> dict[str, Any]:
         report,
         "current patent section E4 timestamped json",
         current_section["evidence_paths"]["e4_readiness_latest_timestamped_json"],
-        str(E4_READINESS_STAMPED_JSON),
+        str(e4_stamped_json),
     )
     check_equal(
         report,
@@ -1067,7 +1077,7 @@ def build_report() -> dict[str, Any]:
         "patent disclosure E3 boundary fresh": "Combined | 300/300/300 | 229/300 | 0.5794 | 0/0 | `boundary_fresh_pass_run_paired_mact_candidate`",
         "patent disclosure E3 S5 final": "Overall | 300 | 232/300 | 223/300 | +9 | 0.5662 | MyAgent 0/0; MACT 4/4",
         "patent disclosure fine audit": "细粒度机制消融审计",
-        "patent disclosure E4 boundary": "2026-08-04 23:52 最新 E4 多模型 readiness audit 结果为 `no_candidate_wait`",
+        "patent disclosure E4 boundary": f"{e4_generated_label} 最新 E4 多模型 readiness audit 结果为 `no_candidate_wait`",
         "patent disclosure evidence paths": "latest_completion_gap_audit_current_zh.md",
     }.items():
         check_contains(report, label, patent_disclosure_text, needle)
@@ -1094,7 +1104,7 @@ def build_report() -> dict[str, Any]:
         "PRD E3 S5 strict pass": "s5_strict_all_dataset_pass",
         "PRD fine-grained mechanism audit": "fine_grained_mechanism_ablation_audit.md",
         "PRD E4 readiness audit": "latest_e4_multimodel_gate_readiness_audit_zh.md",
-        "PRD E4 timestamped readiness audit": "e4_multimodel_gate_readiness_audit_20260804_235201_zh.md",
+        "PRD E4 timestamped readiness audit": e4_stamped_md.name,
         "PRD active status": "qwen3_strict_goal_complete_e4_pending",
     }.items():
         check_contains(report, label, prd_text, needle)

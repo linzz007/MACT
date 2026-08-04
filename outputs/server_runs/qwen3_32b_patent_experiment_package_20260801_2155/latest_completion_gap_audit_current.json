@@ -1,6 +1,6 @@
 {
   "audit_name": "current_completion_gap_audit",
-  "generated_at_local": "2026-08-04 23:52:01 CST",
+  "generated_at_local": "2026-08-05 00:02:34 CST",
   "purpose": "Requirement-by-requirement audit for the active patent-facing MyAgent vs MACT experiment goal.",
   "scope_boundary": "This audit compiles current evidence and gaps; it does not create new benchmark results.",
   "repositories": {
@@ -17,7 +17,7 @@
   },
   "runtime_recheck": {
     "source": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_e4_multimodel_gate_readiness_audit.json",
-    "checked_at_local": "2026-08-04 23:52:01 CST",
+    "checked_at_local": "2026-08-05 00:02:34 CST",
     "default_gpu_pool": "0,1 -> 8000; 2,3 -> 8001",
     "default_gpu_pool_available_for_next_start": false,
     "gpus": [
@@ -2415,8 +2415,8 @@
       "evidence": [
         "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_e4_multimodel_gate_readiness_audit.json",
         "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_e4_multimodel_gate_readiness_audit_zh.md",
-        "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/e4_multimodel_gate_readiness_audit_20260804_235201.json",
-        "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/e4_multimodel_gate_readiness_audit_20260804_235201_zh.md"
+        "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/e4_multimodel_gate_readiness_audit_20260805_000234.json",
+        "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/e4_multimodel_gate_readiness_audit_20260805_000234_zh.md"
       ],
       "metrics": {
         "decision": "no_candidate_wait",
@@ -2427,9 +2427,9 @@
         "api_provider_profiles": 0,
         "default_gpu_pool_available_for_next_start": false,
         "visible_runner_or_model_processes": 2,
-        "checked_at_local": "2026-08-04 23:52:01 CST"
+        "checked_at_local": "2026-08-05 00:02:34 CST"
       },
-      "gap": "No untested local model path or API provider profile/key exists as of 2026-08-04 23:52 CST. Do not start E4 Gate-10 until a new candidate appears."
+      "gap": "No untested local model path or API provider profile/key exists as of 2026-08-05 00:02 CST. Do not start E4 Gate-10 until a new candidate appears."
     },
     {
       "id": "R6",
@@ -2496,7 +2496,7 @@
     "Optionally run small fine-grained verifier/evidence-retention/deterministic-audit ablations if the patent drafting process needs narrower causal evidence."
   ],
   "overall_completion_status": "qwen3_strict_goal_complete_e4_pending",
-  "reason_not_complete": "Qwen3 strong strict paired multi-seed target and current-scope mechanism audit are complete. Remaining open work is E4 external model/API evidence and final closeout acceptance; the latest 2026-08-04 23:52 E4 audit still has no candidate.",
+  "reason_not_complete": "Qwen3 strong strict paired multi-seed target and current-scope mechanism audit are complete. Remaining open work is E4 external model/API evidence and final closeout acceptance; the latest 2026-08-05 00:02 E4 audit still has no candidate.",
   "can_write_now": [
     "Qwen3-32B full200 stage: MyAgent beats MACT on WTQ, TabFact, and CRT with lower aggregate tokens.",
     "P4b new-seed Gate-50 supports overall/token evidence and WTQ risk has been closed by targeted fresh validation.",
@@ -2525,7 +2525,7 @@
       "summary_json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6c_e3_fine_grained_mechanism_ablation_audit_20260804_2333/summary/fine_grained_mechanism_ablation_audit.json",
       "summary_md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6c_e3_fine_grained_mechanism_ablation_audit_20260804_2333/summary/fine_grained_mechanism_ablation_audit.md"
     },
-    "e4_readiness_latest_20260804_235201": {
+    "e4_readiness_latest_20260805_000234": {
       "decision": "no_candidate_wait",
       "can_start_gate10_now": false,
       "local_models": 4,
@@ -2533,7 +2533,10 @@
       "api_keys_present": 0,
       "api_provider_profiles": 0,
       "visible_runner_or_model_processes": 2,
-      "default_gpu_pool_available_for_next_start": false
+      "default_gpu_pool_available_for_next_start": false,
+      "checked_at_local": "2026-08-05 00:02:34 CST",
+      "timestamped_json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/e4_multimodel_gate_readiness_audit_20260805_000234.json",
+      "timestamped_md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/e4_multimodel_gate_readiness_audit_20260805_000234_zh.md"
     }
   }
 }

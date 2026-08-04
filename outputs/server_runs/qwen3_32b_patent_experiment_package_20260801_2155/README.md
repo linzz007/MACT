@@ -114,7 +114,7 @@ Current status:
   target and current-scope mechanism audit are complete, while E4 remains
   pending until a new local model or API profile appears.
 - The latest E4 multi-model readiness recheck is
-  `e4_multimodel_gate_readiness_audit_20260804_235201.json/md`. It still
+  `e4_multimodel_gate_readiness_audit_20260805_000234.json/md`. It still
   decides `no_candidate_wait`: local models discovered `4`, untested local
   models `0`, API keys/provider profiles `0/0`, visible model/runner processes
   `2`, both being the intentionally resident Qwen3-32B endpoints.
@@ -127,13 +127,13 @@ Current status:
   already-completed WTQ closure and E3 Seed-C/Seed-D validation.
 - Runtime preflight records endpoint/GPU/process readiness before any queue run
   and blocks queue execution when target GPUs show residual runtime state.
-- Current runtime status after 2026-08-04 23:52 recovery check is
+- Current runtime status after 2026-08-05 00:02 recovery check is
   `ready_existing_endpoint`:
   two Qwen3-32B vLLM services are intentionally kept resident on GPU `2,3` at
   `http://127.0.0.1:8000/v1` and GPU `0,1` at
   `http://127.0.0.1:8001/v1`, served model `qwen3-32b-local`. Latest recorded
   preflight remains `qwen3_runtime_preflight_20260804_104903.json/md`; latest
-  E4 readiness is `e4_multimodel_gate_readiness_audit_20260804_235201.json/md`.
+  E4 readiness is `e4_multimodel_gate_readiness_audit_20260805_000234.json/md`.
   Do not stop the services unless switching models or explicitly freeing GPU
   memory.
 - The current formal-result ledger is generated from frozen JSON sources and

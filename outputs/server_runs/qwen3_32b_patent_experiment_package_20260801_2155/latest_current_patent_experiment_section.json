@@ -1,6 +1,6 @@
 {
   "artifact_name": "current_patent_experiment_section",
-  "generated_at_local": "2026-08-04 23:52:01 CST",
+  "generated_at_local": "2026-08-05 00:02:34 CST",
   "purpose": "Current patent/expert-facing experiment section with explicit supported claims and boundaries.",
   "scope_boundary": "This artifact synthesizes existing frozen evidence. It does not create new benchmark results and must not be read as final full official benchmark completion.",
   "git_commits_at_generation": {
@@ -42,8 +42,8 @@
     "e3_s5_canonicalizer_replay_summary": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6c_e3_s5_crt_tiebreaker_diag_20260804_2225/summary/s5_crt_canonicalizer_replay_summary.json",
     "fine_grained_mechanism_ablation_audit": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6c_e3_fine_grained_mechanism_ablation_audit_20260804_2333/summary/fine_grained_mechanism_ablation_audit.json",
     "fine_grained_mechanism_ablation_audit_md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6c_e3_fine_grained_mechanism_ablation_audit_20260804_2333/summary/fine_grained_mechanism_ablation_audit.md",
-    "e4_readiness_latest_timestamped_json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/e4_multimodel_gate_readiness_audit_20260804_235201.json",
-    "e4_readiness_latest_timestamped_md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/e4_multimodel_gate_readiness_audit_20260804_235201_zh.md"
+    "e4_readiness_latest_timestamped_json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/e4_multimodel_gate_readiness_audit_20260805_000234.json",
+    "e4_readiness_latest_timestamped_md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/e4_multimodel_gate_readiness_audit_20260805_000234_zh.md"
   },
   "write_status": {
     "current_status": "s5_strict_all_dataset_pass",
@@ -1370,9 +1370,9 @@
     "default_gpu_pool": "0,1 -> 8000; 2,3 -> 8001",
     "default_gpu_pool_available_for_next_start": false,
     "visible_runner_or_model_processes": 2,
-    "checked_at_local": "2026-08-04 23:52:01 CST",
-    "latest_timestamped_json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/e4_multimodel_gate_readiness_audit_20260804_235201.json",
-    "latest_timestamped_md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/e4_multimodel_gate_readiness_audit_20260804_235201_zh.md"
+    "checked_at_local": "2026-08-05 00:02:34 CST",
+    "latest_timestamped_json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/e4_multimodel_gate_readiness_audit_20260805_000234.json",
+    "latest_timestamped_md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/e4_multimodel_gate_readiness_audit_20260805_000234_zh.md"
   },
   "formal_experiment_status": [
     {
@@ -1453,7 +1453,7 @@
   ],
   "next_trigger_rules": [
     "If a new candidate model/API appears, rerun runtime preflight first and start Gate-10 only on a clean GPU pair.",
-    "If no new model/API exists, do not rerun known no-go models; continue drafting with E4 marked pending/no-candidate. Latest E4 audit is 2026-08-04 23:52 CST with no candidate.",
+    "If no new model/API exists, do not rerun known no-go models; continue drafting with E4 marked pending/no-candidate. Latest E4 audit is 2026-08-05 00:02 CST with no candidate.",
     "The v6c S5 CRT tie-breaker has completed and closes the Qwen3 strict all-dataset target. Next Qwen3 work should be formal package sync, optional fine-grained mechanism ablations, or E4 after a genuinely new model/API candidate appears."
   ]
 }
