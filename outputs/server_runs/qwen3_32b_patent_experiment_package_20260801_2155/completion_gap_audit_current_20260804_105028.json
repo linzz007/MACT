@@ -1,6 +1,6 @@
 {
   "audit_name": "current_completion_gap_audit",
-  "generated_at_local": "2026-08-04 10:51:37 CST",
+  "generated_at_local": "2026-08-04 10:50:28 CST",
   "purpose": "Requirement-by-requirement audit for the active patent-facing MyAgent vs MACT experiment goal.",
   "scope_boundary": "This audit compiles current evidence and gaps; it does not create new benchmark results.",
   "repositories": {
@@ -1669,7 +1669,6 @@
         "supported_boundary_claims": [
           "P4b original new-seed Gate-50 exposed WTQ risk: MyAgent 37/50 vs MACT 43/50 before targeted fixes.",
           "E3 Seed-C/Seed-D current-only Gate-50 are boundary evidence, not stable multi-seed superiority evidence; no same-seed paired MACT baseline was run because current-only gate decided stop_or_inspect.",
-          "E3 max_replan=5 boundary probe recovered only a minority of representative wrong rows, so it supports adaptive budgeting for selected categories but not E3 stability closure.",
           "E4 multi-model gate is blocked by no candidate: no untested local model path and no API provider profile/key are available."
         ],
         "unsupported_claims": [

@@ -1,0 +1,85 @@
+{
+  "artifact": "e3_boundary_budget_probe_inputs",
+  "source_run": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231",
+  "run_dir": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_boundary_budget_probe_20260804_1035",
+  "datasets": {
+    "wtq": 4,
+    "tabfact": 4,
+    "crt": 4
+  },
+  "total_rows": 12,
+  "representative_rows": [
+    {
+      "seed": "seed_c",
+      "dataset": "wtq",
+      "id": "nu-1456",
+      "category": "wtq_temporal_or_age_lookup_boundary"
+    },
+    {
+      "seed": "seed_c",
+      "dataset": "wtq",
+      "id": "nu-2577",
+      "category": "wtq_entity_lookup_or_row_selection_boundary"
+    },
+    {
+      "seed": "seed_c",
+      "dataset": "tabfact",
+      "id": "tabfact-test-9637",
+      "category": "tabfact_false_negative_entailment_boundary"
+    },
+    {
+      "seed": "seed_c",
+      "dataset": "tabfact",
+      "id": "tabfact-test-8555",
+      "category": "tabfact_temporal_order_boundary"
+    },
+    {
+      "seed": "seed_c",
+      "dataset": "crt",
+      "id": "crt-325",
+      "category": "crt_multi_step_numeric_composition_boundary"
+    },
+    {
+      "seed": "seed_c",
+      "dataset": "crt",
+      "id": "crt-0",
+      "category": "crt_span_or_universal_quantifier_boundary"
+    },
+    {
+      "seed": "seed_d",
+      "dataset": "wtq",
+      "id": "nu-515",
+      "category": "wtq_temporal_or_age_lookup_boundary"
+    },
+    {
+      "seed": "seed_d",
+      "dataset": "wtq",
+      "id": "nu-3380",
+      "category": "wtq_entity_lookup_or_row_selection_boundary"
+    },
+    {
+      "seed": "seed_d",
+      "dataset": "tabfact",
+      "id": "tabfact-test-12194",
+      "category": "tabfact_temporal_order_boundary"
+    },
+    {
+      "seed": "seed_d",
+      "dataset": "tabfact",
+      "id": "tabfact-test-1383",
+      "category": "tabfact_numeric_count_or_comparison_boundary"
+    },
+    {
+      "seed": "seed_d",
+      "dataset": "crt",
+      "id": "crt-121",
+      "category": "crt_multi_step_numeric_composition_boundary"
+    },
+    {
+      "seed": "seed_d",
+      "dataset": "crt",
+      "id": "crt-303",
+      "category": "crt_span_or_universal_quantifier_boundary"
+    }
+  ]
+}

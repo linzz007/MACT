@@ -1,6 +1,6 @@
 # 当前专利实验章节收口稿
 
-生成时间：`2026-08-04 10:51:31 CST`
+生成时间：`2026-08-04 10:50:22 CST`
 
 本文档用于回答：当前哪些实验结果可以写进专家/专利材料，哪些结论必须保留边界。它只汇总已有 frozen 证据，不新增 benchmark 结果。
 
@@ -9,7 +9,6 @@
 - Qwen3-32B full200：MyAgent `489/600`，MACT `450/600`，delta `+39`，整体 token ratio `0.5717`，整体耗时 ratio `0.1337`。
 - P4b after-targeted Gate-50：MyAgent `121/150`，MACT `111/150`，三数据集单项均超过 MACT，整体 token ratio `0.5310`。
 - E3 Seed-C/D：current-only 合计 `212/300`，token ratio `0.5916`，failed/missing `0/0`，但 decision 仍是 boundary，不是多 seed 稳定性达标。
-- E3 max_replan=5 probe：12 条代表错题恢复 `4/12`，decision `mixed_budget_sensitivity_not_enough_for_e3_stability`，failed/missing `0/0`；可写成 adaptive budget 机制证据，不能写成稳定性闭环。
 - E4 多模型 gate：`no_candidate_wait`，无 untested local model、无 API provider profile/key；默认下一次启动池为 `0,1 -> 8000; 2,3 -> 8001`，当前可用状态为 `False`。
 
 ## 2. 可以写入的正证据
@@ -45,7 +44,6 @@ P4b 原始 WTQ 风险为 MyAgent `37/50` vs MACT `43/50`。WTQ affected-slice fr
 
 - P4b 原始结果不能写成新 seed 三数据集全部超过 MACT；WTQ 原始结果低于 MACT，after-targeted 结果才恢复单项优势。
 - E3 Seed-C/D current-only 不能写成多 seed 稳定超过 MACT；它们没有同 seed paired MACT，且 decision 为 `stop_or_inspect`。
-- E3 max_replan=5 probe 只恢复少数代表错题；TabFact temporal/numeric 对预算敏感，但 CRT 与 WTQ entity 边界仍需要语义 guard。
 - E4 不能写成多模型已验证；当前只是 readiness audit，结论是没有可启动候选。
 - 不能把 full200/gate 结果写成全量官方测试集完成。
 
@@ -81,15 +79,6 @@ E3 诊断结论：
 - Do not spend paired MACT runtime for these seeds until boundary categories are addressed or explicitly accepted as limitation evidence.
 - Patent-facing claim should use E3 as applicability-boundary evidence, not as multi-seed stable superiority evidence.
 
-E3 max_replan=5 预算 probe：
-
-| dataset | rows | recovered | failed/missing | avg tokens 3->5 | token ratio vs MACT full200 | avg seconds |
-|---|---:|---:|---:|---:|---:|---:|
-| wtq | 4 | 1 | 0/0 | 10811.5->12501.0 | 1.1897 | 42.90 |
-| tabfact | 4 | 3 | 0/0 | 5709.2->4626.8 | 0.4272 | 19.49 |
-| crt | 4 | 0 | 0/0 | 20814.0->22280.5 | 1.7393 | 73.25 |
-| aggregate | 12 | 4 | 0/0 | 12444.9->13136.1 | n/a | 45.21 |
-
 ## 5. 正式实验表状态
 
 | stage | status | patent use |
@@ -98,7 +87,6 @@ E3 max_replan=5 预算 probe：
 | E1 WTQ P4b risk diagnosis | `complete` | risk and boundary diagnosis |
 | E2 WTQ targeted fresh and after-targeted full50 | `complete` | targeted mechanism repair evidence |
 | E3 multi-seed current-only boundary diagnosis | `complete_boundary_evidence` | applicability boundary, not stability proof |
-| E3 max_replan=5 boundary budget probe | `complete_mechanism_probe` | adaptive budget sensitivity and remaining semantic-boundary evidence |
 | E4 multi-model gate | `pending_no_candidate` | future external validity evidence after new model/API appears |
 | E5/E6 patent experiment section and disclosure draft | `current_section_consolidated` | draft-ready with explicit unsupported claims |
 | E7 final experiment package closeout | `pending` | requires at least E4 candidate or explicit acceptance of no-candidate boundary |
@@ -107,7 +95,7 @@ E3 max_replan=5 预算 probe：
 
 - If a new candidate model/API appears, rerun runtime preflight first and start Gate-10 only on a clean GPU pair, with 0,1 -> 8000 and 2,3 -> 8001 used only when the default pool is actually available; do not consume 4-7 unless explicitly reassigned.
 - If no new model/API exists, do not rerun known no-go models; continue drafting with E4 marked pending/no-candidate.
-- If more Qwen optimization is requested, use the E3 max_replan=5 probe to route TabFact temporal/numeric cases toward adaptive budgeting and CRT/WTQ entity cases toward semantic guards, instead of re-optimizing already-passing full200/P4b-after-targeted rows.
+- If more Qwen optimization is requested, target E3 boundary categories instead of re-optimizing already-passing full200/P4b-after-targeted rows.
 
 ## 7. 关键证据路径
 
@@ -123,8 +111,6 @@ E3 max_replan=5 预算 probe：
 - `mechanism_matrix_md`: `/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_patent_mechanism_evidence_20260801_2222/patent_mechanism_evidence_matrix.md`
 - `e3_boundary_diagnosis`: `/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/summary/seed_boundary_error_diagnosis.json`
 - `e3_boundary_diagnosis_md`: `/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/summary/seed_boundary_error_diagnosis.md`
-- `e3_budget_probe_summary`: `/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_boundary_budget_probe_20260804_1035/summary/e3_boundary_budget_probe_summary.json`
-- `e3_budget_probe_summary_md`: `/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_boundary_budget_probe_20260804_1035/summary/e3_boundary_budget_probe_summary.md`
 - `e4_readiness`: `/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_e4_multimodel_gate_readiness_audit.json`
 - `e4_readiness_md`: `/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_e4_multimodel_gate_readiness_audit_zh.md`
 - `formal_ledger`: `/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_formal_result_ledger_current.json`

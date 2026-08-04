@@ -229,6 +229,55 @@
       "decision_note": "E3 remains boundary evidence rather than multi-seed stable superiority evidence; paired MACT remains not_required_current_only_stop."
     }
   },
+  "e3_boundary_budget_probe": {
+    "run_dir": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_boundary_budget_probe_20260804_1035",
+    "readme": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_boundary_budget_probe_20260804_1035/README.md",
+    "input_manifest": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_boundary_budget_probe_20260804_1035/input/input_manifest.json",
+    "summary_json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_boundary_budget_probe_20260804_1035/summary/e3_boundary_budget_probe_summary.json",
+    "summary_md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_boundary_budget_probe_20260804_1035/summary/e3_boundary_budget_probe_summary.md",
+    "runner": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_boundary_budget_probe_20260804_1035/run_probe_max_replan5.sh",
+    "source_run": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231",
+    "scope_note": "Mechanism probe only: reruns representative E3 wrong rows with max_replan=5; not a formal benchmark or multi-seed stability pass.",
+    "decision": "mixed_budget_sensitivity_not_enough_for_e3_stability",
+    "aggregate": {
+      "rows": 12,
+      "original_correct": 0,
+      "replan5_correct": 4,
+      "recovered": 4,
+      "recovery_rate_from_original_wrong": 0.3333333333333333,
+      "failed": 0,
+      "missing": 0,
+      "avg_original_total_tokens": 12444.916666666666,
+      "avg_replan5_total_tokens": 13136.083333333334,
+      "avg_replan5_elapsed_seconds": 45.21273791684265
+    },
+    "dataset_recovery": {
+      "wtq": {
+        "rows": 4,
+        "recovered": 1,
+        "replan5_correct": 1,
+        "failed": 0,
+        "missing": 0,
+        "replan5_token_ratio_to_mact_full200": 1.1896612528754158
+      },
+      "tabfact": {
+        "rows": 4,
+        "recovered": 3,
+        "replan5_correct": 3,
+        "failed": 0,
+        "missing": 0,
+        "replan5_token_ratio_to_mact_full200": 0.42718722258378864
+      },
+      "crt": {
+        "rows": 4,
+        "recovered": 0,
+        "replan5_correct": 0,
+        "failed": 0,
+        "missing": 0,
+        "replan5_token_ratio_to_mact_full200": 1.739308051688622
+      }
+    }
+  },
   "completion_gap_audit": {
     "script": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/build_current_completion_gap_audit.py",
     "latest_json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_completion_gap_audit_current.json",

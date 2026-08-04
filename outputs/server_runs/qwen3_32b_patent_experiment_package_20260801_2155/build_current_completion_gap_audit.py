@@ -39,6 +39,11 @@ E3_BOUNDARY_DIAGNOSIS = Path(
     "qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/"
     "summary/seed_boundary_error_diagnosis.json"
 )
+E3_BUDGET_PROBE_SUMMARY = Path(
+    "/home/ubuntu/lzz/MACT/outputs/server_runs/"
+    "qwen3_32b_policy_v6b_e3_boundary_budget_probe_20260804_1035/"
+    "summary/e3_boundary_budget_probe_summary.json"
+)
 E4_READINESS = PACKAGE_DIR / "latest_e4_multimodel_gate_readiness_audit.json"
 FORMAL_LEDGER = PACKAGE_DIR / "latest_formal_result_ledger_current.json"
 CURRENT_PATENT_SECTION = PACKAGE_DIR / "latest_current_patent_experiment_section.json"
@@ -154,6 +159,45 @@ def e3_metrics(e3: dict[str, Any]) -> dict[str, Any]:
     }
 
 
+def e3_budget_probe_metrics(path: Path) -> dict[str, Any] | None:
+    if not path.exists():
+        return None
+    probe = read_json(path)
+    aggregate = probe["aggregate"]
+    datasets = {
+        dataset: {
+            "input_rows": item["input_rows"],
+            "merged_rows": item["merged_rows"],
+            "eval_num_samples": item["eval_num_samples"],
+            "replan5_correct": item["replan5_correct"],
+            "recovered": item["recovered"],
+            "num_failed_exec": item["num_failed_exec"],
+            "num_missing_answer": item["num_missing_answer"],
+            "original_avg_total_tokens": item["original_avg_total_tokens"],
+            "replan5_avg_total_tokens": item["replan5_avg_total_tokens"],
+            "replan5_token_ratio_to_mact_full200": item["replan5_token_ratio_to_mact_full200"],
+            "avg_elapsed_seconds": item["avg_elapsed_seconds"],
+        }
+        for dataset, item in probe["datasets"].items()
+    }
+    return {
+        "decision": probe["decision"],
+        "scope": probe["scope"],
+        "rows": aggregate["rows"],
+        "original_correct": aggregate["original_correct"],
+        "replan5_correct": aggregate["replan5_correct"],
+        "recovered": aggregate["recovered"],
+        "recovery_rate_from_original_wrong": aggregate["recovery_rate_from_original_wrong"],
+        "failed": aggregate["failed"],
+        "missing": aggregate["missing"],
+        "avg_original_total_tokens": aggregate["avg_original_total_tokens"],
+        "avg_replan5_total_tokens": aggregate["avg_replan5_total_tokens"],
+        "avg_replan5_elapsed_seconds": aggregate["avg_replan5_elapsed_seconds"],
+        "category_recovery": aggregate["category_recovery"],
+        "datasets": datasets,
+    }
+
+
 def build_audit() -> dict[str, Any]:
     generated_at = dt.datetime.now().astimezone().strftime("%Y-%m-%d %H:%M:%S %Z")
     full = read_json(FULL200_SUMMARY)
@@ -172,6 +216,9 @@ def build_audit() -> dict[str, Any]:
     full_metrics = full200_metrics(full)
     p4b_metrics = p4b_after_metrics(p4b_after, targeted, p4b_original)
     e3_current = e3_metrics(e3)
+    e3_probe_current = e3_budget_probe_metrics(E3_BUDGET_PROBE_SUMMARY)
+    if e3_probe_current:
+        e3_current["budget_probe_max_replan5"] = e3_probe_current
 
     requirements = [
         {
@@ -219,9 +266,17 @@ def build_audit() -> dict[str, Any]:
             "evidence": [
                 str(E3_BOUNDARY_DIAGNOSIS),
                 str(E3_BOUNDARY_DIAGNOSIS.with_suffix(".md")),
-            ],
+            ]
+            + (
+                [
+                    str(E3_BUDGET_PROBE_SUMMARY),
+                    str(E3_BUDGET_PROBE_SUMMARY.with_suffix(".md")),
+                ]
+                if e3_probe_current
+                else []
+            ),
             "metrics": e3_current,
-            "gap": "Seed-C/Seed-D are boundary evidence, not multi-seed stable superiority evidence. They should not trigger paired MACT under the current gate.",
+            "gap": "Seed-C/Seed-D are boundary evidence, not multi-seed stable superiority evidence. The max_replan=5 probe recovered a minority of representative wrong rows, so adaptive budgeting is useful for selected categories but does not close E3 stability.",
         },
         {
             "id": "R5",
@@ -314,7 +369,7 @@ def build_audit() -> dict[str, Any]:
         "current_next_actions": [
             "Do not rerun known no-go models. Wait for a new local model path or API provider profile/key before E4 Gate-10.",
             "Use latest_current_patent_experiment_section_zh.md for current expert/patent discussion, with E3 and E4 boundaries explicitly preserved.",
-            "If further Qwen3 optimization is requested, target E3 semantic boundary categories instead of re-optimizing the passing full200/P4b-after-targeted anchors.",
+            "If further Qwen3 optimization is requested, use the E3 max_replan=5 probe to separate adaptive-budget categories from semantic-guard categories, instead of re-optimizing the passing full200/P4b-after-targeted anchors.",
         ],
         "overall_completion_status": completion_summary["overall_status"],
         "reason_not_complete": "Current Qwen3 full200 and P4b after-targeted evidence are positive; E3 is boundary evidence; E4 has no candidate, so model-externality evidence and final closeout remain pending.",
@@ -333,6 +388,7 @@ def render_markdown(report: dict[str, Any]) -> str:
     r3 = req_by_id["R3"]["metrics"]
     r4 = req_by_id["R4"]["metrics"]
     r5 = req_by_id["R5"]["metrics"]
+    r4_probe = r4.get("budget_probe_max_replan5")
     runtime = report["runtime_recheck"]
     lines = [
         "# 当前专利实验完成度审计",
@@ -388,6 +444,14 @@ def render_markdown(report: dict[str, Any]) -> str:
             f"| WTQ targeted fresh | `{render_count(r3['targeted_fresh']['correct'], r3['targeted_fresh']['rows'])}`, merged/eval `{r3['targeted_fresh']['merged_rows']}/{r3['targeted_fresh']['eval_rows']}`, failed/missing `{r3['targeted_fresh']['failed']}/{r3['targeted_fresh']['missing']}`, decision `{r3['targeted_fresh']['decision']}` |",
             f"| P4b after-targeted aggregate | MyAgent `{render_count(r3['after_targeted']['aggregate']['myagent'], r3['after_targeted']['aggregate']['rows'])}` vs MACT `{render_count(r3['after_targeted']['aggregate']['mact'], r3['after_targeted']['aggregate']['rows'])}`, token ratio `{r3['after_targeted']['aggregate']['token_ratio']:.4f}`, failed/missing `{r3['after_targeted']['aggregate']['failed']}/{r3['after_targeted']['aggregate']['missing']}` |",
             f"| E3 Seed-C/D boundary aggregate | `{r4['aggregate']['correct']}/{r4['aggregate']['rows']}`, wrong `{r4['aggregate']['wrong']}`, weighted token ratio `{r4['aggregate']['weighted_token_ratio_to_mact_full200_reference']:.4f}`, failed/missing `{r4['aggregate']['failed']}/{r4['aggregate']['missing']}`, verification `{r4['aggregate']['verification_status']}` |",
+        ]
+    )
+    if r4_probe:
+        lines.append(
+            f"| E3 max_replan=5 boundary probe | recovered `{r4_probe['recovered']}/{r4_probe['rows']}` original wrong rows, decision `{r4_probe['decision']}`, failed/missing `{r4_probe['failed']}/{r4_probe['missing']}`, avg tokens `{r4_probe['avg_original_total_tokens']:.1f}->{r4_probe['avg_replan5_total_tokens']:.1f}` |"
+        )
+    lines.extend(
+        [
             f"| E4 readiness | decision `{r5['decision']}`; can_start_gate10_now `{r5['can_start_gate10_now']}`, local models `{r5['local_models_discovered']}`, untested local models `{r5['untested_local_models']}`, API keys/profiles `{r5['api_keys_present']}/{r5['api_provider_profiles']}` |",
             "",
             "## 下一步",

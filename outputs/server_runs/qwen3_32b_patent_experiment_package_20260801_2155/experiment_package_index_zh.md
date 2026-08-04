@@ -14,7 +14,7 @@
 
 > 多模型验证已经完成，或多 seed 已稳定超过 MACT。
 
-原因：P4b 原始新 seed Gate-50 虽然 overall 通过 existing paired gate，但 WTQ 单项原始结果是 MyAgent `37/50` vs MACT `43/50`。E1/E2 已经完成诊断、fresh affected-slice `9/9` 和 after-targeted P4b full50；after-targeted 总表为 MyAgent `121/150` vs MACT `111/150`，三数据集单项均超过 MACT。E3 Seed-C/Seed-D current-only 已完成并形成稳定性边界诊断，不是多 seed 稳定通过证据；E4 readiness audit 为 `no_candidate_wait`，还没有额外模型/API 结果。
+原因：P4b 原始新 seed Gate-50 虽然 overall 通过 existing paired gate，但 WTQ 单项原始结果是 MyAgent `37/50` vs MACT `43/50`。E1/E2 已经完成诊断、fresh affected-slice `9/9` 和 after-targeted P4b full50；after-targeted 总表为 MyAgent `121/150` vs MACT `111/150`，三数据集单项均超过 MACT。E3 Seed-C/Seed-D current-only 已完成并形成稳定性边界诊断，不是多 seed 稳定通过证据；E3 max_replan=5 budget probe 恢复 `4/12` 代表错题，可写成 adaptive budget 机制证据，但不足以关闭 E3 稳定性；E4 readiness audit 为 `no_candidate_wait`，还没有额外模型/API 结果。
 
 ## 2. 主结果证据
 
@@ -151,9 +151,17 @@ E3 multi-seed 包：
 
 该包已生成并执行 Seed-C/Seed-D current-only Gate-50，各 WTQ/TabFact/CRT `50` 行，总计 `300` 行；Seed-C `114/150`、Seed-D `98/150`，合计 `212/300`，weighted token ratio `0.5916`，failed/missing `0/0`。离线边界诊断为 `verification_status=pass`。该包当前是适用边界证据，不是“多 seed 稳定超过 MACT”的正证据。
 
+E3 max_replan=5 budget probe：
+
+```text
+/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_boundary_budget_probe_20260804_1035/summary/e3_boundary_budget_probe_summary.md
+```
+
+该 probe 对 E3 代表错题执行 `max_replan=5` 复跑，原始 `max_replan=3` 代表错题均错，复跑恢复 `4/12`，failed/missing `0/0`，avg tokens `12444.9 -> 13136.1`。分项为 WTQ `1/4`、TabFact `3/4`、CRT `0/4`。结论是 `mixed_budget_sensitivity_not_enough_for_e3_stability`：TabFact temporal/numeric 和部分 WTQ temporal 可用 adaptive budget 解释，CRT 与 WTQ entity 仍需 semantic guard。
+
 ## 8. 剩余 Qwen3 队列入口
 
-当前已恢复一个 Qwen3-32B 单实例服务：GPU `2,3` -> `http://127.0.0.1:8000/v1`，served model 为 `qwen3-32b-local`。按用户要求，该服务保持常驻，不主动释放显存。后续若要继续小规模 sanity、消融或队列验证，优先使用带停机条件的队列脚本，而不是手工串起所有 runner：
+当前已恢复两个 Qwen3-32B endpoint：GPU `2,3` -> `http://127.0.0.1:8000/v1`，GPU `0,1` -> `http://127.0.0.1:8001/v1`，served model 均为 `qwen3-32b-local`。按用户要求，这两个服务保持常驻，不主动释放显存。后续若要继续小规模 sanity、消融或队列验证，优先使用带停机条件的队列脚本，而不是手工串起所有 runner：
 
 ```text
 /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/run_remaining_qwen3_patent_queue.sh
@@ -173,15 +181,15 @@ E3 multi-seed 包：
 建议顺序：
 
 ```bash
-export VLLM_ENDPOINTS=http://127.0.0.1:8000/v1
+export VLLM_ENDPOINTS=http://127.0.0.1:8000/v1,http://127.0.0.1:8001/v1
 bash /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/run_remaining_qwen3_patent_queue.sh --phase wtq --checkpoint
 
-export VLLM_ENDPOINTS=http://127.0.0.1:8000/v1
+export VLLM_ENDPOINTS=http://127.0.0.1:8000/v1,http://127.0.0.1:8001/v1
 bash /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/run_remaining_qwen3_patent_queue.sh --phase seed_c --checkpoint
 bash /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/run_remaining_qwen3_patent_queue.sh --phase seed_d --checkpoint
 ```
 
-该脚本会在 WTQ targeted fresh 未通过时停止，不会启动 WTQ full50；也会在 Seed-C/D current-only 未通过时停止，不会启动 MACT paired。它不会自动扩大到 Gate-150 或 full200。若需要恢复双 endpoint 并行，再另行启动第二个干净 GPU pair 并把 `VLLM_ENDPOINTS` 扩为两个地址。
+该脚本会在 WTQ targeted fresh 未通过时停止，不会启动 WTQ full50；也会在 Seed-C/D current-only 未通过时停止，不会启动 MACT paired。它不会自动扩大到 Gate-150 或 full200。当前两个 endpoint 已常驻；若服务状态变化，先重跑 runtime preflight，再决定是否恢复双 endpoint。
 
 当前正式结果台账由 `build_current_formal_result_ledger.py` 从 frozen summary、P4b summary、WTQ fresh/after-targeted、E3、E4、模板和 latest preflight 生成，用于专家/专利材料填表；它不会把 pending 项写成 completed。当前专利实验章节由 `build_current_patent_experiment_section.py` 生成，明确列出可写正证据和不能写的边界。
 

@@ -1,6 +1,6 @@
 {
   "artifact_name": "current_patent_experiment_section",
-  "generated_at_local": "2026-08-04 10:51:31 CST",
+  "generated_at_local": "2026-08-04 10:50:22 CST",
   "purpose": "Current patent/expert-facing experiment section with explicit supported claims and boundaries.",
   "scope_boundary": "This artifact synthesizes existing frozen evidence. It does not create new benchmark results and must not be read as final full official benchmark completion.",
   "git_commits_at_generation": {
@@ -20,8 +20,6 @@
     "mechanism_matrix_md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_patent_mechanism_evidence_20260801_2222/patent_mechanism_evidence_matrix.md",
     "e3_boundary_diagnosis": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/summary/seed_boundary_error_diagnosis.json",
     "e3_boundary_diagnosis_md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/summary/seed_boundary_error_diagnosis.md",
-    "e3_budget_probe_summary": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_boundary_budget_probe_20260804_1035/summary/e3_boundary_budget_probe_summary.json",
-    "e3_budget_probe_summary_md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_boundary_budget_probe_20260804_1035/summary/e3_boundary_budget_probe_summary.md",
     "e4_readiness": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_e4_multimodel_gate_readiness_audit.json",
     "e4_readiness_md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_e4_multimodel_gate_readiness_audit_zh.md",
     "formal_ledger": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_formal_result_ledger_current.json",
@@ -37,7 +35,6 @@
     "supported_boundary_claims": [
       "P4b original new-seed Gate-50 exposed WTQ risk: MyAgent 37/50 vs MACT 43/50 before targeted fixes.",
       "E3 Seed-C/Seed-D current-only Gate-50 are boundary evidence, not stable multi-seed superiority evidence; no same-seed paired MACT baseline was run because current-only gate decided stop_or_inspect.",
-      "E3 max_replan=5 boundary probe recovered only a minority of representative wrong rows, so it supports adaptive budgeting for selected categories but not E3 stability closure.",
       "E4 multi-model gate is blocked by no candidate: no untested local model path and no API provider profile/key are available."
     ],
     "unsupported_claims": [
@@ -427,135 +424,7 @@
       "If continuing Qwen3 optimization, target reusable guards for WTQ rank-direction/temporal lookup, TabFact temporal/numeric entailment, and CRT percentage/aggregation categories.",
       "If continuing experiment collection, keep E3 paired MACT marked not required and prioritize new-model Gate-10/Gate-50 only when a viable new model or API key exists.",
       "For patent drafting, cite full200 and P4b after-targeted as positive evidence; cite this E3 diagnosis as boundary and future-improvement evidence."
-    ],
-    "budget_probe_max_replan5": {
-      "decision": "mixed_budget_sensitivity_not_enough_for_e3_stability",
-      "scope": "12 representative wrong rows from E3 Seed-C/D, rerun with max_replan=5.",
-      "aggregate": {
-        "rows": 12,
-        "original_correct": 0,
-        "replan5_correct": 4,
-        "recovered": 4,
-        "recovery_rate_from_original_wrong": 0.3333333333333333,
-        "failed": 0,
-        "missing": 0,
-        "avg_original_total_tokens": 12444.916666666666,
-        "avg_replan5_total_tokens": 13136.083333333334,
-        "avg_replan5_elapsed_seconds": 45.21273791684265,
-        "missing_outputs": [],
-        "category_recovery": {
-          "crt_multi_step_numeric_composition_boundary": {
-            "recovered": 0,
-            "total": 2,
-            "rate": 0.0
-          },
-          "crt_span_or_universal_quantifier_boundary": {
-            "recovered": 0,
-            "total": 2,
-            "rate": 0.0
-          },
-          "tabfact_false_negative_entailment_boundary": {
-            "recovered": 0,
-            "total": 1,
-            "rate": 0.0
-          },
-          "tabfact_numeric_count_or_comparison_boundary": {
-            "recovered": 1,
-            "total": 1,
-            "rate": 1.0
-          },
-          "tabfact_temporal_order_boundary": {
-            "recovered": 2,
-            "total": 2,
-            "rate": 1.0
-          },
-          "wtq_entity_lookup_or_row_selection_boundary": {
-            "recovered": 0,
-            "total": 2,
-            "rate": 0.0
-          },
-          "wtq_temporal_or_age_lookup_boundary": {
-            "recovered": 1,
-            "total": 2,
-            "rate": 0.5
-          }
-        }
-      },
-      "datasets": {
-        "wtq": {
-          "input_rows": 4,
-          "merged_rows": 4,
-          "eval_num_samples": 4,
-          "eval_primary_accuracy": 0.25,
-          "original_correct": 0,
-          "replan5_correct": 1,
-          "recovered": 1,
-          "recovery_rate_from_original_wrong": 0.25,
-          "num_failed_exec": 0,
-          "num_missing_answer": 0,
-          "original_avg_total_tokens": 10811.5,
-          "replan5_avg_total_tokens": 12501.0,
-          "replan5_token_ratio_to_mact_full200": 1.1896616206843718,
-          "token_delta_vs_original_avg": 1689.5,
-          "token_delta_ratio_vs_original": 1.1562687878647737,
-          "avg_elapsed_seconds": 42.90099474880844,
-          "row_ids": [
-            "nu-1456",
-            "nu-2577",
-            "nu-515",
-            "nu-3380"
-          ]
-        },
-        "tabfact": {
-          "input_rows": 4,
-          "merged_rows": 4,
-          "eval_num_samples": 4,
-          "eval_primary_accuracy": 0.75,
-          "original_correct": 0,
-          "replan5_correct": 3,
-          "recovered": 3,
-          "recovery_rate_from_original_wrong": 0.75,
-          "num_failed_exec": 0,
-          "num_missing_answer": 0,
-          "original_avg_total_tokens": 5709.25,
-          "replan5_avg_total_tokens": 4626.75,
-          "replan5_token_ratio_to_mact_full200": 0.4271835248007423,
-          "token_delta_vs_original_avg": -1082.5,
-          "token_delta_ratio_vs_original": 0.8103954109559048,
-          "avg_elapsed_seconds": 19.487946513225324,
-          "row_ids": [
-            "tabfact-test-9637",
-            "tabfact-test-8555",
-            "tabfact-test-12194",
-            "tabfact-test-1383"
-          ]
-        },
-        "crt": {
-          "input_rows": 4,
-          "merged_rows": 4,
-          "eval_num_samples": 4,
-          "eval_primary_accuracy": 0.0,
-          "original_correct": 0,
-          "replan5_correct": 0,
-          "recovered": 0,
-          "recovery_rate_from_original_wrong": 0.0,
-          "num_failed_exec": 0,
-          "num_missing_answer": 0,
-          "original_avg_total_tokens": 20814.0,
-          "replan5_avg_total_tokens": 22280.5,
-          "replan5_token_ratio_to_mact_full200": 1.7393072669484,
-          "token_delta_vs_original_avg": 1466.5,
-          "token_delta_ratio_vs_original": 1.0704573844527723,
-          "avg_elapsed_seconds": 73.24927248849417,
-          "row_ids": [
-            "crt-325",
-            "crt-0",
-            "crt-121",
-            "crt-303"
-          ]
-        }
-      }
-    }
+    ]
   },
   "e4_multimodel_gate": {
     "decision": "no_candidate_wait",
@@ -595,11 +464,6 @@
       "patent_use": "applicability boundary, not stability proof"
     },
     {
-      "stage": "E3 max_replan=5 boundary budget probe",
-      "status": "complete_mechanism_probe",
-      "patent_use": "adaptive budget sensitivity and remaining semantic-boundary evidence"
-    },
-    {
       "stage": "E4 multi-model gate",
       "status": "pending_no_candidate",
       "patent_use": "future external validity evidence after new model/API appears"
@@ -618,6 +482,6 @@
   "next_trigger_rules": [
     "If a new candidate model/API appears, rerun runtime preflight first and start Gate-10 only on a clean GPU pair, with 0,1 -> 8000 and 2,3 -> 8001 used only when the default pool is actually available; do not consume 4-7 unless explicitly reassigned.",
     "If no new model/API exists, do not rerun known no-go models; continue drafting with E4 marked pending/no-candidate.",
-    "If more Qwen optimization is requested, use the E3 max_replan=5 probe to route TabFact temporal/numeric cases toward adaptive budgeting and CRT/WTQ entity cases toward semantic guards, instead of re-optimizing already-passing full200/P4b-after-targeted rows."
+    "If more Qwen optimization is requested, target E3 boundary categories instead of re-optimizing already-passing full200/P4b-after-targeted rows."
   ]
 }

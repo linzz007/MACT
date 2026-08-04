@@ -63,6 +63,11 @@ Current status:
   token ratio vs MACT full200 reference `0.6096`, failures/missing `0/0`.
   Seed-D: WTQ `30/50`, TabFact `38/50`, CRT `30/50`, overall `98/150`,
   token ratio vs MACT full200 reference `0.5735`, failures/missing `0/0`.
+- The E3 max_replan=5 boundary budget probe reran 12 representative E3 wrong
+  rows and recovered `4/12`, with failures/missing `0/0`. The decision is
+  `mixed_budget_sensitivity_not_enough_for_e3_stability`: adaptive budgeting is
+  useful for selected categories, but E3 remains boundary evidence rather than
+  multi-seed stability closure.
 - The latest current completion-gap audit records that the active goal is not
   complete: Qwen3 full200 and P4b after-targeted are positive evidence, E3 is
   boundary evidence, and E4 remains pending/no-candidate until a new local
@@ -76,10 +81,11 @@ Current status:
 - Runtime preflight records endpoint/GPU/process readiness before any queue run
   and blocks queue execution when target GPUs show residual runtime state.
 - Current runtime status after 2026-08-04 recovery is `ready_existing_endpoint`:
-  one Qwen3-32B vLLM service is intentionally kept resident on GPU `2,3` at
-  `http://127.0.0.1:8000/v1`, served model `qwen3-32b-local`. Latest recorded
-  preflight: `qwen3_runtime_preflight_20260804_102526.json/md`. Do not stop the
-  service unless switching models or explicitly freeing GPU memory.
+  two Qwen3-32B vLLM services are intentionally kept resident on GPU `2,3` at
+  `http://127.0.0.1:8000/v1` and GPU `0,1` at
+  `http://127.0.0.1:8001/v1`, served model `qwen3-32b-local`. Latest recorded
+  preflight: `qwen3_runtime_preflight_20260804_104903.json/md`. Do not stop the
+  services unless switching models or explicitly freeing GPU memory.
 - The current formal-result ledger is generated from frozen JSON sources and
   keeps pending stages explicit rather than mixing them with completed results.
   Latest generated ledger is available through

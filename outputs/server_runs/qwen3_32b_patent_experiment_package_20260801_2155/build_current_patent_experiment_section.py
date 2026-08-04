@@ -44,6 +44,12 @@ E3_RUN_DIR = Path(
 )
 E3_BOUNDARY_DIAGNOSIS = E3_RUN_DIR / "summary" / "seed_boundary_error_diagnosis.json"
 E3_BOUNDARY_DIAGNOSIS_MD = E3_BOUNDARY_DIAGNOSIS.with_suffix(".md")
+E3_BUDGET_PROBE_SUMMARY = Path(
+    "/home/ubuntu/lzz/MACT/outputs/server_runs/"
+    "qwen3_32b_policy_v6b_e3_boundary_budget_probe_20260804_1035/"
+    "summary/e3_boundary_budget_probe_summary.json"
+)
+E3_BUDGET_PROBE_SUMMARY_MD = E3_BUDGET_PROBE_SUMMARY.with_suffix(".md")
 E4_READINESS = PACKAGE_DIR / "latest_e4_multimodel_gate_readiness_audit.json"
 E4_READINESS_MD = PACKAGE_DIR / "latest_e4_multimodel_gate_readiness_audit_zh.md"
 FORMAL_LEDGER = PACKAGE_DIR / "latest_formal_result_ledger_current.json"
@@ -230,6 +236,7 @@ def build_section() -> dict[str, Any]:
     targeted = read_json(P4B_TARGETED_FRESH_SUMMARY)
     mechanism = read_json(MECHANISM_MATRIX)
     e3_boundary = read_json(E3_BOUNDARY_DIAGNOSIS)
+    e3_budget_probe = read_json(E3_BUDGET_PROBE_SUMMARY) if E3_BUDGET_PROBE_SUMMARY.exists() else None
     e4 = read_json(E4_READINESS)
     e3_seeds = [
         e3_seed_table(read_json(E3_RUN_DIR / "summary" / f"{seed}_myagent_gate50_summary.json"))
@@ -258,6 +265,8 @@ def build_section() -> dict[str, Any]:
             "mechanism_matrix_md": str(MECHANISM_MATRIX_MD),
             "e3_boundary_diagnosis": str(E3_BOUNDARY_DIAGNOSIS),
             "e3_boundary_diagnosis_md": str(E3_BOUNDARY_DIAGNOSIS_MD),
+            "e3_budget_probe_summary": str(E3_BUDGET_PROBE_SUMMARY) if e3_budget_probe else "",
+            "e3_budget_probe_summary_md": str(E3_BUDGET_PROBE_SUMMARY_MD) if e3_budget_probe else "",
             "e4_readiness": str(E4_READINESS),
             "e4_readiness_md": str(E4_READINESS_MD),
             "formal_ledger": str(FORMAL_LEDGER),
@@ -273,6 +282,7 @@ def build_section() -> dict[str, Any]:
             "supported_boundary_claims": [
                 "P4b original new-seed Gate-50 exposed WTQ risk: MyAgent 37/50 vs MACT 43/50 before targeted fixes.",
                 "E3 Seed-C/Seed-D current-only Gate-50 are boundary evidence, not stable multi-seed superiority evidence; no same-seed paired MACT baseline was run because current-only gate decided stop_or_inspect.",
+                "E3 max_replan=5 boundary probe recovered only a minority of representative wrong rows, so it supports adaptive budgeting for selected categories but not E3 stability closure.",
                 "E4 multi-model gate is blocked by no candidate: no untested local model path and no API provider profile/key are available.",
             ],
             "unsupported_claims": [
@@ -340,6 +350,14 @@ def build_section() -> dict[str, Any]:
             "aggregate_diagnosis": e3_boundary["aggregate"],
             "boundary_findings": e3_boundary["boundary_findings"],
             "next_actions": e3_boundary["next_actions"],
+            "budget_probe_max_replan5": None
+            if not e3_budget_probe
+            else {
+                "decision": e3_budget_probe["decision"],
+                "scope": e3_budget_probe["scope"],
+                "aggregate": e3_budget_probe["aggregate"],
+                "datasets": e3_budget_probe["datasets"],
+            },
         },
         "e4_multimodel_gate": {
             "decision": e4["decision"],
@@ -378,6 +396,11 @@ def build_section() -> dict[str, Any]:
                 "patent_use": "applicability boundary, not stability proof",
             },
             {
+                "stage": "E3 max_replan=5 boundary budget probe",
+                "status": "complete_mechanism_probe",
+                "patent_use": "adaptive budget sensitivity and remaining semantic-boundary evidence",
+            },
+            {
                 "stage": "E4 multi-model gate",
                 "status": "pending_no_candidate",
                 "patent_use": "future external validity evidence after new model/API appears",
@@ -396,7 +419,7 @@ def build_section() -> dict[str, Any]:
         "next_trigger_rules": [
             "If a new candidate model/API appears, rerun runtime preflight first and start Gate-10 only on a clean GPU pair, with 0,1 -> 8000 and 2,3 -> 8001 used only when the default pool is actually available; do not consume 4-7 unless explicitly reassigned.",
             "If no new model/API exists, do not rerun known no-go models; continue drafting with E4 marked pending/no-candidate.",
-            "If more Qwen optimization is requested, target E3 boundary categories instead of re-optimizing already-passing full200/P4b-after-targeted rows.",
+            "If more Qwen optimization is requested, use the E3 max_replan=5 probe to route TabFact temporal/numeric cases toward adaptive budgeting and CRT/WTQ entity cases toward semantic guards, instead of re-optimizing already-passing full200/P4b-after-targeted rows.",
         ],
     }
 
@@ -422,10 +445,47 @@ def render_result_table(rows: list[dict[str, Any]], *, token_key: str = "token_r
     return lines
 
 
+def render_e3_budget_probe_table(probe: dict[str, Any] | None) -> list[str]:
+    if not probe:
+        return ["E3 max_replan=5 probe 尚未生成。"]
+    lines = [
+        "| dataset | rows | recovered | failed/missing | avg tokens 3->5 | token ratio vs MACT full200 | avg seconds |",
+        "|---|---:|---:|---:|---:|---:|---:|",
+    ]
+    for dataset, item in probe["datasets"].items():
+        lines.append(
+            "| {dataset} | {rows} | {recovered} | {failed}/{missing} | {orig_tokens:.1f}->{new_tokens:.1f} | {ratio:.4f} | {elapsed:.2f} |".format(
+                dataset=dataset,
+                rows=item["input_rows"],
+                recovered=item["recovered"],
+                failed=item["num_failed_exec"],
+                missing=item["num_missing_answer"],
+                orig_tokens=item["original_avg_total_tokens"],
+                new_tokens=item["replan5_avg_total_tokens"],
+                ratio=item["replan5_token_ratio_to_mact_full200"],
+                elapsed=item["avg_elapsed_seconds"],
+            )
+        )
+    aggregate = probe["aggregate"]
+    lines.append(
+        "| aggregate | {rows} | {recovered} | {failed}/{missing} | {orig_tokens:.1f}->{new_tokens:.1f} | n/a | {elapsed:.2f} |".format(
+            rows=aggregate["rows"],
+            recovered=aggregate["recovered"],
+            failed=aggregate["failed"],
+            missing=aggregate["missing"],
+            orig_tokens=aggregate["avg_original_total_tokens"],
+            new_tokens=aggregate["avg_replan5_total_tokens"],
+            elapsed=aggregate["avg_replan5_elapsed_seconds"],
+        )
+    )
+    return lines
+
+
 def render_markdown(report: dict[str, Any]) -> str:
     full = report["full200_anchor"]
     p4b = report["p4b_new_seed"]
     e3 = report["e3_multiseed_boundary"]
+    e3_probe = e3.get("budget_probe_max_replan5")
     e4 = report["e4_multimodel_gate"]
     coarse = report["coarse_ablation_key_numbers"]
     lines = [
@@ -440,6 +500,13 @@ def render_markdown(report: dict[str, Any]) -> str:
         f"- Qwen3-32B full200：MyAgent `489/600`，MACT `450/600`，delta `+39`，整体 token ratio `{full['aggregate_token_ratio']:.4f}`，整体耗时 ratio `{full['aggregate_elapsed_ratio']:.4f}`。",
         f"- P4b after-targeted Gate-50：MyAgent `121/150`，MACT `111/150`，三数据集单项均超过 MACT，整体 token ratio `{p4b['after_targeted_rows'][-1]['token_ratio']:.4f}`。",
         f"- E3 Seed-C/D：current-only 合计 `212/300`，token ratio `{e3['aggregate_diagnosis']['weighted_token_ratio_to_mact_full200_reference']:.4f}`，failed/missing `0/0`，但 decision 仍是 boundary，不是多 seed 稳定性达标。",
+        *(
+            [
+                f"- E3 max_replan=5 probe：12 条代表错题恢复 `{e3_probe['aggregate']['recovered']}/{e3_probe['aggregate']['rows']}`，decision `{e3_probe['decision']}`，failed/missing `{e3_probe['aggregate']['failed']}/{e3_probe['aggregate']['missing']}`；可写成 adaptive budget 机制证据，不能写成稳定性闭环。"
+            ]
+            if e3_probe
+            else []
+        ),
         f"- E4 多模型 gate：`{e4['decision']}`，无 untested local model、无 API provider profile/key；默认下一次启动池为 `{e4['default_gpu_pool']}`，当前可用状态为 `{e4['default_gpu_pool_available_for_next_start']}`。",
         "",
         "## 2. 可以写入的正证据",
@@ -465,6 +532,7 @@ def render_markdown(report: dict[str, Any]) -> str:
         "",
         "- P4b 原始结果不能写成新 seed 三数据集全部超过 MACT；WTQ 原始结果低于 MACT，after-targeted 结果才恢复单项优势。",
         "- E3 Seed-C/D current-only 不能写成多 seed 稳定超过 MACT；它们没有同 seed paired MACT，且 decision 为 `stop_or_inspect`。",
+        "- E3 max_replan=5 probe 只恢复少数代表错题；TabFact temporal/numeric 对预算敏感，但 CRT 与 WTQ entity 边界仍需要语义 guard。",
         "- E4 不能写成多模型已验证；当前只是 readiness audit，结论是没有可启动候选。",
         "- 不能把 full200/gate 结果写成全量官方测试集完成。",
         "",
@@ -488,6 +556,10 @@ def render_markdown(report: dict[str, Any]) -> str:
             "E3 诊断结论：",
             "",
             *[f"- {item}" for item in e3["boundary_findings"]],
+            "",
+            "E3 max_replan=5 预算 probe：",
+            "",
+            *render_e3_budget_probe_table(e3_probe),
             "",
             "## 5. 正式实验表状态",
             "",
