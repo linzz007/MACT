@@ -2,7 +2,7 @@
 
 标题建议：一种面向表格问答和表格事实验证任务的选择性风险协作与劝返方法、装置、设备及存储介质。
 
-更新时间：2026-08-03 12:31 CST
+更新时间：2026-08-04 10:58 CST
 
 ## 1. 技术领域
 
@@ -26,6 +26,7 @@
 3. 确定性语义审计模块：对可结构化判断的问题直接从表格执行规则审计，例如同行多条件、列值计数、实体属性、数值差、时间差、overtime 标记、listed-after 目标列和 ordinal phrase 匹配。
 4. 冲突检测与劝返模块：生成器、代码执行、候选答案、审阅器或强验证器之间发生冲突时，不直接接受任一方，而是根据答案形态、表格证据、问题语义和置信度决定是否由审阅器/验证器接管。
 5. 预算感知协作模块：仅在风险或冲突达到阈值时触发昂贵协作路径，低风险样本保留简单执行或确定性 shortcut。
+6. 自适应 replan 预算模块：对时间顺序、数值计数等预算敏感类别，可在触发条件满足时提高 replan 上限；对实体选择、复杂组合和 span/quantifier 类边界，不采用无差别加预算，而转入语义 guard 或边界记录。
 
 ## 4. 方法流程
 
@@ -103,7 +104,20 @@ E3 Seed-C/Seed-D current-only Gate-50 也已执行并形成边界证据：Seed-C
 
 该实施例的用途是限定适用边界：当前问题在额外 seed 上主要体现为语义准确率稳定性，不是 runner 失败、工具不可用、缺答案或 token 预算失败。
 
-### 实施例四：多模型 Gate Readiness
+### 实施例四：E3 预算敏感性 Probe
+
+为进一步判断 E3 边界是否只是 `max_replan=3` 预算不足，2026-08-04 对 E3 Seed-C/D 代表错题执行 `max_replan=5` 复跑。该 probe 不是正式 benchmark，而是机制证据：它用同一 Qwen3-32B 服务和同一 evaluator，比较原始错误样本在更高 replan 预算下能否恢复。
+
+| dataset | rows | recovered | failed/missing | avg tokens 3->5 | token ratio vs MACT full200 | avg seconds |
+|---|---:|---:|---:|---:|---:|---:|
+| WTQ | 4 | 1 | 0/0 | 10811.5->12501.0 | 1.1897 | 42.90 |
+| TabFact | 4 | 3 | 0/0 | 5709.2->4626.8 | 0.4272 | 19.49 |
+| CRT | 4 | 0 | 0/0 | 20814.0->22280.5 | 1.7393 | 73.25 |
+| Aggregate | 12 | 4 | 0/0 | 12444.9->13136.1 | n/a | 45.21 |
+
+结论为 `mixed_budget_sensitivity_not_enough_for_e3_stability`：TabFact temporal/numeric 和部分 WTQ temporal 代表错题对预算敏感，可支持“自适应 replan 预算”从属技术点；CRT 复杂数值/span 边界和 WTQ entity lookup 代表错题没有被 blanket replan 修复，仍应写成语义 guard 或适用边界，而不能写成 E3 稳定性闭环。
+
+### 实施例五：多模型 Gate Readiness
 
 E4 多模型 readiness audit 结果为 `no_candidate_wait`：当前只发现已测试/已 no-go 的本地模型，未发现未测本地模型或 API provider profile/key，因此不能写成多模型验证已完成。
 
@@ -135,7 +149,7 @@ E4 多模型 readiness audit 结果为 `no_candidate_wait`：当前只发现已�
 ## 8. 后续需要补入或明确保留边界的正式实验
 
 1. 多模型验证：新本地模型或 API key/provider profile 出现后，至少让 1 个额外模型经过 Gate-10 -> Gate-50 -> Gate-150 漏斗；当前 E4 为 `no_candidate_wait`。
-2. 多 seed 稳定性正证据：E3 已经完成两组 current-only 并给出边界，但还没有形成稳定超过 MACT 的 paired seed 证据；若继续优化，先处理 E3 语义边界。
+2. 多 seed 稳定性正证据：E3 已经完成两组 current-only、离线边界诊断和 `max_replan=5` budget probe，但还没有形成稳定超过 MACT 的 paired seed 证据；若继续优化，先处理 E3 中 budget probe 无法恢复的语义边界。
 3. 细粒度消融：根据需要补 verifier override、evidence retention、deterministic audit 的细粒度关闭开关。
 4. 最终实验包收口：当前实验章节已经 consolidated，但 final closeout 需要多模型候选结果，或明确接受 E4 no-candidate 作为当前外延边界。
 
@@ -148,6 +162,7 @@ E4 多模型 readiness audit 结果为 `no_candidate_wait`：当前只发现已�
 /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/p4b_wtq_targeted_fresh_summary.json
 /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/p4b_after_wtq_targeted_paired_summary.json
 /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/summary/seed_boundary_error_diagnosis.json
+/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_e3_boundary_budget_probe_20260804_1035/summary/e3_boundary_budget_probe_summary.json
 /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_e4_multimodel_gate_readiness_audit.json
 /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_current_patent_experiment_section_zh.md
 /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_completion_gap_audit_current_zh.md
@@ -162,9 +177,11 @@ E4 多模型 readiness audit 结果为 `no_candidate_wait`：当前只发现已�
 - 机制由风险路由、证据保留、确定性审计、冲突劝返和预算控制组成。
 - P4b 原始结果暴露 WTQ 新 seed 风险；E1/E2 已完成诊断、fresh affected-slice `9/9` 和 after-targeted P4b `121/150` vs MACT `111/150`。
 - E3 Seed-C/Seed-D 可作为额外随机种子的适用边界证据。
+- E3 max_replan=5 probe 可写成预算敏感性和 adaptive replan 机制证据：代表错题恢复 `4/12`，failed/missing `0/0`，但不能写成 E3 稳定性闭环。
 
 暂不写：
 
 - 多模型已全面验证。
 - 新 seed 三数据集已经全部稳定超过 MACT。
 - E3 Seed-C/D 已经证明多 seed 稳定超过 MACT。
+- blanket 增加 replan 预算可以解决所有 E3 边界。

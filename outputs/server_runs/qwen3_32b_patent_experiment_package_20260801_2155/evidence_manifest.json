@@ -291,8 +291,8 @@
   "claim_evidence_traceability": {
     "json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/claim_evidence_traceability_20260801_2248.json",
     "md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/claim_evidence_traceability_20260801_2248_zh.md",
-    "last_updated_at_local": "2026-08-03 12:24 CST",
-    "current_note": "WTQ targeted fresh and P4b after-targeted closure are complete. E3 Seed-C/D current-only execution is complete as boundary evidence. E4 remains pending/no-candidate.",
+    "last_updated_at_local": "2026-08-04 10:58 CST",
+    "current_note": "WTQ targeted fresh and P4b after-targeted closure are complete. E3 Seed-C/D current-only execution and max_replan=5 budget probe are complete as boundary/mechanism evidence. E4 remains pending/no-candidate.",
     "claim_families": [
       "Risk-stratified selective collaboration",
       "Evidence-retention table compression",
@@ -314,8 +314,8 @@
   },
   "patent_disclosure_draft": {
     "md": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/patent_disclosure_draft_zh.md",
-    "last_updated_at_local": "2026-08-03 12:31 CST",
-    "current_note": "The disclosure draft now includes current full200, P4b original, WTQ fresh/after-targeted closure, E3 boundary, E4 no-candidate, and evidence-path sections. It does not claim multi-model validation or multi-seed stable superiority."
+    "last_updated_at_local": "2026-08-04 10:58 CST",
+    "current_note": "The disclosure draft now includes current full200, P4b original, WTQ fresh/after-targeted closure, E3 boundary, E3 max_replan=5 budget probe, E4 no-candidate, and evidence-path sections. It does not claim multi-model validation or multi-seed stable superiority."
   },
   "formal_result_tables_template": {
     "json": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/formal_result_tables_template_20260801_2252.json",
@@ -360,6 +360,7 @@
     ],
     "boundary_evidence": [
       "E3 Seed-C/Seed-D current-only Gate-50 is boundary evidence, not multi-seed stable superiority evidence.",
+      "E3 max_replan=5 budget probe recovered 4/12 representative wrong rows and supports adaptive-budget sensitivity, not stability closure.",
       "E4 readiness audit is no_candidate_wait; no additional model/API result is available yet."
     ]
   },
@@ -383,8 +384,8 @@
       "The queue does not automatically expand to Gate-150 or full200."
     ],
     "current_online_status": "ready_existing_endpoint",
-    "latest_observed_at_local": "2026-08-04 10:25:26 CST",
-    "latest_observation": "One Qwen3-32B vLLM endpoint is healthy and intentionally kept resident: GPU 2,3 -> http://127.0.0.1:8000/v1, served model qwen3-32b-local. Runtime preflight qwen3_runtime_preflight_20260804_102526.json/md is ready_existing_endpoint with compute app PIDs 158938 and 158939. GPU 0 later showed high memory/utilization with no visible compute PID, so do not use 0,1 as a default second endpoint pair. Do not stop or free the Qwen3 service unless switching models."
+    "latest_observed_at_local": "2026-08-04 10:49:03 CST",
+    "latest_observation": "Two Qwen3-32B vLLM endpoints are healthy and intentionally kept resident: GPU 2,3 -> http://127.0.0.1:8000/v1 with compute app PIDs 158938/158939, and GPU 0,1 -> http://127.0.0.1:8001/v1 with compute app PIDs 161909/161910. Served model is qwen3-32b-local on both endpoints. Runtime preflight qwen3_runtime_preflight_20260804_104903.json/md is ready_existing_endpoint. Do not stop or free these services unless switching models."
   },
   "package_consistency_audit": {
     "script": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/audit_patent_package_consistency.py",
@@ -394,21 +395,21 @@
     "latest_status": "pass",
     "latest_errors": 0,
     "latest_warnings": 0,
-    "latest_observed_at_local": "2026-08-04 10:24:29 CST"
+    "latest_observed_at_local": "2026-08-04 11:02:37 CST"
   },
   "package_checksums": {
     "script": "outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/build_patent_package_checksums.py",
     "latest_json": "outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_patent_package_checksums.json",
     "latest_md": "outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/latest_patent_package_checksums_zh.md",
     "sha256sums": "outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/SHA256SUMS",
-    "latest_record_count": 287,
+    "latest_record_count": 312,
     "latest_missing_or_pending_reference_count": 0,
-    "latest_observed_at_local": "2026-08-04 10:28:31 CST"
+    "latest_observed_at_local": "2026-08-04 11:02:49 CST"
   },
   "current_prd": "/home/ubuntu/lzz/MyAgent/docs/server/server_codex_reports/current-qwen3-mact-experiment-prd.md",
   "formal_experiment_schedule": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_experiment_package_20260801_2155/formal_experiment_schedule_zh.md",
   "remaining_work": [
-    "Use the completed Seed-C/Seed-D boundary diagnosis to decide whether to optimize semantic boundary categories or keep them as patent-facing applicability limits.",
+    "Use the completed Seed-C/Seed-D boundary diagnosis and max_replan=5 budget probe to decide whether to optimize semantic boundary categories or keep them as patent-facing applicability limits.",
     "Run at least one additional model through the gate funnel after server expansion or API key availability.",
     "Finalize patent claims and final experiment package closeout after an E4 candidate result or explicit acceptance of the no-candidate boundary."
   ],
