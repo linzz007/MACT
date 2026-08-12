@@ -1,0 +1,5 @@
+# Baseline experiment runtime configuration.
+export SERVED_MODEL_NAME="${SERVED_MODEL_NAME:-qwen3-32b-local}"
+export BASELINE_ENDPOINTS="${BASELINE_ENDPOINTS:-http://127.0.0.1:8000/v1,http://127.0.0.1:8001/v1}"
+export API_KEY_ENV="${API_KEY_ENV:-LOCAL_VLLM_API_KEY}"
+: "${LOCAL_VLLM_API_KEY:?set LOCAL_VLLM_API_KEY before running online experiments}"
