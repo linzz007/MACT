@@ -1,0 +1,42 @@
+{
+  "result_schema": "mact",
+  "num_samples": 5,
+  "num_with_gold": 5,
+  "exact_match": 0.4,
+  "primary_accuracy": 0.4,
+  "accuracy_metric": "wtq_denotation_accuracy",
+  "num_failed_exec": 0,
+  "num_missing_answer": 0,
+  "num_em_mismatch": 3,
+  "num_multi_view_replan": 0,
+  "num_cross_path_mismatch": 0,
+  "route_distribution": {},
+  "difficulty_distribution": {},
+  "risk_distribution": {
+    "unknown": 5
+  },
+  "risk_strata": {
+    "unknown": {
+      "count": 5,
+      "num_with_gold": 5,
+      "correct": 2,
+      "accuracy": 0.4,
+      "avg_total_tokens": 905.2,
+      "failure_count": 0
+    }
+  },
+  "simple_lookup_success_rate": 0.0,
+  "multi_view_pass_rate": 0.0,
+  "alternative_exec_success_rate": 0.0,
+  "avg_llm_calls": 1.0,
+  "avg_total_tokens": 905.2,
+  "avg_prompt_tokens": 840.4,
+  "avg_completion_tokens": 64.8,
+  "token_measurement": "api_usage",
+  "avg_compression_ratio": 1.0,
+  "avg_token_compression_ratio_est": 0.0,
+  "avg_elapsed_seconds": 2.7099057874176653,
+  "avg_total_tokens_est": 0.0,
+  "avg_prompt_tokens_est": 0.0,
+  "avg_completion_tokens_est": 0.0
+}

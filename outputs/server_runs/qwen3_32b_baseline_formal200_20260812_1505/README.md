@@ -28,6 +28,8 @@ Run these after the main Formal-200 table is stable:
 
 Current limitation: no-question-routing and no-table-compression/evidence-retention switches are not present in the current codebase. Treat them as pending implementation or document the limitation if time is tight.
 
+Single-Agent Pandas baseline note: the runner uses one pandas-code generation path and allows one same-agent code repair round after execution error. The extra call is counted in token/time metrics.
+
 ## Output Layout
 
 - `input/formal200/`: fixed 200-row inputs per dataset.
