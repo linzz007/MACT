@@ -30,6 +30,18 @@ Current limitation: no-question-routing and no-table-compression/evidence-retent
 
 Single-Agent Pandas baseline note: the runner uses one pandas-code generation path and allows one same-agent code repair round after execution error. The extra call is counted in token/time metrics.
 
+## Current Results
+
+Direct-CoT Formal-200 is complete and pushed in MACT commit `56cf7d5`.
+
+Single-Agent Pandas Formal-200 is complete and should be pushed after this checkpoint. Its CRT shard01 resume used MyAgent commit `1f577ae`, which only adds output-boundary serialization for pandas scalar time values; the baseline strategy is unchanged.
+
+| Method | Dataset | Raw rows | Merged rows | Accuracy | Avg token | Avg time | Failed/Missing |
+|---|---|---:|---:|---:|---:|---:|---:|
+| Single-Agent Pandas | WTQ | 200 | 200 | 0.690 | 1185.12 | 6.126s | 6/11 |
+| Single-Agent Pandas | TabFact | 200 | 200 | 0.795 | 938.19 | 7.512s | 4/4 |
+| Single-Agent Pandas | CRT | 200 | 200 | 0.620 | 1099.42 | 9.166s | 12/13 |
+
 ## Output Layout
 
 - `input/formal200/`: fixed 200-row inputs per dataset.

@@ -4,7 +4,9 @@
   "myagent_root": "/home/ubuntu/lzz/MyAgent",
   "mact_root": "/home/ubuntu/lzz/MACT",
   "run_dir": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_baseline_formal200_20260812_1505",
-  "myagent_commit": "120b04ec6542656b9357d8b8014989127e30da67",
+  "myagent_initial_commit": "120b04ec6542656b9357d8b8014989127e30da67",
+  "myagent_commit": "1f577ae59115058867c7d19fda5d68836973a627",
+  "myagent_commit_note": "Direct-CoT and most Single-Agent Pandas rows used the initial commit. Single-Agent Pandas CRT resume rows and subsequent runs use the output-serialization-only patch at 1f577ae.",
   "mact_commit": "60dff4a28d3dbf25d59507d8693af90e97ec4ac0",
   "served_model_name": "qwen3-32b-local",
   "endpoints": [
@@ -84,7 +86,7 @@
     }
   },
   "p0_status": {
-    "main_baselines": "prepared_not_run",
+    "main_baselines": "direct_cot_and_single_agent_pandas_completed; myagent_and_mact_pending",
     "direct_cot_runner": "implemented",
     "single_agent_pandas_runner": "implemented_with_one_code_repair_round",
     "myagent_ablation_existing_switches": [
