@@ -1,0 +1,2248 @@
+{
+  "updated": "2026-08-14 10:39 CST",
+  "datasets": {
+    "wtq": {
+      "paths": {
+        "myagent": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_baseline_formal200_20260812_1505/myagent_formal200/merged/wtq_qwen3-32b-local.jsonl",
+        "mact": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_baseline_formal200_20260812_1505/mact/wtq_mact_formal200.jsonl"
+      },
+      "counts": {
+        "myagent_correct": 141,
+        "mact_correct": 156,
+        "both_correct": 125,
+        "myagent_only": 16,
+        "mact_only": 31,
+        "both_wrong": 28,
+        "net_gap_mact_minus_myagent": 15
+      },
+      "myagent_only_breakdown": {
+        "count": 16,
+        "risk": [
+          {
+            "key": "high",
+            "count": 15
+          },
+          {
+            "key": "medium",
+            "count": 1
+          }
+        ],
+        "route": [
+          {
+            "key": "COMPLEX",
+            "count": 15
+          },
+          {
+            "key": "SIMPLE",
+            "count": 1
+          }
+        ],
+        "difficulty": [
+          {
+            "key": "medium",
+            "count": 12
+          },
+          {
+            "key": "easy",
+            "count": 3
+          },
+          {
+            "key": "hard",
+            "count": 1
+          }
+        ],
+        "strong_verification_applied": [
+          {
+            "key": "true",
+            "count": 15
+          },
+          {
+            "key": "false",
+            "count": 1
+          }
+        ],
+        "deterministic_shortcut_applied": [
+          {
+            "key": "false",
+            "count": 16
+          }
+        ],
+        "compression_strategy": [
+          {
+            "key": "expanded_context_block_global_rows",
+            "count": 6
+          },
+          {
+            "key": "expanded_context_block",
+            "count": 5
+          },
+          {
+            "key": "strict_cell_block_global_rows",
+            "count": 2
+          },
+          {
+            "key": "full_table_for_high_coverage",
+            "count": 1
+          },
+          {
+            "key": "expanded_context_block_global_columns",
+            "count": 1
+          },
+          {
+            "key": "strict_cell_block",
+            "count": 1
+          }
+        ],
+        "contract_kind": [
+          {
+            "key": "scalar",
+            "count": 16
+          }
+        ],
+        "answer_mode": [
+          {
+            "key": "unknown",
+            "count": 16
+          }
+        ],
+        "problem_tags": [
+          {
+            "key": "count",
+            "count": 7
+          },
+          {
+            "key": "superlative_order",
+            "count": 6
+          },
+          {
+            "key": "negation_logic",
+            "count": 5
+          },
+          {
+            "key": "temporal",
+            "count": 4
+          },
+          {
+            "key": "arithmetic",
+            "count": 3
+          },
+          {
+            "key": "trend_correlation",
+            "count": 1
+          },
+          {
+            "key": "comparison",
+            "count": 1
+          }
+        ]
+      },
+      "mact_only_breakdown": {
+        "count": 31,
+        "risk": [
+          {
+            "key": "high",
+            "count": 27
+          },
+          {
+            "key": "light",
+            "count": 2
+          },
+          {
+            "key": "medium",
+            "count": 2
+          }
+        ],
+        "route": [
+          {
+            "key": "COMPLEX",
+            "count": 29
+          },
+          {
+            "key": "SIMPLE",
+            "count": 2
+          }
+        ],
+        "difficulty": [
+          {
+            "key": "medium",
+            "count": 22
+          },
+          {
+            "key": "easy",
+            "count": 8
+          },
+          {
+            "key": "hard",
+            "count": 1
+          }
+        ],
+        "strong_verification_applied": [
+          {
+            "key": "true",
+            "count": 27
+          },
+          {
+            "key": "false",
+            "count": 4
+          }
+        ],
+        "deterministic_shortcut_applied": [
+          {
+            "key": "false",
+            "count": 29
+          },
+          {
+            "key": "true",
+            "count": 2
+          }
+        ],
+        "compression_strategy": [
+          {
+            "key": "expanded_context_block_global_rows",
+            "count": 12
+          },
+          {
+            "key": "expanded_context_block",
+            "count": 10
+          },
+          {
+            "key": "strict_cell_block_global_rows",
+            "count": 5
+          },
+          {
+            "key": "strict_cell_block",
+            "count": 3
+          },
+          {
+            "key": "full_table_for_high_coverage",
+            "count": 1
+          }
+        ],
+        "contract_kind": [
+          {
+            "key": "scalar",
+            "count": 31
+          }
+        ],
+        "answer_mode": [
+          {
+            "key": "unknown",
+            "count": 31
+          }
+        ],
+        "problem_tags": [
+          {
+            "key": "count",
+            "count": 14
+          },
+          {
+            "key": "temporal",
+            "count": 13
+          },
+          {
+            "key": "negation_logic",
+            "count": 10
+          },
+          {
+            "key": "superlative_order",
+            "count": 6
+          },
+          {
+            "key": "arithmetic",
+            "count": 6
+          },
+          {
+            "key": "comparison",
+            "count": 1
+          }
+        ]
+      },
+      "both_wrong_breakdown": {
+        "count": 28,
+        "risk": [
+          {
+            "key": "high",
+            "count": 22
+          },
+          {
+            "key": "medium",
+            "count": 3
+          },
+          {
+            "key": "light",
+            "count": 2
+          },
+          {
+            "key": "fallback",
+            "count": 1
+          }
+        ],
+        "route": [
+          {
+            "key": "COMPLEX",
+            "count": 26
+          },
+          {
+            "key": "SIMPLE",
+            "count": 2
+          }
+        ],
+        "difficulty": [
+          {
+            "key": "medium",
+            "count": 21
+          },
+          {
+            "key": "easy",
+            "count": 7
+          }
+        ],
+        "strong_verification_applied": [
+          {
+            "key": "true",
+            "count": 23
+          },
+          {
+            "key": "false",
+            "count": 5
+          }
+        ],
+        "deterministic_shortcut_applied": [
+          {
+            "key": "false",
+            "count": 26
+          },
+          {
+            "key": "true",
+            "count": 2
+          }
+        ],
+        "compression_strategy": [
+          {
+            "key": "expanded_context_block_global_rows",
+            "count": 10
+          },
+          {
+            "key": "expanded_context_block",
+            "count": 9
+          },
+          {
+            "key": "strict_cell_block_global_rows",
+            "count": 5
+          },
+          {
+            "key": "expanded_context_block_global_rows_global_columns",
+            "count": 2
+          },
+          {
+            "key": "strict_cell_block",
+            "count": 2
+          }
+        ],
+        "contract_kind": [
+          {
+            "key": "scalar",
+            "count": 28
+          }
+        ],
+        "answer_mode": [
+          {
+            "key": "unknown",
+            "count": 28
+          }
+        ],
+        "problem_tags": [
+          {
+            "key": "count",
+            "count": 11
+          },
+          {
+            "key": "superlative_order",
+            "count": 9
+          },
+          {
+            "key": "arithmetic",
+            "count": 7
+          },
+          {
+            "key": "negation_logic",
+            "count": 5
+          },
+          {
+            "key": "temporal",
+            "count": 3
+          },
+          {
+            "key": "comparison",
+            "count": 1
+          }
+        ]
+      },
+      "mact_only_examples": [
+        {
+          "id": "nu-100",
+          "question": "who has the same number as greg foster?",
+          "gold": [
+            "Kyrylo Fesenko"
+          ],
+          "myagent_prediction": "Greg Foster",
+          "mact_prediction": "Kyrylo Fesenko",
+          "risk": "light",
+          "route": "COMPLEX",
+          "difficulty": "medium",
+          "problem_tags": [],
+          "strong_verification_applied": false,
+          "strong_verification_reason": "",
+          "deterministic_shortcut_applied": false,
+          "deterministic_shortcut_reason": "",
+          "compression_strategy": "expanded_context_block",
+          "used_cols": [
+            "Player",
+            "No."
+          ],
+          "used_rows_count": 3
+        },
+        {
+          "id": "nu-110",
+          "question": "how many hard surface courts are there?",
+          "gold": [
+            "3"
+          ],
+          "myagent_prediction": 1,
+          "mact_prediction": "3",
+          "risk": "high",
+          "route": "COMPLEX",
+          "difficulty": "easy",
+          "problem_tags": [
+            "count"
+          ],
+          "strong_verification_applied": true,
+          "strong_verification_reason": "wtq_high_risk_denotation",
+          "deterministic_shortcut_applied": false,
+          "deterministic_shortcut_reason": "",
+          "compression_strategy": "strict_cell_block_global_rows",
+          "used_cols": [
+            "Outcome",
+            "Surface"
+          ],
+          "used_rows_count": 19
+        },
+        {
+          "id": "nu-112",
+          "question": "how many specifications have no active directory federation services?",
+          "gold": [
+            "1"
+          ],
+          "myagent_prediction": 26,
+          "mact_prediction": "1",
+          "risk": "high",
+          "route": "COMPLEX",
+          "difficulty": "medium",
+          "problem_tags": [
+            "count",
+            "negation_logic"
+          ],
+          "strong_verification_applied": true,
+          "strong_verification_reason": "wtq_high_risk_denotation",
+          "deterministic_shortcut_applied": false,
+          "deterministic_shortcut_reason": "",
+          "compression_strategy": "expanded_context_block_global_rows",
+          "used_cols": [
+            "Specifications",
+            "Foundation",
+            "Essentials",
+            "Standard",
+            "Datacenter"
+          ],
+          "used_rows_count": 27
+        },
+        {
+          "id": "nu-119",
+          "question": "fulham and stoke city both won with how many points?",
+          "gold": [
+            "3"
+          ],
+          "myagent_prediction": 6,
+          "mact_prediction": "3",
+          "risk": "high",
+          "route": "COMPLEX",
+          "difficulty": "medium",
+          "problem_tags": [
+            "count",
+            "negation_logic"
+          ],
+          "strong_verification_applied": true,
+          "strong_verification_reason": "wtq_high_risk_denotation",
+          "deterministic_shortcut_applied": false,
+          "deterministic_shortcut_reason": "",
+          "compression_strategy": "expanded_context_block_global_rows",
+          "used_cols": [
+            "Tie no",
+            "Home team",
+            "Score",
+            "Away team"
+          ],
+          "used_rows_count": 20
+        },
+        {
+          "id": "nu-127",
+          "question": "last year a mf won?",
+          "gold": [
+            "2010-11"
+          ],
+          "myagent_prediction": "Itumeleng Khune",
+          "mact_prediction": "2010-11",
+          "risk": "high",
+          "route": "COMPLEX",
+          "difficulty": "medium",
+          "problem_tags": [
+            "superlative_order",
+            "temporal"
+          ],
+          "strong_verification_applied": true,
+          "strong_verification_reason": "wtq_high_risk_denotation",
+          "deterministic_shortcut_applied": false,
+          "deterministic_shortcut_reason": "",
+          "compression_strategy": "expanded_context_block_global_rows",
+          "used_cols": [
+            "Season",
+            "Footballer",
+            "Club"
+          ],
+          "used_rows_count": 17
+        },
+        {
+          "id": "nu-133",
+          "question": "besides seattle what other american city was a venue?",
+          "gold": [
+            "Los Angeles"
+          ],
+          "myagent_prediction": "Kunming",
+          "mact_prediction": "Los Angeles",
+          "risk": "light",
+          "route": "COMPLEX",
+          "difficulty": "medium",
+          "problem_tags": [],
+          "strong_verification_applied": false,
+          "strong_verification_reason": "",
+          "deterministic_shortcut_applied": false,
+          "deterministic_shortcut_reason": "",
+          "compression_strategy": "expanded_context_block",
+          "used_cols": [
+            "Date",
+            "Venue"
+          ],
+          "used_rows_count": 3
+        },
+        {
+          "id": "nu-136",
+          "question": "the chords e minor major seventh and a minor major seventh have which note in common?",
+          "gold": [
+            "E"
+          ],
+          "myagent_prediction": "No common note",
+          "mact_prediction": "E",
+          "risk": "high",
+          "route": "COMPLEX",
+          "difficulty": "medium",
+          "problem_tags": [
+            "negation_logic"
+          ],
+          "strong_verification_applied": true,
+          "strong_verification_reason": "wtq_high_risk_denotation",
+          "deterministic_shortcut_applied": false,
+          "deterministic_shortcut_reason": "",
+          "compression_strategy": "expanded_context_block",
+          "used_cols": [
+            "Chord",
+            "Root",
+            "Major Seventh"
+          ],
+          "used_rows_count": 6
+        },
+        {
+          "id": "nu-139",
+          "question": "how many websites are free of advertising?",
+          "gold": [
+            "9"
+          ],
+          "myagent_prediction": 8,
+          "mact_prediction": "9",
+          "risk": "high",
+          "route": "COMPLEX",
+          "difficulty": "medium",
+          "problem_tags": [
+            "count"
+          ],
+          "strong_verification_applied": true,
+          "strong_verification_reason": "wtq_high_risk_denotation",
+          "deterministic_shortcut_applied": false,
+          "deterministic_shortcut_reason": "",
+          "compression_strategy": "expanded_context_block_global_rows",
+          "used_cols": [
+            "Name",
+            "Topic",
+            "Cost",
+            "Target age",
+            "Advertising"
+          ],
+          "used_rows_count": 17
+        },
+        {
+          "id": "nu-142",
+          "question": "on what date did the toll for class 1 first go above 2.00?",
+          "gold": [
+            "14 June 2005"
+          ],
+          "myagent_prediction": "16 August 2004",
+          "mact_prediction": "14 June 2005",
+          "risk": "high",
+          "route": "COMPLEX",
+          "difficulty": "medium",
+          "problem_tags": [
+            "superlative_order",
+            "temporal"
+          ],
+          "strong_verification_applied": true,
+          "strong_verification_reason": "wtq_high_risk_denotation",
+          "deterministic_shortcut_applied": false,
+          "deterministic_shortcut_reason": "",
+          "compression_strategy": "expanded_context_block_global_rows",
+          "used_cols": [
+            "Date introduced",
+            "Class 1 (e.g. Motorbike)"
+          ],
+          "used_rows_count": 9
+        },
+        {
+          "id": "nu-146",
+          "question": "which track comes after \"like that\"?",
+          "gold": [
+            "Call It What You Want"
+          ],
+          "myagent_prediction": "West Up!\" by WC and the Maad Circle",
+          "mact_prediction": "Call It What You Want",
+          "risk": "high",
+          "route": "COMPLEX",
+          "difficulty": "medium",
+          "problem_tags": [
+            "temporal"
+          ],
+          "strong_verification_applied": true,
+          "strong_verification_reason": "wtq_temporal_crosscheck",
+          "deterministic_shortcut_applied": false,
+          "deterministic_shortcut_reason": "",
+          "compression_strategy": "expanded_context_block",
+          "used_cols": [
+            "#",
+            "Title",
+            "Featured guest(s)",
+            "Producer(s)",
+            "Time",
+            "Sample (s)"
+          ],
+          "used_rows_count": 3
+        },
+        {
+          "id": "nu-15",
+          "question": "what was the total number of points scored by the tide in the last 3 games combined.",
+          "gold": [
+            "68"
+          ],
+          "myagent_prediction": 75,
+          "mact_prediction": "68",
+          "risk": "high",
+          "route": "COMPLEX",
+          "difficulty": "medium",
+          "problem_tags": [
+            "count",
+            "superlative_order",
+            "arithmetic"
+          ],
+          "strong_verification_applied": true,
+          "strong_verification_reason": "wtq_high_risk_denotation",
+          "deterministic_shortcut_applied": false,
+          "deterministic_shortcut_reason": "",
+          "compression_strategy": "expanded_context_block_global_rows",
+          "used_cols": [
+            "Date",
+            "Result"
+          ],
+          "used_rows_count": 13
+        },
+        {
+          "id": "nu-159",
+          "question": "how long is the time frame in years of the table?",
+          "gold": [
+            "16"
+          ],
+          "myagent_prediction": "12",
+          "mact_prediction": "16",
+          "risk": "high",
+          "route": "SIMPLE",
+          "difficulty": "easy",
+          "problem_tags": [
+            "arithmetic"
+          ],
+          "strong_verification_applied": true,
+          "strong_verification_reason": "wtq_simple_crosscheck",
+          "deterministic_shortcut_applied": false,
+          "deterministic_shortcut_reason": "",
+          "compression_strategy": "strict_cell_block",
+          "used_cols": [
+            "Year"
+          ],
+          "used_rows_count": 12
+        },
+        {
+          "id": "nu-161",
+          "question": "what nation has won more gold medals than korea?",
+          "gold": [
+            "Malaysia"
+          ],
+          "myagent_prediction": "Indonesia",
+          "mact_prediction": "Malaysia",
+          "risk": "medium",
+          "route": "COMPLEX",
+          "difficulty": "medium",
+          "problem_tags": [
+            "comparison"
+          ],
+          "strong_verification_applied": false,
+          "strong_verification_reason": "",
+          "deterministic_shortcut_applied": false,
+          "deterministic_shortcut_reason": "",
+          "compression_strategy": "expanded_context_block",
+          "used_cols": [
+            "Rank",
+            "Nation",
+            "Gold"
+          ],
+          "used_rows_count": 6
+        },
+        {
+          "id": "nu-173",
+          "question": "did hillary clinton or john mccain win 51% of the vote in the march 31, 2008 rasmussen reports poll?",
+          "gold": [
+            "John McCain"
+          ],
+          "myagent_prediction": "yes",
+          "mact_prediction": "John McCain",
+          "risk": "high",
+          "route": "COMPLEX",
+          "difficulty": "medium",
+          "problem_tags": [
+            "temporal",
+            "negation_logic"
+          ],
+          "strong_verification_applied": true,
+          "strong_verification_reason": "wtq_high_risk_denotation",
+          "deterministic_shortcut_applied": false,
+          "deterministic_shortcut_reason": "",
+          "compression_strategy": "expanded_context_block",
+          "used_cols": [
+            "Poll Source",
+            "Date",
+            "Democrat",
+            "%",
+            "Republican",
+            "%_2"
+          ],
+          "used_rows_count": 31
+        },
+        {
+          "id": "nu-179",
+          "question": "previous to november 15, 2007 how often was the overall rank in the 30s?",
+          "gold": [
+            "3"
+          ],
+          "myagent_prediction": 4,
+          "mact_prediction": "3",
+          "risk": "high",
+          "route": "COMPLEX",
+          "difficulty": "hard",
+          "problem_tags": [
+            "temporal"
+          ],
+          "strong_verification_applied": true,
+          "strong_verification_reason": "wtq_temporal_crosscheck",
+          "deterministic_shortcut_applied": false,
+          "deterministic_shortcut_reason": "",
+          "compression_strategy": "full_table_for_high_coverage",
+          "used_cols": [
+            "#",
+            "Episode",
+            "Air date",
+            "Rating",
+            "Share",
+            "18-49 (Rating/Share)",
+            "Viewers (m)",
+            "Rank (night)",
+            "Rank (timeslot)",
+            "Rank (overall)"
+          ],
+          "used_rows_count": 13
+        },
+        {
+          "id": "nu-18",
+          "question": "what is the only hospital to have 6 hospital beds?",
+          "gold": [
+            "Vidant Bertie Hospital"
+          ],
+          "myagent_prediction": "{\"answer\": null}",
+          "mact_prediction": "Vidant Bertie Hospital",
+          "risk": "high",
+          "route": "COMPLEX",
+          "difficulty": "easy",
+          "problem_tags": [
+            "negation_logic"
+          ],
+          "strong_verification_applied": true,
+          "strong_verification_reason": "wtq_high_risk_denotation",
+          "deterministic_shortcut_applied": false,
+          "deterministic_shortcut_reason": "",
+          "compression_strategy": "strict_cell_block_global_rows",
+          "used_cols": [
+            "Name",
+            "Hospital beds",
+            "Notes"
+          ],
+          "used_rows_count": 126
+        },
+        {
+          "id": "nu-180",
+          "question": "what element is after radium?",
+          "gold": [
+            "Actinium"
+          ],
+          "myagent_prediction": "Radium",
+          "mact_prediction": "Actinium",
+          "risk": "high",
+          "route": "COMPLEX",
+          "difficulty": "medium",
+          "problem_tags": [
+            "temporal"
+          ],
+          "strong_verification_applied": true,
+          "strong_verification_reason": "wtq_temporal_crosscheck",
+          "deterministic_shortcut_applied": false,
+          "deterministic_shortcut_reason": "",
+          "compression_strategy": "expanded_context_block",
+          "used_cols": [
+            "Atomic no.",
+            "Name",
+            "Symbol",
+            "Group",
+            "Period",
+            "Block",
+            "State at STP",
+            "Occurrence",
+            "Description"
+          ],
+          "used_rows_count": 12
+        },
+        {
+          "id": "nu-187",
+          "question": "how many episodes aired before december 1st, 1965?",
+          "gold": [
+            "10"
+          ],
+          "myagent_prediction": "8",
+          "mact_prediction": "10",
+          "risk": "high",
+          "route": "COMPLEX",
+          "difficulty": "medium",
+          "problem_tags": [
+            "count",
+            "temporal"
+          ],
+          "strong_verification_applied": true,
+          "strong_verification_reason": "wtq_high_risk_denotation",
+          "deterministic_shortcut_applied": false,
+          "deterministic_shortcut_reason": "",
+          "compression_strategy": "expanded_context_block_global_rows",
+          "used_cols": [
+            "No. in series",
+            "No. in season",
+            "Title",
+            "Directed by",
+            "Written by",
+            "Original air date",
+            "Prod. code"
+          ],
+          "used_rows_count": 28
+        },
+        {
+          "id": "nu-188",
+          "question": "what was the total number of goals scored in the game between haiti and south korea on september 6, 2013?",
+          "gold": [
+            "5"
+          ],
+          "myagent_prediction": "0–0",
+          "mact_prediction": "5",
+          "risk": "high",
+          "route": "COMPLEX",
+          "difficulty": "easy",
+          "problem_tags": [
+            "count",
+            "temporal",
+            "arithmetic",
+            "negation_logic"
+          ],
+          "strong_verification_applied": true,
+          "strong_verification_reason": "wtq_high_risk_denotation",
+          "deterministic_shortcut_applied": false,
+          "deterministic_shortcut_reason": "",
+          "compression_strategy": "strict_cell_block_global_rows",
+          "used_cols": [
+            "Date",
+            "Location",
+            "Opponent",
+            "Result"
+          ],
+          "used_rows_count": 11
+        },
+        {
+          "id": "nu-22",
+          "question": "total wins by belgian riders",
+          "gold": [
+            "7"
+          ],
+          "myagent_prediction": 6.0,
+          "mact_prediction": "7",
+          "risk": "medium",
+          "route": "COMPLEX",
+          "difficulty": "medium",
+          "problem_tags": [
+            "arithmetic"
+          ],
+          "strong_verification_applied": false,
+          "strong_verification_reason": "",
+          "deterministic_shortcut_applied": false,
+          "deterministic_shortcut_reason": "",
+          "compression_strategy": "expanded_context_block",
+          "used_cols": [
+            "Place",
+            "Rider",
+            "Wins"
+          ],
+          "used_rows_count": 20
+        }
+      ],
+      "both_wrong_examples": [
+        {
+          "id": "nu-0",
+          "question": "which country had the most cyclists finish within the top 10?",
+          "gold": [
+            "Italy"
+          ],
+          "myagent_prediction": "Spain",
+          "mact_prediction": "spain and italy",
+          "risk": "high",
+          "route": "COMPLEX",
+          "difficulty": "medium",
+          "problem_tags": [
+            "superlative_order"
+          ],
+          "strong_verification_applied": true,
+          "strong_verification_reason": "wtq_high_risk_denotation",
+          "deterministic_shortcut_applied": false,
+          "deterministic_shortcut_reason": "",
+          "compression_strategy": "expanded_context_block_global_rows",
+          "used_cols": [
+            "Rank",
+            "Cyclist"
+          ],
+          "used_rows_count": 10
+        },
+        {
+          "id": "nu-10",
+          "question": "in which three consecutive years was the record the same?",
+          "gold": [
+            "2004",
+            "2005",
+            "2006"
+          ],
+          "myagent_prediction": "1974, 1975",
+          "mact_prediction": "2004, 2005, 2006.",
+          "risk": "medium",
+          "route": "COMPLEX",
+          "difficulty": "medium",
+          "problem_tags": [],
+          "strong_verification_applied": false,
+          "strong_verification_reason": "",
+          "deterministic_shortcut_applied": false,
+          "deterministic_shortcut_reason": "",
+          "compression_strategy": "expanded_context_block",
+          "used_cols": [
+            "Season",
+            "Record"
+          ],
+          "used_rows_count": 40
+        },
+        {
+          "id": "nu-102",
+          "question": "who was the first voted out?",
+          "gold": [
+            "Yelena Kondulaynen"
+          ],
+          "myagent_prediction": "Yelena Kondulaynen 44.the actress",
+          "mact_prediction": "retrieve the contestant whose Finish is \"1st Voted Out Day 3\"",
+          "risk": "high",
+          "route": "COMPLEX",
+          "difficulty": "easy",
+          "problem_tags": [
+            "superlative_order"
+          ],
+          "strong_verification_applied": true,
+          "strong_verification_reason": "wtq_high_risk_denotation",
+          "deterministic_shortcut_applied": false,
+          "deterministic_shortcut_reason": "",
+          "compression_strategy": "strict_cell_block_global_rows",
+          "used_cols": [
+            "Contestant",
+            "Finish"
+          ],
+          "used_rows_count": 19
+        },
+        {
+          "id": "nu-104",
+          "question": "how long does the swiss open series run for?",
+          "gold": [
+            "6 days"
+          ],
+          "myagent_prediction": 7,
+          "mact_prediction": "retrieve the Date Start and Date Finish for the Swiss Open Super Series",
+          "risk": "medium",
+          "route": "COMPLEX",
+          "difficulty": "medium",
+          "problem_tags": [
+            "arithmetic"
+          ],
+          "strong_verification_applied": false,
+          "strong_verification_reason": "",
+          "deterministic_shortcut_applied": false,
+          "deterministic_shortcut_reason": "",
+          "compression_strategy": "expanded_context_block",
+          "used_cols": [
+            "Tour",
+            "Official title",
+            "Date Start",
+            "Date Finish"
+          ],
+          "used_rows_count": 3
+        },
+        {
+          "id": "nu-105",
+          "question": "which racer was the only one not to finish on the final lap?",
+          "gold": [
+            "Henk Van De Lagemaat"
+          ],
+          "myagent_prediction": "24.0",
+          "mact_prediction": "maurice bolwerk",
+          "risk": "high",
+          "route": "COMPLEX",
+          "difficulty": "medium",
+          "problem_tags": [
+            "negation_logic"
+          ],
+          "strong_verification_applied": true,
+          "strong_verification_reason": "wtq_high_risk_denotation",
+          "deterministic_shortcut_applied": false,
+          "deterministic_shortcut_reason": "",
+          "compression_strategy": "expanded_context_block_global_rows",
+          "used_cols": [
+            "Pos",
+            "Time/Retired"
+          ],
+          "used_rows_count": 28
+        },
+        {
+          "id": "nu-11",
+          "question": "does pat or john have the highest total?",
+          "gold": [
+            "John"
+          ],
+          "myagent_prediction": "John O'Flynn",
+          "mact_prediction": "John O'Flynn",
+          "risk": "high",
+          "route": "COMPLEX",
+          "difficulty": "medium",
+          "problem_tags": [
+            "superlative_order",
+            "arithmetic",
+            "negation_logic"
+          ],
+          "strong_verification_applied": true,
+          "strong_verification_reason": "wtq_high_risk_denotation",
+          "deterministic_shortcut_applied": false,
+          "deterministic_shortcut_reason": "",
+          "compression_strategy": "expanded_context_block_global_rows_global_columns",
+          "used_cols": [
+            "Name",
+            "League",
+            "FA Cup",
+            "League Cup",
+            "JP Trophy",
+            "Total"
+          ],
+          "used_rows_count": 13
+        },
+        {
+          "id": "nu-116",
+          "question": "are the dates in a consecutive order?",
+          "gold": [
+            "yes"
+          ],
+          "myagent_prediction": "No",
+          "mact_prediction": "no, the dates are not in consecutive order. some entries only list the year (e.g., 1994, 1995) without specific months/days, and there are gaps between specific dates (e.g., from 1995 to november 1995).",
+          "risk": "high",
+          "route": "SIMPLE",
+          "difficulty": "easy",
+          "problem_tags": [],
+          "strong_verification_applied": true,
+          "strong_verification_reason": "wtq_simple_crosscheck",
+          "deterministic_shortcut_applied": false,
+          "deterministic_shortcut_reason": "",
+          "compression_strategy": "strict_cell_block",
+          "used_cols": [
+            "Wrestler:",
+            "Date:",
+            "Notes:"
+          ],
+          "used_rows_count": 8
+        },
+        {
+          "id": "nu-124",
+          "question": "how many seasons were played ?",
+          "gold": [
+            "10"
+          ],
+          "myagent_prediction": 11,
+          "mact_prediction": "9",
+          "risk": "high",
+          "route": "COMPLEX",
+          "difficulty": "easy",
+          "problem_tags": [
+            "count"
+          ],
+          "strong_verification_applied": true,
+          "strong_verification_reason": "wtq_high_risk_denotation",
+          "deterministic_shortcut_applied": false,
+          "deterministic_shortcut_reason": "",
+          "compression_strategy": "strict_cell_block_global_rows",
+          "used_cols": [
+            "Season"
+          ],
+          "used_rows_count": 11
+        },
+        {
+          "id": "nu-129",
+          "question": "how may away games did they win?",
+          "gold": [
+            "7"
+          ],
+          "myagent_prediction": "Not computable from the given data.",
+          "mact_prediction": "2",
+          "risk": "medium",
+          "route": "COMPLEX",
+          "difficulty": "medium",
+          "problem_tags": [],
+          "strong_verification_applied": false,
+          "strong_verification_reason": "",
+          "deterministic_shortcut_applied": false,
+          "deterministic_shortcut_reason": "",
+          "compression_strategy": "expanded_context_block",
+          "used_cols": [
+            "Week",
+            "Date",
+            "Result"
+          ],
+          "used_rows_count": 16
+        },
+        {
+          "id": "nu-140",
+          "question": "which country had the most competitors?",
+          "gold": [
+            "Italy"
+          ],
+          "myagent_prediction": "Ferrari",
+          "mact_prediction": "Grouillard)\n27. Brabham-Judd (same as above)\n28. Onyx-Ford (",
+          "risk": "high",
+          "route": "COMPLEX",
+          "difficulty": "medium",
+          "problem_tags": [
+            "superlative_order"
+          ],
+          "strong_verification_applied": true,
+          "strong_verification_reason": "wtq_high_risk_denotation",
+          "deterministic_shortcut_applied": false,
+          "deterministic_shortcut_reason": "",
+          "compression_strategy": "expanded_context_block_global_rows",
+          "used_cols": [
+            "Pos",
+            "Constructor"
+          ],
+          "used_rows_count": 35
+        }
+      ]
+    },
+    "tabfact": {
+      "paths": {
+        "myagent": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_baseline_formal200_20260812_1505/myagent_formal200/merged/tabfact_qwen3-32b-local.jsonl",
+        "mact": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_baseline_formal200_20260812_1505/mact/tabfact_mact_formal200.jsonl"
+      },
+      "counts": {
+        "myagent_correct": 162,
+        "mact_correct": 185,
+        "both_correct": 154,
+        "myagent_only": 8,
+        "mact_only": 31,
+        "both_wrong": 7,
+        "net_gap_mact_minus_myagent": 23
+      },
+      "myagent_only_breakdown": {
+        "count": 8,
+        "risk": [
+          {
+            "key": "high",
+            "count": 4
+          },
+          {
+            "key": "medium",
+            "count": 4
+          }
+        ],
+        "route": [
+          {
+            "key": "COMPLEX",
+            "count": 8
+          }
+        ],
+        "difficulty": [
+          {
+            "key": "medium",
+            "count": 8
+          }
+        ],
+        "strong_verification_applied": [
+          {
+            "key": "false",
+            "count": 8
+          }
+        ],
+        "deterministic_shortcut_applied": [
+          {
+            "key": "false",
+            "count": 7
+          },
+          {
+            "key": "true",
+            "count": 1
+          }
+        ],
+        "compression_strategy": [
+          {
+            "key": "expanded_context_block_global_rows",
+            "count": 8
+          }
+        ],
+        "contract_kind": [
+          {
+            "key": "label",
+            "count": 8
+          }
+        ],
+        "answer_mode": [
+          {
+            "key": "true_false",
+            "count": 8
+          }
+        ],
+        "problem_tags": [
+          {
+            "key": "closed_choice",
+            "count": 8
+          },
+          {
+            "key": "superlative_order",
+            "count": 2
+          },
+          {
+            "key": "negation_logic",
+            "count": 2
+          },
+          {
+            "key": "temporal",
+            "count": 2
+          }
+        ]
+      },
+      "mact_only_breakdown": {
+        "count": 31,
+        "risk": [
+          {
+            "key": "high",
+            "count": 29
+          },
+          {
+            "key": "medium",
+            "count": 2
+          }
+        ],
+        "route": [
+          {
+            "key": "COMPLEX",
+            "count": 31
+          }
+        ],
+        "difficulty": [
+          {
+            "key": "medium",
+            "count": 30
+          },
+          {
+            "key": "easy",
+            "count": 1
+          }
+        ],
+        "strong_verification_applied": [
+          {
+            "key": "false",
+            "count": 31
+          }
+        ],
+        "deterministic_shortcut_applied": [
+          {
+            "key": "false",
+            "count": 31
+          }
+        ],
+        "compression_strategy": [
+          {
+            "key": "expanded_context_block_global_rows",
+            "count": 24
+          },
+          {
+            "key": "expanded_context_block_global_rows_global_columns",
+            "count": 6
+          },
+          {
+            "key": "strict_cell_block_global_rows",
+            "count": 1
+          }
+        ],
+        "contract_kind": [
+          {
+            "key": "label",
+            "count": 31
+          }
+        ],
+        "answer_mode": [
+          {
+            "key": "true_false",
+            "count": 31
+          }
+        ],
+        "problem_tags": [
+          {
+            "key": "closed_choice",
+            "count": 31
+          },
+          {
+            "key": "temporal",
+            "count": 16
+          },
+          {
+            "key": "negation_logic",
+            "count": 14
+          },
+          {
+            "key": "superlative_order",
+            "count": 12
+          },
+          {
+            "key": "comparison",
+            "count": 5
+          },
+          {
+            "key": "arithmetic",
+            "count": 3
+          },
+          {
+            "key": "count",
+            "count": 1
+          }
+        ]
+      },
+      "both_wrong_breakdown": {
+        "count": 7,
+        "risk": [
+          {
+            "key": "high",
+            "count": 6
+          },
+          {
+            "key": "medium",
+            "count": 1
+          }
+        ],
+        "route": [
+          {
+            "key": "COMPLEX",
+            "count": 6
+          },
+          {
+            "key": "SIMPLE",
+            "count": 1
+          }
+        ],
+        "difficulty": [
+          {
+            "key": "medium",
+            "count": 6
+          },
+          {
+            "key": "easy",
+            "count": 1
+          }
+        ],
+        "strong_verification_applied": [
+          {
+            "key": "false",
+            "count": 7
+          }
+        ],
+        "deterministic_shortcut_applied": [
+          {
+            "key": "false",
+            "count": 7
+          }
+        ],
+        "compression_strategy": [
+          {
+            "key": "expanded_context_block_global_rows",
+            "count": 4
+          },
+          {
+            "key": "expanded_context_block_global_rows_global_columns",
+            "count": 2
+          },
+          {
+            "key": "strict_cell_block_global_rows",
+            "count": 1
+          }
+        ],
+        "contract_kind": [
+          {
+            "key": "label",
+            "count": 7
+          }
+        ],
+        "answer_mode": [
+          {
+            "key": "true_false",
+            "count": 7
+          }
+        ],
+        "problem_tags": [
+          {
+            "key": "closed_choice",
+            "count": 7
+          },
+          {
+            "key": "negation_logic",
+            "count": 5
+          },
+          {
+            "key": "comparison",
+            "count": 3
+          },
+          {
+            "key": "superlative_order",
+            "count": 2
+          },
+          {
+            "key": "temporal",
+            "count": 2
+          },
+          {
+            "key": "count",
+            "count": 1
+          }
+        ]
+      },
+      "mact_only_examples": [
+        {
+          "id": "tabfact-test-100",
+          "question": "there be a 74.64 point difference between the highest score (186.92) and the lowest score (112.28)",
+          "gold": [
+            "true"
+          ],
+          "myagent_prediction": "false",
+          "mact_prediction": "True",
+          "risk": "high",
+          "route": "COMPLEX",
+          "difficulty": "medium",
+          "problem_tags": [
+            "superlative_order",
+            "temporal",
+            "comparison",
+            "arithmetic",
+            "negation_logic",
+            "closed_choice"
+          ],
+          "strong_verification_applied": false,
+          "strong_verification_reason": "",
+          "deterministic_shortcut_applied": false,
+          "deterministic_shortcut_reason": "",
+          "compression_strategy": "expanded_context_block_global_rows_global_columns",
+          "used_cols": [
+            "rank",
+            "name",
+            "nation",
+            "sp + fs",
+            "points",
+            "places"
+          ],
+          "used_rows_count": 31
+        },
+        {
+          "id": "tabfact-test-103",
+          "question": "natalia strelkova be not the female lose the skating championship",
+          "gold": [
+            "false"
+          ],
+          "myagent_prediction": "true",
+          "mact_prediction": "false",
+          "risk": "high",
+          "route": "COMPLEX",
+          "difficulty": "medium",
+          "problem_tags": [
+            "negation_logic",
+            "closed_choice"
+          ],
+          "strong_verification_applied": false,
+          "strong_verification_reason": "",
+          "deterministic_shortcut_applied": false,
+          "deterministic_shortcut_reason": "",
+          "compression_strategy": "expanded_context_block_global_rows",
+          "used_cols": [
+            "rank",
+            "name",
+            "nation",
+            "sp + fs",
+            "points",
+            "places"
+          ],
+          "used_rows_count": 31
+        },
+        {
+          "id": "tabfact-test-104",
+          "question": "emi watanabe be rank third in the 1979 world figure skating championships , 2 place higher than dagmar lurz",
+          "gold": [
+            "false"
+          ],
+          "myagent_prediction": "true",
+          "mact_prediction": "False",
+          "risk": "high",
+          "route": "COMPLEX",
+          "difficulty": "medium",
+          "problem_tags": [
+            "temporal",
+            "comparison",
+            "closed_choice"
+          ],
+          "strong_verification_applied": false,
+          "strong_verification_reason": "",
+          "deterministic_shortcut_applied": false,
+          "deterministic_shortcut_reason": "",
+          "compression_strategy": "expanded_context_block_global_rows",
+          "used_cols": [
+            "rank",
+            "name"
+          ],
+          "used_rows_count": 31
+        },
+        {
+          "id": "tabfact-test-109",
+          "question": "west germany have 2 of the top 6 but do not have anyone win a medal",
+          "gold": [
+            "true"
+          ],
+          "myagent_prediction": "false",
+          "mact_prediction": "True",
+          "risk": "high",
+          "route": "COMPLEX",
+          "difficulty": "medium",
+          "problem_tags": [
+            "superlative_order",
+            "negation_logic",
+            "closed_choice"
+          ],
+          "strong_verification_applied": false,
+          "strong_verification_reason": "",
+          "deterministic_shortcut_applied": false,
+          "deterministic_shortcut_reason": "",
+          "compression_strategy": "expanded_context_block_global_rows",
+          "used_cols": [
+            "rank",
+            "name",
+            "nation"
+          ],
+          "used_rows_count": 19
+        },
+        {
+          "id": "tabfact-test-120",
+          "question": "the highest score of the season be detroit , on january 5 with 6 point",
+          "gold": [
+            "true"
+          ],
+          "myagent_prediction": "false",
+          "mact_prediction": "true",
+          "risk": "high",
+          "route": "COMPLEX",
+          "difficulty": "medium",
+          "problem_tags": [
+            "superlative_order",
+            "temporal",
+            "closed_choice"
+          ],
+          "strong_verification_applied": false,
+          "strong_verification_reason": "",
+          "deterministic_shortcut_applied": false,
+          "deterministic_shortcut_reason": "",
+          "compression_strategy": "expanded_context_block_global_rows_global_columns",
+          "used_cols": [
+            "date",
+            "visitor",
+            "score",
+            "home",
+            "decision",
+            "attendance",
+            "record"
+          ],
+          "used_rows_count": 14
+        },
+        {
+          "id": "tabfact-test-123",
+          "question": "detroit have 1 of the lowest visitor score this season",
+          "gold": [
+            "true"
+          ],
+          "myagent_prediction": "false",
+          "mact_prediction": "True",
+          "risk": "high",
+          "route": "COMPLEX",
+          "difficulty": "medium",
+          "problem_tags": [
+            "superlative_order",
+            "temporal",
+            "closed_choice"
+          ],
+          "strong_verification_applied": false,
+          "strong_verification_reason": "",
+          "deterministic_shortcut_applied": false,
+          "deterministic_shortcut_reason": "",
+          "compression_strategy": "expanded_context_block_global_rows_global_columns",
+          "used_cols": [
+            "date",
+            "visitor",
+            "score",
+            "home",
+            "decision",
+            "attendance",
+            "record"
+          ],
+          "used_rows_count": 14
+        },
+        {
+          "id": "tabfact-test-138",
+          "question": "the jazz have 2 player with the last name dawkins but their time on the team do not overlap",
+          "gold": [
+            "true"
+          ],
+          "myagent_prediction": "false",
+          "mact_prediction": "True",
+          "risk": "high",
+          "route": "COMPLEX",
+          "difficulty": "medium",
+          "problem_tags": [
+            "superlative_order",
+            "negation_logic",
+            "closed_choice"
+          ],
+          "strong_verification_applied": false,
+          "strong_verification_reason": "",
+          "deterministic_shortcut_applied": false,
+          "deterministic_shortcut_reason": "",
+          "compression_strategy": "expanded_context_block_global_rows",
+          "used_cols": [
+            "player",
+            "years for jazz"
+          ],
+          "used_rows_count": 8
+        },
+        {
+          "id": "tabfact-test-139",
+          "question": "paul dawkins play for the jazz 7 year before darryl dawkins",
+          "gold": [
+            "true"
+          ],
+          "myagent_prediction": "false",
+          "mact_prediction": "True",
+          "risk": "high",
+          "route": "COMPLEX",
+          "difficulty": "medium",
+          "problem_tags": [
+            "temporal",
+            "closed_choice"
+          ],
+          "strong_verification_applied": false,
+          "strong_verification_reason": "",
+          "deterministic_shortcut_applied": false,
+          "deterministic_shortcut_reason": "",
+          "compression_strategy": "expanded_context_block_global_rows",
+          "used_cols": [
+            "player",
+            "nationality",
+            "position",
+            "years for jazz",
+            "school / club team"
+          ],
+          "used_rows_count": 8
+        },
+        {
+          "id": "tabfact-test-146",
+          "question": "james donaldson have 2 stint on the jazz 's utah jazz all - time roster , total 5 year in total",
+          "gold": [
+            "false"
+          ],
+          "myagent_prediction": "true",
+          "mact_prediction": "False",
+          "risk": "high",
+          "route": "COMPLEX",
+          "difficulty": "medium",
+          "problem_tags": [
+            "temporal",
+            "arithmetic",
+            "closed_choice"
+          ],
+          "strong_verification_applied": false,
+          "strong_verification_reason": "",
+          "deterministic_shortcut_applied": false,
+          "deterministic_shortcut_reason": "",
+          "compression_strategy": "expanded_context_block_global_rows",
+          "used_cols": [
+            "player",
+            "years for jazz",
+            "school / club team"
+          ],
+          "used_rows_count": 8
+        },
+        {
+          "id": "tabfact-test-150",
+          "question": "the pga championship have 3 more cut made than the us open",
+          "gold": [
+            "true"
+          ],
+          "myagent_prediction": "false",
+          "mact_prediction": "True",
+          "risk": "high",
+          "route": "COMPLEX",
+          "difficulty": "medium",
+          "problem_tags": [
+            "comparison",
+            "closed_choice"
+          ],
+          "strong_verification_applied": false,
+          "strong_verification_reason": "",
+          "deterministic_shortcut_applied": false,
+          "deterministic_shortcut_reason": "",
+          "compression_strategy": "expanded_context_block_global_rows",
+          "used_cols": [
+            "tournament",
+            "cuts made"
+          ],
+          "used_rows_count": 5
+        },
+        {
+          "id": "tabfact-test-153",
+          "question": "for brian watts , the open championship be the tournament with his second highest number of event",
+          "gold": [
+            "false"
+          ],
+          "myagent_prediction": "true",
+          "mact_prediction": "False",
+          "risk": "high",
+          "route": "COMPLEX",
+          "difficulty": "medium",
+          "problem_tags": [
+            "count",
+            "superlative_order",
+            "closed_choice"
+          ],
+          "strong_verification_applied": false,
+          "strong_verification_reason": "",
+          "deterministic_shortcut_applied": false,
+          "deterministic_shortcut_reason": "",
+          "compression_strategy": "expanded_context_block_global_rows_global_columns",
+          "used_cols": [
+            "tournament",
+            "wins",
+            "top - 5",
+            "top - 25",
+            "events",
+            "cuts made"
+          ],
+          "used_rows_count": 5
+        },
+        {
+          "id": "tabfact-test-187",
+          "question": "alfredo binda be the race leader for 13 race in the 1933 giro d'italia",
+          "gold": [
+            "true"
+          ],
+          "myagent_prediction": "false",
+          "mact_prediction": "True",
+          "risk": "high",
+          "route": "COMPLEX",
+          "difficulty": "medium",
+          "problem_tags": [
+            "temporal",
+            "closed_choice"
+          ],
+          "strong_verification_applied": false,
+          "strong_verification_reason": "",
+          "deterministic_shortcut_applied": false,
+          "deterministic_shortcut_reason": "",
+          "compression_strategy": "expanded_context_block_global_rows",
+          "used_cols": [
+            "date",
+            "winner",
+            "race leader"
+          ],
+          "used_rows_count": 24
+        },
+        {
+          "id": "tabfact-test-188",
+          "question": "alfredo binda win 6 race of the 1933 giro d'italia , but he be the race leader for 13 race",
+          "gold": [
+            "true"
+          ],
+          "myagent_prediction": "false",
+          "mact_prediction": "True",
+          "risk": "high",
+          "route": "COMPLEX",
+          "difficulty": "medium",
+          "problem_tags": [
+            "temporal",
+            "closed_choice"
+          ],
+          "strong_verification_applied": false,
+          "strong_verification_reason": "",
+          "deterministic_shortcut_applied": false,
+          "deterministic_shortcut_reason": "",
+          "compression_strategy": "expanded_context_block_global_rows",
+          "used_cols": [
+            "date",
+            "winner",
+            "race leader"
+          ],
+          "used_rows_count": 24
+        },
+        {
+          "id": "tabfact-test-22",
+          "question": "the lady of the lake episode have the most uk viewer",
+          "gold": [
+            "true"
+          ],
+          "myagent_prediction": "false",
+          "mact_prediction": "True",
+          "risk": "high",
+          "route": "COMPLEX",
+          "difficulty": "medium",
+          "problem_tags": [
+            "superlative_order",
+            "closed_choice"
+          ],
+          "strong_verification_applied": false,
+          "strong_verification_reason": "",
+          "deterministic_shortcut_applied": false,
+          "deterministic_shortcut_reason": "",
+          "compression_strategy": "expanded_context_block_global_rows",
+          "used_cols": [
+            "no overall",
+            "no for series",
+            "title",
+            "original air date",
+            "uk viewers (million)"
+          ],
+          "used_rows_count": 12
+        },
+        {
+          "id": "tabfact-test-34",
+          "question": "though 4 player from belgian first division a be in the top 19 scorer , the top scorer (matias suarez) have 8 fewer goal than mbark boussoufa , who have 11 goal",
+          "gold": [
+            "true"
+          ],
+          "myagent_prediction": "false",
+          "mact_prediction": "True",
+          "risk": "high",
+          "route": "COMPLEX",
+          "difficulty": "medium",
+          "problem_tags": [
+            "superlative_order",
+            "closed_choice"
+          ],
+          "strong_verification_applied": false,
+          "strong_verification_reason": "",
+          "deterministic_shortcut_applied": false,
+          "deterministic_shortcut_reason": "",
+          "compression_strategy": "expanded_context_block_global_rows",
+          "used_cols": [
+            "player",
+            "total"
+          ],
+          "used_rows_count": 19
+        },
+        {
+          "id": "tabfact-test-41",
+          "question": "2000 be the only year rafael márquez score more than 1 goal in international competition",
+          "gold": [
+            "true"
+          ],
+          "myagent_prediction": "false",
+          "mact_prediction": "True",
+          "risk": "high",
+          "route": "COMPLEX",
+          "difficulty": "medium",
+          "problem_tags": [
+            "temporal",
+            "comparison",
+            "negation_logic",
+            "closed_choice"
+          ],
+          "strong_verification_applied": false,
+          "strong_verification_reason": "",
+          "deterministic_shortcut_applied": false,
+          "deterministic_shortcut_reason": "",
+          "compression_strategy": "expanded_context_block_global_rows",
+          "used_cols": [
+            "goal",
+            "date",
+            "score",
+            "competition"
+          ],
+          "used_rows_count": 13
+        },
+        {
+          "id": "tabfact-test-50",
+          "question": "3 of the people tie for ninth place be from the united state",
+          "gold": [
+            "true"
+          ],
+          "myagent_prediction": "false",
+          "mact_prediction": "True",
+          "risk": "medium",
+          "route": "COMPLEX",
+          "difficulty": "medium",
+          "problem_tags": [
+            "closed_choice"
+          ],
+          "strong_verification_applied": false,
+          "strong_verification_reason": "",
+          "deterministic_shortcut_applied": false,
+          "deterministic_shortcut_reason": "",
+          "compression_strategy": "expanded_context_block_global_rows",
+          "used_cols": [
+            "place",
+            "country"
+          ],
+          "used_rows_count": 12
+        },
+        {
+          "id": "tabfact-test-53",
+          "question": "there be a total of 4 country represent by the player",
+          "gold": [
+            "true"
+          ],
+          "myagent_prediction": "false",
+          "mact_prediction": "True",
+          "risk": "high",
+          "route": "COMPLEX",
+          "difficulty": "easy",
+          "problem_tags": [
+            "arithmetic",
+            "closed_choice"
+          ],
+          "strong_verification_applied": false,
+          "strong_verification_reason": "",
+          "deterministic_shortcut_applied": false,
+          "deterministic_shortcut_reason": "",
+          "compression_strategy": "strict_cell_block_global_rows",
+          "used_cols": [
+            "place",
+            "player",
+            "country"
+          ],
+          "used_rows_count": 12
+        },
+        {
+          "id": "tabfact-test-56",
+          "question": "a majority of the people who score over par be from the united state",
+          "gold": [
+            "true"
+          ],
+          "myagent_prediction": "false",
+          "mact_prediction": "True",
+          "risk": "medium",
+          "route": "COMPLEX",
+          "difficulty": "medium",
+          "problem_tags": [
+            "closed_choice"
+          ],
+          "strong_verification_applied": false,
+          "strong_verification_reason": "",
+          "deterministic_shortcut_applied": false,
+          "deterministic_shortcut_reason": "",
+          "compression_strategy": "expanded_context_block_global_rows",
+          "used_cols": [
+            "place",
+            "country",
+            "score",
+            "to par"
+          ],
+          "used_rows_count": 12
+        },
+        {
+          "id": "tabfact-test-60",
+          "question": "there be only 2 day during august 2005 milwaukee brewers season on which the 2005 milwaukee brewers season have a 50 / 50 win / loss record",
+          "gold": [
+            "true"
+          ],
+          "myagent_prediction": "false",
+          "mact_prediction": "True",
+          "risk": "high",
+          "route": "COMPLEX",
+          "difficulty": "medium",
+          "problem_tags": [
+            "temporal",
+            "negation_logic",
+            "closed_choice"
+          ],
+          "strong_verification_applied": false,
+          "strong_verification_reason": "",
+          "deterministic_shortcut_applied": false,
+          "deterministic_shortcut_reason": "",
+          "compression_strategy": "expanded_context_block_global_rows",
+          "used_cols": [
+            "date",
+            "loss",
+            "record"
+          ],
+          "used_rows_count": 27
+        }
+      ],
+      "both_wrong_examples": [
+        {
+          "id": "tabfact-test-126",
+          "question": "the low attendance rate of 20066 occur multiple time",
+          "gold": [
+            "true"
+          ],
+          "myagent_prediction": "false",
+          "mact_prediction": "False",
+          "risk": "medium",
+          "route": "COMPLEX",
+          "difficulty": "medium",
+          "problem_tags": [
+            "closed_choice"
+          ],
+          "strong_verification_applied": false,
+          "strong_verification_reason": "",
+          "deterministic_shortcut_applied": false,
+          "deterministic_shortcut_reason": "",
+          "compression_strategy": "expanded_context_block_global_rows",
+          "used_cols": [
+            "date",
+            "attendance"
+          ],
+          "used_rows_count": 14
+        },
+        {
+          "id": "tabfact-test-14",
+          "question": "riann van zyl have the shortest time span on the united states national rugby union team and tie with 3 others for the smallest number of tries",
+          "gold": [
+            "true"
+          ],
+          "myagent_prediction": "false",
+          "mact_prediction": "False",
+          "risk": "high",
+          "route": "COMPLEX",
+          "difficulty": "medium",
+          "problem_tags": [
+            "count",
+            "superlative_order",
+            "negation_logic",
+            "closed_choice"
+          ],
+          "strong_verification_applied": false,
+          "strong_verification_reason": "",
+          "deterministic_shortcut_applied": false,
+          "deterministic_shortcut_reason": "",
+          "compression_strategy": "expanded_context_block_global_rows_global_columns",
+          "used_cols": [
+            "player",
+            "span",
+            "start",
+            "tries",
+            "conv",
+            "pens",
+            "drop"
+          ],
+          "used_rows_count": 9
+        },
+        {
+          "id": "tabfact-test-179",
+          "question": "galina voskoboeva have an equal winrate between both clay and hard court",
+          "gold": [
+            "true"
+          ],
+          "myagent_prediction": "false",
+          "mact_prediction": "False",
+          "risk": "high",
+          "route": "COMPLEX",
+          "difficulty": "medium",
+          "problem_tags": [
+            "temporal",
+            "comparison",
+            "negation_logic",
+            "closed_choice"
+          ],
+          "strong_verification_applied": false,
+          "strong_verification_reason": "",
+          "deterministic_shortcut_applied": false,
+          "deterministic_shortcut_reason": "",
+          "compression_strategy": "expanded_context_block_global_rows",
+          "used_cols": [
+            "outcome",
+            "surface"
+          ],
+          "used_rows_count": 5
+        },
+        {
+          "id": "tabfact-test-185",
+          "question": "galina voskoboeva never play the same opponent more than 1 time except in 6 june 2006",
+          "gold": [
+            "false"
+          ],
+          "myagent_prediction": "true",
+          "mact_prediction": "True",
+          "risk": "high",
+          "route": "COMPLEX",
+          "difficulty": "medium",
+          "problem_tags": [
+            "temporal",
+            "comparison",
+            "negation_logic",
+            "closed_choice"
+          ],
+          "strong_verification_applied": false,
+          "strong_verification_reason": "",
+          "deterministic_shortcut_applied": false,
+          "deterministic_shortcut_reason": "",
+          "compression_strategy": "expanded_context_block_global_rows",
+          "used_cols": [
+            "outcome",
+            "date",
+            "opponent"
+          ],
+          "used_rows_count": 5
+        },
+        {
+          "id": "tabfact-test-31",
+          "question": "jonathan legear score 4 more goal than matías suárez , the next highest rank player in the belgian first dvision a league who play in the belgian cup",
+          "gold": [
+            "true"
+          ],
+          "myagent_prediction": "false",
+          "mact_prediction": "- **Jonathan Legear** has **5 league goals**.  \n- **Matías Suárez** has **1 league goal**.  \nThe difference in league goals is **5 - 1 = 4**, so the first part of the claim is correct.  \n\nNext, we check if Matías Suárez is the next highest-ranked player in the league who plays in the Belgian Cup. The \"title playoff\" column likely refers to the Belgian Cup. Jonathan Legear has **1 title playoff goal**, indicating he participated. For Matías Suárez, the \"title playoff\" is **0**, suggesting he did not participate. However, the claim explicitly states he is the next highest-ranked player in the league who plays in the Belgian Cup.",
+          "risk": "high",
+          "route": "COMPLEX",
+          "difficulty": "medium",
+          "problem_tags": [
+            "superlative_order",
+            "comparison",
+            "closed_choice"
+          ],
+          "strong_verification_applied": false,
+          "strong_verification_reason": "",
+          "deterministic_shortcut_applied": false,
+          "deterministic_shortcut_reason": "",
+          "compression_strategy": "expanded_context_block_global_rows_global_columns",
+          "used_cols": [
+            "player",
+            "league",
+            "title playoff",
+            "super cup",
+            "total"
+          ],
+          "used_rows_count": 19
+        },
+        {
+          "id": "tabfact-test-78",
+          "question": "2 player be draft in each round round 3 and 9",
+          "gold": [
+            "true"
+          ],
+          "myagent_prediction": "false",
+          "mact_prediction": "False",
+          "risk": "high",
+          "route": "COMPLEX",
+          "difficulty": "medium",
+          "problem_tags": [
+            "negation_logic",
+            "closed_choice"
+          ],
+          "strong_verification_applied": false,
+          "strong_verification_reason": "",
+          "deterministic_shortcut_applied": false,
+          "deterministic_shortcut_reason": "",
+          "compression_strategy": "expanded_context_block_global_rows",
+          "used_cols": [
+            "round",
+            "player"
+          ],
+          "used_rows_count": 11
+        },
+        {
+          "id": "tabfact-test-8",
+          "question": "tony lema do not win in the pga championship",
+          "gold": [
+            "false"
+          ],
+          "myagent_prediction": "true",
+          "mact_prediction": "True",
+          "risk": "high",
+          "route": "SIMPLE",
+          "difficulty": "easy",
+          "problem_tags": [
+            "negation_logic",
+            "closed_choice"
+          ],
+          "strong_verification_applied": false,
+          "strong_verification_reason": "",
+          "deterministic_shortcut_applied": false,
+          "deterministic_shortcut_reason": "",
+          "compression_strategy": "strict_cell_block_global_rows",
+          "used_cols": [
+            "tournament",
+            "wins"
+          ],
+          "used_rows_count": 5
+        }
+      ]
+    }
+  }
+}
