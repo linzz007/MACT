@@ -1,6 +1,6 @@
 # TabFact Compound Verification Patch
 
-Updated: 2026-08-14 11:35 CST
+Updated: 2026-08-14 12:05 CST
 
 Code commit under test: MyAgent `ed6ceca`.
 
@@ -69,3 +69,22 @@ Trigger-71 interpretation:
 - It recovers 8 previously wrong rows but regresses 7 previously correct rows.
 - The token cost is too high for direct Formal-200 expansion unless an acceptance gate reduces wrong overrides.
 - Because the rerun can also change the base code candidate, the next required control is the same 71-row run with `--disable-strong-verification`.
+
+## Trigger-71 No-Strong Control
+
+Output:
+
+```text
+outputs/server_runs/qwen3_32b_baseline_formal200_20260812_1505/diagnostics/tabfact_compound71_no_strong_control_ed6ceca/
+```
+
+| Rows | No-strong correct | Strong-trigger correct | Strong recovers vs no-strong | Strong regresses vs no-strong | No-strong avg token | Strong avg token | No-strong avg time | Strong avg time |
+|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| 71 | 51/71 = 0.7183 | 51/71 = 0.7183 | 7 | 7 | 3482.51 | 16961.89 | 18.128s | 33.425s |
+
+Final control interpretation:
+
+- The high-risk TabFact strong-verification trigger has no net accuracy gain over the same 71-row no-strong rerun.
+- It adds about `13479` tokens per triggered row and roughly doubles latency.
+- The code trigger should not be kept as a production/formal200 optimization.
+- The useful evidence is diagnostic: strong verification can recover some rows, but needs a better acceptance gate before it is patent-grade.
