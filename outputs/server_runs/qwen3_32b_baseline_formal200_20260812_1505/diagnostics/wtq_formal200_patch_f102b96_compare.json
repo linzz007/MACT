@@ -1,0 +1,1157 @@
+{
+  "run_root": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_baseline_formal200_20260812_1505",
+  "patched_output_root": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_baseline_formal200_20260812_1505/diagnostics/wtq_formal200_patch_f102b96",
+  "code_commit": "f102b96",
+  "patch_commit": "d646885",
+  "dataset": "wtq",
+  "summary": {
+    "old_myagent": {
+      "rows": 200,
+      "primary_correct": 141,
+      "primary_accuracy": 0.705,
+      "exact_correct": 140,
+      "exact_match": 0.7,
+      "avg_total_tokens": 6326.385,
+      "avg_elapsed_seconds": 16.662782987224638
+    },
+    "patched_myagent": {
+      "rows": 200,
+      "primary_correct": 147,
+      "primary_accuracy": 0.735,
+      "exact_correct": 145,
+      "exact_match": 0.725,
+      "avg_total_tokens": 6228.74,
+      "avg_elapsed_seconds": 16.13981131913373
+    },
+    "mact": {
+      "rows": 200,
+      "primary_correct": 156,
+      "primary_accuracy": 0.78,
+      "exact_correct": 153,
+      "exact_match": 0.765,
+      "avg_total_tokens": 10698.617346938776,
+      "avg_elapsed_seconds": 115.08843266310753
+    }
+  },
+  "delta_old_to_patched": {
+    "primary_correct_delta": 6,
+    "old_wrong_new_right_count": 8,
+    "old_wrong_new_right": [
+      "nu-27",
+      "nu-66",
+      "nu-78",
+      "nu-100",
+      "nu-129",
+      "nu-146",
+      "nu-180",
+      "nu-188"
+    ],
+    "old_right_new_wrong_count": 2,
+    "old_right_new_wrong": [
+      "nu-152",
+      "nu-160"
+    ]
+  },
+  "patched_vs_mact": {
+    "primary_correct_gap": -9,
+    "new_only_vs_mact_count": 18,
+    "new_only_vs_mact": [
+      "nu-4",
+      "nu-8",
+      "nu-23",
+      "nu-28",
+      "nu-30",
+      "nu-36",
+      "nu-44",
+      "nu-66",
+      "nu-68",
+      "nu-75",
+      "nu-114",
+      "nu-117",
+      "nu-123",
+      "nu-129",
+      "nu-134",
+      "nu-138",
+      "nu-141",
+      "nu-148"
+    ],
+    "mact_only_vs_new_count": 27,
+    "mact_only_vs_new": [
+      "nu-15",
+      "nu-18",
+      "nu-22",
+      "nu-35",
+      "nu-40",
+      "nu-49",
+      "nu-72",
+      "nu-73",
+      "nu-81",
+      "nu-82",
+      "nu-94",
+      "nu-96",
+      "nu-110",
+      "nu-112",
+      "nu-119",
+      "nu-127",
+      "nu-133",
+      "nu-136",
+      "nu-139",
+      "nu-142",
+      "nu-152",
+      "nu-159",
+      "nu-160",
+      "nu-161",
+      "nu-173",
+      "nu-179",
+      "nu-187"
+    ],
+    "both_wrong_count": 26,
+    "both_wrong": [
+      "nu-0",
+      "nu-2",
+      "nu-10",
+      "nu-11",
+      "nu-25",
+      "nu-34",
+      "nu-37",
+      "nu-42",
+      "nu-46",
+      "nu-48",
+      "nu-63",
+      "nu-91",
+      "nu-92",
+      "nu-102",
+      "nu-104",
+      "nu-105",
+      "nu-116",
+      "nu-124",
+      "nu-140",
+      "nu-144",
+      "nu-153",
+      "nu-156",
+      "nu-158",
+      "nu-172",
+      "nu-183",
+      "nu-189"
+    ]
+  },
+  "shortcut_stats": {
+    "shortcut_count": 21,
+    "shortcut_correct_count": 18,
+    "shortcut_accuracy": 0.8571428571428571,
+    "shortcut_ids": [
+      "nu-16",
+      "nu-19",
+      "nu-24",
+      "nu-27",
+      "nu-31",
+      "nu-45",
+      "nu-56",
+      "nu-58",
+      "nu-66",
+      "nu-72",
+      "nu-78",
+      "nu-84",
+      "nu-98",
+      "nu-100",
+      "nu-118",
+      "nu-144",
+      "nu-146",
+      "nu-156",
+      "nu-180",
+      "nu-190",
+      "nu-192"
+    ],
+    "shortcut_correct_ids": [
+      "nu-16",
+      "nu-19",
+      "nu-24",
+      "nu-27",
+      "nu-31",
+      "nu-45",
+      "nu-56",
+      "nu-58",
+      "nu-66",
+      "nu-78",
+      "nu-84",
+      "nu-98",
+      "nu-100",
+      "nu-118",
+      "nu-146",
+      "nu-180",
+      "nu-190",
+      "nu-192"
+    ]
+  },
+  "changed_or_disagreement_rows": [
+    {
+      "id": "nu-4",
+      "question": "what is the number of 1st place finishes across all events?",
+      "gold": [
+        "17"
+      ],
+      "old_myagent_primary": true,
+      "patched_myagent_primary": true,
+      "mact_primary": false,
+      "old_myagent_answer": "17",
+      "patched_myagent_answer": "17",
+      "mact_answer": [
+        "17"
+      ],
+      "patched_shortcut_applied": false,
+      "patched_shortcut_reason": "",
+      "patched_tokens": 5753,
+      "patched_elapsed_seconds": 19.39555925806053
+    },
+    {
+      "id": "nu-8",
+      "question": "what time period had no shirt sponsor?",
+      "gold": [
+        "1982-1985"
+      ],
+      "old_myagent_primary": true,
+      "patched_myagent_primary": true,
+      "mact_primary": false,
+      "old_myagent_answer": "1982–1985",
+      "patched_myagent_answer": "1982–1985",
+      "mact_answer": [
+        "1982-1985"
+      ],
+      "patched_shortcut_applied": false,
+      "patched_shortcut_reason": "",
+      "patched_tokens": 7069,
+      "patched_elapsed_seconds": 23.40137717500329
+    },
+    {
+      "id": "nu-15",
+      "question": "what was the total number of points scored by the tide in the last 3 games combined.",
+      "gold": [
+        "68"
+      ],
+      "old_myagent_primary": false,
+      "patched_myagent_primary": false,
+      "mact_primary": true,
+      "old_myagent_answer": "75",
+      "patched_myagent_answer": "75",
+      "mact_answer": [
+        "68"
+      ],
+      "patched_shortcut_applied": false,
+      "patched_shortcut_reason": "",
+      "patched_tokens": 6149,
+      "patched_elapsed_seconds": 19.403508913936093
+    },
+    {
+      "id": "nu-18",
+      "question": "what is the only hospital to have 6 hospital beds?",
+      "gold": [
+        "Vidant Bertie Hospital"
+      ],
+      "old_myagent_primary": false,
+      "patched_myagent_primary": false,
+      "mact_primary": true,
+      "old_myagent_answer": "{\"answer\": null}",
+      "patched_myagent_answer": "{\"answer\": null}",
+      "mact_answer": [
+        "Vidant Bertie Hospital"
+      ],
+      "patched_shortcut_applied": false,
+      "patched_shortcut_reason": "",
+      "patched_tokens": 11077,
+      "patched_elapsed_seconds": 30.08321610884741
+    },
+    {
+      "id": "nu-22",
+      "question": "total wins by belgian riders",
+      "gold": [
+        "7"
+      ],
+      "old_myagent_primary": false,
+      "patched_myagent_primary": false,
+      "mact_primary": true,
+      "old_myagent_answer": "6.0",
+      "patched_myagent_answer": "6.0",
+      "mact_answer": [
+        "7"
+      ],
+      "patched_shortcut_applied": false,
+      "patched_shortcut_reason": "",
+      "patched_tokens": 2102,
+      "patched_elapsed_seconds": 13.27129747113213
+    },
+    {
+      "id": "nu-23",
+      "question": "what yacht had the next best time (smaller time is better) than ausmaid?",
+      "gold": [
+        "Brindabella"
+      ],
+      "old_myagent_primary": true,
+      "patched_myagent_primary": true,
+      "mact_primary": false,
+      "old_myagent_answer": "Brindabella",
+      "patched_myagent_answer": "Brindabella",
+      "mact_answer": [
+        "Brindabella"
+      ],
+      "patched_shortcut_applied": false,
+      "patched_shortcut_reason": "",
+      "patched_tokens": 6639,
+      "patched_elapsed_seconds": 43.7075314510148
+    },
+    {
+      "id": "nu-27",
+      "question": "who was the top scorer in the last season?",
+      "gold": [
+        "Simon Makienok Christoffersen"
+      ],
+      "old_myagent_primary": false,
+      "patched_myagent_primary": true,
+      "mact_primary": true,
+      "old_myagent_answer": "2011-12",
+      "patched_myagent_answer": "Simon Makienok Christoffersen (10)",
+      "mact_answer": [
+        "Simon Makienok Christoffersen"
+      ],
+      "patched_shortcut_applied": true,
+      "patched_shortcut_reason": "WTQ last requested table-column value selected deterministically.",
+      "patched_tokens": 4898,
+      "patched_elapsed_seconds": 6.2118800319731236
+    },
+    {
+      "id": "nu-28",
+      "question": "how many jury members were there?",
+      "gold": [
+        "9"
+      ],
+      "old_myagent_primary": true,
+      "patched_myagent_primary": true,
+      "mact_primary": false,
+      "old_myagent_answer": "9",
+      "patched_myagent_answer": "9",
+      "mact_answer": [
+        "9"
+      ],
+      "patched_shortcut_applied": false,
+      "patched_shortcut_reason": "",
+      "patched_tokens": 7647,
+      "patched_elapsed_seconds": 16.509545906912535
+    },
+    {
+      "id": "nu-30",
+      "question": "what is the name listed before mount pleasant line?",
+      "gold": [
+        "Pennsylvania Avenue Metro Extra Line"
+      ],
+      "old_myagent_primary": true,
+      "patched_myagent_primary": true,
+      "mact_primary": false,
+      "old_myagent_answer": "Pennsylvania Avenue Metro Extra Line",
+      "patched_myagent_answer": "Pennsylvania Avenue Metro Extra Line",
+      "mact_answer": [
+        "Pennsylvania Avenue Metro Extra Line"
+      ],
+      "patched_shortcut_applied": false,
+      "patched_shortcut_reason": "",
+      "patched_tokens": 7617,
+      "patched_elapsed_seconds": 6.70771250105463
+    },
+    {
+      "id": "nu-35",
+      "question": "how many candidates belong to a party other than republican or democrat?",
+      "gold": [
+        "0"
+      ],
+      "old_myagent_primary": false,
+      "patched_myagent_primary": false,
+      "mact_primary": true,
+      "old_myagent_answer": "2",
+      "patched_myagent_answer": "2",
+      "mact_answer": [
+        "0"
+      ],
+      "patched_shortcut_applied": false,
+      "patched_shortcut_reason": "",
+      "patched_tokens": 4728,
+      "patched_elapsed_seconds": 17.01959937112406
+    },
+    {
+      "id": "nu-36",
+      "question": "how many competitions were not in the united kingdom?",
+      "gold": [
+        "4"
+      ],
+      "old_myagent_primary": true,
+      "patched_myagent_primary": true,
+      "mact_primary": false,
+      "old_myagent_answer": "4",
+      "patched_myagent_answer": "4",
+      "mact_answer": [
+        "4"
+      ],
+      "patched_shortcut_applied": false,
+      "patched_shortcut_reason": "",
+      "patched_tokens": 6858,
+      "patched_elapsed_seconds": 12.719499190105125
+    },
+    {
+      "id": "nu-40",
+      "question": "in cycle 4 of austria's next top model,how many contestants were older than 20?",
+      "gold": [
+        "5"
+      ],
+      "old_myagent_primary": false,
+      "patched_myagent_primary": false,
+      "mact_primary": true,
+      "old_myagent_answer": "3",
+      "patched_myagent_answer": "3",
+      "mact_answer": [
+        "5"
+      ],
+      "patched_shortcut_applied": false,
+      "patched_shortcut_reason": "",
+      "patched_tokens": 6748,
+      "patched_elapsed_seconds": 17.614580985158682
+    },
+    {
+      "id": "nu-44",
+      "question": "which year did the team have their most total wins?",
+      "gold": [
+        "1992"
+      ],
+      "old_myagent_primary": true,
+      "patched_myagent_primary": true,
+      "mact_primary": false,
+      "old_myagent_answer": "1992.0",
+      "patched_myagent_answer": "1992.0",
+      "mact_answer": [
+        "1992"
+      ],
+      "patched_shortcut_applied": false,
+      "patched_shortcut_reason": "",
+      "patched_tokens": 10794,
+      "patched_elapsed_seconds": 25.190897553926334
+    },
+    {
+      "id": "nu-49",
+      "question": "how many times were consecutive games played against millwall?",
+      "gold": [
+        "1"
+      ],
+      "old_myagent_primary": false,
+      "patched_myagent_primary": false,
+      "mact_primary": true,
+      "old_myagent_answer": "0",
+      "patched_myagent_answer": "0",
+      "mact_answer": [
+        "1"
+      ],
+      "patched_shortcut_applied": false,
+      "patched_shortcut_reason": "",
+      "patched_tokens": 7452,
+      "patched_elapsed_seconds": 33.357245065039024
+    },
+    {
+      "id": "nu-66",
+      "question": "what date is next listed after june 14, 2010.",
+      "gold": [
+        "December 6, 2010"
+      ],
+      "old_myagent_primary": false,
+      "patched_myagent_primary": true,
+      "mact_primary": false,
+      "old_myagent_answer": "September 6, 2010",
+      "patched_myagent_answer": "December 6, 2010",
+      "mact_answer": [
+        "December 6, 2010"
+      ],
+      "patched_shortcut_applied": true,
+      "patched_shortcut_reason": "WTQ after-reference row order answered deterministically.",
+      "patched_tokens": 3558,
+      "patched_elapsed_seconds": 5.0032669599168
+    },
+    {
+      "id": "nu-68",
+      "question": "how many drivers have no laps led?",
+      "gold": [
+        "18"
+      ],
+      "old_myagent_primary": true,
+      "patched_myagent_primary": true,
+      "mact_primary": false,
+      "old_myagent_answer": "18",
+      "patched_myagent_answer": "18",
+      "mact_answer": [
+        "18"
+      ],
+      "patched_shortcut_applied": false,
+      "patched_shortcut_reason": "",
+      "patched_tokens": 7639,
+      "patched_elapsed_seconds": 11.383913180790842
+    },
+    {
+      "id": "nu-72",
+      "question": "which year had the least amount of toy sales?",
+      "gold": [
+        "2003"
+      ],
+      "old_myagent_primary": false,
+      "patched_myagent_primary": false,
+      "mact_primary": true,
+      "old_myagent_answer": "1994.0",
+      "patched_myagent_answer": "1994.0",
+      "mact_answer": [
+        "2003"
+      ],
+      "patched_shortcut_applied": true,
+      "patched_shortcut_reason": "WTQ superlative owner selected from metric column deterministically.",
+      "patched_tokens": 4213,
+      "patched_elapsed_seconds": 8.519591505872086
+    },
+    {
+      "id": "nu-73",
+      "question": "how many affiliates does tv azteca have all together?",
+      "gold": [
+        "9"
+      ],
+      "old_myagent_primary": false,
+      "patched_myagent_primary": false,
+      "mact_primary": true,
+      "old_myagent_answer": "0.0",
+      "patched_myagent_answer": "0.0",
+      "mact_answer": [
+        "9"
+      ],
+      "patched_shortcut_applied": false,
+      "patched_shortcut_reason": "",
+      "patched_tokens": 4832,
+      "patched_elapsed_seconds": 13.116076018894091
+    },
+    {
+      "id": "nu-75",
+      "question": "how many games did the team score at least 30 points?",
+      "gold": [
+        "4"
+      ],
+      "old_myagent_primary": true,
+      "patched_myagent_primary": true,
+      "mact_primary": false,
+      "old_myagent_answer": "4",
+      "patched_myagent_answer": "4",
+      "mact_answer": [
+        "4"
+      ],
+      "patched_shortcut_applied": false,
+      "patched_shortcut_reason": "",
+      "patched_tokens": 6001,
+      "patched_elapsed_seconds": 15.924681792035699
+    },
+    {
+      "id": "nu-78",
+      "question": "who is the next driver listed after scott dixon?",
+      "gold": [
+        "Mike Conway"
+      ],
+      "old_myagent_primary": false,
+      "patched_myagent_primary": true,
+      "mact_primary": true,
+      "old_myagent_answer": "Tony Kanaan",
+      "patched_myagent_answer": "Mike Conway",
+      "mact_answer": [
+        "Mike Conway"
+      ],
+      "patched_shortcut_applied": true,
+      "patched_shortcut_reason": "WTQ after-reference row order answered deterministically.",
+      "patched_tokens": 5058,
+      "patched_elapsed_seconds": 3.9953243848867714
+    },
+    {
+      "id": "nu-81",
+      "question": "what is the number of listings from barrington, farmington, and rochester combined?",
+      "gold": [
+        "5"
+      ],
+      "old_myagent_primary": false,
+      "patched_myagent_primary": false,
+      "mact_primary": true,
+      "old_myagent_answer": "2",
+      "patched_myagent_answer": "2",
+      "mact_answer": [
+        "5"
+      ],
+      "patched_shortcut_applied": false,
+      "patched_shortcut_reason": "",
+      "patched_tokens": 7524,
+      "patched_elapsed_seconds": 13.641153344884515
+    },
+    {
+      "id": "nu-82",
+      "question": "how many teams did not score any goals in the 2006 season?",
+      "gold": [
+        "1"
+      ],
+      "old_myagent_primary": false,
+      "patched_myagent_primary": false,
+      "mact_primary": true,
+      "old_myagent_answer": "0",
+      "patched_myagent_answer": "0",
+      "mact_answer": [
+        "1"
+      ],
+      "patched_shortcut_applied": false,
+      "patched_shortcut_reason": "",
+      "patched_tokens": 5164,
+      "patched_elapsed_seconds": 12.407295152079314
+    },
+    {
+      "id": "nu-94",
+      "question": "how many games were played after october 1st?",
+      "gold": [
+        "11"
+      ],
+      "old_myagent_primary": false,
+      "patched_myagent_primary": false,
+      "mact_primary": true,
+      "old_myagent_answer": "7",
+      "patched_myagent_answer": "7",
+      "mact_answer": [
+        "11"
+      ],
+      "patched_shortcut_applied": false,
+      "patched_shortcut_reason": "",
+      "patched_tokens": 7003,
+      "patched_elapsed_seconds": 18.74861059198156
+    },
+    {
+      "id": "nu-96",
+      "question": "if italy and brazil combined box office revenues, what would be their new total?",
+      "gold": [
+        "$1.56 billion"
+      ],
+      "old_myagent_primary": false,
+      "patched_myagent_primary": false,
+      "mact_primary": true,
+      "old_myagent_answer": "1.56",
+      "patched_myagent_answer": "1.56",
+      "mact_answer": [
+        "$1.56 billion"
+      ],
+      "patched_shortcut_applied": false,
+      "patched_shortcut_reason": "",
+      "patched_tokens": 5363,
+      "patched_elapsed_seconds": 15.352031888905913
+    },
+    {
+      "id": "nu-100",
+      "question": "who has the same number as greg foster?",
+      "gold": [
+        "Kyrylo Fesenko"
+      ],
+      "old_myagent_primary": false,
+      "patched_myagent_primary": true,
+      "mact_primary": true,
+      "old_myagent_answer": "Greg Foster",
+      "patched_myagent_answer": "Kyrylo Fesenko",
+      "mact_answer": [
+        "Kyrylo Fesenko"
+      ],
+      "patched_shortcut_applied": true,
+      "patched_shortcut_reason": "WTQ entity selected where two numbering columns match.",
+      "patched_tokens": 339,
+      "patched_elapsed_seconds": 1.3340048100799322
+    },
+    {
+      "id": "nu-110",
+      "question": "how many hard surface courts are there?",
+      "gold": [
+        "3"
+      ],
+      "old_myagent_primary": false,
+      "patched_myagent_primary": false,
+      "mact_primary": true,
+      "old_myagent_answer": "1",
+      "patched_myagent_answer": "1",
+      "mact_answer": [
+        "3"
+      ],
+      "patched_shortcut_applied": false,
+      "patched_shortcut_reason": "",
+      "patched_tokens": 5719,
+      "patched_elapsed_seconds": 11.139534354908392
+    },
+    {
+      "id": "nu-112",
+      "question": "how many specifications have no active directory federation services?",
+      "gold": [
+        "1"
+      ],
+      "old_myagent_primary": false,
+      "patched_myagent_primary": false,
+      "mact_primary": true,
+      "old_myagent_answer": "26",
+      "patched_myagent_answer": "26",
+      "mact_answer": [
+        "1"
+      ],
+      "patched_shortcut_applied": false,
+      "patched_shortcut_reason": "",
+      "patched_tokens": 6543,
+      "patched_elapsed_seconds": 14.800045593176037
+    },
+    {
+      "id": "nu-114",
+      "question": "how many distributions support the x86 architecture?",
+      "gold": [
+        "29"
+      ],
+      "old_myagent_primary": true,
+      "patched_myagent_primary": true,
+      "mact_primary": false,
+      "old_myagent_answer": "29",
+      "patched_myagent_answer": "29",
+      "mact_answer": [
+        "29"
+      ],
+      "patched_shortcut_applied": false,
+      "patched_shortcut_reason": "",
+      "patched_tokens": 6352,
+      "patched_elapsed_seconds": 19.086429224116728
+    },
+    {
+      "id": "nu-117",
+      "question": "what is the first name on the chart?",
+      "gold": [
+        "Joel Smith"
+      ],
+      "old_myagent_primary": true,
+      "patched_myagent_primary": true,
+      "mact_primary": false,
+      "old_myagent_answer": "Joel Smith",
+      "patched_myagent_answer": "Joel Smith",
+      "mact_answer": [
+        "Joel Smith"
+      ],
+      "patched_shortcut_applied": false,
+      "patched_shortcut_reason": "",
+      "patched_tokens": 5785,
+      "patched_elapsed_seconds": 12.194669967051595
+    },
+    {
+      "id": "nu-119",
+      "question": "fulham and stoke city both won with how many points?",
+      "gold": [
+        "3"
+      ],
+      "old_myagent_primary": false,
+      "patched_myagent_primary": false,
+      "mact_primary": true,
+      "old_myagent_answer": "6",
+      "patched_myagent_answer": "6",
+      "mact_answer": [
+        "3"
+      ],
+      "patched_shortcut_applied": false,
+      "patched_shortcut_reason": "",
+      "patched_tokens": 6997,
+      "patched_elapsed_seconds": 26.04654729203321
+    },
+    {
+      "id": "nu-123",
+      "question": "what were the most labels?",
+      "gold": [
+        "Becket"
+      ],
+      "old_myagent_primary": true,
+      "patched_myagent_primary": true,
+      "mact_primary": false,
+      "old_myagent_answer": "Becket",
+      "patched_myagent_answer": "Becket",
+      "mact_answer": [
+        "Becket"
+      ],
+      "patched_shortcut_applied": false,
+      "patched_shortcut_reason": "",
+      "patched_tokens": 7237,
+      "patched_elapsed_seconds": 20.40290514100343
+    },
+    {
+      "id": "nu-127",
+      "question": "last year a mf won?",
+      "gold": [
+        "2010-11"
+      ],
+      "old_myagent_primary": false,
+      "patched_myagent_primary": false,
+      "mact_primary": true,
+      "old_myagent_answer": "Itumeleng Khune",
+      "patched_myagent_answer": "Itumeleng Khune",
+      "mact_answer": [
+        "2010-11"
+      ],
+      "patched_shortcut_applied": false,
+      "patched_shortcut_reason": "",
+      "patched_tokens": 7415,
+      "patched_elapsed_seconds": 19.268663160968572
+    },
+    {
+      "id": "nu-129",
+      "question": "how may away games did they win?",
+      "gold": [
+        "7"
+      ],
+      "old_myagent_primary": false,
+      "patched_myagent_primary": true,
+      "mact_primary": false,
+      "old_myagent_answer": "Not computable from the given data.",
+      "patched_myagent_answer": "7",
+      "mact_answer": [
+        "7"
+      ],
+      "patched_shortcut_applied": false,
+      "patched_shortcut_reason": "",
+      "patched_tokens": 2207,
+      "patched_elapsed_seconds": 7.167387604014948
+    },
+    {
+      "id": "nu-133",
+      "question": "besides seattle what other american city was a venue?",
+      "gold": [
+        "Los Angeles"
+      ],
+      "old_myagent_primary": false,
+      "patched_myagent_primary": false,
+      "mact_primary": true,
+      "old_myagent_answer": "Kunming",
+      "patched_myagent_answer": "Kunming",
+      "mact_answer": [
+        "Los Angeles"
+      ],
+      "patched_shortcut_applied": false,
+      "patched_shortcut_reason": "",
+      "patched_tokens": 1623,
+      "patched_elapsed_seconds": 6.681019801879302
+    },
+    {
+      "id": "nu-134",
+      "question": "is the first reagent for a hydroxyalkyl usually a halogenoalkane or an epoxide?",
+      "gold": [
+        "Epoxides"
+      ],
+      "old_myagent_primary": true,
+      "patched_myagent_primary": true,
+      "mact_primary": false,
+      "old_myagent_answer": "Epoxides",
+      "patched_myagent_answer": "Epoxides",
+      "mact_answer": [
+        "Epoxides"
+      ],
+      "patched_shortcut_applied": false,
+      "patched_shortcut_reason": "",
+      "patched_tokens": 7018,
+      "patched_elapsed_seconds": 25.872238376177847
+    },
+    {
+      "id": "nu-136",
+      "question": "the chords e minor major seventh and a minor major seventh have which note in common?",
+      "gold": [
+        "E"
+      ],
+      "old_myagent_primary": false,
+      "patched_myagent_primary": false,
+      "mact_primary": true,
+      "old_myagent_answer": "No common note",
+      "patched_myagent_answer": "No common note",
+      "mact_answer": [
+        "E"
+      ],
+      "patched_shortcut_applied": false,
+      "patched_shortcut_reason": "",
+      "patched_tokens": 6507,
+      "patched_elapsed_seconds": 30.488893870962784
+    },
+    {
+      "id": "nu-138",
+      "question": "how long did the great pyramid of giza hold the record for tallest freestanding structure?",
+      "gold": [
+        "3881"
+      ],
+      "old_myagent_primary": true,
+      "patched_myagent_primary": true,
+      "mact_primary": false,
+      "old_myagent_answer": "3881",
+      "patched_myagent_answer": "3881",
+      "mact_answer": [
+        "3881"
+      ],
+      "patched_shortcut_applied": false,
+      "patched_shortcut_reason": "",
+      "patched_tokens": 5788,
+      "patched_elapsed_seconds": 17.59174082404934
+    },
+    {
+      "id": "nu-139",
+      "question": "how many websites are free of advertising?",
+      "gold": [
+        "9"
+      ],
+      "old_myagent_primary": false,
+      "patched_myagent_primary": false,
+      "mact_primary": true,
+      "old_myagent_answer": "8",
+      "patched_myagent_answer": "8",
+      "mact_answer": [
+        "9"
+      ],
+      "patched_shortcut_applied": false,
+      "patched_shortcut_reason": "",
+      "patched_tokens": 5772,
+      "patched_elapsed_seconds": 14.71580140804872
+    },
+    {
+      "id": "nu-141",
+      "question": "how many total wins did the citadel bulldogs have before 1908?",
+      "gold": [
+        "6"
+      ],
+      "old_myagent_primary": true,
+      "patched_myagent_primary": true,
+      "mact_primary": false,
+      "old_myagent_answer": "6.0",
+      "patched_myagent_answer": "6.0",
+      "mact_answer": [
+        "6"
+      ],
+      "patched_shortcut_applied": false,
+      "patched_shortcut_reason": "",
+      "patched_tokens": 11268,
+      "patched_elapsed_seconds": 31.532169200945646
+    },
+    {
+      "id": "nu-142",
+      "question": "on what date did the toll for class 1 first go above 2.00?",
+      "gold": [
+        "14 June 2005"
+      ],
+      "old_myagent_primary": false,
+      "patched_myagent_primary": false,
+      "mact_primary": true,
+      "old_myagent_answer": "16 August 2004",
+      "patched_myagent_answer": "16 August 2004",
+      "mact_answer": [
+        "14 June 2005"
+      ],
+      "patched_shortcut_applied": false,
+      "patched_shortcut_reason": "",
+      "patched_tokens": 6959,
+      "patched_elapsed_seconds": 22.340058211935684
+    },
+    {
+      "id": "nu-146",
+      "question": "which track comes after \"like that\"?",
+      "gold": [
+        "Call It What You Want"
+      ],
+      "old_myagent_primary": false,
+      "patched_myagent_primary": true,
+      "mact_primary": true,
+      "old_myagent_answer": "West Up!\" by WC and the Maad Circle",
+      "patched_myagent_answer": "\\Call It What You Want\\\"\"",
+      "mact_answer": [
+        "Call It What You Want"
+      ],
+      "patched_shortcut_applied": true,
+      "patched_shortcut_reason": "WTQ after-reference row order answered deterministically.",
+      "patched_tokens": 4196,
+      "patched_elapsed_seconds": 5.364140483085066
+    },
+    {
+      "id": "nu-148",
+      "question": "after the 2006 world junior championships what was the other competition held in beijing?",
+      "gold": [
+        "Olympic Games"
+      ],
+      "old_myagent_primary": true,
+      "patched_myagent_primary": true,
+      "mact_primary": false,
+      "old_myagent_answer": "Olympic Games",
+      "patched_myagent_answer": "Olympic Games",
+      "mact_answer": [
+        "Olympic Games"
+      ],
+      "patched_shortcut_applied": false,
+      "patched_shortcut_reason": "",
+      "patched_tokens": 6640,
+      "patched_elapsed_seconds": 20.45294081605971
+    },
+    {
+      "id": "nu-152",
+      "question": "number of players who scored at least 1 friendly",
+      "gold": [
+        "10"
+      ],
+      "old_myagent_primary": true,
+      "patched_myagent_primary": false,
+      "mact_primary": true,
+      "old_myagent_answer": "10",
+      "patched_myagent_answer": "5",
+      "mact_answer": [
+        "10"
+      ],
+      "patched_shortcut_applied": false,
+      "patched_shortcut_reason": "",
+      "patched_tokens": 7011,
+      "patched_elapsed_seconds": 22.86058961204253
+    },
+    {
+      "id": "nu-159",
+      "question": "how long is the time frame in years of the table?",
+      "gold": [
+        "16"
+      ],
+      "old_myagent_primary": false,
+      "patched_myagent_primary": false,
+      "mact_primary": true,
+      "old_myagent_answer": "12",
+      "patched_myagent_answer": "12",
+      "mact_answer": [
+        "16"
+      ],
+      "patched_shortcut_applied": false,
+      "patched_shortcut_reason": "",
+      "patched_tokens": 3588,
+      "patched_elapsed_seconds": 5.005397270899266
+    },
+    {
+      "id": "nu-160",
+      "question": "how many races took place after august?",
+      "gold": [
+        "6"
+      ],
+      "old_myagent_primary": true,
+      "patched_myagent_primary": false,
+      "mact_primary": true,
+      "old_myagent_answer": "6",
+      "patched_myagent_answer": "3",
+      "mact_answer": [
+        "6"
+      ],
+      "patched_shortcut_applied": false,
+      "patched_shortcut_reason": "",
+      "patched_tokens": 6784,
+      "patched_elapsed_seconds": 17.14887036802247
+    },
+    {
+      "id": "nu-161",
+      "question": "what nation has won more gold medals than korea?",
+      "gold": [
+        "Malaysia"
+      ],
+      "old_myagent_primary": false,
+      "patched_myagent_primary": false,
+      "mact_primary": true,
+      "old_myagent_answer": "Indonesia",
+      "patched_myagent_answer": "Indonesia",
+      "mact_answer": [
+        "Malaysia"
+      ],
+      "patched_shortcut_applied": false,
+      "patched_shortcut_reason": "",
+      "patched_tokens": 4487,
+      "patched_elapsed_seconds": 20.854641627985984
+    },
+    {
+      "id": "nu-173",
+      "question": "did hillary clinton or john mccain win 51% of the vote in the march 31, 2008 rasmussen reports poll?",
+      "gold": [
+        "John McCain"
+      ],
+      "old_myagent_primary": false,
+      "patched_myagent_primary": false,
+      "mact_primary": true,
+      "old_myagent_answer": "yes",
+      "patched_myagent_answer": "yes",
+      "mact_answer": [
+        "John McCain"
+      ],
+      "patched_shortcut_applied": false,
+      "patched_shortcut_reason": "",
+      "patched_tokens": 10189,
+      "patched_elapsed_seconds": 20.89199620578438
+    },
+    {
+      "id": "nu-179",
+      "question": "previous to november 15, 2007 how often was the overall rank in the 30s?",
+      "gold": [
+        "3"
+      ],
+      "old_myagent_primary": false,
+      "patched_myagent_primary": false,
+      "mact_primary": true,
+      "old_myagent_answer": "4",
+      "patched_myagent_answer": "4",
+      "mact_answer": [
+        "3"
+      ],
+      "patched_shortcut_applied": false,
+      "patched_shortcut_reason": "",
+      "patched_tokens": 11492,
+      "patched_elapsed_seconds": 27.182847729185596
+    },
+    {
+      "id": "nu-180",
+      "question": "what element is after radium?",
+      "gold": [
+        "Actinium"
+      ],
+      "old_myagent_primary": false,
+      "patched_myagent_primary": true,
+      "mact_primary": true,
+      "old_myagent_answer": "Radium",
+      "patched_myagent_answer": "Actinium",
+      "mact_answer": [
+        "Actinium"
+      ],
+      "patched_shortcut_applied": true,
+      "patched_shortcut_reason": "WTQ after-reference row order answered deterministically.",
+      "patched_tokens": 5101,
+      "patched_elapsed_seconds": 4.6189771899953485
+    },
+    {
+      "id": "nu-187",
+      "question": "how many episodes aired before december 1st, 1965?",
+      "gold": [
+        "10"
+      ],
+      "old_myagent_primary": false,
+      "patched_myagent_primary": false,
+      "mact_primary": true,
+      "old_myagent_answer": "8",
+      "patched_myagent_answer": "8",
+      "mact_answer": [
+        "10"
+      ],
+      "patched_shortcut_applied": false,
+      "patched_shortcut_reason": "",
+      "patched_tokens": 13890,
+      "patched_elapsed_seconds": 39.28628750308417
+    },
+    {
+      "id": "nu-188",
+      "question": "what was the total number of goals scored in the game between haiti and south korea on september 6, 2013?",
+      "gold": [
+        "5"
+      ],
+      "old_myagent_primary": false,
+      "patched_myagent_primary": true,
+      "mact_primary": true,
+      "old_myagent_answer": "0–0",
+      "patched_myagent_answer": "5",
+      "mact_answer": [
+        "5"
+      ],
+      "patched_shortcut_applied": false,
+      "patched_shortcut_reason": "",
+      "patched_tokens": 9097,
+      "patched_elapsed_seconds": 32.11150882812217
+    }
+  ]
+}
