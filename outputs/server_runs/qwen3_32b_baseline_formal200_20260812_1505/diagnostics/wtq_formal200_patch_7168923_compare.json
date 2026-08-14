@@ -1,0 +1,157 @@
+{
+  "run_root": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_baseline_formal200_20260812_1505",
+  "patched_output_root": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_baseline_formal200_20260812_1505/diagnostics/wtq_formal200_patch_7168923",
+  "code_commit": "7168923",
+  "dataset": "wtq",
+  "summary": {
+    "old": {
+      "primary_correct": 141,
+      "primary_acc": 0.705,
+      "exact_correct": 140,
+      "exact": 0.7,
+      "avg_tokens": 6326.385,
+      "avg_time": 16.662782987224638
+    },
+    "prev_patch": {
+      "primary_correct": 147,
+      "primary_acc": 0.735,
+      "exact_correct": 145,
+      "exact": 0.725,
+      "avg_tokens": 6228.74,
+      "avg_time": 16.13981131913373
+    },
+    "new": {
+      "primary_correct": 157,
+      "primary_acc": 0.785,
+      "exact_correct": 155,
+      "exact": 0.775,
+      "avg_tokens": 6076.32,
+      "avg_time": 15.424483134956098
+    },
+    "mact": {
+      "primary_correct": 156,
+      "primary_acc": 0.78,
+      "exact_correct": 153,
+      "exact": 0.765,
+      "avg_tokens": 10698.617346938776,
+      "avg_time": 115.08843266310753
+    }
+  },
+  "old_to_new": {
+    "old_wrong_new_right": [
+      "nu-18",
+      "nu-22",
+      "nu-27",
+      "nu-66",
+      "nu-73",
+      "nu-78",
+      "nu-81",
+      "nu-94",
+      "nu-100",
+      "nu-110",
+      "nu-129",
+      "nu-142",
+      "nu-146",
+      "nu-180",
+      "nu-187",
+      "nu-188"
+    ],
+    "old_right_new_wrong": [],
+    "primary_correct_delta": 16
+  },
+  "prev_patch_to_new": {
+    "wrong_to_right": [
+      "nu-18",
+      "nu-22",
+      "nu-73",
+      "nu-81",
+      "nu-94",
+      "nu-110",
+      "nu-142",
+      "nu-152",
+      "nu-160",
+      "nu-187"
+    ],
+    "right_to_wrong": [],
+    "primary_correct_delta": 10
+  },
+  "new_vs_mact": {
+    "new_only_vs_mact": [
+      "nu-4",
+      "nu-8",
+      "nu-23",
+      "nu-28",
+      "nu-30",
+      "nu-36",
+      "nu-44",
+      "nu-66",
+      "nu-68",
+      "nu-75",
+      "nu-114",
+      "nu-117",
+      "nu-123",
+      "nu-129",
+      "nu-134",
+      "nu-138",
+      "nu-141",
+      "nu-148"
+    ],
+    "mact_only_vs_new": [
+      "nu-15",
+      "nu-35",
+      "nu-40",
+      "nu-49",
+      "nu-72",
+      "nu-82",
+      "nu-96",
+      "nu-112",
+      "nu-119",
+      "nu-127",
+      "nu-133",
+      "nu-136",
+      "nu-139",
+      "nu-159",
+      "nu-161",
+      "nu-173",
+      "nu-179"
+    ],
+    "primary_correct_gap": 1
+  },
+  "shortcut": {
+    "ids": [
+      "nu-16",
+      "nu-18",
+      "nu-19",
+      "nu-22",
+      "nu-24",
+      "nu-27",
+      "nu-31",
+      "nu-45",
+      "nu-56",
+      "nu-58",
+      "nu-66",
+      "nu-72",
+      "nu-73",
+      "nu-78",
+      "nu-81",
+      "nu-84",
+      "nu-94",
+      "nu-98",
+      "nu-100",
+      "nu-110",
+      "nu-118",
+      "nu-142",
+      "nu-144",
+      "nu-146",
+      "nu-152",
+      "nu-156",
+      "nu-160",
+      "nu-180",
+      "nu-187",
+      "nu-190",
+      "nu-192"
+    ],
+    "count": 31,
+    "correct": 28
+  }
+}
