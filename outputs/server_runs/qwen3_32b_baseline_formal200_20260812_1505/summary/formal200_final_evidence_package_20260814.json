@@ -115,10 +115,16 @@
     ],
     "informative_result": "No deterministic shortcuts dropped overall Gate-50 accuracy from 116/150 to 106/150 and increased average tokens from about 2516 to about 7465.",
     "inconclusive_result": "Legacy collaboration and no-strong verification had identical Gate-50 accuracy, so this split does not isolate strong-verification value.",
-    "missing_switches": [
-      "no_question_type_routing",
-      "no_dual_risk_scoring",
-      "no_table_compression_or_evidence_retention"
+    "missing_switches": [],
+    "prepared_not_executed_variants": [
+      "no_question_routing_gate50",
+      "no_risk_scoring_gate50",
+      "no_table_compression_gate50"
+    ],
+    "prepared_switches": [
+      "disable_question_routing",
+      "disable_risk_scoring",
+      "disable_table_compression"
     ]
   },
   "multi_model_gate50": {

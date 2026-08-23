@@ -60,7 +60,7 @@ Qwen3-32B Formal-200 主目标已达成：MyAgent 在 WTQ、TabFact、CRT 三个
 
 ### 3.2 选择性强验证 / 协作机制
 
-当前证据是“存在机制，但 Gate-50 消融不够能隔离收益”。
+当前证据是“存在机制，但 Gate-50 消融不够能隔离收益”。2026-08-23 已补齐 `no_question_routing`、`no_risk_scoring`、`no_table_compression` 三个机制隔离开关和 ablation50 运行脚本，但尚未执行。
 
 | 证据 | 结果 | 解释 |
 |---|---:|---|
@@ -72,7 +72,7 @@ Qwen3-32B Formal-200 主目标已达成：MyAgent 在 WTQ、TabFact、CRT 三个
 
 ### 3.3 表格压缩 / 证据保留
 
-当前正式结果支持效率效果，但还缺少独立开关消融。
+当前正式结果支持效率效果。2026-08-23 已补 `--disable_table_compression` 开关和 `run_ablation_no_table_compression50.sh`，但该消融还未运行。
 
 可写证据：
 
@@ -80,7 +80,7 @@ Qwen3-32B Formal-200 主目标已达成：MyAgent 在 WTQ、TabFact、CRT 三个
 - MyAgent final time ratio to MACT 是 `0.1320`。
 - 输出行保留 `compression_info`、`evidence_pack`、`risk_assessment`、`deterministic_shortcut_reason`、`strong_verification_reason` 等可审计字段。
 
-限制：当前代码没有 `no_table_compression_or_evidence_retention` ablation switch，因此不能把 token 降低完全归因于某一个压缩模块。
+限制：`no_table_compression` 开关已准备但未执行，因此当前还不能把 token 降低完全归因于某一个压缩模块。
 
 ## 4. WTQ 泛化边界
 
@@ -192,7 +192,7 @@ MyAgent 可表述为一种面向表格问答的选择性风险协作方法，包
 | 三个 baseline | 完成 | MACT、Direct-CoT、Single-Agent Pandas |
 | token/time/fail 汇报 | 完成 | 本文件第 1 节 |
 | WTQ 泛化诊断 | 完成，作为边界证据 | `wtq_shortcut_generalization_20260814.md` |
-| 机制消融 | 部分完成 | deterministic shortcut 充分；strong/routing/risk/compression 不足 |
+| 机制消融 | 部分完成 | deterministic shortcut 充分；strong verification 结果不足；routing/risk/compression 开关和脚本已准备但未执行 |
 | 多模型 gate | 完成，作为 no-go 边界 | `multimodel_gate50_summaries_20260730_1948/` |
 | 多 seed 稳定性 | 部分完成 | P4b paired newseed + Seed-C/D current-only + Seed-E prepared |
 | 专利说明书初稿证据 | 初稿证据已整理 | 本文件第 7 节 |
@@ -200,6 +200,6 @@ MyAgent 可表述为一种面向表格问答的选择性风险协作方法，包
 ## 9. 推荐下一步
 
 1. 不继续优化 TabFact/WTQ 单数据集分数，先冻结 Qwen3-32B formal200 主结果。
-2. 若要补机制消融，优先实现或构造 `no_risk_scoring` / `no_routing` / `no_compression` 三个最小开关，再跑 ablation50。
+2. 若要补机制消融，优先运行已准备好的 `run_ablation_no_question_routing50.sh`、`run_ablation_no_risk_scoring50.sh`、`run_ablation_no_table_compression50.sh`。
 3. 若要补多 seed，优先执行已准备好的 `qwen3_32b_patent_seed_e_gate50_20260823` paired Gate-50 包，或对已通过 candidate 的 Seed-C/D fresh 数据跑 paired MACT。
 4. 若要进入专利撰写，先基于本文件第 7 节写正式中文专利说明书，再把“不应夸大的点”放入实验局限。

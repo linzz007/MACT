@@ -1,6 +1,6 @@
 # Qwen3-32B Ablation-50 Summary
 
-Updated: 2026-08-14 10:39 CST
+Updated: 2026-08-23 CST
 
 Run package:
 
@@ -30,6 +30,9 @@ WTQ note: `no_deterministic_shortcuts` has WTQ `primary_accuracy=0.680` and `exa
 | Legacy collaboration | `ablation/legacy_gate50/` |
 | No strong verification | `ablation/no_strong_gate50/` |
 | No deterministic shortcuts | `ablation/no_deterministic_shortcuts_gate50/` |
+| No question routing | `ablation/no_question_routing_gate50/` prepared, not run |
+| No risk scoring | `ablation/no_risk_scoring_gate50/` prepared, not run |
+| No table compression | `ablation/no_table_compression_gate50/` prepared, not run |
 
 Each variant root contains:
 
@@ -43,3 +46,26 @@ Each variant root contains:
 The current Gate-50 split does not isolate the value of strong verification: legacy and no-strong have identical accuracy and near-identical token/time. A targeted high-risk split is needed before making a strong patent claim about the strong-verification branch.
 
 The deterministic-shortcut ablation is informative. Removing deterministic shortcuts reduces primary overall accuracy from `0.7733` to `0.7067` and increases average token usage from about `2516` to about `7465`. The main drops are on TabFact (`0.86` to `0.72`) and CRT (`0.80` to `0.72`). This supports a patent-describable claim that deterministic shortcuts / answer normalization reduce unnecessary LLM work while preserving accuracy on table verification and calculation reasoning tasks.
+
+## Prepared Expansion
+
+New mechanism-isolation switches were added on 2026-08-23 and wired through `code/tqa.py` and `scripts/server/run_sharded_tqa.py`:
+
+- `--disable_question_routing`: forces the complex path and records `question_routing_enabled=false`.
+- `--disable_risk_scoring`: fixes the selective risk assessment at medium and records `risk_scoring_enabled=false`.
+- `--disable_table_compression`: keeps the full original table and records `table_compression_enabled=false`.
+
+Prepared scripts in this run package:
+
+- `run_ablation_no_question_routing50.sh`
+- `run_ablation_no_risk_scoring50.sh`
+- `run_ablation_no_table_compression50.sh`
+
+Static verification passed before execution:
+
+- `python -m py_compile code/my_agents.py code/tqa.py scripts/server/run_sharded_tqa.py scripts/server/prepare_baseline_experiment_run.py`
+- `python -m unittest discover -s tests -p 'test_myagent_pipeline.py' -v` (`243` tests)
+- `bash -n` for the three prepared scripts
+- `run_sharded_tqa.py --dry-run` confirmed the new flags are passed through to `code/tqa.py`
+
+Execution status: prepared only. No model was called for these three new ablations yet.
