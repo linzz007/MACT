@@ -556,3 +556,200 @@ Finished Trial 1, Correct: 0, Incorrect: 1, Halted: 0
   warnings.warn(
 /home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
   warn_deprecated(
+==============current step===========
+Thought 1: To verify the claim, I need to count how many times the Oklahoma City Thunder scored 100 or more points in March 2008-09 based on the table. The "score" column indicates the team's points (e.g., "W 96 - 87 (ot)" means the team scored 96 points). I will retrieve all scores and check for values ≥100.
+Action 1: Retrieve[Retrieve the "score" column for all games in the table.]
+Observation 1: | score |
+| w 96 - 87 (ot) |
+| w 88 - 83 (ot) |
+| l 90 - 108 (ot) |
+| w 89 - 74 (ot) |
+| w 99 - 98 (ot) |
+| l 99 - 112 (ot) |
+| l 95 - 106 (ot) |
+| w 78 - 76 (ot) |
+| l 96 - 103 (ot) |
+| l 94 - 101 (ot) |
+| w 97 - 90 (ot) |
+| l 89 - 107 (ot) |
+| l 96 - 112 (ot) |
+| l 84 - 103 (ot) |
+| w 96 - 95 (ot) |
+
+==============current step===========
+Thought 1: To verify the claim, I need to count how many times the Oklahoma City Thunder scored 100 or more points in March 2008-09 based on the table. The "score" column indicates the team's points (e.g., "W 96 - 87 (ot)" means the team scored 96 points). I will retrieve all scores and check for values ≥100.
+Action 1: Retrieve[Retrieve the "score" column for all games in the table.]
+Observation 1: | score |
+| w 96 - 87 (ot) |
+| w 88 - 83 (ot) |
+| l 90 - 108 (ot) |
+| w 89 - 74 (ot) |
+| w 99 - 98 (ot) |
+| l 99 - 112 (ot) |
+| l 95 - 106 (ot) |
+| w 78 - 76 (ot) |
+| l 96 - 103 (ot) |
+| l 94 - 101 (ot) |
+| w 97 - 90 (ot) |
+| l 89 - 107 (ot) |
+| l 96 - 112 (ot) |
+| l 84 - 103 (ot) |
+| w 96 - 95 (ot) |
+Thought 2: Now I will count how many of these scores are 100 or higher. Scanning through the list: 96, 88, 90, 89, 99, 99, 95, 78, 96, 94, 97, 89, 96, 84, 96. None of these values reach 100. The highest score is 99 (in games 60 and 64). The claim states the team broke 100 points 5 times in March, but the table shows they never reached 100. Therefore, the claim is false.
+Action 2: Finish[False]
+
+Finished Trial 1, Correct: 1, Incorrect: 0, Halted: 0
+
+=== sample 16 id=tabfact-test-4788 start ===
+=== sample 16 returncode=0 end ===
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain/__init__.py:29: UserWarning: Importing Wikipedia from langchain root module is no longer supported. Please use langchain.docstore.Wikipedia instead.
+  warnings.warn(
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
+  warn_deprecated(
+==============current step===========
+Thought 1: I need to verify if the highest attendance in the table is for the game on September 13, 1976. First, retrieve the attendance for that specific date.  
+Action 1: Retrieve[Retrieve the attendance for the game on september 13 , 1976.]  
+Observation 1: 77683  
+
+==============current step===========
+Thought 1: I need to verify if the highest attendance in the table is for the game on September 13, 1976. First, retrieve the attendance for that specific date.  
+Action 1: Retrieve[Retrieve the attendance for the game on september 13 , 1976.]  
+Observation 1: 77683  
+Thought 2: Now I need to check if there's any other game with higher attendance than 77,683. Let me retrieve all attendance numbers from the table.  
+Action 2: Retrieve[Retrieve all attendance values from the table.]  
+Observation 2: | attendance |
+| 77683.0 |
+| 61384.0 |
+| 44505.0 |
+| 51909.0 |
+| 59110.0 |
+| 71009.0 |
+| 45144.0 |
+| 41285.0 |
+| 61157.0 |
+| 51799.0 |
+| 36539.0 |
+| 66875.0 |
+| 43475.0 |
+| 50451.0 |
+
+==============current step===========
+Thought 1: I need to verify if the highest attendance in the table is for the game on September 13, 1976. First, retrieve the attendance for that specific date.  
+Action 1: Retrieve[Retrieve the attendance for the game on september 13 , 1976.]  
+Observation 1: 77683  
+Thought 2: Now I need to check if there's any other game with higher attendance than 77,683. Let me retrieve all attendance numbers from the table.  
+Action 2: Retrieve[Retrieve all attendance values from the table.]  
+Observation 2: | attendance |
+| 77683.0 |
+| 61384.0 |
+| 44505.0 |
+| 51909.0 |
+| 59110.0 |
+| 71009.0 |
+| 45144.0 |
+| 41285.0 |
+| 61157.0 |
+| 51799.0 |
+| 36539.0 |
+| 66875.0 |
+| 43475.0 |
+| 50451.0 |
+Thought 3: The highest attendance in the table is 77,683 (on September 13, 1976), which is greater than all other attendance values listed. Therefore, the claim is true.  
+Action 3: Finish[True]
+
+Finished Trial 1, Correct: 1, Incorrect: 0, Halted: 0
+
+=== sample 17 id=tabfact-test-288 start ===
+=== sample 17 returncode=0 end ===
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain/__init__.py:29: UserWarning: Importing Wikipedia from langchain root module is no longer supported. Please use langchain.docstore.Wikipedia instead.
+  warnings.warn(
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
+  warn_deprecated(
+==============current step===========
+Thought 1: The context states that Edmonton was a visitor on March 9 in Philadelphia with a record of 44-7-15. I need to verify this by checking the table entry for March 9 where Edmonton is the visitor.  
+Action 1: Retrieve[Retrieve the row where date is March 9 and visitor is Edmonton.]  
+Observation 1: | date | visitor | score | home | decision | attendance | record |
+| march 9 | edmonton | 3 - 5 | philadelphia | myre | 17077.0 | 44 - 7 - 15 |
+
+==============current step===========
+Thought 1: The context states that Edmonton was a visitor on March 9 in Philadelphia with a record of 44-7-15. I need to verify this by checking the table entry for March 9 where Edmonton is the visitor.  
+Action 1: Retrieve[Retrieve the row where date is March 9 and visitor is Edmonton.]  
+Observation 1: | date | visitor | score | home | decision | attendance | record |
+| march 9 | edmonton | 3 - 5 | philadelphia | myre | 17077.0 | 44 - 7 - 15 |
+Thought 2: The retrieved row confirms that on March 9, Edmonton (visitor) played against Philadelphia (home) with a final record of 44-7-15. The context statement matches this information exactly.  
+Action 2: Finish[True]
+
+Finished Trial 1, Correct: 1, Incorrect: 0, Halted: 0
+
+=== sample 18 id=tabfact-test-10396 start ===
+=== sample 18 returncode=0 end ===
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain/__init__.py:29: UserWarning: Importing Wikipedia from langchain root module is no longer supported. Please use langchain.docstore.Wikipedia instead.
+  warnings.warn(
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
+  warn_deprecated(
+==============current step===========
+Thought 1: I need to verify if the final score of 66-46 against Virginia Tech exists in the table. First, I will retrieve all game entries to check the scores and opponents.
+Action 1: Retrieve[Retrieve all rows where the team is Virginia Tech.]
+Observation 1: | game | date | team | score | high points | high rebounds | high assists | location attendance | record |
+| 5.0 | november 27 | virginia tech | w 61 - 50 | allen - 18 | allen - 10 | fernandez - 6 | palestra , philadelphia , pa (3750) | 4 - 1 |
+
+==============current step===========
+Thought 1: I need to verify if the final score of 66-46 against Virginia Tech exists in the table. First, I will retrieve all game entries to check the scores and opponents.
+Action 1: Retrieve[Retrieve all rows where the team is Virginia Tech.]
+Observation 1: | game | date | team | score | high points | high rebounds | high assists | location attendance | record |
+| 5.0 | november 27 | virginia tech | w 61 - 50 | allen - 18 | allen - 10 | fernandez - 6 | palestra , philadelphia , pa (3750) | 4 - 1 |
+Thought 2: The retrieved data shows that the game against Virginia Tech (game 5) had a final score of 61-50, not 66-46. The score 66-46 corresponds to the game against Ball State (game 4). Therefore, the context's claim about the score against Virginia Tech is incorrect.
+Action 2: Finish[False]
+
+Finished Trial 1, Correct: 1, Incorrect: 0, Halted: 0
+
+=== sample 19 id=tabfact-test-9291 start ===
+=== sample 19 returncode=0 end ===
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain/__init__.py:29: UserWarning: Importing Wikipedia from langchain root module is no longer supported. Please use langchain.docstore.Wikipedia instead.
+  warnings.warn(
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
+  warn_deprecated(
+==============current step===========
+Thought 1: I need to verify if the F27-200 aircraft in the table has the tail number CR-AIB and 3/3 fatalities.  
+Action 1: Retrieve[Retrieve the row where aircraft is "f27 - 200".]  
+Observation 1: | location | aircraft | tail number | aircraft damage | fatalities |
+| lourenço marques | f27 - 200 | cr - aib | w / o | 3 / 3 |
+
+==============current step===========
+Thought 1: I need to verify if the F27-200 aircraft in the table has the tail number CR-AIB and 3/3 fatalities.  
+Action 1: Retrieve[Retrieve the row where aircraft is "f27 - 200".]  
+Observation 1: | location | aircraft | tail number | aircraft damage | fatalities |
+| lourenço marques | f27 - 200 | cr - aib | w / o | 3 / 3 |
+Thought 2: The retrieved row confirms that the F27-200 aircraft has a tail number of "cr - aib" and "3 / 3" fatalities, which matches the context's claim (formatting differences in spacing/hyphens do not affect the factual accuracy).  
+Action 2: Finish[True]
+
+Finished Trial 1, Correct: 1, Incorrect: 0, Halted: 0
+
+=== sample 20 id=tabfact-test-11103 start ===
+=== sample 20 returncode=0 end ===
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain/__init__.py:29: UserWarning: Importing Wikipedia from langchain root module is no longer supported. Please use langchain.docstore.Wikipedia instead.
+  warnings.warn(
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
+  warn_deprecated(
+==============current step===========
+Thought 1: I need to verify if Librado Andrade has any wins against Paul Jones in the table. The context claims he never won against Paul Jones, so I should check the table for any entries where the opponent is Paul Jones and the result is "win".
+Action 1: Retrieve[Retrieve all rows where opponent is "paul jones".]
+Observation 1: | result | opponent | type | rd , time | date |
+| win | paul jones | ko | 4 (4) | 2000 - 02 - 03 |
+
+==============current step===========
+Thought 1: I need to verify if Librado Andrade has any wins against Paul Jones in the table. The context claims he never won against Paul Jones, so I should check the table for any entries where the opponent is Paul Jones and the result is "win".
+Action 1: Retrieve[Retrieve all rows where opponent is "paul jones".]
+Observation 1: | result | opponent | type | rd , time | date |
+| win | paul jones | ko | 4 (4) | 2000 - 02 - 03 |
+Thought 2: The retrieved row shows that there is a "win" result against Paul Jones on 2000-02-03. This directly contradicts the claim that "Librado Andrade never win the fight against Paul Jones".
+Action 2: Finish[False]
+
+Finished Trial 1, Correct: 0, Incorrect: 1, Halted: 0
+
+=== sample 21 id=tabfact-test-992 start ===
+=== sample 21 returncode=0 end ===
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain/__init__.py:29: UserWarning: Importing Wikipedia from langchain root module is no longer supported. Please use langchain.docstore.Wikipedia instead.
+  warnings.warn(
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
+  warn_deprecated(
