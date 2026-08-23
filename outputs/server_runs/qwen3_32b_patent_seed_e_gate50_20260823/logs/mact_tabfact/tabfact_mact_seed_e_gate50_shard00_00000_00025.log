@@ -304,3 +304,214 @@ Finished Trial 1, Correct: 1, Incorrect: 0, Halted: 0
   warnings.warn(
 /home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
   warn_deprecated(
+==============current step===========
+Thought 1: I need to verify if all subsidiaries and associates of Malaysia Airlines are incorporated in India except Taj Madras Air Catering Limited. First, I will retrieve all rows where "incorporated in" is not India and check if they are exceptions mentioned in the context.
+Action 1: Retrieve[Retrieve all rows where "incorporated in" is not "India".]
+Observation 1: | company | type | principal activities | incorporated in | group 's equity shareholding |
+| malaysia airlines cargo sdn bhd | subsidiary | cargo | malaysia | 100% |
+| maswings sdn bhd | subsidiary | airline | malaysia | 100% |
+| firefly sdn bhd | subsidiary | airline | malaysia | 100% |
+| mas aerotechnologies sdn bhd | subsidiary | mro | malaysia | 100% |
+| mas golden holidays sdn bhd | subsidiary | tour operator | malaysia | 100% |
+| malaysian aerospace engineering sdn bhd | subsidiary | engineering | malaysia | 100% |
+| mas academy sdn bhd | subsidiary | flight school | malaysia | 100% |
+| abacus distribution systems (malaysia) sdn bhd | subsidiary | computer reservation system | malaysia | 80% |
+| mas catering (sarawak) sdn bhd | subsidiary | catering | malaysia | 60% |
+| lsg sky chefs | associate | holding company | malaysia | 30% |
+
+==============current step===========
+Thought 1: I need to verify if all subsidiaries and associates of Malaysia Airlines are incorporated in India except Taj Madras Air Catering Limited. First, I will retrieve all rows where "incorporated in" is not India and check if they are exceptions mentioned in the context.
+Action 1: Retrieve[Retrieve all rows where "incorporated in" is not "India".]
+Observation 1: | company | type | principal activities | incorporated in | group 's equity shareholding |
+| malaysia airlines cargo sdn bhd | subsidiary | cargo | malaysia | 100% |
+| maswings sdn bhd | subsidiary | airline | malaysia | 100% |
+| firefly sdn bhd | subsidiary | airline | malaysia | 100% |
+| mas aerotechnologies sdn bhd | subsidiary | mro | malaysia | 100% |
+| mas golden holidays sdn bhd | subsidiary | tour operator | malaysia | 100% |
+| malaysian aerospace engineering sdn bhd | subsidiary | engineering | malaysia | 100% |
+| mas academy sdn bhd | subsidiary | flight school | malaysia | 100% |
+| abacus distribution systems (malaysia) sdn bhd | subsidiary | computer reservation system | malaysia | 80% |
+| mas catering (sarawak) sdn bhd | subsidiary | catering | malaysia | 60% |
+| lsg sky chefs | associate | holding company | malaysia | 30% |
+
+==============current step===========
+Thought 1: I need to verify if all subsidiaries and associates of Malaysia Airlines are incorporated in India except Taj Madras Air Catering Limited. First, I will retrieve all rows where "incorporated in" is not India and check if they are exceptions mentioned in the context.
+Action 1: Retrieve[Retrieve all rows where "incorporated in" is not "India".]
+Observation 1: | company | type | principal activities | incorporated in | group 's equity shareholding |
+| malaysia airlines cargo sdn bhd | subsidiary | cargo | malaysia | 100% |
+| maswings sdn bhd | subsidiary | airline | malaysia | 100% |
+| firefly sdn bhd | subsidiary | airline | malaysia | 100% |
+| mas aerotechnologies sdn bhd | subsidiary | mro | malaysia | 100% |
+| mas golden holidays sdn bhd | subsidiary | tour operator | malaysia | 100% |
+| malaysian aerospace engineering sdn bhd | subsidiary | engineering | malaysia | 100% |
+| mas academy sdn bhd | subsidiary | flight school | malaysia | 100% |
+| abacus distribution systems (malaysia) sdn bhd | subsidiary | computer reservation system | malaysia | 80% |
+| mas catering (sarawak) sdn bhd | subsidiary | catering | malaysia | 60% |
+| lsg sky chefs | associate | holding company | malaysia | 30% |
+Thought 2: The retrieved rows show that all subsidiaries (e.g., Malaysia Airlines Cargo, MASWings, Firefly, etc.) and associates (e.g., LSG Sky Chefs) are incorporated in **Malaysia**, except for **Taj Madras Air Catering Limited**, which is incorporated in **India**. However, the context claims that *all subsidiaries and associates are incorporated in India except Taj Madras Air Catering Limited*. This is **false**, because the table shows **multiple subsidiaries and associates incorporated in Malaysia**, not India. The context's statement is incorrect.  
+Action 2: Finish[False]
+
+Finished Trial 1, Correct: 1, Incorrect: 0, Halted: 0
+
+=== sample 11 id=tabfact-test-1983 start ===
+=== sample 11 returncode=0 end ===
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain/__init__.py:29: UserWarning: Importing Wikipedia from langchain root module is no longer supported. Please use langchain.docstore.Wikipedia instead.
+  warnings.warn(
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
+  warn_deprecated(
+==============current step===========
+Thought 1: I need to retrieve the median household income for New Mexico and the United States to compare them.
+Action 1: Retrieve[Retrieve the median household income for New Mexico and United States.]
+Observation 1: | county | median household income |
+| united states | 51914.0 |
+| new mexico | 43820.0 |
+
+==============current step===========
+Thought 1: I need to retrieve the median household income for New Mexico and the United States to compare them.
+Action 1: Retrieve[Retrieve the median household income for New Mexico and United States.]
+Observation 1: | county | median household income |
+| united states | 51914.0 |
+| new mexico | 43820.0 |
+Thought 2: The median household income for the United States is 51,914 and for New Mexico is 43,820. Since 43,820 is less than 51,914, the claim is true.
+Action 2: Finish[True]
+
+Finished Trial 1, Correct: 1, Incorrect: 0, Halted: 0
+
+=== sample 12 id=tabfact-test-1031 start ===
+=== sample 12 returncode=0 end ===
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain/__init__.py:29: UserWarning: Importing Wikipedia from langchain root module is no longer supported. Please use langchain.docstore.Wikipedia instead.
+  warnings.warn(
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
+  warn_deprecated(
+==============current step===========
+Thought 1: I need to identify the game in May with the lowest attendance and verify if the opponent was the Athletics. First, I will retrieve all attendance numbers and their corresponding opponents for May games.
+Action 1: Retrieve[Retrieve all rows in the table where date starts with "may", and extract the "opponent" and "attendance" columns.]
+Observation 1: 
+| date   | opponent   | attendance |
+|--------|------------|------------|
+| may 1  | rangers    | 33439      |
+| may 2  | royals     | 22896      |
+| may 3  | royals     | 20809      |
+| may 4  | royals     | 22628      |
+| may 5  | royals     | 22588      |
+| may 7  | rangers    | 44622      |
+| may 8  | rangers    | 43211      |
+| may 9  | white sox  | 47236      |
+| may 10 | white sox  | 50198      |
+| may 11 | white sox  | 50206      |
+| may 12 | white sox  | 50108      |
+| may 13 | royals     | 44275      |
+| may 14 | royals     | 43357      |
+| may 15 | royals     | 50113      |
+| may 17 | white sox  | 30095      |
+| may 18 | white sox  | 34861      |
+| may 19 | white sox  | 41015      |
+| may 20 | athletics  | 24631      |
+| may 21 | athletics  | 22738      |
+| may 22 | athletics  | 34028      |
+| may 24 | angels     | 26408      |
+| may 25 | angels     | 36732      |
+| may 26 | angels     | 45307      |
+| may 28 | athletics  | 50299      |
+| may 29 | athletics  | 50262      |
+| may 30 | athletics  | 50271      |
+| may 31 | angels     | 50252      |
+
+==============current step===========
+Thought 1: I need to identify the game in May with the lowest attendance and verify if the opponent was the Athletics. First, I will retrieve all attendance numbers and their corresponding opponents for May games.
+Action 1: Retrieve[Retrieve all rows in the table where date starts with "may", and extract the "opponent" and "attendance" columns.]
+Observation 1: 
+| date   | opponent   | attendance |
+|--------|------------|------------|
+| may 1  | rangers    | 33439      |
+| may 2  | royals     | 22896      |
+| may 3  | royals     | 20809      |
+| may 4  | royals     | 22628      |
+| may 5  | royals     | 22588      |
+| may 7  | rangers    | 44622      |
+| may 8  | rangers    | 43211      |
+| may 9  | white sox  | 47236      |
+| may 10 | white sox  | 50198      |
+| may 11 | white sox  | 50206      |
+| may 12 | white sox  | 50108      |
+| may 13 | royals     | 44275      |
+| may 14 | royals     | 43357      |
+| may 15 | royals     | 50113      |
+| may 17 | white sox  | 30095      |
+| may 18 | white sox  | 34861      |
+| may 19 | white sox  | 41015      |
+| may 20 | athletics  | 24631      |
+| may 21 | athletics  | 22738      |
+| may 22 | athletics  | 34028      |
+| may 24 | angels     | 26408      |
+| may 25 | angels     | 36732      |
+| may 26 | angels     | 45307      |
+| may 28 | athletics  | 50299      |
+| may 29 | athletics  | 50262      |
+| may 30 | athletics  | 50271      |
+| may 31 | angels     | 50252      |
+
+==============current step===========
+Thought 1: I need to identify the game in May with the lowest attendance and verify if the opponent was the Athletics. First, I will retrieve all attendance numbers and their corresponding opponents for May games.
+Action 1: Retrieve[Retrieve all rows in the table where date starts with "may", and extract the "opponent" and "attendance" columns.]
+Observation 1: 
+| date   | opponent   | attendance |
+|--------|------------|------------|
+| may 1  | rangers    | 33439      |
+| may 2  | royals     | 22896      |
+| may 3  | royals     | 20809      |
+| may 4  | royals     | 22628      |
+| may 5  | royals     | 22588      |
+| may 7  | rangers    | 44622      |
+| may 8  | rangers    | 43211      |
+| may 9  | white sox  | 47236      |
+| may 10 | white sox  | 50198      |
+| may 11 | white sox  | 50206      |
+| may 12 | white sox  | 50108      |
+| may 13 | royals     | 44275      |
+| may 14 | royals     | 43357      |
+| may 15 | royals     | 50113      |
+| may 17 | white sox  | 30095      |
+| may 18 | white sox  | 34861      |
+| may 19 | white sox  | 41015      |
+| may 20 | athletics  | 24631      |
+| may 21 | athletics  | 22738      |
+| may 22 | athletics  | 34028      |
+| may 24 | angels     | 26408      |
+| may 25 | angels     | 36732      |
+| may 26 | angels     | 45307      |
+| may 28 | athletics  | 50299      |
+| may 29 | athletics  | 50262      |
+| may 30 | athletics  | 50271      |
+| may 31 | angels     | 50252      |
+Thought 2: The lowest attendance in May is **20,809** on **May 3** against the **Royals**. The Athletics games in May (May 20, 21, 22, 28, 29, 30) have attendances of 24,631, 22,738, 34,028, 50,299, 50,262, and 50,271, respectively. The lowest attendance against the Athletics in May is **22,738** (May 21), which is higher than 20,809. Thus, the claim is false.  
+Action 2: Finish[False]
+
+Finished Trial 1, Correct: 1, Incorrect: 0, Halted: 0
+
+=== sample 13 id=tabfact-test-403 start ===
+=== sample 13 returncode=0 end ===
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain/__init__.py:29: UserWarning: Importing Wikipedia from langchain root module is no longer supported. Please use langchain.docstore.Wikipedia instead.
+  warnings.warn(
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
+  warn_deprecated(
+==============current step===========
+Thought 1: I need to verify how many times Wang Liqin won the men's singles title between 1997 and 2012 as per the table.  
+Action 1: Retrieve[Retrieve all entries in the 'mens singles' column where the winner is Wang Liqin.]  
+Observation 1: Wang Liqin won in **2006 (Yokohama)** and **2000 (Kobe)**.  
+
+==============current step===========
+Thought 1: I need to verify how many times Wang Liqin won the men's singles title between 1997 and 2012 as per the table.  
+Action 1: Retrieve[Retrieve all entries in the 'mens singles' column where the winner is Wang Liqin.]  
+Observation 1: Wang Liqin won in **2006 (Yokohama)** and **2000 (Kobe)**.  
+Thought 2: The retrieved data shows Wang Liqin won men's singles only once in 2000 (Kobe). The claim states three wins between 1997-2012, but the table only lists one instance. Therefore, the claim is false.  
+Action 2: Finish[False]
+
+Finished Trial 1, Correct: 1, Incorrect: 0, Halted: 0
+
+=== sample 14 id=tabfact-test-7454 start ===
+=== sample 14 returncode=0 end ===
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain/__init__.py:29: UserWarning: Importing Wikipedia from langchain root module is no longer supported. Please use langchain.docstore.Wikipedia instead.
+  warnings.warn(
+/home/ubuntu/miniconda3/envs/lzz-agent/lib/python3.11/site-packages/langchain_core/_api/deprecation.py:119: LangChainDeprecationWarning: The class `DocstoreExplorer` was deprecated in LangChain 0.1.0 and will be removed in 0.3.0
+  warn_deprecated(
