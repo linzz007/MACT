@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-14 CST",
+  "generated_at": "2026-08-24 CST",
   "run_root": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_baseline_formal200_20260812_1505",
   "authoritative_summary_md": "outputs/server_runs/qwen3_32b_baseline_formal200_20260812_1505/summary/formal200_final_evidence_package_20260814.md",
   "scope": "Patent/thesis evidence package for Qwen3-32B MyAgent vs MACT Formal-200 plus ablation, multi-seed, multi-model, and WTQ generalization evidence.",
@@ -111,21 +111,85 @@
     "completed_variants": [
       "legacy_collaboration_gate50",
       "no_strong_verification_gate50",
-      "no_deterministic_shortcuts_gate50"
-    ],
-    "informative_result": "No deterministic shortcuts dropped overall Gate-50 accuracy from 116/150 to 106/150 and increased average tokens from about 2516 to about 7465.",
-    "inconclusive_result": "Legacy collaboration and no-strong verification had identical Gate-50 accuracy, so this split does not isolate strong-verification value.",
-    "missing_switches": [],
-    "prepared_not_executed_variants": [
+      "no_deterministic_shortcuts_gate50",
       "no_question_routing_gate50",
       "no_risk_scoring_gate50",
       "no_table_compression_gate50"
     ],
+    "informative_result": "No deterministic shortcuts dropped overall Gate-50 accuracy from 116/150 to 106/150 and increased average tokens from about 2516 to about 7465. No question routing preserved 116/150 but increased avg tokens to 8354. No table compression preserved 116/150 but increased avg tokens to 7613 and caused 2 WTQ context-limit failed/missing rows.",
+    "inconclusive_result": "Legacy collaboration and no-strong verification had identical Gate-50 accuracy. No-risk-scoring reached 122/150 but with avg tokens 6664, so this broad split supports cost/path-control framing rather than a simple risk-scoring accuracy claim.",
+    "missing_switches": [],
+    "prepared_not_executed_variants": [],
     "prepared_switches": [
       "disable_question_routing",
       "disable_risk_scoring",
       "disable_table_compression"
-    ]
+    ],
+    "executed_switches": [
+      "disable_question_routing",
+      "disable_risk_scoring",
+      "disable_table_compression"
+    ],
+    "gate50_results": {
+      "legacy_collaboration_gate50": {
+        "correct": 116,
+        "rows": 150,
+        "accuracy": 0.7733,
+        "avg_tokens": 2516.49,
+        "avg_time_seconds": 13.957,
+        "failed": 0,
+        "missing": 0
+      },
+      "no_strong_verification_gate50": {
+        "correct": 116,
+        "rows": 150,
+        "accuracy": 0.7733,
+        "avg_tokens": 2516.47,
+        "avg_time_seconds": 13.973,
+        "failed": 0,
+        "missing": 0
+      },
+      "no_deterministic_shortcuts_gate50": {
+        "correct": 106,
+        "rows": 150,
+        "accuracy": 0.7067,
+        "avg_tokens": 7464.5,
+        "avg_time_seconds": 22.227,
+        "failed": 0,
+        "missing": 0
+      },
+      "no_question_routing_gate50": {
+        "correct": 116,
+        "rows": 150,
+        "accuracy": 0.7733,
+        "avg_tokens": 8353.59,
+        "avg_time_seconds": 21.077,
+        "failed": 0,
+        "missing": 0
+      },
+      "no_risk_scoring_gate50": {
+        "correct": 122,
+        "rows": 150,
+        "accuracy": 0.8133,
+        "avg_tokens": 6664.23,
+        "avg_time_seconds": 18.473,
+        "failed": 0,
+        "missing": 0
+      },
+      "no_table_compression_gate50": {
+        "correct": 116,
+        "rows": 150,
+        "accuracy": 0.7733,
+        "avg_tokens": 7612.96,
+        "avg_time_seconds": 18.148,
+        "failed": 2,
+        "missing": 2,
+        "context_limit_failed_ids": [
+          "nu-30",
+          "nu-44"
+        ]
+      }
+    }
   },
   "multi_model_gate50": {
     "qwen3_14b_awq": {
@@ -190,7 +254,7 @@
     "efficiency_reporting": "complete",
     "wtq_generalization_diagnostic": "complete_as_boundary_evidence",
     "multi_model_gate": "complete_as_no_go_boundary_summary",
-    "mechanism_ablation": "partial",
+    "mechanism_ablation": "complete_for_gate50_core_mechanisms",
     "multi_seed_stability": "partial",
     "patent_draft_evidence": "drafted_in_authoritative_summary"
   }

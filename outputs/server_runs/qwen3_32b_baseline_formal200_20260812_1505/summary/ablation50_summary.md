@@ -1,6 +1,6 @@
 # Qwen3-32B Ablation-50 Summary
 
-Updated: 2026-08-23 23:30 CST
+Updated: 2026-08-24 00:04 CST
 
 Run package:
 
@@ -22,6 +22,7 @@ Endpoint/GPU policy:
 | No deterministic shortcuts | 0.680 | 0.720 | 0.720 | 106/150 = 0.7067 | 7464.50 | 22.227s | 0/0 |
 | No question routing | 0.660 | 0.900 | 0.760 | 116/150 = 0.7733 | 8353.59 | 21.077s | 0/0 |
 | No risk scoring | 0.740 | 0.880 | 0.820 | 122/150 = 0.8133 | 6664.23 | 18.473s | 0/0 |
+| No table compression | 0.720 | 0.900 | 0.700 | 116/150 = 0.7733 | 7612.96 | 18.148s | 2/2 |
 
 WTQ note: `no_deterministic_shortcuts` has WTQ `primary_accuracy=0.680` and `exact_match=0.660`; the table uses primary accuracy for dataset-level accuracy.
 
@@ -34,7 +35,7 @@ WTQ note: `no_deterministic_shortcuts` has WTQ `primary_accuracy=0.680` and `exa
 | No deterministic shortcuts | `ablation/no_deterministic_shortcuts_gate50/` |
 | No question routing | `ablation/no_question_routing_gate50/` |
 | No risk scoring | `ablation/no_risk_scoring_gate50/` |
-| No table compression | `ablation/no_table_compression_gate50/` prepared, not run |
+| No table compression | `ablation/no_table_compression_gate50/` |
 
 Each variant root contains:
 
@@ -53,7 +54,11 @@ The no-question-routing ablation has the same overall primary accuracy as legacy
 
 The no-risk-scoring ablation is not accuracy-negative on this broad gate50 split: it reaches `122/150 = 0.8133`, above legacy/no-strong, while average token usage rises to `6664.23`. This should be treated as boundary evidence. Do not claim from this split alone that risk scoring improves accuracy; the safer claim is that risk scoring is a selective cost/path-control component whose accuracy value needs targeted high-risk evidence.
 
-## Prepared Expansion
+The no-table-compression ablation has the same overall primary accuracy as legacy/no-strong on this gate50 split, but average token usage rises to `7612.96` and WTQ has `2/50` failed/missing rows. The failed rows are `nu-30` and `nu-44`, both `BadRequestError` context-limit failures where the full table prompt exceeded the Qwen3-32B `8192` context budget. This is direct evidence that compression/evidence retention is needed for runnability as well as efficiency.
+
+Runner robustness note: no-table-compression initially exposed a per-sample `BadRequestError` handling gap. MyAgent commit `6de15a7` now writes per-sample exceptions as failed JSONL rows and continues, preserving one output row per input row for evaluation.
+
+## Expansion Switches and Execution
 
 New mechanism-isolation switches were added on 2026-08-23 and wired through `code/tqa.py` and `scripts/server/run_sharded_tqa.py`:
 
@@ -74,4 +79,4 @@ Static verification passed before execution:
 - `bash -n` for the three prepared scripts
 - `run_sharded_tqa.py --dry-run` confirmed the new flags are passed through to `code/tqa.py`
 
-Execution status: `run_ablation_no_question_routing50.sh` and `run_ablation_no_risk_scoring50.sh` completed on 2026-08-23 using only GPUs `4,5,6,7`. `run_ablation_no_table_compression50.sh` remains prepared but not executed.
+Execution status: `run_ablation_no_question_routing50.sh`, `run_ablation_no_risk_scoring50.sh`, and `run_ablation_no_table_compression50.sh` completed on 2026-08-23/2026-08-24 using only GPUs `4,5,6,7`.

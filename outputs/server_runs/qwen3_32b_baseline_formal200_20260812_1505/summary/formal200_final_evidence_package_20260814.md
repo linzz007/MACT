@@ -1,6 +1,6 @@
 # 面向专利编写的 Formal-200 最终证据包
 
-生成日期：2026-08-14 CST
+生成日期：2026-08-24 CST
 
 运行目录：
 
@@ -60,27 +60,31 @@ Qwen3-32B Formal-200 主目标已达成：MyAgent 在 WTQ、TabFact、CRT 三个
 
 ### 3.2 选择性强验证 / 协作机制
 
-当前证据是“存在机制，但 Gate-50 消融不够能隔离收益”。2026-08-23 已补齐 `no_question_routing`、`no_risk_scoring`、`no_table_compression` 三个机制隔离开关和 ablation50 运行脚本，但尚未执行。
+当前证据是“确定性验证最强；路由和压缩主要体现为成本/可运行性控制；强验证和风险评分需要谨慎表述”。2026-08-23 至 2026-08-24 已执行 `no_question_routing`、`no_risk_scoring`、`no_table_compression` 三个机制隔离消融。
 
 | 证据 | 结果 | 解释 |
 |---|---:|---|
 | Legacy collaboration | 116/150 = 0.7733 | Gate-50 参考 |
 | No strong verification | 116/150 = 0.7733 | 与 legacy 相同，当前切片未隔离强验证收益 |
+| No question routing | 116/150 = 0.7733 | 准确率不变，但 avg token 升至 8353.59，说明路由主要控制成本/路径 |
+| No risk scoring | 122/150 = 0.8133 | 准确率更高但 avg token 升至 6664.23，不能据此主张风险评分直接提升准确率 |
 | TabFact trigger-71 strong vs no-strong control | 51/71 vs 51/71 | 强验证挽回 7 行但回退 7 行，且 token 大幅增加 |
 
-结论：不能把“强验证必然提升准确率”写成强结论。更稳妥的专利表述是“基于风险门控的选择性协作机制，用于在高风险样本上触发额外核查；当前正式收益主要由确定性验证和低成本路径控制体现，强验证分支需要更精细的接受门控”。
+结论：不能把“强验证必然提升准确率”或“风险评分必然提升准确率”写成强结论。更稳妥的专利表述是“基于问题路由和风险门控的选择性协作机制，用于在不同风险/复杂度样本上选择不同推理路径；当前正式收益主要由确定性验证、答案规范化、低成本路径控制和压缩带来的可运行性体现，强验证分支需要更精细的接受门控”。
 
 ### 3.3 表格压缩 / 证据保留
 
-当前正式结果支持效率效果。2026-08-23 已补 `--disable_table_compression` 开关和 `run_ablation_no_table_compression50.sh`，但该消融还未运行。
+当前正式结果和 no-compression 消融共同支持效率与可运行性效果。
 
 可写证据：
 
 - MyAgent final token ratio to MACT 是 `0.5560`。
 - MyAgent final time ratio to MACT 是 `0.1320`。
+- No table compression Gate-50：overall `116/150 = 0.7733`，avg token `7612.96`，avg time `18.148s`，fail/missing `2/2`。
+- No table compression 在 WTQ 上出现 `nu-30`、`nu-44` 两条 `BadRequestError` 上下文长度失败；这是完整表输入超过 Qwen3-32B `8192` 上下文预算的直接证据。
 - 输出行保留 `compression_info`、`evidence_pack`、`risk_assessment`、`deterministic_shortcut_reason`、`strong_verification_reason` 等可审计字段。
 
-限制：`no_table_compression` 开关已准备但未执行，因此当前还不能把 token 降低完全归因于某一个压缩模块。
+限制：该 gate50 消融说明压缩对 token 和可运行性有价值，但不能单独证明所有准确率提升都来自压缩模块。
 
 ## 4. WTQ 泛化边界
 
@@ -182,6 +186,7 @@ MyAgent 可表述为一种面向表格问答的选择性风险协作方法，包
 - 不应宣称所有模型均超过 MACT；小模型 gate50 是 no-go。
 - 不应宣称全量 WTQ shortcut 泛化可靠；全量 unseen 命中精度不足。
 - 不应宣称强验证分支已被 ablation 证明独立提升准确率；当前强验证消融仍需更好切片。
+- 不应宣称风险评分分支已被 gate50 ablation 证明独立提升准确率；no-risk 在该 split 上准确率更高但 token 明显增加。
 - 不应宣称已完成所有多 seed paired 稳定性实验；当前只有一个 paired new-seed Gate-50 和若干 current-only/boundary 证据。
 
 ## 8. 完成度审计
@@ -192,7 +197,7 @@ MyAgent 可表述为一种面向表格问答的选择性风险协作方法，包
 | 三个 baseline | 完成 | MACT、Direct-CoT、Single-Agent Pandas |
 | token/time/fail 汇报 | 完成 | 本文件第 1 节 |
 | WTQ 泛化诊断 | 完成，作为边界证据 | `wtq_shortcut_generalization_20260814.md` |
-| 机制消融 | 部分完成 | deterministic shortcut 充分；strong verification 结果不足；routing/risk/compression 开关和脚本已准备但未执行 |
+| 机制消融 | Gate-50 核心机制完成 | deterministic shortcut 充分；routing/compression 体现效率和可运行性；risk/strong verification 需要谨慎限定 |
 | 多模型 gate | 完成，作为 no-go 边界 | `multimodel_gate50_summaries_20260730_1948/` |
 | 多 seed 稳定性 | 部分完成 | P4b paired newseed + Seed-C/D current-only + Seed-E prepared |
 | 专利说明书初稿证据 | 初稿证据已整理 | 本文件第 7 节 |
@@ -200,6 +205,5 @@ MyAgent 可表述为一种面向表格问答的选择性风险协作方法，包
 ## 9. 推荐下一步
 
 1. 不继续优化 TabFact/WTQ 单数据集分数，先冻结 Qwen3-32B formal200 主结果。
-2. 若要补机制消融，优先运行已准备好的 `run_ablation_no_question_routing50.sh`、`run_ablation_no_risk_scoring50.sh`、`run_ablation_no_table_compression50.sh`。
-3. 若要补多 seed，优先执行已准备好的 `qwen3_32b_patent_seed_e_gate50_20260823` paired Gate-50 包，或对已通过 candidate 的 Seed-C/D fresh 数据跑 paired MACT。
-4. 若要进入专利撰写，先基于本文件第 7 节写正式中文专利说明书，再把“不应夸大的点”放入实验局限。
+2. 若要补多 seed，优先执行已准备好的 `qwen3_32b_patent_seed_e_gate50_20260823` paired Gate-50 包，或对已通过 candidate 的 Seed-C/D fresh 数据跑 paired MACT。
+3. 若要进入专利撰写，先基于本文件第 7 节写正式中文专利说明书，再把“不应夸大的点”放入实验局限。
