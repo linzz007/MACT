@@ -1,0 +1,356 @@
+{
+  "run_name": "qwen3_32b_patent_seed_e_gate50_20260823",
+  "run_dir": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_seed_e_gate50_20260823",
+  "created_at_local": "2026-08-23 CST",
+  "stage": "Patent multi-seed Gate-50 preparation",
+  "purpose": "Additional paired random-seed stability validation for patent-facing MyAgent vs MACT evidence.",
+  "seed_label": "seed_e",
+  "seed": 20260823,
+  "limit_per_dataset": 50,
+  "datasets": {
+    "wtq": {
+      "source_path": "/home/ubuntu/lzz/MyAgent/datasets_ready/full/wtq_unseen.jsonl",
+      "source_rows": 4344,
+      "exclusions": [
+        {
+          "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_baseline_formal200_20260812_1505/input/formal200/wtq.jsonl",
+          "exists": true,
+          "rows": 200,
+          "unique_ids": 200
+        },
+        {
+          "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_baseline_formal200_20260812_1505/input/ablation50/wtq.jsonl",
+          "exists": true,
+          "rows": 50,
+          "unique_ids": 50
+        },
+        {
+          "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_wtq_policy_v6b_full200_20260731_1115/input/wtq_full200.jsonl",
+          "exists": true,
+          "rows": 200,
+          "unique_ids": 200
+        },
+        {
+          "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_coarse_ablation_gate50_20260801_0040/input/wtq_diagnostic_gate50.jsonl",
+          "exists": true,
+          "rows": 50,
+          "unique_ids": 50
+        },
+        {
+          "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/input/wtq_newseed_gate50.jsonl",
+          "exists": true,
+          "rows": 50,
+          "unique_ids": 50
+        },
+        {
+          "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/input/wtq_p4b_targeted_fix_affected_slice.jsonl",
+          "exists": true,
+          "rows": 9,
+          "unique_ids": 9
+        },
+        {
+          "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/input/seed_c/wtq_seed_c_gate50.jsonl",
+          "exists": true,
+          "rows": 50,
+          "unique_ids": 50
+        },
+        {
+          "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/input/seed_d/wtq_seed_d_gate50.jsonl",
+          "exists": true,
+          "rows": 50,
+          "unique_ids": 50
+        }
+      ],
+      "excluded_unique_ids": 533,
+      "candidate_rows_after_exclusion": 3811,
+      "input_path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_seed_e_gate50_20260823/input/wtq_seed_e_gate50.jsonl",
+      "selected_rows": 50,
+      "selected_ids": [
+        "nu-379",
+        "nu-1464",
+        "nu-1287",
+        "nu-3589",
+        "nu-3588",
+        "nu-2950",
+        "nu-1957",
+        "nu-4195",
+        "nu-3202",
+        "nu-2898",
+        "nu-1783",
+        "nu-2143",
+        "nu-1161",
+        "nu-1423",
+        "nu-627",
+        "nu-3482",
+        "nu-3571",
+        "nu-553",
+        "nu-439",
+        "nu-2392",
+        "nu-3067",
+        "nu-2513",
+        "nu-2661",
+        "nu-3546",
+        "nu-387",
+        "nu-3444",
+        "nu-2140",
+        "nu-1109",
+        "nu-2167",
+        "nu-1082",
+        "nu-1995",
+        "nu-1730",
+        "nu-2957",
+        "nu-3981",
+        "nu-3253",
+        "nu-640",
+        "nu-4136",
+        "nu-1190",
+        "nu-1920",
+        "nu-3017",
+        "nu-4343",
+        "nu-3666",
+        "nu-586",
+        "nu-1286",
+        "nu-1247",
+        "nu-941",
+        "nu-3415",
+        "nu-398",
+        "nu-3864",
+        "nu-3421"
+      ]
+    },
+    "tabfact": {
+      "source_path": "/home/ubuntu/lzz/MyAgent/datasets_ready/full/tabfact_test.jsonl",
+      "source_rows": 12779,
+      "exclusions": [
+        {
+          "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_baseline_formal200_20260812_1505/input/formal200/tabfact.jsonl",
+          "exists": true,
+          "rows": 200,
+          "unique_ids": 200
+        },
+        {
+          "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_baseline_formal200_20260812_1505/input/ablation50/tabfact.jsonl",
+          "exists": true,
+          "rows": 50,
+          "unique_ids": 50
+        },
+        {
+          "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_tabfact_policy_v6b_full200_20260731_1255/input/tabfact_full200.jsonl",
+          "exists": true,
+          "rows": 200,
+          "unique_ids": 200
+        },
+        {
+          "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_coarse_ablation_gate50_20260801_0040/input/tabfact_diagnostic_gate50.jsonl",
+          "exists": true,
+          "rows": 50,
+          "unique_ids": 50
+        },
+        {
+          "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/input/tabfact_newseed_gate50.jsonl",
+          "exists": true,
+          "rows": 50,
+          "unique_ids": 50
+        },
+        {
+          "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/input/tabfact_p4a_fix_affected_slice.jsonl",
+          "exists": true,
+          "rows": 3,
+          "unique_ids": 3
+        },
+        {
+          "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/input/seed_c/tabfact_seed_c_gate50.jsonl",
+          "exists": true,
+          "rows": 50,
+          "unique_ids": 50
+        },
+        {
+          "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/input/seed_d/tabfact_seed_d_gate50.jsonl",
+          "exists": true,
+          "rows": 50,
+          "unique_ids": 50
+        }
+      ],
+      "excluded_unique_ids": 543,
+      "candidate_rows_after_exclusion": 12236,
+      "input_path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_seed_e_gate50_20260823/input/tabfact_seed_e_gate50.jsonl",
+      "selected_rows": 50,
+      "selected_ids": [
+        "tabfact-test-6772",
+        "tabfact-test-8749",
+        "tabfact-test-11132",
+        "tabfact-test-2129",
+        "tabfact-test-8244",
+        "tabfact-test-12289",
+        "tabfact-test-3418",
+        "tabfact-test-12674",
+        "tabfact-test-4035",
+        "tabfact-test-4380",
+        "tabfact-test-1541",
+        "tabfact-test-1983",
+        "tabfact-test-1031",
+        "tabfact-test-403",
+        "tabfact-test-7454",
+        "tabfact-test-3278",
+        "tabfact-test-12295",
+        "tabfact-test-2758",
+        "tabfact-test-6473",
+        "tabfact-test-6560",
+        "tabfact-test-7794",
+        "tabfact-test-2449",
+        "tabfact-test-4265",
+        "tabfact-test-6693",
+        "tabfact-test-8994",
+        "tabfact-test-3015",
+        "tabfact-test-10971",
+        "tabfact-test-8761",
+        "tabfact-test-8925",
+        "tabfact-test-1973",
+        "tabfact-test-7344",
+        "tabfact-test-8142",
+        "tabfact-test-9866",
+        "tabfact-test-5595",
+        "tabfact-test-2809",
+        "tabfact-test-544",
+        "tabfact-test-3307",
+        "tabfact-test-4274",
+        "tabfact-test-8583",
+        "tabfact-test-298",
+        "tabfact-test-3094",
+        "tabfact-test-4788",
+        "tabfact-test-288",
+        "tabfact-test-10396",
+        "tabfact-test-9291",
+        "tabfact-test-11103",
+        "tabfact-test-992",
+        "tabfact-test-6371",
+        "tabfact-test-5852",
+        "tabfact-test-10743"
+      ]
+    },
+    "crt": {
+      "source_path": "/home/ubuntu/lzz/MyAgent/datasets_ready/full/crt.jsonl",
+      "source_rows": 728,
+      "exclusions": [
+        {
+          "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_baseline_formal200_20260812_1505/input/formal200/crt.jsonl",
+          "exists": true,
+          "rows": 200,
+          "unique_ids": 200
+        },
+        {
+          "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_baseline_formal200_20260812_1505/input/ablation50/crt.jsonl",
+          "exists": true,
+          "rows": 50,
+          "unique_ids": 50
+        },
+        {
+          "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_crt_full200_current_20260730_1822/input/crt_blind200.jsonl",
+          "exists": true,
+          "rows": 200,
+          "unique_ids": 200
+        },
+        {
+          "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_coarse_ablation_gate50_20260801_0040/input/crt_diagnostic_gate50.jsonl",
+          "exists": true,
+          "rows": 50,
+          "unique_ids": 50
+        },
+        {
+          "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/input/crt_newseed_gate50.jsonl",
+          "exists": true,
+          "rows": 50,
+          "unique_ids": 50
+        },
+        {
+          "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_newseed_gate50_20260801_0305/input/crt_p4a_fix_affected_slice.jsonl",
+          "exists": true,
+          "rows": 9,
+          "unique_ids": 9
+        },
+        {
+          "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/input/seed_c/crt_seed_c_gate50.jsonl",
+          "exists": true,
+          "rows": 50,
+          "unique_ids": 50
+        },
+        {
+          "path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_policy_v6b_multiseed_gate50_20260801_2231/input/seed_d/crt_seed_d_gate50.jsonl",
+          "exists": true,
+          "rows": 50,
+          "unique_ids": 50
+        }
+      ],
+      "excluded_unique_ids": 459,
+      "candidate_rows_after_exclusion": 269,
+      "input_path": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_seed_e_gate50_20260823/input/crt_seed_e_gate50.jsonl",
+      "selected_rows": 50,
+      "selected_ids": [
+        "crt-344",
+        "crt-478",
+        "crt-693",
+        "crt-594",
+        "crt-390",
+        "crt-241",
+        "crt-708",
+        "crt-450",
+        "crt-483",
+        "crt-357",
+        "crt-619",
+        "crt-250",
+        "crt-603",
+        "crt-642",
+        "crt-380",
+        "crt-277",
+        "crt-226",
+        "crt-269",
+        "crt-460",
+        "crt-487",
+        "crt-622",
+        "crt-294",
+        "crt-394",
+        "crt-517",
+        "crt-669",
+        "crt-370",
+        "crt-423",
+        "crt-711",
+        "crt-673",
+        "crt-446",
+        "crt-522",
+        "crt-264",
+        "crt-346",
+        "crt-360",
+        "crt-521",
+        "crt-471",
+        "crt-336",
+        "crt-445",
+        "crt-502",
+        "crt-645",
+        "crt-589",
+        "crt-274",
+        "crt-280",
+        "crt-326",
+        "crt-322",
+        "crt-218",
+        "crt-290",
+        "crt-533",
+        "crt-584",
+        "crt-330"
+      ]
+    }
+  },
+  "global_validation": {
+    "datasets": [
+      "wtq",
+      "tabfact",
+      "crt"
+    ],
+    "rows_per_dataset": 50,
+    "total_rows": 150,
+    "selected_unique_ids_by_dataset": {
+      "wtq": 50,
+      "tabfact": 50,
+      "crt": 50
+    }
+  }
+}

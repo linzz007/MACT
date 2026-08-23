@@ -1,5 +1,7 @@
 # P0 Baseline Experiment Summary
 
+> Superseded note, 2026-08-14 CST: this file records the original Formal-200 baseline before the later WTQ and TabFact final patches. For the current authoritative final table, use `summary/formal200_final_evidence_package_20260814.md`.
+
 Run dir: `/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_baseline_formal200_20260812_1505`
 
 ## Main Table

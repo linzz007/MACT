@@ -1,0 +1,191 @@
+{
+  "generated_at": "2026-08-14 CST",
+  "run_root": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_baseline_formal200_20260812_1505",
+  "authoritative_summary_md": "outputs/server_runs/qwen3_32b_baseline_formal200_20260812_1505/summary/formal200_final_evidence_package_20260814.md",
+  "scope": "Patent/thesis evidence package for Qwen3-32B MyAgent vs MACT Formal-200 plus ablation, multi-seed, multi-model, and WTQ generalization evidence.",
+  "main_formal200": {
+    "MyAgent": {
+      "wtq": {
+        "correct": 157,
+        "rows": 200,
+        "accuracy": 0.785,
+        "avg_tokens": 6076.32,
+        "avg_time_seconds": 15.424,
+        "failed": 0,
+        "missing": 0
+      },
+      "tabfact": {
+        "correct": 190,
+        "rows": 200,
+        "accuracy": 0.95,
+        "avg_tokens": 2372.42,
+        "avg_time_seconds": 11.689,
+        "failed": 0,
+        "missing": 0
+      },
+      "crt": {
+        "correct": 133,
+        "rows": 200,
+        "accuracy": 0.665,
+        "avg_tokens": 10430.63,
+        "avg_time_seconds": 23.134,
+        "failed": 0,
+        "missing": 0
+      },
+      "overall": {
+        "correct": 480,
+        "rows": 600,
+        "accuracy": 0.8,
+        "avg_tokens": 6293.12,
+        "avg_time_seconds": 16.749,
+        "failed": 0,
+        "missing": 0,
+        "token_ratio_to_mact": 0.556,
+        "time_ratio_to_mact": 0.132
+      }
+    },
+    "MACT": {
+      "wtq": {
+        "correct": 156,
+        "rows": 200,
+        "accuracy": 0.78,
+        "avg_tokens": 10484.65,
+        "avg_time_seconds": 115.088,
+        "failed": 4,
+        "missing": 4
+      },
+      "tabfact": {
+        "correct": 185,
+        "rows": 200,
+        "accuracy": 0.925,
+        "avg_tokens": 11232.74,
+        "avg_time_seconds": 114.443,
+        "failed": 0,
+        "missing": 0
+      },
+      "crt": {
+        "correct": 124,
+        "rows": 200,
+        "accuracy": 0.62,
+        "avg_tokens": 12239.29,
+        "avg_time_seconds": 151.051,
+        "failed": 0,
+        "missing": 0
+      },
+      "overall": {
+        "correct": 465,
+        "rows": 600,
+        "accuracy": 0.775,
+        "avg_tokens": 11318.89,
+        "avg_time_seconds": 126.861,
+        "failed": 4,
+        "missing": 4
+      }
+    },
+    "Direct-CoT": {
+      "overall": {
+        "correct": 386,
+        "rows": 600,
+        "accuracy": 0.6433,
+        "avg_tokens": 712.67,
+        "avg_time_seconds": 2.552,
+        "failed": 1,
+        "missing": 1,
+        "token_ratio_to_mact": 0.063
+      }
+    },
+    "Single-Agent Pandas": {
+      "overall": {
+        "correct": 421,
+        "rows": 600,
+        "accuracy": 0.7017,
+        "avg_tokens": 1074.24,
+        "avg_time_seconds": 7.601,
+        "failed": 22,
+        "missing": 28,
+        "token_ratio_to_mact": 0.0949
+      }
+    }
+  },
+  "ablation_status": {
+    "completed_variants": [
+      "legacy_collaboration_gate50",
+      "no_strong_verification_gate50",
+      "no_deterministic_shortcuts_gate50"
+    ],
+    "informative_result": "No deterministic shortcuts dropped overall Gate-50 accuracy from 116/150 to 106/150 and increased average tokens from about 2516 to about 7465.",
+    "inconclusive_result": "Legacy collaboration and no-strong verification had identical Gate-50 accuracy, so this split does not isolate strong-verification value.",
+    "missing_switches": [
+      "no_question_type_routing",
+      "no_dual_risk_scoring",
+      "no_table_compression_or_evidence_retention"
+    ]
+  },
+  "multi_model_gate50": {
+    "qwen3_14b_awq": {
+      "correct": 108,
+      "rows": 150,
+      "accuracy": 0.72,
+      "decision": "no-go"
+    },
+    "qwen25_14b_awq": {
+      "correct": 107,
+      "rows": 150,
+      "accuracy": 0.7133,
+      "decision": "no-go"
+    },
+    "qwen25_3b": {
+      "correct": 89,
+      "rows": 150,
+      "accuracy": 0.5933,
+      "decision": "no-go"
+    }
+  },
+  "multi_seed_status": {
+    "paired_newseed_gate50": {
+      "myagent_correct": 112,
+      "mact_correct": 111,
+      "rows": 150,
+      "token_ratio": 0.5444,
+      "datasets_myagent_ge_mact": 2
+    },
+    "seed_c_current_only": {
+      "correct": 114,
+      "rows": 150,
+      "token_ratio_vs_mact_full200": 0.6096
+    },
+    "seed_d_current_only": {
+      "correct": 98,
+      "rows": 150,
+      "token_ratio_vs_mact_full200": 0.5735
+    },
+    "seed_boundary_fresh_combined": {
+      "correct": 229,
+      "rows": 300,
+      "token_ratio": 0.5794,
+      "decision": "paired_mact_candidate"
+    },
+    "interpretation": "Multi-seed evidence is useful boundary/stability evidence but is not yet enough to claim broad multi-seed paired superiority.",
+    "seed_e_paired_gate50_package": {
+      "status": "prepared_not_executed",
+      "run_dir": "/home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_seed_e_gate50_20260823",
+      "rows": 150
+    }
+  },
+  "wtq_generalization": {
+    "formal200_shortcut_accuracy_on_hits": 0.9032,
+    "blind200_v1_shortcut_accuracy_on_hits": 0.9474,
+    "full_unseen_minus_formal200_shortcut_accuracy_on_hits": 0.6437,
+    "decision": "Keep formal200 result as main evidence; do not expand WTQ shortcuts blindly."
+  },
+  "completion_audit": {
+    "qwen3_full200_vs_mact_all_datasets": "complete",
+    "three_baselines": "complete",
+    "efficiency_reporting": "complete",
+    "wtq_generalization_diagnostic": "complete_as_boundary_evidence",
+    "multi_model_gate": "complete_as_no_go_boundary_summary",
+    "mechanism_ablation": "partial",
+    "multi_seed_stability": "partial",
+    "patent_draft_evidence": "drafted_in_authoritative_summary"
+  }
+}
