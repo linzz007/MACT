@@ -1,0 +1,60 @@
+{
+  "records": [
+    {
+      "id": "nu-3415",
+      "dataset": "wtq",
+      "question": "what country had the most amount of people in the top 10? (use abbreviation)",
+      "gold": [
+        "CHN"
+      ],
+      "previous_final_value": "China",
+      "canonicalized_previous_value": "CHN",
+      "runtime_contract_decimal_places": null,
+      "old_planner_code_valid_under_new_contract": null,
+      "old_planner_code_validation_reason": "",
+      "expected_effect": "direct canonicalization fix"
+    },
+    {
+      "id": "crt-280",
+      "dataset": "crt",
+      "question": "What proportion of the Malaysia Airlines group companies are involved in the airline industry?",
+      "gold": [
+        "1/6"
+      ],
+      "previous_final_value": 0.16666666666666666,
+      "canonicalized_previous_value": "1/6",
+      "runtime_contract_decimal_places": null,
+      "old_planner_code_valid_under_new_contract": true,
+      "old_planner_code_validation_reason": "",
+      "expected_effect": "direct canonicalization fix"
+    },
+    {
+      "id": "crt-502",
+      "dataset": "crt",
+      "question": "What was the average viewership for episodes that aired in March 2006?",
+      "gold": [
+        "13.635"
+      ],
+      "previous_final_value": 13.64,
+      "canonicalized_previous_value": 13.64,
+      "runtime_contract_decimal_places": 3,
+      "old_planner_code_valid_under_new_contract": false,
+      "old_planner_code_validation_reason": "The answer contract requires 3 decimal places. Do not round to a different precision in code.",
+      "expected_effect": "old two-decimal code rejected; requires focused model rerun"
+    },
+    {
+      "id": "crt-290",
+      "dataset": "crt",
+      "question": "What is the average number of losses for teams in the top half of the table?",
+      "gold": [
+        "8.875"
+      ],
+      "previous_final_value": 9.0,
+      "canonicalized_previous_value": 9.0,
+      "runtime_contract_decimal_places": 3,
+      "old_planner_code_valid_under_new_contract": false,
+      "old_planner_code_validation_reason": "The answer contract requires 3 decimal places. Do not round to a different precision in code.",
+      "expected_effect": "old two-decimal code rejected; requires focused model rerun"
+    }
+  ]
+}
