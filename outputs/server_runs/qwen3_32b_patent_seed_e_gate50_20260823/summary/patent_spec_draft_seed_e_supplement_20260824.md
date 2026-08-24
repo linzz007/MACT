@@ -83,6 +83,21 @@ input/diagnostic/seed_e_answer_contract_wtq.jsonl
 input/diagnostic/seed_e_answer_contract_crt.jsonl
 ```
 
+可复用执行脚本已准备：
+
+```bash
+cd /home/ubuntu/lzz/MACT/outputs/server_runs/qwen3_32b_patent_seed_e_gate50_20260823
+bash run_answer_contract_focused_validation.sh
+```
+
+该脚本将运行 WTQ/CRT focused inputs，并调用 `summarize_answer_contract_focused.py` 生成：
+
+```text
+diagnostics/answer_contract_patch_focused_20260824/
+summary/answer_contract_patch_focused_summary.md
+summary/answer_contract_patch_focused_summary.json
+```
+
 ## 5. 实验证据如何写
 
 可强主张：
